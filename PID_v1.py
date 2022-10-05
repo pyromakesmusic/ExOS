@@ -109,3 +109,4 @@ values = time_step(POS_START, VEL_START, ACCEL_START, MASS, T_START, T_END)
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 print(values)
 print(values.columns)
+plt.plot(values["time"], values["disturbance force"])
