@@ -34,6 +34,8 @@ import turtle
 GUI
 """
 window = tk.Tk()
+window.title("PID Controller v1.a")
+window.mainloop()
 # datalog = pd.DataFrame(columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"])
 
 POS_START = 0.0 # meters
