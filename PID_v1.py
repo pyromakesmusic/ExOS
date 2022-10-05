@@ -107,6 +107,10 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
   return(final)
 values = time_step(POS_START, VEL_START, ACCEL_START, MASS, T_START, T_END)
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
-print(values)
-print(values.columns)
-plt.plot(values["time"], values["disturbance force"])
+
+
+timevals = values["time"]
+ext_f_vals = values["disturbance force"]
+
+print(ext_f_vals.index)
+print(len(ext_f_vals[0]))
