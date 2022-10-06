@@ -179,7 +179,7 @@ def noise_f(k):
 
 def kinematics(parameter_list):
     keys = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
-    kinematic_df = pd.DataFrame(data = parameter_list, columns = keys)
+    kinematic_df = pd.DataFrame(data = parameter_list, index = keys)
     return(kinematic_df)
 
 def error_func(df, parameter_list):
@@ -203,13 +203,13 @@ def plot(x, y, **args):
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 def main():
-    kinematic_initial_values = [T_START.get(), 0, 0, ACCEL_START.get(), VEL_START.get(), POS_START.get()]
+    kinematic_initial_values = [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
     kine_df = kinematics(kinematic_initial_values)
-    print(kine_df)
+    print("Kinematic Dataframe: \n", kine_df)
     epsilon_df = error_func(kine_df, kinematic_initial_values)
-    print(epsilon_df)
+    print("Error Dataframe: \n", epsilon_df)
     control_loop_df = pid(epsilon_df)
-    print(control_loop_df)
+    print("Control Loop Dataframe: \n", control_loop_df)
 
 
 """
