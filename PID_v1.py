@@ -43,7 +43,11 @@ GUI Initialization
 """
 window = tk.Tk()
 window.title("PID Controller v1.a")
-# datalog = pd.DataFrame(columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"])
+
+
+"""
+GLOBALS
+"""
 POS_START = tk.IntVar() # meters
 VEL_START =  tk.IntVar() # m/s
 ACCEL_START =  tk.IntVar() # m/s^2
@@ -51,6 +55,12 @@ T_START =  tk.IntVar() # seconds
 T_END =  tk.IntVar() # seconds
 MASS =  tk.IntVar() # kilograms
 
+CALC_TEST =   test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
+
+
+"""
+User Input
+"""
 position_start_slider = ttk.Scale(
     window,
     from_ = 10,
@@ -156,6 +166,9 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
   throttle_f = 0
   df_list = []
   test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
+  #This is for testing, delete it later
+  for i in range(0,99):
+      df_list.append(test)
   df_list.append(test)
   print(startpos)
   for step in range(start_time, end_time):
@@ -184,6 +197,7 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
+
 print(values)
 timevals = values["time"]
 ext_f_vals = values["disturbance force"]
@@ -196,8 +210,12 @@ plot_button = tk.Button(master = window,
                      width = 10,
                      text = "Plot")
 
-print(np.trapz(ext_f_vals, timevals))
-
+"""
+velocity_values = np.trapz(ext_f_vals, timevals)
+position_values = np.trapz(velocity_values, timevals)
+print(velocity_values)
+print(position_values)
+"""
 
 # plot_button.pack()
 # Main GUI call
