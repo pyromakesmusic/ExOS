@@ -23,6 +23,7 @@ Probably start with the GUI, then kinematics, then error.
 LIBRARY IMPORTS
 """
 import tkinter as tk
+from tkinter import ttk
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
@@ -33,18 +34,59 @@ import turtle
 
 
 """
-GUI
+GUI Initialization
 """
 window = tk.Tk()
 window.title("PID Controller v1.a")
 # datalog = pd.DataFrame(columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"])
+POS_START = tk.IntVar() # meters
+VEL_START =  tk.IntVar() # m/s
+ACCEL_START =  tk.IntVar() # m/s^2
+T_START =  tk.IntVar() # seconds
+T_END =  tk.IntVar() # seconds
+MASS =  tk.IntVar() # kilograms
 
-POS_START = 0.0 # meters
-VEL_START = 0.0 # m/s
-ACCEL_START = 0.0 # m/s^2
-T_START = 0 # seconds
-T_END = 100 # seconds
-MASS = 1.0 # kilograms
+position_start_slider = ttk.Scale(
+    window,
+    from_ = 10,
+    to = 100,
+    orient = "vertical",
+    variable = POS_START)
+
+velocity_start_slider = ttk.Scale(
+    window,
+    from_ = 10,
+    to = 100,
+    orient = "vertical",
+    variable = VEL_START) 
+
+accel_start_slider = ttk.Scale(
+    window,
+    from_ = 10,
+    to = 100,
+    orient = "vertical",
+    variable = ACCEL_START) 
+
+t_start_slider = ttk.Scale(
+    window,
+    from_ = 10,
+    to = 100,
+    orient = "vertical",
+    variable = T_START) 
+
+t_end_slider = ttk.Scale(
+    window,
+    from_ = 50,
+    to = 100,
+    orient = "vertical",
+    variable = T_END) 
+
+t_end_slider = ttk.Scale(
+    window,
+    from_ = 1,
+    to = 100,
+    orient = "vertical",
+    variable = MASS) 
 
 throttle_f = 0 # initial force applied by throttle = 0
 
@@ -76,12 +118,11 @@ def error_func():
 def pid():
   return 0
 
-def plot(graph):
+def plot(x, y, **args):
     # figure contains plot
     fig = mpl.figure.Figure(figsize = (5, 2), dpi = 300)
+    x.hist()
     
-    plot1 = fig.add_subplot(111)
-    graph.hist()
     canvas = mpl.backends.backend_tkagg.FigureCanvasTkAgg(fig, master = window)  
     canvas.draw()
     canvas.get_tk_widget().pack()
@@ -92,14 +133,22 @@ def plot(graph):
 
 def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mass
   """
-  Should be the main loop. Takes in parameters and returns a dataframe of what happens to our mass over our time range.
+  Should be the main simulation loop. Takes in parameters and returns a dataframe of what happens to our mass over our time range.
   Since we always have to sum up from 0 up to t for the integral, does it make sense to feed a dataframe to the control loop?
   Sept 30 1755h - This probably needs to be heavily refactored and broken up into function calls of the functions listed above.
   """
-  
+  print(startpos)
+  print(startvel)
+  print(startacc)
+  print(m)
+  print(start_time)
+  print(end_time)
   column_names = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
   throttle_f = 0
   df_list = []
+  test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
+  df_list.append(test)
+  print(startpos)
   for step in range(start_time, end_time):
     external_f = noise_f(scaling_factor)
     total_f = external_f + throttle_f
@@ -114,18 +163,15 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
     throttle_f = pid_term
     row = [step, pos, velo, error, accel, external_f, throttle_f, total_f]
     row_df = pd.DataFrame(data=row)
-
+    print(row_df)
     df_list.append(row_df)
-#    time_row = {"time" : step, "position" : pos, "velocity" : velo, "velocity-error" : error, "acceleration" : accel, "disturbance force" : external_f, "throttle" : throttle_f, "total force" : total_f}
-#    ser = pd.DataFrame(data=time_row, index = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"])
-#    print(ser)
-#    row_list.append(ser)
+
   final = pd.concat(df_list, join="inner", axis = 1).T
   final.columns = (column_names)
   final.index = final["time"]
 
   return(final)
-values = time_step(POS_START, VEL_START, ACCEL_START, MASS, T_START, T_END)
+values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 
@@ -135,7 +181,7 @@ ext_f_vals = values["disturbance force"]
 times = plt.plot(timevals)
 
 plot_button = tk.Button(master = window,
-                     command = plot(ext_f_vals),
+                     command = plot(timevals, ext_f_vals),
                      height = 2,
                      width = 10,
                      text = "Plot")
