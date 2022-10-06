@@ -200,67 +200,6 @@ def plot(x, y, **args):
     toolbar.update()
     canvas.get_tk_widget().pack()
 
-"""
-def time_step_placeholderfornow(startpos, startvel, startacc, m, start_time, end_time): # m is mass
-  
-  Should be the main simulation loop. Takes in parameters and returns a dataframe of what happens to our mass over our time range.
-  Since we always have to sum up from 0 up to t for the integral, does it make sense to feed a dataframe to the control loop?
-  Sept 30 1755h - This probably needs to be heavily refactored and broken up into function calls of the functions listed above.
-  
-  print(startpos)
-  print(startvel)
-  print(startacc)
-  print(m)
-  print(start_time)
-  print(end_time)
-  column_names = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
-  throttle_f = 0
-  df_list = []
-  test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
-  #This is for testing, delete it later
-  for i in range(0,99):
-      df_list.append(test)
-  df_list.append(test)
-  print(startpos)
-  for step in range(start_time, end_time):
-    external_f = noise_f(scaling_factor)
-    total_f = external_f + throttle_f
-    accel = total_f/m
-    velo = 1 # Here goes an integral
-    pos = 1 # here goes an integral of velocity
-    error = abs(set_point - velo)
-    prop_term = p * error
-    int_term = i * error # need to do an integral here
-    der_term = d * error # need to do a derivative here
-    pid_term = (prop_term + int_term + der_term) * control_constant * control_sign
-    throttle_f = pid_term
-    row = [step, pos, velo, error, accel, external_f, throttle_f, total_f]
-    row_df = pd.DataFrame(data=row)
-    print(row_df)
-    df_list.append(row_df)
-
-  final = pd.concat(df_list, join="inner", axis = 1).T
-  final.columns = (column_names)
-
-  plt.plot(final)
-  print(final)
-  return(final)
-
-"""
-
-def time_step(a,b,c,d,e,f):
-    # This is a placeholder function made to build out the structure of what needs to get graphed and put it on the GUI
-    list = [0,2,3,4,5,6,7,8]
-    dummy_df = pd.DataFrame(data = list, index = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]).T
-
-    return(dummy_df)
-
-def simulation_logic(initialconditions):
-    init_df = pd.DataFrame(data=initialconditions, index = ["position", "velocity", "acceleration", "mass", "time", "disturbance force"])
- 
-    print(init_df)
-
-
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 def main():
@@ -272,16 +211,6 @@ def main():
     control_loop_df = pid(epsilon_df)
     print(control_loop_df)
 
-"""
-sim_button = tk.Button(master = window,
-                     command = simulation_logic(initial_params),
-                     height = 2,
-                     width = 10,
-                     text = "Plot")
-"""
-#sim_button.pack()
-# Main GUI call
-#window.mainloop()
 
 """
 Main Function Call
