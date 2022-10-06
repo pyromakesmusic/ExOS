@@ -63,8 +63,10 @@ CALC_TEST =   test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
 
 
 """
-User Input
+Initialization Parameters
 """
+# Kinematic parameters
+
 position_start_slider = tk.Scale(
     window,
     from_ = 10,
@@ -109,8 +111,7 @@ mass_slider = tk.Scale(
 
 initial_params = [POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get()]
 
-throttle_f = 0 # initial force applied by throttle = 0
-
+# PID parameters
 set_point = 50 #float(input("Set point of speed to maintain? "))
 p = 1 #float(input("Proportional term? "))
 i = 1 #float(input("Integral term? "))
@@ -118,6 +119,9 @@ d = 1 #float(input("Derivative term? "))
 scaling_factor = 4 #float(input("Scaling factor for external disturbance? "))
 control_constant = .5 #float(input("Constant to multiply the PID term by? "))
 control_sign = 1 #int(input("-1 or 1 to multiply by? "))
+throttle_f = 0 # initial force applied by throttle = 0
+
+
 
 def integral(diff, w_r_t, dt):
     integral_output = np.trapz(y = diff, x=w_r_t, dx=dt)
@@ -128,14 +132,17 @@ def noise_f(k):
   scaled_noise = k * whitenoise
   return scaled_noise
 
-def accel():
-  return 0
+def accel(f,m):
+  accel = f/m
+  return accel
 
-def velo():
-  return 0
+def velo(df):
+  velo = integral(df["acceleration"], df["time"], 1)
+  return velo
 
-def pos():
-  return 0
+def pos(df):
+  pos = integral(df["velocity"], df["time"], 1)
+  return pos
 
 def error_func():
   return 0
@@ -210,7 +217,7 @@ def time_step(a,b,c,d,e,f):
 
 def simulation_logic(initialconditions):
     init_df = pd.DataFrame(data=initialconditions, index = ["position", "velocity", "acceleration", "mass", "time", "disturbance force"])
-    plot(init_df.time, init_df.velocity)
+ 
     print(init_df)
 
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
@@ -238,6 +245,7 @@ velocity_values = np.trapz(ext_f_vals) + POS_START.get()
 #print(position_values)
 
 
-sim_button.pack()
+#sim_button.pack()
 # Main GUI call
-window.mainloop()
+#window.mainloop()
+print(velocity_values)
