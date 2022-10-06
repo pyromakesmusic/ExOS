@@ -179,6 +179,11 @@ def noise_f(k):
   scaled_noise = k * whitenoise
   return scaled_noise
 
+def kinematics(parameter_list):
+    keys = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
+    kinematic_df = pd.DataFrame(data = parameter_list, columns = keys)
+    return(kinematic_df)
+
 def accel(f,m):
   accel = f/m
   return accel
@@ -269,35 +274,26 @@ def simulation_logic(initialconditions):
  
     print(init_df)
 
-values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
+
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 def main():
-    pass
+    kinematic_initial_values = time_step(T_START.get(), 0, 0, ACCEL_START.get(), VEL_START.get(), POS_START.get())
+    df = kinematics(kinematic_initial_values)
+    print(df)
 
-print(values)
-print(values.index)
-print(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
-timevals = values["time"]
-ext_f_vals = values["disturbance force"]
-
-times = plt.plot(timevals)
-
+"""
 sim_button = tk.Button(master = window,
                      command = simulation_logic(initial_params),
                      height = 2,
                      width = 10,
                      text = "Plot")
-
-# Below is the numpy integral, this seems to work - but need to test it once the dataframes are looking good
-velocity_values = np.trapz(ext_f_vals) + POS_START.get()
-#position_values = np.trapz(velocity_values)
-#print(velocity_values)
-#print(position_values)
-
-
+"""
 #sim_button.pack()
 # Main GUI call
 #window.mainloop()
-print(velocity_values)
+
+"""
+Main Function Call
+"""
 main()
