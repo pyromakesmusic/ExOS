@@ -25,7 +25,9 @@ LIBRARY IMPORTS
 import tkinter as tk
 import numpy as np
 import pandas as pd
+import matplotlib as mpl
 import matplotlib.pyplot as plt
+import matplotlib.backends.backend_tkagg as tkagg
 from scipy.integrate import odeint
 import turtle
 
@@ -35,7 +37,6 @@ GUI
 """
 window = tk.Tk()
 window.title("PID Controller v1.a")
-window.mainloop()
 # datalog = pd.DataFrame(columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"])
 
 POS_START = 0.0 # meters
@@ -74,6 +75,24 @@ def error_func():
 
 def pid():
   return 0
+
+def plot():
+    # figure contains plot
+    fig = mpl.figure.Figure(figsize = (5, 2), dpi = 300)
+    
+    plot1 = fig. add_subplot(111)
+    
+    canvas = mpl.backends.backend_tkagg.FigureCanvasTkAgg(fig, master = window)
+    
+    canvas.draw()
+    
+    canvas.get_tk_widget().pack()
+    
+    toolbar = mpl.backends.backend_tkagg.NavigationToolbar2Tk(canvas, window)
+    
+    toolbar.update()
+    
+    canvas.get_tk_widget().pack()
 
 
 
@@ -119,4 +138,14 @@ values = time_step(POS_START, VEL_START, ACCEL_START, MASS, T_START, T_END)
 timevals = values["time"]
 ext_f_vals = values["disturbance force"]
 
-plt.plot(timevals)
+times = plt.plot(timevals)
+
+plot_button = tk.Button(master = window,
+                     command = plot,
+                     height = 2,
+                     width = 10,
+                     text = "Plot")
+
+plot_button.pack()
+# Main GUI call
+window.mainloop()
