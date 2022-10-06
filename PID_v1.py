@@ -209,13 +209,13 @@ def plot(x, y, **args):
     toolbar.update()
     canvas.get_tk_widget().pack()
 
-
+"""
 def time_step_placeholderfornow(startpos, startvel, startacc, m, start_time, end_time): # m is mass
-  """
+  
   Should be the main simulation loop. Takes in parameters and returns a dataframe of what happens to our mass over our time range.
   Since we always have to sum up from 0 up to t for the integral, does it make sense to feed a dataframe to the control loop?
   Sept 30 1755h - This probably needs to be heavily refactored and broken up into function calls of the functions listed above.
-  """
+  
   print(startpos)
   print(startvel)
   print(startacc)
@@ -255,6 +255,8 @@ def time_step_placeholderfornow(startpos, startvel, startacc, m, start_time, end
   print(final)
   return(final)
 
+"""
+
 def time_step(a,b,c,d,e,f):
     # This is a placeholder function made to build out the structure of what needs to get graphed and put it on the GUI
     list = [0,2,3,4,5,6,7,8]
@@ -270,6 +272,8 @@ def simulation_logic(initialconditions):
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
+def main():
+    pass
 
 print(values)
 print(values.index)
@@ -296,3 +300,4 @@ velocity_values = np.trapz(ext_f_vals) + POS_START.get()
 # Main GUI call
 #window.mainloop()
 print(velocity_values)
+main()
