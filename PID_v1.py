@@ -209,7 +209,9 @@ def time_step(a,b,c,d,e,f):
     return(dummy_df)
 
 def simulation_logic(initialconditions):
-    print(initialconditions)
+    init_df = pd.DataFrame(data=initialconditions, index = ["position", "velocity", "acceleration", "mass", "time", "disturbance force"])
+    plot(init_df.time, init_df.velocity)
+    print(init_df)
 
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
@@ -229,7 +231,7 @@ sim_button = tk.Button(master = window,
                      width = 10,
                      text = "Plot")
 
-
+# Below is the numpy integral, this seems to work - but need to test it once the dataframes are looking good
 velocity_values = np.trapz(ext_f_vals) + POS_START.get()
 #position_values = np.trapz(velocity_values)
 #print(velocity_values)
