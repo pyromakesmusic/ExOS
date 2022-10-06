@@ -76,24 +76,18 @@ def error_func():
 def pid():
   return 0
 
-def plot():
+def plot(graph):
     # figure contains plot
     fig = mpl.figure.Figure(figsize = (5, 2), dpi = 300)
     
-    plot1 = fig. add_subplot(111)
-    
-    canvas = mpl.backends.backend_tkagg.FigureCanvasTkAgg(fig, master = window)
-    
+    plot1 = fig.add_subplot(111)
+    graph.hist()
+    canvas = mpl.backends.backend_tkagg.FigureCanvasTkAgg(fig, master = window)  
     canvas.draw()
-    
     canvas.get_tk_widget().pack()
-    
     toolbar = mpl.backends.backend_tkagg.NavigationToolbar2Tk(canvas, window)
-    
     toolbar.update()
-    
     canvas.get_tk_widget().pack()
-
 
 
 def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mass
@@ -141,7 +135,7 @@ ext_f_vals = values["disturbance force"]
 times = plt.plot(timevals)
 
 plot_button = tk.Button(master = window,
-                     command = plot,
+                     command = plot(ext_f_vals),
                      height = 2,
                      width = 10,
                      text = "Plot")
