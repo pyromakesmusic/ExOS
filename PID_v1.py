@@ -59,6 +59,17 @@ T_START =  tk.IntVar() # seconds
 T_END =  tk.IntVar() # seconds
 MASS =  tk.IntVar() # kilograms
 
+# PID parameters
+SET_POINT = 50 #float(input("Set point of speed to maintain? "))
+P_K = 1 #float(input("Proportional term? "))
+I_K = 1 #float(input("Integral term? "))
+D_K = 1 #float(input("Derivative term? "))
+SCALE_FACTOR = 4 #float(input("Scaling factor for external disturbance? "))
+CONTROL_CONSTANT = .5 #float(input("Constant to multiply the PID term by? "))
+CONTROL_SIGN = 1 #int(input("-1 or 1 to multiply by? "))
+THROTTLE_F = 0 # initial force applied by throttle = 0
+
+
 CALC_TEST =   test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
 
 
@@ -112,14 +123,50 @@ mass_slider = tk.Scale(
 initial_params = [POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get()]
 
 # PID parameters
-set_point = 50 #float(input("Set point of speed to maintain? "))
-p = 1 #float(input("Proportional term? "))
-i = 1 #float(input("Integral term? "))
-d = 1 #float(input("Derivative term? "))
-scaling_factor = 4 #float(input("Scaling factor for external disturbance? "))
-control_constant = .5 #float(input("Constant to multiply the PID term by? "))
-control_sign = 1 #int(input("-1 or 1 to multiply by? "))
-throttle_f = 0 # initial force applied by throttle = 0
+
+set_point_slider = tk.Scale(
+    window,
+    from_ = 10,
+    to = 100,
+    orient = "vertical",
+    variable = POS_START)
+
+k_p_slider = tk.Scale(
+    window,
+    from_ = 37,
+    to = 100,
+    orient = "vertical",
+    variable = VEL_START) 
+
+k_i_slider = tk.Scale(
+    window,
+    from_ = 16,
+    to = 100,
+    orient = "vertical",
+    variable = ACCEL_START) 
+
+k_d_slider = tk.Scale(
+    window,
+    from_ = 1,
+    to = 100,
+    orient = "vertical",
+    variable = T_START) 
+
+# Control constant
+k_omega_slider = tk.Scale(
+    window,
+    from_ = 53,
+    to = 100,
+    orient = "vertical",
+    variable = T_END) 
+
+# This should be a checkbox that just flips
+control_sign = tk.Scale(
+    window,
+    from_ = 2,
+    to = 100,
+    orient = "vertical",
+    variable = MASS) 
 
 
 
