@@ -115,7 +115,7 @@ set_point = 50 #float(input("Set point of speed to maintain? "))
 p = 1 #float(input("Proportional term? "))
 i = 1 #float(input("Integral term? "))
 d = 1 #float(input("Derivative term? "))
-scaling_factor = 4#float(input("Scaling factor for external disturbance? "))
+scaling_factor = 4 #float(input("Scaling factor for external disturbance? "))
 control_constant = .5 #float(input("Constant to multiply the PID term by? "))
 control_sign = 1 #int(input("-1 or 1 to multiply by? "))
 
