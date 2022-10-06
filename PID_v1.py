@@ -34,6 +34,11 @@ import turtle
 
 
 """
+CONFIG
+"""
+pd.options.display.width = 0
+
+"""
 GUI Initialization
 """
 window = tk.Tk()
@@ -169,7 +174,8 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
   final = pd.concat(df_list, join="inner", axis = 1).T
   final.columns = (column_names)
   final.index = final["time"]
-
+  plt.plot(final)
+  print(final)
   return(final)
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
@@ -181,7 +187,7 @@ ext_f_vals = values["disturbance force"]
 times = plt.plot(timevals)
 
 plot_button = tk.Button(master = window,
-                     command = plot(timevals, ext_f_vals),
+                     command = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get()),
                      height = 2,
                      width = 10,
                      text = "Plot")
