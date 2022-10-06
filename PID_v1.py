@@ -168,11 +168,9 @@ control_sign = tk.Scale(
     orient = "vertical",
     variable = MASS) 
 
-
-
-def integral(diff, w_r_t, dt):
-    integral_output = np.trapz(y = diff, x=w_r_t, dx=dt)
-    return(integral_output)
+"""
+FUNCTION DEFINITIONS
+"""
 
 def noise_f(k):
   whitenoise = np.random.normal(0,1,100)
@@ -184,23 +182,11 @@ def kinematics(parameter_list):
     kinematic_df = pd.DataFrame(data = parameter_list, columns = keys)
     return(kinematic_df)
 
-def accel(f,m):
-  accel = f/m
-  return accel
+def error_func(df, parameter_list):
+  return df
 
-def velo(df):
-  velo = integral(df["acceleration"], df["time"], 1)
-  return velo
-
-def pos(df):
-  pos = integral(df["velocity"], df["time"], 1)
-  return pos
-
-def error_func():
-  return 0
-
-def pid():
-  return 0
+def pid(df):
+  return df
 
 def plot(x, y, **args):
     # figure contains plot
@@ -278,9 +264,13 @@ def simulation_logic(initialconditions):
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 def main():
-    kinematic_initial_values = time_step(T_START.get(), 0, 0, ACCEL_START.get(), VEL_START.get(), POS_START.get())
-    df = kinematics(kinematic_initial_values)
-    print(df)
+    kinematic_initial_values = [T_START.get(), 0, 0, ACCEL_START.get(), VEL_START.get(), POS_START.get()]
+    kine_df = kinematics(kinematic_initial_values)
+    print(kine_df)
+    epsilon_df = error_func(kine_df, kinematic_initial_values)
+    print(epsilon_df)
+    control_loop_df = pid(epsilon_df)
+    print(control_loop_df)
 
 """
 sim_button = tk.Button(master = window,
