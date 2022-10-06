@@ -129,36 +129,36 @@ set_point_slider = tk.Scale(
     from_ = 10,
     to = 100,
     orient = "vertical",
-    variable = POS_START)
+    variable = SET_POINT)
 
 k_p_slider = tk.Scale(
     window,
     from_ = 37,
     to = 100,
     orient = "vertical",
-    variable = VEL_START) 
+    variable = P_K) 
 
 k_i_slider = tk.Scale(
     window,
     from_ = 16,
     to = 100,
     orient = "vertical",
-    variable = ACCEL_START) 
+    variable = I_K) 
 
 k_d_slider = tk.Scale(
     window,
     from_ = 1,
     to = 100,
     orient = "vertical",
-    variable = T_START) 
+    variable = D_K) 
 
 # Control constant
-k_omega_slider = tk.Scale(
+control_constant_slider = tk.Scale(
     window,
     from_ = 53,
     to = 100,
     orient = "vertical",
-    variable = T_END) 
+    variable = CONTROL_CONSTANT) 
 
 # This should be a checkbox that just flips
 control_sign = tk.Scale(
