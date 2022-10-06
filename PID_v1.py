@@ -103,6 +103,10 @@ scaling_factor = 4#float(input("Scaling factor for external disturbance? "))
 control_constant = .5 #float(input("Constant to multiply the PID term by? "))
 control_sign = 1 #int(input("-1 or 1 to multiply by? "))
 
+def integral(diff, w_r_t, dt):
+    integral_output = np.trapz(y = diff, x=w_r_t, dx=dt)
+    return(integral_output)
+
 def noise_f(k):
   whitenoise = np.random.normal(0,1,100)
   scaled_noise = k * whitenoise
@@ -192,6 +196,9 @@ plot_button = tk.Button(master = window,
                      width = 10,
                      text = "Plot")
 
-plot_button.pack()
+print(np.trapz(ext_f_vals, timevals))
+
+
+# plot_button.pack()
 # Main GUI call
-window.mainloop()
+#window.mainloop()
