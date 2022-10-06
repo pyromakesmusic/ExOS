@@ -174,7 +174,7 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
-
+print(values)
 timevals = values["time"]
 ext_f_vals = values["disturbance force"]
 
