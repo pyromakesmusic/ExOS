@@ -74,38 +74,40 @@ position_start_slider = tk.Scale(
 
 velocity_start_slider = tk.Scale(
     window,
-    from_ = 10,
+    from_ = 37,
     to = 100,
     orient = "vertical",
     variable = VEL_START) 
 
 accel_start_slider = tk.Scale(
     window,
-    from_ = 10,
+    from_ = 16,
     to = 100,
     orient = "vertical",
     variable = ACCEL_START) 
 
 t_start_slider = tk.Scale(
     window,
-    from_ = 10,
+    from_ = 1,
     to = 100,
     orient = "vertical",
     variable = T_START) 
 
 t_end_slider = tk.Scale(
     window,
-    from_ = 50,
+    from_ = 53,
     to = 100,
     orient = "vertical",
     variable = T_END) 
 
 mass_slider = tk.Scale(
     window,
-    from_ = 1,
+    from_ = 2,
     to = 100,
     orient = "vertical",
     variable = MASS) 
+
+initial_params = [POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get()]
 
 throttle_f = 0 # initial force applied by throttle = 0
 
@@ -201,23 +203,28 @@ def time_step_placeholderfornow(startpos, startvel, startacc, m, start_time, end
 
 def time_step(a,b,c,d,e,f):
     # This is a placeholder function made to build out the structure of what needs to get graphed and put it on the GUI
-    list = [1,2,3,4,5,6,7,8]
+    list = [0,2,3,4,5,6,7,8]
     dummy_df = pd.DataFrame(data = list, index = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]).T
 
     return(dummy_df)
+
+def simulation_logic(initialconditions):
+    print(initialconditions)
+
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 
 print(values)
 print(values.index)
+print(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 timevals = values["time"]
 ext_f_vals = values["disturbance force"]
 
 times = plt.plot(timevals)
 
-plot_button = tk.Button(master = window,
-                     command = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get()),
+sim_button = tk.Button(master = window,
+                     command = simulation_logic(initial_params),
                      height = 2,
                      width = 10,
                      text = "Plot")
@@ -229,6 +236,6 @@ velocity_values = np.trapz(ext_f_vals) + POS_START.get()
 #print(position_values)
 
 
-plot_button.pack()
+sim_button.pack()
 # Main GUI call
-#window.mainloop()
+window.mainloop()
