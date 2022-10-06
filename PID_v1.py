@@ -37,6 +37,10 @@ import turtle
 CONFIG
 """
 pd.options.display.width = 0
+pd.set_option("display.max_columns", None)
+pd.set_option("display.max_rows", None)
+pd.set_option("display.width", None)
+pd.set_option("display.max_colwidth", None)
 
 """
 GUI Initialization
@@ -61,42 +65,42 @@ CALC_TEST =   test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
 """
 User Input
 """
-position_start_slider = ttk.Scale(
+position_start_slider = tk.Scale(
     window,
     from_ = 10,
     to = 100,
     orient = "vertical",
     variable = POS_START)
 
-velocity_start_slider = ttk.Scale(
+velocity_start_slider = tk.Scale(
     window,
     from_ = 10,
     to = 100,
     orient = "vertical",
     variable = VEL_START) 
 
-accel_start_slider = ttk.Scale(
+accel_start_slider = tk.Scale(
     window,
     from_ = 10,
     to = 100,
     orient = "vertical",
     variable = ACCEL_START) 
 
-t_start_slider = ttk.Scale(
+t_start_slider = tk.Scale(
     window,
     from_ = 10,
     to = 100,
     orient = "vertical",
     variable = T_START) 
 
-t_end_slider = ttk.Scale(
+t_end_slider = tk.Scale(
     window,
     from_ = 50,
     to = 100,
     orient = "vertical",
     variable = T_END) 
 
-t_end_slider = ttk.Scale(
+mass_slider = tk.Scale(
     window,
     from_ = 1,
     to = 100,
@@ -150,7 +154,7 @@ def plot(x, y, **args):
     canvas.get_tk_widget().pack()
 
 
-def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mass
+def time_step_placeholderfornow(startpos, startvel, startacc, m, start_time, end_time): # m is mass
   """
   Should be the main simulation loop. Takes in parameters and returns a dataframe of what happens to our mass over our time range.
   Since we always have to sum up from 0 up to t for the integral, does it make sense to feed a dataframe to the control loop?
@@ -190,15 +194,23 @@ def time_step(startpos, startvel, startacc, m, start_time, end_time): # m is mas
 
   final = pd.concat(df_list, join="inner", axis = 1).T
   final.columns = (column_names)
-  final.index = final["time"]
+
   plt.plot(final)
   print(final)
   return(final)
+
+def time_step(a,b,c,d,e,f):
+    # This is a placeholder function made to build out the structure of what needs to get graphed and put it on the GUI
+    list = [1,2,3,4,5,6,7,8]
+    dummy_df = pd.DataFrame(data = list, index = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]).T
+
+    return(dummy_df)
 values = time_step(POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get())
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 
 print(values)
+print(values.index)
 timevals = values["time"]
 ext_f_vals = values["disturbance force"]
 
@@ -210,13 +222,13 @@ plot_button = tk.Button(master = window,
                      width = 10,
                      text = "Plot")
 
-"""
-velocity_values = np.trapz(ext_f_vals, timevals)
-position_values = np.trapz(velocity_values, timevals)
-print(velocity_values)
-print(position_values)
-"""
 
-# plot_button.pack()
+velocity_values = np.trapz(ext_f_vals) + POS_START.get()
+#position_values = np.trapz(velocity_values)
+#print(velocity_values)
+#print(position_values)
+
+
+plot_button.pack()
 # Main GUI call
 #window.mainloop()
