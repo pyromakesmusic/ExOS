@@ -54,21 +54,21 @@ frame = ttk.Frame(window, padding = 10)
 GLOBALS
 """
 
-POS_START = tk.IntVar() # meters
-VEL_START =  tk.IntVar() # m/s
-ACCEL_START =  tk.IntVar() # m/s^2
+POS_START = tk.DoubleVar() # meters
+VEL_START =  tk.DoubleVar() # m/s
+ACCEL_START =  tk.DoubleVar() # m/s^2
 T_START =  tk.IntVar() # seconds
 T_END =  tk.IntVar() # seconds
-MASS =  tk.IntVar() # kilograms
+MASS =  tk.DoubleVar() # kilograms
 
 # PID parameters
-SET_POINT = 50 #float(input("Set point of speed to maintain? "))
-P_K = 1 #float(input("Proportional term? "))
-I_K = 1 #float(input("Integral term? "))
-D_K = 1 #float(input("Derivative term? "))
-SCALE_FACTOR = 4 #float(input("Scaling factor for external disturbance? "))
-CONTROL_CONSTANT = .5 #float(input("Constant to multiply the PID term by? "))
-CONTROL_SIGN = 1 #int(input("-1 or 1 to multiply by? "))
+SET_POINT = tk.DoubleVar() # float(input("Set point of speed to maintain? "))
+P_K = tk.DoubleVar() # float(input("Proportional term? "))
+I_K = tk.DoubleVar() # float(input("Integral term? "))
+D_K = tk.DoubleVar() # float(input("Derivative term? "))
+SCALE_FACTOR = tk.DoubleVar() #float(input("Scaling factor for external disturbance? "))
+CONTROL_CONSTANT = tk.DoubleVar() # this is your k omega
+CONTROL_SIGN = True # this should be a checkbox
 THROTTLE_F = 0 # initial force applied by throttle = 0
 
 
@@ -119,7 +119,14 @@ mass_slider = tk.Scale(
     from_ = 2,
     to = 100,
     orient = "vertical",
-    variable = MASS) 
+    variable = MASS)
+
+scale_factor_slider = tk.Scale(
+    window,
+    from_ = 2,
+    to = 100,
+    orient = "vertical",
+    variable = SCALE_FACTOR)  
 
 initial_params = [POS_START.get(), VEL_START.get(), ACCEL_START.get(), MASS.get(), T_START.get(), T_END.get()]
 
@@ -132,21 +139,21 @@ set_point_slider = tk.Scale(
     orient = "vertical",
     variable = SET_POINT)
 
-k_p_slider = tk.Scale(
+p_k_slider = tk.Scale(
     window,
     from_ = 37,
     to = 100,
     orient = "vertical",
     variable = P_K) 
 
-k_i_slider = tk.Scale(
+i_k_slider = tk.Scale(
     window,
     from_ = 16,
     to = 100,
     orient = "vertical",
     variable = I_K) 
 
-k_d_slider = tk.Scale(
+d_k_slider = tk.Scale(
     window,
     from_ = 1,
     to = 100,
@@ -178,16 +185,17 @@ def noise_f(k):
     scaled_noise = k * whitenoise
     return scaled_noise
 
-def kinematics(parameter_list): # Currently [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
+def kinematics(parameter_list): # Currently [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]. Should probably change it to reference only the previous row values.
     keys_list = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
     kinematic_df = pd.DataFrame(data = parameter_list, index = keys_list)
+    row =
     return(kinematic_df)
 
-def error_func(df, parameter_list):
-    error = 1
-    p_e = 1
-    i_e = 1
-    d_e = 1
+def error_func(df, set_point):
+    error = set_point
+    p_e = P_K.get() * error
+    i_e = I_K.get() * error
+    d_e = D_K.get() * error
     output_list = [error, p_e, i_e, d_e]
     keys_list = ["error", "proportional term", "integral term", "derivative term"]
     output_df = pd.DataFrame(data = output_list, index = keys_list)
@@ -213,18 +221,18 @@ def plot(x, y, **args):
 
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
-def main():
-    kinematic_initial_values = [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
-    
+def main(): # This may turn into something that needs to be called at every time step.
+    disturbance = noise_f(SCALE_FACTOR.get())
+    kinematic_initial_values = [T_START.get(), disturbance, THROTTLE_F, (THROTTLE_F + disturbance), MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
     kine_df = kinematics(kinematic_initial_values)
     print("Kinematic Dataframe: \n \n", kine_df, "\n")
     
-    epsilon_df = error_func(kine_df, kinematic_initial_values)
+    error_initial_values = SET_POINT.get()
+    epsilon_df = error_func(kine_df, error_initial_values)
     print("Error Dataframe: \n \n", epsilon_df, "\n")
     
     control_loop_df = pid(epsilon_df, kinematic_initial_values)
     print("Control Loop Dataframe: \n \n", control_loop_df, "\n")
-
 
 """
 Main Function Call
