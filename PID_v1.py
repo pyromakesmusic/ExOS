@@ -70,7 +70,7 @@ D_K = tk.DoubleVar() # float(input("Derivative term? "))
 SCALE_FACTOR = tk.DoubleVar() #float(input("Scaling factor for external disturbance? "))
 CONTROL_CONSTANT = tk.DoubleVar() # this is your k omega
 CONTROL_SIGN = True # this should be a checkbox
-throttle_f = 0 # initial force applied by throttle = 0
+throttle_f = 0.0 # initial force applied by throttle = 0
 
 
 
@@ -191,8 +191,11 @@ def kinematics(parameter_list): #
     kinematic_df = pd.DataFrame(data = parameter_list, index = keys_list)
     return(kinematic_df)
 
-def error_func(df, set_point): # Think this needs to reference the whole dataframe history?
-    error = set_point
+def error_func(df, set_point, time): # Think this needs to reference the whole dataframe history?
+    error = 1
+    print(df.keys)
+    print(df.columns)
+    print(df.index)
     p_e = P_K.get() * error
     i_e = I_K.get() * error
     d_e = D_K.get() * error
@@ -222,24 +225,25 @@ def plot(x, y, **args):
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
 def main(output_force): # This may turn into something that needs to be called at every time step.
-    print(frame.children)
+
     for c in sorted(frame.children):
         frame.children[c].pack()
         
     window.mainloop()
     t = T_START.get() # Creates a time variable
     t_end = T_END.get()
-    timestep_list = []
-    print(t)
-    print(T_END.get())
+    t_n_elements = ["time", "disturbance_f", "throttle_f", "PID", "total_f", "mass", "acceleration", "velocity", "position"]
+    output_df = pd.DataFrame(data=t_n_elements)
+    timestep_list = [output_df]
+
     while t < t_end:
         disturbance_f = noise_f(SCALE_FACTOR.get())
         total_f = output_force + disturbance_f
         kinematic_initial_values = [t, disturbance_f, output_force, total_f, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
         kine_df = kinematics(kinematic_initial_values)
     
-        error_initial_values = SET_POINT.get()
-        epsilon_df = error_func(kine_df, error_initial_values)
+        setpoint = SET_POINT.get()
+        epsilon_df = error_func(output_df, setpoint, t)
     
         control_loop_df = pid(epsilon_df, kinematic_initial_values)
         output_force = control_loop_df * SCALE_FACTOR.get()
@@ -251,7 +255,6 @@ def main(output_force): # This may turn into something that needs to be called a
         t = t + 1
     final = pd.concat(timestep_list, axis=1).T
     final.set_index("time")
-    
     plt.plot(final["time"], final["disturbance_f"])
     window.mainloop()
 """
