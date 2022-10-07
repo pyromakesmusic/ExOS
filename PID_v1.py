@@ -183,8 +183,13 @@ def kinematics(parameter_list): # Currently [T_START.get(), 0, 0, 0, MASS.get(),
     return(kinematic_df)
 
 def error_func(df, parameter_list):
-    output = 1
-    return output
+    p_e = 1
+    i_e = 1
+    d_e = 1
+    output_list = [p_e, i_e, d_e]
+    keys_list = ["error", "proportional term", "integral term", "derivative term"]
+    output_df = pd.DataFrame(data = output_list, index = keys_list)
+    return output_df
 
 def pid(df):
     return df
