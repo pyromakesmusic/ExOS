@@ -173,20 +173,21 @@ FUNCTION DEFINITIONS
 """
 
 def noise_f(k):
-  whitenoise = np.random.normal(0,1,100)
-  scaled_noise = k * whitenoise
-  return scaled_noise
+    whitenoise = np.random.normal(0,1)
+    scaled_noise = k * whitenoise
+    return scaled_noise
 
-def kinematics(parameter_list):
+def kinematics(parameter_list): # Currently [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
     keys = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
     kinematic_df = pd.DataFrame(data = parameter_list, index = keys)
     return(kinematic_df)
 
 def error_func(df, parameter_list):
-  return df
+    output = 1
+    return output
 
 def pid(df):
-  return df
+    return df
 
 def plot(x, y, **args):
     # figure contains plot
@@ -205,11 +206,11 @@ def plot(x, y, **args):
 def main():
     kinematic_initial_values = [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
     kine_df = kinematics(kinematic_initial_values)
-    print("Kinematic Dataframe: \n", kine_df)
+    print("Kinematic Dataframe: \n \n", kine_df, "\n")
     epsilon_df = error_func(kine_df, kinematic_initial_values)
-    print("Error Dataframe: \n", epsilon_df)
+    print("Error Dataframe: \n \n", epsilon_df, "\n")
     control_loop_df = pid(epsilon_df)
-    print("Control Loop Dataframe: \n", control_loop_df)
+    print("Control Loop Dataframe: \n \n", control_loop_df, "\n")
 
 
 """
