@@ -192,7 +192,7 @@ def kinematics(df, t): #
     return(df)
 
 def error_func(df, set_point, time): # Think this needs to reference the whole dataframe history?
-    error = 1
+    error = set_point - df[time]["velocity"]
     print(df.keys)
     print(df.columns)
     print(df.index)
