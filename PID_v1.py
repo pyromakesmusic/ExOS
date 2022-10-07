@@ -186,10 +186,10 @@ def noise_f(k):
     scaled_noise = k * whitenoise
     return scaled_noise
 
-def kinematics(parameter_list): # 
+def kinematics(df, t): # 
     keys_list = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
-    kinematic_df = pd.DataFrame(data = parameter_list, index = keys_list)
-    return(kinematic_df)
+    
+    return(df)
 
 def error_func(df, set_point, time): # Think this needs to reference the whole dataframe history?
     error = 1
@@ -197,12 +197,12 @@ def error_func(df, set_point, time): # Think this needs to reference the whole d
     print(df.columns)
     print(df.index)
     p_e = P_K.get() * error
-    i_e = I_K.get() * error
-    d_e = D_K.get() * error
+    i_e = I_K.get() * np.trapz(error)
+    d_e = D_K.get() * np.gradient(error)
     output_list = [error, p_e, i_e, d_e]
     keys_list = ["error", "proportional term", "integral term", "derivative term"]
-    output_df = pd.DataFrame(data = output_list, index = keys_list)
-    return output_df
+    error_df = pd.DataFrame(data = output_list, index = keys_list)
+    return error_df
 
 def pid(df, parameter_list): # This should be able to reference the whole DataFrame's history
     pid_list = [1, throttle_f]
@@ -230,17 +230,25 @@ def main(output_force): # This may turn into something that needs to be called a
         frame.children[c].pack()
         
     window.mainloop()
-    t = T_START.get() # Creates a time variable
+    t_start = T_START.get()
+    t = t_start # Creates a time variable
     t_end = T_END.get()
-    t_n_elements = ["time", "disturbance_f", "throttle_f", "PID", "total_f", "mass", "acceleration", "velocity", "position"]
-    output_df = pd.DataFrame(data=t_n_elements)
-    timestep_list = [output_df]
-
-    while t < t_end:
+    t_n_labels = ["time", "disturbance_f", "throttle_f", "PID", "total_f", "mass", "acceleration", "velocity", "position"]
+    disturbance_f = noise_f(SCALE_FACTOR.get())
+    output_force = 0
+    total_f = disturbance_f + output_force
+    kinematic_initial_values = [t, disturbance_f, output_force, total_f, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
+    initialization_df = pd.DataFrame(kinematic_initial_values)
+    output_df = pd.DataFrame(data=t_n_labels)
+    timestep_list = [output_df, initialization_df]
+    output_df = pd.concat(timestep_list, axis = 1).T # Need to pay attention here, this is where the DataFrame is initialized for everything else to start doing calculus on it
+    output_df.reset_index(drop=True)
+    print(output_df)
+    
+    for t in range(t_start, t_end):
         disturbance_f = noise_f(SCALE_FACTOR.get())
         total_f = output_force + disturbance_f
-        kinematic_initial_values = [t, disturbance_f, output_force, total_f, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
-        kine_df = kinematics(kinematic_initial_values)
+        kine_df = kinematics(output_df, t)
     
         setpoint = SET_POINT.get()
         epsilon_df = error_func(output_df, setpoint, t)
@@ -252,7 +260,6 @@ def main(output_force): # This may turn into something that needs to be called a
         output_df = pd.concat(dfs_list)
         timestep_list.append(output_df)
         
-        t = t + 1
     final = pd.concat(timestep_list, axis=1).T
     final.set_index("time")
     plt.plot(final["time"], final["disturbance_f"])
