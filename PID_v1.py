@@ -178,21 +178,25 @@ def noise_f(k):
     return scaled_noise
 
 def kinematics(parameter_list): # Currently [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
-    keys = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
-    kinematic_df = pd.DataFrame(data = parameter_list, index = keys)
+    keys_list = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
+    kinematic_df = pd.DataFrame(data = parameter_list, index = keys_list)
     return(kinematic_df)
 
 def error_func(df, parameter_list):
+    error = 1
     p_e = 1
     i_e = 1
     d_e = 1
-    output_list = [p_e, i_e, d_e]
+    output_list = [error, p_e, i_e, d_e]
     keys_list = ["error", "proportional term", "integral term", "derivative term"]
     output_df = pd.DataFrame(data = output_list, index = keys_list)
     return output_df
 
-def pid(df):
-    return df
+def pid(df, parameter_list):
+    pid_list = [1,1]
+    keys_list = ["PID", "throttle force"]
+    output_df = pd.DataFrame(data = pid_list, index = keys_list)
+    return output_df
 
 def plot(x, y, **args):
     # figure contains plot
@@ -210,11 +214,14 @@ def plot(x, y, **args):
 
 def main():
     kinematic_initial_values = [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
+    
     kine_df = kinematics(kinematic_initial_values)
     print("Kinematic Dataframe: \n \n", kine_df, "\n")
+    
     epsilon_df = error_func(kine_df, kinematic_initial_values)
     print("Error Dataframe: \n \n", epsilon_df, "\n")
-    control_loop_df = pid(epsilon_df)
+    
+    control_loop_df = pid(epsilon_df, kinematic_initial_values)
     print("Control Loop Dataframe: \n \n", control_loop_df, "\n")
 
 
