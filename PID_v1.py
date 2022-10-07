@@ -251,6 +251,7 @@ def main(): # This may turn into something that needs to be called at every time
     final.set_index("time")
     
     plt.plot(final["time"], final["disturbance_f"])
+    window.mainloop()
 """
 Main Function Call
 """
