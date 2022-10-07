@@ -247,9 +247,10 @@ def main(): # This may turn into something that needs to be called at every time
         output_df = pd.concat(dfs_list)
         timestep_list.append(output_df)
         t = t + 1
-    final = pd.concat(timestep_list, axis=1)
-    print(final)
-
+    final = pd.concat(timestep_list, axis=1).T
+    final.set_index("time")
+    
+    plt.plot(final["time"], final["disturbance_f"])
 """
 Main Function Call
 """
