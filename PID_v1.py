@@ -70,7 +70,7 @@ D_K = tk.DoubleVar() # float(input("Derivative term? "))
 SCALE_FACTOR = tk.DoubleVar() #float(input("Scaling factor for external disturbance? "))
 CONTROL_CONSTANT = tk.DoubleVar() # this is your k omega
 CONTROL_SIGN = True # this should be a checkbox
-THROTTLE_F = 0 # initial force applied by throttle = 0
+throttle_f = 0 # initial force applied by throttle = 0
 
 
 
@@ -186,7 +186,7 @@ def noise_f(k):
     scaled_noise = k * whitenoise
     return scaled_noise
 
-def kinematics(parameter_list): # Currently [T_START.get(), 0, 0, 0, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]. Should probably change it to reference only the previous row values.
+def kinematics(parameter_list): # 
     keys_list = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
     kinematic_df = pd.DataFrame(data = parameter_list, index = keys_list)
     return(kinematic_df)
@@ -202,7 +202,7 @@ def error_func(df, set_point): # Think this needs to reference the whole datafra
     return output_df
 
 def pid(df, parameter_list): # This should be able to reference the whole DataFrame's history
-    pid_list = [1, THROTTLE_F]
+    pid_list = [1, throttle_f]
     keys_list = ["PID", "throttle force"]
     output_df = pd.DataFrame(data = pid_list, index = keys_list)
     return output_df
@@ -221,7 +221,7 @@ def plot(x, y, **args):
 
 # columns = ["time","position","velocity", "velocity-error","acceleration", "disturbance force", "throttle", "total force"]
 
-def main(): # This may turn into something that needs to be called at every time step.
+def main(output_force): # This may turn into something that needs to be called at every time step.
     print(frame.children)
     for c in sorted(frame.children):
         frame.children[c].pack()
@@ -234,18 +234,20 @@ def main(): # This may turn into something that needs to be called at every time
     print(T_END.get())
     while t < t_end:
         disturbance_f = noise_f(SCALE_FACTOR.get())
-        total_f = THROTTLE_F + disturbance_f
-        kinematic_initial_values = [t, disturbance_f, THROTTLE_F, total_f, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
+        total_f = output_force + disturbance_f
+        kinematic_initial_values = [t, disturbance_f, output_force, total_f, MASS.get(), ACCEL_START.get(), VEL_START.get(), POS_START.get()]
         kine_df = kinematics(kinematic_initial_values)
     
         error_initial_values = SET_POINT.get()
         epsilon_df = error_func(kine_df, error_initial_values)
     
         control_loop_df = pid(epsilon_df, kinematic_initial_values)
+        output_force = control_loop_df * SCALE_FACTOR.get()
         
         dfs_list = [kine_df, epsilon_df, control_loop_df]
         output_df = pd.concat(dfs_list)
         timestep_list.append(output_df)
+        
         t = t + 1
     final = pd.concat(timestep_list, axis=1).T
     final.set_index("time")
@@ -255,4 +257,4 @@ def main(): # This may turn into something that needs to be called at every time
 """
 Main Function Call
 """
-main()
+main(throttle_f)
