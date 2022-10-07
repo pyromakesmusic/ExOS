@@ -47,11 +47,13 @@ GUI Initialization
 """
 window = tk.Tk()
 window.title("PID Controller v1.a")
+frame = ttk.Frame(window, padding = 10)
 
 
 """
 GLOBALS
 """
+
 POS_START = tk.IntVar() # meters
 VEL_START =  tk.IntVar() # m/s
 ACCEL_START =  tk.IntVar() # m/s^2
@@ -70,7 +72,6 @@ CONTROL_SIGN = 1 #int(input("-1 or 1 to multiply by? "))
 THROTTLE_F = 0 # initial force applied by throttle = 0
 
 
-CALC_TEST =   test = pd.DataFrame(data=[1,2,3,4,1,2,3,4])
 
 
 """
@@ -193,7 +194,7 @@ def error_func(df, parameter_list):
     return output_df
 
 def pid(df, parameter_list):
-    pid_list = [1,1]
+    pid_list = [1, THROTTLE_F]
     keys_list = ["PID", "throttle force"]
     output_df = pd.DataFrame(data = pid_list, index = keys_list)
     return output_df
