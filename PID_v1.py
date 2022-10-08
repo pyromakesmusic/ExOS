@@ -192,17 +192,14 @@ def kinematics(df, t): #
     return(df)
 
 def error_func(df, set_point, time): # Think this needs to reference the whole dataframe history?
-    error = set_point - df[time]["velocity"]
-    print(df.keys)
-    print(df.columns)
-    print(df.index)
+    error = 1
+
     p_e = P_K.get() * error
-    i_e = I_K.get() * np.trapz(error)
-    d_e = D_K.get() * np.gradient(error)
-    output_list = [error, p_e, i_e, d_e]
-    keys_list = ["error", "proportional term", "integral term", "derivative term"]
-    error_df = pd.DataFrame(data = output_list, index = keys_list)
-    return error_df
+    i_e = I_K.get() * error
+    d_e = D_K.get() * error
+    pid = p_e + i_e + d_e
+    
+    return pid
 
 def pid(df, parameter_list): # This should be able to reference the whole DataFrame's history
     pid_list = [1, throttle_f]
@@ -233,7 +230,7 @@ def main(output_force): # This may turn into something that needs to be called a
     t_start = T_START.get()
     t = t_start # Creates a time variable
     t_end = T_END.get()
-    t_n_labels = ["time", "disturbance_f", "throttle_f", "PID", "total_f", "mass", "acceleration", "velocity", "position"]
+    t_n_labels = ["time", "disturbance_f", "throttle_f", "PID", "total_f", "mass", "acceleration", "velocity", "position", "error_v"]
     disturbance_f = noise_f(SCALE_FACTOR.get())
     output_force = 0
     total_f = disturbance_f + output_force
@@ -253,16 +250,14 @@ def main(output_force): # This may turn into something that needs to be called a
         setpoint = SET_POINT.get()
         epsilon_df = error_func(output_df, setpoint, t)
     
-        control_loop_df = pid(epsilon_df, kinematic_initial_values)
-        output_force = control_loop_df * SCALE_FACTOR.get()
+        pid_t = pid(epsilon_df, kinematic_initial_values) # Here is the value of the PID function before going to the output function.
+        throttle_f = pid_t * CONTROL_CONSTANT.get() # The logic in this block is commented out for the moment because I need to get the integrals working correctly.
         
-        dfs_list = [kine_df, epsilon_df, control_loop_df]
-        output_df = pd.concat(dfs_list)
-        timestep_list.append(output_df)
+        timestep_list.append(kine_df)
         
-    final = pd.concat(timestep_list, axis=1).T
-    final.set_index("time")
-    plt.plot(final["time"], final["disturbance_f"])
+    final = pd.concat(timestep_list, axis=0).T
+#    final.set_index("time")
+#    plt.plot(final["time"], final["disturbance_f"])
     window.mainloop()
 """
 Main Function Call
