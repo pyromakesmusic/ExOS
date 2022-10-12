@@ -212,6 +212,9 @@ def error(process_variable, set_point):
     return set_point - process_variable
 
 def pid(error=0):
+    proportional = error
+    integral = np.trapz(error)
+    derivative = np.gradient(error)
     pass
 
 def row_maker(total_samples, smp_rate):
