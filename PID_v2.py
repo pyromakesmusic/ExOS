@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Oct 11 21:55:28 2022
+===============
+Document Comments:
+    10.11.22
+    2218h 
+    I think the index should be separate from the time values. Physics should 
+    be based on time independent of the index so that I can have a consistent 
+    indexing scheme regardless of the time resolution of the data.
 
 ===============
 LIBRARY IMPORTS
@@ -44,24 +51,18 @@ def big_in(time, mass, disturbance, throttle, acceleration, velocity, position, 
     df = pd.DataFrame(data=data)    
     return df
 
+def timevals(a, b, increment):
+    pass
+
 def noise_f(k):
     whitenoise = np.random.normal(1,2)
     scaled_noise = k * whitenoise
     return scaled_noise
-
-def kinematics(df, t):
-    keys_list = ["time", "disturbance_f", "throttle_f", "total_f", "mass", "acceleration", "velocity", "position"]
-    return(df)
-
-def error_func(df, set_point, time): # Think this needs to reference the whole dataframe history?
-    pass
-
-def pid(df, parameter_list): # This should be able to reference the whole DataFrame's history
-    pass
-
-def plot(x, y, **args):
-    pass
     
+def accel(force=0, mass=1):
+    accel = force/mass
+    return accel
+
 def gui():
     window = tk.Tk()
     window.title("PID Controller v1.a")
@@ -84,9 +85,6 @@ def gui():
     CONTROL_CONSTANT = tk.DoubleVar() # this is your k omega
     CONTROL_SIGN = True # this should be a checkbox
     throttle_f = 0.0 # initial force applied by throttle = 0
-
-
-
 
     """
     Initialization Parameters
@@ -194,10 +192,14 @@ def gui():
     pass
 
 def main():
-    #print(T_START.get())
-    #print(T_END.get())
-    print("Hello world!")
-    gui()
+    command_line = bool(input("Run in command line mode? "))
+    sample_rate = int(input("Sample rate in Hz (int): "))
+    total_time = int(input("Total time in seconds (int): "))
+    total_samples = sample_rate * total_time
+    
+    listitems = range(100)
+    for i in listitems:
+        print(i)
     pass
 
 main()
