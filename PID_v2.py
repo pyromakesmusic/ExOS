@@ -185,7 +185,13 @@ def total_samples(sample_rate=1000, total_time=10):
 def mass():
     pass
 
-def force():
+def disturbance_force():
+    pass
+
+def throttle_force():
+    pass
+
+def total_force():
     pass
     
 def acceleration(force=0, mass=1):
@@ -204,17 +210,20 @@ def error(process_variable, set_point):
 def pid(error=0):
     pass
 
-def row_maker():
-    pass
+def row_maker(total_samples, smp_rate):
+    headers = ["time", "mass", "force", "acceleration" "velocity", "position", "error", "pid"]
+    df = pd.DataFrame(columns=headers)
+    return df
 
-def main():
+def init():
     command_line = bool(input("Run in command line mode? "))
     sample_rate = int(input("Sample rate in Hz (int): "))
     total_time = int(input("Total time in seconds (int): "))
     sample_number = total_samples(sample_rate, total_time)
-    for t in range(sample_number): # t is the time value
-        pass
-        
-    pass
+    return(sample_number, sample_rate)
+
+def main():
+    total_samples, sample_freq = init()
+    return
 
 main()
