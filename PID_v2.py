@@ -211,7 +211,7 @@ def pid(error=0):
     pass
 
 def row_maker(total_samples, smp_rate):
-    headers = ["time", "mass", "force", "acceleration" "velocity", "position", "error", "pid"]
+    headers = ["time", "mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
     df = pd.DataFrame(columns=headers)
     return df
 
@@ -224,6 +224,8 @@ def init():
 
 def main():
     total_samples, sample_freq = init()
+    time_series = row_maker(total_samples, sample_freq)
+    print(time_series)
     return
 
 main()
