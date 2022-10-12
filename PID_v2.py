@@ -178,13 +178,16 @@ def noise_f(k):
     scaled_noise = k * whitenoise
     return scaled_noise
 
-def total_samples(sample_rate=1000, total_time=10):
+def total_samples(sample_rate=20, total_time=20):
     total_samples = sample_rate * total_time
     return total_samples
 
-def time(sample_number, sample_rate):
-    time = sample_number * (1/sample_rate) # should output in seconds if rate was in Hz
-    return time
+def time(num_samples, sample_rate, df):
+    time_value_list = list((x * (1/sample_rate) for x in range(num_samples)))
+    time_value_series = pd.Series(data=time_value_list)
+    df["time"] = time_value_series
+    print(df)
+    return df
 
 def mass():
     pass
@@ -218,12 +221,12 @@ def pid(error=0):
     pass
 
 def row_maker(total_samples, smp_rate):
-    headers = ["time", "mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
+    headers = ["mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
     df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 
 def init():
-    command_line = bool(input("Run in command line mode? "))
+    #command_line = bool(input("Run in command line mode? "))
     sample_rate = int(input("Sample rate in Hz (int): "))
     total_time = int(input("Total time in seconds (int): "))
     sample_number = total_samples(sample_rate, total_time)
@@ -232,7 +235,9 @@ def init():
 def main():
     total_samples, sample_freq = init()
     time_series = row_maker(total_samples, sample_freq)
-    print(time_series)
-    return
+    df = time(total_samples, sample_freq, time_series)
+
+    print(df.columns)
+    return 
 
 main()
