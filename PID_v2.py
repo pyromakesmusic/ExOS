@@ -182,6 +182,10 @@ def total_samples(sample_rate=1000, total_time=10):
     total_samples = sample_rate * total_time
     return total_samples
 
+def time(sample_number, sample_rate):
+    time = sample_number * (1/sample_rate) # should output in seconds if rate was in Hz
+    return time
+
 def mass():
     pass
 
@@ -191,17 +195,17 @@ def disturbance_force():
 def throttle_force():
     pass
 
-def total_force():
-    pass
+def total_force(external_f, throttle_f):
+    return external_f + throttle_f
     
 def acceleration(force=0, mass=1):
     accel = force/mass
     return accel
 
-def velocity(accel):
+def velocity(df):
     pass
 
-def position(velo):
+def position(df):
     pass
 
 def error(process_variable, set_point):
@@ -212,7 +216,7 @@ def pid(error=0):
 
 def row_maker(total_samples, smp_rate):
     headers = ["time", "mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
-    df = pd.DataFrame(columns=headers)
+    df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 
 def init():
