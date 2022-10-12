@@ -46,23 +46,6 @@ GLOBALS
 FUNCTION DEFINITIONS
 """
 
-def big_in(time, mass, disturbance, throttle, acceleration, velocity, position, error): #beware of scope creep
-    data = [time, mass, disturbance, throttle, acceleration, velocity, position, error]
-    df = pd.DataFrame(data=data)    
-    return df
-
-def timevals(a, b, increment):
-    pass
-
-def noise_f(k):
-    whitenoise = np.random.normal(1,2)
-    scaled_noise = k * whitenoise
-    return scaled_noise
-    
-def accel(force=0, mass=1):
-    accel = force/mass
-    return accel
-
 def gui():
     window = tk.Tk()
     window.title("PID Controller v1.a")
@@ -186,20 +169,52 @@ def gui():
         to = 100,
         orient = "horizontal",
         variable = MASS) 
-
     
 #    window.mainloop()
+    pass
+
+def noise_f(k):
+    whitenoise = np.random.normal(1,2)
+    scaled_noise = k * whitenoise
+    return scaled_noise
+
+def total_samples(sample_rate=1000, total_time=10):
+    total_samples = sample_rate * total_time
+    return total_samples
+
+def mass():
+    pass
+
+def force():
+    pass
+    
+def acceleration(force=0, mass=1):
+    accel = force/mass
+    return accel
+
+def velocity(accel):
+    pass
+
+def position(velo):
+    pass
+
+def error(process_variable, set_point):
+    return set_point - process_variable
+
+def pid(error=0):
+    pass
+
+def row_maker():
     pass
 
 def main():
     command_line = bool(input("Run in command line mode? "))
     sample_rate = int(input("Sample rate in Hz (int): "))
     total_time = int(input("Total time in seconds (int): "))
-    total_samples = sample_rate * total_time
-    
-    listitems = range(100)
-    for i in listitems:
-        print(i)
+    sample_number = total_samples(sample_rate, total_time)
+    for t in range(sample_number): # t is the time value
+        pass
+        
     pass
 
 main()
