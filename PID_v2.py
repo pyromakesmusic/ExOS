@@ -186,17 +186,27 @@ def time(num_samples, sample_rate, df):
     time_value_list = list((x * (1/sample_rate) for x in range(num_samples)))
     time_value_series = pd.Series(data=time_value_list)
     df["time"] = time_value_series
-    print(df)
     return df
 
-def mass():
-    pass
+def mass(num_samples, df):
+    mass = 1
+    mass_list = []
+    for i in range(num_samples):
+        mass_list.append(mass)
+    print(mass_list)
+    mass_series = pd.Series(data = mass_list)
+    print(mass_series)
+    df["mass"] = mass_series
 
-def disturbance_force():
-    pass
+    return df
+
+def disturbance_force(df):
+    force = 1
+    return force
 
 def throttle_force():
-    pass
+    force = 0
+    return force
 
 def total_force(external_f, throttle_f):
     return external_f + throttle_f
@@ -221,7 +231,7 @@ def pid(error=0):
     pass
 
 def row_maker(total_samples, smp_rate):
-    headers = ["mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
+    headers = ["time","mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
     df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 
@@ -236,7 +246,8 @@ def main():
     total_samples, sample_freq = init()
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
-
+    df = mass(total_samples, df)
+    print(df)
     print(df.columns)
     return 
 
