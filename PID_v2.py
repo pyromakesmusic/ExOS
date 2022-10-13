@@ -210,12 +210,15 @@ def disturbance_force(num_samples, df):
     df["disturbance_force"] = disturbance_series
     return df
 
-def throttle_force():
+def throttle_force(df, i):
     force = 0
-    return force
+    df.at[i, "throttle_force"] = force
+    return df
 
-def total_force(external_f, throttle_f):
-    return external_f + throttle_f
+def total_force(df, i):
+    total_f = df.at[i, "throttle_force"] + df.at[i, "disturbance_force"]
+    df.at[i, "total_force"] = total_f
+    return df
     
 def acceleration(force=0, mass=1):
     accel = force/mass
@@ -254,6 +257,9 @@ def main():
     df = time(total_samples, sample_freq, time_series)
     df = mass(total_samples, df)
     df = disturbance_force(total_samples, df)
+    for x in range(total_samples): # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
+        df = throttle_force(df, x)
+        df = total_force(df, x)
     print(df)
     print(df.columns)
     return 
