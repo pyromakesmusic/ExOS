@@ -183,12 +183,25 @@ def total_samples(sample_rate=20, total_time=20):
     return total_samples
 
 def time(num_samples, sample_rate, df):
+    """
+    Enters the time value into the dataframe.
+    :param num_samples:
+    :param sample_rate:
+    :param df:
+    :return:
+    """
     time_value_list = list((x * (1/sample_rate) for x in range(num_samples)))
     time_value_series = pd.Series(data=time_value_list)
     df["time"] = time_value_series
     return df
 
 def mass(num_samples, df):
+    """
+    Enters the mass into the DataFrame.
+    :param num_samples:
+    :param df:
+    :return:
+    """
     mass = 1
     mass_list = []
     for i in range(num_samples):
@@ -201,6 +214,12 @@ def mass(num_samples, df):
     return df
 
 def disturbance_force(num_samples, df):
+    """
+    Returns a disturbance force.
+    :param num_samples:
+    :param df:
+    :return:
+    """
     disturbance = 1
     disturbance_list = []
     for i in range(num_samples):
@@ -211,40 +230,95 @@ def disturbance_force(num_samples, df):
     return df
 
 def throttle_force(df, i):
+    """
+    Returns a throttle force.
+    :param df:
+    :param i:
+    :return:
+    """
     force = 0
     df.at[i, "throttle_force"] = force
     return df
 
 def total_force(df, i):
+    """
+    Returns the total force.
+    :param df:
+    :param i:
+    :return:
+    """
     total_f = df.at[i, "throttle_force"] + df.at[i, "disturbance_force"]
     df.at[i, "total_force"] = total_f
     return df
     
-def acceleration(force=0, mass=1):
-    accel = force/mass
-    return accel
+def acceleration(df, i):
+    """
+    Calculates the instantaneous acceleration.
+    :param df: DataFrame containing force and mass columns, plus a time column.
+    :param i: Time point at which to calculate.
+    :return: DataFrame with the acceleration at that time point filled in.
+    """
+    accel = df.at[i, "total_force"] / df.at[i, "mass"]
+    df.at[i, "acceleration"] = accel
+    return df
 
-def velocity(df):
+def velocity(df, i):
+    """
+    Calculates the velocity.
+    :param df:
+    :param i:
+    :return:
+    """
     pass
 
-def position(df):
+def position(df, i):
+    """
+    Calculates the position.
+    :param df:
+    :param i:
+    :return:
+    """
     pass
 
-def error(process_variable, set_point):
+def error(process_variable, set_point, df, i):
+    """
+    Determines the error.
+    :param process_variable:
+    :param set_point:
+    :param df:
+    :param i:
+    :return:
+    """
     return set_point - process_variable
 
-def pid(error=0):
+def pid(df, i):
+    """
+    Performs the PID logic.
+    :param df:
+    :param i:
+    :return:
+    """
     proportional = error
     integral = np.trapz(error)
     derivative = np.gradient(error)
     pass
 
 def row_maker(total_samples, smp_rate):
+    """
+    Creates the indexed DataFrame.
+    :param total_samples:
+    :param smp_rate:
+    :return:
+    """
     headers = ["time","mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
     df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 
 def init():
+    """
+    Just gets some initial information from the user about the time resolution.
+    :return:
+    """
     #command_line = bool(input("Run in command line mode? "))
     sample_rate = int(input("Sample rate in Hz (int): "))
     total_time = int(input("Total time in seconds (int): "))
@@ -260,6 +334,7 @@ def main():
     for x in range(total_samples): # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
         df = throttle_force(df, x)
         df = total_force(df, x)
+        df = acceleration(df, x)
     print(df)
     print(df.columns)
     return 
