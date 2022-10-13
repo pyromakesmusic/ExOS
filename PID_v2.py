@@ -263,13 +263,15 @@ def acceleration(df, i):
     return df
 
 def velocity(df, i):
+    velocity = np.trapz(df["acceleration"], df["time"])
     """
     Calculates the velocity.
     :param df:
     :param i:
     :return:
     """
-    pass
+    print(velocity)
+    return velocity
 
 def position(df, i):
     """
@@ -320,8 +322,8 @@ def init():
     :return:
     """
     #command_line = bool(input("Run in command line mode? "))
-    sample_rate = int(input("Sample rate in Hz (int): "))
-    total_time = int(input("Total time in seconds (int): "))
+    sample_rate = int(input("Sample rate in Hz (int): \n"))
+    total_time = int(input("Total time in seconds (int): \n"))
     sample_number = total_samples(sample_rate, total_time)
     return(sample_number, sample_rate)
 
@@ -329,14 +331,15 @@ def main():
     total_samples, sample_freq = init()
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
+    df.set_index(df["time"])
     df = mass(total_samples, df)
     df = disturbance_force(total_samples, df)
     for x in range(total_samples): # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
         df = throttle_force(df, x)
         df = total_force(df, x)
         df = acceleration(df, x)
-    print(df)
-    print(df.columns)
+        v_test = velocity(df, x)
+
     return 
 
 main()
