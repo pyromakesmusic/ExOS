@@ -238,10 +238,12 @@ def main(output_force): # This may turn into something that needs to be called a
     initialization_df = pd.DataFrame(kinematic_initial_values)
     output_df = pd.DataFrame(data=t_n_labels)
     timestep_list = [output_df, initialization_df]
-    output_df = pd.concat(timestep_list, axis = 1).T # Need to pay attention here, this is where the DataFrame is initialized for everything else to start doing calculus on it
-    output_df.reset_index(drop=True)
+    output_df = pd.concat(timestep_list, axis = 1).T 
+    # Need to pay attention here, this is where the DataFrame is initialized for everything else to start doing calculus on it
+
     print(output_df)
     
+    # This loop calls the different elements of the control loop in order for each time step of the DataFrame.
     for t in range(t_start, t_end):
         disturbance_f = noise_f(SCALE_FACTOR.get())
         total_f = output_force + disturbance_f
@@ -252,7 +254,7 @@ def main(output_force): # This may turn into something that needs to be called a
     
         pid_t = pid(epsilon_df, kinematic_initial_values) # Here is the value of the PID function before going to the output function.
         throttle_f = pid_t * CONTROL_CONSTANT.get() # The logic in this block is commented out for the moment because I need to get the integrals working correctly.
-        
+        print("Epsilon: ", epsilon_df, "PID Output: ", pid_t, "Throttle Force: ", throttle_f)
         timestep_list.append(kine_df)
         
     final = pd.concat(timestep_list, axis=0).T
