@@ -263,15 +263,15 @@ def acceleration(df, i):
     return df
 
 def velocity(df, i):
-    velocity = np.trapz(df["acceleration"], df["time"])
+    velocity = np.trapz(df["acceleration"])
     """
     Calculates the velocity.
     :param df:
     :param i:
     :return:
     """
-    print(velocity)
-    return velocity
+    df.at[i, "velocity"] = velocity
+    return df
 
 def position(df, i):
     """
@@ -334,12 +334,14 @@ def main():
     df.set_index(df["time"])
     df = mass(total_samples, df)
     df = disturbance_force(total_samples, df)
-    for x in range(total_samples): # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
+    df.at[0, "acceleration"] = 0
+    df.at[0, "velocity"] = 0
+    for x in range(1, total_samples): # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
         df = throttle_force(df, x)
         df = total_force(df, x)
         df = acceleration(df, x)
-        v_test = velocity(df, x)
-
+        df = velocity(df, x)
+    print(df)
     return 
 
 main()
