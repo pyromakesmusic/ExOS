@@ -200,9 +200,15 @@ def mass(num_samples, df):
 
     return df
 
-def disturbance_force(df):
-    force = 1
-    return force
+def disturbance_force(num_samples, df):
+    disturbance = 1
+    disturbance_list = []
+    for i in range(num_samples):
+        disturbance_list.append(disturbance)
+    print(disturbance_list)
+    disturbance_series = pd.Series(data = disturbance_list)
+    df["disturbance_force"] = disturbance_series
+    return df
 
 def throttle_force():
     force = 0
@@ -247,6 +253,7 @@ def main():
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df = mass(total_samples, df)
+    df = disturbance_force(total_samples, df)
     print(df)
     print(df.columns)
     return 
