@@ -181,7 +181,7 @@ def noise_f(k):
 def total_samples(sample_rate=20, total_time=20):
     total_samples = sample_rate * total_time
     return total_samples
-def init():
+def initialize():
     """
     Just gets some initial information from the user about the time resolution.
     :return:
@@ -304,7 +304,7 @@ def position(df, i):
     df.at[i, "position"] = position
     return df
 
-def error(process_variable, set_point, df, i):
+def error(set_point, df, i):
     """
     Determines the error.
     :param process_variable:
@@ -313,7 +313,7 @@ def error(process_variable, set_point, df, i):
     :param i:
     :return:
     """
-    return set_point - process_variable
+    return df
 
 def pid(df, i):
     """
@@ -322,13 +322,13 @@ def pid(df, i):
     :param i:
     :return:
     """
-    proportional = error
-    integral = np.trapz(error)
-    derivative = np.gradient(error)
-    pass
+#    proportional = error
+#    integral = np.trapz(error)
+#    derivative = np.gradient(error)
+    return df
 
 def main():
-    total_samples, sample_freq, set_point = init()
+    total_samples, sample_freq, set_point = initialize()
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df.set_index(df["time"])
@@ -354,6 +354,8 @@ def main():
         df = acceleration(df, x)
         df = velocity(df, x)
         df = position(df, x)
+        df = error(set_point, df, x)
+        df = pid(df, x)
     print(df)
     return 
 
