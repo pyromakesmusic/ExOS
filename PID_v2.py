@@ -14,6 +14,8 @@ LIBRARY IMPORTS
 """
 import tkinter as tk
 from tkinter import ttk
+import ipywidgets as widgets
+from IPython.display import display
 import numpy as np
 import pandas as pd
 import math
@@ -48,131 +50,123 @@ FUNCTION DEFINITIONS
 """
 
 def gui():
-    window = tk.Tk()
-    window.title("PID Controller v1.a")
-    frame = ttk.Frame(window, padding = 10)
-    
-    POS_START = tk.DoubleVar() # meters
-    VEL_START =  tk.DoubleVar() # m/s
-    ACCEL_START =  tk.DoubleVar() # m/s^2
-    T_START =  tk.IntVar() # seconds
-    T_END =  tk.IntVar() # seconds
-
-    MASS =  tk.DoubleVar() # kilograms
-
-    # PID parameters
-    SET_POINT = tk.DoubleVar() # float(input("Set point of speed to maintain? "))
-    P_K = tk.DoubleVar() # float(input("Proportional term? "))
-    I_K = tk.DoubleVar() # float(input("Integral term? "))
-    D_K = tk.DoubleVar() # float(input("Derivative term? "))
-    SCALE_FACTOR = tk.DoubleVar() #float(input("Scaling factor for external disturbance? "))
-    CONTROL_CONSTANT = tk.DoubleVar() # this is your k omega
-    CONTROL_SIGN = True # this should be a checkbox
-    throttle_f = 0.0 # initial force applied by throttle = 0
 
     """
     Initialization Parameters
     """
     # Kinematic parameters
 
-    position_start_slider = ttk.Scale(
-        frame,
-        from_ = 10,
-        to = 100,
-        orient = "horizontal",
-        variable = POS_START)
+    position_start_slider = widgets.IntSlider(
+        min=0,
+        max=10,
+        step=1,
+        description="Pos_0",
+        value=0
+    )
 
-    velocity_start_slider = ttk.Scale(
-        frame,
-        from_ = 37,
-        to = 100,
-        orient = "horizontal",
-        variable = VEL_START) 
+    velocity_start_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    accel_start_slider = tk.Scale(
-        frame,
-        from_ = 16,
-        to = 100,
-        orient = "horizontal",
-        variable = ACCEL_START) 
+    accel_start_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    t_start_slider = tk.Scale(
-        frame,
-        from_ = 1,
-        to = 100,
-        orient = "horizontal",
-        variable = T_START) 
+    t_start_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    t_end_slider = tk.Scale(
-        frame,
-        from_ = 53,
-        to = 100,
-        orient = "horizontal",
-        variable = T_END) 
+    t_end_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    mass_slider = tk.Scale(
-        frame,
-        from_ = 2,
-        to = 100,
-        orient = "horizontal",
-        variable = MASS)
+    mass_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    scale_factor_slider = tk.Scale(
-        frame,
-        from_ = 2,
-        to = 100,
-        orient = "horizontal",
-        variable = SCALE_FACTOR)  
+    scale_factor_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
 
     # PID parameters
 
-    set_point_slider = tk.Scale(
-        frame,
-        from_ = 10,
-        to = 100,
-        orient = "horizontal",
-        variable = SET_POINT)
+    set_point_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    p_k_slider = tk.Scale(
-        frame,
-        from_ = 37,
-        to = 100,
-        orient = "horizontal",
-        variable = P_K) 
+    p_k_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    i_k_slider = tk.Scale(
-        frame,
-        from_ = 16,
-        to = 100,
-        orient = "horizontal",
-        variable = I_K) 
+    i_k_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-    d_k_slider = tk.Scale(
-        frame,
-        from_ = 1,
-        to = 100,
-        orient = "horizontal",
-        variable = D_K) 
+    d_k_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
     # Control constant
-    control_constant_slider = tk.Scale(
-        frame,
-        from_ = 53,
-        to = 100,
-        orient = "horizontal",
-        variable = CONTROL_CONSTANT) 
+    control_constant_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
     # This should be a checkbox that just flips
-    control_sign = tk.Scale(
-        frame,
-        from_ = 2,
-        to = 100,
-        orient = "horizontal",
-        variable = MASS) 
+    control_sign = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
     
-#    window.mainloop()
-    pass
+    display(control_sign)
+    return 0
 
 def noise_f(k):
     whitenoise = np.random.normal(1,2)
@@ -189,13 +183,16 @@ def initialize():
     """
     #command_line = bool(input("Run in command line mode? "))
     sample_rate = int(input("Sample rate in Hz (int): \n"))
+    print(sample_rate)
     total_time = int(input("Total time in seconds (int): \n"))
+    print(total_time)
     set_point = int(input("Set point for cruise control (int): \n"))
+    print(set_point)
     sample_number = total_samples(sample_rate, total_time)
     p_k = 1
     i_k = 1
     d_k = 1
-    scaling_factor = -1
+    scaling_factor = .01
     return sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
 
 def row_maker(total_samples, smp_rate):
@@ -205,7 +202,7 @@ def row_maker(total_samples, smp_rate):
     :param smp_rate:
     :return:
     """
-    headers = ["time","mass", "disturbance_force", "error", "pid", "throttle_force", "total_force", "acceleration", "velocity", "position"]
+    headers = ["time","mass", "disturbance_force", "error", "proportional", "integral", "derivative", "pid", "throttle_force", "total_force", "acceleration", "velocity", "position"]
     df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 def time(num_samples, sample_rate, df):
@@ -232,9 +229,7 @@ def mass(num_samples, df):
     mass_list = []
     for i in range(num_samples):
         mass_list.append(mass)
-    print(mass_list)
     mass_series = pd.Series(data = mass_list)
-    print(mass_series)
     df["mass"] = mass_series
     return df
 def disturbance_force(num_samples, df):
@@ -248,7 +243,6 @@ def disturbance_force(num_samples, df):
     disturbance_list = []
     for i in range(num_samples):
         disturbance_list.append(disturbance)
-    print(disturbance_list)
     disturbance_series = pd.Series(data = disturbance_list)
     df["disturbance_force"] = disturbance_series
     return df
@@ -263,10 +257,8 @@ def throttle_force(df, i):
 
     if i == 0:
         force = 0
-        print("Was NaN")
     else:
         pid = df.at[(i - 1), "pid"]
-        print(pid)
         force = pid
     df.at[i, "throttle_force"] = force
     return df
@@ -322,9 +314,9 @@ def error(set_point, df, i):
     Determines the error.
     :param process_variable:
     :param set_point:
-    :param df:
-    :param i:
-    :return:
+    :param df: main dataframe
+    :param i: time step
+    :return: modified dataframe
     """
     error = set_point - df.at[i, "velocity"]
     df.at[i, "error"] = error
@@ -333,20 +325,24 @@ def error(set_point, df, i):
 def pid(df, i, p_k, i_k, d_k, scaling_factor):
     """
     Performs the PID logic.
-    :param df:
-    :param i:
-    :return:
+    :param df: main dataframe
+    :param i: time step
+    :return: modified dataframe
     """
     df_abridged = df[0:i]
     proportional = p_k * df.at[i, "error"]
     integral = i_k * np.trapz(df_abridged["error"])
     derivative = d_k * df.at[i, "error"]
     pid = scaling_factor * (proportional + integral + derivative)
+    df.at[i, "proportional"] = proportional
+    df.at[i, "integral"] = integral
+    df.at[i, "derivative"] = derivative
     df.at[i, "pid"] = pid
 #    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
     return df
 
 def main():
+    gui()
     total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
 
     time_series = row_maker(total_samples, sample_freq)
@@ -363,7 +359,7 @@ def main():
     df.at[0, "position"] = 0
 
 
-    # Now filling out the columns that we can do in one go
+    # Filling out the columns that we can do in one go
     df = mass(total_samples, df)
     df = disturbance_force(total_samples, df)
 
@@ -376,10 +372,9 @@ def main():
         df = position(df, x)
         df = error(set_point, df, x)
         df = pid(df, x, p_k, i_k, d_k, scaling_factor)
-    print(df)
 
     plt.plot(df["time"], df["velocity"])
-    plt.show()
+
     return 
 
 main()
