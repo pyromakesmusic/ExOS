@@ -262,11 +262,12 @@ def throttle_force(df, i):
     :param i:
     :return:
     """
-    pid = df.at[(i-1), "pid"]
-    if math.isnan(pid) == True:
+
+    if i == 0:
         force = 0
         print("Was NaN")
     else:
+        pid = df.at[(i - 1), "pid"]
         print(pid)
         force = pid
     df.at[i, "throttle_force"] = force
