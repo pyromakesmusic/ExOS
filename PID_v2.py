@@ -280,7 +280,8 @@ def acceleration(df, i):
     return df
 
 def velocity(df, i):
-    velocity = np.trapz(df["acceleration"])
+    df_abridged = df[0:i]
+    velocity = np.trapz(df_abridged["acceleration"])
     """
     Calculates the velocity.
     :param df:
@@ -297,7 +298,10 @@ def position(df, i):
     :param i:
     :return:
     """
-    pass
+    df_abridged = df[0:i]
+    position = np.trapz(df_abridged["velocity"])
+    df.at[i, "position"] = position
+    return df
 
 def error(process_variable, set_point, df, i):
     """
@@ -342,11 +346,12 @@ def main():
     df = disturbance_force(total_samples, df)
 
     # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
-    for x in range(1, total_samples):
+    for x in range(0, total_samples):
         df = throttle_force(df, x)
         df = total_force(df, x)
         df = acceleration(df, x)
         df = velocity(df, x)
+        df = position(df, x)
     print(df)
     return 
 
