@@ -281,7 +281,7 @@ def acceleration(df, i):
 
 def velocity(df, i):
     df_abridged = df[0:i]
-    velocity = np.trapz(df_abridged["acceleration"])
+    velocity = np.trapz(y=df_abridged["acceleration"], x=df_abridged["time"])
     """
     Calculates the velocity.
     :param df:
@@ -299,7 +299,7 @@ def position(df, i):
     :return:
     """
     df_abridged = df[0:i]
-    position = np.trapz(df_abridged["velocity"])
+    position = np.trapz(y=df_abridged["velocity"], x=df_abridged["time"])
     df.at[i, "position"] = position
     return df
 
