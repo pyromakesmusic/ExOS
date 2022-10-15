@@ -12,8 +12,7 @@ Document Comments:
 ===============
 LIBRARY IMPORTS
 """
-import tkinter as tk
-from tkinter import ttk
+
 import ipywidgets as widgets
 from IPython.display import display
 import numpy as np
@@ -21,9 +20,6 @@ import pandas as pd
 import math
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import matplotlib.backends.backend_tkagg as tkagg
-from scipy.integrate import odeint
-import turtle
 
 
 """
