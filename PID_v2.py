@@ -16,6 +16,7 @@ import tkinter as tk
 from tkinter import ttk
 import numpy as np
 import pandas as pd
+import math
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.backends.backend_tkagg as tkagg
@@ -261,7 +262,9 @@ def throttle_force(df, i):
     :param i:
     :return:
     """
-    force = 0
+    force = df.at[i, "pid"]
+    if math.isnan(force) == True:
+        force = -2
     df.at[i, "throttle_force"] = force
     return df
 
@@ -371,6 +374,9 @@ def main():
         df = error(set_point, df, x)
         df = pid(df, x, p_k, i_k, d_k, scaling_factor)
     print(df)
+
+    plt.plot(df["time"], df["velocity"])
+    plt.show()
     return 
 
 main()
