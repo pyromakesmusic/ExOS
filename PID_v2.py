@@ -262,9 +262,13 @@ def throttle_force(df, i):
     :param i:
     :return:
     """
-    force = df.at[i, "pid"]
-    if math.isnan(force) == True:
-        force = -2
+    pid = df.at[(i-1), "pid"]
+    if math.isnan(pid) == True:
+        force = 0
+        print("Was NaN")
+    else:
+        print(pid)
+        force = pid
     df.at[i, "throttle_force"] = force
     return df
 
@@ -340,7 +344,7 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     derivative = d_k * df.at[i, "error"]
     pid = scaling_factor * (proportional + integral + derivative)
     df.at[i, "pid"] = pid
-    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
+#    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
     return df
 
 def main():
