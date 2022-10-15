@@ -40,10 +40,10 @@ GUI Initialization
 """
 GLOBALS
 """
-SET_POINT = 20 # Should be in velocity for the moment, although could be in the units of anything being measured
 
 """
 FUNCTION DEFINITIONS
+====================
 """
 
 def gui():
@@ -192,6 +192,13 @@ def initialize():
     set_point = int(input("Set point for cruise control (int): \n"))
     sample_number = total_samples(sample_rate, total_time)
     return(sample_number, sample_rate, set_point)
+
+def pid_params():
+    p_k = 1
+    i_k = 1
+    d_k = 1
+    scaling_factor = 0
+    return p_k, i_k, d_k, scaling_factor
 def row_maker(total_samples, smp_rate):
     """
     Creates the indexed DataFrame.
@@ -313,22 +320,29 @@ def error(set_point, df, i):
     :param i:
     :return:
     """
+    error = set_point - df.at[i, "velocity"]
+    df.at[i, "error"] = error
     return df
 
-def pid(df, i):
+def pid(df, i, p_k, i_k, d_k, scaling_factor):
     """
     Performs the PID logic.
     :param df:
     :param i:
     :return:
     """
-#    proportional = error
-#    integral = np.trapz(error)
-#    derivative = np.gradient(error)
+    df_abridged = df[0:i]
+    proportional = p_k * df.at[i, "error"]
+    integral = i_k * np.trapz(df_abridged["error"])
+    derivative = d_k * df.at[i, "error"]
+    pid = scaling_factor * (proportional + integral + derivative)
+    df.at[i, "pid"] = pid
+    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
     return df
 
 def main():
     total_samples, sample_freq, set_point = initialize()
+    p_k, i_k, d_k, scaling_factor = pid_params()
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df.set_index(df["time"])
@@ -355,7 +369,7 @@ def main():
         df = velocity(df, x)
         df = position(df, x)
         df = error(set_point, df, x)
-        df = pid(df, x)
+        df = pid(df, x, p_k, i_k, d_k, scaling_factor)
     print(df)
     return 
 
