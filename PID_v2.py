@@ -192,14 +192,12 @@ def initialize():
     total_time = int(input("Total time in seconds (int): \n"))
     set_point = int(input("Set point for cruise control (int): \n"))
     sample_number = total_samples(sample_rate, total_time)
-    return(sample_number, sample_rate, set_point)
-
-def pid_params():
     p_k = 1
     i_k = 1
     d_k = 1
-    scaling_factor = 1
-    return p_k, i_k, d_k, scaling_factor
+    scaling_factor = -1
+    return sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
+
 def row_maker(total_samples, smp_rate):
     """
     Creates the indexed DataFrame.
@@ -349,8 +347,8 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     return df
 
 def main():
-    total_samples, sample_freq, set_point = initialize()
-    p_k, i_k, d_k, scaling_factor = pid_params()
+    total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
+
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df.set_index(df["time"])
