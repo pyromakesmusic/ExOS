@@ -197,7 +197,7 @@ def pid_params():
     p_k = 1
     i_k = 1
     d_k = 1
-    scaling_factor = 0
+    scaling_factor = 1
     return p_k, i_k, d_k, scaling_factor
 def row_maker(total_samples, smp_rate):
     """
