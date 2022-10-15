@@ -40,7 +40,7 @@ GUI Initialization
 """
 GLOBALS
 """
-
+SET_POINT = 20 # Should be in velocity for the moment, although could be in the units of anything being measured
 
 """
 FUNCTION DEFINITIONS
@@ -189,8 +189,9 @@ def init():
     #command_line = bool(input("Run in command line mode? "))
     sample_rate = int(input("Sample rate in Hz (int): \n"))
     total_time = int(input("Total time in seconds (int): \n"))
+    set_point = int(input("Set point for cruise control (int): \n"))
     sample_number = total_samples(sample_rate, total_time)
-    return(sample_number, sample_rate)
+    return(sample_number, sample_rate, set_point)
 def row_maker(total_samples, smp_rate):
     """
     Creates the indexed DataFrame.
@@ -198,7 +199,7 @@ def row_maker(total_samples, smp_rate):
     :param smp_rate:
     :return:
     """
-    headers = ["time","mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
+    headers = ["time","mass", "disturbance_force", "error", "pid", "throttle_force", "total_force", "acceleration", "velocity", "position"]
     df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 def time(num_samples, sample_rate, df):
@@ -327,19 +328,20 @@ def pid(df, i):
     pass
 
 def main():
-    total_samples, sample_freq = init()
+    total_samples, sample_freq, set_point = init()
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df.set_index(df["time"])
 
     # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
+    df.at[0, "error"] = 0
+    df.at[0, "pid"] = 0
     df.at[0, "throttle_force"] = 0
     df.at[0, "total_force"] = 0
     df.at[0, "acceleration"] = 0
     df.at[0, "velocity"] = 0
     df.at[0, "position"] = 0
-    df.at[0, "error"] = 0
-    df.at[0, "pid"] = 0
+
 
     # Now filling out the columns that we can do in one go
     df = mass(total_samples, df)
