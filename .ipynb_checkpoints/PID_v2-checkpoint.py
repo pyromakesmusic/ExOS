@@ -12,9 +12,7 @@ Document Comments:
 ===============
 LIBRARY IMPORTS
 """
-import tkinter as tk
-from tkinter import ttk
-import matplotlib.backends.backend_tkagg as tkagg
+
 import ipywidgets as widgets
 from IPython.display import display
 import numpy as np
@@ -47,228 +45,123 @@ FUNCTION DEFINITIONS
 ====================
 """
 
-def gui(browser_mode=True):
+def gui():
 
     """
     Initialization Parameters
     """
     # Kinematic parameters
-    if browser_mode == True:
-        position_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Pos_0",
-            value=0
-        )
 
-        velocity_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Vel_0",
-            value=0
-        )
+    position_start_slider = widgets.IntSlider(
+        min=0,
+        max=10,
+        step=1,
+        description="Pos_0",
+        value=0
+    )
 
-        accel_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Accel_0",
-            value=0
-        )
+    velocity_start_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        t_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="T_Start",
-            value=0
-        )
+    accel_start_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        t_end_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="T_End",
-            value=0
-        )
+    t_start_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        mass_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Pos_0",
-            value=0
-        )
+    t_end_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        scale_factor_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Dist Factor",
-            value=0
-        )
+    mass_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        # PID parameters
+    scale_factor_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        set_point_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Set Point",
-            value=0
-        )
 
-        p_k_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="P_K",
-            value=0
-        )
+    # PID parameters
 
-        i_k_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="I_K",
-            value=0
-        )
+    set_point_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        d_k_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="D_K",
-            value=0
-        )
+    p_k_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        # Control constant
-        control_constant_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Ctrl Const",
-            value=0
-        )
+    i_k_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        # This should be a checkbox that just flips
-        control_sign = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Ctrl Sign",
-            value=0
-        )
-    else:
-        window = tk.Tk()
-        window.title("PID Controller v1.a")
-        frame = ttk.Frame(window, padding=10)
+    d_k_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        POS_START = tk.DoubleVar()  # meters
-        VEL_START = tk.DoubleVar()  # m/s
-        ACCEL_START = tk.DoubleVar()  # m/s^2
-        T_START = tk.IntVar()  # seconds
-        T_END = tk.IntVar()  # seconds
-        MASS = tk.DoubleVar()  # kilograms
-        # PID parameters
-        SET_POINT = tk.DoubleVar()  # float(input("Set point of speed to maintain? "))
-        P_K = tk.DoubleVar()  # float(input("Proportional term? "))
-        I_K = tk.DoubleVar()  # float(input("Integral term? "))
-        D_K = tk.DoubleVar()  # float(input("Derivative term? "))
-        SCALE_FACTOR = tk.DoubleVar()  # float(input("Scaling factor for external disturbance? "))
-        CONTROL_CONSTANT = tk.DoubleVar()  # this is your k omega
-        CONTROL_SIGN = True  # this should be a checkbox
-        throttle_f = 0.0  # initial force applied by throttle = 0
-        """
-        Initialization Parameters
-        """
-        # Kinematic parameters
-        position_start_slider = ttk.Scale(
-            frame,
-            from_=10,
-            to=100,
-            orient="horizontal",
-            variable=POS_START)
-        velocity_start_slider = ttk.Scale(
-            frame,
-            from_=37,
-            to=100,
-            orient="horizontal",
-            variable=VEL_START)
-        accel_start_slider = tk.Scale(
-            frame,
-            from_=16,
-            to=100,
-            orient="horizontal",
-            variable=ACCEL_START)
-        t_start_slider = tk.Scale(
-            frame,
-            from_=1,
-            to=100,
-            orient="horizontal",
-            variable=T_START)
-        t_end_slider = tk.Scale(
-            frame,
-            from_=53,
-            to=100,
-            orient="horizontal",
-            variable=T_END)
-        mass_slider = tk.Scale(
-            frame,
-            from_=2,
-            to=100,
-            orient="horizontal",
-            variable=MASS)
-        scale_factor_slider = tk.Scale(
-            frame,
-            from_=2,
-            to=100,
-            orient="horizontal",
-            variable=SCALE_FACTOR)
-        # PID parameters
-        set_point_slider = tk.Scale(
-            frame,
-            from_=10,
-            to=100,
-            orient="horizontal",
-            variable=SET_POINT)
-        p_k_slider = tk.Scale(
-            frame,
-            from_=37,
-            to=100,
-            orient="horizontal",
-            variable=P_K)
-        i_k_slider = tk.Scale(
-            frame,
-            from_=16,
-            to=100,
-            orient="horizontal",
-            variable=I_K)
-        d_k_slider = tk.Scale(
-            frame,
-            from_=1,
-            to=100,
-            orient="horizontal",
-            variable=D_K)
-        # Control constant
-        control_constant_slider = tk.Scale(
-            frame,
-            from_=53,
-            to=100,
-            orient="horizontal",
-            variable=CONTROL_CONSTANT)
-        # This should be a checkbox that just flips
-        control_sign = tk.Scale(
-            frame,
-            from_=2,
-            to=100,
-            orient="horizontal",
-            variable=MASS)
+    # Control constant
+    control_constant_slider = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
 
-        #    window.mainloop()
-
+    # This should be a checkbox that just flips
+    control_sign = widgets.IntSlider(
+        min=0,
+        max = 10,
+        step = 1,
+        description = "Pos_0",
+        value = 0
+    )
+    
+    display(control_sign)
     return 0
 
 def noise_f(k):
@@ -476,9 +369,7 @@ def main():
         df = error(set_point, df, x)
         df = pid(df, x, p_k, i_k, d_k, scaling_factor)
 
-    print(df)
     plt.plot(df["time"], df["velocity"])
-    plt.show()
 
     return 
 
