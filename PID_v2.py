@@ -181,7 +181,26 @@ def noise_f(k):
 def total_samples(sample_rate=20, total_time=20):
     total_samples = sample_rate * total_time
     return total_samples
-
+def init():
+    """
+    Just gets some initial information from the user about the time resolution.
+    :return:
+    """
+    #command_line = bool(input("Run in command line mode? "))
+    sample_rate = int(input("Sample rate in Hz (int): \n"))
+    total_time = int(input("Total time in seconds (int): \n"))
+    sample_number = total_samples(sample_rate, total_time)
+    return(sample_number, sample_rate)
+def row_maker(total_samples, smp_rate):
+    """
+    Creates the indexed DataFrame.
+    :param total_samples:
+    :param smp_rate:
+    :return:
+    """
+    headers = ["time","mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
+    df = pd.DataFrame(columns=headers, index=range(total_samples))
+    return df
 def time(num_samples, sample_rate, df):
     """
     Enters the time value into the dataframe.
@@ -210,9 +229,7 @@ def mass(num_samples, df):
     mass_series = pd.Series(data = mass_list)
     print(mass_series)
     df["mass"] = mass_series
-
     return df
-
 def disturbance_force(num_samples, df):
     """
     Returns a disturbance force.
@@ -305,38 +322,27 @@ def pid(df, i):
     derivative = np.gradient(error)
     pass
 
-def row_maker(total_samples, smp_rate):
-    """
-    Creates the indexed DataFrame.
-    :param total_samples:
-    :param smp_rate:
-    :return:
-    """
-    headers = ["time","mass", "disturbance_force", "throttle_force", "total_force", "acceleration", "velocity", "position", "error", "pid"]
-    df = pd.DataFrame(columns=headers, index=range(total_samples))
-    return df
-
-def init():
-    """
-    Just gets some initial information from the user about the time resolution.
-    :return:
-    """
-    #command_line = bool(input("Run in command line mode? "))
-    sample_rate = int(input("Sample rate in Hz (int): \n"))
-    total_time = int(input("Total time in seconds (int): \n"))
-    sample_number = total_samples(sample_rate, total_time)
-    return(sample_number, sample_rate)
-
 def main():
     total_samples, sample_freq = init()
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df.set_index(df["time"])
-    df = mass(total_samples, df)
-    df = disturbance_force(total_samples, df)
+
+    # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
+    df.at[0, "throttle_force"] = 0
+    df.at[0, "total_force"] = 0
     df.at[0, "acceleration"] = 0
     df.at[0, "velocity"] = 0
-    for x in range(1, total_samples): # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
+    df.at[0, "position"] = 0
+    df.at[0, "error"] = 0
+    df.at[0, "pid"] = 0
+
+    # Now filling out the columns that we can do in one go
+    df = mass(total_samples, df)
+    df = disturbance_force(total_samples, df)
+
+    # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
+    for x in range(1, total_samples):
         df = throttle_force(df, x)
         df = total_force(df, x)
         df = acceleration(df, x)
