@@ -284,6 +284,7 @@ def initialize():
     Just gets some initial information from the user about the time resolution.
     :return:
     """
+    command_line = bool(input("Run in command line mode? "))
     browser_mode = bool(input("Run in browser mode? "))
     sample_rate = int(input("Sample rate in Hz (int): \n"))
     print(sample_rate)
@@ -296,7 +297,7 @@ def initialize():
     i_k = 1
     d_k = 1
     scaling_factor = .01
-    return sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
+    return command_line, browser_mode, sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
 
 def row_maker(total_samples, smp_rate):
     """
@@ -445,8 +446,9 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     return df
 
 def main():
+
+    command_line, browser_mode, total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
     gui()
-    total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
 
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
