@@ -53,7 +53,10 @@ def initialize():
     :return:
     """
     command_line = bool(input("Run in command line mode? "))
-    browser_mode = bool(input("Run in browser mode? "))
+    if command_line == False:
+        browser_mode = bool(input("Run in GUI mode? "))
+    else:
+        browser_mode = True
     sample_rate = int(input("Sample rate in Hz (int): \n"))
     print(sample_rate)
     total_time = int(input("Total time in seconds (int): \n"))
