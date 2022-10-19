@@ -47,6 +47,26 @@ FUNCTION DEFINITIONS
 ====================
 """
 
+def initialize():
+    """
+    Just gets some initial information from the user about the time resolution.
+    :return:
+    """
+    command_line = bool(input("Run in command line mode? "))
+    browser_mode = bool(input("Run in browser mode? "))
+    sample_rate = int(input("Sample rate in Hz (int): \n"))
+    print(sample_rate)
+    total_time = int(input("Total time in seconds (int): \n"))
+    print(total_time)
+    set_point = int(input("Set point for cruise control (int): \n"))
+    print(set_point)
+    sample_number = total_samples(sample_rate, total_time)
+    p_k = 1
+    i_k = 1
+    d_k = 1
+    scaling_factor = .01
+    return command_line, browser_mode, sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
+
 def gui(browser_mode=True):
 
     """
@@ -161,6 +181,9 @@ def gui(browser_mode=True):
             description="Ctrl Sign",
             value=0
         )
+        widget_list = [position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider, mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider, control_constant_slider, control_sign]
+        for item in widget_list:
+            display(item)
     else:
         window = tk.Tk()
         window.title("PID Controller v1.a")
@@ -279,25 +302,7 @@ def noise_f(k):
 def total_samples(sample_rate=20, total_time=20):
     total_samples = sample_rate * total_time
     return total_samples
-def initialize():
-    """
-    Just gets some initial information from the user about the time resolution.
-    :return:
-    """
-    command_line = bool(input("Run in command line mode? "))
-    browser_mode = bool(input("Run in browser mode? "))
-    sample_rate = int(input("Sample rate in Hz (int): \n"))
-    print(sample_rate)
-    total_time = int(input("Total time in seconds (int): \n"))
-    print(total_time)
-    set_point = int(input("Set point for cruise control (int): \n"))
-    print(set_point)
-    sample_number = total_samples(sample_rate, total_time)
-    p_k = 1
-    i_k = 1
-    d_k = 1
-    scaling_factor = .01
-    return command_line, browser_mode, sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
+
 
 def row_maker(total_samples, smp_rate):
     """
@@ -447,8 +452,12 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
 
 def main():
 
-    command_line, browser_mode, total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
-    gui()
+    command_line, gui_mode, total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
+    if command_line == False and gui_mode == True:
+        gui()
+    elif command_line == True and gui_mode == False:
+        gui()
+
 
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
