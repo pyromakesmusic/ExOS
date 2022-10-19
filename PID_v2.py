@@ -54,9 +54,10 @@ def initialize():
     """
     command_line = bool(input("Run in command line mode? "))
     if command_line == False:
-        browser_mode = bool(input("Run in GUI mode? "))
+        gui_mode = input("Input mode? [ipython/tkinter]")
+        gui()
     else:
-        browser_mode = True
+        gui_mode = True
     sample_rate = int(input("Sample rate in Hz (int): \n"))
     print(sample_rate)
     total_time = int(input("Total time in seconds (int): \n"))
@@ -68,7 +69,7 @@ def initialize():
     i_k = 1
     d_k = 1
     scaling_factor = .01
-    return command_line, browser_mode, sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
+    return command_line, gui_mode, sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
 
 def gui(browser_mode=True):
 
@@ -456,11 +457,6 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
 def main():
 
     command_line, gui_mode, total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
-    if command_line == False and gui_mode == True:
-        gui()
-    elif command_line == True and gui_mode == False:
-        gui()
-
 
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
