@@ -320,7 +320,7 @@ def gui(mode):
 
         sample_length = tk.IntVar() # seconds
         sample_freq = tk.IntVar() # Hz
-        sample_number = int(total_samples(sample_freq.get(), sample_length.get()))
+
         pos_start = tk.DoubleVar()  # meters
         vel_start = tk.DoubleVar()  # m/s
         accel_start = tk.DoubleVar()  # m/s^2
@@ -343,39 +343,45 @@ def gui(mode):
             from_ = 10,
             to = 100,
             orient = "horizontal",
-            variable = sample_length)
+            variable = sample_length,
+            label="Sample Length")
         sample_freq_slider = tk.Scale(
             frame,
             from_ = 37,
             to = 100,
             orient = "horizontal",
-            variable = sample_freq)
+            variable = sample_freq,
+            label = "Sample Freq.")
         # Kinematic parameters
         position_start_slider = tk.Scale(
             frame,
             from_ = 10,
             to = 100,
             orient = "horizontal",
-            variable = pos_start)
+            variable = pos_start,
+            label = "Init. Pos.")
         velocity_start_slider = tk.Scale(
             frame,
             from_ = 37,
             to = 100,
             orient = "horizontal",
-            variable = vel_start)
+            variable = vel_start,
+            label = "Init. Vel.")
         accel_start_slider = tk.Scale(
             frame,
             from_= 16,
             to = 100,
             orient = "horizontal",
-            variable = accel_start)
+            variable = accel_start,
+            label = "Init. Accel")
 
         mass_slider = tk.Scale(
             frame,
             from_ = 2,
             to = 100,
             orient = "horizontal",
-            variable = mass)
+            variable = mass,
+            label = "Mass")
         scale_factor_slider = tk.Scale(
             frame,
             from_ = 2,
@@ -388,40 +394,46 @@ def gui(mode):
             from_ = 10,
             to = 100,
             orient = "horizontal",
-            variable = set_point)
+            variable = set_point,
+            label = "Set Point")
         p_k_slider = tk.Scale(
             frame,
-            from_ = 37,
+            from_ = 0,
             to = 100,
             orient = "horizontal",
-            variable=p_k)
+            variable=p_k,
+            label = "P")
         i_k_slider = tk.Scale(
             frame,
-            from_ = 16,
+            from_ = 0,
             to = 100,
             orient="horizontal",
-            variable = i_k)
+            variable = i_k,
+            label = "I")
         d_k_slider = tk.Scale(
             frame,
-            from_ = 1,
+            from_ = 0,
             to = 100,
             orient = "horizontal",
-            variable = d_k)
+            variable = d_k,
+            label = "D")
         # Control constant
         control_constant_slider = tk.Scale(
             frame,
             from_ = 53,
             to = 100,
             orient = "horizontal",
-            variable = control_constant)
+            variable = control_constant,
+            label = "Control Const")
         # This should be a checkbox that just flips
         control_sign_slider = tk.Scale(
             frame,
             from_ = 2,
             to = 100,
             orient = "horizontal",
-            variable = control_sign)
-
+            variable = control_sign,
+            label = "Control Sign")
+        sample_number = int(total_samples(sample_freq.get(), sample_length.get()))
         initial_values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(),
                           accel_start.get(), mass.get(),
                           scale_factor.get(), set_point.get(), p_k.get(), i_k.get(), d_k.get(), control_constant.get(),
