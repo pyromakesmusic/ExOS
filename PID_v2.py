@@ -440,6 +440,10 @@ def gui(mode):
             orient = "horizontal",
             variable = control_sign,
             label = "Control Sign")
+
+        """
+        All of the below needs to be put into a function that goes into the button. It should go after the creation of the graph.
+        """
         sample_number = int(total_samples(sample_freq.get(), sample_length.get()))
         initial_values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(),
                           accel_start.get(), mass.get(),
