@@ -15,6 +15,7 @@ LIBRARY IMPORTS
 import tkinter as tk
 from tkinter import ttk
 import matplotlib.backends.backend_tkagg as tkagg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 from IPython.display import display
 import numpy as np
@@ -174,6 +175,10 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
     plt.show()
     return df
 
+
+def sim_and_plot(df, axes):
+    df.plot(kind='Velocity Over Time', legend=True, ax=axes)
+    return
 def gui(mode):
 
     """
@@ -314,7 +319,8 @@ def gui(mode):
     elif mode == "tkinter": # the tkinter section
         # Creates the main window
         frame = tk.Tk()
-        frame.title("PID Controller v1.a")
+        frame.title("PID Controller v1.b")
+        frame.geometry("1000x1000")
 
         sample_length = tk.IntVar() # seconds
         sample_freq = tk.IntVar() # Hz
@@ -442,11 +448,20 @@ def gui(mode):
         initial_values_df = pd.DataFrame(data=initial_values, index=values_labels).T
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
+
+        figure = plt.Figure(figsize=(6, 5), dpi=100)
+        ax = figure.add_subplot(111)
+        chart_type = FigureCanvasTkAgg(figure, frame)
+        chart_type.get_tk_widget().pack()
+
+
         simulate_button = tk.Button(
             frame,
-            command= lambda: simulate(initial_values_df),
-            text="Simulate"
-        )
+            command= lambda: sim_and_plot(initial_values_df, ax),
+            text="Simulate")
+
+        ax.set_title('The Title for your chart')
+
         widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
                        control_constant_slider, control_sign_slider, simulate_button]
@@ -454,10 +469,6 @@ def gui(mode):
         for item in widget_list:
             item.pack()
         frame.mainloop()
-
-
-    throttle_f = 0.0  # initial force applied by throttle = 0
-
     return
 
 def noise_f(k):
