@@ -250,15 +250,17 @@ def gui(mode):
         control_constant = control_constant_slider.value
         control_sign = control_sign_slider.value
         sample_number = int(total_samples(sample_freq, sample_length))
+        values = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass,
+                  scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
 
     elif mode == "tkinter": # the tkinter section
-        window = tk.Tk()
-        window.title("PID Controller v1.a")
-        frame = ttk.Frame(window, padding=10)
+        # Creates the main window
+        frame = tk.Tk()
+        frame.title("PID Controller v1.a")
 
         sample_length = tk.IntVar() # seconds
         sample_freq = tk.IntVar() # Hz
-        sample_number = int(total_samples(sample_freq, sample_length))
+        sample_number = int(total_samples(sample_freq.get(), sample_length.get()))
         pos_start = tk.DoubleVar()  # meters
         vel_start = tk.DoubleVar()  # m/s
         accel_start = tk.DoubleVar()  # m/s^2
@@ -272,12 +274,12 @@ def gui(mode):
         d_k = tk.DoubleVar()  # float(input("Derivative term? "))
         scale_factor = tk.DoubleVar()  # float(input("Scaling factor for external disturbance? "))
         control_constant = tk.DoubleVar()  # this is your k omega
-        control_sign = True  # this should be a checkbox
+        control_sign = tk.IntVar()  # this should be a checkbox
 
         """
         Initialization Parameters
         """
-        sample_length_slider = ttk.Scale(
+        sample_length_slider = tk.Scale(
             frame,
             from_ = 10,
             to = 100,
@@ -290,13 +292,13 @@ def gui(mode):
             orient = "horizontal",
             variable = sample_freq)
         # Kinematic parameters
-        position_start_slider = ttk.Scale(
+        position_start_slider = tk.Scale(
             frame,
             from_ = 10,
             to = 100,
             orient = "horizontal",
             variable = pos_start)
-        velocity_start_slider = ttk.Scale(
+        velocity_start_slider = tk.Scale(
             frame,
             from_ = 37,
             to = 100,
@@ -374,11 +376,15 @@ def gui(mode):
         widget_list = [position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
                        control_constant_slider, control_sign_slider]
+
         for item in widget_list:
             item.pack()
-        window.mainloop()
+        frame.mainloop()
+
+        values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(), accel_start.get(), t_start.get(), t_end.get(), mass.get(),
+                  scale_factor.get(), set_point.get(), p_k.get(), i_k.get(), d_k.get(), control_constant.get(), control_sign.get()]
     throttle_f = 0.0  # initial force applied by throttle = 0
-    values = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
+
     values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start", "t_start", "t_end", "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
     values_df = pd.DataFrame(data = values, index=values_labels ).T
 
@@ -586,6 +592,7 @@ def main():
         df = error(set_point, df, x)
         df = pid(df, x, p_k, i_k, d_k, control_const)
 
+    print(df)
     plt.plot(df["time"], df["velocity"])
     plt.show()
 
