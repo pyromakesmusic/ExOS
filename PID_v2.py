@@ -98,11 +98,10 @@ def cmdline_logic():
         control_sign = int(input("Sign of throttle vs. PID: "))
         print(control_sign)
 
-        param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end,
+        param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start,
                       mass,
                       scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
         values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
-                         "t_start", "t_end",
                          "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
         initialparams = pd.DataFrame(data=param_list, index=values_labels).T
         # Need to pay attention to what this returns, this is critical for initialization
