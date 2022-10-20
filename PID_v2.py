@@ -119,9 +119,11 @@ def initialize():
     Just gets some initial information from the user about the time resolution.
     :return:
     """
-    gui_mode = (input("Run in GUI mode? [y/n] "))
+    gui_mode = (input("Run in GUI mode? [y/n]: "))
+    print(gui_mode)
     if gui_mode == "y":
-        gui_type = input("Input mode? [ipython/tkinter] ")
+        gui_type = input("Input mode? [ipython/tkinter]: ")
+        print(gui_type)
         gui(gui_type)
 
     elif gui_mode == "n":
@@ -177,7 +179,8 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
 
 
 def sim_and_plot(df, axes):
-    df.plot(kind='Velocity Over Time', legend=True, ax=axes)
+    print(df.keys)
+    plt.plot(df["velocity"], df["time"])
     return
 def gui(mode):
 
@@ -452,12 +455,12 @@ def gui(mode):
         figure = plt.Figure(figsize=(6, 5), dpi=100)
         ax = figure.add_subplot(111)
         chart_type = FigureCanvasTkAgg(figure, frame)
-        chart_type.get_tk_widget().pack()
+        chart_type.get_tk_widget().pack(side=tk.RIGHT)
 
 
         simulate_button = tk.Button(
             frame,
-            command= lambda: sim_and_plot(initial_values_df, ax),
+            command= lambda: sim_and_plot(simulate(initial_values_df), ax),
             text="Simulate")
 
         ax.set_title('The Title for your chart')
