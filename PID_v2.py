@@ -59,29 +59,43 @@ def initialize():
         print(initialparams)
 
     else:
-        sample_freq = int(input("Sample rate in Hz (int): \n"))
+        sample_freq = int(input("Sample rate in Hz (int): "))
         print(sample_freq)
-        sample_length = int(input("Total time in seconds (int): \n"))
+        sample_length = int(input("Total time in seconds (int): "))
         print(sample_length)
-        sample_number = total_samples(sample_freq, sample_length)
+        sample_number = int(total_samples(sample_freq, sample_length))
         print("Total number of samples:", sample_number)
-        set_point = float(input("Set point for cruise control (float): \n"))
+        set_point = float(input("Set point for cruise control (float): "))
         print(set_point)
         pos_start = float(input("Start position (float): "))
+        print(pos_start)
         vel_start = float(input("Start velocity (float): "))
+        print(vel_start)
         accel_start = float(input("Start acceleration (float): "))
+        print(accel_start)
         t_start = int(input("Start time value (int): "))
+        print(t_start)
         t_end = int(input("End time value (int): "))
+        print(t_end)
         mass = float(input("Mass (float): "))
+        print(mass)
         scale_factor = float(input("Scaling factor for external disturbance (float): "))
+        print(scale_factor)
         p_k = float(input("Proportional scaling factor (float): "))
+        print(p_k)
         i_k = float(input("Integral scaling factor (float): "))
+        print(i_k)
         d_k = float(input("Derivative scaling factor (float): "))
+        print(d_k)
         control_constant = float(input("Constant multiple for PID term to throttle output (float): "))
+        print(control_constant)
         control_sign = int(input("Sign of throttle vs. PID: "))
+        print(control_sign)
 
         param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
-        initialparams = pd.Series(data = param_list)
+        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start", "t_start", "t_end",
+                         "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
+        initialparams = pd.DataFrame(data = param_list, index=values_labels).T
         # Need to pay attention to what this returns, this is critical for initialization
     return initialparams
 
@@ -235,6 +249,7 @@ def gui(mode):
         d_k = d_k_slider.value
         control_constant = control_constant_slider.value
         control_sign = control_sign_slider.value
+        sample_number = int(total_samples(sample_freq, sample_length))
 
     elif mode == "tkinter": # the tkinter section
         window = tk.Tk()
@@ -243,6 +258,7 @@ def gui(mode):
 
         sample_length = tk.IntVar() # seconds
         sample_freq = tk.IntVar() # Hz
+        sample_number = int(total_samples(sample_freq, sample_length))
         pos_start = tk.DoubleVar()  # meters
         vel_start = tk.DoubleVar()  # m/s
         accel_start = tk.DoubleVar()  # m/s^2
@@ -362,10 +378,11 @@ def gui(mode):
             item.pack()
         window.mainloop()
     throttle_f = 0.0  # initial force applied by throttle = 0
-    values = [sample_length, sample_freq, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
-    values_series = pd.Series(data = "values")
+    values = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
+    values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start", "t_start", "t_end", "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
+    values_df = pd.DataFrame(data = values, index=values_labels ).T
 
-    return values_series
+    return values_df
 
 def noise_f(k):
     whitenoise = np.random.normal(1,2)
@@ -373,11 +390,11 @@ def noise_f(k):
     return scaled_noise
 
 def total_samples(sample_rate=20, total_time=20):
-    total_samples = sample_rate * total_time
+    total_samples = int(sample_rate * total_time)
     return total_samples
 
 
-def row_maker(total_samples, smp_rate):
+def row_maker(total_samples):
     """
     Creates the indexed DataFrame.
     :param total_samples:
@@ -395,6 +412,7 @@ def time(num_samples, sample_rate, df):
     :param df:
     :return:
     """
+    print(num_samples)
     time_value_list = list((x * (1/sample_rate) for x in range(num_samples)))
     time_value_series = pd.Series(data=time_value_list)
     df["time"] = time_value_series
@@ -527,8 +545,21 @@ def main():
 
     init_params = initialize()
     print(init_params)
-    time_series = row_maker(total_samples, sample_freq)
-    df = time(total_samples, sample_freq, time_series)
+    # Comment the below out for now; just work on accessing the parameters individually and linking them up
+    print("Total number of samples: ", init_params.iloc[0]["sample_number"])
+    sample_number = int(init_params.iloc[0]["sample_number"])
+    disturbance_const = float(init_params.iloc[0]["scale_factor"])
+
+    set_point = float(init_params.iloc[0]["set_point"])
+    p_k = float(init_params.iloc[0]["p_k"])
+    i_k = float(init_params.iloc[0]["i_k"])
+    d_k = float(init_params.iloc[0]["d_k"])
+    control_const = float(init_params.iloc[0]["control_constant"])
+
+
+    # Starts making the dataframe here
+    time_series = row_maker(sample_number)
+    df = time(sample_number, init_params["sample_freq"], time_series)
     df.set_index(df["time"])
 
     # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
@@ -542,18 +573,18 @@ def main():
 
 
     # Filling out the columns that we can do in one go
-    df = mass(total_samples, df)
-    df = disturbance_force(total_samples, df)
+    df = mass(sample_number, df)
+    df = disturbance_force(sample_number, df, disturbance_const)
 
     # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
-    for x in range(0, total_samples):
+    for x in range(0, sample_number):
         df = throttle_force(df, x)
         df = total_force(df, x)
         df = acceleration(df, x)
         df = velocity(df, x)
         df = position(df, x)
         df = error(set_point, df, x)
-        df = pid(df, x, p_k, i_k, d_k, scaling_factor)
+        df = pid(df, x, p_k, i_k, d_k, control_const)
 
     plt.plot(df["time"], df["velocity"])
     plt.show()
