@@ -406,21 +406,21 @@ def gui(mode):
             label = "Set Point")
         p_k_slider = tk.Scale(
             frame,
-            from_ = -5,
+            from_ = 1,
             to = 5,
             orient = "horizontal",
             variable=p_k,
             label = "P")
         i_k_slider = tk.Scale(
             frame,
-            from_ = -5,
+            from_ = 1,
             to = 5,
             orient="horizontal",
             variable = i_k,
             label = "I")
         d_k_slider = tk.Scale(
             frame,
-            from_ = -5,
+            from_ = 1,
             to = 5,
             orient = "horizontal",
             variable = d_k,
@@ -428,7 +428,7 @@ def gui(mode):
         # Control constant
         control_constant_slider = tk.Scale(
             frame,
-            from_ = -50,
+            from_ = 1,
             to = 50,
             orient = "horizontal",
             variable = control_constant,
