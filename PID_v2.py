@@ -108,7 +108,7 @@ def cmdline_logic():
                          "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
         initialparams = pd.DataFrame(data=param_list, index=values_labels).T
         # Need to pay attention to what this returns, this is critical for initialization
-        print("Simulating. . .")
+        print("Simulating . . .")
         print(".")
         print(". .")
         print(". . .")
@@ -146,9 +146,7 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
 
     # Starts making the dataframe here
     time_series = row_maker(sample_number)
-    print(time_series)
     df = time(sample_number, sample_freq, time_series)
-    print(df)
     df.set_index(df["time"])
 
     # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
