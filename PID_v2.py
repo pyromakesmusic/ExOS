@@ -81,10 +81,7 @@ def cmdline_logic():
         print(vel_start)
         accel_start = float(input("Start acceleration (float): "))
         print(accel_start)
-        t_start = int(input("Start time value (int): "))
-        print(t_start)
-        t_end = int(input("End time value (int): "))
-        print(t_end)
+
         mass = float(input("Mass (float): "))
         print(mass)
         scale_factor = float(input("Scaling factor for external disturbance (float): "))
@@ -225,22 +222,6 @@ def gui(mode):
             value=0
         )
 
-        t_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="T_Start",
-            value=0
-        )
-
-        t_end_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="T_End",
-            value=0
-        )
-
         mass_slider = widgets.IntSlider(
             min=0,
             max=10,
@@ -319,8 +300,7 @@ def gui(mode):
         pos_start = position_start_slider.value
         vel_start = velocity_start_slider.value
         accel_start = accel_start_slider.value
-        t_start = t_start_slider.value
-        t_end = t_end_slider.value
+
         mass = mass_slider.value
         scale_factor = scale_factor_slider.value
         set_point = set_point_slider.value
@@ -344,8 +324,7 @@ def gui(mode):
         pos_start = tk.DoubleVar()  # meters
         vel_start = tk.DoubleVar()  # m/s
         accel_start = tk.DoubleVar()  # m/s^2
-        t_start = tk.IntVar()  # seconds
-        t_end = tk.IntVar()  # seconds
+
         mass = tk.DoubleVar()  # kilograms
         # PID parameters
         set_point = tk.DoubleVar()  # float(input("Set point of speed to maintain? "))
@@ -390,18 +369,7 @@ def gui(mode):
             to = 100,
             orient = "horizontal",
             variable = accel_start)
-        t_start_slider = tk.Scale(
-            frame,
-            from_ = 1,
-            to = 100,
-            orient = "horizontal",
-            variable = t_start)
-        t_end_slider = tk.Scale(
-            frame,
-            from_ = 53,
-            to = 100,
-            orient = "horizontal",
-            variable = t_end)
+
         mass_slider = tk.Scale(
             frame,
             from_ = 2,
@@ -455,20 +423,21 @@ def gui(mode):
             variable = control_sign)
 
         initial_values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(),
-                          accel_start.get(), t_start.get(), t_end.get(), mass.get(),
+                          accel_start.get(), mass.get(),
                           scale_factor.get(), set_point.get(), p_k.get(), i_k.get(), d_k.get(), control_constant.get(),
                           control_sign.get()]
         values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
-                         "t_start", "t_end", "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
+                         "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
                          "control_constant", "control_sign"]
         initial_values_df = pd.DataFrame(data=initial_values, index=values_labels).T
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
         simulate_button = tk.Button(
             frame,
-            command=simulate(initial_values_df)
+            command= lambda: simulate(initial_values_df),
+            text="Simulate"
         )
-        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
+        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
                        control_constant_slider, control_sign_slider, simulate_button]
 
