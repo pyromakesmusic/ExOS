@@ -52,29 +52,38 @@ def initialize():
     Just gets some initial information from the user about the time resolution.
     :return:
     """
-    gui_mode = bool(input("Run in GUI mode? "))
-    if gui_mode == True:
-        gui_mode = input("Input mode? [ipython/tkinter]")
-        initialparams = gui(gui_mode)
+    gui_mode = (input("Run in GUI mode? [y/n] "))
+    if gui_mode == "y":
+        gui_type = input("Input mode? [ipython/tkinter] ")
+        initialparams = gui(gui_type)
         print(initialparams)
 
     else:
-        sample_rate = int(input("Sample rate in Hz (int): \n"))
-        print(sample_rate)
-        total_time = int(input("Total time in seconds (int): \n"))
-        print(total_time)
-        sample_number = total_samples(sample_rate, total_time)
+        sample_freq = int(input("Sample rate in Hz (int): \n"))
+        print(sample_freq)
+        sample_length = int(input("Total time in seconds (int): \n"))
+        print(sample_length)
+        sample_number = total_samples(sample_freq, sample_length)
         print("Total number of samples:", sample_number)
         set_point = float(input("Set point for cruise control (float): \n"))
         print(set_point)
-        p_k = float(input("Proportional scaling factor (float):"))
+        pos_start = float(input("Start position (float): "))
+        vel_start = float(input("Start velocity (float): "))
+        accel_start = float(input("Start acceleration (float): "))
+        t_start = int(input("Start time value (int): "))
+        t_end = int(input("End time value (int): "))
+        mass = float(input("Mass (float): "))
+        scale_factor = float(input("Scaling factor for external disturbance (float): "))
+        p_k = float(input("Proportional scaling factor (float): "))
         i_k = float(input("Integral scaling factor (float): "))
         d_k = float(input("Derivative scaling factor (float): "))
-        scaling_factor = float(input("Scaling factor for external disturbance (float): "))
-        param_list = []
-        initialparams = pd.Series(data = param_list
+        control_constant = float(input("Constant multiple for PID term to throttle output (float): "))
+        control_sign = int(input("Sign of throttle vs. PID: "))
+
+        param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
+        initialparams = pd.Series(data = param_list)
         # Need to pay attention to what this returns, this is critical for initialization
-    return gui_mode, sample_number, sample_rate, set_point, p_k, i_k, d_k, scaling_factor
+    return initialparams
 
 def gui(mode):
 
@@ -84,6 +93,20 @@ def gui(mode):
     # Two options for GUI
     # Kinematic parameters
     if mode == "ipython":
+        sample_length_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Pos_0",
+            value=0
+        )
+        sample_freq_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Pos_0",
+            value=0
+        )
         position_start_slider = widgets.IntSlider(
             min=0,
             max=10,
@@ -191,13 +214,14 @@ def gui(mode):
             description="Ctrl Sign",
             value=0
         )
-        widget_list = [position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
+        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
                        control_constant_slider, control_sign_slider]
         for item in widget_list:
             display(item)
 
-
+        sample_length = sample_length_slider.value
+        sample_freq = sample_freq_slider.value
         pos_start = position_start_slider.value
         vel_start = velocity_start_slider.value
         accel_start = accel_start_slider.value
@@ -217,6 +241,8 @@ def gui(mode):
         window.title("PID Controller v1.a")
         frame = ttk.Frame(window, padding=10)
 
+        sample_length = tk.IntVar() # seconds
+        sample_freq = tk.IntVar() # Hz
         pos_start = tk.DoubleVar()  # meters
         vel_start = tk.DoubleVar()  # m/s
         accel_start = tk.DoubleVar()  # m/s^2
@@ -231,10 +257,22 @@ def gui(mode):
         scale_factor = tk.DoubleVar()  # float(input("Scaling factor for external disturbance? "))
         control_constant = tk.DoubleVar()  # this is your k omega
         control_sign = True  # this should be a checkbox
-        throttle_f = 0.0  # initial force applied by throttle = 0
+
         """
         Initialization Parameters
         """
+        sample_length_slider = ttk.Scale(
+            frame,
+            from_ = 10,
+            to = 100,
+            orient = "horizontal",
+            variable = sample_length)
+        sample_freq_slider = ttk.Scale(
+            frame,
+            from_ = 37,
+            to = 100,
+            orient = "horizontal",
+            variable = sample_freq)
         # Kinematic parameters
         position_start_slider = ttk.Scale(
             frame,
@@ -323,8 +361,8 @@ def gui(mode):
         for item in widget_list:
             item.pack()
         window.mainloop()
-
-    values = [pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
+    throttle_f = 0.0  # initial force applied by throttle = 0
+    values = [sample_length, sample_freq, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
     values_series = pd.Series(data = "values")
 
     return values_series
@@ -487,8 +525,8 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
 
 def main():
 
-    gui_mode, total_samples, sample_freq, set_point, p_k, i_k, d_k, scaling_factor = initialize()
-
+    init_params = initialize()
+    print(init_params)
     time_series = row_maker(total_samples, sample_freq)
     df = time(total_samples, sample_freq, time_series)
     df.set_index(df["time"])
