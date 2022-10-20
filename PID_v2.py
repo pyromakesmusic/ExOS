@@ -65,6 +65,20 @@ def row_maker(total_samples):
     df = pd.DataFrame(columns=headers, index=range(total_samples))
     return df
 
+def list_to_df(list):
+    values_gotten = [list[0].get(), list[1].get()]
+
+    sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
+    values_gotten.append(sample_number)
+    for i in list[2::1]:
+        values_gotten.append(i.get())
+    values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
+                     "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
+                     "control_constant", "control_sign"]
+
+    df = pd.DataFrame(data=values_gotten, index=values_labels).T
+    return df
+
 def cmdline_logic():
     user_input = input("Simulate? [yes/no]: ")
     while user_input == "yes":
@@ -180,6 +194,7 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
 def sim_and_plot(init_vals_df, axes):
     print(init_vals_df.keys)
     simulate(init_vals_df).plot(x="time", y="velocity", ax=axes)
+    plt.show()
     return
 def gui(mode):
 
@@ -410,6 +425,8 @@ def gui(mode):
             orient = "horizontal",
             variable=p_k,
             label = "P")
+        p_k_slider.set(1)
+
         i_k_slider = tk.Scale(
             frame,
             from_ = -5,
@@ -417,6 +434,8 @@ def gui(mode):
             orient="horizontal",
             variable = i_k,
             label = "I")
+        i_k_slider.set(1)
+
         d_k_slider = tk.Scale(
             frame,
             from_ = -5,
@@ -424,6 +443,8 @@ def gui(mode):
             orient = "horizontal",
             variable = d_k,
             label = "D")
+        d_k_slider.set(1)
+
         # Control constant
         control_constant_slider = tk.Scale(
             frame,
@@ -432,6 +453,8 @@ def gui(mode):
             orient = "horizontal",
             variable = control_constant,
             label = "Control Const")
+        control_constant_slider.set(1)
+
         # This should be a checkbox that just flips
         control_sign_slider = tk.Scale(
             frame,
@@ -444,16 +467,14 @@ def gui(mode):
         """
         All of the below needs to be put into a function that goes into the button. It should go after the creation of the graph.
         """
-        sample_number = int(total_samples(sample_freq.get(), sample_length.get()))
-        initial_values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(),
-                          accel_start.get(), mass.get(),
-                          scale_factor.get(), set_point.get(), p_k.get(), i_k.get(), d_k.get(), control_constant.get(),
-                          control_sign.get()]
-        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
-                         "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
-                         "control_constant", "control_sign"]
-        initial_values_df = pd.DataFrame(data=initial_values, index=values_labels).T
 
+
+        init_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
+                       mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
+                       control_constant_slider, control_sign_slider]
+
+        initial_values_df = list_to_df(init_list)
+        print(initial_values_df)
         # This button should run the simulation and probably plot it, at least depending on a checkbox
 
         figure = plt.Figure(figsize=(6, 5), dpi=100)
@@ -467,7 +488,7 @@ def gui(mode):
             command= lambda: sim_and_plot(initial_values_df, ax),
             text="Simulate")
 
-        ax.set_title('The Title for your chart')
+        ax.set_title('Velocity vs. Time')
 
         widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
@@ -476,6 +497,7 @@ def gui(mode):
         for item in widget_list:
             item.pack()
         frame.mainloop()
+        print(initial_values_df)
     return
 
 def noise_f(k):
