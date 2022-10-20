@@ -65,7 +65,7 @@ def row_maker(total_samples):
     return df
 
 def cmdline_logic():
-    user_input = "Simulate? [yes/no]: "
+    user_input = input("Simulate? [yes/no]: ")
     while user_input == "yes":
         sample_freq = int(input("Sample rate in Hz (int): "))
         print(sample_freq)
@@ -114,7 +114,7 @@ def cmdline_logic():
         print(". . .")
         simulate(initialparams)
         user_input = ("Simulate again? [yes/no]: ")
-    return
+    return initialparams
 
 def initialize():
     """
@@ -126,9 +126,10 @@ def initialize():
         gui_type = input("Input mode? [ipython/tkinter] ")
         gui(gui_type)
 
-    else:
+    elif gui_mode == "n":
         cmdline_logic()
-    return
+    else:
+        return
 def simulate(init_params): # This should be taking a DataFrame and returning all the program logic
 
     print("sample number: ", init_params["sample_number"][0])
@@ -174,7 +175,8 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
         df = pid(df, x, p_k, i_k, d_k, control_const)
 
     print(df)
-
+    graph = plt.plot(df["time"], df["velocity"])
+    plt.show()
     return df
 
 def gui(mode):
@@ -623,9 +625,6 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
 
 def main():
     initialize()
-
-#    plt.plot(simulation["time"], simulation["velocity"])
-#    plt.show()
     return
 
 main()
