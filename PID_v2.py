@@ -47,18 +47,26 @@ FUNCTION DEFINITIONS
 ====================
 """
 
-def initialize():
+
+def total_samples(sample_rate=20, total_time=20):
+    total_samples = int(sample_rate * total_time)
+    return total_samples
+
+
+def row_maker(total_samples):
     """
-    Just gets some initial information from the user about the time resolution.
+    Creates the indexed DataFrame.
+    :param total_samples:
+    :param smp_rate:
     :return:
     """
-    gui_mode = (input("Run in GUI mode? [y/n] "))
-    if gui_mode == "y":
-        gui_type = input("Input mode? [ipython/tkinter] ")
-        initialparams = gui(gui_type)
-        print(initialparams)
+    headers = ["time","mass", "disturbance_force", "error", "proportional", "integral", "derivative", "pid", "throttle_force", "total_force", "acceleration", "velocity", "position"]
+    df = pd.DataFrame(columns=headers, index=range(total_samples))
+    return df
 
-    else:
+def cmdline_logic():
+    user_input = "Simulate? [yes/no]: "
+    while user_input == "yes":
         sample_freq = int(input("Sample rate in Hz (int): "))
         print(sample_freq)
         sample_length = int(input("Total time in seconds (int): "))
@@ -92,12 +100,82 @@ def initialize():
         control_sign = int(input("Sign of throttle vs. PID: "))
         print(control_sign)
 
-        param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass, scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
-        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start", "t_start", "t_end",
+        param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end,
+                      mass,
+                      scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
+        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
+                         "t_start", "t_end",
                          "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
-        initialparams = pd.DataFrame(data = param_list, index=values_labels).T
+        initialparams = pd.DataFrame(data=param_list, index=values_labels).T
         # Need to pay attention to what this returns, this is critical for initialization
-    return initialparams
+        print("Simulating. . .")
+        print(".")
+        print(". .")
+        print(". . .")
+        simulate(initialparams)
+        user_input = ("Simulate again? [yes/no]: ")
+    return
+
+def initialize():
+    """
+    Just gets some initial information from the user about the time resolution.
+    :return:
+    """
+    gui_mode = (input("Run in GUI mode? [y/n] "))
+    if gui_mode == "y":
+        gui_type = input("Input mode? [ipython/tkinter] ")
+        gui(gui_type)
+
+    else:
+        cmdline_logic()
+    return
+def simulate(init_params): # This should be taking a DataFrame and returning all the program logic
+
+    print("sample number: ", init_params["sample_number"][0])
+    print(init_params)
+    sample_number = int(init_params["sample_number"][0])
+    sample_freq = int(init_params["sample_freq"][0])
+    disturbance_const = float(init_params["scale_factor"][0])
+
+    set_point = float(init_params["set_point"][0])
+    p_k = float(init_params["p_k"][0])
+    i_k = float(init_params["i_k"][0])
+    d_k = float(init_params["d_k"][0])
+    control_const = float(init_params["control_constant"][0])
+
+    # Starts making the dataframe here
+    time_series = row_maker(sample_number)
+    print(time_series)
+    df = time(sample_number, sample_freq, time_series)
+    print(df)
+    df.set_index(df["time"])
+
+    # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
+    df.at[0, "error"] = 0  # This should definitely still be initialized at 0
+    df.at[0, "pid"] = 0  # This should also still initialize at 0
+    df.at[0, "throttle_force"] = 0  # This should initialize at 0 except under weird circumstances
+    df.at[0, "total_force"] = 0  # This can be whatever; the disturbance force isn't necessarily zero at start
+    df.at[0, "acceleration"] = init_params["accel_start"][0]  # This is also not necessarily zero, it includes an initial acceleration, but can be calculated instantaneously
+    df.at[0, "velocity"] = init_params["vel_start"][0]  # Not necessarily 0, may be some v0
+    df.at[0, "position"] = init_params["pos_start"][0]  # Definitely not necessarily zero
+
+    # Filling out the columns that we can do in one go
+    df = mass(sample_number, df)
+    df = disturbance_force(sample_number, df, disturbance_const)
+
+    # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
+    for x in range(0, sample_number):
+        df = throttle_force(df, x)
+        df = total_force(df, x)
+        df = acceleration(df, x)
+        df = velocity(df, x)
+        df = position(df, x)
+        df = error(set_point, df, x)
+        df = pid(df, x, p_k, i_k, d_k, control_const)
+
+    print(df)
+
+    return df
 
 def gui(mode):
 
@@ -285,7 +363,7 @@ def gui(mode):
             to = 100,
             orient = "horizontal",
             variable = sample_length)
-        sample_freq_slider = ttk.Scale(
+        sample_freq_slider = tk.Scale(
             frame,
             from_ = 37,
             to = 100,
@@ -373,43 +451,39 @@ def gui(mode):
             to = 100,
             orient = "horizontal",
             variable = control_sign)
-        widget_list = [position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
+
+        initial_values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(),
+                          accel_start.get(), t_start.get(), t_end.get(), mass.get(),
+                          scale_factor.get(), set_point.get(), p_k.get(), i_k.get(), d_k.get(), control_constant.get(),
+                          control_sign.get()]
+        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
+                         "t_start", "t_end", "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
+                         "control_constant", "control_sign"]
+        initial_values_df = pd.DataFrame(data=initial_values, index=values_labels).T
+
+        # This button should run the simulation and probably plot it, at least depending on a checkbox
+        simulate_button = tk.Button(
+            frame,
+            command=simulate(initial_values_df)
+        )
+        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider, control_sign_slider]
+                       control_constant_slider, control_sign_slider, simulate_button]
 
         for item in widget_list:
             item.pack()
         frame.mainloop()
 
-        values = [sample_length.get(), sample_freq.get(), sample_number, pos_start.get(), vel_start.get(), accel_start.get(), t_start.get(), t_end.get(), mass.get(),
-                  scale_factor.get(), set_point.get(), p_k.get(), i_k.get(), d_k.get(), control_constant.get(), control_sign.get()]
+
     throttle_f = 0.0  # initial force applied by throttle = 0
 
-    values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start", "t_start", "t_end", "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k", "control_constant", "control_sign"]
-    values_df = pd.DataFrame(data = values, index=values_labels ).T
-
-    return values_df
+    return
 
 def noise_f(k):
     whitenoise = np.random.normal(1,2)
     scaled_noise = k * whitenoise
     return scaled_noise
 
-def total_samples(sample_rate=20, total_time=20):
-    total_samples = int(sample_rate * total_time)
-    return total_samples
-
-
-def row_maker(total_samples):
-    """
-    Creates the indexed DataFrame.
-    :param total_samples:
-    :param smp_rate:
-    :return:
-    """
-    headers = ["time","mass", "disturbance_force", "error", "proportional", "integral", "derivative", "pid", "throttle_force", "total_force", "acceleration", "velocity", "position"]
-    df = pd.DataFrame(columns=headers, index=range(total_samples))
-    return df
 def time(num_samples, sample_rate, df):
     """
     Enters the time value into the dataframe.
@@ -548,54 +622,10 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     return df
 
 def main():
+    initialize()
 
-    init_params = initialize()
-    print(init_params)
-    # Comment the below out for now; just work on accessing the parameters individually and linking them up
-    print("Total number of samples: ", init_params.iloc[0]["sample_number"])
-    sample_number = int(init_params.iloc[0]["sample_number"])
-    disturbance_const = float(init_params.iloc[0]["scale_factor"])
-
-    set_point = float(init_params.iloc[0]["set_point"])
-    p_k = float(init_params.iloc[0]["p_k"])
-    i_k = float(init_params.iloc[0]["i_k"])
-    d_k = float(init_params.iloc[0]["d_k"])
-    control_const = float(init_params.iloc[0]["control_constant"])
-
-
-    # Starts making the dataframe here
-    time_series = row_maker(sample_number)
-    df = time(sample_number, init_params["sample_freq"], time_series)
-    df.set_index(df["time"])
-
-    # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
-    df.at[0, "error"] = 0 # This should definitely still be initialized at 0
-    df.at[0, "pid"] = 0 # This should also still initialize at 0
-    df.at[0, "throttle_force"] = 0 # This should initialize at 0 except under weird circumstances
-    df.at[0, "total_force"] = 0 # This can be whatever; the disturbance force isn't necessarily zero at start
-    df.at[0, "acceleration"] = 0 # This is also not necessarily zero, it includes an initial acceleration, but can be calculated instantaneously
-    df.at[0, "velocity"] = 0 # Not necessarily 0, may be some v0
-    df.at[0, "position"] = 0 # Definitely not necessarily zero
-
-
-    # Filling out the columns that we can do in one go
-    df = mass(sample_number, df)
-    df = disturbance_force(sample_number, df, disturbance_const)
-
-    # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
-    for x in range(0, sample_number):
-        df = throttle_force(df, x)
-        df = total_force(df, x)
-        df = acceleration(df, x)
-        df = velocity(df, x)
-        df = position(df, x)
-        df = error(set_point, df, x)
-        df = pid(df, x, p_k, i_k, d_k, control_const)
-
-    print(df)
-    plt.plot(df["time"], df["velocity"])
-    plt.show()
-
-    return 
+#    plt.plot(simulation["time"], simulation["velocity"])
+#    plt.show()
+    return
 
 main()
