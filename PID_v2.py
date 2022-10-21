@@ -361,15 +361,15 @@ def gui(mode):
         """
         sample_length_slider = tk.Scale(
             frame,
-            from_ = 10,
-            to = 500,
+            from_ = 5,
+            to = 50,
             orient = "horizontal",
             variable = sample_length,
             label="Sample Length")
         sample_freq_slider = tk.Scale(
             frame,
-            from_ = 20,
-            to = 500,
+            from_ = 5,
+            to = 50,
             orient = "horizontal",
             variable = sample_freq,
             label = "Sample Freq.")
@@ -420,8 +420,8 @@ def gui(mode):
             label = "Set Point")
         p_k_slider = tk.Scale(
             frame,
-            from_ = -5,
-            to = 5,
+            from_ = -100,
+            to = 100,
             orient = "horizontal",
             variable=p_k,
             label = "P")
@@ -429,17 +429,17 @@ def gui(mode):
 
         i_k_slider = tk.Scale(
             frame,
-            from_ = -5,
-            to = 5,
+            from_ = -100,
+            to = 100,
             orient="horizontal",
             variable = i_k,
             label = "I")
-        i_k_slider.set(1)
+        i_k_slider.set(0)
 
         d_k_slider = tk.Scale(
             frame,
-            from_ = -5,
-            to = 5,
+            from_ = -100,
+            to = 100,
             orient = "horizontal",
             variable = d_k,
             label = "D")
