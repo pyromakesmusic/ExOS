@@ -66,11 +66,13 @@ def row_maker(total_samples):
     return df
 
 def list_to_df(list):
+    print(list)
     values_gotten = [list[0].get(), list[1].get()]
 
     sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
     values_gotten.append(sample_number)
     for i in list[2::1]:
+        print(i.get())
         values_gotten.append(i.get())
     values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
                      "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
@@ -184,8 +186,6 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
         df = position(df, x)
         df = error(set_point, df, x)
         df = pid(df, x, p_k, i_k, d_k, control_const)
-
-    print(df)
     graph = plt.plot(df["time"], df["velocity"])
     plt.show()
     return df
@@ -473,8 +473,7 @@ def gui(mode):
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
                        control_constant_slider, control_sign_slider]
 
-        initial_values_df = list_to_df(init_list)
-        print(initial_values_df)
+
         # This button should run the simulation and probably plot it, at least depending on a checkbox
 
         figure = plt.Figure(figsize=(6, 5), dpi=100)
@@ -485,7 +484,7 @@ def gui(mode):
 
         simulate_button = tk.Button(
             frame,
-            command= lambda: sim_and_plot(initial_values_df, ax),
+            command= lambda: sim_and_plot(list_to_df(init_list), ax),
             text="Simulate")
 
         ax.set_title('Velocity vs. Time')
@@ -497,7 +496,6 @@ def gui(mode):
         for item in widget_list:
             item.pack()
         frame.mainloop()
-        print(initial_values_df)
     return
 
 def noise_f(k):
