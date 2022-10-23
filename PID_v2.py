@@ -420,8 +420,8 @@ def gui(mode):
             label = "Set Point")
         p_k_slider = tk.Scale(
             frame,
-            from_ = -100,
-            to = 100,
+            from_ = -5,
+            to = 20,
             orient = "horizontal",
             variable=p_k,
             label = "P")
@@ -429,8 +429,8 @@ def gui(mode):
 
         i_k_slider = tk.Scale(
             frame,
-            from_ = -100,
-            to = 100,
+            from_ = -5,
+            to = 20,
             orient="horizontal",
             variable = i_k,
             label = "I")
@@ -438,12 +438,12 @@ def gui(mode):
 
         d_k_slider = tk.Scale(
             frame,
-            from_ = -100,
-            to = 100,
+            from_ = -5,
+            to = 20,
             orient = "horizontal",
             variable = d_k,
             label = "D")
-        d_k_slider.set(1)
+        d_k_slider.set(0)
 
         # Control constant
         control_constant_slider = tk.Scale(
@@ -634,7 +634,12 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     df_abridged = df[0:i]
     proportional = p_k * df.at[i, "error"]
     integral = i_k * np.trapz(df_abridged["error"])
-    derivative = d_k * df.at[i, "error"]
+    print(df_abridged["error"])
+    if i < 2:
+        derivative = 0
+    else:
+        derivative = d_k * df.at[i, "error"]
+        print(np.gradient(df_abridged["error"]))
     pid = scaling_factor * (proportional + integral + derivative)
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
