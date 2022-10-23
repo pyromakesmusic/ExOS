@@ -422,6 +422,7 @@ def gui(mode):
             frame,
             from_ = -5,
             to = 20,
+            resolution=.01,
             orient = "horizontal",
             variable=p_k,
             label = "P")
@@ -429,8 +430,9 @@ def gui(mode):
 
         i_k_slider = tk.Scale(
             frame,
-            from_ = -5,
-            to = 20,
+            from_ = -1,
+            to = 1,
+            resolution=.01,
             orient="horizontal",
             variable = i_k,
             label = "I")
@@ -438,8 +440,9 @@ def gui(mode):
 
         d_k_slider = tk.Scale(
             frame,
-            from_ = -5,
-            to = 20,
+            from_ = -1,
+            to = 1,
+            resolution=.01,
             orient = "horizontal",
             variable = d_k,
             label = "D")
@@ -448,8 +451,9 @@ def gui(mode):
         # Control constant
         control_constant_slider = tk.Scale(
             frame,
-            from_ = -50,
-            to = 50,
+            from_ = -5,
+            to = 5,
+            resolution=.01
             orient = "horizontal",
             variable = control_constant,
             label = "Control Const")
