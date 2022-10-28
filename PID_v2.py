@@ -44,6 +44,24 @@ GLOBALS
 """
 
 """
+CLASS DEFINITIONS
+"""
+class AppInstance:
+    def __init__(self):
+        self.root = tk.Tk()
+        self._job = None
+        self.slider = tk.Scale(self.root, orient = "horizontal", command = self.updateValue)
+
+        def updateValue(self, event):
+            if self._job:
+                self.root.after_cancel(self._job)
+            self._job = self.root.after(500, self.do_something)
+
+        def _do_something(self):
+            self._job = None
+            print("new value:", self.slider.get())
+
+"""
 FUNCTION DEFINITIONS
 ====================
 """
@@ -76,7 +94,7 @@ def list_to_df(list):
         values_gotten.append(i.get())
     values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
                      "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
-                     "control_constant", "control_sign"]
+                     "control_constant"]
 
     df = pd.DataFrame(data=values_gotten, index=values_labels).T
     return df
@@ -460,15 +478,6 @@ def gui(mode):
             label = "Control Const")
         control_constant_slider.set(1)
 
-        # This should be a checkbox that just flips
-        control_sign_slider = tk.Scale(
-            frame,
-            from_ = 1,
-            to = 1,
-            orient = "horizontal",
-            variable = control_sign,
-            label = "Control Sign")
-
         """
         All of the below needs to be put into a function that goes into the button. It should go after the creation of the graph.
         """
@@ -476,7 +485,7 @@ def gui(mode):
 
         init_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider, control_sign_slider]
+                       control_constant_slider]
 
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
@@ -496,7 +505,7 @@ def gui(mode):
 
         widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider, control_sign_slider, simulate_button]
+                       control_constant_slider, simulate_button]
 
         for item in widget_list:
             item.pack()
