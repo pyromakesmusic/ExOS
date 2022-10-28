@@ -339,7 +339,7 @@ def gui(mode):
         frame.title("PID Controller v1.1.b")
         frame.wm_attributes("-topmost", True)
         frame.attributes("-fullscreen", False)
-
+        frame.configure(bg="grey30")
         sample_length = tk.IntVar() # seconds
         sample_freq = tk.IntVar() # Hz
 
