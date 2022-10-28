@@ -336,8 +336,9 @@ def gui(mode):
     elif mode == "tkinter": # the tkinter section
         # Creates the main window
         frame = tk.Tk()
-        frame.title("PID Controller v1.b")
-        frame.geometry("1000x1000")
+        frame.title("PID Controller v1.1.b")
+        frame.wm_attributes("-topmost", True)
+        frame.attributes("-fullscreen", False)
 
         sample_length = tk.IntVar() # seconds
         sample_freq = tk.IntVar() # Hz
