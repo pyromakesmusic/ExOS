@@ -46,11 +46,157 @@ GLOBALS
 """
 CLASS DEFINITIONS
 """
-class AppInstance:
+class SimulationGUI:
     def __init__(self):
         self.root = tk.Tk()
         self._job = None
-        self.slider = tk.Scale(self.root, orient = "horizontal", command = self.updateValue)
+        # This needs to go after the variables are created
+        self.slider = tk.Scale(self.root,
+                               from_=0,
+                               to=256,
+                               orient = "horizontal",
+                               command = self.updateValue)
+
+        self.root.title("PID Controller v1.1.b")
+        self.root.wm_attributes("-topmost", True)
+        self.root.attributes("-fullscreen", False)
+        self.root.configure(bg="grey30")
+
+        """
+        Simulation Parameters
+        """
+        # Length of dataframe variables
+        self.sample_length = tk.IntVar() # seconds
+        self.sample_freq = tk.IntVar() # Hz
+        # Initial conditions
+        self.pos_start = tk.DoubleVar()  # meters
+        self.vel_start = tk.DoubleVar()  # m/s
+        self.accel_start = tk.DoubleVar()  # m/s^2
+        # Static variable (for now)
+        self.mass = tk.DoubleVar()  # kilograms
+        # PID parameters
+        self.set_point = tk.DoubleVar()  # float(input("Set point of speed to maintain? "))
+        self.p_k = tk.DoubleVar()  # float(input("Proportional term? "))
+        self.i_k = tk.DoubleVar()  # float(input("Integral term? "))
+        self.d_k = tk.DoubleVar()  # float(input("Derivative term? "))
+        self.scale_factor = tk.DoubleVar()  # float(input("Scaling factor for external disturbance? "))
+        self.control_constant = tk.DoubleVar()  # this is your k omega
+
+        """
+        Sliders
+        """
+
+        self.sample_length_slider = tk.Scale(
+            frame,
+            from_=5,
+            to=50,
+            orient="horizontal",
+            variable=sample_length,
+            label="Sample Length",
+            command=self.updateValue)
+        self.sample_freq_slider = tk.Scale(
+            frame,
+            from_=5,
+            to=50,
+            orient="horizontal",
+            variable=sample_freq,
+            label="Sample Freq.",
+            command=self.updateValue)
+        # Kinematic parameters
+        self.position_start_slider = tk.Scale(
+            frame,
+            from_=0,
+            to=50,
+            orient="horizontal",
+            variable=pos_start,
+            label="Init. Pos.",
+            command=self.updateValue)
+        self.velocity_start_slider = tk.Scale(
+            frame,
+            from_=0,
+            to=50,
+            orient="horizontal",
+            variable=vel_start,
+            label="Init. Vel.",
+            command=self.updateValue)
+        self.accel_start_slider = tk.Scale(
+            frame,
+            from_=0,
+            to=5,
+            orient="horizontal",
+            variable=accel_start,
+            label="Init. Accel",
+            command=self.updateValue)
+
+        self.mass_slider = tk.Scale(
+            frame,
+            from_=1,
+            to=100,
+            orient="horizontal",
+            variable=mass,
+            label="Mass",
+            command=self.updateValue)
+        self.scale_factor_slider = tk.Scale(
+            frame,
+            from_=1,
+            to=10,
+            orient="horizontal",
+            variable=scale_factor,
+            label="Scale Factor",
+            command=self.updateValue)
+        # PID parameters
+        self.set_point_slider = tk.Scale(
+            frame,
+            from_=1,
+            to=50,
+            orient="horizontal",
+            variable=set_point,
+            label="Set Point",
+            command=self.updateValue)
+        self.p_k_slider = tk.Scale(
+            frame,
+            from_=-1,
+            to=3,
+            resolution=.01,
+            orient="horizontal",
+            variable=p_k,
+            label="P",
+            command=self.updateValue)
+        self.p_k_slider.set(1)
+
+        self.i_k_slider = tk.Scale(
+            frame,
+            from_=-1,
+            to=1,
+            resolution=.01,
+            orient="horizontal",
+            variable=i_k,
+            label="I",
+            command=self.updateValue)
+        self.i_k_slider.set(0)
+
+        self.d_k_slider = tk.Scale(
+            frame,
+            from_=-1,
+            to=1,
+            resolution=.01,
+            orient="horizontal",
+            variable=d_k,
+            label="D",
+            command=self.updateValue)
+        self.d_k_slider.set(0)
+
+        # Control constant
+        self.control_constant_slider = tk.Scale(
+            frame,
+            from_=-5,
+            to=5,
+            resolution=.01,
+            orient="horizontal",
+            variable=control_constant,
+            label="Control Const",
+            command=self.updateValue)
+        self.control_constant_slider.set(1)
 
         def updateValue(self, event):
             if self._job:
@@ -60,6 +206,36 @@ class AppInstance:
         def _do_something(self):
             self._job = None
             print("new value:", self.slider.get())
+
+        """
+                All of the below needs to be put into a function that goes into the button. It should go after the creation of the graph.
+                """
+
+        self.init_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
+                        self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
+                        self.p_k_slider, self.i_k_slider, self.d_k_slider, self.control_constant_slider]
+
+        # This button should run the simulation and probably plot it, at least depending on a checkbox
+
+        self.figure = plt.Figure(figsize=(6, 5), dpi=100)
+        self.ax = figure.add_subplot(111)
+        self.chart_type = FigureCanvasTkAgg(figure, root)
+        self.chart_type.get_tk_widget().pack(side=tk.RIGHT)
+
+        self.simulate_button = tk.Button(
+            root,
+            command=lambda: self.sim_and_plot(self.list_to_df(self.init_list), self.ax),
+            text="Simulate")
+
+        self.ax.set_title('Velocity vs. Time')
+
+        self.widget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
+                       self.accel_start_slider, self.mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
+                       self.control_constant_slider, simulate_button]
+
+        for item in self.widget_list:
+            item.pack()
+        root.mainloop()
 
 """
 FUNCTION DEFINITIONS
@@ -373,7 +549,6 @@ def gui(mode):
         d_k = tk.DoubleVar()  # float(input("Derivative term? "))
         scale_factor = tk.DoubleVar()  # float(input("Scaling factor for external disturbance? "))
         control_constant = tk.DoubleVar()  # this is your k omega
-        control_sign = tk.DoubleVar()  # this should be a checkbox
 
         """
         Initialization Parameters
