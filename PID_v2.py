@@ -50,7 +50,7 @@ GLOBALS
 CLASS DEFINITIONS
 """
 class tkinterGUI:
-    def list_to_df(list):
+    def list_to_df(self, list):
         values_gotten = [list[0].get(), list[1].get()]
 
         sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
@@ -63,7 +63,7 @@ class tkinterGUI:
 
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
-    def sim_and_plot(init_vals_df, axes):
+    def sim_and_plot(self, init_vals_df, axes):
         df = simulate(init_vals_df)
         df.plot(x="time", y="velocity", ax=axes)
         plt.draw()
@@ -72,11 +72,10 @@ class tkinterGUI:
     def updateValue(self, event):
         if self._job:
             self.root.after_cancel(self._job)
-        self._job = self.root.after(500, self.updateGraph)
+        self._job = self.root.after(50, self.updateGraph)
 
     def updateGraph(self):
-        lambda: sim_and_plot(list_to_df(self.init_list), self.ax)
-        return
+        return sim_and_plot(list_to_df(self.init_list), self.ax)
     def __init__(self):
         self.root = tk.Tk()
         self._job = None
@@ -170,16 +169,16 @@ class tkinterGUI:
             self.root,
             from_=1,
             to=10,
-            orient="horizontal",
+            orient="vertical",
             variable=self.scale_factor,
-            label="Scale Factor",
+            label="Disturbance",
             command=self.updateValue)
         # PID parameters
         self.set_point_slider = tk.Scale(
             self.root,
             from_=1,
             to=50,
-            orient="horizontal",
+            orient="vertical",
             variable=self.set_point,
             label="Set Point",
             command=self.updateValue)
@@ -188,7 +187,7 @@ class tkinterGUI:
             from_=-1,
             to=3,
             resolution=.01,
-            orient="horizontal",
+            orient="vertical",
             variable=self.p_k,
             label="P",
             command=self.updateValue)
@@ -199,7 +198,7 @@ class tkinterGUI:
             from_=-1,
             to=1,
             resolution=.01,
-            orient="horizontal",
+            orient="vertical",
             variable=self.i_k,
             label="I",
             command=self.updateValue)
@@ -210,7 +209,7 @@ class tkinterGUI:
             from_=-1,
             to=1,
             resolution=.01,
-            orient="horizontal",
+            orient="vertical",
             variable=self.d_k,
             label="D",
             command=self.updateValue)
@@ -222,7 +221,7 @@ class tkinterGUI:
             from_=-5,
             to=5,
             resolution=.01,
-            orient="horizontal",
+            orient="vertical",
             variable=self.control_constant,
             label="Control Const",
             command=self.updateValue)
@@ -261,6 +260,26 @@ class tkinterGUI:
         self.root.mainloop()
 
 class ipythonGUI:
+
+    def ipython_list_to_df(self, list):
+        values_gotten = [list[0], list[1]]
+
+        sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
+        values_gotten.append(sample_number)
+        for i in list[2::1]:
+            values_gotten.append(i)
+        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
+                         "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
+                         "control_constant"]
+
+        df = pd.DataFrame(data=values_gotten, index=values_labels).T
+        return df
+    def sim_and_plot(self, init_vals_df, axes):
+        df = simulate(init_vals_df)
+        df.plot(x="time", y="velocity", ax=axes)
+        plt.draw()
+        return
+
     def __init__(self):
         self.sample_length_slider = widgets.IntSlider(
             min=0,
@@ -379,14 +398,18 @@ class ipythonGUI:
         self.d_k = self.d_k_slider.value
         self.control_constant = self.control_constant_slider.value
         self.sample_number = int(total_samples(self.sample_freq, self.sample_length))
-        self.initial_values_list = [self.sample_length, self.sample_freq, self.sample_number, self.pos_start, self.vel_start,
+        self.init_list = [self.sample_length, self.sample_freq, self.sample_number, self.pos_start, self.vel_start,
                                     self.accel_start, self.mass, self.scale_factor, self.set_point, self.p_k, self.i_k, self.d_k,
                                     self.control_constant]
 
         self.figure = plt.Figure(figsize=(6, 5), dpi=100)
         self.ax = self.figure.add_subplot(111)
 
-        self.simulate_button = widgets.Button()
+        self.simulate_button = widgets.Button(
+            description="Simulate",
+            icon="play")
+
+        self.simulate_button.on_click(self.sim_and_plot(self.ipython_list_to_df(self.init_list), self.ax))
 
         self.ax.set_title('Velocity vs. Time')
 
