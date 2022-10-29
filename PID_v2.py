@@ -95,13 +95,13 @@ class tkinterGUI:
         Frames
         """
         simparams = tk.Frame(self.root)
-        simparams.pack()
+        simparams.pack(side="left", fill="y", expand=True)
 
         pidparams = tk.Frame(self.root)
         pidparams.pack(fill="x", expand=True)
 
         graph_frame = tk.Frame(self.root)
-        graph_frame.pack()
+        graph_frame.pack(side="right")
 
         """
         Simulation Parameters
