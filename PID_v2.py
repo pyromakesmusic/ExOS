@@ -63,9 +63,15 @@ class tkinterGUI:
 
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
-    def sim_and_plot(self, init_vals_df, axes):
-        df = simulate(init_vals_df)
-        df.plot(x="time", y="velocity", ax=axes)
+    def sim_and_plot(self, init_vals_df, frame):
+        self.figure = plt.Figure(figsize=(6, 5), dpi=100)
+        self.ax = self.figure.add_subplot(111)
+        self.ax.set_title('Velocity vs. Time')
+        self.chart_type = FigureCanvasTkAgg(self.figure, frame)
+        self.chart_type.get_tk_widget().pack(side=tk.RIGHT)
+        self.df = simulate(init_vals_df)
+        self.df.plot(x="time", y="velocity", ax=self.ax)
+
         plt.draw()
         return
 
@@ -251,17 +257,11 @@ class tkinterGUI:
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
 
-        self.figure = plt.Figure(figsize=(6, 5), dpi=100)
-        self.ax = self.figure.add_subplot(111)
-        self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
-        self.chart_type.get_tk_widget().pack(side=tk.RIGHT)
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
+            command=lambda: sim_and_plot(list_to_df(self.init_list), graph_frame),
             text="Simulate")
-
-        self.ax.set_title('Velocity vs. Time')
 
         self.simwidget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
                         self.accel_start_slider, self.mass_slider]
