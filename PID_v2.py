@@ -47,6 +47,26 @@ GLOBALS
 CLASS DEFINITIONS
 """
 class SimulationGUI:
+    def list_to_df(list):
+        print(list)
+        values_gotten = [list[0].get(), list[1].get()]
+
+        sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
+        values_gotten.append(sample_number)
+        for i in list[2::1]:
+            print(i.get())
+            values_gotten.append(i.get())
+        values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
+                         "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
+                         "control_constant"]
+
+        df = pd.DataFrame(data=values_gotten, index=values_labels).T
+        return df
+    def sim_and_plot(init_vals_df, axes):
+        print(init_vals_df.keys)
+        simulate(init_vals_df).plot(x="time", y="velocity", ax=axes)
+        plt.show()
+        return
 
     def updateValue(self, event):
         if self._job:
@@ -54,8 +74,8 @@ class SimulationGUI:
         self._job = self.root.after(500, self._do_something)
 
     def _do_something(self):
-        self._job = None
-        print("new value:", self.slider.get())
+        lambda: sim_and_plot(list_to_df(self.init_list), self.ax)
+        return
     def __init__(self):
         self.root = tk.Tk()
         self._job = None
@@ -226,7 +246,7 @@ class SimulationGUI:
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: self.sim_and_plot(self.list_to_df(self.init_list), self.ax),
+            command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
             text="Simulate")
 
         self.ax.set_title('Velocity vs. Time')
