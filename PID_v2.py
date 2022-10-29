@@ -92,6 +92,18 @@ class tkinterGUI:
         self.root.configure(bg="grey30")
 
         """
+        Frames
+        """
+        simparams = tk.Frame(self.root)
+        simparams.pack()
+
+        pidparams = tk.Frame(self.root)
+        pidparams.pack(fill="x", expand=True)
+
+        graph_frame = tk.Frame(self.root)
+        graph_frame.pack()
+
+        """
         Simulation Parameters
         """
         # Length of dataframe variables
@@ -166,7 +178,7 @@ class tkinterGUI:
             label="Mass",
             command=self.updateValue)
         self.scale_factor_slider = tk.Scale(
-            self.root,
+            pidparams,
             from_=1,
             to=10,
             orient="vertical",
@@ -175,7 +187,7 @@ class tkinterGUI:
             command=self.updateValue)
         # PID parameters
         self.set_point_slider = tk.Scale(
-            self.root,
+            pidparams,
             from_=1,
             to=50,
             orient="vertical",
@@ -183,7 +195,7 @@ class tkinterGUI:
             label="Set Point",
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
-            self.root,
+            pidparams,
             from_=-1,
             to=3,
             resolution=.01,
@@ -194,7 +206,7 @@ class tkinterGUI:
         self.p_k_slider.set(1)
 
         self.i_k_slider = tk.Scale(
-            self.root,
+            pidparams,
             from_=-1,
             to=1,
             resolution=.01,
@@ -205,7 +217,7 @@ class tkinterGUI:
         self.i_k_slider.set(0)
 
         self.d_k_slider = tk.Scale(
-            self.root,
+            pidparams,
             from_=-1,
             to=1,
             resolution=.01,
@@ -217,7 +229,7 @@ class tkinterGUI:
 
         # Control constant
         self.control_constant_slider = tk.Scale(
-            self.root,
+            pidparams,
             from_=-5,
             to=5,
             resolution=.01,
@@ -251,12 +263,18 @@ class tkinterGUI:
 
         self.ax.set_title('Velocity vs. Time')
 
-        self.widget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
-                        self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider, self.p_k_slider,
-                        self.i_k_slider, self.d_k_slider, self.control_constant_slider, self.simulate_button]
+        self.simwidget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
+                        self.accel_start_slider, self.mass_slider]
 
-        for item in self.widget_list:
-            item.pack()
+        self.pidwidget_list = [self.scale_factor_slider,
+                               self.set_point_slider, self.p_k_slider,
+                               self.i_k_slider, self.d_k_slider, self.control_constant_slider, self.simulate_button]
+
+        for item in self.simwidget_list:
+            item.pack(fill="y", expand=True)
+
+        for item in self.pidwidget_list:
+            item.pack(fill="x", expand=True)
         self.root.mainloop()
 
 class ipythonGUI:
