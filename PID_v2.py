@@ -28,12 +28,15 @@ import matplotlib.pyplot as plt
 """
 CONFIG
 """
+# pandas options
 pd.options.display.width = 0
 pd.set_option("display.max_columns", None)
 pd.set_option("display.max_rows", None)
 pd.set_option("display.width", None)
 pd.set_option("display.max_colwidth", None)
 
+# pyplot options
+plt.ion()
 """
 GUI Initialization
 """
@@ -46,15 +49,13 @@ GLOBALS
 """
 CLASS DEFINITIONS
 """
-class SimulationGUI:
+class tkinterGUI:
     def list_to_df(list):
-        print(list)
         values_gotten = [list[0].get(), list[1].get()]
 
         sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
         values_gotten.append(sample_number)
         for i in list[2::1]:
-            print(i.get())
             values_gotten.append(i.get())
         values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
                          "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
@@ -63,17 +64,17 @@ class SimulationGUI:
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
     def sim_and_plot(init_vals_df, axes):
-        print(init_vals_df.keys)
-        simulate(init_vals_df).plot(x="time", y="velocity", ax=axes)
-        plt.show()
+        df = simulate(init_vals_df)
+        df.plot(x="time", y="velocity", ax=axes)
+        plt.draw()
         return
 
     def updateValue(self, event):
         if self._job:
             self.root.after_cancel(self._job)
-        self._job = self.root.after(500, self._do_something)
+        self._job = self.root.after(500, self.updateGraph)
 
-    def _do_something(self):
+    def updateGraph(self):
         lambda: sim_and_plot(list_to_df(self.init_list), self.ax)
         return
     def __init__(self):
@@ -259,6 +260,147 @@ class SimulationGUI:
             item.pack()
         self.root.mainloop()
 
+class ipythonGUI:
+    def __init__(self):
+        self.sample_length_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Pos_0",
+            value=0
+        )
+        self.sample_freq_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Pos_0",
+            value=0
+        )
+        self.position_start_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Pos_0",
+            value=0
+        )
+
+        self.velocity_start_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Vel_0",
+            value=0
+        )
+
+        self.accel_start_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Accel_0",
+            value=0
+        )
+
+        self.mass_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Pos_0",
+            value=0
+        )
+
+        self.scale_factor_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Dist Factor",
+            value=0
+        )
+
+        # PID parameters
+
+        self.set_point_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Set Point",
+            value=0
+        )
+
+        self.p_k_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="P_K",
+            value=0
+        )
+
+        self.i_k_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="I_K",
+            value=0
+        )
+
+        self.d_k_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="D_K",
+            value=0
+        )
+
+        # Control constant
+        self.control_constant_slider = widgets.IntSlider(
+            min=0,
+            max=10,
+            step=1,
+            description="Ctrl Const",
+            value=0
+        )
+
+        self.widget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
+                            self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider, self.p_k_slider,
+                            self.i_k_slider, self.d_k_slider, self.control_constant_slider]
+        for item in self.widget_list:
+            display(item)
+
+        self.sample_length = self.sample_length_slider.value
+        self.sample_freq = self.sample_freq_slider.value
+        self.pos_start = self.position_start_slider.value
+        self.vel_start = self.velocity_start_slider.value
+        self.accel_start = self.accel_start_slider.value
+
+        self.mass = self.mass_slider.value
+        self.scale_factor = self.scale_factor_slider.value
+        self.set_point = self.set_point_slider.value
+        self.p_k = self.p_k_slider.value
+        self.i_k = self.i_k_slider.value
+        self.d_k = self.d_k_slider.value
+        self.control_constant = self.control_constant_slider.value
+        self.sample_number = int(total_samples(self.sample_freq, self.sample_length))
+        self.initial_values_list = [self.sample_length, self.sample_freq, self.sample_number, self.pos_start, self.vel_start,
+                                    self.accel_start, self.mass, self.scale_factor, self.set_point, self.p_k, self.i_k, self.d_k,
+                                    self.control_constant]
+
+        self.figure = plt.Figure(figsize=(6, 5), dpi=100)
+        self.ax = self.figure.add_subplot(111)
+
+        self.simulate_button = widgets.Button()
+
+        self.ax.set_title('Velocity vs. Time')
+
+        self.widget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider,
+                            self.velocity_start_slider,
+                            self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
+                            self.p_k_slider,
+                            self.i_k_slider, self.d_k_slider, self.control_constant_slider, self.simulate_button]
+
+        for item in self.widget_list:
+            display(item)
+
+        self.init_list = [self.sample_length, self.sample_freq, self.sample_number, self.pos_start, self.vel_start, self.accel_start, self.mass,
+                               self.scale_factor, self.set_point, self.p_k, self.i_k, self.d_k, self.control_constant]
 """
 FUNCTION DEFINITIONS
 ====================
@@ -282,13 +424,11 @@ def row_maker(total_samples):
     return df
 
 def list_to_df(list):
-    print(list)
     values_gotten = [list[0].get(), list[1].get()]
 
     sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
     values_gotten.append(sample_number)
     for i in list[2::1]:
-        print(i.get())
         values_gotten.append(i.get())
     values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
                      "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
@@ -341,7 +481,8 @@ def cmdline_logic():
         print(".")
         print(". .")
         print(". . .")
-        simulate(initialparams)
+        simulation = simulate(initialparams)
+        print(simulation)
         user_input = ("Simulate again? [yes/no]: ")
     return initialparams
 
@@ -363,8 +504,6 @@ def initialize():
         return
 def simulate(init_params): # This should be taking a DataFrame and returning all the program logic
 
-    print("sample number: ", init_params["sample_number"][0])
-    print(init_params)
     sample_number = int(init_params["sample_number"][0])
     sample_freq = int(init_params["sample_freq"][0])
     disturbance_const = float(init_params["scale_factor"][0])
@@ -403,14 +542,13 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
         df = error(set_point, df, x)
         df = pid(df, x, p_k, i_k, d_k, control_const)
     graph = plt.plot(df["time"], df["velocity"])
-    plt.show()
+    plt.draw()
     return df
 
 
 def sim_and_plot(init_vals_df, axes):
-    print(init_vals_df.keys)
     simulate(init_vals_df).plot(x="time", y="velocity", ax=axes)
-    plt.show()
+    plt.draw()
     return
 def gui(mode):
 
@@ -420,6 +558,8 @@ def gui(mode):
     # Two options for GUI
     # Kinematic parameters
     if mode == "ipython":
+        window = ipythonGUI()
+        """ Commenting this out to test the class version
         sample_length_slider = widgets.IntSlider(
             min=0,
             max=10,
@@ -517,17 +657,9 @@ def gui(mode):
             value=0
         )
 
-        # This should be a checkbox that just flips
-        control_sign_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Ctrl Sign",
-            value=0
-        )
-        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider, t_start_slider, t_end_slider,
+        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
                        mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider, control_sign_slider]
+                       control_constant_slider]
         for item in widget_list:
             display(item)
 
@@ -544,173 +676,13 @@ def gui(mode):
         i_k = i_k_slider.value
         d_k = d_k_slider.value
         control_constant = control_constant_slider.value
-        control_sign = control_sign_slider.value
         sample_number = int(total_samples(sample_freq, sample_length))
-        initial_values_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, t_start, t_end, mass,
-                  scale_factor, set_point, p_k, i_k, d_k, control_constant, control_sign]
+        initial_values_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, mass,
+                  scale_factor, set_point, p_k, i_k, d_k, control_constant]
+        """
 
     elif mode == "tkinter": # the tkinter section
-        window = SimulationGUI()
-
-        """ Commented out to test out the class version
-        # Creates the main window
-        frame = tk.Tk()
-        frame.title("PID Controller v1.1.b")
-        frame.wm_attributes("-topmost", True)
-        frame.attributes("-fullscreen", False)
-        frame.configure(bg="grey30")
-        sample_length = tk.IntVar() # seconds
-        sample_freq = tk.IntVar() # Hz
-
-        pos_start = tk.DoubleVar()  # meters
-        vel_start = tk.DoubleVar()  # m/s
-        accel_start = tk.DoubleVar()  # m/s^2
-
-        mass = tk.DoubleVar()  # kilograms
-        # PID parameters
-        set_point = tk.DoubleVar()  # float(input("Set point of speed to maintain? "))
-        p_k = tk.DoubleVar()  # float(input("Proportional term? "))
-        i_k = tk.DoubleVar()  # float(input("Integral term? "))
-        d_k = tk.DoubleVar()  # float(input("Derivative term? "))
-        scale_factor = tk.DoubleVar()  # float(input("Scaling factor for external disturbance? "))
-        control_constant = tk.DoubleVar()  # this is your k omega
-
-        """
-        # Initialization Parameters
-        """
-        sample_length_slider = tk.Scale(
-            frame,
-            from_ = 5,
-            to = 50,
-            orient = "horizontal",
-            variable = sample_length,
-            label="Sample Length")
-        sample_freq_slider = tk.Scale(
-            frame,
-            from_ = 5,
-            to = 50,
-            orient = "horizontal",
-            variable = sample_freq,
-            label = "Sample Freq.")
-        # Kinematic parameters
-        position_start_slider = tk.Scale(
-            frame,
-            from_ = 0,
-            to = 50,
-            orient = "horizontal",
-            variable = pos_start,
-            label = "Init. Pos.")
-        velocity_start_slider = tk.Scale(
-            frame,
-            from_ = 0,
-            to = 50,
-            orient = "horizontal",
-            variable = vel_start,
-            label = "Init. Vel.")
-        accel_start_slider = tk.Scale(
-            frame,
-            from_= 0,
-            to = 5,
-            orient = "horizontal",
-            variable = accel_start,
-            label = "Init. Accel")
-
-        mass_slider = tk.Scale(
-            frame,
-            from_ = 1,
-            to = 100,
-            orient = "horizontal",
-            variable = mass,
-            label = "Mass")
-        scale_factor_slider = tk.Scale(
-            frame,
-            from_ = 1,
-            to = 10,
-            orient = "horizontal",
-            variable = scale_factor,
-            label = "Scale Factor")
-        # PID parameters
-        set_point_slider = tk.Scale(
-            frame,
-            from_ = 1,
-            to = 50,
-            orient = "horizontal",
-            variable = set_point,
-            label = "Set Point")
-        p_k_slider = tk.Scale(
-            frame,
-            from_ = -1,
-            to = 3,
-            resolution=.01,
-            orient = "horizontal",
-            variable=p_k,
-            label = "P")
-        p_k_slider.set(1)
-
-        i_k_slider = tk.Scale(
-            frame,
-            from_ = -1,
-            to = 1,
-            resolution=.01,
-            orient="horizontal",
-            variable = i_k,
-            label = "I")
-        i_k_slider.set(0)
-
-        d_k_slider = tk.Scale(
-            frame,
-            from_ = -1,
-            to = 1,
-            resolution=.01,
-            orient = "horizontal",
-            variable = d_k,
-            label = "D")
-        d_k_slider.set(0)
-
-        # Control constant
-        control_constant_slider = tk.Scale(
-            frame,
-            from_ = -5,
-            to = 5,
-            resolution=.01,
-            orient = "horizontal",
-            variable = control_constant,
-            label = "Control Const")
-        control_constant_slider.set(1)
-
-        """
-        # All of the below needs to be put into a function that goes into the button. It should go after the creation of the graph.
-        """
-
-
-        init_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
-                       mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider]
-
-
-        # This button should run the simulation and probably plot it, at least depending on a checkbox
-
-        figure = plt.Figure(figsize=(6, 5), dpi=100)
-        ax = figure.add_subplot(111)
-        chart_type = FigureCanvasTkAgg(figure, frame)
-        chart_type.get_tk_widget().pack(side=tk.RIGHT)
-
-
-        simulate_button = tk.Button(
-            frame,
-            command= lambda: sim_and_plot(list_to_df(init_list), ax),
-            text="Simulate")
-
-        ax.set_title('Velocity vs. Time')
-
-        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
-                       mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider, simulate_button]
-
-        for item in widget_list:
-            item.pack()
-        frame.mainloop()
-        """
+        window = tkinterGUI()
     return
 
 def noise_f(k):
@@ -726,7 +698,6 @@ def time(num_samples, sample_rate, df):
     :param df:
     :return:
     """
-    print(num_samples)
     time_value_list = list((x * (1/sample_rate) for x in range(num_samples)))
     time_value_series = pd.Series(data=time_value_list)
     df["time"] = time_value_series
@@ -849,12 +820,10 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     df_abridged = df[0:i]
     proportional = p_k * df.at[i, "error"]
     integral = i_k * np.trapz(df_abridged["error"])
-    print(df_abridged["error"])
     if i < 2:
         derivative = 0
     else:
         derivative = d_k * df.at[i, "error"]
-        print(np.gradient(df_abridged["error"]))
     pid = scaling_factor * (proportional + integral + derivative)
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
