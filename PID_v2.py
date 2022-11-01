@@ -92,18 +92,6 @@ class tkinterGUI:
         self.root.configure(bg="grey30")
 
         """
-        Frames
-        """
-        simparams = tk.Frame(self.root)
-        simparams.pack(side="left", fill="y", expand=True)
-
-        pidparams = tk.Frame(self.root)
-        pidparams.pack(fill="x", expand=True)
-
-        graph_frame = tk.Frame(self.root)
-        graph_frame.pack(side="right")
-
-        """
         Simulation Parameters
         """
         # Length of dataframe variables
@@ -178,7 +166,7 @@ class tkinterGUI:
             label="Mass",
             command=self.updateValue)
         self.scale_factor_slider = tk.Scale(
-            pidparams,
+            self.root,
             from_=1,
             to=10,
             orient="vertical",
@@ -187,7 +175,7 @@ class tkinterGUI:
             command=self.updateValue)
         # PID parameters
         self.set_point_slider = tk.Scale(
-            pidparams,
+            self.root,
             from_=1,
             to=50,
             orient="vertical",
@@ -195,7 +183,7 @@ class tkinterGUI:
             label="Set Point",
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
-            pidparams,
+            self.root,
             from_=-1,
             to=3,
             resolution=.01,
@@ -206,7 +194,7 @@ class tkinterGUI:
         self.p_k_slider.set(1)
 
         self.i_k_slider = tk.Scale(
-            pidparams,
+            self.root,
             from_=-1,
             to=1,
             resolution=.01,
@@ -217,7 +205,7 @@ class tkinterGUI:
         self.i_k_slider.set(0)
 
         self.d_k_slider = tk.Scale(
-            pidparams,
+            self.root,
             from_=-1,
             to=1,
             resolution=.01,
@@ -229,7 +217,7 @@ class tkinterGUI:
 
         # Control constant
         self.control_constant_slider = tk.Scale(
-            pidparams,
+            self.root,
             from_=-5,
             to=5,
             resolution=.01,
@@ -254,7 +242,7 @@ class tkinterGUI:
         self.figure = plt.Figure(figsize=(6, 5), dpi=100)
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
-        self.chart_type.get_tk_widget().pack(side=tk.RIGHT)
+        self.chart_type.get_tk_widget().grid(row=5, column=4)
 
         self.simulate_button = tk.Button(
             self.root,
@@ -271,10 +259,30 @@ class tkinterGUI:
                                self.i_k_slider, self.d_k_slider, self.control_constant_slider, self.simulate_button]
 
         for item in self.simwidget_list:
-            item.pack(fill="y", expand=True)
+            #item.pack(fill="y", expand=True)
+            pass
 
         for item in self.pidwidget_list:
-            item.pack(fill="x", expand=True)
+            #item.pack(fill="x", expand=True)
+            pass
+
+        # Initialization Params
+        self.sample_length_slider.grid(row=0, column=1)
+        self.sample_freq_slider.grid(row=1, column=1)
+        self.position_start_slider.grid(row=0, column=2)
+        self.velocity_start_slider.grid(row=1, column=2)
+        self.accel_start_slider.grid(row=2, column=2)
+        self.mass_slider.grid(row=2, column=1)
+
+        # PID Params
+        self.scale_factor_slider.grid(row=3, column=1)
+        self.set_point_slider.grid(row=3, column=2)
+        self.p_k_slider.grid(row=4, column=1)
+        self.i_k_slider.grid(row=4, column=2)
+        self.d_k_slider.grid(row=4, column=3)
+        self.control_constant_slider.grid(row=4, column=4)
+
+
         self.root.mainloop()
 
 class ipythonGUI:
