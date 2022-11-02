@@ -93,7 +93,7 @@ class tkinterGUI:
         self.root.title("PID Controller v1.1.b")
         self.root.wm_attributes("-topmost", True)
         self.root.attributes("-fullscreen", False)
-        self.root.configure(bg="grey30")
+        self.root.configure(bg="DimGray")
 
         """
         Simulation Parameters
@@ -262,7 +262,9 @@ class tkinterGUI:
         self.lock_scale.grid(row=2, column=5)
         self.clear_plot.grid(row=3, column=5)
 
+        self.figure.patch.set_facecolor("DimGray")
         self.ax.set_title('Velocity vs. Time')
+        self.ax.set_facecolor("DimGray")
 
         self.simwidget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
                         self.accel_start_slider, self.mass_slider]
