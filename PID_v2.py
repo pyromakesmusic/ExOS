@@ -264,7 +264,7 @@ class tkinterGUI:
             self.root,
             command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
             text="Simulate",
-            bg="green")
+            bg="silver")
 
         self.lock_scale = tk.Button(self.root,
                                     text="Lock Scale",
@@ -308,8 +308,8 @@ class tkinterGUI:
         # PID Params
         self.scale_factor_slider.grid(row=3, column=1)
         self.set_point_slider.grid(row=3, column=2)
-        self.p_k_slider.grid(row=4, column=1)
-        self.i_k_slider.grid(row=4, column=2)
+        self.p_k_slider.grid(row=3, column=3)
+        self.i_k_slider.grid(row=3, column=4)
         self.d_k_slider.grid(row=4, column=3)
         self.control_constant_slider.grid(row=4, column=4)
 
