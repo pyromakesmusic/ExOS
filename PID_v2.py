@@ -253,6 +253,15 @@ class tkinterGUI:
             command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
             text="Simulate")
 
+        self.lock_scale = tk.Button(self.root, text="Lock Scale")
+        self.clear_plot = tk.Button(self.root,
+                                    command=plt.cla(),
+                                    text="Clear Plot")
+
+        self.simulate_button.grid(row=4, column=5)
+        self.lock_scale.grid(row=2, column=5)
+        self.clear_plot.grid(row=3, column=5)
+
         self.ax.set_title('Velocity vs. Time')
 
         self.simwidget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
