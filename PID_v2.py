@@ -126,6 +126,7 @@ class tkinterGUI:
             orient="horizontal",
             variable=self.sample_length,
             label="Sample Length",
+            bg="DimGray",
             command=self.updateValue)
         self.sample_freq_slider = tk.Scale(
             self.root,
@@ -134,6 +135,7 @@ class tkinterGUI:
             orient="horizontal",
             variable=self.sample_freq,
             label="Sample Freq.",
+            bg="DimGray",
             command=self.updateValue)
         # Kinematic parameters
         self.position_start_slider = tk.Scale(
@@ -143,6 +145,7 @@ class tkinterGUI:
             orient="horizontal",
             variable=self.pos_start,
             label="Init. Pos.",
+            bg="DimGray",
             command=self.updateValue)
         self.velocity_start_slider = tk.Scale(
             self.root,
@@ -151,6 +154,7 @@ class tkinterGUI:
             orient="horizontal",
             variable=self.vel_start,
             label="Init. Vel.",
+            bg="DimGray",
             command=self.updateValue)
         self.accel_start_slider = tk.Scale(
             self.root,
@@ -159,6 +163,7 @@ class tkinterGUI:
             orient="horizontal",
             variable=self.accel_start,
             label="Init. Accel",
+            bg="DimGray",
             command=self.updateValue)
 
         self.mass_slider = tk.Scale(
@@ -168,6 +173,7 @@ class tkinterGUI:
             orient="horizontal",
             variable=self.mass,
             label="Mass",
+            bg="DimGray",
             command=self.updateValue)
         self.scale_factor_slider = tk.Scale(
             self.root,
@@ -176,6 +182,7 @@ class tkinterGUI:
             orient="vertical",
             variable=self.scale_factor,
             label="Disturbance",
+            bg="DimGray",
             command=self.updateValue)
         # PID parameters
         self.set_point_slider = tk.Scale(
@@ -185,6 +192,7 @@ class tkinterGUI:
             orient="vertical",
             variable=self.set_point,
             label="Set Point",
+            bg="DimGray",
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
             self.root,
@@ -194,6 +202,7 @@ class tkinterGUI:
             orient="vertical",
             variable=self.p_k,
             label="P",
+            bg="DimGray",
             command=self.updateValue)
         self.p_k_slider.set(1)
 
@@ -205,6 +214,7 @@ class tkinterGUI:
             orient="vertical",
             variable=self.i_k,
             label="I",
+            bg="DimGray",
             command=self.updateValue)
         self.i_k_slider.set(0)
 
@@ -216,6 +226,7 @@ class tkinterGUI:
             orient="vertical",
             variable=self.d_k,
             label="D",
+            bg="DimGray",
             command=self.updateValue)
         self.d_k_slider.set(0)
 
@@ -228,6 +239,7 @@ class tkinterGUI:
             orient="vertical",
             variable=self.control_constant,
             label="Control Const",
+            bg="DimGray",
             command=self.updateValue)
         self.control_constant_slider.set(1)
 
@@ -251,12 +263,16 @@ class tkinterGUI:
         self.simulate_button = tk.Button(
             self.root,
             command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
-            text="Simulate")
+            text="Simulate",
+            bg="green")
 
-        self.lock_scale = tk.Button(self.root, text="Lock Scale")
+        self.lock_scale = tk.Button(self.root,
+                                    text="Lock Scale",
+                                    bg="DimGray")
         self.clear_plot = tk.Button(self.root,
                                     command=plt.cla(),
-                                    text="Clear Plot")
+                                    text="Clear Plot",
+                                    bg="DimGray")
 
         self.simulate_button.grid(row=4, column=5)
         self.lock_scale.grid(row=2, column=5)
