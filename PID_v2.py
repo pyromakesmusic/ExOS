@@ -83,12 +83,6 @@ class tkinterGUI:
     def __init__(self):
         self.root = tk.Tk()
         self._job = None
-        # This needs to go after the variables are created
-        self.slider = tk.Scale(self.root,
-                               from_=0,
-                               to=256,
-                               orient = "horizontal",
-                               command = self.updateValue)
 
         self.root.title("PID Controller v1.1.b")
         self.root.wm_attributes("-topmost", True)
@@ -179,6 +173,7 @@ class tkinterGUI:
             self.root,
             from_=1,
             to=10,
+            resolution=.01,
             orient="vertical",
             variable=self.scale_factor,
             label="Disturbance",
@@ -189,6 +184,7 @@ class tkinterGUI:
             self.root,
             from_=1,
             to=50,
+            resolution=.01,
             orient="vertical",
             variable=self.set_point,
             label="Set Point",
@@ -255,10 +251,10 @@ class tkinterGUI:
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
 
-        self.figure = plt.Figure(figsize=(6, 5), dpi=100)
+        self.figure = plt.Figure(figsize=(19, 7), dpi=100)
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
-        self.chart_type.get_tk_widget().grid(row=5, column=5)
+        self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
 
         self.simulate_button = tk.Button(
             self.root,
@@ -274,44 +270,29 @@ class tkinterGUI:
                                     text="Clear Plot",
                                     bg="DimGray")
 
-        self.simulate_button.grid(row=4, column=5)
-        self.lock_scale.grid(row=2, column=5)
-        self.clear_plot.grid(row=3, column=5)
+        self.simulate_button.grid(row=2, column=0, sticky="nsew")
+        self.lock_scale.grid(row=0, column=0,sticky="nsew")
+        self.clear_plot.grid(row=1, column=0, sticky="nsew")
 
         self.figure.patch.set_facecolor("DimGray")
         self.ax.set_title('Velocity vs. Time')
         self.ax.set_facecolor("DimGray")
 
-        self.simwidget_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
-                        self.accel_start_slider, self.mass_slider]
-
-        self.pidwidget_list = [self.scale_factor_slider,
-                               self.set_point_slider, self.p_k_slider,
-                               self.i_k_slider, self.d_k_slider, self.control_constant_slider, self.simulate_button]
-
-        for item in self.simwidget_list:
-            #item.pack(fill="y", expand=True)
-            pass
-
-        for item in self.pidwidget_list:
-            #item.pack(fill="x", expand=True)
-            pass
-
         # Initialization Params
-        self.sample_length_slider.grid(row=0, column=1)
-        self.sample_freq_slider.grid(row=1, column=1)
-        self.position_start_slider.grid(row=0, column=2)
-        self.velocity_start_slider.grid(row=1, column=2)
-        self.accel_start_slider.grid(row=2, column=2)
-        self.mass_slider.grid(row=2, column=1)
+        self.sample_length_slider.grid(row=0, column=1, sticky="nsew")
+        self.sample_freq_slider.grid(row=1, column=1, sticky="nsew")
+        self.position_start_slider.grid(row=0, column=2, sticky="nsew")
+        self.velocity_start_slider.grid(row=1, column=2, sticky="nsew")
+        self.accel_start_slider.grid(row=2, column=2, sticky="nsew")
+        self.mass_slider.grid(row=2, column=1, sticky="nsew")
 
         # PID Params
-        self.scale_factor_slider.grid(row=3, column=1)
-        self.set_point_slider.grid(row=3, column=2)
-        self.p_k_slider.grid(row=3, column=3)
-        self.i_k_slider.grid(row=3, column=4)
-        self.d_k_slider.grid(row=4, column=3)
-        self.control_constant_slider.grid(row=4, column=4)
+        self.scale_factor_slider.grid(row=0, column=3, sticky="nsew")
+        self.set_point_slider.grid(row=0, column=4, sticky="nsew")
+        self.p_k_slider.grid(row=1, column=3, sticky="nsew")
+        self.i_k_slider.grid(row=1, column=4, sticky="nsew")
+        self.d_k_slider.grid(row=2, column=3, sticky="nsew")
+        self.control_constant_slider.grid(row=2, column=4, sticky="nsew")
 
 
         self.root.mainloop()
