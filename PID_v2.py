@@ -76,6 +76,10 @@ class tkinterGUI:
 
     def updateGraph(self):
         return sim_and_plot(list_to_df(self.init_list), self.ax)
+
+    def placeholder(self):
+        pass
+
     def __init__(self):
         self.root = tk.Tk()
         self._job = None
@@ -242,7 +246,7 @@ class tkinterGUI:
         self.figure = plt.Figure(figsize=(6, 5), dpi=100)
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
-        self.chart_type.get_tk_widget().grid(row=5, column=4)
+        self.chart_type.get_tk_widget().grid(row=5, column=5)
 
         self.simulate_button = tk.Button(
             self.root,
