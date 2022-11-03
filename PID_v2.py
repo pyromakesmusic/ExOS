@@ -9,8 +9,15 @@ Document Comments:
     be based on time independent of the index so that I can have a consistent 
     indexing scheme regardless of the time resolution of the data.
 
+    11.3.22
+    0944h
+    Interface is mostly done. Needs the graph to actually be updating inside
+    the GUI but otherwise the front end is ready for a presentation. Adding
+    the fractional calculus functionality will be next.
+
 ===============
 LIBRARY IMPORTS
+===============
 """
 import tkinter as tk
 from tkinter import ttk
@@ -45,6 +52,15 @@ GUI Initialization
 """
 GLOBALS
 """
+
+TEST_2D_DATA = np.random.multivariate_normal(mean, cov, 10000)
+
+"""
+PUBLIC FUNCTIONS
+"""
+
+def placeholder():
+    return
 
 """
 CLASS DEFINITIONS
@@ -171,8 +187,8 @@ class tkinterGUI:
             command=self.updateValue)
         self.scale_factor_slider = tk.Scale(
             self.root,
-            from_=1,
-            to=10,
+            from_=10,
+            to=1,
             resolution=.01,
             orient="vertical",
             variable=self.scale_factor,
@@ -182,8 +198,8 @@ class tkinterGUI:
         # PID parameters
         self.set_point_slider = tk.Scale(
             self.root,
-            from_=1,
-            to=50,
+            from_=50,
+            to=1,
             resolution=.01,
             orient="vertical",
             variable=self.set_point,
@@ -192,8 +208,8 @@ class tkinterGUI:
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
             self.root,
-            from_=-1,
-            to=3,
+            from_=3,
+            to=-1,
             resolution=.01,
             orient="vertical",
             variable=self.p_k,
@@ -204,8 +220,8 @@ class tkinterGUI:
 
         self.i_k_slider = tk.Scale(
             self.root,
-            from_=-1,
-            to=1,
+            from_=1,
+            to=-1,
             resolution=.01,
             orient="vertical",
             variable=self.i_k,
@@ -216,8 +232,8 @@ class tkinterGUI:
 
         self.d_k_slider = tk.Scale(
             self.root,
-            from_=-1,
-            to=1,
+            from_=1,
+            to=-1,
             resolution=.01,
             orient="vertical",
             variable=self.d_k,
@@ -242,8 +258,8 @@ class tkinterGUI:
 
 
         """
-                All of the below needs to be put into a function that goes into the button. It should go after the creation of the graph.
-                """
+        Mostly just GUI positioning stuff again.
+        """
 
         self.init_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
                         self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
@@ -255,10 +271,11 @@ class tkinterGUI:
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
         self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
+        self.chart_type.draw()
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
+            command=lambda: sim_and_plot(list_to_df(self.init_list), self.plot_widget),
             text="Simulate",
             bg="silver")
 
@@ -266,7 +283,7 @@ class tkinterGUI:
                                     text="Lock Scale",
                                     bg="DimGray")
         self.clear_plot = tk.Button(self.root,
-                                    command=plt.cla(),
+                                    command=plt.cla,
                                     text="Clear Plot",
                                     bg="DimGray")
 
@@ -274,9 +291,9 @@ class tkinterGUI:
         self.lock_scale.grid(row=0, column=0,sticky="nsew")
         self.clear_plot.grid(row=1, column=0, sticky="nsew")
 
-        self.figure.patch.set_facecolor("DimGray")
+        self.figure.patch.set_facecolor("DimGrey")
         self.ax.set_title('Velocity vs. Time')
-        self.ax.set_facecolor("DimGray")
+        self.ax.set_facecolor("White")
 
         # Initialization Params
         self.sample_length_slider.grid(row=0, column=1, sticky="nsew")
@@ -620,128 +637,6 @@ def gui(mode):
     # Kinematic parameters
     if mode == "ipython":
         window = ipythonGUI()
-        """ Commenting this out to test the class version
-        sample_length_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Pos_0",
-            value=0
-        )
-        sample_freq_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Pos_0",
-            value=0
-        )
-        position_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Pos_0",
-            value=0
-        )
-
-        velocity_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Vel_0",
-            value=0
-        )
-
-        accel_start_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Accel_0",
-            value=0
-        )
-
-        mass_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Pos_0",
-            value=0
-        )
-
-        scale_factor_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Dist Factor",
-            value=0
-        )
-
-        # PID parameters
-
-        set_point_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Set Point",
-            value=0
-        )
-
-        p_k_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="P_K",
-            value=0
-        )
-
-        i_k_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="I_K",
-            value=0
-        )
-
-        d_k_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="D_K",
-            value=0
-        )
-
-        # Control constant
-        control_constant_slider = widgets.IntSlider(
-            min=0,
-            max=10,
-            step=1,
-            description="Ctrl Const",
-            value=0
-        )
-
-        widget_list = [sample_length_slider, sample_freq_slider, position_start_slider, velocity_start_slider, accel_start_slider,
-                       mass_slider, scale_factor_slider, set_point_slider, p_k_slider, i_k_slider, d_k_slider,
-                       control_constant_slider]
-        for item in widget_list:
-            display(item)
-
-        sample_length = sample_length_slider.value
-        sample_freq = sample_freq_slider.value
-        pos_start = position_start_slider.value
-        vel_start = velocity_start_slider.value
-        accel_start = accel_start_slider.value
-
-        mass = mass_slider.value
-        scale_factor = scale_factor_slider.value
-        set_point = set_point_slider.value
-        p_k = p_k_slider.value
-        i_k = i_k_slider.value
-        d_k = d_k_slider.value
-        control_constant = control_constant_slider.value
-        sample_number = int(total_samples(sample_freq, sample_length))
-        initial_values_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start, mass,
-                  scale_factor, set_point, p_k, i_k, d_k, control_constant]
-        """
-
     elif mode == "tkinter": # the tkinter section
         window = tkinterGUI()
     return
