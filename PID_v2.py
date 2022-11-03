@@ -52,8 +52,12 @@ GUI Initialization
 """
 GLOBALS
 """
-
-TEST_2D_DATA = np.random.multivariate_normal(mean, cov, 10000)
+MEAN = [50,50]
+COV = [
+    [10,10],
+    [10,10]
+]
+TEST_2D_DATA = np.random.multivariate_normal(MEAN, COV, 10000)
 
 """
 PUBLIC FUNCTIONS
@@ -271,6 +275,7 @@ class tkinterGUI:
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
         self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
+        plt.plot(TEST_2D_DATA)
         self.chart_type.draw()
 
         self.simulate_button = tk.Button(
