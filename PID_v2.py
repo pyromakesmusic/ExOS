@@ -273,14 +273,14 @@ class tkinterGUI:
 
         self.figure = plt.Figure(figsize=(19, 7), dpi=100)
         self.ax = self.figure.add_subplot(111)
-        self.chart_type = FigureCanvasTkAgg(self.figure, self.root)
+        self.chart_type = FigureCanvasTkAgg(self.figure, master=self.root)
         self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
         plt.plot(TEST_2D_DATA)
         self.chart_type.draw()
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.plot_widget),
+            command=lambda: sim_and_plot(list_to_df(self.init_list), self.chart_type),
             text="Simulate",
             bg="silver")
 
