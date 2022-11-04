@@ -105,7 +105,7 @@ class tkinterGUI:
         self._job = None
 
         self.root.title("PID Controller v1.1.b")
-        self.root.wm_attributes("-topmost", True)
+        # self.root.wm_attributes("-topmost", True)
         self.root.attributes("-fullscreen", False)
         self.root.configure(bg="DimGray")
 
