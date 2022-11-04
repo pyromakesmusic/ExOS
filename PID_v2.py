@@ -83,7 +83,7 @@ class tkinterGUI:
 
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
-    def sim_and_plot(self, init_vals_df, axes):
+    def sim_and_plot(self, init_vals_df):
         df = simulate(init_vals_df)
         df.plot(x="time", y="velocity")
         plt.draw()
@@ -95,10 +95,10 @@ class tkinterGUI:
         self._job = self.root.after(50, self.updateGraph)
 
     def updateGraph(self):
-        return sim_and_plot(list_to_df(self.init_list), self.ax)
+        return sim_and_plot(list_to_df(self.init_list))
 
     def placeholder(self):
-        pass
+        return False
 
     def __init__(self):
         self.root = tk.Tk()
@@ -281,7 +281,7 @@ class tkinterGUI:
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.chart_type),
+            command=lambda: sim_and_plot(list_to_df(self.init_list)),
             text="Simulate",
             bg="silver")
 
@@ -630,8 +630,8 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
     return df
 
 
-def sim_and_plot(init_vals_df, axes):
-    simulate(init_vals_df).plot(x="time", y="velocity", ax=axes)
+def sim_and_plot(init_vals_df):
+    simulate(init_vals_df).plot(x="time", y="velocity")
     plt.draw()
     return
 def gui(mode):
