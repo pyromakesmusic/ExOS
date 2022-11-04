@@ -70,6 +70,13 @@ def placeholder():
 CLASS DEFINITIONS
 """
 class tkinterGUI:
+    def plot_creation_flagger(self):
+        if not hasattr(self, "plot_exists"):
+            setattr(self, "plot_exists", True)
+            self.fig, self.ax = plt.subplots()
+        elif getattr(self, "plot_exists") == True:
+            pass
+        return self.fig, self.ax
     def list_to_df(self, list):
         values_gotten = [list[0].get(), list[1].get()]
 
@@ -84,9 +91,14 @@ class tkinterGUI:
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
     def sim_and_plot(self, init_vals_df):
-        self.fig, self.ax = plt.subplots()
+        """
+        This function takes the object and a dataframe as arguments and makes the plot (lots of GUI magic happening here)
+        :param init_vals_df:
+        :return:
+        """
         df = simulate(init_vals_df)
-        df.plot(x="time", y="velocity")
+        self.fig, self.ax = plot_creation_flagger()
+        df.plot(x="time", y="velocity", ax=self.ax)
         # Needs a boolean to grab whether or not there's an existing plot
         plt.draw()
         return
