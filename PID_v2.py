@@ -86,6 +86,7 @@ class tkinterGUI:
     def sim_and_plot(self, init_vals_df):
         df = simulate(init_vals_df)
         df.plot(x="time", y="velocity")
+        # Needs a boolean to grab whether or not there's an existing plot
         plt.draw()
         return
 
