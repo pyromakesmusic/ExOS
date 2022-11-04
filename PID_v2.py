@@ -72,11 +72,12 @@ CLASS DEFINITIONS
 class tkinterGUI:
     def plot_creation_flagger(self):
         if not hasattr(self, "plot_exists"):
-            setattr(self, "plot_exists", True)
+            return False
             self.fig, self.ax = plt.subplots()
-        elif getattr(self, "plot_exists") == True:
-            pass
-        return self.fig, self.ax
+        elif hasattr(self, "plot_exists"):
+            return True
+        else:
+            return None
     def list_to_df(self, list):
         values_gotten = [list[0].get(), list[1].get()]
 
@@ -97,8 +98,10 @@ class tkinterGUI:
         :return:
         """
         df = simulate(init_vals_df)
-        self.fig, self.ax = plot_creation_flagger()
-        df.plot(x="time", y="velocity", ax=self.ax)
+        if plot_creation_flagger():
+            df.plot(x="time", y="velocity", ax=self.ax)
+        else:
+            df.plot(x="time", y="velOcity", ax=self.ax)
         # Needs a boolean to grab whether or not there's an existing plot
         plt.draw()
         return
