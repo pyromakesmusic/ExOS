@@ -85,7 +85,7 @@ class tkinterGUI:
         return df
     def sim_and_plot(self, init_vals_df, axes):
         df = simulate(init_vals_df)
-        df.plot(x="time", y="velocity", ax=axes)
+        df.plot(x="time", y="velocity")
         plt.draw()
         return
 
@@ -270,13 +270,14 @@ class tkinterGUI:
                         self.p_k_slider, self.i_k_slider, self.d_k_slider, self.control_constant_slider]
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
-
+        """
         self.figure = plt.Figure(figsize=(19, 7), dpi=100)
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, master=self.root)
         self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
         #plt.plot(TEST_2D_DATA)
         #self.chart_type.draw()
+        """
 
         self.simulate_button = tk.Button(
             self.root,
@@ -296,9 +297,9 @@ class tkinterGUI:
         self.lock_scale.grid(row=0, column=0,sticky="nsew")
         self.clear_plot.grid(row=1, column=0, sticky="nsew")
 
-        self.figure.patch.set_facecolor("DimGrey")
-        self.ax.set_title('Velocity vs. Time')
-        self.ax.set_facecolor("White")
+        #self.figure.patch.set_facecolor("DimGrey")
+        #self.ax.set_title('Velocity vs. Time')
+        #self.ax.set_facecolor("White")
 
         # Initialization Params
         self.sample_length_slider.grid(row=0, column=1, sticky="nsew")
