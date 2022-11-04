@@ -275,8 +275,8 @@ class tkinterGUI:
         self.ax = self.figure.add_subplot(111)
         self.chart_type = FigureCanvasTkAgg(self.figure, master=self.root)
         self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
-        plt.plot(TEST_2D_DATA)
-        self.chart_type.draw()
+        #plt.plot(TEST_2D_DATA)
+        #self.chart_type.draw()
 
         self.simulate_button = tk.Button(
             self.root,
