@@ -119,9 +119,6 @@ class tkinterGUI:
         sim_and_plot(list_to_df(self.init_list), ax)
         return
 
-    def placeholder(self):
-        return False
-
     def __init__(self):
         self.root = tk.Tk()
         self._job = None
@@ -234,7 +231,7 @@ class tkinterGUI:
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
             self.root,
-            from_=3,
+            from_=5,
             to=-1,
             resolution=.01,
             orient="vertical",
@@ -246,7 +243,7 @@ class tkinterGUI:
 
         self.i_k_slider = tk.Scale(
             self.root,
-            from_=1,
+            from_=5,
             to=-1,
             resolution=.01,
             orient="vertical",
@@ -258,7 +255,7 @@ class tkinterGUI:
 
         self.d_k_slider = tk.Scale(
             self.root,
-            from_=1,
+            from_=5,
             to=-1,
             resolution=.01,
             orient="vertical",
@@ -308,7 +305,7 @@ class tkinterGUI:
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
+            command=lambda: sim_and_plot(list_to_df(self.init_list), self.canvas),
             text="Simulate",
             bg="silver")
 
