@@ -70,14 +70,6 @@ def placeholder():
 CLASS DEFINITIONS
 """
 class tkinterGUI:
-    def plot_creation_flagger(self):
-        if not hasattr(self, "plot_exists"):
-            return False
-            self.fig, self.ax = plt.subplots()
-        elif hasattr(self, "plot_exists"):
-            return True
-        else:
-            return None
     def list_to_df(self, list):
         values_gotten = [list[0].get(), list[1].get()]
 
@@ -91,28 +83,41 @@ class tkinterGUI:
 
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
-    def sim_and_plot(self, init_vals_df):
+    def sim_and_plot(self, init_vals_df, ax):
         """
         This function takes the object and a dataframe as arguments and makes the plot (lots of GUI magic happening here)
         :param init_vals_df:
         :return:
         """
         df = simulate(init_vals_df)
-        if plot_creation_flagger():
-            df.plot(x="time", y="velocity", ax=self.ax)
-        else:
-            df.plot(x="time", y="velOcity", ax=self.ax)
-        # Needs a boolean to grab whether or not there's an existing plot
-        plt.draw()
+        df.plot(x="time", y="velocity", ax=ax)
+
         return
 
     def updateValue(self, event):
         if self._job:
             self.root.after_cancel(self._job)
-        self._job = self.root.after(50, self.updateGraph)
+        self._job = self.root.after(5, self.updateGraph)
 
     def updateGraph(self):
-        return sim_and_plot(list_to_df(self.init_list))
+        """
+        Here
+        """
+        has_graph = hasattr(self, "has_graph")
+        if not has_graph:
+            print(has_graph, "no graph exists yet")
+            self.figure, self.ax = plt.subplots()
+            figure = self.figure
+            ax = self.ax
+            setattr(self, "has_graph", True)
+            has_graph = getattr(self, "has_graph")
+            print(has_graph, "graph created")
+        else:
+            figure = getattr(self, "figure")
+            ax = getattr(self, "ax")
+            plt.cla()
+        sim_and_plot(list_to_df(self.init_list), ax)
+        return
 
     def placeholder(self):
         return False
@@ -287,18 +292,23 @@ class tkinterGUI:
                         self.p_k_slider, self.i_k_slider, self.d_k_slider, self.control_constant_slider]
 
         # This button should run the simulation and probably plot it, at least depending on a checkbox
-        """
-        self.figure = plt.Figure(figsize=(19, 7), dpi=100)
-        self.ax = self.figure.add_subplot(111)
-        self.chart_type = FigureCanvasTkAgg(self.figure, master=self.root)
-        self.chart_type.get_tk_widget().grid(row=4, column=0, columnspan=5)
-        #plt.plot(TEST_2D_DATA)
-        #self.chart_type.draw()
-        """
+
+        has_graph = hasattr(self, "has_graph")
+        if not has_graph:
+            self.figure = plt.Figure(figsize=(7,4), dpi=100)
+            self.ax = self.figure.add_subplot(111)
+            self.canvas = FigureCanvasTkAgg(self.figure, self.root)
+            self.canvas.draw()
+            self.canvas.get_tk_widget().grid(column=0, row=5, columnspan=5)
+            setattr(self, "has_graph", True)
+            has_graph = getattr(self, "has_graph")
+        else:
+            self.figure = getattr(self, "figure")
+            self.ax = getattr(self, "ax")
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list)),
+            command=lambda: sim_and_plot(list_to_df(self.init_list), self.ax),
             text="Simulate",
             bg="silver")
 
@@ -647,9 +657,8 @@ def simulate(init_params): # This should be taking a DataFrame and returning all
     return df
 
 
-def sim_and_plot(init_vals_df):
-    simulate(init_vals_df).plot(x="time", y="velocity")
-    plt.draw()
+def sim_and_plot(init_vals_df, ax):
+    simulate(init_vals_df).plot(x="time", y="velocity", ax=ax)
     return
 def gui(mode):
 
