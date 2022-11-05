@@ -116,7 +116,7 @@ class tkinterGUI:
             figure = getattr(self, "figure")
             ax = getattr(self, "ax")
             plt.cla()
-        sim_and_plot(list_to_df(self.init_list), ax)
+        self.sim_and_plot(list_to_df(self.init_list), ax)
         return
 
     def __init__(self):
@@ -124,22 +124,29 @@ class tkinterGUI:
         self._job = None
 
         self.root.title("PID Controller v1.1.b")
-        # self.root.wm_attributes("-topmost", True)
+
         self.root.attributes("-fullscreen", False)
         self.root.configure(bg="DimGray")
 
         """
         Simulation Parameters
         """
+        # Interface flags
+        self.frac_vals = tk.BooleanVar(self.root, False)
+        self.lock_scale = tk.BooleanVar(self.root, False)
+
         # Length of dataframe variables
         self.sample_length = tk.IntVar() # seconds
         self.sample_freq = tk.IntVar() # Hz
+
         # Initial conditions
         self.pos_start = tk.DoubleVar()  # meters
         self.vel_start = tk.DoubleVar()  # m/s
         self.accel_start = tk.DoubleVar()  # m/s^2
+
         # Static variable (for now)
         self.mass = tk.DoubleVar()  # kilograms
+
         # PID parameters
         self.set_point = tk.DoubleVar()  # float(input("Set point of speed to maintain? "))
         self.p_k = tk.DoubleVar()  # float(input("Proportional term? "))
@@ -315,26 +322,49 @@ class tkinterGUI:
             self.figure = getattr(self, "figure")
             self.ax = getattr(self, "ax")
 
+        # Main Button
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.canvas),
+            command=lambda: self.sim_and_plot(list_to_df(self.init_list), self.canvas),
             text="Simulate",
             bg="silver",
             fg="Black")
 
-        self.lock_scale = tk.Button(self.root,
-                                    text="Lock Scale",
-                                    bg="DimGray",
-                                    fg="White")
         self.clear_plot = tk.Button(self.root,
                                     command=plt.cla,
                                     text="Clear Plot",
                                     bg="DimGray",
                                     fg="White")
 
-        self.simulate_button.grid(row=2, column=0, sticky="nsew")
-        self.lock_scale.grid(row=0, column=0,sticky="nsew")
-        self.clear_plot.grid(row=1, column=0, sticky="nsew")
+        self.save_plot = tk.Button(self.root,
+                                   text="Save Plot",
+                                   bg="DimGray",
+                                   fg="White")
+
+
+
+        # Additional Check Options
+        self.lock_scale_check = tk.Checkbutton(self.root,
+                                    text="Lock Scale",
+                                    bg="DimGrey",
+                                    fg="Black",
+                                    onvalue=True,
+                                    variable=self.lock_scale)
+        self.frac_vals_check = tk.Checkbutton(self.root,
+                                        text="Fractional PID",
+                                        bg="DimGrey",
+                                        fg="Black",
+                                        onvalue=True,
+                                        variable=self.frac_vals)
+
+        self.save_plot.grid(row=0, column=0)
+        self.clear_plot.grid(row=1, column=0)
+        self.simulate_button.grid(row=2, column=0)
+
+
+        self.frac_vals_check.grid(row=0, column=5)
+        self.lock_scale_check.grid(row=1, column=5)
+
 
         #self.figure.patch.set_facecolor("DimGrey")
         #self.ax.set_title('Velocity vs. Time')
