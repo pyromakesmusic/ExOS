@@ -83,15 +83,15 @@ class tkinterGUI:
 
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
-    def sim_and_plot(self, init_vals_df, ax):
+    def sim_and_plot(self, init_vals_df):
         """
         This function takes the object and a dataframe as arguments and makes the plot (lots of GUI magic happening here)
         :param init_vals_df:
         :return:
         """
         df = simulate(init_vals_df)
-        df.plot(x="time", y="velocity", ax=ax)
-
+        plot = df.plot(x="time", y="velocity")
+        plt.draw()
         return
 
     def updateValue(self, event):
@@ -100,8 +100,9 @@ class tkinterGUI:
         self._job = self.root.after(5, self.updateGraph)
 
     def updateGraph(self):
+
         """
-        Here
+        Here x 2 pay attention
         """
         has_graph = hasattr(self, "has_graph")
         if not has_graph:
@@ -116,7 +117,7 @@ class tkinterGUI:
             figure = getattr(self, "figure")
             ax = getattr(self, "ax")
             plt.cla()
-        self.sim_and_plot(list_to_df(self.init_list), ax)
+        self.sim_and_plot(list_to_df(self.init_list))
         return
 
     def __init__(self):
@@ -296,36 +297,23 @@ class tkinterGUI:
             fg="White",
             command=self.updateValue)
         self.control_constant_slider.set(1)
-
-
-
-        """
-        Mostly just GUI positioning stuff again.
-        """
-
+        # List of initialization parameters necessary to run the simulation
         self.init_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
                         self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
                         self.p_k_slider, self.i_k_slider, self.d_k_slider, self.control_constant_slider]
-
-        # This button should run the simulation and probably plot it, at least depending on a checkbox
-
-        has_graph = hasattr(self, "has_graph")
-        if not has_graph:
-            self.figure = plt.Figure(figsize=(7,4), dpi=100)
-            self.ax = self.figure.add_subplot(111)
-            self.canvas = FigureCanvasTkAgg(self.figure, self.root)
-            self.canvas.draw()
-            self.canvas.get_tk_widget().grid(column=0, row=5, columnspan=5)
-            setattr(self, "has_graph", True)
-            has_graph = getattr(self, "has_graph")
-        else:
-            self.figure = getattr(self, "figure")
-            self.ax = getattr(self, "ax")
+        """
+        self.figure = plt.Figure(figsize=(7,4), dpi=100)
+        self.ax = self.figure.add_subplot(111)
+        self.canvas = FigureCanvasTkAgg(self.figure, self.root)
+        self.canvas.draw()
+        self.canvas.get_tk_widget().grid(column=0, row=5, columnspan=5)
+        setattr(self, "has_graph", True)
+        """
 
         # Main Button
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: self.sim_and_plot(list_to_df(self.init_list), self.canvas),
+            command=lambda: self.sim_and_plot(list_to_df(self.init_list)),
             text="Simulate",
             bg="silver",
             fg="Black")
@@ -365,11 +353,6 @@ class tkinterGUI:
         self.frac_vals_check.grid(row=0, column=5)
         self.lock_scale_check.grid(row=1, column=5)
 
-
-        #self.figure.patch.set_facecolor("DimGrey")
-        #self.ax.set_title('Velocity vs. Time')
-        #self.ax.set_facecolor("White")
-
         # Initialization Params
         self.sample_length_slider.grid(row=0, column=1, sticky="nsew")
         self.sample_freq_slider.grid(row=1, column=1, sticky="nsew")
@@ -381,8 +364,10 @@ class tkinterGUI:
         # PID Params
         self.scale_factor_slider.grid(row=0, column=3, sticky="nsew")
         self.set_point_slider.grid(row=0, column=4, sticky="nsew")
+
         self.p_k_slider.grid(row=1, column=3, sticky="nsew")
         self.i_k_slider.grid(row=1, column=4, sticky="nsew")
+
         self.d_k_slider.grid(row=2, column=3, sticky="nsew")
         self.control_constant_slider.grid(row=2, column=4, sticky="nsew")
 
