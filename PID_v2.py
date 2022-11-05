@@ -30,6 +30,7 @@ import pandas as pd
 import math
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import differint
 
 
 """
