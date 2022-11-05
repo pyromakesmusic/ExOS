@@ -92,7 +92,6 @@ class tkinterGUI:
         has_figure = hasattr(self, "figure")
         has_ax = hasattr(self, "ax")
         has_canvas = hasattr(self, "canvas")
-        print("has_figure", has_figure, "has_ax", has_ax, "has_canvas", has_canvas)
         if has_figure and not has_canvas:
             self.canvas = FigureCanvasTkAgg(self.figure, self.root)
             plt.cla()
@@ -103,6 +102,7 @@ class tkinterGUI:
             plt.cla()
             self.canvas.draw()
         df = simulate(init_vals_df)
+        plt.cla()
         plot = df.plot(x="time", y="velocity", ax=self.ax)
         plt.draw()
         return
@@ -110,7 +110,7 @@ class tkinterGUI:
     def updateValue(self, event):
         if self._job:
             self.root.after_cancel(self._job)
-        self._job = self.root.after(5, self.updateGraph)
+        self._job = self.root.after(50, self.updateGraph)
 
     def updateGraph(self):
 
@@ -314,14 +314,6 @@ class tkinterGUI:
         self.init_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
                         self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
                         self.p_k_slider, self.i_k_slider, self.d_k_slider, self.control_constant_slider]
-        """
-        self.figure = plt.Figure(figsize=(7,4), dpi=100)
-        self.ax = self.figure.add_subplot(111)
-        self.canvas = FigureCanvasTkAgg(self.figure, self.root)
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(column=0, row=5, columnspan=5)
-        setattr(self, "has_graph", True)
-        """
 
         # Main Button
         self.simulate_button = tk.Button(
