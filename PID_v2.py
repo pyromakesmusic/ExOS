@@ -89,8 +89,21 @@ class tkinterGUI:
         :param init_vals_df:
         :return:
         """
+        has_figure = hasattr(self, "figure")
+        has_ax = hasattr(self, "ax")
+        has_canvas = hasattr(self, "canvas")
+        print("has_figure", has_figure, "has_ax", has_ax, "has_canvas", has_canvas)
+        if has_figure and not has_canvas:
+            self.canvas = FigureCanvasTkAgg(self.figure, self.root)
+            plt.cla()
+            self.canvas.draw()
+            self.canvas.get_tk_widget().grid(row=5,column=0,columnspan=5)
+            self.has_canvas = True
+        elif has_figure and has_canvas:
+            plt.cla()
+            self.canvas.draw()
         df = simulate(init_vals_df)
-        plot = df.plot(x="time", y="velocity", ax=ax)
+        plot = df.plot(x="time", y="velocity", ax=self.ax)
         plt.draw()
         return
 
