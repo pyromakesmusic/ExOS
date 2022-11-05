@@ -124,7 +124,7 @@ class tkinterGUI:
         self.root = tk.Tk()
         self._job = None
 
-        self.root.title("PID Controller v1.1.b")
+        self.root.title("PID Controller v1.2.b")
 
         self.root.attributes("-fullscreen", False)
         self.root.configure(bg="DimGray")
