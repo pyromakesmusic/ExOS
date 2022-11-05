@@ -160,6 +160,7 @@ class tkinterGUI:
             variable=self.sample_length,
             label="Sample Length",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.sample_freq_slider = tk.Scale(
             self.root,
@@ -169,6 +170,7 @@ class tkinterGUI:
             variable=self.sample_freq,
             label="Sample Freq.",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         # Kinematic parameters
         self.position_start_slider = tk.Scale(
@@ -179,6 +181,7 @@ class tkinterGUI:
             variable=self.pos_start,
             label="Init. Pos.",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.velocity_start_slider = tk.Scale(
             self.root,
@@ -188,6 +191,7 @@ class tkinterGUI:
             variable=self.vel_start,
             label="Init. Vel.",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.accel_start_slider = tk.Scale(
             self.root,
@@ -197,6 +201,7 @@ class tkinterGUI:
             variable=self.accel_start,
             label="Init. Accel",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
 
         self.mass_slider = tk.Scale(
@@ -207,6 +212,7 @@ class tkinterGUI:
             variable=self.mass,
             label="Mass",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.scale_factor_slider = tk.Scale(
             self.root,
@@ -217,6 +223,7 @@ class tkinterGUI:
             variable=self.scale_factor,
             label="Disturbance",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         # PID parameters
         self.set_point_slider = tk.Scale(
@@ -228,16 +235,18 @@ class tkinterGUI:
             variable=self.set_point,
             label="Set Point",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
             self.root,
-            from_=5,
-            to=-1,
+            from_=10,
+            to=0,
             resolution=.01,
             orient="vertical",
             variable=self.p_k,
             label="P",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.p_k_slider.set(1)
 
@@ -250,6 +259,7 @@ class tkinterGUI:
             variable=self.i_k,
             label="I",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.i_k_slider.set(0)
 
@@ -262,6 +272,7 @@ class tkinterGUI:
             variable=self.d_k,
             label="D",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.d_k_slider.set(0)
 
@@ -275,6 +286,7 @@ class tkinterGUI:
             variable=self.control_constant,
             label="Control Const",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.control_constant_slider.set(1)
 
@@ -307,15 +319,18 @@ class tkinterGUI:
             self.root,
             command=lambda: sim_and_plot(list_to_df(self.init_list), self.canvas),
             text="Simulate",
-            bg="silver")
+            bg="silver",
+            fg="Black")
 
         self.lock_scale = tk.Button(self.root,
                                     text="Lock Scale",
-                                    bg="DimGray")
+                                    bg="DimGray",
+                                    fg="White")
         self.clear_plot = tk.Button(self.root,
                                     command=plt.cla,
                                     text="Clear Plot",
-                                    bg="DimGray")
+                                    bg="DimGray",
+                                    fg="White")
 
         self.simulate_button.grid(row=2, column=0, sticky="nsew")
         self.lock_scale.grid(row=0, column=0,sticky="nsew")
