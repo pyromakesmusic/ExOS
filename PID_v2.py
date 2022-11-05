@@ -83,14 +83,14 @@ class tkinterGUI:
 
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
-    def sim_and_plot(self, init_vals_df):
+    def sim_and_plot(self, init_vals_df, ax):
         """
         This function takes the object and a dataframe as arguments and makes the plot (lots of GUI magic happening here)
         :param init_vals_df:
         :return:
         """
         df = simulate(init_vals_df)
-        plot = df.plot(x="time", y="velocity")
+        plot = df.plot(x="time", y="velocity", ax=ax)
         plt.draw()
         return
 
@@ -117,7 +117,7 @@ class tkinterGUI:
             figure = getattr(self, "figure")
             ax = getattr(self, "ax")
             plt.cla()
-        self.sim_and_plot(list_to_df(self.init_list))
+        self.sim_and_plot(list_to_df(self.init_list), ax)
         return
 
     def __init__(self):
