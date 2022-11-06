@@ -355,9 +355,10 @@ class tkinterGUI:
         self.clear_plot.grid(row=1, column=0)
         self.simulate_button.grid(row=2, column=0)
 
-
         self.frac_vals_check.grid(row=0, column=5)
         self.lock_scale_check.grid(row=1, column=5)
+        # i term order
+        # d term order
 
         # Initialization Params
         self.sample_length_slider.grid(row=0, column=1, sticky="nsew")
@@ -844,7 +845,8 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     if i < 2:
         derivative = 0
     else:
-        derivative = d_k * df.at[i, "error"]
+        derivative = d_k * 1
+        # This is not actually calculating the derivative still
     pid = scaling_factor * (proportional + integral + derivative)
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
