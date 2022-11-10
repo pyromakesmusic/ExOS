@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
-import differint
 import tkinter as tk
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import differint
 
 class Sim():
     def __init__(self):
@@ -19,6 +19,7 @@ class Sim():
         derivative = np.gradient(y)
         der_series = pd.Series(derivative)
         print(derivative)
+        differint.RL()
         print(der_series)
         print(len(der_series))
         self.canvas.draw()
