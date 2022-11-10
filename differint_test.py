@@ -11,9 +11,7 @@ class Sim():
         x = np.linspace(0,100, num=10)
         y = np.linspace(0,100, num=10)
         self.root = tk.Tk()
-        self.fig, self.ax = plt.subplots()
-        self.canvas = FigureCanvasTkAgg(self.fig, self.root)
-        self.canvas.draw()
+        self.fig, self.ax = plt.subplots(111)
         plt.plot(x,y)
 
         derivative = np.gradient(y)
@@ -21,8 +19,6 @@ class Sim():
         print(derivative)
         print(der_series)
         print(len(der_series))
-        self.canvas.draw()
-        self.canvas.get_tk_widget().grid(row=0, column=0)
         plt.show()
         return
 

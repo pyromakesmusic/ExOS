@@ -261,7 +261,7 @@ class tkinterGUI:
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
             self.root,
-            from_=10,
+            from_=9,
             to=0,
             resolution=.01,
             orient="vertical",
@@ -274,8 +274,8 @@ class tkinterGUI:
 
         self.i_k_slider = tk.Scale(
             self.root,
-            from_=5,
-            to=-1,
+            from_=3,
+            to=0,
             resolution=.01,
             orient="vertical",
             variable=self.i_k,
@@ -287,8 +287,8 @@ class tkinterGUI:
 
         self.d_k_slider = tk.Scale(
             self.root,
-            from_=5,
-            to=-1,
+            from_=3,
+            to=0,
             resolution=.01,
             orient="vertical",
             variable=self.d_k,
@@ -301,8 +301,8 @@ class tkinterGUI:
         # Control constant
         self.control_constant_slider = tk.Scale(
             self.root,
-            from_=-5,
-            to=5,
+            from_=5,
+            to=-1,
             resolution=.01,
             orient="vertical",
             variable=self.control_constant,
@@ -845,14 +845,14 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     if i < 2:
         derivative = 0
     else:
-        derivative = d_k * 1
-        # This is not actually calculating the derivative still
+        gradient = np.gradient(df_abridged["error"])
+        derivative = d_k * float(gradient[-2:-1])
     pid = scaling_factor * (proportional + integral + derivative)
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
     df.at[i, "derivative"] = derivative
     df.at[i, "pid"] = pid
-#    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
+    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
     return df
 
 def main():
