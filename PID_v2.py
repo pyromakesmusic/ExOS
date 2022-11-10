@@ -116,7 +116,7 @@ class tkinterGUI:
             figure = getattr(self, "figure")
             ax = getattr(self, "ax")
             plt.cla()
-        sim_and_plot(list_to_df(self.init_list), ax)
+        self.sim_and_plot(list_to_df(self.init_list), ax)
         return
 
     def __init__(self):
@@ -305,7 +305,7 @@ class tkinterGUI:
 
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: sim_and_plot(list_to_df(self.init_list), self.canvas),
+            command=lambda: self.sim_and_plot(list_to_df(self.init_list), self.canvas),
             text="Simulate",
             bg="silver")
 
