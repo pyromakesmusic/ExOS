@@ -71,6 +71,12 @@ def placeholder():
 CLASS DEFINITIONS
 """
 class tkinterGUI:
+
+    def plot_formatter(self, df, init_df, ax):
+        plt.cla()
+        plot = df.plot(x="time", y="velocity", ax=self.ax)
+        plt.draw()
+        return
     def list_to_df(self, list):
         values_gotten = [list[0].get(), list[1].get()]
 
@@ -103,9 +109,7 @@ class tkinterGUI:
             plt.cla()
             self.canvas.draw()
         df = simulate(init_vals_df)
-        plt.cla()
-        plot = df.plot(x="time", y="velocity", ax=self.ax)
-        plt.draw()
+        self.plot_formatter(df, init_vals_df, self.ax)
         return
 
     def updateValue(self, event):
@@ -149,6 +153,8 @@ class tkinterGUI:
         # Interface flags
         self.frac_vals = tk.BooleanVar(self.root, False)
         self.lock_scale = tk.BooleanVar(self.root, False)
+        self.display_set_point = tk.BooleanVar(self.root, False)
+        self.display_overshoot_ranges = tk.BooleanVar(self.root, False)
 
         # Length of dataframe variables
         self.sample_length = tk.IntVar() # seconds
@@ -350,13 +356,27 @@ class tkinterGUI:
                                         fg="Black",
                                         onvalue=True,
                                         variable=self.frac_vals)
+        self.set_point_check = tk.Checkbutton(self.root,
+                                    text="Show Set Point",
+                                    bg="DimGrey",
+                                    fg="Black",
+                                    onvalue=True,
+                                    variable=self.display_set_point)
+        self.overshoot_ranges_check = tk.Checkbutton(self.root,
+                                        text="Show 25% Ranges",
+                                        bg="DimGrey",
+                                        fg="Black",
+                                        onvalue=True,
+                                        variable=self.display_overshoot_ranges)
 
         self.save_plot.grid(row=0, column=0)
         self.clear_plot.grid(row=1, column=0)
         self.simulate_button.grid(row=2, column=0)
 
-        self.frac_vals_check.grid(row=0, column=5)
-        self.lock_scale_check.grid(row=1, column=5)
+        self.frac_vals_check.grid(row=0, column=5, sticky="w")
+        self.lock_scale_check.grid(row=1, column=5, sticky="w")
+        self.set_point_check.grid(row=2, column=5, sticky="w")
+        self.overshoot_ranges_check.grid(row=3, column=5, sticky="w")
         # i term order
         # d term order
 
@@ -852,7 +872,6 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     df.at[i, "integral"] = integral
     df.at[i, "derivative"] = derivative
     df.at[i, "pid"] = pid
-    print("P:",proportional," I:", integral," D:", derivative," PID:", pid)
     return df
 
 def main():
