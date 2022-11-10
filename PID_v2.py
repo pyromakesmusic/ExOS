@@ -30,6 +30,7 @@ import pandas as pd
 import math
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import differint
 
 
 """
@@ -89,19 +90,33 @@ class tkinterGUI:
         :param init_vals_df:
         :return:
         """
+        has_figure = hasattr(self, "figure")
+        has_ax = hasattr(self, "ax")
+        has_canvas = hasattr(self, "canvas")
+        if has_figure and not has_canvas:
+            self.canvas = FigureCanvasTkAgg(self.figure, self.root)
+            plt.cla()
+            self.canvas.draw()
+            self.canvas.get_tk_widget().grid(row=5,column=0,columnspan=5)
+            self.has_canvas = True
+        elif has_figure and has_canvas:
+            plt.cla()
+            self.canvas.draw()
         df = simulate(init_vals_df)
-        df.plot(x="time", y="velocity", ax=ax)
-
+        plt.cla()
+        plot = df.plot(x="time", y="velocity", ax=self.ax)
+        plt.draw()
         return
 
     def updateValue(self, event):
         if self._job:
             self.root.after_cancel(self._job)
-        self._job = self.root.after(5, self.updateGraph)
+        self._job = self.root.after(50, self.updateGraph)
 
     def updateGraph(self):
+
         """
-        Here
+        Here x 2 pay attention
         """
         has_graph = hasattr(self, "has_graph")
         if not has_graph:
@@ -123,23 +138,30 @@ class tkinterGUI:
         self.root = tk.Tk()
         self._job = None
 
-        self.root.title("PID Controller v1.1.b")
-        # self.root.wm_attributes("-topmost", True)
+        self.root.title("PID Controller v1.2.b")
+
         self.root.attributes("-fullscreen", False)
         self.root.configure(bg="DimGray")
 
         """
         Simulation Parameters
         """
+        # Interface flags
+        self.frac_vals = tk.BooleanVar(self.root, False)
+        self.lock_scale = tk.BooleanVar(self.root, False)
+
         # Length of dataframe variables
         self.sample_length = tk.IntVar() # seconds
         self.sample_freq = tk.IntVar() # Hz
+
         # Initial conditions
         self.pos_start = tk.DoubleVar()  # meters
         self.vel_start = tk.DoubleVar()  # m/s
         self.accel_start = tk.DoubleVar()  # m/s^2
+
         # Static variable (for now)
         self.mass = tk.DoubleVar()  # kilograms
+
         # PID parameters
         self.set_point = tk.DoubleVar()  # float(input("Set point of speed to maintain? "))
         self.p_k = tk.DoubleVar()  # float(input("Proportional term? "))
@@ -160,6 +182,7 @@ class tkinterGUI:
             variable=self.sample_length,
             label="Sample Length",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.sample_freq_slider = tk.Scale(
             self.root,
@@ -169,6 +192,7 @@ class tkinterGUI:
             variable=self.sample_freq,
             label="Sample Freq.",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         # Kinematic parameters
         self.position_start_slider = tk.Scale(
@@ -179,6 +203,7 @@ class tkinterGUI:
             variable=self.pos_start,
             label="Init. Pos.",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.velocity_start_slider = tk.Scale(
             self.root,
@@ -188,6 +213,7 @@ class tkinterGUI:
             variable=self.vel_start,
             label="Init. Vel.",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.accel_start_slider = tk.Scale(
             self.root,
@@ -197,6 +223,7 @@ class tkinterGUI:
             variable=self.accel_start,
             label="Init. Accel",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
 
         self.mass_slider = tk.Scale(
@@ -207,6 +234,7 @@ class tkinterGUI:
             variable=self.mass,
             label="Mass",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.scale_factor_slider = tk.Scale(
             self.root,
@@ -217,6 +245,7 @@ class tkinterGUI:
             variable=self.scale_factor,
             label="Disturbance",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         # PID parameters
         self.set_point_slider = tk.Scale(
@@ -228,16 +257,18 @@ class tkinterGUI:
             variable=self.set_point,
             label="Set Point",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.p_k_slider = tk.Scale(
             self.root,
-            from_=5,
-            to=-1,
+            from_=10,
+            to=0,
             resolution=.01,
             orient="vertical",
             variable=self.p_k,
             label="P",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.p_k_slider.set(1)
 
@@ -250,6 +281,7 @@ class tkinterGUI:
             variable=self.i_k,
             label="I",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.i_k_slider.set(0)
 
@@ -262,6 +294,7 @@ class tkinterGUI:
             variable=self.d_k,
             label="D",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.d_k_slider.set(0)
 
@@ -275,55 +308,57 @@ class tkinterGUI:
             variable=self.control_constant,
             label="Control Const",
             bg="DimGray",
+            fg="White",
             command=self.updateValue)
         self.control_constant_slider.set(1)
-
-
-
-        """
-        Mostly just GUI positioning stuff again.
-        """
-
+        # List of initialization parameters necessary to run the simulation
         self.init_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider, self.velocity_start_slider,
                         self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
                         self.p_k_slider, self.i_k_slider, self.d_k_slider, self.control_constant_slider]
 
-        # This button should run the simulation and probably plot it, at least depending on a checkbox
-
-        has_graph = hasattr(self, "has_graph")
-        if not has_graph:
-            self.figure = plt.Figure(figsize=(7,4), dpi=100)
-            self.ax = self.figure.add_subplot(111)
-            self.canvas = FigureCanvasTkAgg(self.figure, self.root)
-            self.canvas.draw()
-            self.canvas.get_tk_widget().grid(column=0, row=5, columnspan=5)
-            setattr(self, "has_graph", True)
-            has_graph = getattr(self, "has_graph")
-        else:
-            self.figure = getattr(self, "figure")
-            self.ax = getattr(self, "ax")
-
+        # Main Button
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: self.sim_and_plot(list_to_df(self.init_list), self.canvas),
+            command=lambda: self.sim_and_plot(list_to_df(self.init_list)),
             text="Simulate",
-            bg="silver")
+            bg="silver",
+            fg="Black")
 
-        self.lock_scale = tk.Button(self.root,
-                                    text="Lock Scale",
-                                    bg="DimGray")
         self.clear_plot = tk.Button(self.root,
                                     command=plt.cla,
                                     text="Clear Plot",
-                                    bg="DimGray")
+                                    bg="DimGray",
+                                    fg="White")
 
-        self.simulate_button.grid(row=2, column=0, sticky="nsew")
-        self.lock_scale.grid(row=0, column=0,sticky="nsew")
-        self.clear_plot.grid(row=1, column=0, sticky="nsew")
+        self.save_plot = tk.Button(self.root,
+                                   text="Save Plot",
+                                   bg="DimGray",
+                                   fg="White")
 
-        #self.figure.patch.set_facecolor("DimGrey")
-        #self.ax.set_title('Velocity vs. Time')
-        #self.ax.set_facecolor("White")
+
+
+        # Additional Check Options
+        self.lock_scale_check = tk.Checkbutton(self.root,
+                                    text="Lock Scale",
+                                    bg="DimGrey",
+                                    fg="Black",
+                                    onvalue=True,
+                                    variable=self.lock_scale)
+        self.frac_vals_check = tk.Checkbutton(self.root,
+                                        text="Fractional PID",
+                                        bg="DimGrey",
+                                        fg="Black",
+                                        onvalue=True,
+                                        variable=self.frac_vals)
+
+        self.save_plot.grid(row=0, column=0)
+        self.clear_plot.grid(row=1, column=0)
+        self.simulate_button.grid(row=2, column=0)
+
+        self.frac_vals_check.grid(row=0, column=5)
+        self.lock_scale_check.grid(row=1, column=5)
+        # i term order
+        # d term order
 
         # Initialization Params
         self.sample_length_slider.grid(row=0, column=1, sticky="nsew")
@@ -336,8 +371,10 @@ class tkinterGUI:
         # PID Params
         self.scale_factor_slider.grid(row=0, column=3, sticky="nsew")
         self.set_point_slider.grid(row=0, column=4, sticky="nsew")
+
         self.p_k_slider.grid(row=1, column=3, sticky="nsew")
         self.i_k_slider.grid(row=1, column=4, sticky="nsew")
+
         self.d_k_slider.grid(row=2, column=3, sticky="nsew")
         self.control_constant_slider.grid(row=2, column=4, sticky="nsew")
 
@@ -808,7 +845,8 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     if i < 2:
         derivative = 0
     else:
-        derivative = d_k * df.at[i, "error"]
+        derivative = d_k * 1
+        # This is not actually calculating the derivative still
     pid = scaling_factor * (proportional + integral + derivative)
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
