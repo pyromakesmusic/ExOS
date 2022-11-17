@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import differint
+from differint import differint
 import tkinter as tk
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -16,9 +16,13 @@ class Sim():
 
         derivative = np.gradient(y)
         der_series = pd.Series(derivative)
+        dfint = differint.RL(4,x)
         print(derivative)
         print(der_series)
         print(len(der_series))
+        plt.xticks(0,100, num=5)
+        plt.yticks(np.linspace(0,100, num=10))
+        plt.plot(x,der_series)
         plt.show()
         return
 
