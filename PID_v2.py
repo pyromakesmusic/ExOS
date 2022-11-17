@@ -75,6 +75,9 @@ class tkinterGUI:
     def plot_formatter(self, df, init_df, ax):
         plt.cla()
         plot = df.plot(x="time", y="velocity", ax=self.ax)
+        set_point = init_df["set_point"]
+        print(set_point)
+        plt.axhline(y = set_point[0], color = "r", linestyle = "--")
         plt.draw()
         return
     def list_to_df(self, list):
@@ -276,7 +279,7 @@ class tkinterGUI:
             bg="DimGray",
             fg="White",
             command=self.updateValue)
-        self.p_k_slider.set(1)
+        self.p_k_slider.set(0)
 
         self.i_k_slider = tk.Scale(
             self.root,
