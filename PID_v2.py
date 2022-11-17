@@ -78,12 +78,19 @@ class tkinterGUI:
         set_point = init_df["set_point"][0]
         lower_bound = set_point * .75
         upper_bound = set_point * 1.25
+        xrange = self.ax.get_xlim()
+        yrange = self.ax.get_ylim()
         set_point_flag = True
         overshoot_range_flag = True
         lock_scale_flag = True
-        plt.axhline(y=set_point, color="r", linestyle="--")
-        plt.axhline(y=lower_bound, color="r", linestyle="--")
-        plt.axhline(y=upper_bound, color="r", linestyle="--")
+        if set_point_flag == True:
+            plt.axhline(y=set_point, color="r", linestyle="--")
+        if overshoot_range_flag == True:
+            plt.axhline(y=lower_bound, color="r", linestyle="--")
+            plt.axhline(y=upper_bound, color="r", linestyle="--")
+        if lock_scale_flag == True:
+            self.ax.set_ylim(yrange)
+            plt.yticks(np.linspace(0,5,10))
         plt.draw()
         return
     def list_to_df(self, list):
