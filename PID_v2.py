@@ -75,9 +75,22 @@ class tkinterGUI:
     def plot_formatter(self, df, init_df, ax):
         plt.cla()
         plot = df.plot(x="time", y="velocity", ax=self.ax)
-        set_point = init_df["set_point"]
-        print(set_point)
-        plt.axhline(y = set_point[0], color = "r", linestyle = "--")
+        set_point = init_df["set_point"][0]
+        lower_bound = set_point * .75
+        upper_bound = set_point * 1.25
+        xrange = self.ax.get_xlim()
+        yrange = self.ax.get_ylim()
+        set_point_flag = True
+        overshoot_range_flag = True
+        lock_scale_flag = True
+        if self.set_point_check == True:
+            plt.axhline(y=set_point, color="r", linestyle="--")
+        if self.overshoot_ranges_check == True:
+            plt.axhline(y=lower_bound, color="r", linestyle="--")
+            plt.axhline(y=upper_bound, color="r", linestyle="--")
+        if self.lock_scale_check == True:
+            self.ax.set_ylim(yrange)
+            plt.yticks(np.linspace(0,5,10))
         plt.draw()
         return
     def list_to_df(self, list):
