@@ -83,12 +83,12 @@ class tkinterGUI:
         set_point_flag = True
         overshoot_range_flag = True
         lock_scale_flag = True
-        if set_point_flag == True:
+        if self.set_point_check == True:
             plt.axhline(y=set_point, color="r", linestyle="--")
-        if overshoot_range_flag == True:
+        if self.overshoot_ranges_check == True:
             plt.axhline(y=lower_bound, color="r", linestyle="--")
             plt.axhline(y=upper_bound, color="r", linestyle="--")
-        if lock_scale_flag == True:
+        if self.lock_scale_check == True:
             self.ax.set_ylim(yrange)
             plt.yticks(np.linspace(0,5,10))
         plt.draw()
