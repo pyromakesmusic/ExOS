@@ -79,6 +79,21 @@ class tkinterGUI:
         lower_bound = set_point * .75
         upper_bound = set_point * 1.25
         yrange = self.ax.get_ylim()
+
+        p = init_df["p_k"][0]
+        i = init_df["i_k"][0]
+        d = init_df["d_k"][0]
+
+        p_string = "P: ".ljust(5) + str(p).rjust(10)
+        i_string = "\nI: ".ljust(5) + str(i).rjust(10)
+        d_string = "\nD: ".ljust(5) + str(d).rjust(10)
+        txtbox = (p_string + i_string + d_string)
+
+        properties = dict(boxstyle="square", facecolor="white", alpha=1, edgecolor="white")
+        ax.yaxis.set_label_position("left")
+        ax.text(.85,.5, str(txtbox), transform = self.ax.transAxes, fontsize=14,
+                     verticalalignment="top", bbox=properties)
+
         if self.display_set_point.get() == True:
             plt.axhline(y=set_point, color="r", linestyle="--")
         if self.display_overshoot_ranges.get() == True:
