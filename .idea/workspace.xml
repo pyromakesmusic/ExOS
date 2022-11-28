@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="604e52b0-22b3-4b1f-9095-66435603126f" name="Changes" comment="removed some unnecessary things, preparing to refactor" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2G4emLN21FaG5TZ0oU0rkRT1NOW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS/#Summer2022Research",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
+  }
+}]]></component>
+  <component name="RunManager" selected="Python.tkinter_test1">
+    <configuration name="differint_statictest1" type="PythonConfigurationType" factoryName="Python">
+      <module name="4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/differint_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_tkinter_test2.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="no redirect" type="PythonConfigurationType" factoryName="Python">
+      <module name="4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test1" type="PythonConfigurationType" factoryName="Python">
+      <module name="4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_test1.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python">
+      <module name="4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_test2.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test3" type="PythonConfigurationType" factoryName="Python">
+      <module name="4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_text_test3.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tkinter_test1" type="PythonConfigurationType" factoryName="Python">
+      <module name="4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_tkinter_test1.txt" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.test1" />
+      <item itemvalue="Python.tkinter_test1" />
+      <item itemvalue="Python.test3" />
+      <item itemvalue="Python.differint_statictest1" />
+      <item itemvalue="Python.test2" />
+      <item itemvalue="Python.no redirect" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="604e52b0-22b3-4b1f-9095-66435603126f" name="Changes" comment="" />
+      <created>1665652441872</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665652441872</updated>
+    </task>
+    <task id="LOCAL-00001" summary="added some options for command line and browser input">
+      <created>1665903130046</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1665903130047</updated>
+    </task>
+    <task id="LOCAL-00002" summary="should get the initial parameters to the functions that require it">
+      <created>1666228413567</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666228413567</updated>
+    </task>
+    <task id="LOCAL-00003" summary="developed a batch test for the command line input, the test2 file - from here should be refactoring to take the sliders and work with a GUI">
+      <created>1666229781263</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666229781263</updated>
+    </task>
+    <task id="LOCAL-00004" summary="it kind of runs? should be ready to make a beta version soonish">
+      <created>1666231682349</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666231682349</updated>
+    </task>
+    <task id="LOCAL-00005" summary="got the sliders working partially in both tkinter and ipython, now need to add the plotting button">
+      <created>1666232726400</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666232726400</updated>
+    </task>
+    <task id="LOCAL-00006" summary="got the GUI mostly working for tkinter, but now the sample_number calculation seems to be happening incorrectly">
+      <created>1666239810495</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666239810495</updated>
+    </task>
+    <task id="LOCAL-00007" summary="just cleaned up some unnecessary prints to the console">
+      <created>1666282417448</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666282417448</updated>
+    </task>
+    <task id="LOCAL-00008" summary="it's not actually doing any tuning, so the PID terms need to be updated. i think i need to define a function that gets the parameters when the button is clicked.">
+      <created>1666293381389</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1666293381389</updated>
+    </task>
+    <task id="LOCAL-00009" summary="it's not actually doing any tuning, so the PID terms need to be updated. i think i need to define a function that gets the parameters when the button is clicked.">
+      <created>1666293736929</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1666293736929</updated>
+    </task>
+    <task id="LOCAL-00010" summary="newest working version">
+      <created>1666297386344</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666297386344</updated>
+    </task>
+    <task id="LOCAL-00011" summary="got the tuning bug fixed">
+      <created>1666375481958</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666375481958</updated>
+    </task>
+    <task id="LOCAL-00012" summary="made some changes to slider values to make them more sensible for tuning">
+      <created>1666375886083</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666375886083</updated>
+    </task>
+    <task id="LOCAL-00013" summary="it actually computes the derivative now">
+      <created>1666516994194</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666516994194</updated>
+    </task>
+    <task id="LOCAL-00014" summary="changed some sliders to float values">
+      <created>1666521918767</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666521918767</updated>
+    </task>
+    <task id="LOCAL-00015" summary="more slider values changed">
+      <created>1666541484983</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666541484983</updated>
+    </task>
+    <task id="LOCAL-00016" summary="a few quality of life front end changes">
+      <created>1666995449531</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1666995449531</updated>
+    </task>
+    <task id="LOCAL-00017" summary="changed background color">
+      <created>1666996109162</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1666996109162</updated>
+    </task>
+    <task id="LOCAL-00018" summary="the beginnings of the logic for getting the sliders to update automatically">
+      <created>1666998350461</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1666998350461</updated>
+    </task>
+    <task id="LOCAL-00019" summary="filling out some of the class definition for the window">
+      <created>1667000111215</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1667000111215</updated>
+    </task>
+    <task id="LOCAL-00020" summary="successfully got the GUI logic into a class definition.">
+      <created>1667001078954</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1667001078954</updated>
+    </task>
+    <task id="LOCAL-00021" summary="sliders aren't updating automatically, but the code still works at least">
+      <created>1667001774307</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1667001774307</updated>
+    </task>
+    <task id="LOCAL-00022" summary="got the ipython sliders displaying">
+      <created>1667009057170</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1667009057170</updated>
+    </task>
+    <task id="LOCAL-00023" summary="got the values plotted on slider update">
+      <created>1667020084136</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1667020084136</updated>
+    </task>
+    <task id="LOCAL-00024" summary="messing with the layout manager a bit; have slightly improved things but only slightly">
+      <created>1667021114112</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1667021114112</updated>
+    </task>
+    <task id="LOCAL-00025" summary="more layout manager stuff">
+      <created>1667021273805</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1667021273805</updated>
+    </task>
+    <task id="LOCAL-00026" summary="last commit for the night; only cosmetic changes">
+      <created>1667023154498</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1667023154498</updated>
+    </task>
+    <task id="LOCAL-00027" summary="more cosmetic stuff; needs to be turned into a library and needs the GUI to have the plot updating inside it - but otherwise ready for presentation and further back end modification">
+      <created>1667487009174</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1667487009174</updated>
+    </task>
+    <task id="LOCAL-00028" summary="well, it's graphing data...in the wrong window. so that is good">
+      <created>1667487560384</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1667487560384</updated>
+    </task>
+    <task id="LOCAL-00029" summary="well, it's graphing data...in the wrong window. so that is good">
+      <created>1667491978274</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1667491978274</updated>
+    </task>
+    <task id="LOCAL-00030" summary="testing the graph output, trying to remove">
+      <created>1667540114455</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1667540114455</updated>
+    </task>
+    <task id="LOCAL-00031" summary="no longer topmost">
+      <created>1667540173026</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1667540173026</updated>
+    </task>
+    <task id="LOCAL-00032" summary="it is now just the sliders, next to see if i can get the separate window to plot">
+      <created>1667540388147</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1667540388147</updated>
+    </task>
+    <task id="LOCAL-00033" summary="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want.">
+      <created>1667571743700</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1667571743700</updated>
+    </task>
+    <task id="LOCAL-00034" summary="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want.">
+      <created>1667574671467</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1667574671467</updated>
+    </task>
+    <task id="LOCAL-00035" summary="last updates">
+      <created>1667584056796</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1667584056796</updated>
+    </task>
+    <task id="LOCAL-00036" summary="got some replotting done; I think I'm not doing enough passing out of functions to get the plots to not generate over and over">
+      <created>1667585241167</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1667585241167</updated>
+    </task>
+    <task id="LOCAL-00037" summary="seem to have found two different places where a plot exists">
+      <created>1667595316776</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1667595316776</updated>
+    </task>
+    <task id="LOCAL-00038" summary="newest updates, will look at later">
+      <created>1668044796616</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1668044796616</updated>
+    </task>
+    <task id="LOCAL-00039" summary="now the damned thing actually works">
+      <created>1668047349481</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1668047349481</updated>
+    </task>
+    <task id="LOCAL-00040" summary="updated some stuff, looks better now">
+      <created>1668058764521</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1668058764521</updated>
+    </task>
+    <task id="LOCAL-00041" summary="had to make a local copy of differint library, but it works now">
+      <created>1668678657950</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1668678657950</updated>
+    </task>
+    <task id="LOCAL-00042" summary="added set point line and fixed a few things">
+      <created>1668704303415</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1668704303415</updated>
+    </task>
+    <task id="LOCAL-00043" summary="bunch of GUI updates">
+      <created>1668757921499</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1668757921499</updated>
+    </task>
+    <task id="LOCAL-00044" summary="removed some unnecessary things, preparing to refactor">
+      <created>1669311359060</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1669311359060</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="the beginnings of the logic for getting the sliders to update automatically" />
+    <MESSAGE value="filling out some of the class definition for the window" />
+    <MESSAGE value="successfully got the GUI logic into a class definition." />
+    <MESSAGE value="sliders aren't updating automatically, but the code still works at least" />
+    <MESSAGE value="got the ipython sliders displaying" />
+    <MESSAGE value="got the values plotted on slider update" />
+    <MESSAGE value="messing with the layout manager a bit; have slightly improved things but only slightly" />
+    <MESSAGE value="more layout manager stuff" />
+    <MESSAGE value="last commit for the night; only cosmetic changes" />
+    <MESSAGE value="more cosmetic stuff; needs to be turned into a library and needs the GUI to have the plot updating inside it - but otherwise ready for presentation and further back end modification" />
+    <MESSAGE value="well, it's graphing data...in the wrong window. so that is good" />
+    <MESSAGE value="testing the graph output, trying to remove" />
+    <MESSAGE value="no longer topmost" />
+    <MESSAGE value="it is now just the sliders, next to see if i can get the separate window to plot" />
+    <MESSAGE value="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want." />
+    <MESSAGE value="last updates" />
+    <MESSAGE value="got some replotting done; I think I'm not doing enough passing out of functions to get the plots to not generate over and over" />
+    <MESSAGE value="seem to have found two different places where a plot exists" />
+    <MESSAGE value="newest updates, will look at later" />
+    <MESSAGE value="now the damned thing actually works" />
+    <MESSAGE value="updated some stuff, looks better now" />
+    <MESSAGE value="had to make a local copy of differint library, but it works now" />
+    <MESSAGE value="added set point line and fixed a few things" />
+    <MESSAGE value="bunch of GUI updates" />
+    <MESSAGE value="removed some unnecessary things, preparing to refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed some unnecessary things, preparing to refactor" />
+  </component>
+</project>
