@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="added checkbox functionality">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="changed folder structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,17 +21,25 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2G4emLN21FaG5TZ0oU0rkRT1NOW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/#PERSONAL/#STEDWARDS/#Summer2022Research&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
+    ]
   }
 }</component>
   <component name="RunManager" selected="Python.tkinter_test1">
@@ -487,7 +495,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669311359060</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="changed folder structure">
+      <created>1669747193583</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1669747193583</updated>
+    </task>
+    <task id="LOCAL-00046" summary="changed folder structure">
+      <created>1669747227791</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1669747227791</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -502,7 +524,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="the beginnings of the logic for getting the sliders to update automatically" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="filling out some of the class definition for the window" />
     <MESSAGE value="successfully got the GUI logic into a class definition." />
     <MESSAGE value="sliders aren't updating automatically, but the code still works at least" />
@@ -527,6 +549,7 @@
     <MESSAGE value="added set point line and fixed a few things" />
     <MESSAGE value="bunch of GUI updates" />
     <MESSAGE value="removed some unnecessary things, preparing to refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed some unnecessary things, preparing to refactor" />
+    <MESSAGE value="changed folder structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed folder structure" />
   </component>
 </project>
