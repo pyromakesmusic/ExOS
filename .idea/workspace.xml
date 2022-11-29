@@ -2,9 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pyonics/interface/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/pyonics/pyonics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/research.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/pid/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/pid/pid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_text_test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_text_test3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_tkinter_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_tkinter_test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/PID tests/slow_convergence.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/PID tests/slow_convergence.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/constant_force_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/constant_force_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/increased_freq_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/increased_freq_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/more_d_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/more_d_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/more_p_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/more_p_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/some_d_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/some_d_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/some_i_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/some_i_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/some_p_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/some_p_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/differint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/differint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/differint/differint.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/differint/differint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/differint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/differint_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/interface/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/interface/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/pid/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/pid/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/pid/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/pid/pid.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,144 +76,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\scripts" />
       <recent name="C:\Users\Pyro\Documents\Math4157\pyonics\pid" />
     </key>
-  </component>
-  <component name="RunManager" selected="Python.tkinter_test1">
-    <configuration name="differint_statictest1" type="PythonConfigurationType" factoryName="Python">
-      <module name="4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/differint_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_tkinter_test2.txt" />
-      <method v="2" />
-    </configuration>
-    <configuration name="no redirect" type="PythonConfigurationType" factoryName="Python">
-      <module name="4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test1" type="PythonConfigurationType" factoryName="Python">
-      <module name="4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_test1.txt" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test2" type="PythonConfigurationType" factoryName="Python">
-      <module name="4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_test2.txt" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test3" type="PythonConfigurationType" factoryName="Python">
-      <module name="4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_text_test3.txt" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tkinter_test1" type="PythonConfigurationType" factoryName="Python">
-      <module name="4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PID_v2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\4157\batch test input files\PID_tkinter_test1.txt" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.test1" />
-      <item itemvalue="Python.tkinter_test1" />
-      <item itemvalue="Python.test3" />
-      <item itemvalue="Python.differint_statictest1" />
-      <item itemvalue="Python.test2" />
-      <item itemvalue="Python.no redirect" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -200,13 +88,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00001" summary="added some options for command line and browser input">
-      <created>1665903130046</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1665903130047</updated>
     </task>
     <task id="LOCAL-00002" summary="should get the initial parameters to the functions that require it">
       <created>1666228413567</created>
@@ -544,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669748692205</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="changed folder structure">
+      <created>1669749191485</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1669749191485</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
