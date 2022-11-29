@@ -1,2 +1,2 @@
-# Math4157
-Research project for math at St. Edward's
+# pyonics
+A Python software library for the creation of powered human augmentations.
