@@ -2,32 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/pyonics/pyonics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/research.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_test1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_text_test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_text_test3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_tkinter_test1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/batch test input files/PID_tkinter_test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/PID tests/slow_convergence.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/PID tests/slow_convergence.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/constant_force_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/constant_force_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/increased_freq_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/increased_freq_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/more_d_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/more_d_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/more_p_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/more_p_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/some_d_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/some_d_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/some_i_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/some_i_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/talk 2 images/some_p_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/outputs/talk 2 images/some_p_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/differint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/differint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/differint/differint.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/differint/differint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/differint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/differint_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/interface/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/interface/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/pid/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/pid/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/pid/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/pid/pid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/pyonics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/pyonics/pid/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/pid/pid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/pyonics/pyonics.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/pyonics/pyonics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +66,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00002" summary="should get the initial parameters to the functions that require it">
-      <created>1666228413567</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1666228413567</updated>
     </task>
     <task id="LOCAL-00003" summary="developed a batch test for the command line input, the test2 file - from here should be refactoring to take the sliders and work with a GUI">
       <created>1666229781263</created>
@@ -432,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669749191485</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="changed folder structure">
+      <created>1669749614516</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1669749614516</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
