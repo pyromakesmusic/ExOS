@@ -19,14 +19,52 @@ import pandas as pd
 """
 CLASS DEFINITIONS
 """
+class KinematicSim():
+    """
+    Should be used for simulations of kinematics
+    """
 
+class Disturbance():
+    """
+    Should be used for any kind of disturbance force
+    """
+    def noise_f(self, k):
+        whitenoise = np.random.normal(1, 2)
+        scaled_noise = k * whitenoise
+        return scaled_noise
+
+class RigidBody():
+    """
+    Should be used for any rigid object undergound physics calculations
+    """
+
+class Link(RigidBody):
+    """
+    Parent class used for any structurally important element of the exoskeleton.
+    """
+
+class BoneLink(Link):
+    """
+    Should be used to represent rigid load-bearing non-joint members of the exoskeleton
+    """
+class JointLink(Link):
+    """
+    Should be used to represent joints
+    """
+
+class RigidTransport(RigidBody):
+    """
+    Should be used for vehicles.
+    """
+
+class Exoskeleton(RigidTransport):
+    """
+    Exoskeleton parent class.
+    """
 """
 FUNCTION DEFINITIONS
 """
-def noise_f(k):
-    whitenoise = np.random.normal(1, 2)
-    scaled_noise = k * whitenoise
-    return scaled_noise
+
 
 
 def time(num_samples, sample_rate, df):
