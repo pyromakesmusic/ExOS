@@ -1,3 +1,18 @@
+"""
+LIBRARY IMPORTS
+"""
+import sys
+sys.path.append("pyonics_path")
+
+"""
+CLASS DEFINITIONS
+"""
+
+"""
+FUNCTION DEFINITIONS
+"""
+
+
 
 def total_samples(sample_rate=20, total_time=20):
     total_samples = int(sample_rate * total_time)

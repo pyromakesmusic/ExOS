@@ -1,4 +1,16 @@
+"""
+LIBRARY IMPORTS
+"""
+import sys
+sys.path.append("pyonics_path")
 
+"""
+CLASS DEFINITIONS
+"""
+
+"""
+FUNCTION DEFINITIONS
+"""
 def error(set_point, df, i):
     """
     Determines the error.

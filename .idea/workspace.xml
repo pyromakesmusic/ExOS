@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pyonics_v2test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/pyonics_v2test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +94,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00009" summary="it's not actually doing any tuning, so the PID terms need to be updated. i think i need to define a function that gets the parameters when the button is clicked.">
-      <created>1666293736929</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1666293736929</updated>
     </task>
     <task id="LOCAL-00010" summary="newest working version">
       <created>1666297386344</created>
@@ -436,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669942478420</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory">
+      <created>1669944340951</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1669944340951</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -452,7 +454,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="filling out some of the class definition for the window" />
     <MESSAGE value="successfully got the GUI logic into a class definition." />
     <MESSAGE value="sliders aren't updating automatically, but the code still works at least" />
     <MESSAGE value="got the ipython sliders displaying" />
@@ -477,6 +478,7 @@
     <MESSAGE value="bunch of GUI updates" />
     <MESSAGE value="removed some unnecessary things, preparing to refactor" />
     <MESSAGE value="changed folder structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed folder structure" />
+    <MESSAGE value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
   </component>
 </project>

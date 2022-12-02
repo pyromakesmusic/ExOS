@@ -3,17 +3,18 @@ import sys
 """
 SYSTEM CONFIGURATION
 """
-sys.path.append("placeholder_string")
+sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
 """
 LIBRARY IMPORTS
 """
 import tkinter as tk
 from tkinter import ttk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg as tkagg
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from simulation import simulation
+import pandas as pd
 
 """
 CLASS DEFINITIONS
@@ -21,6 +22,10 @@ CLASS DEFINITIONS
 
 
 class tkinterGUI:
+
+    def total_samples(self, sample_rate=20, total_time=20):
+        total_samples = int(sample_rate * total_time)
+        return total_samples
 
     def plot_formatter(self, df, init_df, ax):
         plt.cla()
@@ -58,7 +63,7 @@ class tkinterGUI:
     def list_to_df(self, list):
         values_gotten = [list[0].get(), list[1].get()]
 
-        sample_number = int(total_samples(values_gotten[0], values_gotten[1]))
+        sample_number = int(self.total_samples(values_gotten[0], values_gotten[1]))
         values_gotten.append(sample_number)
         for i in list[2::1]:
             values_gotten.append(i.get())
@@ -114,7 +119,7 @@ class tkinterGUI:
             figure = getattr(self, "figure")
             ax = getattr(self, "ax")
             plt.cla()
-        self.sim_and_plot(list_to_df(self.init_list), ax)
+        self.sim_and_plot(self.list_to_df(self.init_list), ax)
         return
 
     def __init__(self):
