@@ -1,3 +1,19 @@
+import sys
+
+"""
+SYSTEM CONFIGURATION
+"""
+sys.path.append("placeholder_string")
+"""
+LIBRARY IMPORTS
+"""
+import tkinter as tk
+from tkinter import ttk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg as tkagg
+import ipywidgets as widgets
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from simulation import simulation
 
 """
 CLASS DEFINITIONS
