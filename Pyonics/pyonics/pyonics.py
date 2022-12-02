@@ -617,7 +617,7 @@ def row_maker(sample_num):
     :param smp_rate:
     :return:
     """
-    headers = ["time", "mass", "disturbance_force", "error", "proportional", "integral", "derivative", "pid",
+    headers = ["time", "mass", "disturbance_force", "error", "proportional", "integral", "derivative", "control",
                "throttle_force", "total_force", "acceleration", "velocity", "position"]
     df = pd.DataFrame(columns=headers, index=range(sample_num))
     return df
@@ -728,7 +728,7 @@ def simulate(init_params):  # This should be taking a DataFrame and returning al
 
     # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
     df.at[0, "error"] = 0  # This should definitely still be initialized at 0
-    df.at[0, "pid"] = 0  # This should also still initialize at 0
+    df.at[0, "control"] = 0  # This should also still initialize at 0
     df.at[0, "throttle_force"] = 0  # This should initialize at 0 except under weird circumstances
     df.at[0, "total_force"] = 0  # This can be whatever; the disturbance force isn't necessarily zero at start
     df.at[0, "acceleration"] = init_params["accel_start"][
@@ -837,7 +837,7 @@ def throttle_force(df, i):
     else:
         error = df.at[(i - 1), "error"]
         if error != 0:
-            force = df.at[(i - 1), "pid"]
+            force = df.at[(i - 1), "control"]
         else:
             force = 0
     df.at[i, "throttle_force"] = force
@@ -927,7 +927,7 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
     df.at[i, "derivative"] = derivative
-    df.at[i, "pid"] = pid
+    df.at[i, "control"] = pid
     return df
 
 

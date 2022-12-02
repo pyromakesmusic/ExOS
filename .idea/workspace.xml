@@ -2,32 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pyonics/CHANGES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/batch test input files/PID_test1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/batch test input files/PID_test2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/batch test input files/PID_text_test3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/batch test input files/PID_tkinter_test1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/batch test input files/PID_tkinter_test2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/PID tests/slow_convergence.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/constant_force_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/increased_freq_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/more_d_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/more_p_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/some_d_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/some_i_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/some_p_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/differint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/differint/differint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/differint_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/pid/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/pid/pid.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/pyonics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/research.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/physics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pid/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pid/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pyonics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/pyonics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +58,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\test" />
       <recent name="C:\Users\Pyro\Documents\Math4157\scripts" />
       <recent name="C:\Users\Pyro\Documents\Math4157\pyonics\pid" />
     </key>
@@ -88,20 +71,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00004" summary="it kind of runs? should be ready to make a beta version soonish">
-      <created>1666231682349</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1666231682349</updated>
-    </task>
-    <task id="LOCAL-00005" summary="got the sliders working partially in both tkinter and ipython, now need to add the plotting button">
-      <created>1666232726400</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1666232726400</updated>
     </task>
     <task id="LOCAL-00006" summary="got the GUI mostly working for tkinter, but now the sample_number calculation seems to be happening incorrectly">
       <created>1666239810495</created>
@@ -432,7 +401,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669939376514</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="changed folder structure">
+      <created>1669941357000</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1669941357000</updated>
+    </task>
+    <task id="LOCAL-00054" summary="changed folder structure">
+      <created>1669941407336</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1669941407336</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

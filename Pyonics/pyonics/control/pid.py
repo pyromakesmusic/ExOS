@@ -32,5 +32,5 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     df.at[i, "proportional"] = proportional
     df.at[i, "integral"] = integral
     df.at[i, "derivative"] = derivative
-    df.at[i, "pid"] = pid
+    df.at[i, "control"] = pid
     return df
