@@ -3,6 +3,7 @@ LIBRARY IMPORTS
 """
 import sys
 sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
+import physics
 
 """
 CLASS DEFINITIONS
@@ -48,3 +49,9 @@ def list_to_df(listy):
 
     df = pd.DataFrame(data=values_gotten, index=values_labels).T
     return df
+
+def main():
+    return
+
+if __name__ == "__main__":
+    main()

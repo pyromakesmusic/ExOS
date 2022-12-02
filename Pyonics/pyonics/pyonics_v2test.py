@@ -2,11 +2,11 @@
 LIBRARY IMPORTS
 """
 import sys
-sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics)
+sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
 
 from control import pid
 from interface import interface
-from simulation import physics, simulation
+from pyonics.simulation import physics, simulation
 import tkinter as tk
 
 

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pyonics_v2test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/pyonics_v2test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/physics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,13 +92,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00011" summary="got the tuning bug fixed">
-      <created>1666375481958</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1666375481958</updated>
     </task>
     <task id="LOCAL-00012" summary="made some changes to slider values to make them more sensible for tuning">
       <created>1666375886083</created>
@@ -438,7 +429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669945325619</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="small refactoring">
+      <created>1669945879411</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1669945879411</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
