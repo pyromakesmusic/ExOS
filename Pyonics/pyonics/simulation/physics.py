@@ -1,4 +1,28 @@
+"""
+DEVELOPER COMMENTS
+==================
 
+This should have no external dependencies and should serve as a usable kernel to start building up the library from
+its first principles.
+"""
+
+
+"""
+LIBRARY IMPORTS
+"""
+import sys
+sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
+
+import numpy as np
+import pandas as pd
+
+"""
+CLASS DEFINITIONS
+"""
+
+"""
+FUNCTION DEFINITIONS
+"""
 def noise_f(k):
     whitenoise = np.random.normal(1, 2)
     scaled_noise = k * whitenoise

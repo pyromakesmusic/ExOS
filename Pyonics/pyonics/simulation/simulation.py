@@ -2,7 +2,7 @@
 LIBRARY IMPORTS
 """
 import sys
-sys.path.append("pyonics_path")
+sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
 
 """
 CLASS DEFINITIONS
