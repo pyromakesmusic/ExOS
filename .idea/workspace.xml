@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/physics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pid/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pid/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pyonics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/pyonics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/pyonics_v2test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +35,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/Pyonics/pyonics",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\test" />
       <recent name="C:\Users\Pyro\Documents\Math4157\scripts" />
@@ -71,13 +67,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00006" summary="got the GUI mostly working for tkinter, but now the sample_number calculation seems to be happening incorrectly">
-      <created>1666239810495</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1666239810495</updated>
     </task>
     <task id="LOCAL-00007" summary="just cleaned up some unnecessary prints to the console">
       <created>1666282417448</created>
@@ -415,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669941407336</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="changed folder structure">
+      <created>1669942373291</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1669942373291</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
