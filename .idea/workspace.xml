@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="changed folder structure">
-      <change afterPath="$PROJECT_DIR$/Pyonics/differint/differint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/differint_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/simulation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/tests/PID_test1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/tests/PID_test2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/tests/PID_text_test3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/tests/PID_tkinter_test1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/tests/PID_tkinter_test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/PID tests/slow_convergence.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/PID tests/slow_convergence.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/constant_force_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/constant_force_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/increased_freq_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/increased_freq_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/more_d_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/more_d_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/more_p_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/more_p_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/some_d_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/some_d_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/some_i_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/some_i_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/outputs/talk 2 images/some_p_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/talk 2 images/some_p_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/control/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/control/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/differint/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/differint/differint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/differint_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/differint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pyonics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/pyonics_v2test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/physics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/test/PID_test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/test/PID_test2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/test/PID_text_test3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/test/PID_tkinter_test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/test/PID_tkinter_test2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/research.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/pyonics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/pyonics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,20 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157/Pyonics/pyonics/test/PID_tkinter_test2.txt&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS/Math4157/pyonics/tests/PID_tkinter_test2.txt",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
@@ -100,6 +62,29 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\test" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="pyonics_tkinter1" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\#PERSONAL\#STEDWARDS\Math4157\pyonics\pyonics.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\Math4157\pyonics\tests\PID_tkinter_test2.txt" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -108,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00012" summary="made some changes to slider values to make them more sensible for tuning">
-      <created>1666375886083</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1666375886083</updated>
     </task>
     <task id="LOCAL-00013" summary="it actually computes the derivative now">
       <created>1666516994194</created>
@@ -452,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669945879411</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="changed folder structure">
+      <created>1669959160254</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1669959160254</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,9 +475,9 @@
     <MESSAGE value="added set point line and fixed a few things" />
     <MESSAGE value="bunch of GUI updates" />
     <MESSAGE value="removed some unnecessary things, preparing to refactor" />
-    <MESSAGE value="changed folder structure" />
     <MESSAGE value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
     <MESSAGE value="small refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="small refactoring" />
+    <MESSAGE value="changed folder structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed folder structure" />
   </component>
 </project>
