@@ -181,3 +181,13 @@ def position(df, i):
     position = np.trapz(y=df_abridged["velocity"], x=df_abridged["time"])
     df.at[i, "position"] = position
     return df
+
+"""
+Forces
+"""
+
+
+def noise_f(k):
+    whitenoise = np.random.normal(1, 2)
+    scaled_noise = k * whitenoise
+    return scaled_noise

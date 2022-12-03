@@ -1,20 +1,23 @@
-import sys
-
-"""
-SYSTEM CONFIGURATION
-"""
-sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
 """
 LIBRARY IMPORTS
 """
+
 import tkinter as tk
 from tkinter import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from simulation import simulation
+import simulation
 import pandas as pd
+import numpy as np
+import sys
+
+"""
+SYSTEM CONFIGURATION
+"""
+sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
+
 
 """
 CLASS DEFINITIONS
@@ -92,7 +95,7 @@ class tkinterGUI:
         elif has_figure and has_canvas:
             plt.cla()
             self.canvas.draw()
-        df = simulate(init_vals_df)
+        df = simulation.simulate(init_vals_df)
         self.plot_formatter(df, init_vals_df, self.ax)
         return
 
@@ -310,7 +313,7 @@ class tkinterGUI:
         # Main Button
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: self.sim_and_plot(list_to_df(self.init_list)),
+            command=lambda: self.sim_and_plot(simulation.time_samples_to_df(self.init_list)),
             text="Simulate",
             bg="silver",
             fg="Black")
