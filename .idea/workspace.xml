@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,13 +92,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00018" summary="the beginnings of the logic for getting the sliders to update automatically">
-      <created>1666998350461</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1666998350461</updated>
     </task>
     <task id="LOCAL-00019" summary="filling out some of the class definition for the window">
       <created>1667000111215</created>
@@ -437,7 +429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670196484269</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="starting to nest and get the hang of relative imports">
+      <created>1670197646279</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1670197646279</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -453,7 +452,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="messing with the layout manager a bit; have slightly improved things but only slightly" />
     <MESSAGE value="more layout manager stuff" />
     <MESSAGE value="last commit for the night; only cosmetic changes" />
     <MESSAGE value="more cosmetic stuff; needs to be turned into a library and needs the GUI to have the plot updating inside it - but otherwise ready for presentation and further back end modification" />
@@ -478,6 +476,7 @@
     <MESSAGE value="changeed license and tried refactoring again; time to rebuild in OOP" />
     <MESSAGE value="&#10;changed license" />
     <MESSAGE value="mild folder restructure" />
-    <option name="LAST_COMMIT_MESSAGE" value="mild folder restructure" />
+    <MESSAGE value="starting to nest and get the hang of relative imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting to nest and get the hang of relative imports" />
   </component>
 </project>

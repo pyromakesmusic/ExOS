@@ -66,8 +66,8 @@ class Simulation():
         control_const = float(init_params["control_constant"][0])
 
         # Starts making the dataframe here
-        time_series = row_maker(sample_number)
-        df = time(sample_number, sample_freq, time_series)
+        time_series = self.sim_maker(sample_number)
+        df = phys.time(sample_number, sample_freq, time_series)
         df.set_index(df["time"])
 
         # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
@@ -81,18 +81,18 @@ class Simulation():
         df.at[0, "position"] = init_params["pos_start"][0]  # Definitely not necessarily zero
 
         # Filling out the columns that we can do in one go
-        df = mass(sample_number, df)
-        df = disturbance_force(sample_number, df, disturbance_const)
+        df = phys.mass(sample_number, df)
+        df = phys.disturbance_force(sample_number, df, disturbance_const)
 
         # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
         for x in range(0, sample_number):
-            df = throttle_force(df, x)
-            df = total_force(df, x)
-            df = acceleration(df, x)
-            df = velocity(df, x)
-            df = position(df, x)
-            df = error(set_point, df, x)
-            df = pid(df, x, p_k, i_k, d_k, control_const)
+            df = phys.throttle_force(df, x)
+            df = phys.total_force(df, x)
+            df = phys.acceleration(df, x)
+            df = phys.velocity(df, x)
+            df = phys.position(df, x)
+            df = ctrl.error(set_point, df, x)
+            df = ctrl.pid(df, x, p_k, i_k, d_k, control_const)
         graph = plt.plot(df["time"], df["velocity"])
         plt.draw()
         return df
@@ -176,8 +176,8 @@ def simulate(init_params):  # This should be taking a DataFrame and returning al
     df.at[0, "position"] = init_params["pos_start"][0]  # Definitely not necessarily zero
 
     # Filling out the columns that we can do in one go
-    df = physics.mass(sample_number, df)
-    df = physics.disturbance_force(sample_number, df, disturbance_const)
+    df = phys.mass(sample_number, df)
+    df = phys.disturbance_force(sample_number, df, disturbance_const)
 
     # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
     for x in range(0, sample_number):
