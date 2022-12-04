@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/physics/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pyonics/tests/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pyonics/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/control/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/differint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/tests/differint_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/physics/physics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pyonics/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,13 +92,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00013" summary="it actually computes the derivative now">
-      <created>1666516994194</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1666516994194</updated>
     </task>
     <task id="LOCAL-00014" summary="changed some sliders to float values">
       <created>1666521918767</created>
@@ -449,7 +429,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669959160254</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="changeed license and tried refactoring again; time to rebuild in OOP">
+      <created>1670193865720</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1670193865720</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -465,7 +452,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sliders aren't updating automatically, but the code still works at least" />
     <MESSAGE value="got the ipython sliders displaying" />
     <MESSAGE value="got the values plotted on slider update" />
     <MESSAGE value="messing with the layout manager a bit; have slightly improved things but only slightly" />
@@ -490,6 +476,7 @@
     <MESSAGE value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
     <MESSAGE value="small refactoring" />
     <MESSAGE value="changed folder structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed folder structure" />
+    <MESSAGE value="changeed license and tried refactoring again; time to rebuild in OOP" />
+    <option name="LAST_COMMIT_MESSAGE" value="changeed license and tried refactoring again; time to rebuild in OOP" />
   </component>
 </project>
