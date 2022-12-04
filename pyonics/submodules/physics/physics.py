@@ -2,7 +2,7 @@
 DEVELOPER COMMENTS
 ==================
 
-This should have no external dependencies and should serve as a usable kernel to start building up the library from
+This should have no internal dependencies and should serve as a usable kernel to start building up the library from
 its first principles.
 """
 
@@ -10,12 +10,15 @@ its first principles.
 """
 LIBRARY IMPORTS
 """
-import sys
-sys.path.append(r"/Pyonics/pyonics")
 
+# Standard Libraries
+import os
+import sys
 import numpy as np
 import pandas as pd
 
+
+# Third Party Libraries
 """
 CLASS DEFINITIONS
 """
@@ -191,3 +194,16 @@ def noise_f(k):
     whitenoise = np.random.normal(1, 2)
     scaled_noise = k * whitenoise
     return scaled_noise
+
+
+"""
+Main
+"""
+
+def main():
+    for path in sys.path:
+        print(path)
+    return
+
+if __name__ == "__main__":
+    main()

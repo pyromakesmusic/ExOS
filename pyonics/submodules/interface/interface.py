@@ -14,7 +14,7 @@ import sys
 """
 SYSTEM CONFIGURATION
 """
-sys.path.append(r"/Pyonics/pyonics")
+sys.path.append(r"/Pyonics/submodules")
 
 
 """
