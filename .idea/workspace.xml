@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Pyonics/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/interface/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pyonics/pyonics/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +94,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00014" summary="changed some sliders to float values">
-      <created>1666521918767</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1666521918767</updated>
     </task>
     <task id="LOCAL-00015" summary="more slider values changed">
       <created>1666541484983</created>
@@ -436,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670193865720</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="&#10;changed license">
+      <created>1670193902265</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1670193902265</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -452,7 +454,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got the ipython sliders displaying" />
     <MESSAGE value="got the values plotted on slider update" />
     <MESSAGE value="messing with the layout manager a bit; have slightly improved things but only slightly" />
     <MESSAGE value="more layout manager stuff" />
@@ -477,6 +478,7 @@
     <MESSAGE value="small refactoring" />
     <MESSAGE value="changed folder structure" />
     <MESSAGE value="changeed license and tried refactoring again; time to rebuild in OOP" />
-    <option name="LAST_COMMIT_MESSAGE" value="changeed license and tried refactoring again; time to rebuild in OOP" />
+    <MESSAGE value="&#10;changed license" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;changed license" />
   </component>
 </project>
