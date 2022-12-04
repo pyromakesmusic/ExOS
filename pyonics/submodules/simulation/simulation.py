@@ -2,8 +2,8 @@
 LIBRARY IMPORTS
 """
 import pandas as pd
-from Exoskeleton.pyonics.physics import physics
-from Exoskeleton.pyonics.control import control
+import pyonics.submodules.physics as phys
+import pyonics.submodules.control as ctrl
 import matplotlib.pyplot as plt
 
 """
@@ -162,7 +162,7 @@ def simulate(init_params):  # This should be taking a DataFrame and returning al
 
     # Starts making the dataframe here
     time_series = sim_maker(sample_number)
-    df = physics.time(sample_number, sample_freq, time_series)
+    df = phys.time(sample_number, sample_freq, time_series)
     df.set_index(df["time"])
 
     # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
@@ -181,13 +181,13 @@ def simulate(init_params):  # This should be taking a DataFrame and returning al
 
     # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
     for x in range(0, sample_number):
-        df = physics.throttle_force(df, x)
-        df = physics.total_force(df, x)
-        df = physics.acceleration(df, x)
-        df = physics.velocity(df, x)
-        df = physics.position(df, x)
-        df = control.error(set_point, df, x)
-        df = control.pid(df, x, p_k, i_k, d_k, control_const)
+        df = phys.throttle_force(df, x)
+        df = phys.total_force(df, x)
+        df = phys.acceleration(df, x)
+        df = phys.velocity(df, x)
+        df = phys.position(df, x)
+        df = ctrl.error(set_point, df, x)
+        df = ctrl.pid(df, x, p_k, i_k, d_k, control_const)
     graph = plt.plot(df["time"], df["velocity"])
     plt.draw()
     return df
