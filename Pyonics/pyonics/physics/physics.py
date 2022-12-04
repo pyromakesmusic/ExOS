@@ -11,7 +11,7 @@ its first principles.
 LIBRARY IMPORTS
 """
 import sys
-sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
+sys.path.append(r"/Pyonics/pyonics")
 
 import numpy as np
 import pandas as pd

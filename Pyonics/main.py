@@ -25,30 +25,14 @@ LIBRARY IMPORTS
 ===============
 """
 
-
-import sys
-
 # Local Submodules
 
-import simulation
-import physics
-import control
-import interface
+from Pyonics.pyonics.interface import interface
 
 # External Libraries
 
-import tkinter as tk
-from tkinter import ttk
-import matplotlib.backends.backend_tkagg as tkagg
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import ipywidgets as widgets
-from IPython.display import display
-import numpy as np
 import pandas as pd
-import math
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-import differint
 
 """
 CONFIG

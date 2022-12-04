@@ -8,7 +8,7 @@ This should probably also be a core element and not have external dependencies.
 LIBRARY IMPORTS
 """
 import sys
-sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
+sys.path.append(r"/Pyonics/pyonics")
 import numpy as np
 import pandas as pd
 """

@@ -1,11 +1,9 @@
 """
 LIBRARY IMPORTS
 """
-import sys
-import numpy as np
 import pandas as pd
-import physics
-import control
+from Pyonics.pyonics.physics import physics
+from Pyonics.pyonics.control import control
 import matplotlib.pyplot as plt
 
 """

@@ -3,12 +3,10 @@ LIBRARY IMPORTS
 """
 
 import tkinter as tk
-from tkinter import ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-import simulation
+from Pyonics.pyonics.simulation import simulation
 import pandas as pd
 import numpy as np
 import sys
@@ -16,7 +14,7 @@ import sys
 """
 SYSTEM CONFIGURATION
 """
-sys.path.append(r"C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics")
+sys.path.append(r"/Pyonics/pyonics")
 
 
 """
