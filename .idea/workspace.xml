@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="creating some dataclasses for a physics engine">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="more refactoring from the interface level">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +96,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00020" summary="successfully got the GUI logic into a class definition.">
-      <created>1667001078954</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1667001078954</updated>
     </task>
     <task id="LOCAL-00021" summary="sliders aren't updating automatically, but the code still works at least">
       <created>1667001774307</created>
@@ -440,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670219426500</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="more refactoring from the interface level">
+      <created>1670261108380</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1670261108380</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -456,7 +456,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="last commit for the night; only cosmetic changes" />
     <MESSAGE value="more cosmetic stuff; needs to be turned into a library and needs the GUI to have the plot updating inside it - but otherwise ready for presentation and further back end modification" />
     <MESSAGE value="well, it's graphing data...in the wrong window. so that is good" />
     <MESSAGE value="testing the graph output, trying to remove" />
@@ -481,6 +480,7 @@
     <MESSAGE value="mild folder restructure" />
     <MESSAGE value="starting to nest and get the hang of relative imports" />
     <MESSAGE value="creating some dataclasses for a physics engine" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating some dataclasses for a physics engine" />
+    <MESSAGE value="more refactoring from the interface level" />
+    <option name="LAST_COMMIT_MESSAGE" value="more refactoring from the interface level" />
   </component>
 </project>

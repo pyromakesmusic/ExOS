@@ -159,11 +159,11 @@ CLASS DEFINITIONS
 @dataclass
 class PhysicsBody(): # For kinematic definition - a dataframe characterizing the physical state of an entity. Assume XYZ
     mass: float
-    pos_xyz: tuple
-    vel_xyz: tuple
-    acc_xyz: tuple
-    throttle_force: tuple
-    net_force: tuple
+    pos_xyz: dict
+    vel_xyz: dict
+    acc_xyz: dict
+    throttle_force: dict
+    net_force: dict
     youngs_modulus: float
     bulk_modulus: float
     shear_modulus: float

@@ -11,8 +11,12 @@ import matplotlib.pyplot as plt
 FUNCTION DEFINITIONS
 """
 
+def sim_info_getter():
+    sample_rate = int(input("Sample rate in Hz (int): "))
+    total_time = int(input("Total time in seconds (int): "))
+    return sample_rate, total_time
 
-def total_timesamples(sample_rate, total_time):
+def total_num_samples_getter(sample_rate, total_time):
     total_samples = int(sample_rate * total_time)
     return total_samples
 
@@ -36,8 +40,7 @@ def time_samples_to_df(time_sample_list):
     Turns a list of time sample coordinates into a DataFrame.
     """
     values_gotten = [time_sample_list[0].get(), time_sample_list[1].get()]
-
-    sample_number = int(total_timesamples(values_gotten[0], values_gotten[1]))
+    sample_number = int(total_num_samples_getter(values_gotten[0], values_gotten[1]))
     values_gotten.append(sample_number)
 
     for i in time_sample_list[2::1]:
@@ -46,17 +49,15 @@ def time_samples_to_df(time_sample_list):
     values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
                      "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
                      "control_constant"]  # This may also change to be more adaptable to any number of joint angles or parameters
-
     df = pd.DataFrame(data=values_gotten, index=values_labels).T
     return df
 
 
 def simulate(init_params):  # This should be taking a DataFrame and returning all the program logic
-
     sample_number = int(init_params["sample_number"][0])
     sample_freq = int(init_params["sample_freq"][0])
-    disturbance_const = float(init_params["scale_factor"][0])
 
+    disturbance_const = float(init_params["scale_factor"][0])
     set_point = float(init_params["set_point"][0])
     p_k = float(init_params["p_k"][0])
     i_k = float(init_params["i_k"][0])
@@ -105,24 +106,24 @@ def sim_and_plot(init_vals_df, ax):
 CLASS DEFINITIONS
 """
 
+class TimeAxis():
+    def __init__(self, sample_rate, total_time, num_samples):
+
 class Simulation():
 
-    def time_samples_to_df(self, time_sample_list):
+    def time_samples_to_df(self, time_sample_list): # This seems to currently be tightly coupled to Tkinter - want to
+        # make it more general and apply to Ipython as well.
         """
         Turns a list of time sample coordinates into a DataFrame.
         """
         values_gotten = [time_sample_list[0].get(), time_sample_list[1].get()]
-
-        sample_number = int(total_timesamples(values_gotten[0], values_gotten[1]))
+        sample_number = int(total_num_samples_getter(values_gotten[0], values_gotten[1]))
         values_gotten.append(sample_number)
-
         for i in time_sample_list[2::1]:
             values_gotten.append(i.get())
-
         values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
                          "mass", "scale_factor", "set_point", "p_k", "i_k", "d_k",
                          "control_constant"] # This may also change to be more adaptable to any number of joint angles or parameters
-
         df = pd.DataFrame(data=values_gotten, index=values_labels).T
         return df
 
@@ -175,17 +176,13 @@ class Simulation():
     def __init__(self, samplerate, totaltime):
         self.samplerate = samplerate
         self.totaltime = totaltime
-
-
-class PhysicsSim(Simulation):
-    def __init__(self):
-        return
-    pass
-
+        self.total_samples = total_num_samples_getter(samplerate, totaltime)
+        self.time_axis = TimeAxis(samplerate, totaltime, total_samples)
 
 # Main Function
 def main():
-    engine = PhysicsSim()
+    samplerate, totaltime = sim_info_getter()
+    engine = Simulation(samplerate, totaltime)
     return
 
 
