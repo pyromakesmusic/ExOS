@@ -27,7 +27,7 @@ LIBRARY IMPORTS
 
 # Local Submodules
 
-from Exoskeleton.pyonics.interface import interface
+import pyonics.submodules.interface as interface
 
 # External Libraries
 

@@ -6,7 +6,8 @@ import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
-from Exoskeleton.pyonics.simulation import simulation
+import pyonics.submodules.simulation as simulation
+import pyonics.submodules.physics as phys
 import pandas as pd
 import numpy as np
 import sys
@@ -14,7 +15,6 @@ import sys
 """
 SYSTEM CONFIGURATION
 """
-sys.path.append(r"/Pyonics/submodules")
 
 
 """
@@ -622,19 +622,22 @@ def cmdline_logic():
     return initialparams
 
 
-def initialize():
+def initialize(gui_mode="n", gui_type=None):
     """
-    Just gets some initial information from the user about the time resolution.
-    :return:
+    Starts the interface with the specified options.
     """
-    gui_mode = (input("Run in GUI mode? [y/n]: "))
-    print(gui_mode)
     if gui_mode == "y":
-        gui_type = input("Input mode? [ipython/tkinter]: ")
-        print(gui_type)
         gui(gui_type)
-
-    elif gui_mode == "n":
-        cmdline_logic()
     else:
-        return
+        cmdline_logic()
+
+"""
+Main Function
+"""
+
+def main():
+    initialize("y", "tkinter")
+    return
+
+if __name__ == "__main__":
+    main()

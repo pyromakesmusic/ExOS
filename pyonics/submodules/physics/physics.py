@@ -158,53 +158,55 @@ CLASS DEFINITIONS
 """
 @dataclass
 class PhysicsBody(): # For kinematic definition - a dataframe characterizing the physical state of an entity. Assume XYZ
+    mass: float
     pos_xyz: tuple
     vel_xyz: tuple
     acc_xyz: tuple
-    mass: float
-    net_force: tuple
     throttle_force: tuple
+    net_force: tuple
+    youngs_modulus: float
+    bulk_modulus: float
+    shear_modulus: float
 
 @dataclass
 class RigidBody(PhysicsBody):
     """
     Should be used for any rigid object undergound physics calculations
     """
+
 @dataclass
 class HardLink(RigidBody):
     """
     Parent class used for any structurally important element of the exoskeleton.
     """
+
 @dataclass
 class BoneLink(HardLink):
     """
     Should be used to represent rigid load-bearing non-joint members of the exoskeleton
     """
+    pass
+
 @dataclass
 class JointLink(HardLink):
     """
     Should be used to represent joints
     """
+    pass
+
 @dataclass
 class SoftBody(PhysicsBody):
-
+    pass
 @dataclass
 class Exoskeleton(PhysicsBody):
-
-
-class KinematicSim():
+    pass
+@dataclass
+class PhysicsFrame():
     """
-    Should be used for simulations of kinematics
+    A particular physical (not necessarily inertial?) reference frame
     """
-
-class Disturbance():
-    """
-    Should be used for any kind of disturbance force
-    """
-    def noise_f(self, k):
-        whitenoise = np.random.normal(1, 2)
-        scaled_noise = k * whitenoise
-        return scaled_noise
+    time: float
+    time_interval: float # seconds
 
 
 """
