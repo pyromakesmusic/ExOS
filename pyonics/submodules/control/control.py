@@ -66,6 +66,16 @@ class PIDKernel(): # Should be a DataFrame built from a set of Series of scalar 
     k_i: object
     k_d: object
 
+    def __init__(self, time, process_variable, set_point, k_p, k_i, k_d):
+        self.time = time
+        self.process_variable = process_variable
+        self.set_point = set_point
+        self.error = set_point - process_variable # Not sure if naive subtraction will work on DataFrames but we will see
+        self.k_p = k_p
+        self.k_i = k_i
+        self.k_d = k_d
+
+@dataclass
 class PIDController():
 
     def __init__(self, process_variable, set_point, k_p, k_i, k_d): # Need a dataframe holding scalar values should both be scalars, can be negative for orientation
