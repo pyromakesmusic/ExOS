@@ -16,54 +16,11 @@ import os
 import sys
 import numpy as np
 import pandas as pd
+from dataclasses import dataclass
 
 
 # Third Party Libraries
-"""
-CLASS DEFINITIONS
-"""
-class KinematicSim():
-    """
-    Should be used for simulations of kinematics
-    """
 
-class Disturbance():
-    """
-    Should be used for any kind of disturbance force
-    """
-    def noise_f(self, k):
-        whitenoise = np.random.normal(1, 2)
-        scaled_noise = k * whitenoise
-        return scaled_noise
-
-class RigidBody():
-    """
-    Should be used for any rigid object undergound physics calculations
-    """
-
-class Link(RigidBody):
-    """
-    Parent class used for any structurally important element of the exoskeleton.
-    """
-
-class BoneLink(Link):
-    """
-    Should be used to represent rigid load-bearing non-joint members of the exoskeleton
-    """
-class JointLink(Link):
-    """
-    Should be used to represent joints
-    """
-
-class RigidTransport(RigidBody):
-    """
-    Should be used for vehicles.
-    """
-
-class Exoskeleton(RigidTransport):
-    """
-    Exoskeleton parent class.
-    """
 """
 FUNCTION DEFINITIONS
 """
@@ -194,6 +151,60 @@ def noise_f(k):
     whitenoise = np.random.normal(1, 2)
     scaled_noise = k * whitenoise
     return scaled_noise
+
+
+"""
+CLASS DEFINITIONS
+"""
+@dataclass
+class PhysicsBody(): # For kinematic definition - a dataframe characterizing the physical state of an entity. Assume XYZ
+    pos_xyz: tuple
+    vel_xyz: tuple
+    acc_xyz: tuple
+    mass: float
+    net_force: tuple
+    throttle_force: tuple
+
+@dataclass
+class RigidBody(PhysicsBody):
+    """
+    Should be used for any rigid object undergound physics calculations
+    """
+@dataclass
+class HardLink(RigidBody):
+    """
+    Parent class used for any structurally important element of the exoskeleton.
+    """
+@dataclass
+class BoneLink(HardLink):
+    """
+    Should be used to represent rigid load-bearing non-joint members of the exoskeleton
+    """
+@dataclass
+class JointLink(HardLink):
+    """
+    Should be used to represent joints
+    """
+@dataclass
+class SoftBody(PhysicsBody):
+
+@dataclass
+class Exoskeleton(PhysicsBody):
+
+
+class KinematicSim():
+    """
+    Should be used for simulations of kinematics
+    """
+
+class Disturbance():
+    """
+    Should be used for any kind of disturbance force
+    """
+    def noise_f(self, k):
+        whitenoise = np.random.normal(1, 2)
+        scaled_noise = k * whitenoise
+        return scaled_noise
 
 
 """

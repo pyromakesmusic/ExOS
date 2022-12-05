@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/differint/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/differint/differint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +44,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/scripts/tests/PID_tkinter_test2.txt",
+    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS/Math4157/pyonics/main.py",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
   "keyToStringList": {
@@ -70,11 +74,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyonics/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
