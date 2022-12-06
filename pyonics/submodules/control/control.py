@@ -56,25 +56,17 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
 """
 CLASS DEFINITIONS
 """
-class PIDKernel():
-
-    def output(self):
-        print(self.data)
-        return(self.data)
-
-    def __init__(self, time, process_variable, set_point, k_p, k_i, k_d): # Each a pd.Series of scalars
-        self.time = time
-        self.process_variable = process_variable
-        self.set_point = set_point
-        self.error = set_point - process_variable # Not sure if naive subtraction will work on DataFrames but we will see
-        self.k_p = k_p
-        self.k_i = k_i
-        self.k_d = k_d
-        self.data = pd.concat(self.time, self.process_variable, self.error, self.set_point, self.k_p, self.k_i, self.k_d)
 
 @dataclass
-class PIDController():
-    pass
+class PIDController:
+    def __init__(self, pid_parameters):
+
+        self.df = pd.DataFrame()
+        print(pid_parameters)
+        for tensor in pid_parameters:
+            print(tensor)
+
+        print(self.df)
 
 
 """

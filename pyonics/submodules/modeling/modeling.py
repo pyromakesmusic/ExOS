@@ -161,7 +161,19 @@ def physbody_parameter_getter():
     return mass, position, velocity, acceleration, net_force, strain_mods
 
 def pid_parameter_getter():
-    pass
+    set_point = float(input("Set point: "))
+    p_k = float(input("Proportional scaling factor (float): "))
+    i_k = float(input("Integral scaling factor (float): "))
+    d_k = float(input("Derivative scaling factor (float): "))
+    control_constant = float(input("Constant multiple for PID term to throttle output (float): "))
+    pidparams = {
+        "set_point": set_point,
+        "p_k": p_k,
+        "i_k": i_k,
+        "d_k": d_k,
+        "control_constant": control_constant
+    }
+    return pidparams
 
 """
 CLASS DEFINITIONS
@@ -175,21 +187,18 @@ class Automaton(phys.PhysicsBody): # A physics body with an associated control o
 class TimeAxis: # Should be a type of dataframe
 
     def __init__(self, initial_df): # initial_df contains sample frequency, total time, number of samples
-        print(initial_df.index)
         length_row = initial_df.iloc[2]
         length = range(length_row[0])
         dt = (1 / (initial_df.iloc[0])[0])
         print("dt = " + str(dt))
 
         self.time_axis = pd.DataFrame(index=length) # Here is a good place to add the columns, or maybe that happens in the larger modeling thing
-        print(self.time_axis)
-
         self.time_coords = pd.Series(data=[(x * dt) for x in self.time_axis], dtype=float)
         print(self.time_coords)
-
         time_index_and_vals = pd.concat([self.time_axis, self.time_coords])
+        print(time_index_and_vals)
 
-class ReferenceFrame:
+class ReferenceFrame: # This is for later, when a robot will need to use a rolling timeframe of datapoints
     def __init__(self):
         pass
 
@@ -202,11 +211,11 @@ class Simulation:
 # Main Function
 def main():
     sim_parameter_data = sim_parameter_getter()
-    time_axis = TimeAxis(sim_parameter_data)
-    controller = ctrl.PIDController()
-
+    time_axis = TimeAxis(sim_parameter_data) # I don't think I've actually done anything with this yet
+    ctrl1_params = pid_parameter_getter()
+    controller1 = ctrl.PIDController(ctrl1_params)
     m, pos, vel, acc, f_n, strainmod = physbody_parameter_getter()
-    automaton = Automaton(controller, m, pos, vel, acc, f_n, strainmod)
+    automaton = Automaton(controller1, m, pos, vel, acc, f_n, strainmod)
     physics_bodies = [automaton]
     engine = Simulation(time_axis, physics_bodies)
 
