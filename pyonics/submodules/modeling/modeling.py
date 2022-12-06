@@ -199,6 +199,10 @@ class Automaton(phys.PhysicsBody): # A physics body with an associated control o
         self.acc = acc
         self.f_n = f_n
         self.strainmods = strainmods
+        self.kinematics_df = pd.DataFrame(data=[self.pos,self.vel,self.acc,self.f_n], index=["Position", "Velocity", "Acceleration", "Net Force"])
+        print("Kinematics DataFrame")
+
+        print(self.kinematics_df)
 
     def __str__(self):
         str_out = ("Mass: " + str(self.mass) + "\n" +
