@@ -105,21 +105,21 @@ def sim_parameter_getter(): # need versions or extensions of this for each PID c
 
 def physbody_parameter_getter():
     mass = float(input("Mass (float): "))
-    x_pos = float(input("Initial X position (float): "))
-    y_pos = float(input("Initial Y position (float): "))
-    z_pos = float(input("Initial Z position (float): "))
-    x_vel = float(input("Initial X velocity (float): "))
-    y_vel = float(input("Initial Y velocity (float): "))
-    z_vel = float(input("Initial Z velocity (float): "))
-    x_acc = float(input("Initial X acceleration (float): "))
-    y_acc = float(input("Initial Y acceleration (float): "))
-    z_acc = float(input("Initial Z acceleration (float): "))
-    x_netforce = float(input("Initial X force (float): "))
-    y_netforce = float(input("Initial Y force (float): "))
-    z_netforce = float(input("Initial Z force (float): "))
-    youngs_modulus = float(input("Young's modulus for material (float): "))
-    bulk_modulus = float(input("Bulk modulus for material (float): "))
-    shear_modulus = float(input("Shear modulus for material (float): "))
+    x_pos = float(input("Initial X position (float): \n"))
+    y_pos = float(input("Initial Y position (float): \n"))
+    z_pos = float(input("Initial Z position (float): \n"))
+    x_vel = float(input("Initial X velocity (float): \n"))
+    y_vel = float(input("Initial Y velocity (float): \n"))
+    z_vel = float(input("Initial Z velocity (float): \n"))
+    x_acc = float(input("Initial X acceleration (float): \n"))
+    y_acc = float(input("Initial Y acceleration (float): \n"))
+    z_acc = float(input("Initial Z acceleration (float): \n"))
+    x_netforce = float(input("Initial X force (float): \n"))
+    y_netforce = float(input("Initial Y force (float): \n"))
+    z_netforce = float(input("Initial Z force (float): \n"))
+    youngs_modulus = float(input("Young's modulus for material (float): \n"))
+    bulk_modulus = float(input("Bulk modulus for material (float): \n"))
+    shear_modulus = float(input("Shear modulus for material (float): \n"))
     position = {
         "x": x_pos,
         "y": y_pos,
@@ -145,6 +145,19 @@ def physbody_parameter_getter():
         "bulk": bulk_modulus,
         "shear": shear_modulus
     }
+
+    print("mass: ")
+    print(mass)
+    print("position: ")
+    print(position)
+    print("velocity: ")
+    print(velocity)
+    print("acceleration: ")
+    print(acceleration)
+    print("net_force: ")
+    print(net_force)
+    print("strain_mods: ")
+    print(strain_mods)
     return mass, position, velocity, acceleration, net_force, strain_mods
 
 def pid_parameter_getter():
@@ -196,7 +209,7 @@ def main():
     automaton = Automaton(controller, m, pos, vel, acc, f_n, strainmod)
     physics_bodies = [automaton]
     engine = Simulation(time_axis, physics_bodies)
-    print(engine)
+
     return
 
 

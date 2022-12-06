@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="more refactoring">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="encapsulating some of the info grabbers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/tests/simulation_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/tests/simulation_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,13 +118,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00025" summary="more layout manager stuff">
-      <created>1667021273805</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1667021273805</updated>
     </task>
     <task id="LOCAL-00026" summary="last commit for the night; only cosmetic changes">
       <created>1667023154498</created>
@@ -466,7 +455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670286824812</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="encapsulating some of the info grabbers">
+      <created>1670309314911</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1670309314911</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -482,7 +478,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="no longer topmost" />
     <MESSAGE value="it is now just the sliders, next to see if i can get the separate window to plot" />
     <MESSAGE value="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want." />
     <MESSAGE value="last updates" />
@@ -507,6 +502,7 @@
     <MESSAGE value="major re-architecting" />
     <MESSAGE value="encapsulation slightly improved" />
     <MESSAGE value="more refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="more refactoring" />
+    <MESSAGE value="encapsulating some of the info grabbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="encapsulating some of the info grabbers" />
   </component>
 </project>
