@@ -2,9 +2,8 @@
 LIBRARY IMPORTS
 """
 import pandas as pd
-import pyonics.submodules.physics as phys
-import pyonics.submodules.control as ctrl
-import pyonics.submodules.interface as pinter # This will eventually be a circular import, remember to remove it
+import pyonics.submodules.physics.physics as phys
+import pyonics.submodules.control.control as ctrl
 import matplotlib.pyplot as plt
 
 
@@ -112,12 +111,17 @@ CLASS DEFINITIONS
 
 class TimeAxis: # Should be a type of dataframe
 
-    def __init__(self, initial_df): #timeparams contains sample frequency, total time
+    def __init__(self, initial_df): # initial_df contains sample frequency, total time, number of samples
         print(initial_df.index)
         length_row = initial_df.iloc[2]
         length = range(length_row[0])
+        dt = (1 / (initial_df.iloc[0])[0])
+        print("dt = " + str(dt))
         self.time_axis = pd.DataFrame(index=length) # Here is a good place to add the columns, or maybe that happens in the larger simulation thing
         print(self.time_axis)
+        self.time_coords = pd.Series(data=[(x * dt) for x in self.time_axis])
+        print(self.time_coords)
+        time_index_and_vals = pd.concat([self.time_axis, self.time_coords])
 
 class Simulation:
 
