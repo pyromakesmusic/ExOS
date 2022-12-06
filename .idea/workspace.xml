@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="encapsulation slightly improved">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="more refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/simulation_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/tests/simulation_test1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,11 +96,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics/submodules/simulation" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics/submodules/modeling" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,13 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00024" summary="messing with the layout manager a bit; have slightly improved things but only slightly">
-      <created>1667021114112</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1667021114112</updated>
     </task>
     <task id="LOCAL-00025" summary="more layout manager stuff">
       <created>1667021273805</created>
@@ -462,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670285055465</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="more refactoring">
+      <created>1670286824812</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1670286824812</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -478,7 +482,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="testing the graph output, trying to remove" />
     <MESSAGE value="no longer topmost" />
     <MESSAGE value="it is now just the sliders, next to see if i can get the separate window to plot" />
     <MESSAGE value="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want." />
@@ -503,6 +506,7 @@
     <MESSAGE value="more refactoring from the interface level" />
     <MESSAGE value="major re-architecting" />
     <MESSAGE value="encapsulation slightly improved" />
-    <option name="LAST_COMMIT_MESSAGE" value="encapsulation slightly improved" />
+    <MESSAGE value="more refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="more refactoring" />
   </component>
 </project>

@@ -73,7 +73,7 @@ def simulate(init_params):  # This should be taking a DataFrame and returning al
     df = phys.mass(sample_number, df)
     df = phys.disturbance_force(sample_number, df, disturbance_const)
 
-    # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning.
+    # This loop is handling all of the things that need to be calculated one time-step/row at a time, instead of being filled out at the beginning - can probably be called as a pure physics function
     for x in range(0, sample_number):
         df = phys.throttle_force(df, x)
         df = phys.total_force(df, x)
@@ -91,7 +91,7 @@ def sim_and_plot(init_vals_df, ax):
     simulate(init_vals_df).plot(x="time", y="velocity", ax=ax)
     return
 
-def terminal_prompt():
+def sim_parameter_getter(): # need versions or extensions of this for each PID controller and each physics body
     sample_freq = int(input("Sample rate in Hz (int): "))
     print(sample_freq)
     sample_length = int(input("Total time in seconds (int): "))
@@ -103,11 +103,61 @@ def terminal_prompt():
     print(simulation_parameters.keys)
     return simulation_parameters
 
+def physbody_parameter_getter():
+    mass = float(input("Mass (float): "))
+    x_pos = float(input("Initial X position (float): "))
+    y_pos = float(input("Initial Y position (float): "))
+    z_pos = float(input("Initial Z position (float): "))
+    x_vel = float(input("Initial X velocity (float): "))
+    y_vel = float(input("Initial Y velocity (float): "))
+    z_vel = float(input("Initial Z velocity (float): "))
+    x_acc = float(input("Initial X acceleration (float): "))
+    y_acc = float(input("Initial Y acceleration (float): "))
+    z_acc = float(input("Initial Z acceleration (float): "))
+    x_netforce = float(input("Initial X force (float): "))
+    y_netforce = float(input("Initial Y force (float): "))
+    z_netforce = float(input("Initial Z force (float): "))
+    youngs_modulus = float(input("Young's modulus for material (float): "))
+    bulk_modulus = float(input("Bulk modulus for material (float): "))
+    shear_modulus = float(input("Shear modulus for material (float): "))
+    position = {
+        "x": x_pos,
+        "y": y_pos,
+        "z": z_pos
+    }
+    velocity = {
+        "x": x_vel,
+        "y": y_vel,
+        "z": z_vel
+    }
+    acceleration = {
+        "x": x_acc,
+        "y": y_acc,
+        "z": z_acc
+    }
+    net_force = {
+        "x": x_netforce,
+        "y": y_netforce,
+        "z": z_netforce
+    }
+    strain_mods = {
+        "youngs": youngs_modulus,
+        "bulk": bulk_modulus,
+        "shear": shear_modulus
+    }
+    return mass, position, velocity, acceleration, net_force, strain_mods
 
+def pid_parameter_getter():
+    pass
 
 """
 CLASS DEFINITIONS
 """
+
+class Automaton(phys.PhysicsBody): # A physics body with an associated control object
+    def __init__(self, control_obj, mass, pos, vel, acc, f_n, strainmods):
+        phys.PhysicsBody.__init__(self, mass, pos, vel, acc, f_n, strainmods)
+        self.controller = control_obj
 
 class TimeAxis: # Should be a type of dataframe
 
@@ -117,11 +167,19 @@ class TimeAxis: # Should be a type of dataframe
         length = range(length_row[0])
         dt = (1 / (initial_df.iloc[0])[0])
         print("dt = " + str(dt))
-        self.time_axis = pd.DataFrame(index=length) # Here is a good place to add the columns, or maybe that happens in the larger simulation thing
+
+        self.time_axis = pd.DataFrame(index=length) # Here is a good place to add the columns, or maybe that happens in the larger modeling thing
         print(self.time_axis)
-        self.time_coords = pd.Series(data=[(x * dt) for x in self.time_axis])
+
+        self.time_coords = pd.Series(data=[(x * dt) for x in self.time_axis], dtype=float)
         print(self.time_coords)
+
         time_index_and_vals = pd.concat([self.time_axis, self.time_coords])
+
+class ReferenceFrame:
+    def __init__(self):
+        pass
+
 
 class Simulation:
 
@@ -130,12 +188,15 @@ class Simulation:
 
 # Main Function
 def main():
-    bodies = []
-    sim_parameter_data = terminal_prompt()
-    print(sim_parameter_data)
+    sim_parameter_data = sim_parameter_getter()
     time_axis = TimeAxis(sim_parameter_data)
-    print(time_axis)
-    engine = Simulation(sim_parameter_data, bodies)
+    controller = ctrl.PIDController()
+
+    m, pos, vel, acc, f_n, strainmod = physbody_parameter_getter()
+    automaton = Automaton(controller, m, pos, vel, acc, f_n, strainmod)
+    physics_bodies = [automaton]
+    engine = Simulation(time_axis, physics_bodies)
+    print(engine)
     return
 
 

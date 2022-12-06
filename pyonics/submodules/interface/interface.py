@@ -6,8 +6,8 @@ import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
-import pyonics.submodules.simulation as simulation
-import pyonics.submodules.physics as phys
+import pyonics.submodules.modeling.modeling as modeling
+import pyonics.submodules.physics.physics as phys
 import pandas as pd
 import numpy as np
 import sys
@@ -29,7 +29,7 @@ def cmdline_logic():
         print(sample_freq)
         sample_length = int(input("Total time in seconds (int): "))
         print(sample_length)
-        sample_number = int(simulation.total_samples(sample_freq, sample_length))
+        sample_number = int(modeling.total_samples(sample_freq, sample_length))
         print("Total number of samples:", sample_number)
         set_point = float(input("Set point for cruise control (float): "))
         print(set_point)
@@ -52,8 +52,6 @@ def cmdline_logic():
         print(d_k)
         control_constant = float(input("Constant multiple for PID term to throttle output (float): "))
         print(control_constant)
-        control_sign = int(input("Sign of throttle vs. PID: "))
-        print(control_sign)
 
         param_list = [sample_length, sample_freq, sample_number, pos_start, vel_start, accel_start,
                       mass,
@@ -66,7 +64,7 @@ def cmdline_logic():
         print(".")
         print(". .")
         print(". . .")
-        simdata = simulation.simulate(initialparams)
+        simdata = modeling.simulate(initialparams)
         print(simdata)
         user_input = ("Simulate again? [yes/no]: ")
     return initialparams
@@ -148,7 +146,7 @@ class tkinterGUI:
         elif has_figure and has_canvas:
             plt.cla()
             self.canvas.draw()
-        df = simulation.simulate(init_vals_df)
+        df = modeling.simulate(init_vals_df)
         self.plot_formatter(df, init_vals_df, self.ax)
         return
 
@@ -357,7 +355,7 @@ class tkinterGUI:
             fg="White",
             command=self.updateValue)
         self.control_constant_slider.set(1)
-        # List of initialization parameters necessary to run the simulation
+        # List of initialization parameters necessary to run the modeling
         self.init_list = [self.sample_length_slider, self.sample_freq_slider, self.position_start_slider,
                           self.velocity_start_slider,
                           self.accel_start_slider, self.mass_slider, self.scale_factor_slider, self.set_point_slider,
@@ -366,7 +364,7 @@ class tkinterGUI:
         # Main Button
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: self.sim_and_plot(simulation.time_samples_to_df(self.init_list)),
+            command=lambda: self.sim_and_plot(modeling.time_samples_to_df(self.init_list)),
             text="Simulate",
             bg="silver",
             fg="Black")

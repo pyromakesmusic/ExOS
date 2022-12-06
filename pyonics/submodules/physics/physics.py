@@ -162,11 +162,8 @@ class PhysicsBody(): # For kinematic definition - a dataframe characterizing the
     pos_xyz: dict
     vel_xyz: dict
     acc_xyz: dict
-    throttle_force: dict
-    net_force: dict
-    youngs_modulus: float
-    bulk_modulus: float
-    shear_modulus: float
+    net_force_xyz: dict
+    strain_moduli: dict
 
 @dataclass
 class RigidBody(PhysicsBody):
@@ -201,7 +198,7 @@ class SoftBody(PhysicsBody):
 class Exoskeleton(PhysicsBody):
     pass
 @dataclass
-class PhysicsFrame():
+class ReferenceFrame():
     """
     A particular physical (not necessarily inertial?) reference frame
     """
