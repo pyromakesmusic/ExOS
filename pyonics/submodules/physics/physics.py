@@ -158,12 +158,17 @@ CLASS DEFINITIONS
 """
 @dataclass
 class PhysicsBody(): # For kinematic definition - a dataframe characterizing the physical state of an entity. Assume XYZ
-    mass: float
-    pos_xyz: dict
-    vel_xyz: dict
-    acc_xyz: dict
-    net_force_xyz: dict
-    strain_moduli: dict
+    def __init__(self, mass, pos_xyz, vel_xyz, acc_xyz, net_force_xyz, strain_mods):
+        self.m = mass
+        self.pos = pos_xyz
+        self.vel = vel_xyz
+        self.acc = acc_xyz
+        self.net_force = net_force_xyz
+        self.strain_moduli = strain_mods
+
+    def __str__(self):
+        return (str(self.m) + "\n" + str(self.pos) + "\n" + str(self.vel) + "\n" + str(self.acc) + "\n" +
+                str(self.net_force) + "\n" + str(self.strain_moduli))
 
 @dataclass
 class RigidBody(PhysicsBody):
@@ -212,7 +217,7 @@ Main
 
 def main():
     for path in sys.path:
-        print(path)
+        pass
     return
 
 if __name__ == "__main__":

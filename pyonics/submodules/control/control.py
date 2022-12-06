@@ -62,11 +62,9 @@ class PIDController:
     def __init__(self, pid_parameters):
 
         self.df = pd.DataFrame()
-        print(pid_parameters)
         for tensor in pid_parameters:
-            print(tensor)
+            pass
 
-        print(self.df)
 
 
 """

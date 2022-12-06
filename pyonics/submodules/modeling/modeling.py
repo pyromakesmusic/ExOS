@@ -92,34 +92,51 @@ def sim_and_plot(init_vals_df, ax):
     return
 
 def sim_parameter_getter(): # need versions or extensions of this for each PID controller and each physics body
-    sample_freq = int(input("Sample rate in Hz (int): "))
-    print(sample_freq)
-    sample_length = int(input("Total time in seconds (int): "))
-    print(sample_length)
+    sample_freq = int(input(#"Sample rate in Hz (int): "
+                            ))
+    sample_length = int(input(#"Total time in seconds (int): "
+                              ))
+    #print(sample_length)
     sample_number = int(total_num_samples_getter(sample_freq, sample_length))
-    print("Total number of samples:", sample_number)
+    #print("Total number of samples:", sample_number)
     labels = ["sample_length", "sample_freq", "sample_number"]
     simulation_parameters = pd.DataFrame(data=[sample_length,sample_freq,sample_number], index=labels)
-    print(simulation_parameters.keys)
+    #print(simulation_parameters.keys)
     return simulation_parameters
 
 def physbody_parameter_getter():
-    mass = float(input("Mass (float): "))
-    x_pos = float(input("Initial X position (float): \n"))
-    y_pos = float(input("Initial Y position (float): \n"))
-    z_pos = float(input("Initial Z position (float): \n"))
-    x_vel = float(input("Initial X velocity (float): \n"))
-    y_vel = float(input("Initial Y velocity (float): \n"))
-    z_vel = float(input("Initial Z velocity (float): \n"))
-    x_acc = float(input("Initial X acceleration (float): \n"))
-    y_acc = float(input("Initial Y acceleration (float): \n"))
-    z_acc = float(input("Initial Z acceleration (float): \n"))
-    x_netforce = float(input("Initial X force (float): \n"))
-    y_netforce = float(input("Initial Y force (float): \n"))
-    z_netforce = float(input("Initial Z force (float): \n"))
-    youngs_modulus = float(input("Young's modulus for material (float): \n"))
-    bulk_modulus = float(input("Bulk modulus for material (float): \n"))
-    shear_modulus = float(input("Shear modulus for material (float): \n"))
+    mass = float(input(#"Mass (float): "
+                       ))
+    x_pos = float(input(#"Initial X position (float): \n"
+                        ))
+    y_pos = float(input(#"Initial Y position (float): \n"
+                        ))
+    z_pos = float(input(#"Initial Z position (float): \n"
+                        ))
+    x_vel = float(input(#"Initial X velocity (float): \n"
+                        ))
+    y_vel = float(input(#"Initial Y velocity (float): \n"
+                        ))
+    z_vel = float(input(#"Initial Z velocity (float): \n"
+                        ))
+    x_acc = float(input(#"Initial X acceleration (float): \n"
+                        ))
+    y_acc = float(input(#"Initial Y acceleration (float): \n"
+                        ))
+    z_acc = float(input(#"Initial Z acceleration (float): \n"
+                        ))
+    x_netforce = float(input(#"Initial X force (float): \n"
+                             ))
+    y_netforce = float(input(#"Initial Y force (float): \n"
+                             ))
+    z_netforce = float(input(#"Initial Z force (float): \n"
+                             ))
+    youngs_modulus = float(input(#"Young's modulus for material (float): \n"
+                                 ))
+    bulk_modulus = float(input(#"Bulk modulus for material (float): \n"
+                               ))
+    shear_modulus = float(input(#"Shear modulus for material (float): \n"
+                                ))
     position = {
         "x": x_pos,
         "y": y_pos,
@@ -146,26 +163,19 @@ def physbody_parameter_getter():
         "shear": shear_modulus
     }
 
-    print("mass: ")
-    print(mass)
-    print("position: ")
-    print(position)
-    print("velocity: ")
-    print(velocity)
-    print("acceleration: ")
-    print(acceleration)
-    print("net_force: ")
-    print(net_force)
-    print("strain_mods: ")
-    print(strain_mods)
     return mass, position, velocity, acceleration, net_force, strain_mods
 
 def pid_parameter_getter():
-    set_point = float(input("Set point: "))
-    p_k = float(input("Proportional scaling factor (float): "))
-    i_k = float(input("Integral scaling factor (float): "))
-    d_k = float(input("Derivative scaling factor (float): "))
-    control_constant = float(input("Constant multiple for PID term to throttle output (float): "))
+    set_point = float(input(#"Set point: "
+                            ))
+    p_k = float(input(#"Proportional scaling factor (float): "
+        ))
+    i_k = float(input(#"Integral scaling factor (float): "
+         ))
+    d_k = float(input(#"Derivative scaling factor (float): "
+                      ))
+    control_constant = float(input(#"Constant multiple for PID term to throttle output (float): "
+                                   ))
     pidparams = {
         "set_point": set_point,
         "p_k": p_k,
@@ -183,6 +193,21 @@ class Automaton(phys.PhysicsBody): # A physics body with an associated control o
     def __init__(self, control_obj, mass, pos, vel, acc, f_n, strainmods):
         phys.PhysicsBody.__init__(self, mass, pos, vel, acc, f_n, strainmods)
         self.controller = control_obj
+        self.mass = mass
+        self.pos = pos
+        self.vel = vel
+        self.acc = acc
+        self.f_n = f_n
+        self.strainmods = strainmods
+
+    def __str__(self):
+        str_out = ("Mass: " + str(self.mass) + "\n" +
+                   "Position: " + str(self.pos)+ "\n" +
+                   "Velocity: " + str(self.vel) + "\n" +
+                   "Acceleration: " + str(self.acc) + "\n" +
+                   "Net Force: " + str(self.f_n) + "\n" +
+                   "Strain Moduli: " + str(self.strainmods) + "\n")
+        return str_out
 
 class TimeAxis: # Should be a type of dataframe
 
@@ -190,13 +215,12 @@ class TimeAxis: # Should be a type of dataframe
         length_row = initial_df.iloc[2]
         length = range(length_row[0])
         dt = (1 / (initial_df.iloc[0])[0])
-        print("dt = " + str(dt))
 
         self.time_axis = pd.DataFrame(index=length) # Here is a good place to add the columns, or maybe that happens in the larger modeling thing
-        self.time_coords = pd.Series(data=[(x * dt) for x in self.time_axis], dtype=float)
-        print(self.time_coords)
-        time_index_and_vals = pd.concat([self.time_axis, self.time_coords])
-        print(time_index_and_vals)
+        self.time_coords = pd.DataFrame(data=[(x * dt) for x in self.time_axis], dtype=float)
+
+        time_index_and_vals = pd.concat([self.time_axis, self.time_coords], axis=0)
+
 
 class ReferenceFrame: # This is for later, when a robot will need to use a rolling timeframe of datapoints
     def __init__(self):
@@ -216,9 +240,12 @@ def main():
     controller1 = ctrl.PIDController(ctrl1_params)
     m, pos, vel, acc, f_n, strainmod = physbody_parameter_getter()
     automaton = Automaton(controller1, m, pos, vel, acc, f_n, strainmod)
+
+
     physics_bodies = [automaton]
     engine = Simulation(time_axis, physics_bodies)
-
+    print(engine)
+    print(automaton)
     return
 
 
