@@ -23,7 +23,7 @@ FUNCTION DEFINITIONS #1
 
 
 def cmdline_logic():
-    user_input = input("Simulate? [yes/no]: ")
+    user_input = "yes")
     while user_input == "yes":
         sample_freq = int(input("Sample rate in Hz (int): "))
         print(sample_freq)

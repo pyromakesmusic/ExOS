@@ -56,17 +56,13 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
 """
 CLASS DEFINITIONS
 """
-@dataclass
-class PIDKernel(): # Should be a DataFrame built from a set of Series of scalar values
-    # Each of these should be a series of scalars, may need to make more dataclasses for each series
-    time: object
-    process_variable: object
-    set_point: object
-    k_p: object
-    k_i: object
-    k_d: object
+class PIDKernel():
 
-    def __init__(self, time, process_variable, set_point, k_p, k_i, k_d):
+    def output(self):
+        print(self.data)
+        return(self.data)
+
+    def __init__(self, time, process_variable, set_point, k_p, k_i, k_d): # Each a pd.Series of scalars
         self.time = time
         self.process_variable = process_variable
         self.set_point = set_point
@@ -74,14 +70,21 @@ class PIDKernel(): # Should be a DataFrame built from a set of Series of scalar 
         self.k_p = k_p
         self.k_i = k_i
         self.k_d = k_d
+        self.data = pd.concat(self.time, self.process_variable, self.error, self.set_point, self.k_p, self.k_i, self.k_d)
 
 @dataclass
 class PIDController():
+    pass
 
-    def __init__(self, process_variable, set_point, k_p, k_i, k_d): # Need a dataframe holding scalar values should both be scalars, can be negative for orientation
-        self.process_variable = process_variable
-        self.set_point = set_point
-        self.error = set_point - process_variable
-        self.p = k_p * self.error
-        self.i = k_i * self.error
-        self.d = k_d * self.error
+
+"""
+MAIN FUNCTION
+"""
+
+def main():
+    kernel1 = PIDKernel()
+    control1 = PIDController(kernel1)
+    pass
+
+if __name__ == "__main__":
+    main()

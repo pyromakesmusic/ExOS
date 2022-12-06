@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="major re-architecting">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS/Math4157/pyonics/tests/PID_tkinter_test2.txt",
+    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS/Math4157/pyonics/tests/simulation_test1.txt",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
   "keyToStringList": {
@@ -61,7 +64,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\physics" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.simulation_test1">
     <configuration name="pyonics_tkinter1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,6 +86,31 @@
       <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\Math4157\pyonics\tests\PID_tkinter_test2.txt" />
       <method v="2" />
     </configuration>
+    <configuration name="simulation_test1" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics/submodules/simulation" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyonics/submodules/simulation/simulation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\Math4157\pyonics\tests\simulation_test1.txt" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.simulation_test1" />
+      <item itemvalue="Python.pyonics_tkinter1" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -92,13 +120,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00022" summary="got the ipython sliders displaying">
-      <created>1667009057170</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1667009057170</updated>
     </task>
     <task id="LOCAL-00023" summary="got the values plotted on slider update">
       <created>1667020084136</created>
@@ -436,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670280285884</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="major re-architecting">
+      <created>1670280686263</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1670280686263</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
