@@ -53,6 +53,27 @@ def pid(df, i, p_k, i_k, d_k, scaling_factor):
     df.at[i, "control"] = pid
     return df
 
+
+def pid_parameter_getter():
+    set_point = float(input(#"Set point: "
+                            ))
+    p_k = float(input(#"Proportional scaling factor (float): "
+        ))
+    i_k = float(input(#"Integral scaling factor (float): "
+         ))
+    d_k = float(input(#"Derivative scaling factor (float): "
+                      ))
+    control_constant = float(input(#"Constant multiple for PID term to throttle output (float): "
+                                   ))
+    pidparams = {
+        "set_point": set_point,
+        "p_k": p_k,
+        "i_k": i_k,
+        "d_k": d_k,
+        "control_constant": control_constant
+    }
+    return pidparams
+
 """
 CLASS DEFINITIONS
 """

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="got automaton printing a little more nicely">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="improved data structures for modeling">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,20 +40,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/#PERSONAL/#STEDWARDS/Math4157/pyonics/tests/simulation_test1.txt&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS/#Summer2022Research",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
@@ -61,7 +66,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\physics" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.simulation_test1">
+  <component name="RunManager">
     <configuration name="pyonics_tkinter1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,13 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00029" summary="well, it's graphing data...in the wrong window. so that is good">
-      <created>1667491978274</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1667491978274</updated>
     </task>
     <task id="LOCAL-00030" summary="testing the graph output, trying to remove">
       <created>1667540114455</created>
@@ -461,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670321912875</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="improved data structures for modeling">
+      <created>1670322584477</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1670322584477</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +482,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want." />
     <MESSAGE value="last updates" />
     <MESSAGE value="got some replotting done; I think I'm not doing enough passing out of functions to get the plots to not generate over and over" />
     <MESSAGE value="seem to have found two different places where a plot exists" />
@@ -502,6 +506,7 @@
     <MESSAGE value="more refactoring" />
     <MESSAGE value="encapsulating some of the info grabbers" />
     <MESSAGE value="got automaton printing a little more nicely" />
-    <option name="LAST_COMMIT_MESSAGE" value="got automaton printing a little more nicely" />
+    <MESSAGE value="improved data structures for modeling" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved data structures for modeling" />
   </component>
 </project>

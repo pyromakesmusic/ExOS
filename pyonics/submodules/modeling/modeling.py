@@ -165,25 +165,6 @@ def physbody_parameter_getter():
 
     return mass, position, velocity, acceleration, net_force, strain_mods
 
-def pid_parameter_getter():
-    set_point = float(input(#"Set point: "
-                            ))
-    p_k = float(input(#"Proportional scaling factor (float): "
-        ))
-    i_k = float(input(#"Integral scaling factor (float): "
-         ))
-    d_k = float(input(#"Derivative scaling factor (float): "
-                      ))
-    control_constant = float(input(#"Constant multiple for PID term to throttle output (float): "
-                                   ))
-    pidparams = {
-        "set_point": set_point,
-        "p_k": p_k,
-        "i_k": i_k,
-        "d_k": d_k,
-        "control_constant": control_constant
-    }
-    return pidparams
 
 """
 CLASS DEFINITIONS
@@ -240,10 +221,10 @@ class Simulation:
 def main():
     sim_parameter_data = sim_parameter_getter()
     time_axis = TimeAxis(sim_parameter_data) # I don't think I've actually done anything with this yet
-    ctrl1_params = pid_parameter_getter()
+    ctrl1_params = ctrl.pid_parameter_getter()
     controller1 = ctrl.PIDController(ctrl1_params)
     m, pos, vel, acc, f_n, strainmod = physbody_parameter_getter()
-    automaton = Automaton(controller1, m, pos, vel, acc, f_n, strainmod)
+    automaton = Automaton(controller1, m, pos, vel, acc, f_n, strainmod) # Contains a physics body plus a controller
 
 
     physics_bodies = [automaton]

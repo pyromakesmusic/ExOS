@@ -1,17 +1,22 @@
 """
 LIBRARY IMPORTS
 """
-
+# Standard Libraries
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 import matplotlib.pyplot as plt
-import pyonics.submodules.modeling.modeling as modeling
-import pyonics.submodules.physics.physics as phys
 import pandas as pd
 import numpy as np
 import sys
 
+# Third Party Libraries
+import pyttsx3
+
+
+# My Libraries
+import pyonics.submodules.modeling.modeling as modeling
+import pyonics.submodules.physics.physics as phys
 """
 SYSTEM CONFIGURATION
 """
@@ -21,9 +26,11 @@ FUNCTION DEFINITIONS #1
 """
 # Most of them should go here, any down after the class definitions are there only to avoid screwing things up right now
 
+def announce(stringvar):
 
+    return
 def cmdline_logic():
-    user_input = "yes")
+    user_input = "yes"
     while user_input == "yes":
         sample_freq = int(input("Sample rate in Hz (int): "))
         print(sample_freq)
@@ -73,8 +80,33 @@ def cmdline_logic():
 """
 CLASS DEFINITIONS
 """
+class VoiceControlGUI:
+    def announce(self, stringvar):
+        print(stringvar)
+        self.voice_engine.say(stringvar)
+    def __init__(self):
+        self.voice_engine = pyttsx3.init()
+        self.voices = self.voice_engine.getProperty("voices")
+        self.voice_engine.setProperty('rate', 175)
+        self.voice_engine.setProperty('voice', self.voices[1].id)
 
-
+        self.voice_engine.say("Hello, this is a test!")
+        self.voice_engine.say("Initialization complete.")
+        self.voice_engine.say("System ready for operation.")
+        self.voice_engine.say("System malfunction.")
+        self.voice_engine.say("Unauthorized user. Shutting down.")
+        self.voice_engine.say("Power low. Initiating low-power mode.")
+        self.voice_engine.say("System power critical. Hibernating...")
+        self.voice_engine.say("Fatal system error occurred. Shutting down.")
+        self.voice_engine.say("Fatal system error occurred. Rebooting...")
+        self.voice_engine.say("Security exception. Shutting down.")
+        self.voice_engine.say("Access denied.")
+        self.voice_engine.say("Access granted.")
+        self.voice_engine.say("Login failed. User not found.")
+        self.voice_engine.say("Login failed.")
+        self.voice_engine.say("System condition critical. Initiating safe mode.")
+        self.voice_engine.say("System condition critical. Initializing emergency procedures.")
+        self.voice_engine.runAndWait()
 class tkinterGUI:
 
     def total_samples(self, sample_rate=20, total_time=20):
@@ -640,7 +672,9 @@ Main Function
 """
 
 def main():
-    initialize("y", "tkinter")
+#    initialize("y", "tkinter")
+    artemis = VoiceControlGUI()
+    artemis.announce("Hello, world!")
     return
 
 if __name__ == "__main__":
