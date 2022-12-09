@@ -12,7 +12,8 @@ import sys
 
 # Third Party Libraries
 import pyttsx3
-
+import vosk
+import pyaudio
 
 # My Libraries
 import pyonics.submodules.modeling.modeling as modeling
@@ -84,12 +85,29 @@ class VoiceControlGUI:
     def announce(self, stringvar):
         print(stringvar)
         self.voice_engine.say(stringvar)
+        return
+
     def __init__(self):
+        # TTS Engine Initialization
         self.voice_engine = pyttsx3.init()
         self.voices = self.voice_engine.getProperty("voices")
         self.voice_engine.setProperty('rate', 175)
         self.voice_engine.setProperty('voice', self.voices[1].id)
 
+        # Voice Recognition Initialization
+        self.recog_model = vosk.Model("vosk-model-small-en-us-0.15")
+        self.voice_recog = vosk.KaldiRecognizer(self.recog_model, 16000)
+        self.mic = pyaudio.PyAudio()
+        self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
+        self.stream.start_stream()
+
+        while True:
+            data = self.stream.read(4096)
+            if self.voice_recog.AcceptWaveform(data):
+                text = self.voice_recog.Result()
+                print(f"{text[14:-3]}")
+
+        # Tests/ Strings
         self.voice_engine.say("Hello, this is a test!")
         self.voice_engine.say("Initialization complete.")
         self.voice_engine.say("System ready for operation.")
