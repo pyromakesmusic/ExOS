@@ -79,6 +79,15 @@ def cmdline_logic():
 """
 CLASS DEFINITIONS
 """
+
+class Interface:
+    def __init__(self):
+        pass
+
+class GUI(Interface):
+    def __init__(self):
+        pass
+
 class VoiceControlGUI:
     def announce(self, stringvar):
         print(stringvar)
