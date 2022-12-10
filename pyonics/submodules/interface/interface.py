@@ -18,6 +18,7 @@ import pyaudio
 # My Libraries
 import pyonics.submodules.modeling.modeling as modeling
 import pyonics.submodules.physics.physics as phys
+import system_strings as psa
 """
 SYSTEM CONFIGURATION
 """
@@ -27,9 +28,6 @@ FUNCTION DEFINITIONS #1
 """
 # Most of them should go here, any down after the class definitions are there only to avoid screwing things up right now
 
-def announce(stringvar):
-
-    return
 def cmdline_logic():
     user_input = "yes"
     while user_input == "yes":
@@ -85,6 +83,7 @@ class VoiceControlGUI:
     def announce(self, stringvar):
         print(stringvar)
         self.voice_engine.say(stringvar)
+        self.voice_engine.runAndWait()
         return
 
     def __init__(self):
@@ -101,29 +100,19 @@ class VoiceControlGUI:
         self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
         self.stream.start_stream()
 
+
+        # This is a loop for printing voice recognized audio to the console, I think it needs to be a method or
+        # attribute of how the class takes input
+        """
         while True:
             data = self.stream.read(4096)
             if self.voice_recog.AcceptWaveform(data):
                 text = self.voice_recog.Result()
                 print(f"{text[14:-3]}")
+        """
 
         # Tests/ Strings
-        self.voice_engine.say("Hello, this is a test!")
-        self.voice_engine.say("Initialization complete.")
-        self.voice_engine.say("System ready for operation.")
-        self.voice_engine.say("System malfunction.")
-        self.voice_engine.say("Unauthorized user. Shutting down.")
-        self.voice_engine.say("Power low. Initiating low-power mode.")
-        self.voice_engine.say("System power critical. Hibernating...")
-        self.voice_engine.say("Fatal system error occurred. Shutting down.")
-        self.voice_engine.say("Fatal system error occurred. Rebooting...")
-        self.voice_engine.say("Security exception. Shutting down.")
-        self.voice_engine.say("Access denied.")
-        self.voice_engine.say("Access granted.")
-        self.voice_engine.say("Login failed. User not found.")
-        self.voice_engine.say("Login failed.")
-        self.voice_engine.say("System condition critical. Initiating safe mode.")
-        self.voice_engine.say("System condition critical. Initializing emergency procedures.")
+
         self.voice_engine.runAndWait()
 class tkinterGUI:
 
@@ -693,6 +682,7 @@ def main():
 #    initialize("y", "tkinter")
     artemis = VoiceControlGUI()
     artemis.announce("Hello, world!")
+    artemis.announce(psa.init_string1)
     return
 
 if __name__ == "__main__":

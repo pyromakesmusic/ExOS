@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="added a little bit of voice control infrastructure; needs to be worked into method for some reason">
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="voice recognition and text to speech both implemented">
+      <change afterPath="$PROJECT_DIR$/pyonics/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pyonics/submodules/interface/system_strings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
     </list>
@@ -132,13 +120,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00031" summary="no longer topmost">
-      <created>1667540173026</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1667540173026</updated>
     </task>
     <task id="LOCAL-00032" summary="it is now just the sliders, next to see if i can get the separate window to plot">
       <created>1667540388147</created>
@@ -476,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670625227939</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="voice recognition and text to speech both implemented">
+      <created>1670628657554</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1670628657554</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +480,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got some replotting done; I think I'm not doing enough passing out of functions to get the plots to not generate over and over" />
     <MESSAGE value="seem to have found two different places where a plot exists" />
     <MESSAGE value="newest updates, will look at later" />
     <MESSAGE value="now the damned thing actually works" />
@@ -517,6 +504,7 @@
     <MESSAGE value="got automaton printing a little more nicely" />
     <MESSAGE value="improved data structures for modeling" />
     <MESSAGE value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
+    <MESSAGE value="voice recognition and text to speech both implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="voice recognition and text to speech both implemented" />
   </component>
 </project>
