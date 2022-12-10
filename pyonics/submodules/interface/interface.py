@@ -18,7 +18,7 @@ import pyaudio
 # My Libraries
 import pyonics.submodules.modeling.modeling as modeling
 import pyonics.submodules.physics.physics as phys
-import system_strings as psa
+import pyonics.submodules.interface.system_strings as psa
 """
 SYSTEM CONFIGURATION
 """
@@ -35,7 +35,7 @@ def cmdline_logic():
         print(sample_freq)
         sample_length = int(input("Total time in seconds (int): "))
         print(sample_length)
-        sample_number = int(modeling.total_samples(sample_freq, sample_length))
+        sample_number = int(modeling.total_num_samples_getter(sample_freq, sample_length))
         print("Total number of samples:", sample_number)
         set_point = float(input("Set point for cruise control (float): "))
         print(set_point)
