@@ -18,7 +18,7 @@ import pyaudio
 # My Libraries
 import pyonics.submodules.modeling.modeling as modeling
 import pyonics.submodules.physics.physics as phys
-import pyonics.submodules.interface.system_strings as psa
+import pyonics.submodules.ui.system_strings as psa
 """
 SYSTEM CONFIGURATION
 """
@@ -676,7 +676,7 @@ def gui(mode):
 
 def initialize(gui_mode="n", gui_type=None):
     """
-    Starts the interface with the specified options.
+    Starts the ui with the specified options.
     """
     if gui_mode == "y":
         gui(gui_type)

@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="voice recognition and text to speech both implemented">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="almost everything seems to mostly run">
+      <change afterPath="$PROJECT_DIR$/pyonics/submodules/ui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/io/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/system_strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/system_strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/README" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/am/final.mdl" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/conf/mfcc.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/conf/model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/Gr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/HCLr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/disambig_tid.int" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.dubm" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.ie" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.mat" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/splice.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +44,15 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pyonics/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pyonics/submodules/control/control.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pyonics/submodules/physics/physics.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pyonics/submodules/ui/interface.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pyonics/submodules/ui/system_strings.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -42,7 +69,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/#PERSONAL/#STEDWARDS/#Summer2022Research&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/#NUMB/research and development&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -119,13 +146,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00034" summary="this version starts with just the buttons, and generates a new plot every time the sliders are updated. technically this is bad behavior, but i think it's closer to what i want.">
-      <created>1667574671467</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1667574671467</updated>
     </task>
     <task id="LOCAL-00035" summary="last updates">
       <created>1667584056796</created>
@@ -463,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670633420466</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="almost everything seems to mostly run">
+      <created>1670633878645</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1670633878646</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -479,7 +506,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="seem to have found two different places where a plot exists" />
     <MESSAGE value="newest updates, will look at later" />
     <MESSAGE value="now the damned thing actually works" />
     <MESSAGE value="updated some stuff, looks better now" />
@@ -504,6 +530,7 @@
     <MESSAGE value="improved data structures for modeling" />
     <MESSAGE value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
     <MESSAGE value="voice recognition and text to speech both implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="voice recognition and text to speech both implemented" />
+    <MESSAGE value="almost everything seems to mostly run" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost everything seems to mostly run" />
   </component>
 </project>

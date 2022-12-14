@@ -27,7 +27,7 @@ LIBRARY IMPORTS
 
 # Local Submodules
 
-import pyonics.submodules.interface.interface as interface
+import pyonics.submodules.ui.interface as interface
 
 # External Libraries
 
