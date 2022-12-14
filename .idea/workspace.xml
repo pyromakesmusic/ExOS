@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="almost everything seems to mostly run">
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/ui/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" afterDir="false" />
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="added companion engine (gpt-2 based)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/io/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/system_strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/system_strings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/README" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/am/final.mdl" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/conf/mfcc.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/conf/model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/Gr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/HCLr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/disambig_tid.int" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.dubm" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.ie" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/final.mat" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/interface/vosk-model-small-en-us-0.15/ivector/splice.conf" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,13 +127,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00035" summary="last updates">
-      <created>1667584056796</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1667584056796</updated>
     </task>
     <task id="LOCAL-00036" summary="got some replotting done; I think I'm not doing enough passing out of functions to get the plots to not generate over and over">
       <created>1667585241167</created>
@@ -490,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670633878646</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="added companion engine (gpt-2 based)">
+      <created>1670986930721</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1670986930721</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -506,7 +487,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="newest updates, will look at later" />
     <MESSAGE value="now the damned thing actually works" />
     <MESSAGE value="updated some stuff, looks better now" />
     <MESSAGE value="had to make a local copy of differint library, but it works now" />
@@ -531,6 +511,7 @@
     <MESSAGE value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
     <MESSAGE value="voice recognition and text to speech both implemented" />
     <MESSAGE value="almost everything seems to mostly run" />
-    <option name="LAST_COMMIT_MESSAGE" value="almost everything seems to mostly run" />
+    <MESSAGE value="added companion engine (gpt-2 based)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added companion engine (gpt-2 based)" />
   </component>
 </project>
