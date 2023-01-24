@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="added companion engine (gpt-2 based)">
+      <change afterPath="$PROJECT_DIR$/project files/robot images/simulation1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,30 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/#NUMB/research and development&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS",
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\#ARTEMIS\research and development\python scripts\Athena AI" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\physics" />
     </key>
   </component>
   <component name="RunManager">
@@ -127,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00036" summary="got some replotting done; I think I'm not doing enough passing out of functions to get the plots to not generate over and over">
-      <created>1667585241167</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1667585241167</updated>
     </task>
     <task id="LOCAL-00037" summary="seem to have found two different places where a plot exists">
       <created>1667595316776</created>
@@ -471,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670986930721</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="added companion engine (gpt-2 based)">
+      <created>1671002543206</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1671002543206</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
