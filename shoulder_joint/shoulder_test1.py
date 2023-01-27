@@ -14,7 +14,7 @@ class GLTest(GLRealtimeProgram):
         self.world.drawGL()
 
     def idle(self):
-        rfs = sim.controller(0).sensor("RF_ForceSensor")
+        rfs = sim.controller(0).sensor("RF_ForceSensor") # This is taking sensor data? From where? How do I change this?
         print("Sensor values:",rfs.getMeasurements())
         sim.simulate(self.dt)
         return

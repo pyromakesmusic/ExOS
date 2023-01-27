@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="added companion engine (gpt-2 based)">
-      <change afterPath="$PROJECT_DIR$/project files/robot images/simulation1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" afterDir="false" />
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_bot.urdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/companion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00037" summary="seem to have found two different places where a plot exists">
-      <created>1667595316776</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1667595316776</updated>
     </task>
     <task id="LOCAL-00038" summary="newest updates, will look at later">
       <created>1668044796616</created>
@@ -477,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671002543206</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="simulating 1 robot (need to simplify mesh and probably be using a GPU)">
+      <created>1674570940647</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1674570940648</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="now the damned thing actually works" />
     <MESSAGE value="updated some stuff, looks better now" />
     <MESSAGE value="had to make a local copy of differint library, but it works now" />
     <MESSAGE value="added set point line and fixed a few things" />
@@ -518,6 +516,7 @@
     <MESSAGE value="voice recognition and text to speech both implemented" />
     <MESSAGE value="almost everything seems to mostly run" />
     <MESSAGE value="added companion engine (gpt-2 based)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added companion engine (gpt-2 based)" />
+    <MESSAGE value="simulating 1 robot (need to simplify mesh and probably be using a GPU)" />
+    <option name="LAST_COMMIT_MESSAGE" value="simulating 1 robot (need to simplify mesh and probably be using a GPU)" />
   </component>
 </project>
