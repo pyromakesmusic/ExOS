@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/sphere.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/block.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/block.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,19 +24,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="1dd493ad-1df5-47d0-9a65-0d858fa3b440" />
-        <option name="url" value="https://github.com/pyromakesmusic/Math4157.git" />
-      </UrlAndAccount>
-    </option>
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
@@ -68,7 +51,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/#PERSONAL/#STEDWARDS/PhysicsResearch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -82,11 +65,11 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\#PERSONAL\#STEDWARDS\Math4157\shoulder_joint\urdf" />
-      <recent name="D:\#ARTEMIS\research and development\python scripts\Athena AI" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\physics" />
     </key>
   </component>
   <component name="RunManager">
@@ -108,7 +91,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\Math4157\pyonics\tests\PID_tkinter_test2.txt" />
+      <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\pyonics\tests\PID_tkinter_test1.txt" />
       <method v="2" />
     </configuration>
     <configuration name="simulation_test1" type="PythonConfigurationType" factoryName="Python">
@@ -118,9 +101,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\tayoc\anaconda3\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics/submodules/modeling" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" />
@@ -129,7 +112,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="D:\#PERSONAL\#STEDWARDS\Math4157\pyonics\tests\simulation_test1.txt" />
+      <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\pyonics\tests\simulation_test1.txt" />
       <method v="2" />
     </configuration>
     <list>
@@ -145,6 +128,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
+    </task>
+    <task id="LOCAL-00039" summary="now the damned thing actually works">
+      <created>1668047349481</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1668047349481</updated>
+    </task>
+    <task id="LOCAL-00040" summary="updated some stuff, looks better now">
+      <created>1668058764521</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1668058764521</updated>
+    </task>
+    <task id="LOCAL-00041" summary="had to make a local copy of differint library, but it works now">
+      <created>1668678657950</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1668678657950</updated>
     </task>
     <task id="LOCAL-00042" summary="added set point line and fixed a few things">
       <created>1668704303415</created>
@@ -447,49 +451,28 @@
       <option name="project" value="LOCAL" />
       <updated>1670986930721</updated>
     </task>
-    <task id="LOCAL-00085" summary="added companion engine (gpt-2 based)">
-      <created>1671002543206</created>
+    <task id="LOCAL-00085" summary="voice recognition and text to speech both implemented">
+      <created>1674017415010</created>
       <option name="number" value="00085" />
       <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1671002543206</updated>
+      <updated>1674017415010</updated>
     </task>
-    <task id="LOCAL-00086" summary="simulating 1 robot (need to simplify mesh and probably be using a GPU)">
-      <created>1674570940647</created>
+    <task id="LOCAL-00086" summary="created a world?">
+      <created>1675638679067</created>
       <option name="number" value="00086" />
       <option name="presentableId" value="LOCAL-00086" />
       <option name="project" value="LOCAL" />
-      <updated>1674570940648</updated>
+      <updated>1675638679067</updated>
     </task>
-    <task id="LOCAL-00087" summary="created urdf file">
-      <created>1674854967557</created>
+    <task id="LOCAL-00087" summary="trying to load elements">
+      <created>1675703397786</created>
       <option name="number" value="00087" />
       <option name="presentableId" value="LOCAL-00087" />
       <option name="project" value="LOCAL" />
-      <updated>1674854967557</updated>
+      <updated>1675703397787</updated>
     </task>
-    <task id="LOCAL-00088" summary="made a world and it waits for 10 seconds">
-      <created>1675645624459</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1675645624459</updated>
-    </task>
-    <task id="LOCAL-00089" summary="loading some kind of world xml file now">
-      <created>1675650973438</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1675650973438</updated>
-    </task>
-    <task id="LOCAL-00090" summary="got an error: &quot;Robot: Floating joints must have exactly 6 DOF&quot;">
-      <created>1675656864476</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1675656864476</updated>
-    </task>
-    <option name="localTasksCounter" value="91" />
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -505,6 +488,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="had to make a local copy of differint library, but it works now" />
+    <MESSAGE value="added set point line and fixed a few things" />
+    <MESSAGE value="bunch of GUI updates" />
     <MESSAGE value="removed some unnecessary things, preparing to refactor" />
     <MESSAGE value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
     <MESSAGE value="small refactoring" />
@@ -522,14 +508,11 @@
     <MESSAGE value="got automaton printing a little more nicely" />
     <MESSAGE value="improved data structures for modeling" />
     <MESSAGE value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
-    <MESSAGE value="voice recognition and text to speech both implemented" />
     <MESSAGE value="almost everything seems to mostly run" />
     <MESSAGE value="added companion engine (gpt-2 based)" />
-    <MESSAGE value="simulating 1 robot (need to simplify mesh and probably be using a GPU)" />
-    <MESSAGE value="created urdf file" />
-    <MESSAGE value="made a world and it waits for 10 seconds" />
-    <MESSAGE value="loading some kind of world xml file now" />
-    <MESSAGE value="got an error: &quot;Robot: Floating joints must have exactly 6 DOF&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="got an error: &quot;Robot: Floating joints must have exactly 6 DOF&quot;" />
+    <MESSAGE value="voice recognition and text to speech both implemented" />
+    <MESSAGE value="created a world?" />
+    <MESSAGE value="trying to load elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to load elements" />
   </component>
 </project>
