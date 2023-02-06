@@ -2,8 +2,8 @@
     <link name="world">
     </link>
     <link name="torso" physical=0/>
-    <link name="humerus" />
-    <link name="forearm" />
+    <link name="humerus" physical=0/>
+    <link name="forearm" physical=0/>
 
     <joint name="shoulder" type="continuous">
         <parent link="torso"/>

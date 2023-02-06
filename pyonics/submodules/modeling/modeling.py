@@ -207,7 +207,7 @@ class TimeAxis: # Should be a type of dataframe
         time_index_and_vals = pd.concat([self.time_axis, self.time_coords], axis=0)
 
 
-class ReferenceFrame: # This is for later, when a robot will need to use a rolling timeframe of datapoints
+class ReferenceFrame: # This is for later, when a robots will need to use a rolling timeframe of datapoints
     def __init__(self):
         pass
 

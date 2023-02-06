@@ -11,8 +11,8 @@ import sys
 CONFIG
 """
 
-w_filepath = r"D:\#PERSONAL\#STEDWARDS\Math4157\shoulder_joint\4157world_1.xml"
-r_filepath = r"D:\#PERSONAL\#STEDWARDS\Math4157\shoulder_joint\urdf\shoulder_bot.urdf"
+w_filepath = r"D:\#PERSONAL\#STEDWARDS\Math4157\shoulder_joint\block.xml"
+r_filepath = r"\shoulder_joint\robot\shoulder_bot.urdf"
 
 
 """
@@ -34,7 +34,7 @@ exo = ExoTest(w_filepath)
 """
 world = klampt.WorldModel()
 world.readFile(r"D:\#PERSONAL\#STEDWARDS\Klampt-examples\Python3\exercises\control\world1.xml")
-robot = world.makeRobot("robot")
+robots = world.makeRobot("robots")
 klampt.vis.show()
 klampt.vis.lock()
 """

@@ -1,6 +1,7 @@
 <world>
-    <terrain file="D:/#PERSONAL/#STEDWARDS/Klampt-examples/data/terrains/plane.off" />
+    <robot name="shoulder_bot" file="robot/shoulder_bot.urdf"/>
+    <terrain file="terrains/plane.off" />
     <simulation>
 
     </simulation>
-</world>>
+</world>
