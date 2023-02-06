@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/block.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/objects/sphere.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/meshes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/sphere1cm.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/terrains/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/terrains/plane.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/sphere.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/4157world_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/4157world_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/block.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/block.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/urdf/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/objects/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/urdf/meshes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/urdf/meshes/forearm.stl" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/meshes/forearm.stl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/urdf/meshes/humerus.stl" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/meshes/humerus.stl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/urdf/shoulder_bot.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/shoulder_bot.urdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +145,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00041" summary="had to make a local copy of differint library, but it works now">
-      <created>1668678657950</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1668678657950</updated>
     </task>
     <task id="LOCAL-00042" summary="added set point line and fixed a few things">
       <created>1668704303415</created>
@@ -500,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675650973438</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="got an error: &quot;Robot: Floating joints must have exactly 6 DOF&quot;">
+      <created>1675656864476</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1675656864476</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +505,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bunch of GUI updates" />
     <MESSAGE value="removed some unnecessary things, preparing to refactor" />
     <MESSAGE value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
     <MESSAGE value="small refactoring" />
@@ -541,6 +529,7 @@
     <MESSAGE value="created urdf file" />
     <MESSAGE value="made a world and it waits for 10 seconds" />
     <MESSAGE value="loading some kind of world xml file now" />
-    <option name="LAST_COMMIT_MESSAGE" value="loading some kind of world xml file now" />
+    <MESSAGE value="got an error: &quot;Robot: Floating joints must have exactly 6 DOF&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="got an error: &quot;Robot: Floating joints must have exactly 6 DOF&quot;" />
   </component>
 </project>

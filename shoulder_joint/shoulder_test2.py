@@ -22,19 +22,11 @@ CLASS DEFINITIONS
 class ExoTest():
     def __init__(self, world_location):
         self.world = klampt.WorldModel()
-        self.world.readFile(world_location)
+#        self.world.readFile(world_location)
 
         klampt.vis.run()
-        klampt.vis.add("world", self.world)
+#        klampt.vis.add("world", self.world)
 
 exo = ExoTest(w_filepath)
 
 
-
-"""
-world = klampt.WorldModel()
-world.readFile(r"D:\#PERSONAL\#STEDWARDS\Klampt-examples\Python3\exercises\control\world1.xml")
-robots = world.makeRobot("robots")
-klampt.vis.show()
-klampt.vis.lock()
-"""

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- test with a block -->
 <world>
-  <robot name="robot" file="D:/#PERSONAL/#STEDWARDS/Math4157/shoulder_joint/robots/sphere1cm.rob" config="3  0.000000 -0.065000 0.050000"/>
+  <robot name="robot" file="D:/#PERSONAL/#STEDWARDS/Math4157/shoulder_joint/robots/sphere.rob" />
   <terrain file="D:/#PERSONAL/#STEDWARDS/Math4157/shoulder_joint/terrains/block.off"  translation="0 0 0"/>
   <rigidObject name="block"  position="0 0 0.110000">
      <geometry mesh="objects/cube.off" scale="0.100000 0.100000 0.100000" translate="-0.050000 -0.050000 -0.050000" />
