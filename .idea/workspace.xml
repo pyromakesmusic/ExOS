@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_bot.urdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/urdf/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/urdf/meshes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/urdf/meshes/forearm.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/urdf/meshes/humerus.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/urdf/shoulder_bot.urdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_bot.urdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,19 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="1dd493ad-1df5-47d0-9a65-0d858fa3b440" />
+        <option name="url" value="https://github.com/pyromakesmusic/Math4157.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pyonics/main.py" root0="FORCE_HIGHLIGHTING" />
@@ -50,30 +67,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/#PERSONAL/#STEDWARDS",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/#PERSONAL/#STEDWARDS/PhysicsResearch&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\#PERSONAL\#STEDWARDS\Math4157\shoulder_joint\urdf" />
       <recent name="D:\#ARTEMIS\research and development\python scripts\Athena AI" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
     </key>
   </component>
   <component name="RunManager">
@@ -132,13 +149,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00038" summary="newest updates, will look at later">
-      <created>1668044796616</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1668044796616</updated>
     </task>
     <task id="LOCAL-00039" summary="now the damned thing actually works">
       <created>1668047349481</created>
@@ -476,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674570940648</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="created urdf file">
+      <created>1674854967557</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1674854967557</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +509,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated some stuff, looks better now" />
     <MESSAGE value="had to make a local copy of differint library, but it works now" />
     <MESSAGE value="added set point line and fixed a few things" />
     <MESSAGE value="bunch of GUI updates" />
@@ -517,6 +533,7 @@
     <MESSAGE value="almost everything seems to mostly run" />
     <MESSAGE value="added companion engine (gpt-2 based)" />
     <MESSAGE value="simulating 1 robot (need to simplify mesh and probably be using a GPU)" />
-    <option name="LAST_COMMIT_MESSAGE" value="simulating 1 robot (need to simplify mesh and probably be using a GPU)" />
+    <MESSAGE value="created urdf file" />
+    <option name="LAST_COMMIT_MESSAGE" value="created urdf file" />
   </component>
 </project>

@@ -1,0 +1,21 @@
+<robot name="shoulder_bot" version="1.0">
+    <link name="world">
+    </link>
+    <link name="torso" physical=0/>
+    <link name="humerus" />
+    <link name="forearm" />
+
+    <joint name="shoulder" type="continuous">
+        <parent link="torso"/>
+        <child link="humerus"/>
+        <origin xyz="-0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        </joint>
+
+    <joint name="elbow" type="continuous">
+        <parent link="humerus" />
+        <child link="forearm" />
+        <origin xyz="0 0 1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        </joint>
+ </robot>

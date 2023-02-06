@@ -1,9 +1,0 @@
-<robot name="shoulder_bot">
-    <link name="humerus" />
-    <link name="forearm" />
-
-    <joint name="elbow" type="continuous">
-        <parent link="humerus" />
-        <child link="forearm" />
-        </joint>
- </robot>
