@@ -129,13 +129,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00038" summary="newest updates, will look at later">
-      <created>1668044796616</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1668044796616</updated>
-    </task>
     <task id="LOCAL-00039" summary="now the damned thing actually works">
       <created>1668047349481</created>
       <option name="number" value="00039" />
@@ -472,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675638679067</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="trying to load elements">
+      <created>1675703397786</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1675703397787</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -488,7 +488,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated some stuff, looks better now" />
     <MESSAGE value="had to make a local copy of differint library, but it works now" />
     <MESSAGE value="added set point line and fixed a few things" />
     <MESSAGE value="bunch of GUI updates" />
@@ -513,6 +512,7 @@
     <MESSAGE value="added companion engine (gpt-2 based)" />
     <MESSAGE value="voice recognition and text to speech both implemented" />
     <MESSAGE value="created a world?" />
-    <option name="LAST_COMMIT_MESSAGE" value="created a world?" />
+    <MESSAGE value="trying to load elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to load elements" />
   </component>
 </project>
