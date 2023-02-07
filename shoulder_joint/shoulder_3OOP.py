@@ -13,6 +13,11 @@ null_imu = (null_matrix, null_origin)
 
 
 x_matrix = [[1,0,0],[0,0,0],[0,0,0]]
+"""
+BONES
+"""
+BONE_GEOMETRY = kmcp.box(.05, .4, .05,mass=10)
+FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 
 """
 CLASS DEFINITIONS
@@ -44,8 +49,10 @@ class ExoSim():
         self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
         self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
+
+
         #Controllers
-        self.world.makeRobot("shoulder_bot")
+        self.shoulder_bot = self.world.makeRobot("shoulder_bot")
         print("num robots: ", self.world.numRobots())
         print("robot link:", self.world.robotLink)
         self.controller = klampt.SimRobotController
@@ -54,12 +61,18 @@ class ExoSim():
         #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
         self.bot_maker()
 
+        link1 = self.shoulder_bot.link(0)
+
+        #Posers
+
         #Adding elements to the visualization
+
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
         klampt.vis.add("torso", self.torso)
         klampt.vis.add("humerus", self.humerus)
         klampt.vis.add("forearm", self.forearm)
+
 
 
         #This section is for weird testing things I can't fully understand right now.
