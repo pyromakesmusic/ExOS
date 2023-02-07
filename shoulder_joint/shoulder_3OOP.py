@@ -15,6 +15,11 @@ null_imu = (null_matrix, null_origin)
 """
 CLASS DEFINITIONS
 """
+
+class ExoBot():
+    def __init__(self, w):
+        kmcmbr.make("temp.rob",w)
+
 class ExoSim():
     """
     Makes a world with a green floor and gravity. This is probably going to be the framework that I build out.
@@ -27,28 +32,23 @@ class ExoSim():
         self.floor = self.world.makeTerrain("floor")
         self.floor.geometry().set(self.floor_geom)
         self.floor.appearance().setColor(0.2,0.6,0.3,1.0)
+        self.ball = kmcp.sphere(.1, center=[0,0,1], mass=1)
+        self.obj = self.world.makeRigidObject("anonymous_object")
+
         klampt.vis.add("world",self.world)
-        klampt.vis.show()
-        self.updateLoop()
+        klampt.vis.add("ball",self.ball)
+        klampt.vis.run()
+        while klampt.vis.shown():
+
+            self.ulator.updateWorld()
+
 
     def insert(self, names, entity):
         klampt.vis.add(names, entity)
 
-    def ulator(self):
-        return(self.ulator)
-
-    def updateLoop(self):
-        while klampt.vis.shown():
-            self.ulator.updateWorld()
-class ExoBot(klampt.RobotModel):
-    def __init__(self):
-        print("ExoBot Created")
 
 """
 MAIN FUNCTION CALL
 """
 
 exo_test = ExoSim()
-shoulder_test = ExoBot()
-while True:
-    exo_test.update()
