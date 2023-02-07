@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/simulation_contact.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/simulation_state.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/temp.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,13 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00044" summary="removed some unnecessary things, preparing to refactor">
-      <created>1669311359060</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1669311359060</updated>
     </task>
     <task id="LOCAL-00045" summary="changed folder structure">
       <created>1669747193583</created>
@@ -501,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675754532854</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="this is an unbroken version of &quot;ball floating in air over green plane&quot;">
+      <created>1675756841088</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1675756841088</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +513,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="small refactoring" />
     <MESSAGE value="changed folder structure" />
     <MESSAGE value="changeed license and tried refactoring again; time to rebuild in OOP" />
     <MESSAGE value="&#10;changed license" />
@@ -542,6 +537,7 @@
     <MESSAGE value="trying to refactor to an object oriented design" />
     <MESSAGE value="object oriented is paying dividends" />
     <MESSAGE value="got a simulation going and updating itself, going to test physics next" />
-    <option name="LAST_COMMIT_MESSAGE" value="got a simulation going and updating itself, going to test physics next" />
+    <MESSAGE value="this is an unbroken version of &quot;ball floating in air over green plane&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="this is an unbroken version of &quot;ball floating in air over green plane&quot;" />
   </component>
 </project>

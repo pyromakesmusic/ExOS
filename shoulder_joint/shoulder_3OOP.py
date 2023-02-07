@@ -38,15 +38,15 @@ class ExoSim():
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
         klampt.vis.run()
-        while klampt.vis.shown():
-
-            self.ulator.updateWorld()
+        self.ulator.simulate(.0001)
+        klampt.vis.debug()
 
 
     def insert(self, names, entity):
         klampt.vis.add(names, entity)
 
-
+    def shutdown(self):
+        klampt.vis.kill()
 """
 MAIN FUNCTION CALL
 """
