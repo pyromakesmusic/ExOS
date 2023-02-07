@@ -47,4 +47,4 @@ viscousFriction 50 50 50 50 50 50
 dryFriction 1 1 1 1 1 1
 
 property sensors <sensors><ForceTorqueSensor name="base_force" link="5" hasForce="1 1 1" hasTorque="1 1 1" /></sensors>
-mount 5 "temp.rob" 1 0 0   0 1 0   0 0 1   0 0 0 as "temp"
+mount 5 "sphere.rob" 1 0 0   0 1 0   0 0 1   0 0 0 as "sphere"

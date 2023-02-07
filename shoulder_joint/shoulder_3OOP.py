@@ -32,11 +32,19 @@ class ExoSim():
         self.floor = self.world.makeTerrain("floor")
         self.floor.geometry().set(self.floor_geom)
         self.floor.appearance().setColor(0.2,0.6,0.3,1.0)
+
+        #Items
         self.ball = kmcp.sphere(.1, center=[0,0,1], mass=1)
         self.obj = self.world.makeRigidObject("anonymous_object")
 
+        #Robot parts
+        self.torso = kmcp.box(.5, .5, 1,center=[0,0,.5], mass=200)
+
+        #Adding elements to the visualization
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
+
+        #Run calls
         klampt.vis.run()
         self.ulator.simulate(.0001)
         klampt.vis.debug()
@@ -47,6 +55,8 @@ class ExoSim():
 
     def shutdown(self):
         klampt.vis.kill()
+
+
 """
 MAIN FUNCTION CALL
 """
