@@ -44,6 +44,13 @@ class ExoSim():
         self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
         self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
+        #Controllers
+        self.world.makeRobot("shoulder_bot")
+        print("num robots: ", self.world.numRobots())
+        print("robot link:", self.world.robotLink)
+        self.controller = klampt.SimRobotController
+        print("controller", self.controller)
+
         #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
         self.bot_maker()
 
