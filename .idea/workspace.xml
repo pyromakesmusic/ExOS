@@ -155,13 +155,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00047" summary="changed folder structure">
-      <created>1669748244111</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1669748244111</updated>
-    </task>
     <task id="LOCAL-00048" summary="changed folder structure">
       <created>1669748503848</created>
       <option name="number" value="00048" />
@@ -498,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675757847354</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="we have the bones">
+      <created>1675758414782</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1675758414782</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="&#10;changed license" />
     <MESSAGE value="mild folder restructure" />
     <MESSAGE value="starting to nest and get the hang of relative imports" />
     <MESSAGE value="creating some dataclasses for a physics engine" />
@@ -539,6 +538,7 @@
     <MESSAGE value="this is an unbroken version of &quot;ball floating in air over green plane&quot;" />
     <MESSAGE value="adding more functionality to the class" />
     <MESSAGE value="my documentation is better than the official docs at this point" />
-    <option name="LAST_COMMIT_MESSAGE" value="my documentation is better than the official docs at this point" />
+    <MESSAGE value="we have the bones" />
+    <option name="LAST_COMMIT_MESSAGE" value="we have the bones" />
   </component>
 </project>

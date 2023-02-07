@@ -44,12 +44,20 @@ class ExoSim():
         self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
         self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
+        #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
+        self.bot_maker()
+
         #Adding elements to the visualization
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
         klampt.vis.add("torso", self.torso)
         klampt.vis.add("humerus", self.humerus)
         klampt.vis.add("forearm", self.forearm)
+
+
+        #This section is for weird testing things I can't fully understand right now.
+        self.ulator.addHook([self.torso,self.humerus,self.forearm], self.updateLoop)
+
 
         #Run calls
         klampt.vis.run()
@@ -62,6 +70,14 @@ class ExoSim():
 
     def shutdown(self):
         klampt.vis.kill()
+
+    def updateLoop(self, torso, humerus, forearm):
+
+        return
+    def bot_maker(self):
+        self.body = klampt.SimBody()
+        self.body.enableDynamics()
+        return
 
 
 """
