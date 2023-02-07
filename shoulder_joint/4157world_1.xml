@@ -1,7 +1,6 @@
 <world>
-    <robot name="shoulder_bot" file="robot/shoulder_bot.urdf"/>
-    <terrain file="terrains/plane.off" />
-    <simulation>
-
-    </simulation>
+    <robot name="shoulder_bot" file="robots/sphere1cm.rob"/>
+    <terrain file="terrains/block.off" scale="100 100 100" translation="0 0 0">
+        <display color=".5 .5 .5"/>
+    </terrain>
 </world>

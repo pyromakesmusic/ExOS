@@ -21,10 +21,12 @@ FUNCTIONS
 world = klampt.WorldModel()
 
 world.loadElement(thin_cube)
+klampt.vis.add("world_xml", "4157world_1.xml")
 ball = kmc.sphere(.2)
+ball2 = kmc.sphere(.2, [1,0,0])
 
-robot = klampt.RobotModel()
 
 klampt.vis.add("world",world)
 klampt.vis.add("ball", ball)
+klampt.vis.add("ball2", ball2)
 klampt.vis.run()
