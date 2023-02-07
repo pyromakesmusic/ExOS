@@ -23,18 +23,23 @@ class ExoSim():
         self.world = klampt.WorldModel()
         self.ulator = klampt.sim.simulation.SimpleSimulator(self.world)
         self.ulator.setGravity([0,0,-9.8])
-        self.floor_geom = kmcp.box(50, 50, .01,center=[0,0,0])
+        self.floor_geom = kmcp.box(5, 5, .01,center=[0,0,0])
         self.floor = self.world.makeTerrain("floor")
         self.floor.geometry().set(self.floor_geom)
         self.floor.appearance().setColor(0.2,0.6,0.3,1.0)
         klampt.vis.add("world",self.world)
-        klampt.vis.run()
+        klampt.vis.show()
+        self.updateLoop()
 
     def insert(self, names, entity):
         klampt.vis.add(names, entity)
 
-    def update(self):
-        self.ulator.updateWorld()
+    def ulator(self):
+        return(self.ulator)
+
+    def updateLoop(self):
+        while klampt.vis.shown():
+            self.ulator.updateWorld()
 class ExoBot(klampt.RobotModel):
     def __init__(self):
         print("ExoBot Created")
@@ -45,6 +50,5 @@ MAIN FUNCTION CALL
 
 exo_test = ExoSim()
 shoulder_test = ExoBot()
-exo_test.insert(0, shoulder_test)
 while True:
     exo_test.update()
