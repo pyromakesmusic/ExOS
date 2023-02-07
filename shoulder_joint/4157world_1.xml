@@ -1,4 +1,4 @@
-<world>
+<world background="0 0 1">
     <robot name="shoulder_bot" file="robots/sphere1cm.rob"/>
     <terrain file="terrains/block.off" scale="100 100 100" translation="0 0 0">
         <display color=".5 .5 .5"/>

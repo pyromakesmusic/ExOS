@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/terrains/block.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/4157world_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/4157world_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/shoulder_bot.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/shoulder_bot.urdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_test2.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\physics" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.shoulder_test1">
+  <component name="RunManager">
     <configuration name="pyonics_tkinter1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00040" summary="updated some stuff, looks better now">
-      <created>1668058764521</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1668058764521</updated>
     </task>
     <task id="LOCAL-00041" summary="had to make a local copy of differint library, but it works now">
       <created>1668678657950</created>
@@ -498,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675705798954</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="added two spheres and a prism">
+      <created>1675743844839</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1675743844839</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added set point line and fixed a few things" />
     <MESSAGE value="bunch of GUI updates" />
     <MESSAGE value="removed some unnecessary things, preparing to refactor" />
     <MESSAGE value="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory" />
@@ -539,6 +539,7 @@
     <MESSAGE value="created a world?" />
     <MESSAGE value="trying to load elements" />
     <MESSAGE value="put a cube in the world" />
-    <option name="LAST_COMMIT_MESSAGE" value="put a cube in the world" />
+    <MESSAGE value="added two spheres and a prism" />
+    <option name="LAST_COMMIT_MESSAGE" value="added two spheres and a prism" />
   </component>
 </project>

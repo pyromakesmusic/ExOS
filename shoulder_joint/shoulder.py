@@ -25,6 +25,9 @@ klampt.vis.add("world_xml", "4157world_1.xml")
 ball = kmc.sphere(.2)
 ball2 = kmc.sphere(.2, [1,0,0])
 
+robot = klampt.RobotModel()
+joint1 = klampt.RobotModelLink()
+
 
 klampt.vis.add("world",world)
 klampt.vis.add("ball", ball)
