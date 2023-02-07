@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_6_2023_1_22_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_6_2023_1_22_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,13 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00048" summary="changed folder structure">
-      <created>1669748503848</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1669748503848</updated>
     </task>
     <task id="LOCAL-00049" summary="changed folder structure">
       <created>1669748692205</created>
@@ -499,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675758414782</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="added a simrobotcontroller and a robot">
+      <created>1675801311947</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1675801311947</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +513,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="mild folder restructure" />
     <MESSAGE value="starting to nest and get the hang of relative imports" />
     <MESSAGE value="creating some dataclasses for a physics engine" />
     <MESSAGE value="more refactoring from the interface level" />
@@ -540,6 +537,7 @@
     <MESSAGE value="adding more functionality to the class" />
     <MESSAGE value="my documentation is better than the official docs at this point" />
     <MESSAGE value="we have the bones" />
-    <option name="LAST_COMMIT_MESSAGE" value="we have the bones" />
+    <MESSAGE value="added a simrobotcontroller and a robot" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a simrobotcontroller and a robot" />
   </component>
 </project>
