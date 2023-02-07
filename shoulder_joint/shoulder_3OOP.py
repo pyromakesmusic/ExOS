@@ -12,6 +12,8 @@ null_origin = [1,1,1]
 null_imu = (null_matrix, null_origin)
 
 
+x_matrix = [[1,0,0],[0,0,0],[0,0,0]]
+
 """
 CLASS DEFINITIONS
 """
@@ -34,15 +36,20 @@ class ExoSim():
         self.floor.appearance().setColor(0.2,0.6,0.3,1.0)
 
         #Items
-        self.ball = kmcp.sphere(.1, center=[0,0,1], mass=1)
+        self.ball = kmcp.sphere(.1, center=[4,4,4], mass=1)
         self.obj = self.world.makeRigidObject("anonymous_object")
 
         #Robot parts
         self.torso = kmcp.box(.5, .5, 1,center=[0,0,.5], mass=200)
+        self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
+        self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
         #Adding elements to the visualization
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
+        klampt.vis.add("torso", self.torso)
+        klampt.vis.add("humerus", self.humerus)
+        klampt.vis.add("forearm", self.forearm)
 
         #Run calls
         klampt.vis.run()
