@@ -34,7 +34,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     def __init__(self):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         self.world = klampt.WorldModel()
-        self.ulator = klampt.sim.simulation.SimpleSimulator(self.world)
+        self.ulator = klampt.Simulator(self.world)
         self.ulator.setGravity([0,0,-9.8])
         self.floor_geom = kmcp.box(5, 5, .01,center=[0,0,0])
         self.floor = self.world.makeTerrain("floor")
@@ -51,14 +51,15 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
         #Planar2
-        self.world.readFile("robots/planar2.rob")
+        self.robot = self.world.loadRobot("robots/planar2.rob")
+        self.controller = self.ulator.controller(-1)
 
         #Controllers
         self.shoulder_bot = self.world.makeRobot("shoulder_bot")
         print("num robots: ", self.world.numRobots())
         print("robot link:", self.world.robotLink)
-        self.controller = klampt.SimRobotController
-        print("controller", self.controller)
+
+        print("controller")
 
         #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
         self.bot_maker()

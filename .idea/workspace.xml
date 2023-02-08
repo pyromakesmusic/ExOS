@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/planar2.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/temp.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/thincube.off" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/sphere.rob" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/temp.rob" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00051" summary="changed folder structure">
-      <created>1669749614516</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1669749614516</updated>
     </task>
     <task id="LOCAL-00052" summary="changed folder structure">
       <created>1669939376514</created>
@@ -500,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675801995565</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="added planar2 robot">
+      <created>1675838183713</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1675838183713</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="creating some dataclasses for a physics engine" />
     <MESSAGE value="more refactoring from the interface level" />
     <MESSAGE value="major re-architecting" />
     <MESSAGE value="encapsulation slightly improved" />
@@ -541,6 +541,7 @@
     <MESSAGE value="we have the bones" />
     <MESSAGE value="added a simrobotcontroller and a robot" />
     <MESSAGE value="added a link" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a link" />
+    <MESSAGE value="added planar2 robot" />
+    <option name="LAST_COMMIT_MESSAGE" value="added planar2 robot" />
   </component>
 </project>
