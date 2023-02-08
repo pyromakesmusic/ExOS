@@ -27,11 +27,12 @@ class ExoBot():
     def __init__(self, w):
         kmcmbr.make("temp.rob",w)
 
-class ExoSim():
+class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Makes a world with a green floor and gravity. This is probably going to be the framework that I build out.
     """
     def __init__(self):
+        klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         self.world = klampt.WorldModel()
         self.ulator = klampt.sim.simulation.SimpleSimulator(self.world)
         self.ulator.setGravity([0,0,-9.8])
@@ -49,7 +50,8 @@ class ExoSim():
         self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
         self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
-
+        #Planar2
+        self.world.readFile("robots/planar2.rob")
 
         #Controllers
         self.shoulder_bot = self.world.makeRobot("shoulder_bot")
@@ -61,9 +63,10 @@ class ExoSim():
         #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
         self.bot_maker()
 
-        link1 = self.shoulder_bot.link(0)
-
+        self.link1 = self.shoulder_bot.link(0)
         #Posers
+
+        #Printing info
 
         #Adding elements to the visualization
 
@@ -72,11 +75,14 @@ class ExoSim():
         klampt.vis.add("torso", self.torso)
         klampt.vis.add("humerus", self.humerus)
         klampt.vis.add("forearm", self.forearm)
+        klampt.vis.add("shoulder_bot", self.shoulder_bot)
+
+        self.shoulder_bot.drawGL()
 
 
 
         #This section is for weird testing things I can't fully understand right now.
-        self.ulator.addHook([self.torso,self.humerus,self.forearm], self.updateLoop)
+        self.ulator.addHook([self.torso,self.humerus,self.forearm], self.displayLoop)
 
 
         #Run calls
@@ -91,7 +97,9 @@ class ExoSim():
     def shutdown(self):
         klampt.vis.kill()
 
-    def updateLoop(self, torso, humerus, forearm):
+    def displayLoop(self):
+        self.ulator.updateWorld()
+        self.world.drawGL()
 
         return
     def bot_maker(self):

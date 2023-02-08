@@ -7,6 +7,8 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/sphere.rob" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/temp.rob" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00050" summary="changed folder structure">
-      <created>1669749191485</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1669749191485</updated>
     </task>
     <task id="LOCAL-00051" summary="changed folder structure">
       <created>1669749614516</created>
@@ -498,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675801351119</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="added a link">
+      <created>1675801995565</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1675801995565</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="starting to nest and get the hang of relative imports" />
     <MESSAGE value="creating some dataclasses for a physics engine" />
     <MESSAGE value="more refactoring from the interface level" />
     <MESSAGE value="major re-architecting" />
@@ -539,6 +540,7 @@
     <MESSAGE value="my documentation is better than the official docs at this point" />
     <MESSAGE value="we have the bones" />
     <MESSAGE value="added a simrobotcontroller and a robot" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a simrobotcontroller and a robot" />
+    <MESSAGE value="added a link" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a link" />
   </component>
 </project>
