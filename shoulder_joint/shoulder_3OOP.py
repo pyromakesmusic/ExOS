@@ -52,19 +52,17 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Planar2
         self.robot = self.world.loadRobot("robots/planar2.rob")
-        self.controller = self.ulator.controller(-1)
+        print(self.robot.getID())
+        self.robot.randomizeConfig()
 
         #Controllers
-        self.shoulder_bot = self.world.makeRobot("shoulder_bot")
         print("num robots: ", self.world.numRobots())
         print("robot link:", self.world.robotLink)
 
         print("controller")
 
         #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
-        self.bot_maker()
 
-        self.link1 = self.shoulder_bot.link(0)
         #Posers
 
         #Printing info
@@ -76,14 +74,12 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("torso", self.torso)
         klampt.vis.add("humerus", self.humerus)
         klampt.vis.add("forearm", self.forearm)
-        klampt.vis.add("shoulder_bot", self.shoulder_bot)
+        klampt.vis.add("shoulder_bot", self.robot)
 
-        self.shoulder_bot.drawGL()
 
 
 
         #This section is for weird testing things I can't fully understand right now.
-        self.ulator.addHook([self.torso,self.humerus,self.forearm], self.displayLoop)
 
 
         #Run calls
