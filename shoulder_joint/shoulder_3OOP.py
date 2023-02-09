@@ -26,9 +26,9 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 CLASS DEFINITIONS
 """
 
-class ExoBot(klampt.control.RobotInterfaceBase):
-    def __init__(self, world):
-        klampt.control.RobotInterfaceBase.__init__(self)
+class ExoBot(klampt.control.OmniRobotInterface):
+    def __init__(self, robotmodel):
+        self.interface = klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         print("Initializing interface. . .")
         print("Initialized: ", self.initialize())
 
@@ -112,10 +112,9 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("trajectory", self.trajectory)
 
         #Controller cals
-        self.RIL = ExoBot(self.world)
+        self.RIL = ExoBot(self.robot)
         print(". . .")
         self.RIL.controlRate()
-        print("Tool coordinates: ", self.RIL.getToolCoordinates())
 
 
 
