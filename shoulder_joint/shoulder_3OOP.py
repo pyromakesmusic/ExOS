@@ -1,4 +1,6 @@
 import time
+import math
+import numpy as np
 import klampt
 import klampt.vis
 from klampt.model.trajectory import RobotTrajectory
@@ -27,16 +29,15 @@ CLASS DEFINITIONS
 """
 
 class ExoBot(klampt.control.OmniRobotInterface):
-    def __init__(self, robotmodel, sim):
+    def __init__(self, robotmodel, sim, world):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
-
+        self.initialize()
         print("Initializing interface. . .")
         print("Initialized: ", self.initialize())
         print("Klampt Model: ", self.klamptModel())
+
         self.sim = sim
-
         self.simInitialize()
-
         self.controllerTestSetup()
 
 
@@ -72,7 +73,16 @@ class ExoBot(klampt.control.OmniRobotInterface):
         self.klamptModel().randomizeConfig()
         self.target = self.klamptModel().getConfig()
         self.klamptModel().randomizeConfig()
-        self.trajectory = RobotTrajectory(self.klamptModel(),milestones=self.target)
+        self.queuedTrajectory = RobotTrajectory(self.klamptModel(), milestones=self.target)
+
+    def beginIdle(self):
+        self.shutdown_flag = False
+
+        while self.shutdown_flag == False:
+            self.idle()
+
+    def idle(self):
+        self.setPosition(self.target)
 
 class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -118,21 +128,21 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Controller calls
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot, self.sim))
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot, self.sim, self.world))
         print(". . .")
-        self.XOS.controlRate()
+        print("Control rate: ", self.XOS.controlRate())
 
 
 
 
         #Simulator calls
         self.dt = 1.0/(self.XOS.controlRate())
+        self.t = 0
         self.looper = TimedLooper(self.dt)
 
         #Visualization calls
 
-
-
+        self.XOS.configToKlampt([1,1,1])
 
         klampt.vis.run()
         while self.looper:
@@ -141,8 +151,12 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
                 if self.XOS.status() != 'ok':
                     raise RuntimeError("Some error occured: {}".format(self.XOS.status()))
                 # state queries and commands for CONTROL LOOP go here
-
-
+                self.target = [np.random.rand() for x in range(self.XOS.numJoints())]
+                print("target config", self.target)
+                self.XOS.moveToPosition(self.target)
+                self.sim.simulate(self, self.t)
+                self.sim.updateWorld()
+                self.world.drawGL()
                 self.display()
                 self.XOS.endStep()
             except Exception as e:
@@ -156,10 +170,6 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     def shutdown(self):
         klampt.vis.kill()
 
-    def display(self):
-        self.sim.updateWorld()
-        self.world.drawGL()
-        return
 
 
 

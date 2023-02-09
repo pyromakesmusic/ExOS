@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/body_1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/body_1.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/planar3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/planar3.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00059" summary="small refactoring">
-      <created>1669945325619</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1669945325619</updated>
     </task>
     <task id="LOCAL-00060" summary="small refactoring">
       <created>1669945879411</created>
@@ -501,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675929024296</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="got the controller hooked up to the simulation">
+      <created>1675931385852</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1675931385852</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got automaton printing a little more nicely" />
     <MESSAGE value="improved data structures for modeling" />
     <MESSAGE value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
     <MESSAGE value="almost everything seems to mostly run" />
@@ -542,6 +539,7 @@
     <MESSAGE value="i have a third arm" />
     <MESSAGE value="connected model to controller" />
     <MESSAGE value="added sensor and actuator" />
-    <option name="LAST_COMMIT_MESSAGE" value="added sensor and actuator" />
+    <MESSAGE value="got the controller hooked up to the simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="got the controller hooked up to the simulation" />
   </component>
 </project>
