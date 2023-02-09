@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/resources/jaco/planningtest.configs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/test.path" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/demos/sensor_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/sensor_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00057" summary="changed folder structure">
-      <created>1669942478420</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1669942478420</updated>
     </task>
     <task id="LOCAL-00058" summary="refactoring a little bit, probably need to get more stuff inside the class definition and use system path methods to reference stuff inside the parent directory">
       <created>1669944340951</created>
@@ -499,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675926558126</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="connected model to controller">
+      <created>1675927486410</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1675927486410</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="more refactoring" />
     <MESSAGE value="encapsulating some of the info grabbers" />
     <MESSAGE value="got automaton printing a little more nicely" />
     <MESSAGE value="improved data structures for modeling" />
@@ -540,6 +542,7 @@
     <MESSAGE value="randomized the config of planar2. rob" />
     <MESSAGE value="successfully set the config programmatically" />
     <MESSAGE value="i have a third arm" />
-    <option name="LAST_COMMIT_MESSAGE" value="i have a third arm" />
+    <MESSAGE value="connected model to controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="connected model to controller" />
   </component>
 </project>

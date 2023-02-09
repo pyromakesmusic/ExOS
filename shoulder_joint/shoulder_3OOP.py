@@ -28,13 +28,20 @@ CLASS DEFINITIONS
 
 class ExoBot(klampt.control.OmniRobotInterface):
     def __init__(self, robotmodel):
-        self.interface = klampt.control.OmniRobotInterface.__init__(self, robotmodel)
+        klampt.control.OmniRobotInterface.__init__(self, robotmodel)
+
         print("Initializing interface. . .")
         print("Initialized: ", self.initialize())
+        print("Klampt Model: ", self.klamptModel())
+
+    def simInitialize(self):
+        self.addVirtualPart("arm", [0, 1, 2])
+        self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator()
+        self.bicep = klampt.sim.simulation.DefaultActuatorEmulator()
 
 
     def sensedPosition(self):
-        return 1
+        return self.klamptModel().getDOFPosition()
 
     def controlRate(self):
         return 100
@@ -48,7 +55,8 @@ class ExoBot(klampt.control.OmniRobotInterface):
     def moveToPosition(self):
         return
 
-
+    def setPosition(self, list_of_q):
+        self.klamptModel().setConfig(list_of_q)
 
 class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -112,15 +120,15 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("trajectory", self.trajectory)
 
         #Controller cals
-        self.RIL = ExoBot(self.robot)
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot))
         print(". . .")
-        self.RIL.controlRate()
+        self.XOS.controlRate()
 
 
 
 
         #Simulator calls
-        self.dt = 1.0/(self.RIL.controlRate())
+        self.dt = 1.0/(self.XOS.controlRate())
         self.looper = TimedLooper(self.dt)
 
         #Visualization calls
@@ -128,24 +136,20 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         while self.looper:
             try:
-                self.RIL.beginStep()
-                if self.RIL.status() != 'ok':
-                    raise RuntimeError("Some error occured: {}".format(self.RIL.status()))
+                self.XOS.beginStep()
+                if self.XOS.status() != 'ok':
+                    raise RuntimeError("Some error occured: {}".format(self.XOS.status()))
                 # state queries and commands for CONTROL LOOP go here
 
                 klampt.vis.show()
 
                 self.display()
-                self.RIL.endStep()
+                self.XOS.endStep()
             except Exception as e:
                 print("Terminating on exception: ", e)
                 self.looper.stop()
 
-        self.RIL.close()
-
-        #Run calls
-        #klampt.vis.debug(self.robot)
-        klampt.vis.run()
+        self.XOS.close()
 
 
 
