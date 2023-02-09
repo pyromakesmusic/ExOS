@@ -27,17 +27,23 @@ CLASS DEFINITIONS
 """
 
 class ExoBot(klampt.control.OmniRobotInterface):
-    def __init__(self, robotmodel):
+    def __init__(self, robotmodel, sim):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
         print("Initializing interface. . .")
         print("Initialized: ", self.initialize())
         print("Klampt Model: ", self.klamptModel())
+        self.sim = sim
+
+        self.simInitialize()
+
+        self.controllerTestSetup()
+
 
     def simInitialize(self):
         self.addVirtualPart("arm", [0, 1, 2])
-        self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator()
-        self.bicep = klampt.sim.simulation.DefaultActuatorEmulator()
+        self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
+        self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
 
 
     def sensedPosition(self):
@@ -52,11 +58,21 @@ class ExoBot(klampt.control.OmniRobotInterface):
     def setVelocity(self):
         return
 
-    def moveToPosition(self):
+    def moveToPosition(self, list_of_q):
+        self.klamptModel().setConfig(list_of_q)
         return
 
     def setPosition(self, list_of_q):
         self.klamptModel().setConfig(list_of_q)
+
+    def queuedTrajectory(self):
+        return self.trajectory
+
+    def controllerTestSetup(self):
+        self.klamptModel().randomizeConfig()
+        self.target = self.klamptModel().getConfig()
+        self.klamptModel().randomizeConfig()
+        self.trajectory = RobotTrajectory(self.klamptModel(),milestones=self.target)
 
 class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -67,30 +83,10 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.world = klampt.WorldModel()
         self.sim = klampt.Simulator(self.world)
         self.sim.setGravity([0, 0, -9.8])
-        """ 
-        Makes a floor
-        self.floor_geom = kmcp.box(5, 5, .01,center=[0,0,0])
-        self.floor = self.world.makeTerrain("floor")
-        self.floor.geometry().set(self.floor_geom)
-        self.floor.appearance().setColor(0.2,0.6,0.3,1.0)
-        """
-
-        #Items
-        self.ball = kmcp.sphere(.1, center=[4,4,4], mass=1)
-        self.obj = self.world.makeRigidObject("anonymous_object")
-
-        #Robot parts
-        self.torso = kmcp.box(.5, .5, 1,center=[0,0,.5], mass=200)
-        #self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
-        #self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
         #Planar2
         self.world.loadRobot("robots/planar3.rob")
         self.robot = self.world.robot(0)
-        print("robot ID", self.robot.getID())
-        print("robot name", self.robot.getName())
-        print("robot index", self.robot.index)
-        print("num drivers", self.robot.numDrivers())
 
 
 
@@ -101,13 +97,13 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         #Adding elements to the visualization
 
         klampt.vis.add("world",self.world)
-        klampt.vis.add("ball",self.ball)
-        klampt.vis.add("torso", self.torso)
+        #klampt.vis.add("ball",self.ball)
+        #klampt.vis.add("torso", self.torso)
         klampt.vis.add("shoulder_bot", self.robot)
 
 
         #Initializing configuration, creating a random target and setting up the move.
-
+        """
         self.robot.randomizeConfig()
         self.robot.randomizeConfig()
         self.robot.randomizeConfig()
@@ -118,9 +114,11 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = RobotTrajectory(self.robot, [0,1], [self.initial_config, self.target])
 
         klampt.vis.add("trajectory", self.trajectory)
+        """
 
-        #Controller cals
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot))
+
+        #Controller calls
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot, self.sim))
         print(". . .")
         self.XOS.controlRate()
 
@@ -132,8 +130,11 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.looper = TimedLooper(self.dt)
 
         #Visualization calls
-        klampt.vis.run()
 
+
+
+
+        klampt.vis.run()
         while self.looper:
             try:
                 self.XOS.beginStep()
@@ -141,7 +142,6 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
                     raise RuntimeError("Some error occured: {}".format(self.XOS.status()))
                 # state queries and commands for CONTROL LOOP go here
 
-                klampt.vis.show()
 
                 self.display()
                 self.XOS.endStep()
@@ -150,7 +150,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
                 self.looper.stop()
 
         self.XOS.close()
-
+        klampt.vis.kill()
 
 
     def shutdown(self):
@@ -159,7 +159,6 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     def display(self):
         self.sim.updateWorld()
         self.world.drawGL()
-
         return
 
 
