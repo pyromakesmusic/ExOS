@@ -1,5 +1,8 @@
+import time
 import klampt
 import klampt.vis
+from klampt.model.trajectory import RobotTrajectory
+from klampt.control.utils import TimedLooper
 import klampt.model.create.moving_base_robot as kmcmbr
 import klampt.model.create.primitives as kmcp
 
@@ -23,9 +26,29 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 CLASS DEFINITIONS
 """
 
-class ExoBot():
-    def __init__(self, w):
-        kmcmbr.make("temp.rob",w)
+class ExoBot(klampt.control.RobotInterfaceBase):
+    def __init__(self, world):
+        klampt.control.RobotInterfaceBase.__init__(self)
+        print("Initializing interface. . .")
+        print("Initialized: ", self.initialize())
+
+
+    def sensedPosition(self):
+        return 1
+
+    def controlRate(self):
+        return 100
+
+    def setTorque(self):
+        return
+
+    def setVelocity(self):
+        return
+
+    def moveToPosition(self):
+        return
+
+
 
 class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -36,10 +59,13 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.world = klampt.WorldModel()
         self.sim = klampt.Simulator(self.world)
         self.sim.setGravity([0, 0, -9.8])
+        """ 
+        Makes a floor
         self.floor_geom = kmcp.box(5, 5, .01,center=[0,0,0])
         self.floor = self.world.makeTerrain("floor")
         self.floor.geometry().set(self.floor_geom)
         self.floor.appearance().setColor(0.2,0.6,0.3,1.0)
+        """
 
         #Items
         self.ball = kmcp.sphere(.1, center=[4,4,4], mass=1)
@@ -61,35 +87,67 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Controllers
+
         print("controller")
-
-        #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
-
-        #Posers
-
-        #Printing info
 
         #Adding elements to the visualization
 
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
         klampt.vis.add("torso", self.torso)
-        #klampt.vis.add("humerus", self.humerus)
-        #klampt.vis.add("forearm", self.forearm)
         klampt.vis.add("shoulder_bot", self.robot)
 
 
+        #Initializing configuration, creating a random target and setting up the move.
 
+        self.robot.randomizeConfig()
+        self.robot.randomizeConfig()
+        self.robot.randomizeConfig()
 
-        #This section is for weird testing things I can't fully understand right now.
+        self.target = self.robot.getConfig()
         self.robot.setConfig([-1,-1, -1])
+        self.initial_config = self.robot.getConfig()
+        self.trajectory = RobotTrajectory(self.robot, [0,1], [self.initial_config, self.target])
 
+        klampt.vis.add("trajectory", self.trajectory)
 
         #Controller cals
-        self.controller = klampt.SimRobotController()
+        self.RIL = ExoBot(self.world)
+        print(". . .")
+        self.RIL.controlRate()
+        print("Tool coordinates: ", self.RIL.getToolCoordinates())
+
+
+
+
+        #Simulator calls
+        self.dt = 1.0/(self.RIL.controlRate())
+        self.looper = TimedLooper(self.dt)
+
+        #Visualization calls
+        klampt.vis.run()
+
+        while self.looper:
+            try:
+                self.RIL.beginStep()
+                if self.RIL.status() != 'ok':
+                    raise RuntimeError("Some error occured: {}".format(self.RIL.status()))
+                # state queries and commands for CONTROL LOOP go here
+
+                klampt.vis.show()
+
+                self.display()
+                self.RIL.endStep()
+            except Exception as e:
+                print("Terminating on exception: ", e)
+                self.looper.stop()
+
+        self.RIL.close()
 
         #Run calls
+        #klampt.vis.debug(self.robot)
         klampt.vis.run()
+
 
 
     def shutdown(self):

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/planar3.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/body_1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
@@ -156,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00055" summary="changed folder structure">
-      <created>1669942373291</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1669942373291</updated>
     </task>
     <task id="LOCAL-00056" summary="changed folder structure">
       <created>1669942424968</created>
@@ -500,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675909868490</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="i have a third arm">
+      <created>1675915390935</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1675915390935</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="encapsulation slightly improved" />
     <MESSAGE value="more refactoring" />
     <MESSAGE value="encapsulating some of the info grabbers" />
     <MESSAGE value="got automaton printing a little more nicely" />
@@ -541,6 +540,7 @@
     <MESSAGE value="added planar2 robot" />
     <MESSAGE value="randomized the config of planar2. rob" />
     <MESSAGE value="successfully set the config programmatically" />
-    <option name="LAST_COMMIT_MESSAGE" value="successfully set the config programmatically" />
+    <MESSAGE value="i have a third arm" />
+    <option name="LAST_COMMIT_MESSAGE" value="i have a third arm" />
   </component>
 </project>
