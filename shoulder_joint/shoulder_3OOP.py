@@ -34,8 +34,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     def __init__(self):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         self.world = klampt.WorldModel()
-        self.ulator = klampt.Simulator(self.world)
-        self.ulator.setGravity([0,0,-9.8])
+        self.sim = klampt.Simulator(self.world)
+        self.sim.setGravity([0, 0, -9.8])
         self.floor_geom = kmcp.box(5, 5, .01,center=[0,0,0])
         self.floor = self.world.makeTerrain("floor")
         self.floor.geometry().set(self.floor_geom)
@@ -47,18 +47,19 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Robot parts
         self.torso = kmcp.box(.5, .5, 1,center=[0,0,.5], mass=200)
-        self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
-        self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
+        #self.humerus = kmcp.box(.05, .4, .05,center=[0,.5,.5], mass=10)
+        #self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
         #Planar2
         self.robot = self.world.loadRobot("robots/planar2.rob")
-        print(self.robot.getID())
-        self.robot.randomizeConfig()
+        print("robot ID", self.robot.getID())
+        print("robot name", self.robot.getName())
+        print("robot index", self.robot.index)
+        print("num drivers", self.robot.numDrivers())
+
+
 
         #Controllers
-        print("num robots: ", self.world.numRobots())
-        print("robot link:", self.world.robotLink)
-
         print("controller")
 
         #This section is for logically connecting the different robot parts to each other, when I figure out how to do that
@@ -72,37 +73,30 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("world",self.world)
         klampt.vis.add("ball",self.ball)
         klampt.vis.add("torso", self.torso)
-        klampt.vis.add("humerus", self.humerus)
-        klampt.vis.add("forearm", self.forearm)
+        #klampt.vis.add("humerus", self.humerus)
+        #klampt.vis.add("forearm", self.forearm)
         klampt.vis.add("shoulder_bot", self.robot)
 
 
 
 
         #This section is for weird testing things I can't fully understand right now.
+        self.robot.setConfig([-1,-1])
 
 
         #Run calls
         klampt.vis.run()
-        self.ulator.simulate(.0001)
-        klampt.vis.debug()
 
-
-    def insert(self, names, entity):
-        klampt.vis.add(names, entity)
 
     def shutdown(self):
         klampt.vis.kill()
 
-    def displayLoop(self):
-        self.ulator.updateWorld()
+    def display(self):
+        self.sim.updateWorld()
         self.world.drawGL()
 
         return
-    def bot_maker(self):
-        self.body = klampt.SimBody()
-        self.body.enableDynamics()
-        return
+
 
 
 """

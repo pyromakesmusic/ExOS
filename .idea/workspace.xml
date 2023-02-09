@@ -155,13 +155,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00053" summary="changed folder structure">
-      <created>1669941357000</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1669941357000</updated>
-    </task>
     <task id="LOCAL-00054" summary="changed folder structure">
       <created>1669941407336</created>
       <option name="number" value="00054" />
@@ -498,7 +491,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675888825139</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="randomized the config of planar2. rob">
+      <created>1675900370247</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1675900370247</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="more refactoring from the interface level" />
     <MESSAGE value="major re-architecting" />
     <MESSAGE value="encapsulation slightly improved" />
     <MESSAGE value="more refactoring" />
@@ -539,6 +538,7 @@
     <MESSAGE value="added a simrobotcontroller and a robot" />
     <MESSAGE value="added a link" />
     <MESSAGE value="added planar2 robot" />
-    <option name="LAST_COMMIT_MESSAGE" value="added planar2 robot" />
+    <MESSAGE value="randomized the config of planar2. rob" />
+    <option name="LAST_COMMIT_MESSAGE" value="randomized the config of planar2. rob" />
   </component>
 </project>
