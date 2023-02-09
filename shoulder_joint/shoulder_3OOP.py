@@ -51,7 +51,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         #self.forearm = kmcp.box(.05, .4, .05,center=[0,1,.5],  mass=10)
 
         #Planar2
-        self.robot = self.world.loadRobot("robots/planar2.rob")
+        self.world.loadRobot("robots/planar3.rob")
+        self.robot = self.world.robot(0)
         print("robot ID", self.robot.getID())
         print("robot name", self.robot.getName())
         print("robot index", self.robot.index)
@@ -81,8 +82,11 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #This section is for weird testing things I can't fully understand right now.
-        self.robot.setConfig([-1,-1])
+        self.robot.setConfig([-1,-1, -1])
 
+
+        #Controller cals
+        self.controller = klampt.SimRobotController()
 
         #Run calls
         klampt.vis.run()
