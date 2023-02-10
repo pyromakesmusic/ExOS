@@ -99,8 +99,6 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.world.loadRobot("robots/torso_1.rob")
         self.robot = self.world.robot(0)
 
-        self.ref_cube = kmcp.box(.5,.5,1)
-        klampt.vis.add("cube", self.ref_cube)
 
         #Controllers
 
@@ -144,7 +142,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Visualization calls
 
-        self.XOS.configToKlampt([1,1])
+        self.XOS.configToKlampt([1,1,1])
         klampt.vis.setWindowTitle("Shoulder Bot Test")
         klampt.vis.run()
         klampt.vis.setWindowTitle("Shoulder Bot Test")

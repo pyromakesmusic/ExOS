@@ -1,22 +1,24 @@
 ### A 3R planar robot edit ###
 TParent .53 0 .85   0 1 0   -.85 0 .53   0 0 0  \
+1 0 0   0 1 0   0 0 1   1.1 0 0  \
 1 0 0   0 1 0   0 0 1   1.1 0 0
-parents -1 0
-axis 0 1 0   0 1 0
-jointtype r r
-qMin 0 0
-qMax 6.28319 6.28319
-q 0 0
-geometry   "thincube.off"   "thincube.off"
-mass       1 1
+parents -1 0 1
+axis 0 1 0   0 1 0 0 1 0
+jointtype r r r
+qMin 0 0 0
+qMax 6.28319 6.28319 6.28319
+q 0 0 0
+geometry   "meshes/torso_1.stl"   "meshes/humerus_1.stl"   "meshes/forearm_1.stl"
+mass       1 1 1
 automass
-torqueMax  50 50
-accMax     1 1
-velMax     1 1
+torqueMax  50 50 50
+accMax     1 1 1
+velMax     1 1 1
 
 joint spin 0
 joint spin 1
+joint spin 2
 
-servoP 100 100
-servoI 0 0
-servoD 30 30
+servoP 100 100 100
+servoI 0 0 0
+servoD 30 30 30
