@@ -1,6 +1,9 @@
 import time
 import math
-import PyQt5
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
 import numpy as np
 import klampt
 import klampt.vis
@@ -28,6 +31,19 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 """
 CLASS DEFINITIONS
 """
+
+def ExoGui(glwidget):
+    w = QMainWindow()
+    glwidget.setMaximumSize(4000, 4000)
+    glwidget.setSizePolicy(QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum))
+    area = QWidget(w)
+    layout = QVBoxLayout()
+    layout.addWidget(glwidget)
+    layout.addWidget(QPushButton("Click me"))
+    area.setLayout(layout)
+    w.setCentralWidget(area)
+    return w
+
 
 class ExoBot(klampt.control.OmniRobotInterface):
     def __init__(self, robotmodel, sim, world):

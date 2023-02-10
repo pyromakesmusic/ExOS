@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00063" summary="&#10;changed license">
-      <created>1670193902265</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1670193902265</updated>
     </task>
     <task id="LOCAL-00064" summary="mild folder restructure">
       <created>1670194067054</created>
@@ -500,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676014155846</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="need to use PyQt5 to get interactive visualization">
+      <created>1676019441282</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1676019441282</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added companion engine (gpt-2 based)" />
     <MESSAGE value="voice recognition and text to speech both implemented" />
     <MESSAGE value="created a world?" />
     <MESSAGE value="trying to load elements" />
@@ -541,6 +539,7 @@
     <MESSAGE value="some random configuration, time is not yet passing" />
     <MESSAGE value="added a torso at the origin for reference" />
     <MESSAGE value="added some custom meshes" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some custom meshes" />
+    <MESSAGE value="need to use PyQt5 to get interactive visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to use PyQt5 to get interactive visualization" />
   </component>
 </project>
