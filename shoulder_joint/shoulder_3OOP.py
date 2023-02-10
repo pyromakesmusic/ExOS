@@ -42,7 +42,7 @@ class ExoBot(klampt.control.OmniRobotInterface):
 
 
     def simInitialize(self):
-        self.addVirtualPart("arm", [0, 1, 2])
+        self.addVirtualPart("arm", [0, 1])
         self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
         self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
 
@@ -95,10 +95,11 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim.setGravity([0, 0, -9.8])
 
         #Planar2
-        self.world.loadRobot("robots/planar3.rob")
+        self.world.loadRobot("robots/torso_1.rob")
         self.robot = self.world.robot(0)
 
-
+        self.ref_cube = kmcp.box(.5,.5,1)
+        klampt.vis.add("cube", self.ref_cube)
 
         #Controllers
 
@@ -142,7 +143,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Visualization calls
 
-        self.XOS.configToKlampt([1,1,1])
+        self.XOS.configToKlampt([1,1])
 
         klampt.vis.run()
         while self.looper:
