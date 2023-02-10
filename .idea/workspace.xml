@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00061" summary="changed folder structure">
-      <created>1669959160254</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1669959160254</updated>
     </task>
     <task id="LOCAL-00062" summary="changeed license and tried refactoring again; time to rebuild in OOP">
       <created>1670193865720</created>
@@ -500,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675933094634</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="added a torso at the origin for reference">
+      <created>1675992782803</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1675992782803</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added a little bit of voice control infrastructure; needs to be worked into method for some reason" />
     <MESSAGE value="almost everything seems to mostly run" />
     <MESSAGE value="added companion engine (gpt-2 based)" />
     <MESSAGE value="voice recognition and text to speech both implemented" />
@@ -541,6 +540,7 @@
     <MESSAGE value="added sensor and actuator" />
     <MESSAGE value="got the controller hooked up to the simulation" />
     <MESSAGE value="some random configuration, time is not yet passing" />
-    <option name="LAST_COMMIT_MESSAGE" value="some random configuration, time is not yet passing" />
+    <MESSAGE value="added a torso at the origin for reference" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a torso at the origin for reference" />
   </component>
 </project>

@@ -1,5 +1,5 @@
 ### A 3R planar robot edit ###
-TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
+TParent .53 0 .85   0 1 0   -.85 0 .53   0 0 0  \
 1 0 0   0 1 0   0 0 1   1.1 0 0
 parents -1 0
 axis 0 1 0   0 1 0

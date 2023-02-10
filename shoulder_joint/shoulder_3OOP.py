@@ -94,6 +94,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = klampt.Simulator(self.world)
         self.sim.setGravity([0, 0, -9.8])
 
+
         #Planar2
         self.world.loadRobot("robots/torso_1.rob")
         self.robot = self.world.robot(0)
@@ -144,8 +145,10 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         #Visualization calls
 
         self.XOS.configToKlampt([1,1])
-
+        klampt.vis.setWindowTitle("Shoulder Bot Test")
         klampt.vis.run()
+        klampt.vis.setWindowTitle("Shoulder Bot Test")
+
         while self.looper:
             try:
                 self.XOS.beginStep()
@@ -167,6 +170,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.XOS.close()
         klampt.vis.kill()
 
+    def idlefunc(self):
+        self.refresh()
 
     def shutdown(self):
         klampt.vis.kill()
