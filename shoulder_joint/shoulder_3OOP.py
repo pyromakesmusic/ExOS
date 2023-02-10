@@ -1,4 +1,6 @@
 import time
+import math
+import numpy as np
 import klampt
 import klampt.vis
 from klampt.model.trajectory import RobotTrajectory
@@ -27,21 +29,20 @@ CLASS DEFINITIONS
 """
 
 class ExoBot(klampt.control.OmniRobotInterface):
-    def __init__(self, robotmodel, sim):
+    def __init__(self, robotmodel, sim, world):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
-
+        self.initialize()
         print("Initializing interface. . .")
         print("Initialized: ", self.initialize())
         print("Klampt Model: ", self.klamptModel())
+
         self.sim = sim
-
         self.simInitialize()
-
         self.controllerTestSetup()
 
 
     def simInitialize(self):
-        self.addVirtualPart("arm", [0, 1, 2])
+        self.addVirtualPart("arm", [0, 1])
         self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
         self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
 
@@ -72,7 +73,16 @@ class ExoBot(klampt.control.OmniRobotInterface):
         self.klamptModel().randomizeConfig()
         self.target = self.klamptModel().getConfig()
         self.klamptModel().randomizeConfig()
-        self.trajectory = RobotTrajectory(self.klamptModel(),milestones=self.target)
+        self.queuedTrajectory = RobotTrajectory(self.klamptModel(), milestones=self.target)
+
+    def beginIdle(self):
+        self.shutdown_flag = False
+
+        while self.shutdown_flag == False:
+            self.idle()
+
+    def idle(self):
+        self.setPosition(self.target)
 
 class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -84,11 +94,13 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = klampt.Simulator(self.world)
         self.sim.setGravity([0, 0, -9.8])
 
+
         #Planar2
-        self.world.loadRobot("robots/planar3.rob")
+        self.world.loadRobot("robots/torso_1.rob")
         self.robot = self.world.robot(0)
 
-
+        self.ref_cube = kmcp.box(.5,.5,1)
+        klampt.vis.add("cube", self.ref_cube)
 
         #Controllers
 
@@ -118,31 +130,37 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Controller calls
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot, self.sim))
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot, self.sim, self.world))
         print(". . .")
-        self.XOS.controlRate()
+        print("Control rate: ", self.XOS.controlRate())
 
 
 
 
         #Simulator calls
         self.dt = 1.0/(self.XOS.controlRate())
+        self.t = 0
         self.looper = TimedLooper(self.dt)
 
         #Visualization calls
 
-
-
-
+        self.XOS.configToKlampt([1,1])
+        klampt.vis.setWindowTitle("Shoulder Bot Test")
         klampt.vis.run()
+        klampt.vis.setWindowTitle("Shoulder Bot Test")
+
         while self.looper:
             try:
                 self.XOS.beginStep()
                 if self.XOS.status() != 'ok':
                     raise RuntimeError("Some error occured: {}".format(self.XOS.status()))
                 # state queries and commands for CONTROL LOOP go here
-
-
+                self.target = [np.random.rand() for x in range(self.XOS.numJoints())]
+                print("target config", self.target)
+                self.XOS.moveToPosition(self.target)
+                self.sim.simulate(self, self.t)
+                self.sim.updateWorld()
+                self.world.drawGL()
                 self.display()
                 self.XOS.endStep()
             except Exception as e:
@@ -152,14 +170,12 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.XOS.close()
         klampt.vis.kill()
 
+    def idlefunc(self):
+        self.refresh()
 
     def shutdown(self):
         klampt.vis.kill()
 
-    def display(self):
-        self.sim.updateWorld()
-        self.world.drawGL()
-        return
 
 
 
