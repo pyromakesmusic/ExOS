@@ -1,5 +1,6 @@
 import time
 import math
+import PyQt5
 import numpy as np
 import klampt
 import klampt.vis
@@ -144,7 +145,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.XOS.configToKlampt([1,1,1])
         klampt.vis.setWindowTitle("Shoulder Bot Test")
         klampt.vis.run()
-        klampt.vis.setWindowTitle("Shoulder Bot Test")
+        self.viewport = klampt.vis.glviewport.GLViewport()
+        self.viewport.drawGL()
 
         while self.looper:
             try:

@@ -15,9 +15,9 @@ torqueMax  50 50 50
 accMax     1 1 1
 velMax     1 1 1
 
-joint spin 0
+joint normal 0
 joint spin 1
-joint spin 2
+joint normal 2
 
 servoP 100 100 100
 servoI 0 0 0
