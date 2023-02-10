@@ -38,7 +38,6 @@ class ExoBot(klampt.control.OmniRobotInterface):
 
         self.sim = sim
         self.simInitialize()
-        self.controllerTestSetup()
 
 
     def simInitialize(self):
