@@ -51,10 +51,14 @@ class ExoBot(klampt.control.OmniRobotInterface):
         self.simInitialize()
 
 
+
+
     def simInitialize(self):
         self.addVirtualPart("arm", [0, 1])
         self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
         self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
+
+        self.randomTrajectory()
 
 
     def sensedPosition(self):
@@ -79,10 +83,8 @@ class ExoBot(klampt.control.OmniRobotInterface):
     def queuedTrajectory(self):
         return self.trajectory
 
+
     def randomTrajectory(self):
-
-
-    def controllerTestSetup(self):
         self.klamptModel().randomizeConfig()
         self.target = self.klamptModel().getConfig()
         self.klamptModel().randomizeConfig()
@@ -146,6 +148,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         self.randomTrajectory()
         print("viewport", self.viewport)
+
+        self.viewport.fit([0,0,0],20)
         klampt.vis.run()
 
 
