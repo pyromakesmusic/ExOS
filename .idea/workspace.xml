@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="an early attempted animation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
@@ -108,13 +108,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00068" summary="creating some dataclasses for a physics engine">
-      <created>1670219426500</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1670219426500</updated>
     </task>
     <task id="LOCAL-00069" summary="more refactoring from the interface level">
       <created>1670261108380</created>
@@ -452,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676340574232</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="an early attempted animation">
+      <created>1676340932292</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1676340932292</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +468,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added two spheres and a prism" />
     <MESSAGE value="trying to refactor to an object oriented design" />
     <MESSAGE value="object oriented is paying dividends" />
     <MESSAGE value="got a simulation going and updating itself, going to test physics next" />
@@ -493,6 +492,7 @@
     <MESSAGE value="setting up a random trajectory to feed to animation" />
     <MESSAGE value="fit everything on the screen" />
     <MESSAGE value="added a target point in space" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a target point in space" />
+    <MESSAGE value="an early attempted animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="an early attempted animation" />
   </component>
 </project>

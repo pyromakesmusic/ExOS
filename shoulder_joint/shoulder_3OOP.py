@@ -148,13 +148,18 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         self.randomTrajectory()
 
-        klampt.vis.add("trajectory", self.trajectory)
 
-        klampt.vis.visualization.animate("shoulder_bot",self.trajectory,speed=1,endBehavior="loop")
+
+        klampt.vis.add("trajectory", self.trajectory)
+        #klampt.model.trajectory.execute_trajectory(self.trajectory, self.XOS, speed=1)
+
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],20)
-        klampt.vis.run()
+        klampt.vis.show()
+        while klampt.vis.shown():
+            klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=1, endBehavior="loop")
+            klampt.vis.update()
 
 
 
@@ -170,7 +175,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.targetConfig = self.robot.getConfig()
 
         self.robot.randomizeConfig()
-        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot,milestones=[self.targetConfig])
+        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot,times=[0,1,2,3],milestones=[self.targetConfig])
 
     def shutdown(self):
         klampt.vis.kill()
