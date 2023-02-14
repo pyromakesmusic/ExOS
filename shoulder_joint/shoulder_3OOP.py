@@ -147,6 +147,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.setWindowTitle("Shoulder Bot Test")
         self.viewport = klampt.vis.getViewport()
         self.randomTrajectory()
+
+        klampt.vis.add("trajectory", self.trajectory)
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],20)
@@ -166,6 +168,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.targetConfig = self.robot.getConfig()
 
         self.robot.randomizeConfig()
+        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot,milestones=[self.targetConfig])
 
     def shutdown(self):
         klampt.vis.kill()

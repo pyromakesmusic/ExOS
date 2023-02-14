@@ -109,13 +109,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00066" summary="mild folder restructure">
-      <created>1670196484269</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1670196484269</updated>
-    </task>
     <task id="LOCAL-00067" summary="starting to nest and get the hang of relative imports">
       <created>1670197646279</created>
       <option name="number" value="00067" />
@@ -452,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676339686751</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="fit everything on the screen">
+      <created>1676340040958</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1676340040958</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +468,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="trying to load elements" />
     <MESSAGE value="put a cube in the world" />
     <MESSAGE value="added two spheres and a prism" />
     <MESSAGE value="trying to refactor to an object oriented design" />
@@ -493,6 +492,7 @@
     <MESSAGE value="need to use PyQt5 to get interactive visualization" />
     <MESSAGE value="creating a custom GUI class" />
     <MESSAGE value="setting up a random trajectory to feed to animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting up a random trajectory to feed to animation" />
+    <MESSAGE value="fit everything on the screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="fit everything on the screen" />
   </component>
 </project>
