@@ -149,6 +149,8 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.randomTrajectory()
 
         klampt.vis.add("trajectory", self.trajectory)
+
+        klampt.vis.visualization.animate("shoulder_bot",self.trajectory,speed=1,endBehavior="loop")
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],20)

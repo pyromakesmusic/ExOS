@@ -109,13 +109,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00067" summary="starting to nest and get the hang of relative imports">
-      <created>1670197646279</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1670197646279</updated>
-    </task>
     <task id="LOCAL-00068" summary="creating some dataclasses for a physics engine">
       <created>1670219426500</created>
       <option name="number" value="00068" />
@@ -452,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676340040958</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="added a target point in space">
+      <created>1676340574232</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1676340574232</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,7 +468,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="put a cube in the world" />
     <MESSAGE value="added two spheres and a prism" />
     <MESSAGE value="trying to refactor to an object oriented design" />
     <MESSAGE value="object oriented is paying dividends" />
@@ -493,6 +492,7 @@
     <MESSAGE value="creating a custom GUI class" />
     <MESSAGE value="setting up a random trajectory to feed to animation" />
     <MESSAGE value="fit everything on the screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="fit everything on the screen" />
+    <MESSAGE value="added a target point in space" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a target point in space" />
   </component>
 </project>
