@@ -12,8 +12,7 @@ import sys
 
 # Third Party Libraries
 import pyttsx3
-import vosk
-import pyaudio
+
 
 # My Libraries
 import pyonics.submodules.modeling.modeling as modeling
@@ -688,10 +687,7 @@ Main Function
 """
 
 def main():
-#    initialize("y", "tkinter")
-    artemis = VoiceControlGUI()
-    artemis.announce("Hello, world!")
-    artemis.announce(psa.init_string1)
+    initialize("y", "tkinter")
     return
 
 if __name__ == "__main__":

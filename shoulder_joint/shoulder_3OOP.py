@@ -33,16 +33,8 @@ CLASS DEFINITIONS
 """
 
 def ExoGui(glwidget):
-    w = QMainWindow()
-    glwidget.setMaximumSize(4000, 4000)
-    glwidget.setSizePolicy(QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum))
-    area = QWidget(w)
-    layout = QVBoxLayout()
-    layout.addWidget(glwidget)
-    layout.addWidget(QPushButton("Click me"))
-    area.setLayout(layout)
-    w.setCentralWidget(area)
-    return w
+
+    return
 
 
 class ExoBot(klampt.control.OmniRobotInterface):
@@ -53,6 +45,8 @@ class ExoBot(klampt.control.OmniRobotInterface):
         print("Initialized: ", self.initialize())
         print("Klampt Model: ", self.klamptModel())
 
+
+        self.world = world
         self.sim = sim
         self.simInitialize()
 
@@ -84,6 +78,9 @@ class ExoBot(klampt.control.OmniRobotInterface):
 
     def queuedTrajectory(self):
         return self.trajectory
+
+    def randomTrajectory(self):
+
 
     def controllerTestSetup(self):
         self.klamptModel().randomizeConfig()
@@ -123,24 +120,10 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         #Adding elements to the visualization
 
         klampt.vis.add("world",self.world)
-        #klampt.vis.add("ball",self.ball)
-        #klampt.vis.add("torso", self.torso)
         klampt.vis.add("shoulder_bot", self.robot)
 
 
         #Initializing configuration, creating a random target and setting up the move.
-        """
-        self.robot.randomizeConfig()
-        self.robot.randomizeConfig()
-        self.robot.randomizeConfig()
-
-        self.target = self.robot.getConfig()
-        self.robot.setConfig([-1,-1, -1])
-        self.initial_config = self.robot.getConfig()
-        self.trajectory = RobotTrajectory(self.robot, [0,1], [self.initial_config, self.target])
-
-        klampt.vis.add("trajectory", self.trajectory)
-        """
 
 
         #Controller calls
@@ -160,33 +143,25 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.XOS.configToKlampt([1,1,1])
         klampt.vis.setWindowTitle("Shoulder Bot Test")
+        self.viewport = klampt.vis.getViewport()
+        self.randomTrajectory()
+        print("viewport", self.viewport)
         klampt.vis.run()
-        self.viewport = klampt.vis.glviewport.GLViewport()
-        self.viewport.drawGL()
 
-        while self.looper:
-            try:
-                self.XOS.beginStep()
-                if self.XOS.status() != 'ok':
-                    raise RuntimeError("Some error occured: {}".format(self.XOS.status()))
-                # state queries and commands for CONTROL LOOP go here
-                self.target = [np.random.rand() for x in range(self.XOS.numJoints())]
-                print("target config", self.target)
-                self.XOS.moveToPosition(self.target)
-                self.sim.simulate(self, self.t)
-                self.sim.updateWorld()
-                self.world.drawGL()
-                self.display()
-                self.XOS.endStep()
-            except Exception as e:
-                print("Terminating on exception: ", e)
-                self.looper.stop()
+
 
         self.XOS.close()
         klampt.vis.kill()
 
     def idlefunc(self):
         self.refresh()
+
+    def randomTrajectory(self):
+        self.robot.randomizeConfig()
+
+        self.targetConfig = self.robot.getConfig()
+
+        self.robot.randomizeConfig()
 
     def shutdown(self):
         klampt.vis.kill()
@@ -198,4 +173,4 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 MAIN FUNCTION CALL
 """
 
-exo_test = ExoSim()
+exo_sim_test = ExoSim()
