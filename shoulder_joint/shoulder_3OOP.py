@@ -5,6 +5,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import numpy as np
+import random
+
 import klampt
 import klampt.vis
 from klampt.model.trajectory import RobotTrajectory
@@ -23,7 +25,7 @@ null_imu = (null_matrix, null_origin)
 
 x_matrix = [[1,0,0],[0,0,0],[0,0,0]]
 """
-BONES
+GEOMETRIES
 """
 BONE_GEOMETRY = kmcp.box(.05, .4, .05,mass=10)
 FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
@@ -32,12 +34,10 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 CLASS DEFINITIONS
 """
 
-def ExoGui(glwidget):
-
-    return
-
-
-class ExoBot(klampt.control.OmniRobotInterface):
+class ExoController(klampt.control.OmniRobotInterface):
+    """
+    This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
+    """
     def __init__(self, robotmodel, sim, world):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         self.initialize()
@@ -58,7 +58,7 @@ class ExoBot(klampt.control.OmniRobotInterface):
         self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
         self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
 
-        self.randomTrajectory()
+        #self.randomTrajectory()
 
 
     def sensedPosition(self):
@@ -89,6 +89,7 @@ class ExoBot(klampt.control.OmniRobotInterface):
         self.target = self.klamptModel().getConfig()
         self.klamptModel().randomizeConfig()
         self.queuedTrajectory = RobotTrajectory(self.klamptModel(), milestones=self.target)
+        #self.trajectory = [0,0,0]
 
     def beginIdle(self):
         self.shutdown_flag = False
@@ -99,9 +100,9 @@ class ExoBot(klampt.control.OmniRobotInterface):
     def idle(self):
         self.setPosition(self.target)
 
-class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
+class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
-    Makes a world with a green floor and gravity. This is probably going to be the framework that I build out.
+    GUI class.
     """
     def __init__(self):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
@@ -117,7 +118,6 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Controllers
 
-        print("controller")
 
         #Adding elements to the visualization
 
@@ -129,7 +129,7 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Controller calls
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoBot(self.robot, self.sim, self.world))
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoController(self.robot, self.sim, self.world))
         print(". . .")
         print("Control rate: ", self.XOS.controlRate())
 
@@ -145,20 +145,18 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.XOS.configToKlampt([1,1,1])
         klampt.vis.setWindowTitle("Shoulder Bot Test")
+
         self.viewport = klampt.vis.getViewport()
         self.randomTrajectory()
 
 
-
-        klampt.vis.add("trajectory", self.trajectory)
-        #klampt.model.trajectory.execute_trajectory(self.trajectory, self.XOS, speed=1)
-
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],20)
+        klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         klampt.vis.show()
         while klampt.vis.shown():
-            klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=1, endBehavior="loop")
+            #klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=1, endBehavior="loop")
             klampt.vis.update()
 
 
@@ -175,7 +173,15 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
         self.targetConfig = self.robot.getConfig()
 
         self.robot.randomizeConfig()
-        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot,times=[0,1,2,3],milestones=[self.targetConfig])
+        #self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot,times=[0,1,2,3],milestones=[self.targetConfig])
+        self.trajectory = klampt.model.trajectory.SE3Trajectory()
+        x = 0
+        for i in range(10):
+            rrot = klampt.math.so3.sample()
+            rpoint = [x + random.uniform(1, 0.1), 0, random.uniform(-1, 1)]
+            x = rpoint[0]
+            self.trajectory.milestones.append(rrot + rpoint)
+        self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def shutdown(self):
         klampt.vis.kill()
@@ -187,4 +193,4 @@ class ExoSim(klampt.vis.glprogram.GLRealtimeProgram):
 MAIN FUNCTION CALL
 """
 
-exo_sim_test = ExoSim()
+exo_sim_test = ExoGUI()
