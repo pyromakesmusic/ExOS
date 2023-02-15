@@ -168,19 +168,14 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.refresh()
 
     def randomTrajectory(self):
-        self.robot.randomizeConfig()
-
-        self.targetConfig = self.robot.getConfig()
-
-        self.robot.randomizeConfig()
-        #self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot,times=[0,1,2,3],milestones=[self.targetConfig])
-        self.trajectory = klampt.model.trajectory.SE3Trajectory()
+        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         x = 0
-        for i in range(10):
+        for i in range(20):
+            self.robot.randomizeConfig()
             rrot = klampt.math.so3.sample()
             rpoint = [x + random.uniform(1, 0.1), 0, random.uniform(-1, 1)]
             x = rpoint[0]
-            self.trajectory.milestones.append(rrot + rpoint)
+            self.trajectory.milestones.append(self.robot.getConfig())
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def shutdown(self):
