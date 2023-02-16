@@ -89,7 +89,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.target = self.klamptModel().getConfig()
         self.klamptModel().randomizeConfig()
         self.queuedTrajectory = RobotTrajectory(self.klamptModel(), milestones=self.target)
-        #self.trajectory = [0,0,0]
 
     def beginIdle(self):
         self.shutdown_flag = False
@@ -154,9 +153,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.viewport.fit([0,0,0],20)
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
+        self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
         klampt.vis.show()
         while klampt.vis.shown():
-            klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=1, endBehavior="loop")
+            klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=.1, endBehavior="loop")
             klampt.vis.update()
 
 
@@ -170,9 +170,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def randomTrajectory(self):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         x = self.robot.getConfig()
-        for i in range(20):
-            self.robot.randomizeConfig()
-            newconfig = np.add(self.robot.getConfig(), x)
+        for i in range(100):
+            y = [.5,.5,.5]
+            newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))

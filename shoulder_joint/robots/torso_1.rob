@@ -1,12 +1,12 @@
 ### A 3R planar robot edit ###
 TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
 1 0 0   0 1 0   0 0 1   0 3.5 -.5  \
-1 0 0   0 1 0   0 0 1   0 3 0
+1 0 0   0 1 0   0 0 1   0 2 0
 parents -1 0 1
-axis 0 0 1   0 1 0   1 0 0
+axis 0 0 1   0 1 0   0 0 1
 jointtype r r r
 qMin 0 0 0
-qMax 6.28319 6.28319 3.14159
+qMax 3.14159 3.14159 3.14159
 q 0 0 0
 geometry   "meshes/torso_1.stl"   "meshes/humerus_1.stl"   "meshes/forearm_1.stl"
 mass       1 1 1
@@ -15,9 +15,9 @@ torqueMax  50 50 50
 accMax     1 1 1
 velMax     1 1 1
 
-joint normal 0
+joint spin 0
 joint spin 1
-joint normal 2
+joint spin 2
 
 servoP 100 100 100
 servoI 0 0 0

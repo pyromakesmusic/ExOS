@@ -135,13 +135,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00071" summary="major re-architecting">
-      <created>1670280686263</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1670280686263</updated>
-    </task>
     <task id="LOCAL-00072" summary="encapsulation slightly improved">
       <created>1670285055464</created>
       <option name="number" value="00072" />
@@ -478,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676490282526</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="modified the degrees of freedom of the robot a little bit">
+      <created>1676527138904</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1676527138904</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got a simulation going and updating itself, going to test physics next" />
     <MESSAGE value="this is an unbroken version of &quot;ball floating in air over green plane&quot;" />
     <MESSAGE value="adding more functionality to the class" />
     <MESSAGE value="my documentation is better than the official docs at this point" />
@@ -519,6 +518,7 @@
     <MESSAGE value="an early attempted animation" />
     <MESSAGE value="commented out a line that breaks the animation" />
     <MESSAGE value="got a trajectory added to the screen. seems to be unrelated to the robot or its configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="got a trajectory added to the screen. seems to be unrelated to the robot or its configuration" />
+    <MESSAGE value="modified the degrees of freedom of the robot a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified the degrees of freedom of the robot a little bit" />
   </component>
 </project>
