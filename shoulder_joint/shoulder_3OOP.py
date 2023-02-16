@@ -11,6 +11,7 @@ import klampt
 import klampt.vis
 from klampt.model.trajectory import RobotTrajectory
 from klampt.control.utils import TimedLooper
+from klampt.plan import robotplanning, robotcspace
 import klampt.model.create.moving_base_robot as kmcmbr
 import klampt.model.create.primitives as kmcp
 
