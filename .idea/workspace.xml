@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00073" summary="more refactoring">
-      <created>1670286824812</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1670286824812</updated>
     </task>
     <task id="LOCAL-00074" summary="encapsulating some of the info grabbers">
       <created>1670309314911</created>
@@ -477,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676576924762</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="imported some new libraries">
+      <created>1676576996258</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1676576996258</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding more functionality to the class" />
     <MESSAGE value="my documentation is better than the official docs at this point" />
     <MESSAGE value="we have the bones" />
     <MESSAGE value="added a simrobotcontroller and a robot" />
@@ -518,6 +516,7 @@
     <MESSAGE value="got a trajectory added to the screen. seems to be unrelated to the robot or its configuration" />
     <MESSAGE value="modified the degrees of freedom of the robot a little bit" />
     <MESSAGE value="rotating around its degrees of freedom" />
-    <option name="LAST_COMMIT_MESSAGE" value="rotating around its degrees of freedom" />
+    <MESSAGE value="imported some new libraries" />
+    <option name="LAST_COMMIT_MESSAGE" value="imported some new libraries" />
   </component>
 </project>
