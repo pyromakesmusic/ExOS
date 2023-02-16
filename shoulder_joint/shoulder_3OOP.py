@@ -9,6 +9,7 @@ import random
 
 import klampt
 import klampt.vis
+import klampt.io.resource
 from klampt.model.trajectory import RobotTrajectory
 from klampt.control.utils import TimedLooper
 from klampt.plan import robotplanning, robotcspace
@@ -34,6 +35,9 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 """
 CLASS DEFINITIONS
 """
+class ExoEditor():
+    def __init__(self):
+        return
 
 class ExoController(klampt.control.OmniRobotInterface):
     """
@@ -138,10 +142,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Visualization calls
 
         self.XOS.configToKlampt([1,1,1])
+        print("Editing. . . ")
+        klampt.vis.edit("shoulder_bot")
         klampt.vis.setWindowTitle("Shoulder Bot Test")
 
         self.viewport = klampt.vis.getViewport()
-        self.randomTrajectory()
+        self.randomTrajectoryTest()
 
 
         print("viewport", self.viewport)
@@ -149,9 +155,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,0],20)
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
-        klampt.vis.show()
+        self.editorLaunch()
+        #klampt.vis.show()
+
         while klampt.vis.shown():
-            klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=.1, endBehavior="halt")
+            #klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=.1, endBehavior="halt")
             klampt.vis.update()
 
 
@@ -162,7 +170,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def idlefunc(self):
         self.refresh()
 
-    def randomTrajectory(self):
+    def editorLaunch(self):
+        klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
+
+    def randomTrajectoryTest(self):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         x = self.robot.getConfig()
         for i in range(100):
