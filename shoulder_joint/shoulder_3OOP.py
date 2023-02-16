@@ -156,7 +156,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         klampt.vis.show()
         while klampt.vis.shown():
-            #klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=1, endBehavior="loop")
+            klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=1, endBehavior="loop")
             klampt.vis.update()
 
 
@@ -169,13 +169,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def randomTrajectory(self):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
-        x = 0
+        x = self.robot.getConfig()
         for i in range(20):
             self.robot.randomizeConfig()
-            rrot = klampt.math.so3.sample()
-            rpoint = [x + random.uniform(1, 0.1), 0, random.uniform(-1, 1)]
-            x = rpoint[0]
-            self.trajectory.milestones.append(self.robot.getConfig())
+            newconfig = np.add(self.robot.getConfig(), x)
+            self.trajectory.milestones.append(newconfig)
+            x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def shutdown(self):
