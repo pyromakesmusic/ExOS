@@ -173,10 +173,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def editorLaunch(self):
         klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
 
+
     def randomTrajectoryTest(self):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         x = self.robot.getConfig()
-        for i in range(100):
+        for i in range(10):
             y = [.5,.5,.5]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
