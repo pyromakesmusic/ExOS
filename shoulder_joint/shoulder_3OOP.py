@@ -10,6 +10,8 @@ import random
 import klampt
 import klampt.vis
 import klampt.io.resource
+from klampt.vis import colorize
+from klampt.model import collide
 from klampt.model.trajectory import RobotTrajectory
 from klampt.control.utils import TimedLooper
 from klampt.plan import robotplanning, robotcspace
@@ -109,41 +111,28 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim.setGravity([0, 0, -9.8])
 
 
-        #Planar2
+        #Robot Initialization
         self.world.loadRobot("robots/torso_1.rob")
         self.robot = self.world.robot(0)
+        self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
 
 
-        #Controllers
-
-
-        #Adding elements to the visualization
-
-        klampt.vis.add("world",self.world)
-        klampt.vis.add("shoulder_bot", self.robot)
-
-
-        #Initializing configuration, creating a random target and setting up the move.
-
-
-        #Controller calls
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(ExoController(self.robot, self.sim, self.world))
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
+            ExoController(self.robot, self.sim, self.world))
         print(". . .")
         print("Control rate: ", self.XOS.controlRate())
 
 
-
-
-        #Simulator calls
+        #Simulator parameters
         self.dt = 1.0/(self.XOS.controlRate())
         self.t = 0
         self.looper = TimedLooper(self.dt)
 
         #Visualization calls
+        klampt.vis.add("world", self.world)
+        klampt.vis.add("shoulder_bot", self.robot)
 
-        self.XOS.configToKlampt([1,1,1])
-        print("Editing. . . ")
-        klampt.vis.edit("shoulder_bot")
+
         klampt.vis.setWindowTitle("Shoulder Bot Test")
 
         self.viewport = klampt.vis.getViewport()
@@ -156,14 +145,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
         #self.configEdit()
-        klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
+        #klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
 
-        #klampt.vis.show()
-
-        #while klampt.vis.shown():
-            #klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=.1, endBehavior="halt")
-            #klampt.vis.update()
-
+        klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=3, endBehavior="loop")
+        klampt.vis.run()
 
 
         self.XOS.close()
@@ -179,12 +164,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
 
     def motionPlanner(self, world):
-        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[0,3.14,3.14, 0])
+        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
     def randomTrajectoryTest(self):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
+        print("trajectory", self.trajectory)
         x = self.robot.getConfig()
         for i in range(10):
-            y = [0,0,.5, 0]
+            y = [0, 0,.2, 0]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
