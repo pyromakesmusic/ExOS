@@ -112,7 +112,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Robot Initialization
-        self.world.loadRobot("robots/torso_1.rob")
+        self.world.loadRobot("robots/torso_2.rob")
         self.robot = self.world.robot(0)
         self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
 
@@ -170,7 +170,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
         for i in range(10):
-            y = [0, -.1,.2, 0]
+            y = [0, 0, 0, -.1,.2, 0]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig

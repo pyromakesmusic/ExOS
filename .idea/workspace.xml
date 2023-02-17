@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00082" summary="voice recognition and text to speech both implemented">
-      <created>1670633420466</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1670633420466</updated>
     </task>
     <task id="LOCAL-00083" summary="almost everything seems to mostly run">
       <created>1670633878645</created>
@@ -479,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676622791303</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="trying to get the ball and socket joint to function correctly">
+      <created>1676624728852</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1676624728852</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="connected model to controller" />
     <MESSAGE value="added sensor and actuator" />
     <MESSAGE value="got the controller hooked up to the simulation" />
     <MESSAGE value="some random configuration, time is not yet passing" />
@@ -520,6 +518,7 @@
     <MESSAGE value="added a sphere bearing for the elbow" />
     <MESSAGE value="added elbow joint" />
     <MESSAGE value="animating smoothly" />
-    <option name="LAST_COMMIT_MESSAGE" value="animating smoothly" />
+    <MESSAGE value="trying to get the ball and socket joint to function correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to get the ball and socket joint to function correctly" />
   </component>
 </project>
