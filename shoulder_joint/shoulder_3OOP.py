@@ -155,7 +155,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,0],20)
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
-        self.configEdit()
+        #self.configEdit()
+        klampt.io.resource.edit("shoulder_bot", self.robot)
 
         #klampt.vis.show()
 

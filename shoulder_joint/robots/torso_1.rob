@@ -8,7 +8,7 @@ jointtype r r r
 qMin 0 0 0
 qMax 3.14159 3.14159 3.14159
 q 0 0 0
-geometry   "meshes/torso_1.stl"   "meshes/humerus_1.stl"   "meshes/forearm_1.stl"
+geometry   "meshes/torso_1.stl"   "meshes/humerus_1.stl"   "meshes/sphere.off"
 mass       1 1 1
 automass
 torqueMax  50 50 50
