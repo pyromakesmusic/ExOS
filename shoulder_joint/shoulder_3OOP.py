@@ -170,7 +170,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
         for i in range(10):
-            y = [0, 0, 0, -.1,.2, 0]
+            y = [0, 0, 0, -.1, 0, 0, 0]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
