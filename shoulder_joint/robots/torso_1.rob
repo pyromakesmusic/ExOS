@@ -1,4 +1,4 @@
-### A 3R planar robot edit ###
+### Torso with 1DOF for shoulder ###
 TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
 1 0 0   0 1 0   0 0 1   0 3.5 -.5  \
 1 0 0   0 1 0   0 0 1   0 2 0 \
@@ -18,8 +18,8 @@ accMax     1 1 1 1
 velMax     1 1 1 1
 
 joint weld 0
-joint spin 1
-joint spin 2
+joint normal 1
+joint normal 2
 joint weld 3
 
 servoP 100 100
