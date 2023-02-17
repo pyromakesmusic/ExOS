@@ -1,7 +1,7 @@
 ### A 3R planar robot edit ###
 TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
 1 0 0   0 1 0   0 0 1   0 3.5 -.5  \
-1 0 0   0 1 0   0 0 1   0 2 0
+1 0 0   0 1 0   0 0 1   0 0 0
 parents -1 0 1
 axis 0 0 1   0 1 0   1 0 0
 jointtype r r r
