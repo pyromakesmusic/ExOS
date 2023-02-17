@@ -156,7 +156,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
         #self.configEdit()
-        klampt.io.resource.edit("shoulder_bot", self.robot)
+        klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
 
         #klampt.vis.show()
 
@@ -179,12 +179,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
 
     def motionPlanner(self, world):
-        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[0,3.14,3.14])
+        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[0,3.14,3.14, 0])
     def randomTrajectoryTest(self):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         x = self.robot.getConfig()
         for i in range(10):
-            y = [0,0,.5]
+            y = [0,0,.5, 0]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
