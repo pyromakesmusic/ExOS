@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +54,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/shoulder_joint/robots",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Summer2022Research",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
   "keyToStringList": {
@@ -134,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00084" summary="added companion engine (gpt-2 based)">
-      <created>1670986930721</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1670986930721</updated>
     </task>
     <task id="LOCAL-00085" summary="voice recognition and text to speech both implemented">
       <created>1674017415010</created>
@@ -478,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676664830230</updated>
     </task>
-    <option name="localTasksCounter" value="133" />
+    <task id="LOCAL-00133" summary="finished geometry">
+      <created>1676665327276</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1676665327276</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got the controller hooked up to the simulation" />
     <MESSAGE value="some random configuration, time is not yet passing" />
     <MESSAGE value="added a torso at the origin for reference" />
     <MESSAGE value="added some custom meshes" />
@@ -519,6 +517,7 @@
     <MESSAGE value="animating smoothly" />
     <MESSAGE value="trying to get the ball and socket joint to function correctly" />
     <MESSAGE value="updating geometry slightly" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating geometry slightly" />
+    <MESSAGE value="finished geometry" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished geometry" />
   </component>
 </project>
