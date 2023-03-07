@@ -142,7 +142,8 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.viewport = klampt.vis.getViewport()
         self.randomTrajectoryTest()
-
+        print("OUTPUT FROM THE CONTROLLER:", self.XOS)
+        self.XOS.setTorque([1])
 
         print("viewport", self.viewport)
 
@@ -151,6 +152,8 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
 
         self.actuator = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self.XOS)
+
+
         #self.configEdit()
         #klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
 
