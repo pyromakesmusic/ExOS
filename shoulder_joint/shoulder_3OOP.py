@@ -105,7 +105,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def idle(self):
         self.setPosition(self.target)
 
-class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
+class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class.
     """
@@ -149,6 +149,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,0],30)
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
+
+        self.actuator = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self.XOS)
         #self.configEdit()
         #klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
 
@@ -177,7 +179,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
         for i in range(10):
-            y = [0, 0, 0, -.1, 0, 0, 0]
+            y = [0, 0, 0, -.1, 0, 0, .1]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
@@ -193,4 +195,4 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 MAIN FUNCTION CALL
 """
 
-exo_sim_test = ExoGUI()
+exo_sim_test = ExoSimGUI()

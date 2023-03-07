@@ -10,7 +10,7 @@ parents -1 0 1 2 3 4 5
 axis 0 0 1   1 0 0   1 0 0   1 0 0   0 0 1   0 1 0   0 0 1
 jointtype r r r r r r r
 qMin 0 0 0 0 0 0 0
-qMax 0 3 3 2.5 1.4 0 0
+qMax 0 3 3 3 0 0 0
 q 0 0 0 0 0 0 0
 geometry   "meshes/torso_1.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/humerus_1.stl"   "meshes/sphere.off"   "meshes/forearm_1.stl"
 geomscale 1 .3 0 0 1 .3 1
@@ -22,10 +22,10 @@ velMax     1 1 1 1 1 1 1
 
 joint weld 0
 joint spin 1
-joint weld 2
-joint spin 3
-joint weld 4
-joint spin 5
+joint spin 2
+joint weld 3
+joint spin 4
+joint weld 5
 joint weld 6
 
 servoP 100 100 100

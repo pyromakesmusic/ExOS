@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00086" summary="created a world?">
-      <created>1675638679067</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1675638679067</updated>
     </task>
     <task id="LOCAL-00087" summary="trying to load elements">
       <created>1675703397786</created>
@@ -477,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676784584387</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="messing with simulator module">
+      <created>1678217829907</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1678217829907</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="some random configuration, time is not yet passing" />
     <MESSAGE value="added a torso at the origin for reference" />
     <MESSAGE value="added some custom meshes" />
     <MESSAGE value="need to use PyQt5 to get interactive visualization" />
@@ -518,6 +518,7 @@
     <MESSAGE value="trying to get the ball and socket joint to function correctly" />
     <MESSAGE value="updating geometry slightly" />
     <MESSAGE value="finished geometry" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished geometry" />
+    <MESSAGE value="messing with simulator module" />
+    <option name="LAST_COMMIT_MESSAGE" value="messing with simulator module" />
   </component>
 </project>
