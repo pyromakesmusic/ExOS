@@ -11,6 +11,9 @@ import random
 
 import klampt
 import klampt.vis
+import klampt.sim.batch
+import klampt.sim.settle
+import klampt.sim.simulation
 import klampt.io.resource
 from klampt.vis import colorize
 from klampt.model import collide
@@ -143,11 +146,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         print("viewport", self.viewport)
 
-        self.viewport.fit([0,0,0],20)
+        self.viewport.fit([0,0,0],30)
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
         #self.configEdit()
         #klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
+
+        #klampt.sim.batch.doSim(world=self.world, duration=10, initialCondition={},returnItems=["shoulder_bot"])
 
         klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=3, endBehavior="loop")
         klampt.vis.run()
