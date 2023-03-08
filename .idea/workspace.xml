@@ -6,7 +6,78 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/CHANGES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/CHANGES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/objects/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/control/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/io/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/modeling/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/physics/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/io/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/physics/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/physics/physics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/system_strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/PID_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/PID_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/PID_text_test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_text_test3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/PID_tkinter_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_tkinter_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/PID_tkinter_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_tkinter_test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/physics/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/differint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/differint_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyonics/tests/simulation_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/simulation_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/4157world_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/4157world_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/block.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/block.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/objects/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/objects/sphere.off" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/objects/sphere.off" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/body_1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/body_1.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/forearm_1.stl" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/forearm_1.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/humerus.blend" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/humerus.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/humerus_1.stl" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/humerus_1.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/sphere.off" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/sphere.off" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/torso.blend" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/torso.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso.blend1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/meshes/torso_1.stl" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_1.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/planar2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/planar2.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/planar3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/planar3.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/shoulder_bot.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/shoulder_bot.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/sphere.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/sphere.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/sphere1cm.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/sphere1cm.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/temp.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/temp.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/thincube.off" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/thincube.off" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/torso_1.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/robots/torso_2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/torso_2.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/shoulder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/shoulder_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/shoulder_3OOP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/simulation_contact.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/simulation_contact.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/simulation_state.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/simulation_state.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/terrains/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/terrains/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/terrains/block.off" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/terrains/block.off" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoulder_joint/terrains/plane.off" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/terrains/plane.off" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +101,13 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyonics/main.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyonics/submodules/control/control.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyonics/submodules/modeling/modeling.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyonics/submodules/physics/physics.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyonics/submodules/ui/interface.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pyonics/submodules/ui/system_strings.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/physics/physics.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -54,7 +125,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/pyonics/tests/PID_tkinter_test2.txt",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
   "keyToStringList": {
@@ -70,14 +141,14 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\physics" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.shoulder test">
+  <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -86,20 +157,20 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\Pyro\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pyonics" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton/pyonics" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyonics/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/pyonics/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="true" />
-      <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\pyonics\tests\PID_tkinter_test2.txt" />
+      <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\tests\PID_tkinter_test2.txt" />
       <method v="2" />
     </configuration>
-    <configuration name="shoulder test" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="exoskeleton test 1 (shoulder)" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -107,11 +178,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\Pyro\anaconda3\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/shoulder_joint" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shoulder_joint/shoulder_3OOP.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/shoulder_3OOP.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,7 +193,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.PID_talk" />
-      <item itemvalue="Python.shoulder test" />
+      <item itemvalue="Python.exoskeleton test 1 (shoulder)" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -133,13 +204,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00089" summary="added two spheres and a prism">
-      <created>1675743844839</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1675743844839</updated>
     </task>
     <task id="LOCAL-00090" summary="trying to refactor to an object oriented design">
       <created>1675752879141</created>
@@ -477,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678220400876</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="tried to set a torque">
+      <created>1678298865647</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1678298865647</updated>
+    </task>
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -8,16 +8,14 @@ import ipywidgets as widgets
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import sys
 
 # Third Party Libraries
 import pyttsx3
 
 
 # My Libraries
-import pyonics.submodules.modeling.modeling as modeling
-import pyonics.submodules.physics.physics as phys
-import pyonics.submodules.ui.system_strings as psa
+from exoskeleton import pyonics as modeling
+
 """
 SYSTEM CONFIGURATION
 """

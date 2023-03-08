@@ -2,8 +2,8 @@
 LIBRARY IMPORTS
 """
 import pandas as pd
-import pyonics.submodules.physics.physics as phys
-import pyonics.submodules.control.control as ctrl
+from exoskeleton import pyonics as phys
+import exoskeleton.pyonics.submodules.control.control as ctrl
 import matplotlib.pyplot as plt
 
 
