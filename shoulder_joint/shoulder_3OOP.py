@@ -50,7 +50,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
     """
-    def __init__(self, robotmodel, sim, world):
+    def __init__(self, robotmodel, sim, world, actuators):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         self.initialize()
         print("Initializing interface. . .")
@@ -60,6 +60,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.sim = sim
+        self.actuators = actuators # This includes both all simulated and all real actuators. May change later.
         self.simInitialize()
 
 
@@ -80,7 +81,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         return 100
 
     def setTorque(self):
-        return
+        # This should operate on both the simulation and a hardware robot simultaneously, for now.
+        torque_commands = {1}
+        return torque_commands
 
     def setVelocity(self):
         return
