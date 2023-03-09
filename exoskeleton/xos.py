@@ -47,7 +47,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
     """
-    def __init__(self, robotmodel, sim, world, actuators=[]):
+    def __init__(self, robotmodel, sim, world):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         self.initialize()
         print("Initializing interface. . .")
@@ -57,7 +57,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.sim = sim
-        self.actuators = actuators # This includes both all simulated and all real actuators. May change later.
+        self.actuators = {"bicep"}
         self.simInitialize()
 
 
@@ -67,8 +67,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.addVirtualPart("arm", [0, 1])
         self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
         self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
-
-        #self.randomTrajectory()
 
 
     def sensedPosition(self):
@@ -105,6 +103,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         while self.shutdown_flag == False:
             self.idle()
 
+    @classmethod
+    def getActuators(self):
+        return self.actuators
+
     def idle(self):
         self.setPosition(self.target)
 
@@ -136,8 +138,14 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.t = 0
         self.looper = TimedLooper(self.dt)
 
+
+        self.plan = None
+        self.trajectory = None
+        self.actuators = None
+
         self.randomTrajectoryTest()
-        self.actuator = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self.XOS)
+
+        self.actuatorTest()
         #self.configEdit()
         self.animationTest()
 
@@ -163,6 +171,10 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             self.trajectory.milestones.append(newconfig)
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
+
+    def actuatorTest(self):
+        print("...placeholder...")
+
 
     def animationTest(self):
         #Visualization calls
@@ -196,7 +208,17 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
 
 """
-MAIN FUNCTION CALL
+FUNCTION DEFINITIONS
+"""
+def configLoader():
+    print("Loading config.txt...")
+    with open("config.txt") as fn:
+        print(fn.readline())
+        return fn.readline()
+
+
+"""
+MAIN LOOP
 """
 
 if __name__ == "__main__":

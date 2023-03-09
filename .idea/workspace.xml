@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/torso_2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/torso_2.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/shoulder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/shoulder_2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,34 +135,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00094" summary="adding more functionality to the class">
-      <created>1675757208137</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1675757208137</updated>
-    </task>
-    <task id="LOCAL-00095" summary="my documentation is better than the official docs at this point">
-      <created>1675757847354</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1675757847354</updated>
-    </task>
-    <task id="LOCAL-00096" summary="we have the bones">
-      <created>1675758414782</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1675758414782</updated>
-    </task>
-    <task id="LOCAL-00097" summary="added a simrobotcontroller and a robot">
-      <created>1675801311947</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1675801311947</updated>
     </task>
     <task id="LOCAL-00098" summary="added a simrobotcontroller and a robot">
       <created>1675801351119</created>
@@ -476,7 +451,35 @@
       <option name="project" value="LOCAL" />
       <updated>1678336091799</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="moving just the elbow now, and have identified the link with the proper configuration">
+      <created>1678339136792</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1678339136792</updated>
+    </task>
+    <task id="LOCAL-00144" summary="moving just the elbow now, and have identified the link with the proper configuration">
+      <created>1678339158094</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1678339158094</updated>
+    </task>
+    <task id="LOCAL-00145" summary="changed some files around">
+      <created>1678339332965</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1678339332965</updated>
+    </task>
+    <task id="LOCAL-00146" summary="changed some files around">
+      <created>1678339354062</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1678339354062</updated>
+    </task>
+    <option name="localTasksCounter" value="147" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,8 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fit everything on the screen" />
-    <MESSAGE value="added a target point in space" />
     <MESSAGE value="an early attempted animation" />
     <MESSAGE value="commented out a line that breaks the animation" />
     <MESSAGE value="got a trajectory added to the screen. seems to be unrelated to the robot or its configuration" />
@@ -517,6 +518,8 @@
     <MESSAGE value="broke something in the PID talk interface but its okay; still refactoring" />
     <MESSAGE value="separated out some of the library logic from specific robot logic" />
     <MESSAGE value="separated out some more class methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="separated out some more class methods" />
+    <MESSAGE value="moving just the elbow now, and have identified the link with the proper configuration" />
+    <MESSAGE value="changed some files around" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed some files around" />
   </component>
 </project>
