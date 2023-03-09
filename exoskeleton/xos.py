@@ -42,9 +42,6 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 """
 CLASS DEFINITIONS
 """
-class ExoEditor():
-    def __init__(self):
-        return
 
 class ExoController(klampt.control.OmniRobotInterface):
     """
@@ -139,20 +136,10 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.t = 0
         self.looper = TimedLooper(self.dt)
 
-        #Visualization calls
-        klampt.vis.add("world", self.world)
-        klampt.vis.add("shoulder_bot", self.robot)
-
-
-        klampt.vis.setWindowTitle("Shoulder Bot Test")
-
-        self.viewport = klampt.vis.getViewport()
         self.randomTrajectoryTest()
-
-
-
         self.actuator = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self.XOS)
-
+        #self.configEdit()
+        self.animationTest()
 
 
 
@@ -172,14 +159,22 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
-        for i in range(10):
-            y = [0, 0, 0, -.1, 0, 0, .1]
+        for i in range(30):
+            y = [0, 0, 0, 0, 0, .05, 0]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def animationTest(self):
+        #Visualization calls
+        klampt.vis.add("world", self.world)
+        klampt.vis.add("shoulder_bot", self.robot)
+
+
+        klampt.vis.setWindowTitle("Shoulder Bot Test")
+
+        self.viewport = klampt.vis.getViewport()
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],30)
