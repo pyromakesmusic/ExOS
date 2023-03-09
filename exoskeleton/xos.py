@@ -195,10 +195,9 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.kill()
 
 
-
-
 """
 MAIN FUNCTION CALL
 """
 
-exo_sim_test = ExoSimGUI()
+if __name__ == "__main__":
+    exo_sim_test = ExoSimGUI()

@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/physics/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/physics/physics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/io/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +37,6 @@
     <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/main.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -113,7 +113,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/shoulder_3OOP.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\xos.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,13 +135,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00091" summary="object oriented is paying dividends">
-      <created>1675754127537</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1675754127537</updated>
     </task>
     <task id="LOCAL-00092" summary="got a simulation going and updating itself, going to test physics next">
       <created>1675754532854</created>
@@ -479,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678303567934</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="broke something in the PID talk interface but its okay; still refactoring">
+      <created>1678304498483</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1678304498483</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +495,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="need to use PyQt5 to get interactive visualization" />
     <MESSAGE value="creating a custom GUI class" />
     <MESSAGE value="setting up a random trajectory to feed to animation" />
     <MESSAGE value="fit everything on the screen" />
@@ -520,6 +519,7 @@
     <MESSAGE value="messing with simulator module" />
     <MESSAGE value="tried to set a torque" />
     <MESSAGE value="refactored slightly" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored slightly" />
+    <MESSAGE value="broke something in the PID talk interface but its okay; still refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="broke something in the PID talk interface but its okay; still refactoring" />
   </component>
 </project>

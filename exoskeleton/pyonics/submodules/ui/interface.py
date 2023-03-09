@@ -30,7 +30,7 @@ def total_num_samples_getter(sample_rate, total_time):
     return total_samples
 
 
-def sim_maker_defunct(sample_number):
+def sim_maker(sample_number):
     """
     Creates the indexed DataFrame.
     """
@@ -39,15 +39,16 @@ def sim_maker_defunct(sample_number):
     return df
 
 
-def time_samples_to_df(time_sample_list):
+def time_samples_to_df(time_sample_df):
     """
     Turns a list of time sample coordinates into a DataFrame.
     """
-    values_gotten = [time_sample_list[0].get(), time_sample_list[1].get()]
+    print(time_sample_df)
+    values_gotten = [time_sample_df[0].get(), time_sample_df[1].get()]
     sample_number = int(total_num_samples_getter(values_gotten[0], values_gotten[1]))
     values_gotten.append(sample_number)
 
-    for i in time_sample_list[2::1]:
+    for i in time_sample_df[2::1]:
         values_gotten.append(i.get())
 
     values_labels = ["sample_length", "sample_freq", "sample_number", "pos_start", "vel_start", "accel_start",
@@ -69,8 +70,8 @@ def simulate(init_params):  # This should be taking a DataFrame and returning al
     control_const = float(init_params["control_constant"][0])
 
     # Starts making the dataframe here
-    time_series = sim_maker_defunct(sample_number)
-    df = time(sample_number, sample_freq, time_series)
+    time_series = sim_maker(sample_number)
+    df = time_samples_to_df(time_series)
     df.set_index(df["time"])
 
     # Initialization stuff - this will probably be replaced later with calls to variables or GUI elements
@@ -117,68 +118,6 @@ def sim_parameter_getter(): # need versions or extensions of this for each PID c
     simulation_parameters = pd.DataFrame(data=[sample_length,sample_freq,sample_number], index=labels)
     #print(simulation_parameters.keys)
     return simulation_parameters
-
-def physbody_parameter_getter():
-    mass = float(input(#"Mass (float): "
-                       ))
-    x_pos = float(input(#"Initial X position (float): \n"
-                        ))
-    y_pos = float(input(#"Initial Y position (float): \n"
-                        ))
-    z_pos = float(input(#"Initial Z position (float): \n"
-                        ))
-    x_vel = float(input(#"Initial X velocity (float): \n"
-                        ))
-    y_vel = float(input(#"Initial Y velocity (float): \n"
-                        ))
-    z_vel = float(input(#"Initial Z velocity (float): \n"
-                        ))
-    x_acc = float(input(#"Initial X acceleration (float): \n"
-                        ))
-    y_acc = float(input(#"Initial Y acceleration (float): \n"
-                        ))
-    z_acc = float(input(#"Initial Z acceleration (float): \n"
-                        ))
-    x_netforce = float(input(#"Initial X force (float): \n"
-                             ))
-    y_netforce = float(input(#"Initial Y force (float): \n"
-                             ))
-    z_netforce = float(input(#"Initial Z force (float): \n"
-                             ))
-    youngs_modulus = float(input(#"Young's modulus for material (float): \n"
-                                 ))
-    bulk_modulus = float(input(#"Bulk modulus for material (float): \n"
-                               ))
-    shear_modulus = float(input(#"Shear modulus for material (float): \n"
-                                ))
-    position = {
-        "x": x_pos,
-        "y": y_pos,
-        "z": z_pos
-    }
-    velocity = {
-        "x": x_vel,
-        "y": y_vel,
-        "z": z_vel
-    }
-    acceleration = {
-        "x": x_acc,
-        "y": y_acc,
-        "z": z_acc
-    }
-    net_force = {
-        "x": x_netforce,
-        "y": y_netforce,
-        "z": z_netforce
-    }
-    strain_mods = {
-        "youngs": youngs_modulus,
-        "bulk": bulk_modulus,
-        "shear": shear_modulus
-    }
-
-    return mass, position, velocity, acceleration, net_force, strain_mods
-
 
 
 def cmdline_logic():
@@ -565,7 +504,7 @@ class tkinterGUI:
         # Main Button
         self.simulate_button = tk.Button(
             self.root,
-            command=lambda: self.sim_and_plot(modeling.time_samples_to_df(self.init_list)),
+            command=lambda: self.sim_and_plot(time_samples_to_df(self.init_list), self.ax),
             text="Simulate",
             bg="silver",
             fg="Black")
@@ -667,14 +606,14 @@ class ipythonGUI:
             max=10,
             step=1,
             description="Pos_0",
-            value=0
+            value=5
         )
         self.sample_freq_slider = widgets.IntSlider(
             min=0,
             max=10,
             step=1,
             description="Pos_0",
-            value=0
+            value=10
         )
         self.position_start_slider = widgets.IntSlider(
             min=0,
