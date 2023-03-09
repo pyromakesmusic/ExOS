@@ -142,8 +142,6 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.animationTest()
 
 
-
-
     def idlefunc(self):
         self.refresh()
 
