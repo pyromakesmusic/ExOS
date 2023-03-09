@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/io/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/modeling/modeling.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/shoulder_3OOP.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +52,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/pyonics/tests/simulation_test1.txt",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/main.py",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
   "keyToStringList": {
@@ -79,7 +75,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,7 +109,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\xos.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00092" summary="got a simulation going and updating itself, going to test physics next">
-      <created>1675754532854</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1675754532854</updated>
     </task>
     <task id="LOCAL-00093" summary="this is an unbroken version of &quot;ball floating in air over green plane&quot;">
       <created>1675756841088</created>
@@ -479,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678304498483</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="separated out some of the library logic from specific robot logic">
+      <created>1678321730417</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1678321730417</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="creating a custom GUI class" />
     <MESSAGE value="setting up a random trajectory to feed to animation" />
     <MESSAGE value="fit everything on the screen" />
     <MESSAGE value="added a target point in space" />
@@ -520,6 +515,7 @@
     <MESSAGE value="tried to set a torque" />
     <MESSAGE value="refactored slightly" />
     <MESSAGE value="broke something in the PID talk interface but its okay; still refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="broke something in the PID talk interface but its okay; still refactoring" />
+    <MESSAGE value="separated out some of the library logic from specific robot logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="separated out some of the library logic from specific robot logic" />
   </component>
 </project>

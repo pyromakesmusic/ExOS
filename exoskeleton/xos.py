@@ -80,10 +80,13 @@ class ExoController(klampt.control.OmniRobotInterface):
     def controlRate(self):
         return 100
 
-    def setTorque(self):
-        # This should operate on both the simulation and a hardware robot simultaneously, for now.
-        torque_commands = {1}
-        return torque_commands
+    def setTorque(self, torque):
+        """
+        Takes a list of torque inputs and sends them to controllers. Maybe one controller should control multiple actuators.
+        Kind of an architectural decision.
+        """
+
+        return torque
 
     def setVelocity(self):
         return
@@ -145,29 +148,14 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.viewport = klampt.vis.getViewport()
         self.randomTrajectoryTest()
-        print("OUTPUT FROM THE CONTROLLER:", self.XOS)
-        self.XOS.setTorque([1])
 
-        print("viewport", self.viewport)
 
-        self.viewport.fit([0,0,0],30)
-        klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
-        self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
 
         self.actuator = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self.XOS)
 
 
-        #self.configEdit()
-        #klampt.io.resource.edit("trajectory", self.trajectory, referenceObject=self.robot)
-
-        #klampt.sim.batch.doSim(world=self.world, duration=10, initialCondition={},returnItems=["shoulder_bot"])
-
-        klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=3, endBehavior="loop")
-        klampt.vis.run()
 
 
-        self.XOS.close()
-        klampt.vis.kill()
 
     def idlefunc(self):
         self.refresh()
@@ -190,6 +178,25 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             self.trajectory.milestones.append(newconfig)
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
+
+    def animationTest(self):
+        print("viewport", self.viewport)
+
+        self.viewport.fit([0,0,0],30)
+        klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
+        self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
+
+        klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=3, endBehavior="loop")
+        klampt.vis.run()
+
+        self.XOS.close()
+        klampt.vis.kill()
+
+
+    def torqueTest(self):
+
+        print("OUTPUT FROM THE CONTROLLER:", self.XOS)
+        self.XOS.setTorque([1])
 
     def shutdown(self):
         klampt.vis.kill()
