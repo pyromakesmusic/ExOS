@@ -165,8 +165,8 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
-        for i in range(30):
-            y = [0, 0, 0, 0, 0, .05, 0]
+        for i in range(10):
+            y = [0, 0, 0, 0, 0, .5, 0]
             newconfig = np.add(x,y)
             self.trajectory.milestones.append(newconfig)
             x = newconfig
@@ -187,7 +187,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         print("viewport", self.viewport)
 
-        self.viewport.fit([0,0,0],30)
+        self.viewport.fit([0,0,0],10)
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
 
