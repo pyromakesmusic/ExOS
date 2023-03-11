@@ -131,20 +131,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00105" summary="i have a third arm">
-      <created>1675926558126</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1675926558126</updated>
-    </task>
-    <task id="LOCAL-00106" summary="connected model to controller">
-      <created>1675927486410</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1675927486410</updated>
-    </task>
     <task id="LOCAL-00107" summary="added sensor and actuator">
       <created>1675929024296</created>
       <option name="number" value="00107" />
@@ -474,7 +460,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678571028522</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="updated config file">
+      <created>1678571134242</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1678571134242</updated>
+    </task>
+    <task id="LOCAL-00155" summary="cleaned up file structure a little bit">
+      <created>1678571187547</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1678571187547</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,8 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="launching an editor" />
-    <MESSAGE value="launching an editor and animating through a trajectory" />
     <MESSAGE value="trying to narrow down how the elbow should be moving" />
     <MESSAGE value="adding some editing methods to the testing script" />
     <MESSAGE value="added a sphere bearing for the elbow" />
@@ -515,6 +513,8 @@
     <MESSAGE value="updated robot definition file" />
     <MESSAGE value="added torso bot" />
     <MESSAGE value="updated joint configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated joint configurations" />
+    <MESSAGE value="updated config file" />
+    <MESSAGE value="cleaned up file structure a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up file structure a little bit" />
   </component>
 </project>

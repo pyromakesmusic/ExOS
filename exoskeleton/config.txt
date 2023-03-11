@@ -1,10 +1,10 @@
-center robot
+CENTER
 robots/core_bot.rob
-right arm robot
+RIGHT ARM
 robots/rightarm_bot.rob
-left arm robot
+LEFT ARM
 robots/leftarm_bot.rob
-right leg robot
+RIGHT LEG
 robots/rightleg_bot.rob
-left leg robot
+LEFT LEG
 robots/leftleg_bot.rob
