@@ -119,14 +119,12 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
-        print("This is the filepath:" , filepath)
-        print("File type: ", type(filepath))
-        self.robot_filepath = filepath
+        print("Path to config.txt: " , filepath)
+        print("Config filetype: ", type(filepath))
+
+        self.partAssembly(filepath)
 
         #Simulator parameters
-        self.dt = None
-        self.t = 0
-        self.looper = None
 
 
         self.plan = None
@@ -149,7 +147,9 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def idlefunc(self):
         klampt.vis.run()
-    def partAssembly(self):
+    def partAssembly(self, filepath):
+        for x in range(len(filepath)):
+            self.world.loadRobot(filepath[x])
     def geomEdit(self,n, fn):
         klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
 
@@ -173,7 +173,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("world", self.world)
 
         # Robot Initialization
-        self.world.loadRobot(self.robot_filepath)
+
         self.robot = self.world.robot(0)
         self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
 

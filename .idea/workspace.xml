@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C4.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C4.stl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
