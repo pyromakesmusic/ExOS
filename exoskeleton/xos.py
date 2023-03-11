@@ -114,7 +114,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class.
     """
-    def __init__(self):
+    def __init__(self, filepath):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         self.world = klampt.WorldModel()
         self.sim = klampt.Simulator(self.world)
@@ -122,7 +122,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Robot Initialization
-        self.world.loadRobot("robots/torso_2.rob")
+        self.world.loadRobot(filepath)
         self.robot = self.world.robot(0)
         self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
 
@@ -143,15 +143,15 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = None
         self.actuators = None
 
-        self.randomTrajectoryTest()
-
-        self.actuatorTest()
-        #self.configEdit()
-        self.animationTest()
+        self.visSetup()
+        self.idlefunc()
 
 
     def idlefunc(self):
-        self.refresh()
+        klampt.vis.run()
+        while klampt.vis.shown():
+            self.sim.simulate(self.dt)
+            self.refresh()
 
     def geomEdit(self,n, fn):
         klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
@@ -172,17 +172,12 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-    def actuatorTest(self):
-        print("...placeholder...")
-
-
-    def animationTest(self):
-        #Visualization calls
+    def visSetup(self):
         klampt.vis.add("world", self.world)
-        klampt.vis.add("shoulder_bot", self.robot)
+        klampt.vis.add("X001", self.robot)
 
 
-        klampt.vis.setWindowTitle("Shoulder Bot Test")
+        klampt.vis.setWindowTitle("X001  Test")
 
         self.viewport = klampt.vis.getViewport()
         print("viewport", self.viewport)
@@ -191,8 +186,19 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
         self.transform = klampt.vis.add("transform", klampt.math.se3.identity())
 
-        klampt.vis.visualization.animate("shoulder_bot", self.trajectory, speed=3, endBehavior="loop")
+    def actuatorTest(self):
+        print("...placeholder...")
+
+
+    def animationTest(self):
+        #Visualization calls
+
+
+        klampt.vis.visualization.animate("X001", self.trajectory, speed=3, endBehavior="loop")
         klampt.vis.run()
+        STOP_FLAG = False
+        while STOP_FLAG == False:
+            self.idlefunc()
 
         self.XOS.close()
         klampt.vis.kill()
@@ -214,7 +220,8 @@ def configLoader():
     print("Loading config.txt...")
     with open("config.txt") as fn:
         print(fn.readline())
-        return fn.readline()
+        robot_fn =  fn.readline()
+        return robot_fn
 
 
 """
@@ -222,4 +229,5 @@ MAIN LOOP
 """
 
 if __name__ == "__main__":
-    exo_sim_test = ExoSimGUI()
+    fn = configLoader()
+    exo_sim_test = ExoSimGUI(fn)
