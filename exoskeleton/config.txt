@@ -1,2 +1,10 @@
-robfile
+center robot
 robots/core_bot.rob
+right arm robot
+robots/rightarm_bot.rob
+left arm robot
+robots/leftarm_bot.rob
+right leg robot
+robots/rightleg_bot.rob
+left leg robot
+robots/leftleg_bot.rob
