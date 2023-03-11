@@ -42,6 +42,10 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 """
 CLASS DEFINITIONS
 """
+class Muscle:
+    def __init__(self, length, transform):
+    self.length = length
+    self.transform = transform
 
 class ExoController(klampt.control.OmniRobotInterface):
     """
