@@ -131,9 +131,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = None
         self.actuators = None
 
-
-
-        self.simSetup()
+        self.worldSetup()
 
 
 
@@ -148,7 +146,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def idlefunc(self):
         klampt.vis.run()
     def partAssembly(self, filepath):
-        for x in range(len(filepath)):
+        for x in filepath:
             self.world.loadRobot(filepath[x])
     def geomEdit(self,n, fn):
         klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
@@ -169,7 +167,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-    def simSetup(self):
+    def worldSetup(self):
         klampt.vis.add("world", self.world)
 
         # Robot Initialization
@@ -237,7 +235,11 @@ def configLoader():
         print(fn.readline())
         leftleg = fn.readline().rstrip()
 
-        components = [core, rightarm, leftarm, rightleg, leftleg]
+        components = {"core": core,
+                      "rightarm": rightarm,
+                      "leftarm": leftarm,
+                      "rightleg": rightleg,
+                      "leftleg": leftleg}
         return components
 
 
@@ -247,5 +249,5 @@ MAIN LOOP
 
 if __name__ == "__main__":
     xo_parts = configLoader()
-    print("xo_parts", xo_parts[1])
-    exo_sim_test = ExoSimGUI(xo_parts[1])
+    print("xo_parts", xo_parts)
+    exo_sim_test = ExoSimGUI(xo_parts)
