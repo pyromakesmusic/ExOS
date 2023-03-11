@@ -47,7 +47,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
     """
-    def __init__(self, robotmodel, sim, world):
+    def __init__(self, robotmodel,  world):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         self.initialize()
         print("Initializing interface. . .")
@@ -56,7 +56,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
 
         self.world = world
-        self.sim = sim
+        self.sim = None
         self.actuators = {"bicep"}
         self.simInitialize()
 
@@ -116,34 +116,32 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     def __init__(self, filepath):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
+
+        #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
-        self.sim = klampt.Simulator(self.world)
-        self.sim.setGravity([0, 0, -9.8])
-
-
-        #Robot Initialization
-        self.world.loadRobot(filepath)
-        self.robot = self.world.robot(0)
-        self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
-
-
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
-            ExoController(self.robot, self.sim, self.world))
-        print(". . .")
-        print("Control rate: ", self.XOS.controlRate())
-
+        self.robot_filepath = filepath
 
         #Simulator parameters
-        self.dt = 1.0/(self.XOS.controlRate())
+        self.dt = None
         self.t = 0
-        self.looper = TimedLooper(self.dt)
+        self.looper = None
 
 
         self.plan = None
         self.trajectory = None
         self.actuators = None
 
-        self.visSetup()
+
+
+        self.simSetup()
+
+
+
+
+
+        #Simulator creation and activation comes at the very end
+        self.sim = klampt.Simulator(self.world)
+        self.sim.setGravity([0, 0, -9.8])
         self.idlefunc()
 
 
@@ -172,8 +170,20 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-    def visSetup(self):
+    def simSetup(self):
         klampt.vis.add("world", self.world)
+
+        # Robot Initialization
+        self.world.loadRobot(self.robot_filepath)
+        self.robot = self.world.robot(0)
+        self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
+
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
+            ExoController(self.robot, self.world))
+        print(". . .")
+        print("Control rate: ", self.XOS.controlRate())
+
+        #This has to come after robot creation
         klampt.vis.add("X001", self.robot)
 
 

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00099" summary="added a link">
-      <created>1675801995565</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1675801995565</updated>
     </task>
     <task id="LOCAL-00100" summary="added planar2 robot">
       <created>1675838183713</created>
@@ -477,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678424563092</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="added a visualization setup method">
+      <created>1678558546279</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1678558546279</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="commented out a line that breaks the animation" />
     <MESSAGE value="got a trajectory added to the screen. seems to be unrelated to the robot or its configuration" />
     <MESSAGE value="modified the degrees of freedom of the robot a little bit" />
     <MESSAGE value="rotating around its degrees of freedom" />
@@ -518,6 +515,7 @@
     <MESSAGE value="moving just the elbow now, and have identified the link with the proper configuration" />
     <MESSAGE value="changed some files around" />
     <MESSAGE value="updated robot definition and meshes" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated robot definition and meshes" />
+    <MESSAGE value="added a visualization setup method" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a visualization setup method" />
   </component>
 </project>
