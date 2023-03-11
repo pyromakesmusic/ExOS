@@ -44,9 +44,12 @@ CLASS DEFINITIONS
 """
 class Muscle:
     def __init__(self, length, transform):
-    self.length = length
-    self.transform = transform
+        self.length = length
+        self.transform = transform
 
+class MuscleGroup:
+    def __init__(self, muscles):
+        self.muscles = muscles
 class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
