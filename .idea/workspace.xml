@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00110" summary="added a torso at the origin for reference">
-      <created>1675992782803</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1675992782803</updated>
     </task>
     <task id="LOCAL-00111" summary="added some custom meshes">
       <created>1676014155846</created>
@@ -480,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678576441080</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="rearranging some of the transforms">
+      <created>1678577983621</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1678577983621</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -496,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added elbow joint" />
     <MESSAGE value="animating smoothly" />
     <MESSAGE value="trying to get the ball and socket joint to function correctly" />
     <MESSAGE value="updating geometry slightly" />
@@ -521,6 +518,7 @@
     <MESSAGE value="exodia style" />
     <MESSAGE value="updated core bot and shoulder bot definitions" />
     <MESSAGE value="trying to get the robot to load multiple parts" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to get the robot to load multiple parts" />
+    <MESSAGE value="rearranging some of the transforms" />
+    <option name="LAST_COMMIT_MESSAGE" value="rearranging some of the transforms" />
   </component>
 </project>
