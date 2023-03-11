@@ -1,2 +1,2 @@
 robfile
-robots/rightarm_bot.rob
+robots/core_bot.rob
