@@ -49,9 +49,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     def __init__(self, robotmodel,  world):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
-        self.initialize()
         print("Initializing interface. . .")
-        print("Initialized: ", self.initialize())
         print("Klampt Model: ", self.klamptModel())
 
 
@@ -145,9 +143,10 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def idlefunc(self):
         klampt.vis.run()
-    def partAssembly(self, filepath):
-        for x in filepath:
-            self.world.loadRobot(filepath[x])
+    def partAssembly(self, filepath_dict):
+        for x in filepath_dict:
+            print(x)
+            self.world.loadRobot(filepath_dict[x])
     def geomEdit(self,n, fn):
         klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
 
@@ -189,7 +188,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         print("viewport", self.viewport)
 
-        self.viewport.fit([0,0,0],10)
+        self.viewport.fit([0,0,0],15)
 
     def actuatorTest(self):
         print("...placeholder...")
