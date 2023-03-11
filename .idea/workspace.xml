@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/torso_2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/torso_2.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00102" summary="randomized the config of planar2. rob">
-      <created>1675900370247</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1675900370247</updated>
     </task>
     <task id="LOCAL-00103" summary="successfully set the config programmatically">
       <created>1675909868490</created>
@@ -475,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678566245017</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="updated robot definition file">
+      <created>1678570213817</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1678570213817</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rotating around its degrees of freedom" />
     <MESSAGE value="imported some new libraries" />
     <MESSAGE value="putting methods in the right class" />
     <MESSAGE value="launching an editor" />
@@ -516,6 +520,7 @@
     <MESSAGE value="added a visualization setup method" />
     <MESSAGE value="refining the simulation" />
     <MESSAGE value="don't add NoneTypes to klampt.vis" />
-    <option name="LAST_COMMIT_MESSAGE" value="don't add NoneTypes to klampt.vis" />
+    <MESSAGE value="updated robot definition file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated robot definition file" />
   </component>
 </project>
