@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="don't add NoneTypes to klampt.vis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -131,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00101" summary="added planar2 robot">
-      <created>1675888825139</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1675888825139</updated>
     </task>
     <task id="LOCAL-00102" summary="randomized the config of planar2. rob">
       <created>1675900370247</created>
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678566008953</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="don't add NoneTypes to klampt.vis">
+      <created>1678566245017</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1678566245017</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="modified the degrees of freedom of the robot a little bit" />
     <MESSAGE value="rotating around its degrees of freedom" />
     <MESSAGE value="imported some new libraries" />
     <MESSAGE value="putting methods in the right class" />
@@ -516,6 +515,7 @@
     <MESSAGE value="updated robot definition and meshes" />
     <MESSAGE value="added a visualization setup method" />
     <MESSAGE value="refining the simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="refining the simulation" />
+    <MESSAGE value="don't add NoneTypes to klampt.vis" />
+    <option name="LAST_COMMIT_MESSAGE" value="don't add NoneTypes to klampt.vis" />
   </component>
 </project>

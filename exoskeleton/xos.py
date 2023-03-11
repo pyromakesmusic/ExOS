@@ -142,8 +142,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Simulator creation and activation comes at the very end
         self.sim = klampt.Simulator(self.world)
         self.sim.setGravity([0, 0, -9.8])
-        klampt.vis.run()
-        #self.idlefunc()
+        self.idlefunc()
 
 
     def idlefunc(self):
@@ -191,7 +190,6 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],10)
-        #klampt.vis.add("trajectory", self.trajectory,color=[1,1,0,1])
 
     def actuatorTest(self):
         print("...placeholder...")
