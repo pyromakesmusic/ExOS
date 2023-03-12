@@ -72,6 +72,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
 
         self.world = world
+        self.robot = robotmodel
 
         # Just creating these now so we can define methods using them.
         self.sim = None
@@ -92,6 +93,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.leftarm = self.world.loadRobot(filepath_dict["leftarm"])
         self.rightleg = self.world.loadRobot(filepath_dict["rightleg"])
         self.leftleg = self.world.loadRobot(filepath_dict["leftleg"])
+
+        print("Robot Name:", self.robot.getName())
 
     def sensedPosition(self):
         return self.klamptModel().getDOFPosition()
@@ -126,6 +129,26 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         while self.shutdown_flag == False:
             self.idle()
+
+
+    def geomEdit(self,n, fn):
+        klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
+
+    def configEdit(self):
+        klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
+
+    def motionPlanner(self, world):
+        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
+    def randomTrajectoryTest(self):
+        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
+        print("trajectory", self.trajectory)
+        x = self.robot.getConfig()
+        for i in range(10):
+            y = [0, 0, 0, 0, 0, .5, 0]
+            newconfig = np.add(x,y)
+            self.trajectory.milestones.append(newconfig)
+            x = newconfig
+        self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     @classmethod
     def getActuators(self):
@@ -189,33 +212,14 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def idlefunc(self):
         pass
 
-    def geomEdit(self,n, fn):
-        klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
-
-    def configEdit(self):
-        klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
-
-    def motionPlanner(self, world):
-        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
-    def randomTrajectoryTest(self):
-        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
-        print("trajectory", self.trajectory)
-        x = self.robot.getConfig()
-        for i in range(10):
-            y = [0, 0, 0, 0, 0, .5, 0]
-            newconfig = np.add(x,y)
-            self.trajectory.milestones.append(newconfig)
-            x = newconfig
-        self.trajectory.times = list(range(len(self.trajectory.milestones)))
-
     def actuatorTest(self):
         print("...placeholder...")
 
 
     def animationTest(self):
-        #Visualization calls
-
-
+        """
+        Animates the native trajectory.
+        """
         klampt.vis.visualization.animate("X001", self.trajectory, speed=3, endBehavior="loop")
         klampt.vis.run()
         STOP_FLAG = False
