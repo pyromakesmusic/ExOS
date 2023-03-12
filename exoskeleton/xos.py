@@ -67,7 +67,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
     """
-    def __init__(self, robotmodel,  world):
+    def __init__(self, robotmodel,  world, filepath_dict):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         print("Initializing interface. . .")
         print("Klampt Model: ", self.klamptModel())
@@ -76,16 +76,17 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.world = world
         self.sim = None
         self.actuators = {"bicep"}
-        self.simInitialize()
+        self.rightarm = None
+        self.leftarm = None
+        self.rightleg = None
+        self.leftleg = None
+        self.botAssembly(filepath_dict)
 
-
-
-
-    def simInitialize(self):
-        self.addVirtualPart("arm", [0, 1])
-        self.pos_sensor = klampt.sim.simulation.DefaultSensorEmulator(self.sim, self)
-        self.bicep = klampt.sim.simulation.DefaultActuatorEmulator(self.sim, self)
-
+    def botAssembly(self, filepath_dict):
+        self.rightarm = self.world.loadRobot(filepath_dict["rightarm"])
+        self.leftarm = self.world.loadRobot(filepath_dict["leftarm"])
+        self.rightleg = self.world.loadRobot(filepath_dict["rightleg"])
+        self.leftleg = self.world.loadRobot(filepath_dict["leftleg"])
 
     def sensedPosition(self):
         return self.klamptModel().getDOFPosition()
@@ -137,10 +138,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
-        print("Path to config.txt: " , filepath)
-        print("Config filetype: ", type(filepath))
 
-        self.partAssembly(filepath)
 
         #Simulator parameters
 
@@ -149,7 +147,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = None
         self.actuators = None
 
-        self.worldSetup()
+        self.worldSetup(filepath)
 
 
 
@@ -158,15 +156,34 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Simulator creation and activation comes at the very end
         self.sim = klampt.Simulator(self.world)
         self.sim.setGravity([0, 0, -9.8])
+        klampt.vis.run()
         self.idlefunc()
 
+    def worldSetup(self, filepath_dict):
+        klampt.vis.add("world", self.world)
+        self.world.loadRobot(filepath_dict["core"])
+        self.robot = self.world.robot(0)
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
+            ExoController(self.robot, self.world, filepath_dict))
+
+
+        print(". . .")
+        print("Control rate: ", self.XOS.controlRate())
+
+        #This has to come after robot creation
+        klampt.vis.add("X001", self.robot)
+
+
+        klampt.vis.setWindowTitle("X001  Test")
+
+        self.viewport = klampt.vis.getViewport()
+        print("viewport", self.viewport)
+
+        self.viewport.fit([0,0,0],25)
 
     def idlefunc(self):
-        klampt.vis.run()
-    def partAssembly(self, filepath_dict):
-        for x in filepath_dict:
-            print(x)
-            self.world.loadRobot(filepath_dict[x])
+        pass
+
     def geomEdit(self,n, fn):
         klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
 
@@ -185,30 +202,6 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             self.trajectory.milestones.append(newconfig)
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
-
-    def worldSetup(self):
-        klampt.vis.add("world", self.world)
-
-        # Robot Initialization
-
-        self.robot = self.world.robot(0)
-        self.space = robotcspace.RobotCSpace(self.robot, collide.WorldCollider(self.world))
-
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
-            ExoController(self.robot, self.world))
-        print(". . .")
-        print("Control rate: ", self.XOS.controlRate())
-
-        #This has to come after robot creation
-        klampt.vis.add("X001", self.robot)
-
-
-        klampt.vis.setWindowTitle("X001  Test")
-
-        self.viewport = klampt.vis.getViewport()
-        print("viewport", self.viewport)
-
-        self.viewport.fit([0,0,0],25)
 
     def actuatorTest(self):
         print("...placeholder...")
@@ -231,7 +224,6 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def torqueTest(self):
 
         print("OUTPUT FROM THE CONTROLLER:", self.XOS)
-        self.XOS.setTorque([1])
 
     def shutdown(self):
         klampt.vis.kill()
@@ -243,15 +235,15 @@ FUNCTION DEFINITIONS
 def configLoader():
     print("Loading config.txt...")
     with open("config.txt") as fn:
-        print(fn.readline())
+        print("Loading...", fn.readline().rstrip())
         core = fn.readline().rstrip()
-        print(fn.readline())
+        print("Loading...", fn.readline().rstrip())
         rightarm = fn.readline().rstrip()
-        print(fn.readline())
+        print("Loading...", fn.readline().rstrip())
         leftarm = fn.readline().rstrip()
-        print(fn.readline())
+        print("Loading...", fn.readline().rstrip())
         rightleg = fn.readline().rstrip()
-        print(fn.readline())
+        print("Loading...", fn.readline().rstrip())
         leftleg = fn.readline().rstrip()
 
         components = {"core": core,
