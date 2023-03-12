@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A0.blend" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00120" summary="modified the degrees of freedom of the robot a little bit">
-      <created>1676527138904</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1676527138904</updated>
     </task>
     <task id="LOCAL-00121" summary="rotating around its degrees of freedom">
       <created>1676576924762</created>
@@ -478,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678593064550</updated>
     </task>
-    <option name="localTasksCounter" value="169" />
+    <task id="LOCAL-00169" summary="added scapular meshes">
+      <created>1678595319161</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1678595319161</updated>
+    </task>
+    <option name="localTasksCounter" value="170" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tried to set a torque" />
     <MESSAGE value="refactored slightly" />
     <MESSAGE value="broke something in the PID talk interface but its okay; still refactoring" />
     <MESSAGE value="separated out some of the library logic from specific robot logic" />
@@ -519,6 +514,7 @@
     <MESSAGE value="updating the muscle class" />
     <MESSAGE value="updating robot definitions to be in scale with each other" />
     <MESSAGE value="updated robot size" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated robot size" />
+    <MESSAGE value="added scapular meshes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added scapular meshes" />
   </component>
 </project>
