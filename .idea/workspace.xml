@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00121" summary="rotating around its degrees of freedom">
-      <created>1676576924762</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1676576924762</updated>
     </task>
     <task id="LOCAL-00122" summary="imported some new libraries">
       <created>1676576996258</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678593377144</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="encapsulating robot assembly more within the single unified controller; it looks like that controller can probably hold all the software i need without needing to nest classes or anything">
+      <created>1678605792873</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1678605792873</updated>
+    </task>
+    <option name="localTasksCounter" value="171" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="refactored slightly" />
     <MESSAGE value="broke something in the PID talk interface but its okay; still refactoring" />
     <MESSAGE value="separated out some of the library logic from specific robot logic" />
     <MESSAGE value="separated out some more class methods" />
@@ -516,6 +514,7 @@
     <MESSAGE value="updating robot definitions to be in scale with each other" />
     <MESSAGE value="updated robot size" />
     <MESSAGE value="proportions seem approximately right, need to change transforms and use the mount command" />
-    <option name="LAST_COMMIT_MESSAGE" value="proportions seem approximately right, need to change transforms and use the mount command" />
+    <MESSAGE value="encapsulating robot assembly more within the single unified controller; it looks like that controller can probably hold all the software i need without needing to nest classes or anything" />
+    <option name="LAST_COMMIT_MESSAGE" value="encapsulating robot assembly more within the single unified controller; it looks like that controller can probably hold all the software i need without needing to nest classes or anything" />
   </component>
 </project>

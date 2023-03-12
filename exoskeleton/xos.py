@@ -83,6 +83,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.botAssembly(filepath_dict)
 
     def botAssembly(self, filepath_dict):
+        """
+        Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
+        """
         self.rightarm = self.world.loadRobot(filepath_dict["rightarm"])
         self.leftarm = self.world.loadRobot(filepath_dict["leftarm"])
         self.rightleg = self.world.loadRobot(filepath_dict["rightleg"])
