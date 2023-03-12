@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
-    </list>
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -460,19 +458,19 @@
       <option name="project" value="LOCAL" />
       <updated>1678593064550</updated>
     </task>
-    <task id="LOCAL-00169" summary="proportions seem approximately right, need to change transforms and use the mount command">
-      <created>1678593377144</created>
+    <task id="LOCAL-00169" summary="added scapular meshes">
+      <created>1678595319161</created>
       <option name="number" value="00169" />
       <option name="presentableId" value="LOCAL-00169" />
       <option name="project" value="LOCAL" />
-      <updated>1678593377144</updated>
+      <updated>1678595319161</updated>
     </task>
-    <task id="LOCAL-00170" summary="encapsulating robot assembly more within the single unified controller; it looks like that controller can probably hold all the software i need without needing to nest classes or anything">
-      <created>1678605792873</created>
+    <task id="LOCAL-00170" summary="added toe and foot meshes">
+      <created>1678595792570</created>
       <option name="number" value="00170" />
       <option name="presentableId" value="LOCAL-00170" />
       <option name="project" value="LOCAL" />
-      <updated>1678605792873</updated>
+      <updated>1678595792570</updated>
     </task>
     <option name="localTasksCounter" value="171" />
     <servers />
@@ -513,8 +511,8 @@
     <MESSAGE value="updating the muscle class" />
     <MESSAGE value="updating robot definitions to be in scale with each other" />
     <MESSAGE value="updated robot size" />
-    <MESSAGE value="proportions seem approximately right, need to change transforms and use the mount command" />
-    <MESSAGE value="encapsulating robot assembly more within the single unified controller; it looks like that controller can probably hold all the software i need without needing to nest classes or anything" />
-    <option name="LAST_COMMIT_MESSAGE" value="encapsulating robot assembly more within the single unified controller; it looks like that controller can probably hold all the software i need without needing to nest classes or anything" />
+    <MESSAGE value="added scapular meshes" />
+    <MESSAGE value="added toe and foot meshes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added toe and foot meshes" />
   </component>
 </project>
