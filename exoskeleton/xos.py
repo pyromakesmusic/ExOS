@@ -209,6 +209,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],15)
+        self.world.saveFile("X001_testworld.xml")
 
     def actuatorTest(self):
         print("...placeholder...")

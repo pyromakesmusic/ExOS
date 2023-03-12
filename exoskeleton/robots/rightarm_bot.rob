@@ -1,4 +1,4 @@
-### Torso shoulder shoulder shoulder humerus elbow forearm ###
+### Scapula shoulder shoulder shoulder humerus elbow forearm ###
 ### Only joint links should receive instructions, not bone links ###
 TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
 1 0 0   0 1 0   0 0 1   -1.5 0 -2  \
