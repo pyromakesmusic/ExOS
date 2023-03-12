@@ -43,9 +43,13 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 CLASS DEFINITIONS
 """
 class Muscle:
-    def __init__(self, length, transform):
-        self.length = length
+    def __init__(self, transform, force, pressure, turns, weave_length, displacement):
         self.transform = transform
+        self.force = force
+        self.pressure = pressure
+        self.turns = turns
+        self.weave_length = weave_length
+        self.displacement = displacement
 
 class MuscleGroup:
     def __init__(self, muscles):
