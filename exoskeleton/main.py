@@ -1,5 +1,4 @@
 import xos
 
-robot_name = xos.configLoader()
-print("Robot name:", robot_name)
-exo_test = xos.ExoSimGUI(robot_name)
+test_config = xos.configLoader() # Config currently contains filepaths of each subRobot, will probably add other stuff
+exo_test = xos.ExoSimGUI(test_config)

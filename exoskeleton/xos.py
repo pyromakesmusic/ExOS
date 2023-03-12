@@ -69,17 +69,19 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     def __init__(self, robotmodel,  world, filepath_dict):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
-        print("Initializing interface. . .")
-        print("Klampt Model: ", self.klamptModel())
 
 
         self.world = world
+
+        # Just creating these now so we can define methods using them.
         self.sim = None
         self.actuators = {"bicep"}
         self.rightarm = None
         self.leftarm = None
         self.rightleg = None
         self.leftleg = None
+
+        # This is where we actually load in the subRobots
         self.botAssembly(filepath_dict)
 
     def botAssembly(self, filepath_dict):
