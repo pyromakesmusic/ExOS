@@ -43,13 +43,22 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
 CLASS DEFINITIONS
 """
 class Muscle:
-    def __init__(self, transform, force, pressure, turns, weave_length, displacement):
-        self.transform = transform
-        self.force = force
-        self.pressure = pressure
-        self.turns = turns
-        self.weave_length = weave_length
-        self.displacement = displacement
+    """
+    Refers to exactly one McKibben muscle.
+    """
+    def __init__(self, config_dict):
+        "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
+        self.transform_a = config_dict["transform_a"]
+        self.transform_b = config_dict["transform_b"]
+        self.label_a = config_dict["label_a"]
+        self.label_b = config_dict["label_b"]
+        self.force = config_dict["force"]
+        self.pressure = config_dict["pressure"]
+        self.turns = config_dict["turns"]
+        self.weave_length = config_dict["weave_length"]
+        self.displacement = config_dict["displacement"]
+
+
 
 class MuscleGroup:
     def __init__(self, muscles):
