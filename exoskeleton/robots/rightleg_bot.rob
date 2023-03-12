@@ -1,6 +1,6 @@
 ### Torso shoulder shoulder shoulder humerus elbow forearm ###
 ### Only joint links should receive instructions, not bone links ###
-TParent 1 0 0   0 1 0   0 0 1   0 0 -5  \
+TParent   1.0000000   0.0000000   0.0000000   0.0000000   0.0000463  1.0000000   0.0000000   -1.0000000   0.0000463   0 0 -5  \
 1 0 0   0 1 0   0 0 1   -1.5 0 0  \
 1 0 0   0 1 0   0 0 1   0 0 0   \
 1 0 0   0 1 0   0 0 1   0 0 0   \
