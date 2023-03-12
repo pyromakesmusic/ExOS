@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00115" summary="fit everything on the screen">
-      <created>1676340040958</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1676340040958</updated>
     </task>
     <task id="LOCAL-00116" summary="added a target point in space">
       <created>1676340574232</created>
@@ -475,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678579446297</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="updating the muscle class">
+      <created>1678590256828</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1678590256828</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
