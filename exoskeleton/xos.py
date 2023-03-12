@@ -208,7 +208,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         print("viewport", self.viewport)
 
-        self.viewport.fit([0,0,0],15)
+        self.viewport.fit([0,0,0],25)
 
     def actuatorTest(self):
         print("...placeholder...")
