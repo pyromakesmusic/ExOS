@@ -191,6 +191,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("world", self.world)
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
+        print("Robot number of links: ", self.robot.numLinks())
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
             ExoController(self.robot, self.world, filepath_dict))
 

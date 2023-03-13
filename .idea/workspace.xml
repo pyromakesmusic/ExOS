@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00124" summary="launching an editor">
-      <created>1676579060642</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1676579060642</updated>
-    </task>
     <task id="LOCAL-00125" summary="launching an editor and animating through a trajectory">
       <created>1676579377946</created>
       <option name="number" value="00125" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678653430108</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point">
+      <created>1678654113788</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1678654113788</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="separated out some of the library logic from specific robot logic" />
     <MESSAGE value="separated out some more class methods" />
     <MESSAGE value="moving just the elbow now, and have identified the link with the proper configuration" />
     <MESSAGE value="changed some files around" />
@@ -516,6 +515,7 @@
     <MESSAGE value="added scapular meshes" />
     <MESSAGE value="added toe and foot meshes" />
     <MESSAGE value="updated robot, need to mount" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated robot, need to mount" />
+    <MESSAGE value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
+    <option name="LAST_COMMIT_MESSAGE" value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
   </component>
 </project>
