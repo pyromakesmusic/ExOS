@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00125" summary="launching an editor and animating through a trajectory">
-      <created>1676579377946</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1676579377953</updated>
-    </task>
     <task id="LOCAL-00126" summary="trying to narrow down how the elbow should be moving">
       <created>1676582511464</created>
       <option name="number" value="00126" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678654113788</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="starting to print info about the subrobots">
+      <created>1678719074602</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1678719074602</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="separated out some more class methods" />
     <MESSAGE value="moving just the elbow now, and have identified the link with the proper configuration" />
     <MESSAGE value="changed some files around" />
     <MESSAGE value="updated robot definition and meshes" />
@@ -516,6 +515,7 @@
     <MESSAGE value="added toe and foot meshes" />
     <MESSAGE value="updated robot, need to mount" />
     <MESSAGE value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
-    <option name="LAST_COMMIT_MESSAGE" value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
+    <MESSAGE value="starting to print info about the subrobots" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting to print info about the subrobots" />
   </component>
 </project>

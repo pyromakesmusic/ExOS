@@ -192,6 +192,9 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
         print("Robot number of links: ", self.robot.numLinks())
+        # The core robot has 5 links, indexed 0 through 4.
+
+
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
             ExoController(self.robot, self.world, filepath_dict))
 
@@ -209,10 +212,14 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,0],25)
+        self.drawEdges(self.world)
 
     def idlefunc(self):
         pass
 
+    """
+    Test Methods
+    """
     def actuatorTest(self):
         print("...placeholder...")
 
@@ -234,6 +241,23 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def torqueTest(self):
 
         print("OUTPUT FROM THE CONTROLLER:", self.XOS)
+    """
+    Visual Options
+    """
+
+    def drawEdges(self, item):
+        """
+        Currently needs to take the argument self.world, at some point should probably change that
+        """
+        for x in range(item.numIDs()):
+            print("Link", x, "geometry: ", item.geometry(x))
+            print("Link", x, "appearance: ", item.appearance(x))
+            item.appearance(x).setDraw(2, True)
+
+
+    """
+    Shutdown
+    """
 
     def shutdown(self):
         klampt.vis.kill()
