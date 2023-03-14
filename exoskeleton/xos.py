@@ -59,6 +59,11 @@ class Muscle:
         self.weave_length = config_dict["weave_length"]
         self.displacement = config_dict["displacement"]
 
+    def setPressure(self):
+        """
+        This will be the lowest level implementation where the pressure of a muscle is changed, and a force is applied.
+        """
+        self.force = self.force
 
 
 class MuscleGroup:
@@ -256,8 +261,8 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
             print("Link", x, "appearance: ", item.appearance(x))
             item.appearance(x).setDraw(2, True) # Makes edges visible
             item.appearance(x).setDraw(4, True) # I believe this should make edges glow
-            item.appearance(x).setColor(2, 1, 0, 0, 1) # Makes edges red, something about the surface normals is not right but it's fixable
-            item.appearance(x).setColor(4, 1, 0, 0, 1) # I think this makes the specularity color red
+            item.appearance(x).setColor(2, 0, 0, 1, 1) # Makes edges red, something about the surface normals is not right but it's fixable
+            item.appearance(x).setColor(3, 1, .5, .5, .9) # I think this makes the specularity color red
 
 
     """
