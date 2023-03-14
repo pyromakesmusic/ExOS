@@ -45,6 +45,7 @@ CLASS DEFINITIONS
 class Muscle:
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
+    This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
     def __init__(self, config_dict):
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
