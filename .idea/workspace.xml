@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00131" summary="trying to get the ball and socket joint to function correctly">
-      <created>1676624728852</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1676624728852</updated>
     </task>
     <task id="LOCAL-00132" summary="updating geometry slightly">
       <created>1676664830230</created>
@@ -475,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678758164782</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="updated colors a little bit">
+      <created>1678764581588</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1678764581588</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="don't add NoneTypes to klampt.vis" />
     <MESSAGE value="updated robot definition file" />
     <MESSAGE value="added torso bot" />
     <MESSAGE value="updated joint configurations" />
@@ -516,6 +516,7 @@
     <MESSAGE value="very red now" />
     <MESSAGE value="need to try to apply forces and also mount" />
     <MESSAGE value="maybe it won't always simulate?" />
-    <option name="LAST_COMMIT_MESSAGE" value="maybe it won't always simulate?" />
+    <MESSAGE value="updated colors a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated colors a little bit" />
   </component>
 </project>

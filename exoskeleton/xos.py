@@ -10,34 +10,51 @@ import numpy as np
 import random
 
 import klampt
-import klampt.vis
-import klampt.sim.batch
-import klampt.sim.settle
-import klampt.sim.simulation
-import klampt.io.resource
+import klampt.vis # For visualization
+import klampt.sim.batch # For batch simulation
+import klampt.sim.settle # Applies forces and lets them reach equilibrium in simulation
+import klampt.sim.simulation # For simulation
+import klampt.io.resource # For easy resource access
+import klampt.model.subrobot # Defines the subrobot
 from klampt.vis import colorize
 from klampt.model import collide
-from klampt.model.trajectory import RobotTrajectory
+from klampt.model.trajectory import RobotTrajectory # Trajectory
 from klampt.control.utils import TimedLooper
-from klampt.plan import robotplanning, robotcspace
+from klampt.plan import robotplanning, robotcspace # Configuration space
 import klampt.model.create.moving_base_robot as kmcmbr
-import klampt.model.create.primitives as kmcp
+import klampt.model.create.primitives as kmcp # This is where the box is
 
 
 """
 MATRIX DATA
 """
-null_matrix = [[0,0,0],[0,0,0],[0,0,0]]
-null_origin = [1,1,1]
-null_imu = (null_matrix, null_origin)
+NULL_MATRIX = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+NULL_ORIGIN = [0, 0, 0]
+NULL_TRANSFORM = (NULL_MATRIX, NULL_ORIGIN)
 
+IDENTITY_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
 
-x_matrix = [[1,0,0],[0,0,0],[0,0,0]]
+"""
+PARAMETER DICTIONARIES
+"""
+TEST_MUSCLE = {"link_a": None,
+               "link_b": None,
+               "transform_a" : 0,
+               "transform_b": 0,
+               "label_a": "proximal",
+               "label_b": "distal",
+               "force": 0,
+               "pressure": 0,
+               "weave_length": 1,
+               "turns": 5,
+               "displacement": 0}
+
 """
 GEOMETRIES
 """
-BONE_GEOMETRY = kmcp.box(.05, .4, .05,mass=10)
-FLOOR_GEOMETRY = kmcp.box(5, 5, .01,center=[0,0,0])
+BONE_GEOMETRY = kmcp.box(.05, .4, .05, mass=10)
+FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
 
 """
 CLASS DEFINITIONS
@@ -49,19 +66,19 @@ class Muscle:
     """
     def __init__(self, config_dict):
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
-        self.transform_a = config_dict["transform_a"] # One 3D vector denoting a point in space
-        self.transform_b = config_dict["transform_b"] # Another 3D vector
-        self.label_a = config_dict["label_a"] # Proximal, superior, lateral, etc.
-        self.label_b = config_dict["label_b"] # Distal, inferior, medial, etc.
-        self.force = config_dict["force"]
-        self.pressure = config_dict["pressure"]
-        self.turns = config_dict["turns"]
-        self.weave_length = config_dict["weave_length"]
-        self.displacement = config_dict["displacement"]
+        self.transform_a = config_dict["transform_a"] # One 3D vector (maybe 4d?) denoting a point on a robot link
+        self.transform_b = config_dict["transform_b"] # Another 3D vector (maybe 4d?) denoting a point on a robot link
+        self.label_a = config_dict["label_a"] # Proximal, superior, lateral, etc. Constant.
+        self.label_b = config_dict["label_b"] # Distal, inferior, medial, etc. Constant.
+        self.force = config_dict["force"] # Dependent variable
+        self.pressure = config_dict["pressure"] # Independent variable
+        self.turns = config_dict["turns"] # Constant
+        self.weave_length = config_dict["weave_length"] # Constant?
+        self.displacement = config_dict["displacement"] # Dependent variable
 
-    def setPressure(self):
+    def updatePressure(self):
         """
-        This will be the lowest level implementation where the pressure of a muscle is changed, and a force is applied.
+        This will be the lowest level implementation where the parameters of a muscle are changed, particularly force and pressure.
         """
         self.force = self.force
 
@@ -69,6 +86,9 @@ class Muscle:
 class MuscleGroup:
     def __init__(self, muscles):
         self.muscles = muscles
+
+
+
 class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module, and before that probably needs to be broken up
@@ -96,6 +116,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
         """
         self.rightarm = self.world.loadRobot(filepath_dict["rightarm"])
+        self.world.robot(0)
         self.leftarm = self.world.loadRobot(filepath_dict["leftarm"])
         self.rightleg = self.world.loadRobot(filepath_dict["rightleg"])
         self.leftleg = self.world.loadRobot(filepath_dict["leftleg"])
@@ -131,6 +152,9 @@ class ExoController(klampt.control.OmniRobotInterface):
 
 
     def beginIdle(self):
+        """
+        Used for loops.
+        """
         self.shutdown_flag = False
 
         while self.shutdown_flag == False:
@@ -138,13 +162,23 @@ class ExoController(klampt.control.OmniRobotInterface):
 
 
     def geomEdit(self,n, fn):
+        """
+        Opens a geometry editor for the input arguments.
+        """
         klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
 
     def configEdit(self):
+        """
+        Opens an editor for the configuration of the stated variables.
+        """
         klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
 
     def motionPlanner(self, world):
+        """
+        I think this takes a world and makes a plan (trajectory without time coordinates) to reach a particular config?
+        """
         self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
+
     def randomTrajectoryTest(self):
         # This populates a random trajectory for the robot to execute.
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
@@ -164,7 +198,14 @@ class ExoController(klampt.control.OmniRobotInterface):
     def idle(self):
         self.setPosition(self.target)
 
-class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
+class ExoSim(klampt.sim.simulation.SimpleSimulator):
+    """
+    This is a class for Simulations.
+    """
+    def __init__(self, wm):
+        klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
+
+class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class.
     """
@@ -189,15 +230,18 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         #Simulator creation and activation comes at the very end
-        self.sim = klampt.Simulator(self.world)
+        self.sim = ExoSim(self.world)
         self.sim.setGravity([0, 0, -9.8])
         klampt.vis.run()
         self.idlefunc()
 
     def worldSetup(self, filepath_dict):
         klampt.vis.add("world", self.world)
+
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
+
+        self.poser = klampt.robotsim.RobotPoser(self.robot)
         print("Robot number of links: ", self.robot.numLinks())
         # The core robot has 5 links, indexed 0 through 4.
 
@@ -210,6 +254,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         print("Control rate: ", self.XOS.controlRate())
 
         #This has to come after robot creation
+
         klampt.vis.add("X001", self.robot)
 
 
@@ -305,4 +350,4 @@ MAIN LOOP
 if __name__ == "__main__":
     xo_parts = configLoader()
     print("xo_parts", xo_parts)
-    exo_sim_test = ExoSimGUI(xo_parts)
+    exo_sim_test = ExoSimAV(xo_parts)
