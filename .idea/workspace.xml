@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/LA0.stl" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00138" summary="tried to set a torque">
-      <created>1678298865647</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1678298865647</updated>
     </task>
     <task id="LOCAL-00139" summary="refactored slightly">
       <created>1678303567934</created>
@@ -477,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678834178268</updated>
     </task>
-    <option name="localTasksCounter" value="187" />
+    <task id="LOCAL-00187" summary="building a csv to read muscle attachments">
+      <created>1678836852120</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1678836852120</updated>
+    </task>
+    <option name="localTasksCounter" value="188" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated core bot and shoulder bot definitions" />
     <MESSAGE value="trying to get the robot to load multiple parts" />
     <MESSAGE value="rearranging some of the transforms" />
     <MESSAGE value="made a whole big robot thing" />
@@ -518,6 +517,7 @@
     <MESSAGE value="updated robot configuration" />
     <MESSAGE value="mounting the other robot elements" />
     <MESSAGE value="just gonna add physics even though there's too many things on the screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="just gonna add physics even though there's too many things on the screen" />
+    <MESSAGE value="building a csv to read muscle attachments" />
+    <option name="LAST_COMMIT_MESSAGE" value="building a csv to read muscle attachments" />
   </component>
 </project>

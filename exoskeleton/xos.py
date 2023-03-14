@@ -51,7 +51,8 @@ X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
 """
 PARAMETER DICTIONARIES
 """
-TEST_MUSCLE = {"link_a": None,
+TEST_MUSCLE = {"name": None,
+               "link_a": None,
                "link_b": None,
                "transform_a" : 0,
                "transform_b": 0,
@@ -223,9 +224,15 @@ class ExoController(klampt.control.OmniRobotInterface):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-    @classmethod
-    def getActuators(self):
-        return self.actuators
+
+    def muscleLoader(self, filepath):
+        """
+        Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
+        assigns them to the robot model.
+        """
+        with open(filepath) as fn:
+
+
 
     def idle(self):
         self.setPosition(self.target)
@@ -355,23 +362,28 @@ FUNCTION DEFINITIONS
 def configLoader():
     print("Loading config.txt...")
     with open("config.txt") as fn:
-        print("Loading...", fn.readline().rstrip())
+        print("Loading core components...", fn.readline().rstrip())
         core = fn.readline().rstrip()
-        print("Loading...", fn.readline().rstrip())
+        print("Loading right arm...", fn.readline().rstrip())
         rightarm = fn.readline().rstrip()
-        print("Loading...", fn.readline().rstrip())
+        print("Loading left arm...", fn.readline().rstrip())
         leftarm = fn.readline().rstrip()
-        print("Loading...", fn.readline().rstrip())
+        print("Loading right leg...", fn.readline().rstrip())
         rightleg = fn.readline().rstrip()
-        print("Loading...", fn.readline().rstrip())
+        print("Loading left leg...", fn.readline().rstrip())
         leftleg = fn.readline().rstrip()
+        print("Loading muscle attachments...", fn.readline().rstrip())
+        attachments = fn.readline().rstrip()
 
-        components = {"core": core,
+
+        config = {"core": core,
                       "rightarm": rightarm,
                       "leftarm": leftarm,
                       "rightleg": rightleg,
-                      "leftleg": leftleg}
-        return components
+                      "leftleg": leftleg,
+                      "attachments": attachments}
+
+        return config
 
 
 """
