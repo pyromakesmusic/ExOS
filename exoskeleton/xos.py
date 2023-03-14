@@ -28,9 +28,18 @@ import klampt.model.create.primitives as kmcp # This is where the box is
 """
 MATRIX DATA
 """
-NULL_MATRIX = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+NULL_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
 NULL_ORIGIN = [0, 0, 0]
 NULL_TRANSFORM = (NULL_MATRIX, NULL_ORIGIN)
+
+LEFTARM_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
+LEFTARM_ORIGIN = [0, 0, 0]
+RIGHTARM_MATRIX =[1, 0, 0, 0, 1, 0, 0, 0, 1]
+RIGHTARM_ORIGIN = [0, 0, 0]
+LEFTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
+LEFTLEG_ORIGIN = [0, 0, 0]
+RIGHTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
+RIGHTLEG_ORIGIN = [0, 0, 0]
 
 IDENTITY_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -118,11 +127,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
         """
-        self.rightarm = self.world.loadRobot(filepath_dict["rightarm"])
-        self.world.robot(0)
-        self.leftarm = self.world.loadRobot(filepath_dict["leftarm"])
-        self.rightleg = self.world.loadRobot(filepath_dict["rightleg"])
-        self.leftleg = self.world.loadRobot(filepath_dict["leftleg"])
+
+        self.robot.mount(2, self.world.loadRobot(filepath_dict["leftarm"]), LEFTARM_MATRIX, LEFTARM_ORIGIN)
+        self.robot.mount(2, self.world.loadRobot(filepath_dict["rightarm"]), RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
+        self.robot.mount(4, self.world.loadRobot(filepath_dict["leftleg"]), LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
+        self.robot.mount(4, self.world.loadRobot(filepath_dict["rightleg"]), RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
 
         print("Robot Name:", self.robot.getName())
 
@@ -207,6 +216,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     def __init__(self, wm):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
+
+        self.dt = 1
+
 
 class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     """
