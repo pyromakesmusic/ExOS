@@ -125,14 +125,26 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
 
         leftarm = self.world.loadRobot(filepath_dict["leftarm"])
+        leftarm.setName("leftarm")
         rightarm = self.world.loadRobot(filepath_dict["rightarm"])
+        rightarm.setName("rightarm")
         leftleg = self.world.loadRobot(filepath_dict["leftleg"])
+        leftleg.setName("leftleg")
         rightleg = self.world.loadRobot(filepath_dict["rightleg"])
+        rightleg.setName("rightleg")
 
-        self.robot.mount(0, leftarm, LEFTARM_MATRIX, LEFTARM_ORIGIN)
-        self.robot.mount(0, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
-        self.robot.mount(0, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
-        self.robot.mount(0, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
+        self.robot.mount(2, leftarm, LEFTARM_MATRIX, LEFTARM_ORIGIN)
+        self.robot.mount(2, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
+        self.robot.mount(4, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
+        self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
+
+        for x in range(self.world.numRobots()):
+            print(x, "Is a Robot")
+            print("name: ", self.world.getName(x))
+
+        for x in range(self.world.numIDs()):
+            print(x, "is an ID")
+            print(self.world.getName(x))
 
 
 
@@ -230,27 +242,20 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
 class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     """
-    GUI class.
+    GUI class, contains visualization options and is usually where the simulator will be called.
     """
     def __init__(self, filepath):
+
+
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
 
         #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
-
-
-        #Simulator parameters
-
-
         self.plan = None
         self.trajectory = None
         self.actuators = None
 
         self.worldSetup(filepath)
-
-
-
-
 
         #Simulator creation and activation comes at the very end
         self.sim = ExoSim(self.world)
@@ -259,6 +264,9 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         self.idlefunc()
 
     def worldSetup(self, filepath_dict):
+        """
+        Sets up the world for the simulation.
+        """
         klampt.vis.add("world", self.world)
 
         self.world.loadRobot(filepath_dict["core"])
