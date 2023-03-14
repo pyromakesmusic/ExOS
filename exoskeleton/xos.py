@@ -252,7 +252,9 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         for x in range(item.numIDs()):
             print("Link", x, "geometry: ", item.geometry(x))
             print("Link", x, "appearance: ", item.appearance(x))
-            item.appearance(x).setDraw(2, True)
+            item.appearance(x).setDraw(2, True) # Makes edges visible
+            item.appearance(x).setDraw(4, True) # I believe this should make edges glow
+            item.appearance(x).setColor(2, 1, 0, 0, 1) # Makes edges red, something about the surface normals is not right but it's fixable
 
 
     """
