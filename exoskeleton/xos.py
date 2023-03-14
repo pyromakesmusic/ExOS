@@ -128,17 +128,20 @@ class ExoController(klampt.control.OmniRobotInterface):
         rightarm = self.world.loadRobot(filepath_dict["rightarm"])
         leftleg = self.world.loadRobot(filepath_dict["leftleg"])
         rightleg = self.world.loadRobot(filepath_dict["rightleg"])
-        self.robot.mount(2, leftarm, LEFTARM_MATRIX, LEFTARM_ORIGIN)
-        self.robot.mount(2, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
-        self.robot.mount(4, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
-        self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
 
-        self.world.remove(rightleg)
+        self.robot.mount(0, leftarm, LEFTARM_MATRIX, LEFTARM_ORIGIN)
+        self.robot.mount(0, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
+        self.robot.mount(0, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
+        self.robot.mount(0, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
 
 
-        print("Number of robots: ", self.world.numIDs)
 
-        print("Robot Name:", self.robot.getName())
+        print("Here is some test information: ", leftarm)
+        print("here is the robot's name", self.robot.name)
+        print("Here is a subrobot", leftarm)
+
+
+        print("Number of IDs//: ", self.world.numIDs())
 
     def sensedPosition(self):
         return self.klamptModel().getDOFPosition()
