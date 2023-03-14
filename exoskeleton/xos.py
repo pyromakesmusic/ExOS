@@ -48,7 +48,8 @@ TEST_MUSCLE = {"link_a": None,
                "pressure": 0,
                "weave_length": 1,
                "turns": 5,
-               "displacement": 0}
+               "displacement": 0,
+               "geometry": None}
 
 """
 GEOMETRIES
@@ -75,6 +76,8 @@ class Muscle:
         self.turns = config_dict["turns"] # Constant
         self.weave_length = config_dict["weave_length"] # Constant?
         self.displacement = config_dict["displacement"] # Dependent variable
+        self.appearance = config_dict["appearance"]
+        self.geometry = klampt.GeometricPrimitive(type="Segment", properties=[self.transform_a, self.transform_b])
 
     def updatePressure(self):
         """
