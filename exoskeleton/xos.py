@@ -32,14 +32,18 @@ NULL_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
 NULL_ORIGIN = [0, 0, 0]
 NULL_TRANSFORM = (NULL_MATRIX, NULL_ORIGIN)
 
+
+"""
+LIMB ATTACHMENT POINTS
+"""
 LEFTARM_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-LEFTARM_ORIGIN = [0, 0, 0]
-RIGHTARM_MATRIX =[1, 0, 0, 0, 1, 0, 0, 0, 1]
-RIGHTARM_ORIGIN = [0, 0, 0]
+LEFTARM_ORIGIN = [1.5, 1.5, 2.5]
+RIGHTARM_MATRIX =[1, 0, 0, 0, -1, 0, 0, 0, 1]
+RIGHTARM_ORIGIN = [1.5, -1.5, 2.5]
 LEFTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-LEFTLEG_ORIGIN = [0, 0, 0]
+LEFTLEG_ORIGIN = [1.2, -1, -1.5]
 RIGHTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-RIGHTLEG_ORIGIN = [0, 0, 0]
+RIGHTLEG_ORIGIN = [-1.2, -1, -1.5]
 
 IDENTITY_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -112,14 +116,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.world = world
         self.robot = robotmodel
 
-        # Just creating these now so we can define methods using them.
-        self.sim = None
-        self.actuators = {"bicep"}
-        self.rightarm = None
-        self.leftarm = None
-        self.rightleg = None
-        self.leftleg = None
-
         # This is where we actually load in the subRobots
         self.botAssembly(filepath_dict)
 
@@ -128,10 +124,17 @@ class ExoController(klampt.control.OmniRobotInterface):
         Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
         """
 
-        self.robot.mount(2, self.world.loadRobot(filepath_dict["leftarm"]), LEFTARM_MATRIX, LEFTARM_ORIGIN)
-        self.robot.mount(2, self.world.loadRobot(filepath_dict["rightarm"]), RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
-        self.robot.mount(4, self.world.loadRobot(filepath_dict["leftleg"]), LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
-        self.robot.mount(4, self.world.loadRobot(filepath_dict["rightleg"]), RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
+        #self.robot.mount(2, self.world.loadRobot(filepath_dict["leftarm"]), LEFTARM_MATRIX, LEFTARM_ORIGIN)
+        #self.robot.mount(2, self.world.loadRobot(filepath_dict["rightarm"]), RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
+        #self.robot.mount(4, self.world.loadRobot(filepath_dict["leftleg"]), LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
+        print("Object type: ", filepath_dict["rightleg"])
+        rightleg = self.world.loadRobot(filepath_dict["rightleg"])
+        self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
+
+        self.world.remove(rightleg)
+
+
+        print("Number of robots: ", self.world.numIDs)
 
         print("Robot Name:", self.robot.getName())
 

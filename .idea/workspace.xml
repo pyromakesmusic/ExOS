@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/LA0.stl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00134" summary="finished geometry">
-      <created>1676784584387</created>
-      <option name="number" value="00134" />
-      <option name="presentableId" value="LOCAL-00134" />
-      <option name="project" value="LOCAL" />
-      <updated>1676784584387</updated>
     </task>
     <task id="LOCAL-00135" summary="messing with simulator module">
       <created>1678217829907</created>
@@ -477,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678773537625</updated>
     </task>
-    <option name="localTasksCounter" value="183" />
+    <task id="LOCAL-00183" summary="have mounted the subrobots a little bit">
+      <created>1678830022333</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1678830022333</updated>
+    </task>
+    <option name="localTasksCounter" value="184" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated joint configurations" />
     <MESSAGE value="updated config file" />
     <MESSAGE value="cleaned up file structure a little bit" />
     <MESSAGE value="exodia style" />
@@ -518,6 +520,7 @@
     <MESSAGE value="updated colors a little bit" />
     <MESSAGE value="added a test muscle dictionary, might have close to enough structure to start visualizing and simulating with it soon" />
     <MESSAGE value="the muscle has an associated appearance and geometry now" />
-    <option name="LAST_COMMIT_MESSAGE" value="the muscle has an associated appearance and geometry now" />
+    <MESSAGE value="have mounted the subrobots a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="have mounted the subrobots a little bit" />
   </component>
 </project>
