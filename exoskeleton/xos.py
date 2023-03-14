@@ -41,9 +41,9 @@ LEFTARM_ORIGIN = [1.5, 1.5, 2.5]
 RIGHTARM_MATRIX =[1, 0, 0, 0, -1, 0, 0, 0, 1]
 RIGHTARM_ORIGIN = [1.5, -1.5, 2.5]
 LEFTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-LEFTLEG_ORIGIN = [1.2, -1, -1.5]
+LEFTLEG_ORIGIN = [1.2, -.5, -1.5]
 RIGHTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-RIGHTLEG_ORIGIN = [-1.2, -1, -1.5]
+RIGHTLEG_ORIGIN = [-1.2, -.5, -1.5]
 
 IDENTITY_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -124,11 +124,13 @@ class ExoController(klampt.control.OmniRobotInterface):
         Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
         """
 
-        #self.robot.mount(2, self.world.loadRobot(filepath_dict["leftarm"]), LEFTARM_MATRIX, LEFTARM_ORIGIN)
-        #self.robot.mount(2, self.world.loadRobot(filepath_dict["rightarm"]), RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
-        #self.robot.mount(4, self.world.loadRobot(filepath_dict["leftleg"]), LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
-        print("Object type: ", filepath_dict["rightleg"])
+        leftarm = self.world.loadRobot(filepath_dict["leftarm"])
+        rightarm = self.world.loadRobot(filepath_dict["rightarm"])
+        leftleg = self.world.loadRobot(filepath_dict["leftleg"])
         rightleg = self.world.loadRobot(filepath_dict["rightleg"])
+        self.robot.mount(2, leftarm, LEFTARM_MATRIX, LEFTARM_ORIGIN)
+        self.robot.mount(2, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
+        self.robot.mount(4, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
         self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
 
         self.world.remove(rightleg)
