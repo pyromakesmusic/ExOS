@@ -76,10 +76,10 @@ class Muscle:
         self.turns = config_dict["turns"] # Constant
         self.weave_length = config_dict["weave_length"] # Constant?
         self.displacement = config_dict["displacement"] # Dependent variable
-        self.appearance = config_dict["appearance"]
+        self.appearance = klampt.Appearance()
         self.geometry = klampt.GeometricPrimitive(type="Segment", properties=[self.transform_a, self.transform_b])
 
-    def updatePressure(self):
+    def updateLoop(self, pressurecommand=None):
         """
         This will be the lowest level implementation where the parameters of a muscle are changed, particularly force and pressure.
         """

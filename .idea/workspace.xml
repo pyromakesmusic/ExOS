@@ -5,69 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0000.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0006.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0007.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0008.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0009.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0010.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0011.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0012.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0013.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0014.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0015.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0016.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0017.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0018.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0019.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0020.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0021.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0022.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0023.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0024.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0025.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0026.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0027.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0028.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0029.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0030.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0031.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0032.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0033.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0034.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0035.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0036.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0037.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0038.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0039.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0040.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0041.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0042.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0043.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0044.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0045.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0046.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0047.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0048.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0049.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0050.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0051.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0052.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0053.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0054.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0055.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0056.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0057.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0058.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0059.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0060.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0061.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/image0062.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -194,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00133" summary="finished geometry">
-      <created>1676665327276</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1676665327276</updated>
     </task>
     <task id="LOCAL-00134" summary="finished geometry">
       <created>1676784584387</created>
@@ -538,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678769157925</updated>
     </task>
-    <option name="localTasksCounter" value="182" />
+    <task id="LOCAL-00182" summary="the muscle has an associated appearance and geometry now">
+      <created>1678773537623</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1678773537625</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -554,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added torso bot" />
     <MESSAGE value="updated joint configurations" />
     <MESSAGE value="updated config file" />
     <MESSAGE value="cleaned up file structure a little bit" />
@@ -579,6 +515,7 @@
     <MESSAGE value="maybe it won't always simulate?" />
     <MESSAGE value="updated colors a little bit" />
     <MESSAGE value="added a test muscle dictionary, might have close to enough structure to start visualizing and simulating with it soon" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a test muscle dictionary, might have close to enough structure to start visualizing and simulating with it soon" />
+    <MESSAGE value="the muscle has an associated appearance and geometry now" />
+    <option name="LAST_COMMIT_MESSAGE" value="the muscle has an associated appearance and geometry now" />
   </component>
 </project>
