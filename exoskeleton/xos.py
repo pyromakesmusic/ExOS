@@ -44,14 +44,14 @@ CLASS DEFINITIONS
 """
 class Muscle:
     """
-    Refers to exactly one McKibben muscle.
+    Refers to exactly one McKibben muscle, with all associated attributes.
     """
     def __init__(self, config_dict):
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
-        self.transform_a = config_dict["transform_a"]
-        self.transform_b = config_dict["transform_b"]
-        self.label_a = config_dict["label_a"]
-        self.label_b = config_dict["label_b"]
+        self.transform_a = config_dict["transform_a"] # One 3D vector denoting a point in space
+        self.transform_b = config_dict["transform_b"] # Another 3D vector
+        self.label_a = config_dict["label_a"] # Proximal, superior, lateral, etc.
+        self.label_b = config_dict["label_b"] # Distal, inferior, medial, etc.
         self.force = config_dict["force"]
         self.pressure = config_dict["pressure"]
         self.turns = config_dict["turns"]
@@ -65,7 +65,7 @@ class MuscleGroup:
         self.muscles = muscles
 class ExoController(klampt.control.OmniRobotInterface):
     """
-    This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module.
+    This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module, and before that probably needs to be broken up
     """
     def __init__(self, robotmodel,  world, filepath_dict):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
@@ -140,6 +140,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def motionPlanner(self, world):
         self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
     def randomTrajectoryTest(self):
+        # This populates a random trajectory for the robot to execute.
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
@@ -211,7 +212,7 @@ class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         print("viewport", self.viewport)
 
-        self.viewport.fit([0,0,0],25)
+        self.viewport.fit([0,0,-5],25)
         self.drawEdges(self.world)
 
     def idlefunc(self):
