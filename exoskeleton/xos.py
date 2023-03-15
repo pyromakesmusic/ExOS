@@ -147,9 +147,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         # Now we load in all the muscles, accessible as a dataframe
         self.muscles = self.muscleLoader(config_data["attachments"])
 
-        print(self.muscles.columns)
-        print(self.muscles.index)
-        print(self.muscles.keys)
 
 
     def botAssembly(self, filepath_dict):
@@ -342,11 +339,14 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.add("X001", self.robot)
 
-
-        klampt.vis.setWindowTitle("X001  Test")
-
-        self.viewport.fit([0,0,-5],25)
         self.drawEdges()
+        klampt.vis.setWindowTitle("X001  Test")
+        self.viewport = klampt.vis.getViewport()
+        self.viewport.fit([0,0,-5], 25)
+        klampt.vis.run()
+        for x in range(1000):
+            self.sim.simulate(.1)
+
 
     def idlefunc(self):
         pass
