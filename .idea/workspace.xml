@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00145" summary="changed some files around">
-      <created>1678339332965</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1678339332965</updated>
-    </task>
     <task id="LOCAL-00146" summary="changed some files around">
       <created>1678339354062</created>
       <option name="number" value="00146" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678906380271</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="no visible bugs, but it's still not doing the behavior i want for some reason">
+      <created>1678909027579</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1678909027579</updated>
+    </task>
+    <option name="localTasksCounter" value="195" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated robot size" />
     <MESSAGE value="added scapular meshes" />
     <MESSAGE value="added toe and foot meshes" />
     <MESSAGE value="updated robot, need to mount" />
@@ -516,6 +515,7 @@
     <MESSAGE value="made the bug into a better bug" />
     <MESSAGE value="indexing or addressing isn't working correctly" />
     <MESSAGE value="fixed the sizing" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the sizing" />
+    <MESSAGE value="no visible bugs, but it's still not doing the behavior i want for some reason" />
+    <option name="LAST_COMMIT_MESSAGE" value="no visible bugs, but it's still not doing the behavior i want for some reason" />
   </component>
 </project>

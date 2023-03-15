@@ -95,25 +95,6 @@ class Muscle(klampt.sim.simulation.ActuatorEmulator):
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
 
 
-        # self.link_a = config_df["link_a"]
-        # self.link_b = config_df["link_b"]
-        #
-        # self.transform_a = config_df["transform_a"] # One 3D vector (maybe 4d?) denoting a point on a robot link
-        # self.transform_b = config_df["transform_b"] # Another 3D vector (maybe 4d?) denoting a point on a robot link
-        # self.label_a = config_df["label_a"] # Proximal, superior, lateral, etc. Constant.
-        # self.label_b = config_df["label_b"] # Distal, inferior, medial, etc. Constant.
-        # self.turns = config_df["turns"]
-        # self.r_0 = config_df["r_0"]
-        # self.l_0 = config_df["l_0"]
-        #
-        # self.force = config_df.force # Dependent variable
-        # self.pressure = config_df.pressure # Independent variable
-        # self.turns = config_df.turns # Constant
-        # self.weave_length = config_df.weave_length # Constant?
-        # self.displacement = config_df.displacement # Dependent variable
-        # self.appearance = klampt.Appearance()
-        # self.geometry = klampt.GeometricPrimitive(type="Segment", properties=[self.transform_a, self.transform_b])
-
     def updateLoop(self, pressurecommand=None):
         """
         This will be the lowest level implementation where the parameters of a muscle are changed, particularly force and pressure.
@@ -295,6 +276,25 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.dt = 1
 
 
+        self.simLoop(1000)
+
+    def simLoop(self, cycles):
+        """
+        Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
+        """
+        wm = self.world
+        klampt.vis.run()
+        for x in range(cycles):
+            self.sim.simulate(.1)
+            self.XOS.setTorque([1,2,3,4,5,6,7,8,9])
+            force_target = (x % wm.numIDs())
+            body = self.body(wm.robotlink(0,x))
+            body.applyForceAtPoint((2,2,2),(1,1,1))
+            self.simulate(.1)
+            self.updateWorld()
+
+
+
 
 
 class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
@@ -321,13 +321,12 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-        klampt.vis.run()
-        self.idlefunc()
 # Initialization
     def worldSetup(self, filepath_dict):
         """
-        Sets up the world for the simulation.
+        Sets up the world for the simulation, and initializes the simulation.
         """
+        self.sim = ExoSim(self.world)
         klampt.vis.add("world", self.world)
 
         self.world.loadRobot(filepath_dict["core"])
@@ -339,7 +338,7 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
             ExoController(self.robot, self.world, filepath_dict, ))
-        self.sim = ExoSim(self.world)
+
 
         #This has to come after robot creation
 
@@ -349,7 +348,6 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
-        self.simLoop(1000)
 
     def idlefunc(self):
         pass
@@ -357,19 +355,6 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Simulation Methods
     """
-    def simLoop(self, cycles):
-        """
-        Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
-        """
-        klampt.vis.run()
-        for x in range(cycles):
-            self.sim.simulate(.1)
-            self.XOS.setTorque([1,2,3,4,5,6,7,8,9])
-            force_target = (x % self.world.numIDs())
-            body = self.sim.body(force_target)
-            body.applyForceAtPoint((2,2,2),(1,1,1))
-            self.sim.simulate(.1)
-            self.sim.updateWorld()
 
     """
     Test Methods
@@ -401,8 +386,6 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         """
         wm = self.world
         for x in range(wm.numIDs()):
-            print("Link", x, "geometry: ", wm.geometry(x))
-            print("Link", x, "appearance: ", wm.appearance(x))
             wm.appearance(x).setDraw(2, True) # Makes edges visible
             wm.appearance(x).setDraw(4, True) # I believe this should make edges glow
             wm.appearance(x).setColor(2, 1, 1, 1, 1) # Makes edges white, something about the surface normals is not right but it's fixable
