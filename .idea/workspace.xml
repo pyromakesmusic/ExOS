@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00146" summary="changed some files around">
-      <created>1678339354062</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1678339354062</updated>
-    </task>
     <task id="LOCAL-00147" summary="updated robot definition and meshes">
       <created>1678424563092</created>
       <option name="number" value="00147" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678909027579</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="everything disappeared when i applied forces, maybe this is progress? try adding terrain">
+      <created>1678909656882</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1678909656882</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added scapular meshes" />
     <MESSAGE value="added toe and foot meshes" />
     <MESSAGE value="updated robot, need to mount" />
     <MESSAGE value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
@@ -516,6 +515,7 @@
     <MESSAGE value="indexing or addressing isn't working correctly" />
     <MESSAGE value="fixed the sizing" />
     <MESSAGE value="no visible bugs, but it's still not doing the behavior i want for some reason" />
-    <option name="LAST_COMMIT_MESSAGE" value="no visible bugs, but it's still not doing the behavior i want for some reason" />
+    <MESSAGE value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
+    <option name="LAST_COMMIT_MESSAGE" value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
   </component>
 </project>

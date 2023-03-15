@@ -126,7 +126,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.botAssembly(config_data)
 
         # Now we load in all the muscles, accessible as a dataframe
-        self.muscles = self.muscleLoader(config_data["attachments"])
+        #self.muscles = self.muscleLoader(config_data["attachments"])
 
 
 
@@ -276,22 +276,19 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.dt = 1
 
 
-        self.simLoop(1000)
+        #self.simLoop(1000)
 
     def simLoop(self, cycles):
         """
         Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
         """
         wm = self.world
-        klampt.vis.run()
-        for x in range(cycles):
-            self.sim.simulate(.1)
-            self.XOS.setTorque([1,2,3,4,5,6,7,8,9])
-            force_target = (x % wm.numIDs())
-            body = self.body(wm.robotlink(0,x))
-            body.applyForceAtPoint((2,2,2),(1,1,1))
-            self.simulate(.1)
-            self.updateWorld()
+        #klampt.vis.run()
+        # for x in range(cycles):
+        #     body = self.body(wm.robotlink(0,x))
+        #     body.applyForceAtPoint((2,2,2),(1,1,1))
+        #     self.simulate(.1)
+        #     #self.updateWorld()
 
 
 
@@ -331,23 +328,21 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
+        klampt.vis.add("X001", self.robot)
 
-        self.poser = klampt.robotsim.RobotPoser(self.robot)
-        # The core robot has 5 links, indexed 0 through 4.
-
-
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
-            ExoController(self.robot, self.world, filepath_dict, ))
+        # self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
+        #     ExoController(self.robot, self.world, filepath_dict))
 
 
         #This has to come after robot creation
 
-        klampt.vis.add("X001", self.robot)
 
         self.drawEdges()
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
-        self.viewport.fit([0,0,-5], 25)
+        #self.viewport.fit([0,0,-5], 25)
+
+        klampt.vis.run()
 
     def idlefunc(self):
         pass
