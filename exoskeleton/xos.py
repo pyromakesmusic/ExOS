@@ -95,24 +95,24 @@ class Muscle:
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
 
 
-        self.link_a = config_df["link_a"]
-        self.link_b = config_df["link_b"]
-
-        self.transform_a = config_df["transform_a"] # One 3D vector (maybe 4d?) denoting a point on a robot link
-        self.transform_b = config_df["transform_b"] # Another 3D vector (maybe 4d?) denoting a point on a robot link
-        self.label_a = config_df["label_a"] # Proximal, superior, lateral, etc. Constant.
-        self.label_b = config_df["label_b"] # Distal, inferior, medial, etc. Constant.
-        self.turns = config_df["turns"]
-        self.r_0 = config_df["r_0"]
-        self.l_0 = config_df["l_0"]
-
-        self.force = config_df.force # Dependent variable
-        self.pressure = config_df.pressure # Independent variable
-        self.turns = config_df.turns # Constant
-        self.weave_length = config_df.weave_length # Constant?
-        self.displacement = config_df.displacement # Dependent variable
-        self.appearance = klampt.Appearance()
-        self.geometry = klampt.GeometricPrimitive(type="Segment", properties=[self.transform_a, self.transform_b])
+        # self.link_a = config_df["link_a"]
+        # self.link_b = config_df["link_b"]
+        #
+        # self.transform_a = config_df["transform_a"] # One 3D vector (maybe 4d?) denoting a point on a robot link
+        # self.transform_b = config_df["transform_b"] # Another 3D vector (maybe 4d?) denoting a point on a robot link
+        # self.label_a = config_df["label_a"] # Proximal, superior, lateral, etc. Constant.
+        # self.label_b = config_df["label_b"] # Distal, inferior, medial, etc. Constant.
+        # self.turns = config_df["turns"]
+        # self.r_0 = config_df["r_0"]
+        # self.l_0 = config_df["l_0"]
+        #
+        # self.force = config_df.force # Dependent variable
+        # self.pressure = config_df.pressure # Independent variable
+        # self.turns = config_df.turns # Constant
+        # self.weave_length = config_df.weave_length # Constant?
+        # self.displacement = config_df.displacement # Dependent variable
+        # self.appearance = klampt.Appearance()
+        # self.geometry = klampt.GeometricPrimitive(type="Segment", properties=[self.transform_a, self.transform_b])
 
     def updateLoop(self, pressurecommand=None):
         """
@@ -145,8 +145,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.botAssembly(config_data)
 
         # Now we load in all the muscles, accessible as a dataframe
-        self.muscle_fp = config_data["attachments"]
-        self.muscles = self.muscleLoader(self.muscle_fp)
+        self.muscles = self.muscleLoader(config_data["attachments"])
 
         print(self.muscles.columns)
         print(self.muscles.index)
@@ -171,6 +170,27 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.robot.mount(2, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
         self.robot.mount(4, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
         self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
+
+
+    def muscleLoader(self, filepath):
+        """
+        Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
+        assigns them to the robot model.
+        """
+
+        blank1 = None
+        blank2 = None # I'm just using these to make a set so Python doesn't think it's a dict
+
+        muscles = {blank1, blank2}
+
+        with open(filepath) as fn:
+            attachments = pd.read_csv(fn, sep=",", header=0, index_col="name")
+        # Need to convert each row to a dictionary with one element and create a Muscle based on that
+        for x in attachments.keys():
+            attachdict = attachments[x].to_dict()
+            muscles.add(Muscle(attachdict))
+        # We use the dictionary elements to instantiate the muscles, we use the dataframe to store them and their parameters
+        return muscles
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -264,22 +284,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
 
-    def muscleLoader(self, filepath):
-        """
-        Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
-        assigns them to the robot model.
-        """
-        with open(filepath) as fn:
-            attachments = pd.read_csv(fn, sep=",", header=0, index_col="name")
-
-        print(attachments)
-
-        muscle_objects = pd.Series()
-
-        for index in attachments.index:
-            muscle_objects[index] = Muscle(attachments[index])
-        return attachments
-
 
     def idle(self):
         self.setPosition(self.target)
@@ -331,11 +335,8 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
-            ExoController(self.robot, self.world, filepath_dict))
+            ExoController(self.robot, self.world, filepath_dict, ))
 
-
-        print(". . .")
-        print("Control rate: ", self.XOS.controlRate())
 
         #This has to come after robot creation
 
@@ -343,9 +344,6 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         klampt.vis.setWindowTitle("X001  Test")
-
-        self.viewport = klampt.vis.getViewport()
-        print("viewport", self.viewport)
 
         self.viewport.fit([0,0,-5],25)
         self.drawEdges()

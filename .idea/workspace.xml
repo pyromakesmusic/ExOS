@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00143" summary="moving just the elbow now, and have identified the link with the proper configuration">
-      <created>1678339136792</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1678339136792</updated>
-    </task>
     <task id="LOCAL-00144" summary="moving just the elbow now, and have identified the link with the proper configuration">
       <created>1678339158094</created>
       <option name="number" value="00144" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678849604302</updated>
     </task>
-    <option name="localTasksCounter" value="192" />
+    <task id="LOCAL-00192" summary="indexing or addressing isn't working correctly">
+      <created>1678857911294</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1678857911294</updated>
+    </task>
+    <option name="localTasksCounter" value="193" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating the muscle class" />
     <MESSAGE value="updating robot definitions to be in scale with each other" />
     <MESSAGE value="updated robot size" />
     <MESSAGE value="added scapular meshes" />
@@ -516,6 +515,7 @@
     <MESSAGE value="now create a dictionary of muscles? or similar, some stored instance attribute with the same data structure as we used in the attachments file" />
     <MESSAGE value="introduced a bug, fix it when we wake up" />
     <MESSAGE value="made the bug into a better bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="made the bug into a better bug" />
+    <MESSAGE value="indexing or addressing isn't working correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="indexing or addressing isn't working correctly" />
   </component>
 </project>
