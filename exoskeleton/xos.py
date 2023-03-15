@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import *
 
 
 import numpy as np
+import tkinter as tk
+import pandas as pd
 import random
 
 import klampt
@@ -18,6 +20,7 @@ import klampt.io.resource # For easy resource access
 import klampt.model.subrobot # Defines the subrobot
 from klampt.vis import colorize
 from klampt.model import collide
+import klampt.math.vectorops as kmv # This is for cross products
 from klampt.model.trajectory import RobotTrajectory # Trajectory
 from klampt.control.utils import TimedLooper
 from klampt.plan import robotplanning, robotcspace # Configuration space
@@ -110,6 +113,8 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module, and before that probably needs to be broken up
     """
+
+    # Initialization
     def __init__(self, robotmodel,  world, filepath_dict):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
@@ -119,6 +124,9 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         # This is where we actually load in the subRobots
         self.botAssembly(filepath_dict)
+
+        self.muscleLoader(filepath_dict["attachments"])
+
 
     def botAssembly(self, filepath_dict):
         """
@@ -139,23 +147,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.robot.mount(4, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
         self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
 
-        for x in range(self.world.numRobots()):
-            print(x, "Is a Robot")
-            print("name: ", self.world.getName(x))
-
-        for x in range(self.world.numIDs()):
-            print(x, "is an ID")
-            print(self.world.getName(x))
-
-
-
-        print("Here is some test information: ", leftarm)
-        print("here is the robot's name", self.robot.name)
-        print("Here is a subrobot", leftarm)
-
-
-        print("Number of IDs//: ", self.world.numIDs())
-
+    # Control and Kinematics
     def sensedPosition(self):
         return self.klamptModel().getDOFPosition()
 
@@ -166,7 +158,13 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Takes a list of torque inputs and sends them to controllers. Maybe one controller should control multiple actuators.
         Kind of an architectural decision.
+        ==================================
+        UPDATE: Okay so I think I'm ready to implement this method. Torque is equal to the cross product of the 3-D force
+        vector (provided us by the McKibben muscle parameters and perhaps a custom method) and the distance from the fulcrum at which the distance is applied
+        (constant, determined with what should be a single distance query relative to the transform - this can be optimized)
         """
+        force = (2, 2, 2)
+        distance = (0, 1, 0)
 
         return torque
 
@@ -193,7 +191,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         while self.shutdown_flag == False:
             self.idle()
 
-
+    # Editing functions
     def geomEdit(self,n, fn):
         """
         Opens a geometry editor for the input arguments.
@@ -211,6 +209,26 @@ class ExoController(klampt.control.OmniRobotInterface):
         I think this takes a world and makes a plan (trajectory without time coordinates) to reach a particular config?
         """
         self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
+
+    # Function verification tests
+
+    def diagnostics(self):
+        for x in range(self.world.numRobots()):
+            print(x, "Is a Robot")
+            print("name: ", self.world.getName(x))
+
+        for x in range(self.world.numIDs()):
+            print(x, "is an ID")
+            print(self.world.getName(x))
+
+
+
+        print("Here is some test information: ", leftarm)
+        print("here is the robot's name", self.robot.name)
+        print("Here is a subrobot", leftarm)
+
+
+        print("Number of IDs//: ", self.world.numIDs())
 
     def randomTrajectoryTest(self):
         # This populates a random trajectory for the robot to execute.
@@ -231,7 +249,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         assigns them to the robot model.
         """
         with open(filepath) as fn:
+            attachments = pd.read_csv(fn, sep=",")
 
+        print(attachments)
+        return(attachments)
 
 
     def idle(self):
