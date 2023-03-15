@@ -85,7 +85,7 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
 """
 CLASS DEFINITIONS
 """
-class Muscle:
+class Muscle(klampt.sim.simulation.ActuatorEmulator):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
@@ -196,7 +196,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def controlRate(self):
         return 100
 
-    def setTorque(self, torque):
+    def setTorque(self):
         """
         Takes a list of torque inputs and sends them to controllers. Maybe one controller should control multiple actuators.
         Kind of an architectural decision.
@@ -207,7 +207,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         force = (2, 2, 2)
         distance = (0, 1, 0)
-
+        torque = klampt.math.vectorops.cross(force, distance)
         return torque
 
     def setVelocity(self):
@@ -295,6 +295,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.dt = 1
 
 
+
+
 class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
@@ -309,15 +311,19 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         self.plan = None
         self.trajectory = None
         self.actuators = None
+        self.sim = None
+
+
+
+
 
         self.worldSetup(filepath)
 
         #Simulator creation and activation comes at the very end
-        self.sim = ExoSim(self.world)
         self.sim.setGravity([0, 0, -9.8])
         klampt.vis.run()
         self.idlefunc()
-
+# Initialization
     def worldSetup(self, filepath_dict):
         """
         Sets up the world for the simulation.
@@ -333,7 +339,7 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
             ExoController(self.robot, self.world, filepath_dict, ))
-
+        self.sim = ExoSim(self.world)
 
         #This has to come after robot creation
 
@@ -343,13 +349,27 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
-        klampt.vis.run()
-        for x in range(1000):
-            self.sim.simulate(.1)
-
+        self.simLoop(1000)
 
     def idlefunc(self):
         pass
+
+    """
+    Simulation Methods
+    """
+    def simLoop(self, cycles):
+        """
+        Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
+        """
+        klampt.vis.run()
+        for x in range(cycles):
+            self.sim.simulate(.1)
+            self.XOS.setTorque([1,2,3,4,5,6,7,8,9])
+            force_target = (x % self.world.numIDs())
+            body = self.sim.body(force_target)
+            body.applyForceAtPoint((2,2,2),(1,1,1))
+            self.sim.simulate(.1)
+            self.sim.updateWorld()
 
     """
     Test Methods
