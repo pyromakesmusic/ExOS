@@ -27,6 +27,14 @@ from klampt.plan import robotplanning, robotcspace # Configuration space
 import klampt.model.create.moving_base_robot as kmcmbr
 import klampt.model.create.primitives as kmcp # This is where the box is
 
+"""
+PANDAS CONFIG
+"""
+pd.options.display.width = 0
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
 
 """
 MATRIX DATA
@@ -85,10 +93,19 @@ class Muscle:
     def __init__(self, config_df):
         # assert type(config_dict) == dict, "Sending the wrong type of configuration."
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
-        self.transform_a = config_df.transform_a # One 3D vector (maybe 4d?) denoting a point on a robot link
-        self.transform_b = config_df.transform_b # Another 3D vector (maybe 4d?) denoting a point on a robot link
-        self.label_a = config_df.label_a # Proximal, superior, lateral, etc. Constant.
-        self.label_b = config_df.label_b # Distal, inferior, medial, etc. Constant.
+
+
+        self.link_a = config_df["link_a"]
+        self.link_b = config_df["link_b"]
+
+        self.transform_a = config_df["transform_a"] # One 3D vector (maybe 4d?) denoting a point on a robot link
+        self.transform_b = config_df["transform_b"] # Another 3D vector (maybe 4d?) denoting a point on a robot link
+        self.label_a = config_df["label_a"] # Proximal, superior, lateral, etc. Constant.
+        self.label_b = config_df["label_b"] # Distal, inferior, medial, etc. Constant.
+        self.turns = config_df["turns"]
+        self.r_0 = config_df["r_0"]
+        self.l_0 = config_df["l_0"]
+
         self.force = config_df.force # Dependent variable
         self.pressure = config_df.pressure # Independent variable
         self.turns = config_df.turns # Constant
@@ -259,8 +276,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         muscle_objects = pd.Series()
 
-        for row in attachments:
-            muscle_objects[row] = Muscle(row)
+        for index in attachments.index:
+            muscle_objects[index] = Muscle(attachments[index])
         return attachments
 
 
