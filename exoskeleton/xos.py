@@ -121,11 +121,16 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
+        self.muscles = pd.DataFrame()
 
         # This is where we actually load in the subRobots
         self.botAssembly(filepath_dict)
 
-        self.muscleLoader(filepath_dict["attachments"])
+        # Now we load in all the muscles, accessible as a dataframe
+        self.muscles = self.muscleLoader(filepath_dict["attachments"])
+
+        print(self.muscles.columns)
+        print(self.muscles.index)
 
 
     def botAssembly(self, filepath_dict):
@@ -213,6 +218,9 @@ class ExoController(klampt.control.OmniRobotInterface):
     # Function verification tests
 
     def diagnostics(self):
+        """
+        This is a diagnostic function with verbose output. May eventually be a call for more nested diagnostic subroutines.
+        """
         for x in range(self.world.numRobots()):
             print(x, "Is a Robot")
             print("name: ", self.world.getName(x))
@@ -220,14 +228,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         for x in range(self.world.numIDs()):
             print(x, "is an ID")
             print(self.world.getName(x))
-
-
-
-        print("Here is some test information: ", leftarm)
-        print("here is the robot's name", self.robot.name)
-        print("Here is a subrobot", leftarm)
-
-
+        print("Robot number of links: ", self.robot.numLinks())
         print("Number of IDs//: ", self.world.numIDs())
 
     def randomTrajectoryTest(self):
@@ -249,10 +250,15 @@ class ExoController(klampt.control.OmniRobotInterface):
         assigns them to the robot model.
         """
         with open(filepath) as fn:
-            attachments = pd.read_csv(fn, sep=",")
+            attachments = pd.read_csv(fn, sep=",", header=0, index_col="name")
 
         print(attachments)
-        return(attachments)
+
+        muscle_objects = pd.Series()
+
+        for row in attachments:
+            muscle_objects[row] = Muscle(row)
+        return attachments
 
 
     def idle(self):
@@ -301,7 +307,6 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         self.robot = self.world.robot(0)
 
         self.poser = klampt.robotsim.RobotPoser(self.robot)
-        print("Robot number of links: ", self.robot.numLinks())
         # The core robot has 5 links, indexed 0 through 4.
 
 
@@ -323,7 +328,7 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         print("viewport", self.viewport)
 
         self.viewport.fit([0,0,-5],25)
-        self.drawEdges(self.world)
+        self.drawEdges()
 
     def idlefunc(self):
         pass
@@ -331,10 +336,6 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Test Methods
     """
-    def actuatorTest(self):
-        print("...placeholder...")
-
-
     def animationTest(self):
         """
         Animates the native trajectory.
@@ -356,17 +357,18 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
     Visual Options
     """
 
-    def drawEdges(self, item):
+    def drawEdges(self):
         """
         Currently needs to take the argument self.world, at some point should probably change that
         """
-        for x in range(item.numIDs()):
-            print("Link", x, "geometry: ", item.geometry(x))
-            print("Link", x, "appearance: ", item.appearance(x))
-            item.appearance(x).setDraw(2, True) # Makes edges visible
-            item.appearance(x).setDraw(4, True) # I believe this should make edges glow
-            item.appearance(x).setColor(2, 0, 0, 1, 1) # Makes edges red, something about the surface normals is not right but it's fixable
-            item.appearance(x).setColor(3, 1, .5, .5, .9) # I think this makes the specularity color red
+        wm = self.world
+        for x in range(wm.numIDs()):
+            print("Link", x, "geometry: ", wm.geometry(x))
+            print("Link", x, "appearance: ", wm.appearance(x))
+            wm.appearance(x).setDraw(2, True) # Makes edges visible
+            wm.appearance(x).setDraw(4, True) # I believe this should make edges glow
+            wm.appearance(x).setColor(2, 1, 1, 1, 1) # Makes edges white, something about the surface normals is not right but it's fixable
+            wm.appearance(x).setColor(3, .3, .3, .3, 1) # I think this makes the specularity color red
 
 
     """

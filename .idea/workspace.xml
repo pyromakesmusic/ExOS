@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00140" summary="broke something in the PID talk interface but its okay; still refactoring">
-      <created>1678304498483</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1678304498483</updated>
-    </task>
     <task id="LOCAL-00141" summary="separated out some of the library logic from specific robot logic">
       <created>1678321730417</created>
       <option name="number" value="00141" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678837613529</updated>
     </task>
-    <option name="localTasksCounter" value="189" />
+    <task id="LOCAL-00189" summary="now create a dictionary of muscles? or similar, some stored instance attribute with the same data structure as we used in the attachments file">
+      <created>1678838998327</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1678838998327</updated>
+    </task>
+    <option name="localTasksCounter" value="190" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rearranging some of the transforms" />
     <MESSAGE value="made a whole big robot thing" />
     <MESSAGE value="creating a muscle class" />
     <MESSAGE value="updating the muscle class" />
@@ -516,6 +515,7 @@
     <MESSAGE value="just gonna add physics even though there's too many things on the screen" />
     <MESSAGE value="building a csv to read muscle attachments" />
     <MESSAGE value="adding some more commentary" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding some more commentary" />
+    <MESSAGE value="now create a dictionary of muscles? or similar, some stored instance attribute with the same data structure as we used in the attachments file" />
+    <option name="LAST_COMMIT_MESSAGE" value="now create a dictionary of muscles? or similar, some stored instance attribute with the same data structure as we used in the attachments file" />
   </component>
 </project>
