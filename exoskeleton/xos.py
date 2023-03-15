@@ -82,17 +82,18 @@ class Muscle:
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, config_dict):
+    def __init__(self, config_df):
+        # assert type(config_dict) == dict, "Sending the wrong type of configuration."
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
-        self.transform_a = config_dict["transform_a"] # One 3D vector (maybe 4d?) denoting a point on a robot link
-        self.transform_b = config_dict["transform_b"] # Another 3D vector (maybe 4d?) denoting a point on a robot link
-        self.label_a = config_dict["label_a"] # Proximal, superior, lateral, etc. Constant.
-        self.label_b = config_dict["label_b"] # Distal, inferior, medial, etc. Constant.
-        self.force = config_dict["force"] # Dependent variable
-        self.pressure = config_dict["pressure"] # Independent variable
-        self.turns = config_dict["turns"] # Constant
-        self.weave_length = config_dict["weave_length"] # Constant?
-        self.displacement = config_dict["displacement"] # Dependent variable
+        self.transform_a = config_df.transform_a # One 3D vector (maybe 4d?) denoting a point on a robot link
+        self.transform_b = config_df.transform_b # Another 3D vector (maybe 4d?) denoting a point on a robot link
+        self.label_a = config_df.label_a # Proximal, superior, lateral, etc. Constant.
+        self.label_b = config_df.label_b # Distal, inferior, medial, etc. Constant.
+        self.force = config_df.force # Dependent variable
+        self.pressure = config_df.pressure # Independent variable
+        self.turns = config_df.turns # Constant
+        self.weave_length = config_df.weave_length # Constant?
+        self.displacement = config_df.displacement # Dependent variable
         self.appearance = klampt.Appearance()
         self.geometry = klampt.GeometricPrimitive(type="Segment", properties=[self.transform_a, self.transform_b])
 
@@ -115,7 +116,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, robotmodel,  world, filepath_dict):
+    def __init__(self, robotmodel,  world, config_data):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
 
@@ -124,13 +125,15 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = pd.DataFrame()
 
         # This is where we actually load in the subRobots
-        self.botAssembly(filepath_dict)
+        self.botAssembly(config_data)
 
         # Now we load in all the muscles, accessible as a dataframe
-        self.muscles = self.muscleLoader(filepath_dict["attachments"])
+        self.muscle_fp = config_data["attachments"]
+        self.muscles = self.muscleLoader(self.muscle_fp)
 
         print(self.muscles.columns)
         print(self.muscles.index)
+        print(self.muscles.keys)
 
 
     def botAssembly(self, filepath_dict):
