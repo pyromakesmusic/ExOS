@@ -342,8 +342,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
             ExoController(self.robot, self.world, filepath_dict))
 
 
-        #This has to come after robot creation
+        #Not sure if any of this is necessary
 
+        self.actuators = klampt.sim.DefaultActuatorEmulator(self.sim, self.XOS)
+
+        print(self.actuators)
+        self.actuators.process(None,.01)
+        # This is necessary
 
         self.drawEdges()
         klampt.vis.setWindowTitle("X001  Test")

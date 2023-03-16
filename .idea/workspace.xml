@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00148" summary="added a visualization setup method">
-      <created>1678558546279</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1678558546279</updated>
     </task>
     <task id="LOCAL-00149" summary="refining the simulation">
       <created>1678566008953</created>
@@ -476,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678924006788</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes">
+      <created>1678925293963</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1678925293963</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated robot, need to mount" />
     <MESSAGE value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
     <MESSAGE value="starting to print info about the subrobots" />
     <MESSAGE value="it draws the edges now" />
@@ -517,6 +515,7 @@
     <MESSAGE value="no visible bugs, but it's still not doing the behavior i want for some reason" />
     <MESSAGE value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
     <MESSAGE value="got the robot showing again" />
-    <option name="LAST_COMMIT_MESSAGE" value="got the robot showing again" />
+    <MESSAGE value="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes" />
+    <option name="LAST_COMMIT_MESSAGE" value="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes" />
   </component>
 </project>
