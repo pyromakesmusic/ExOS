@@ -47,14 +47,6 @@ NULL_TRANSFORM = (NULL_MATRIX, NULL_ORIGIN)
 """
 LIMB ATTACHMENT POINTS
 """
-LEFTARM_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-LEFTARM_ORIGIN = [1.5, 1.5, 2.5]
-RIGHTARM_MATRIX =[1, 0, 0, 0, -1, 0, 0, 0, 1]
-RIGHTARM_ORIGIN = [1.5, -1.5, 2.5]
-LEFTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-LEFTLEG_ORIGIN = [1.2, -.5, -1.5]
-RIGHTLEG_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-RIGHTLEG_ORIGIN = [-1.2, -.5, -1.5]
 
 IDENTITY_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -93,19 +85,11 @@ class Muscle(klampt.sim.simulation.ActuatorEmulator):
     def __init__(self, config_df):
         klampt.sim.simulation.ActuatorEmulator.__init__()
         # assert type(config_dict) == dict, "Sending the wrong type of configuration."
-        "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
-
-
-    def updateLoop(self, pressurecommand=None):
-        """
-        This will be the lowest level implementation where the parameters of a muscle are changed, particularly force and pressure.
-        """
-        self.force = self.force
 
 
 class MuscleGroup:
-    def __init__(self, muscles):
-        self.muscles = muscles
+    def __init__(self):
+        pass
 
 
 
