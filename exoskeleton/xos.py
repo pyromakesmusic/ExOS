@@ -84,7 +84,7 @@ class Muscle(klampt.sim.simulation.ActuatorEmulator):
     """
     def __init__(self, config_df):
         klampt.sim.simulation.ActuatorEmulator.__init__()
-        # assert type(config_dict) == dict, "Sending the wrong type of configuration."
+        self.appearance = klampt.Appearance()
 
 
 class MuscleGroup:
@@ -244,9 +244,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
-
         self.dt = 1
-
 
     def simLoop(self, robot):
         """
@@ -254,25 +252,18 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         wm = self.world
         klampt.vis.run()
-        for x in range(robot.numLinks()):
+        for x in range(1,robot.numLinks()):
             body = self.body(robot.link(x))
-            body.applyForceAtPoint((2,2,2),(1,1,1))
+            body.applyForceAtPoint((.1,.1,.1),(.1,.1,.1))
             self.simulate(.1)
             self.updateWorld()
-
-
-
-
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
     """
     def __init__(self, filepath):
-
-
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
-
         #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
         self.robot = None
@@ -280,13 +271,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = None
         self.actuators = None
         self.sim = None
-
-
-
-
-
         self.worldSetup(filepath)
-
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
@@ -296,29 +281,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         Sets up the world for the simulation, and initializes the simulation.
         """
         # Simulator is initialized
-        self.sim = ExoSim(self.world, self.robot)
-
         # World is added to visualization
         klampt.vis.add("world", self.world)
-
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
-
         # Robot is added to visualization
         klampt.vis.add("X001", self.robot)
 
-
+        self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
             ExoController(self.robot, self.world, filepath_dict))
 
-
-        #Not sure if any of this is necessary
-
-        self.actuators = klampt.sim.DefaultActuatorEmulator(self.sim, self.XOS)
-
-        print(self.actuators)
-        self.actuators.process(None,.01)
         # This is necessary
 
         self.drawEdges()

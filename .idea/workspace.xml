@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00153" summary="updated joint configurations">
-      <created>1678571028522</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
-      <option name="project" value="LOCAL" />
-      <updated>1678571028522</updated>
     </task>
     <task id="LOCAL-00154" summary="updated config file">
       <created>1678571134242</created>
@@ -474,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678979950391</updated>
     </task>
-    <option name="localTasksCounter" value="202" />
+    <task id="LOCAL-00202" summary="cleaning up a little bit">
+      <created>1678993896290</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1678993896290</updated>
+    </task>
+    <option name="localTasksCounter" value="203" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="very red now" />
     <MESSAGE value="need to try to apply forces and also mount" />
     <MESSAGE value="maybe it won't always simulate?" />
     <MESSAGE value="updated colors a little bit" />
@@ -515,6 +515,7 @@
     <MESSAGE value="i now have it loading only the robot that i want, which is a huge plus" />
     <MESSAGE value="fixed the positioning, great" />
     <MESSAGE value="removing some unneeded code" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing some unneeded code" />
+    <MESSAGE value="cleaning up a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning up a little bit" />
   </component>
 </project>
