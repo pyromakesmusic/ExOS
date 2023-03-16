@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00147" summary="updated robot definition and meshes">
-      <created>1678424563092</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1678424563092</updated>
     </task>
     <task id="LOCAL-00148" summary="added a visualization setup method">
       <created>1678558546279</created>
@@ -475,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678909656882</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="got the robot showing again">
+      <created>1678924006788</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1678924006788</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added toe and foot meshes" />
     <MESSAGE value="updated robot, need to mount" />
     <MESSAGE value="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point" />
     <MESSAGE value="starting to print info about the subrobots" />
@@ -516,6 +516,7 @@
     <MESSAGE value="fixed the sizing" />
     <MESSAGE value="no visible bugs, but it's still not doing the behavior i want for some reason" />
     <MESSAGE value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
-    <option name="LAST_COMMIT_MESSAGE" value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
+    <MESSAGE value="got the robot showing again" />
+    <option name="LAST_COMMIT_MESSAGE" value="got the robot showing again" />
   </component>
 </project>

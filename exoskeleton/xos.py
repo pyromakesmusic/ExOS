@@ -270,31 +270,29 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations.
     """
-    def __init__(self, wm):
+    def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
 
         self.dt = 1
 
 
-        #self.simLoop(1000)
-
-    def simLoop(self, cycles):
+    def simLoop(self, robot):
         """
         Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
         """
         wm = self.world
-        #klampt.vis.run()
-        # for x in range(cycles):
-        #     body = self.body(wm.robotlink(0,x))
-        #     body.applyForceAtPoint((2,2,2),(1,1,1))
-        #     self.simulate(.1)
-        #     #self.updateWorld()
+        klampt.vis.run()
+        for x in range(robot.numLinks()):
+            body = self.body(robot.link(x))
+            body.applyForceAtPoint((2,2,2),(1,1,1))
+            self.simulate(.1)
+            self.updateWorld()
 
 
 
 
 
-class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
+class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
     """
@@ -305,6 +303,7 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
+        self.robot = None
         self.plan = None
         self.trajectory = None
         self.actuators = None
@@ -318,20 +317,29 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
+        self.sim.simLoop(self.robot)
+
 # Initialization
     def worldSetup(self, filepath_dict):
         """
         Sets up the world for the simulation, and initializes the simulation.
         """
-        self.sim = ExoSim(self.world)
+        # Simulator is initialized
+        self.sim = ExoSim(self.world, self.robot)
+
+        # World is added to visualization
         klampt.vis.add("world", self.world)
 
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
+
+        # Robot is added to visualization
         klampt.vis.add("X001", self.robot)
 
-        # self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
-        #     ExoController(self.robot, self.world, filepath_dict))
+
+        # creation of the controller
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
+            ExoController(self.robot, self.world, filepath_dict))
 
 
         #This has to come after robot creation
@@ -340,9 +348,8 @@ class ExoSimAV(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawEdges()
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
-        #self.viewport.fit([0,0,-5], 25)
-
-        klampt.vis.run()
+        self.viewport.fit([0,0,-5], 25)
+        self.sim.simLoop(self.robot)
 
     def idlefunc(self):
         pass
@@ -432,4 +439,4 @@ MAIN LOOP
 if __name__ == "__main__":
     xo_parts = configLoader()
     print("xo_parts", xo_parts)
-    exo_sim_test = ExoSimAV(xo_parts)
+    exo_sim_test = ExoGUI(xo_parts)
