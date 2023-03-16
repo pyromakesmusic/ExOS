@@ -28,3 +28,8 @@ joint normal 4
 servoP 100 100 100 100 100
 servoI 0 0 0 0 0
 servoD 30 30 30 30 30
+
+mount 1 rightarm_bot.rob 1 0 0 0 1 0 0 0 1 1.2 2.5 .2 as rightarm
+mount 1 leftarm_bot.rob 1 0 0 0 1 0 0 0 1 1.2 -2.5 .2 as leftarm
+mount 4 rightleg_bot.rob 1 0 0 0 1 0 0 0 1 -1 -.5 -1.5 as rightleg
+mount 4 leftleg_bot.rob 1 0 0 0 1 0 0 0 1 1 -.5 -1.5 as leftleg

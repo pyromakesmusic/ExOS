@@ -91,6 +91,7 @@ class Muscle(klampt.sim.simulation.ActuatorEmulator):
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
     def __init__(self, config_df):
+        klampt.sim.simulation.ActuatorEmulator.__init__()
         # assert type(config_dict) == dict, "Sending the wrong type of configuration."
         "Config dict must be formatted as follows: (transform_a, transform_b, label_a, label_b, force, pressure, turns, weave_length, displacement)"
 
@@ -123,7 +124,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = pd.DataFrame()
 
         # This is where we actually load in the subRobots
-        self.botAssembly(config_data)
 
         # Now we load in all the muscles, accessible as a dataframe
         #self.muscles = self.muscleLoader(config_data["attachments"])
@@ -135,19 +135,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
         """
 
-        leftarm = self.world.loadRobot(filepath_dict["leftarm"])
-        leftarm.setName("leftarm")
-        rightarm = self.world.loadRobot(filepath_dict["rightarm"])
-        rightarm.setName("rightarm")
-        leftleg = self.world.loadRobot(filepath_dict["leftleg"])
-        leftleg.setName("leftleg")
-        rightleg = self.world.loadRobot(filepath_dict["rightleg"])
-        rightleg.setName("rightleg")
-
-        self.robot.mount(2, leftarm, LEFTARM_MATRIX, LEFTARM_ORIGIN)
-        self.robot.mount(2, rightarm, RIGHTARM_MATRIX, RIGHTARM_ORIGIN)
-        self.robot.mount(4, leftleg, LEFTLEG_MATRIX, LEFTLEG_ORIGIN)
-        self.robot.mount(4, rightleg, RIGHTLEG_MATRIX, RIGHTLEG_ORIGIN)
+        print("Number of world IDs:", self.world.numIDs)
 
 
     def muscleLoader(self, filepath):
@@ -317,7 +305,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-        self.sim.simLoop(self.robot)
 
 # Initialization
     def worldSetup(self, filepath_dict):
