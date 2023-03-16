@@ -7,10 +7,6 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00150" summary="don't add NoneTypes to klampt.vis">
-      <created>1678566245017</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1678566245017</updated>
     </task>
     <task id="LOCAL-00151" summary="updated robot definition file">
       <created>1678570213817</created>
@@ -479,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678928173361</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="i now have it loading only the robot that i want, which is a huge plus">
+      <created>1678939758957</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1678939758957</updated>
+    </task>
+    <option name="localTasksCounter" value="200" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="starting to print info about the subrobots" />
     <MESSAGE value="it draws the edges now" />
     <MESSAGE value="changed color of edges to red" />
     <MESSAGE value="very red now" />
@@ -520,6 +515,7 @@
     <MESSAGE value="got the robot showing again" />
     <MESSAGE value="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes" />
     <MESSAGE value="messing with actuators some more" />
-    <option name="LAST_COMMIT_MESSAGE" value="messing with actuators some more" />
+    <MESSAGE value="i now have it loading only the robot that i want, which is a huge plus" />
+    <option name="LAST_COMMIT_MESSAGE" value="i now have it loading only the robot that i want, which is a huge plus" />
   </component>
 </project>
