@@ -82,8 +82,13 @@ class Muscle(klampt.GeometricPrimitive):
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self):
-        self.appearance = klampt.Appearance().setColor(0,1,0,1)
+    def __init__(self, wm, a, b):
+        """
+        Takes the world model and two link IDs. Probably want to change this eventually to allow custom transforms.
+        """
+        self.setSegment(self.world.robot(0).link(a).getTransform()[1], self.world.robot(0).link(b).getTransform()[1])
+        klampt.vis.add("muscle", self)
+        klampt.vis.setColor("muscle", 0, 1, 0, 1)
 
 
 class MuscleGroup:
@@ -339,9 +344,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         for link in range(self.robot.numLinks()):
             print("Link name: " , link)
         muscle = klampt.GeometricPrimitive()
-        muscle.setSegment(self.world.robot(0).link(4).getTransform()[1], self.world.robot(0).link(6).getTransform()[1])
-        klampt.vis.add("muscle", muscle)
-        klampt.vis.setColor("muscle", 0,1,0,1)
+
 
 
 
