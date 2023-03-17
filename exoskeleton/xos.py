@@ -77,14 +77,13 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
 """
 CLASS DEFINITIONS
 """
-class Muscle(klampt.sim.simulation.ActuatorEmulator):
+class Muscle(klampt.GeometricPrimitive):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, config_df):
-        klampt.sim.simulation.ActuatorEmulator.__init__()
-        self.appearance = klampt.Appearance()
+    def __init__(self):
+        self.appearance = klampt.Appearance().setColor(0,1,0,1)
 
 
 class MuscleGroup:
@@ -296,6 +295,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # This is necessary
 
         self.drawEdges()
+        self.drawMuscles()
+
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
@@ -331,10 +332,20 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Visual Options
     """
+    def drawMuscles(self):
+        """
+        Draws the muscle lines on the robot
+        """
+        muscle = klampt.GeometricPrimitive()
+        muscle.setSegment(self.world.robot(0).link(4).getTransform()[1], self.world.robot(0).link(6).getTransform()[1])
+        muscle_appearance = klampt.Appearance()
 
+
+
+        klampt.vis.add("muscle_test", muscle)
     def drawEdges(self):
         """
-        Currently needs to take the argument self.world, at some point should probably change that
+        Changes some drawing options for link geometry
         """
         wm = self.world
         for x in range(wm.numIDs()):
