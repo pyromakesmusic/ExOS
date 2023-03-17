@@ -341,7 +341,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         muscle = klampt.GeometricPrimitive()
         muscle.setSegment(self.world.robot(0).link(4).getTransform()[1], self.world.robot(0).link(6).getTransform()[1])
         klampt.vis.add("muscle", muscle)
-        klampt.vis.setColor("muscle", 1,1,0,1)
+        klampt.vis.setColor("muscle", 0,1,0,1)
 
 
 
