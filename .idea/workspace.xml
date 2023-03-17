@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00159" summary="rearranging some of the transforms">
-      <created>1678577983621</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
-      <option name="project" value="LOCAL" />
-      <updated>1678577983621</updated>
-    </task>
     <task id="LOCAL-00160" summary="made a whole big robot thing">
       <created>1678578314689</created>
       <option name="number" value="00160" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679032391345</updated>
     </task>
-    <option name="localTasksCounter" value="208" />
+    <task id="LOCAL-00208" summary="updated muscle class more">
+      <created>1679032569119</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1679032569119</updated>
+    </task>
+    <option name="localTasksCounter" value="209" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="the muscle has an associated appearance and geometry now" />
     <MESSAGE value="have mounted the subrobots a little bit" />
     <MESSAGE value="updated robot configuration" />
     <MESSAGE value="mounting the other robot elements" />
@@ -516,6 +515,7 @@
     <MESSAGE value="got it drawing a muscle in bright yellow" />
     <MESSAGE value="muscles colorized green" />
     <MESSAGE value="improved Muscle class" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved Muscle class" />
+    <MESSAGE value="updated muscle class more" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated muscle class more" />
   </component>
 </project>

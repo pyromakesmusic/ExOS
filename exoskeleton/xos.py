@@ -82,16 +82,16 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, wm, a, b):
+    def __init__(self, wm, sim, ctrl, a, b):
         """
-        Takes the world model and two link IDs. Probably want to change this eventually to allow custom transforms.
+        Takes the world model and two link IDs, a robot controller, and a first and second relative link transform.
         """
         klampt.GeometricPrimitive.__init__(self)
-        klampt.sim.DefaultActuatorEmulator.__init__(self)
+        klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
-        self.setSegment(self.wm.robot(0).link(a).getTransform()[1], self.wm.robot(0).link(b).getTransform()[1])
-        klampt.vis.add("muscle", self)
-        klampt.vis.setColor("muscle", 0, 1, 0, 1)
+        self.wm = wm
+        self.sim = sim
+
 
 
 class MuscleGroup:
@@ -292,6 +292,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("world", self.world)
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
+        self.muscle = None
+        self.point_a = None
+        self.point_b = None
         # Robot is added to visualization
         klampt.vis.add("X001", self.robot)
 
@@ -303,7 +306,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # This is necessary
 
         self.drawEdges()
-        self.drawMuscles()
+        self.muscle = None
+        self.drawMuscles(4,6)
+
 
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
@@ -340,15 +345,20 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Visual Options
     """
-    def drawMuscles(self):
+    def drawMuscles(self, a, b):
         """
         Draws the muscle lines on the robot
         """
         for link in range(self.robot.numLinks()):
             print("Link name: " , link)
-        muscle = klampt.GeometricPrimitive()
 
-
+        self.muscle = klampt.GeometricPrimitive()
+        self.point_a = self.world.robot(0).link(a).getTransform()[1]
+        self.point_b = self.world.robot(0).link(b).getTransform()[1]
+        print("Point A: ", self.point_a, "Point B: ", self.point_b)
+        self.muscle.setSegment(self.point_a, self.point_b)
+        klampt.vis.add("muscle", self.muscle)
+        klampt.vis.setColor("muscle", 0,1,0,1)
 
 
     def drawEdges(self):
