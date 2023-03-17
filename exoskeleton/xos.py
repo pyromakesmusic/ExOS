@@ -77,7 +77,7 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
 """
 CLASS DEFINITIONS
 """
-class Muscle(klampt.GeometricPrimitive):
+class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
@@ -86,7 +86,10 @@ class Muscle(klampt.GeometricPrimitive):
         """
         Takes the world model and two link IDs. Probably want to change this eventually to allow custom transforms.
         """
-        self.setSegment(self.world.robot(0).link(a).getTransform()[1], self.world.robot(0).link(b).getTransform()[1])
+        klampt.GeometricPrimitive.__init__(self)
+        klampt.sim.DefaultActuatorEmulator.__init__(self)
+
+        self.setSegment(self.wm.robot(0).link(a).getTransform()[1], self.wm.robot(0).link(b).getTransform()[1])
         klampt.vis.add("muscle", self)
         klampt.vis.setColor("muscle", 0, 1, 0, 1)
 

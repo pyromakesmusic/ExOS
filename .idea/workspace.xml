@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00158" summary="trying to get the robot to load multiple parts">
-      <created>1678576441080</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1678576441080</updated>
-    </task>
     <task id="LOCAL-00159" summary="rearranging some of the transforms">
       <created>1678577983621</created>
       <option name="number" value="00159" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679027943847</updated>
     </task>
-    <option name="localTasksCounter" value="207" />
+    <task id="LOCAL-00207" summary="improved Muscle class">
+      <created>1679032391345</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1679032391345</updated>
+    </task>
+    <option name="localTasksCounter" value="208" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added a test muscle dictionary, might have close to enough structure to start visualizing and simulating with it soon" />
     <MESSAGE value="the muscle has an associated appearance and geometry now" />
     <MESSAGE value="have mounted the subrobots a little bit" />
     <MESSAGE value="updated robot configuration" />
@@ -516,6 +515,7 @@
     <MESSAGE value="think i've created a muscle, but i can't see it" />
     <MESSAGE value="got it drawing a muscle in bright yellow" />
     <MESSAGE value="muscles colorized green" />
-    <option name="LAST_COMMIT_MESSAGE" value="muscles colorized green" />
+    <MESSAGE value="improved Muscle class" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved Muscle class" />
   </component>
 </project>
