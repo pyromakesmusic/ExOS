@@ -336,13 +336,15 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Draws the muscle lines on the robot
         """
+        for link in range(self.robot.numLinks()):
+            print("Link name: " , link)
         muscle = klampt.GeometricPrimitive()
         muscle.setSegment(self.world.robot(0).link(4).getTransform()[1], self.world.robot(0).link(6).getTransform()[1])
-        muscle_appearance = klampt.Appearance()
+        klampt.vis.add("muscle", muscle)
+        klampt.vis.setColor("muscle", 1,1,0,1)
 
 
 
-        klampt.vis.add("muscle_test", muscle)
     def drawEdges(self):
         """
         Changes some drawing options for link geometry

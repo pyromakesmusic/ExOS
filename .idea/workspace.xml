@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00155" summary="cleaned up file structure a little bit">
-      <created>1678571187547</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1678571187547</updated>
-    </task>
     <task id="LOCAL-00156" summary="exodia style">
       <created>1678571239375</created>
       <option name="number" value="00156" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678995021703</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="think i've created a muscle, but i can't see it">
+      <created>1679012480915</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1679012480915</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="need to try to apply forces and also mount" />
     <MESSAGE value="maybe it won't always simulate?" />
     <MESSAGE value="updated colors a little bit" />
     <MESSAGE value="added a test muscle dictionary, might have close to enough structure to start visualizing and simulating with it soon" />
@@ -516,6 +515,7 @@
     <MESSAGE value="fixed the positioning, great" />
     <MESSAGE value="removing some unneeded code" />
     <MESSAGE value="cleaning up a little bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning up a little bit" />
+    <MESSAGE value="think i've created a muscle, but i can't see it" />
+    <option name="LAST_COMMIT_MESSAGE" value="think i've created a muscle, but i can't see it" />
   </component>
 </project>
