@@ -330,7 +330,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawEdges()
         self.muscle = None
         #self.createMuscle("bicep", 4, 6) # Gonna try to make this happen in the controller, with only visualization handled here
-        self.controller.createMuscle(self, "bicep", 4,6)
+        self.controller.createMuscle(self, "latissimus", 4,6)
+        self.controller.createMuscle(self, "trapezius", 3, 5)
+        self.controller.createMuscle(self, "bicep", 9, 11)
 
 
         klampt.vis.setWindowTitle("X001  Test")

@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00162" summary="creating a muscle class">
-      <created>1678578479147</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
-      <option name="project" value="LOCAL" />
-      <updated>1678578479147</updated>
-    </task>
     <task id="LOCAL-00163" summary="updating the muscle class">
       <created>1678579446297</created>
       <option name="number" value="00163" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679101191565</updated>
     </task>
-    <option name="localTasksCounter" value="211" />
+    <task id="LOCAL-00211" summary="encapsulation is progressing nicely">
+      <created>1679102460537</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1679102460537</updated>
+    </task>
+    <option name="localTasksCounter" value="212" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="mounting the other robot elements" />
     <MESSAGE value="just gonna add physics even though there's too many things on the screen" />
     <MESSAGE value="building a csv to read muscle attachments" />
     <MESSAGE value="adding some more commentary" />
@@ -516,6 +515,7 @@
     <MESSAGE value="updated muscle class more" />
     <MESSAGE value="muscle method is becoming more refined, i think i can base it off a dictionary soon" />
     <MESSAGE value="named a bicep" />
-    <option name="LAST_COMMIT_MESSAGE" value="named a bicep" />
+    <MESSAGE value="encapsulation is progressing nicely" />
+    <option name="LAST_COMMIT_MESSAGE" value="encapsulation is progressing nicely" />
   </component>
 </project>
