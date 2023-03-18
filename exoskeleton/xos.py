@@ -119,7 +119,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         # This is where we actually load in the subRobots
 
         # Now we load in all the muscles, accessible as a dataframe
-        #self.muscles = self.muscleLoader(config_data["attachments"])
 
 
 
@@ -134,7 +133,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def muscleLoader(self, filepath):
         """
         Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
-        assigns them to the robot model.
+        assigns them to the robot model. May need to rewrite this whole thing.
         """
 
         blank1 = None
@@ -150,6 +149,20 @@ class ExoController(klampt.control.OmniRobotInterface):
             muscles.add(Muscle(attachdict))
         # We use the dictionary elements to instantiate the muscles, we use the dataframe to store them and their parameters
         return muscles
+
+    def createMuscle(self, gui, id, a, b):
+        """
+        Draws the muscle lines on the robot
+        """
+        assert type(id) == str, "Error: Muscle ID must be string value."
+
+        self.muscle = klampt.GeometricPrimitive()
+        self.point_a = self.world.robot(0).link(a).getTransform()[1]
+        self.point_b = self.world.robot(0).link(b).getTransform()[1]
+        print("Point A: ", self.point_a, "Point B: ", self.point_b)
+        self.muscle.setSegment(self.point_a, self.point_b)
+        klampt.vis.add(id, self.muscle)
+        klampt.vis.setColor(id, 0, 1, 0, 1)
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -284,6 +297,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.trajectory = None
         self.actuators = None
         self.sim = None
+        self.point_a = None
+        self.point_b = None
+        self.controller = None
+        self.XOS = None
         self.worldSetup(filepath)
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
@@ -299,21 +316,21 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.world.loadRobot(filepath_dict["core"])
         self.robot = self.world.robot(0)
         self.muscle = None
-        self.point_a = None
-        self.point_b = None
+
         # Robot is added to visualization
         klampt.vis.add("X001", self.robot)
 
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(
-            ExoController(self.robot, self.world, filepath_dict))
+        self.controller = ExoController(self.robot, self.world, filepath_dict)
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
 
         # This is necessary
 
         self.drawEdges()
         self.muscle = None
-        self.drawMuscle("bicep", 4, 6)
+        #self.createMuscle("bicep", 4, 6) # Gonna try to make this happen in the controller, with only visualization handled here
+        self.controller.createMuscle(self, "bicep", 4,6)
 
 
         klampt.vis.setWindowTitle("X001  Test")
@@ -351,7 +368,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Visual Options
     """
-    def drawMuscle(self, id, a, b):
+    def createMuscle(self, id, a, b):
         """
         Draws the muscle lines on the robot
         """
@@ -364,6 +381,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.muscle.setSegment(self.point_a, self.point_b)
         klampt.vis.add(id, self.muscle)
         klampt.vis.setColor(id, 0,1,0,1)
+
+
 
 
     def drawEdges(self):
