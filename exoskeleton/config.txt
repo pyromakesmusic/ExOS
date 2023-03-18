@@ -1,12 +1,4 @@
-Center:
+Core:
 robots/core_bot.rob
-Right Arm:
-robots/rightarm_bot.rob
-Left Arm:
-robots/leftarm_bot.rob
-Right Leg:
-robots/rightleg_bot.rob
-Left Leg:
-robots/leftleg_bot.rob
 Muscle Attachments:
 robots/muscle_attachments.csv

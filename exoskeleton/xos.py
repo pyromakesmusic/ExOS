@@ -114,21 +114,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-        self.muscles = pd.DataFrame()
-
-        # This is where we actually load in the subRobots
-
-        # Now we load in all the muscles, accessible as a dataframe
-
-
-
-    def botAssembly(self, filepath_dict):
-        """
-        Given a dictionary of filepaths provided in config.txt, adds the subrobot limbs to the world and mounts them on the core.
-        """
-
-        print("Number of world IDs:", self.world.numIDs)
-
 
     def muscleLoader(self, filepath):
         """
@@ -146,10 +131,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscle = klampt.GeometricPrimitive()
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
-        print("Point A: ", self.point_a, "Point B: ", self.point_b)
-        self.muscle.setSegment(self.point_a, self.point_b)
-        klampt.vis.add(id, self.muscle)
-        klampt.vis.setColor(id, 0, 1, 0, 1)
+        self.muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
+        klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
+        klampt.vis.setColor(id, 0, 1, 0, 1) # Makes the muscle green so it is easy to see
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -331,10 +315,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         pass
 
     """
-    Simulation Methods
-    """
-
-    """
     Test Methods
     """
     def animationTest(self):
@@ -350,10 +330,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.XOS.close()
         klampt.vis.kill()
 
-
-    def torqueTest(self):
-
-        print("OUTPUT FROM THE CONTROLLER:", self.XOS)
     """
     Visual Options
     """
@@ -367,7 +343,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
             wm.appearance(x).setDraw(4, True) # I believe this should make edges glow
             wm.appearance(x).setColor(2, 0, 0, 0, .5) # Makes edges black
             wm.appearance(x).setColor(3, .3, .3, .3, .3) # This makes the faces a translucent grey\
-            wm.appearance(x).setColor(4, .2, 0, 1, .5) # I think this changes the glow color
+            wm.appearance(x).setColor(4, .2, 0, 1, .1) # I think this changes the glow color
 
 
     """
@@ -386,23 +362,9 @@ def configLoader():
     with open("config.txt") as fn:
         print("Loading core components...", fn.readline().rstrip())
         core = fn.readline().rstrip()
-        print("Loading right arm...", fn.readline().rstrip())
-        rightarm = fn.readline().rstrip()
-        print("Loading left arm...", fn.readline().rstrip())
-        leftarm = fn.readline().rstrip()
-        print("Loading right leg...", fn.readline().rstrip())
-        rightleg = fn.readline().rstrip()
-        print("Loading left leg...", fn.readline().rstrip())
-        leftleg = fn.readline().rstrip()
         print("Loading muscle attachments...", fn.readline().rstrip())
         attachments = fn.readline().rstrip()
-
-
         config = {"core": core,
-                      "rightarm": rightarm,
-                      "leftarm": leftarm,
-                      "rightleg": rightleg,
-                      "leftleg": leftleg,
                       "attachments": attachments}
 
         return config
