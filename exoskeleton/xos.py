@@ -91,7 +91,9 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         self.wm = wm
         self.sim = sim
-
+        self.ctrl = ctrl
+        self.setSegment(a,b)
+        klampt.vis.add("muscle_3", self)
 
 
 class MuscleGroup:
@@ -228,6 +230,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         print("Robot number of links: ", self.robot.numLinks())
         print("Number of IDs//: ", self.world.numIDs())
 
+        def printLinks(self):
+            for link in range(self.robot.numLinks()):
+                print("Link name: ", link)
+
     def randomTrajectoryTest(self):
         # This populates a random trajectory for the robot to execute.
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
@@ -307,7 +313,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.drawEdges()
         self.muscle = None
-        self.drawMuscles(4,6)
+        self.drawMuscle("bicep", 4, 6)
 
 
         klampt.vis.setWindowTitle("X001  Test")
@@ -345,20 +351,19 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Visual Options
     """
-    def drawMuscles(self, a, b):
+    def drawMuscle(self, id, a, b):
         """
         Draws the muscle lines on the robot
         """
-        for link in range(self.robot.numLinks()):
-            print("Link name: " , link)
+        assert type(id) == str, "Error: Muscle ID must be string value."
 
         self.muscle = klampt.GeometricPrimitive()
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
         print("Point A: ", self.point_a, "Point B: ", self.point_b)
         self.muscle.setSegment(self.point_a, self.point_b)
-        klampt.vis.add("muscle", self.muscle)
-        klampt.vis.setColor("muscle", 0,1,0,1)
+        klampt.vis.add(id, self.muscle)
+        klampt.vis.setColor(id, 0,1,0,1)
 
 
     def drawEdges(self):

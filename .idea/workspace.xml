@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00160" summary="made a whole big robot thing">
-      <created>1678578314689</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
-      <option name="project" value="LOCAL" />
-      <updated>1678578314689</updated>
-    </task>
     <task id="LOCAL-00161" summary="creating a muscle class">
       <created>1678578428538</created>
       <option name="number" value="00161" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679032569119</updated>
     </task>
-    <option name="localTasksCounter" value="209" />
+    <task id="LOCAL-00209" summary="muscle method is becoming more refined, i think i can base it off a dictionary soon">
+      <created>1679033962241</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1679033962241</updated>
+    </task>
+    <option name="localTasksCounter" value="210" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="have mounted the subrobots a little bit" />
     <MESSAGE value="updated robot configuration" />
     <MESSAGE value="mounting the other robot elements" />
     <MESSAGE value="just gonna add physics even though there's too many things on the screen" />
@@ -516,6 +515,7 @@
     <MESSAGE value="muscles colorized green" />
     <MESSAGE value="improved Muscle class" />
     <MESSAGE value="updated muscle class more" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated muscle class more" />
+    <MESSAGE value="muscle method is becoming more refined, i think i can base it off a dictionary soon" />
+    <option name="LAST_COMMIT_MESSAGE" value="muscle method is becoming more refined, i think i can base it off a dictionary soon" />
   </component>
 </project>
