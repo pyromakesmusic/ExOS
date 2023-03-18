@@ -135,22 +135,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
         assigns them to the robot model. May need to rewrite this whole thing.
         """
+        return
 
-        blank1 = None
-        blank2 = None # I'm just using these to make a set so Python doesn't think it's a dict
-
-        muscles = {blank1, blank2}
-
-        with open(filepath) as fn:
-            attachments = pd.read_csv(fn, sep=",", header=0, index_col="name")
-        # Need to convert each row to a dictionary with one element and create a Muscle based on that
-        for x in attachments.keys():
-            attachdict = attachments[x].to_dict()
-            muscles.add(Muscle(attachdict))
-        # We use the dictionary elements to instantiate the muscles, we use the dataframe to store them and their parameters
-        return muscles
-
-    def createMuscle(self, gui, id, a, b):
+    def createMuscle(self, id, a, b):
         """
         Draws the muscle lines on the robot
         """
@@ -330,9 +317,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawEdges()
         self.muscle = None
         #self.createMuscle("bicep", 4, 6) # Gonna try to make this happen in the controller, with only visualization handled here
-        self.controller.createMuscle(self, "latissimus", 4,6)
-        self.controller.createMuscle(self, "trapezius", 3, 5)
-        self.controller.createMuscle(self, "bicep", 9, 11)
+        self.controller.createMuscle("latissimus", 4,6)
+        self.controller.createMuscle("trapezius", 3, 5)
+        self.controller.createMuscle("bicep", 9, 11)
 
 
         klampt.vis.setWindowTitle("X001  Test")
@@ -370,23 +357,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Visual Options
     """
-    def createMuscle(self, id, a, b):
-        """
-        Draws the muscle lines on the robot
-        """
-        assert type(id) == str, "Error: Muscle ID must be string value."
-
-        self.muscle = klampt.GeometricPrimitive()
-        self.point_a = self.world.robot(0).link(a).getTransform()[1]
-        self.point_b = self.world.robot(0).link(b).getTransform()[1]
-        print("Point A: ", self.point_a, "Point B: ", self.point_b)
-        self.muscle.setSegment(self.point_a, self.point_b)
-        klampt.vis.add(id, self.muscle)
-        klampt.vis.setColor(id, 0,1,0,1)
-
-
-
-
     def drawEdges(self):
         """
         Changes some drawing options for link geometry
@@ -395,8 +365,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         for x in range(wm.numIDs()):
             wm.appearance(x).setDraw(2, True) # Makes edges visible
             wm.appearance(x).setDraw(4, True) # I believe this should make edges glow
-            wm.appearance(x).setColor(2, 1, 1, 1, 1) # Makes edges white, something about the surface normals is not right but it's fixable
-            wm.appearance(x).setColor(3, .3, .3, .3, 1) # I think this makes the specularity color red
+            wm.appearance(x).setColor(2, 0, 0, 0, .5) # Makes edges black
+            wm.appearance(x).setColor(3, .3, .3, .3, .3) # This makes the faces a translucent grey\
+            wm.appearance(x).setColor(4, .2, 0, 1, .5) # I think this changes the glow color
 
 
     """
