@@ -131,12 +131,13 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, robotmodel,  world, config_data):
+    def __init__(self, robotmodel,  world, sim, config_data):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
 
         self.world = world
         self.robot = robotmodel
+        self.sim = sim
 
     def muscleLoader(self, filepath):
         """
@@ -151,7 +152,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
 
-        muscle = klampt.GeometricPrimitive()
+        #muscle = klampt.GeometricPrimitive()
+        muscle = Muscle(self.world, self.sim, self, a, b)
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
         muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
@@ -161,9 +163,15 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     # Control and Kinematics
     def sensedPosition(self):
+        """
+        Low level actuator method.
+        """
         return self.klamptModel().getDOFPosition()
 
     def controlRate(self):
+        """
+        Should be the same as the physical device.
+        """
         return 100
 
     def setTorque(self):
@@ -243,7 +251,9 @@ class ExoController(klampt.control.OmniRobotInterface):
                 print("Link name: ", link)
 
     def randomTrajectoryTest(self):
-        # This populates a random trajectory for the robot to execute.
+        """
+        Creates a random trajectory for the robot to execute.
+        """
         self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
         print("trajectory", self.trajectory)
         x = self.robot.getConfig()
@@ -320,7 +330,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
-        self.controller = ExoController(self.robot, self.world, filepath_dict)
+        self.controller = ExoController(self.robot, self.world, self.sim, filepath_dict)
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
 
         # This is necessary
