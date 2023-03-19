@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00167" summary="updating robot definitions to be in scale with each other">
-      <created>1678592810894</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1678592810894</updated>
-    </task>
     <task id="LOCAL-00168" summary="updated robot size">
       <created>1678593064550</created>
       <option name="number" value="00168" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679209453141</updated>
     </task>
-    <option name="localTasksCounter" value="216" />
+    <task id="LOCAL-00216" summary="getting an attribute error">
+      <created>1679213417666</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1679213417666</updated>
+    </task>
+    <option name="localTasksCounter" value="217" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="introduced a bug, fix it when we wake up" />
     <MESSAGE value="made the bug into a better bug" />
     <MESSAGE value="indexing or addressing isn't working correctly" />
     <MESSAGE value="fixed the sizing" />
@@ -516,6 +515,7 @@
     <MESSAGE value="updated color and translucency properties; improved encapsulation" />
     <MESSAGE value="removed unnecessary code" />
     <MESSAGE value="need to add muscle methods; they will be shared between simulated and actual robot for now" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to add muscle methods; they will be shared between simulated and actual robot for now" />
+    <MESSAGE value="getting an attribute error" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting an attribute error" />
   </component>
 </project>

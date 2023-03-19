@@ -107,7 +107,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.displacement = 0
         self.pressure = 1
 
-    def contract(self):
+    def contract(self, dummy_var):
         body1 = self.sim.body(self.world.robot(0).link(self.link1))
         body2 = self.sim.body(self.world.robot(0).link(self.link2))
 
