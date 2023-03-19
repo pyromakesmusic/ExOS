@@ -89,10 +89,12 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         klampt.GeometricPrimitive.__init__(self)
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
-        self.wm = wm
+        self.world = wm
         self.sim = sim
         self.ctrl = ctrl
         self.setSegment(a,b)
+        self.link1 = a
+        self.link2 = b
         klampt.vis.add("muscle_3", self)
 
         # Now we add some attributes that the simulated and real robot will share
@@ -103,6 +105,18 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.l_0 = 1
         self.stiffness = 1
         self.displacement = 0
+        self.pressure = 1
+
+    def contract(self):
+        body1 = self.sim.body(self.world.robot(0).link(self.link1))
+        body2 = self.sim.body(self.world.robot(0).link(self.link2))
+
+        force1 = [1,1,1]
+        force2 = [-1,-1,-1]
+        body1.applyForceatPoint(force1, self.link1.transform[1])
+        body2.applyForceatPoint(force2, self.link2.transform[1])
+        return
+
 
 
 class MuscleGroup:
@@ -137,12 +151,13 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
 
-        self.muscle = klampt.GeometricPrimitive()
+        muscle = klampt.GeometricPrimitive()
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
-        self.muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
-        klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
+        muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
+        klampt.vis.add(id, muscle) # Adds the muscle to the visualization
         klampt.vis.setColor(id, 0, 1, 0, 1) # Makes the muscle green so it is easy to see
+        return muscle
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -276,6 +291,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.plan = None
         self.trajectory = None
         self.actuators = None
+        self.latissimus = None
+        self.trapezius = None
+        self.bicep = None
         self.sim = None
         self.point_a = None
         self.point_b = None
@@ -310,9 +328,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawEdges()
         self.muscle = None
         # Gonna try to make this happen in the controller, with only visualization handled here
-        self.controller.createMuscle("latissimus", 4,6)
-        self.controller.createMuscle("trapezius", 3, 5)
-        self.controller.createMuscle("bicep", 9, 11)
+        latissimus = self.controller.createMuscle("latissimus", 4,6)
+        trapezius = self.controller.createMuscle("trapezius", 3, 5)
+        self.bicep = self.controller.createMuscle("bicep", 9, 11)
+        #self.bicep.contract() #Returns an attribute error
 
 
         klampt.vis.setWindowTitle("X001  Test")
