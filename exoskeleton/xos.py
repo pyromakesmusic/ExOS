@@ -95,6 +95,15 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.setSegment(a,b)
         klampt.vis.add("muscle_3", self)
 
+        # Now we add some attributes that the simulated and real robot will share
+
+        self.turns = 20
+        self.weave_length = 1
+        self.r_0 = 1
+        self.l_0 = 1
+        self.stiffness = 1
+        self.displacement = 0
+
 
 class MuscleGroup:
     def __init__(self):
@@ -151,8 +160,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         vector (provided us by the McKibben muscle parameters and perhaps a custom method) and the distance from the fulcrum at which the distance is applied
         (constant, determined with what should be a single distance query relative to the transform - this can be optimized)
         """
-        force = (2, 2, 2)
-        distance = (0, 1, 0)
+        force = [2, 2, 2]
+        distance = [0, 1, 0]
         torque = klampt.math.vectorops.cross(force, distance)
         return torque
 
@@ -300,7 +309,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.drawEdges()
         self.muscle = None
-        #self.createMuscle("bicep", 4, 6) # Gonna try to make this happen in the controller, with only visualization handled here
+        # Gonna try to make this happen in the controller, with only visualization handled here
         self.controller.createMuscle("latissimus", 4,6)
         self.controller.createMuscle("trapezius", 3, 5)
         self.controller.createMuscle("bicep", 9, 11)
