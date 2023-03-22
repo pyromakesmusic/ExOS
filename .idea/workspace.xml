@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00169" summary="added scapular meshes">
-      <created>1678595319161</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1678595319161</updated>
-    </task>
     <task id="LOCAL-00170" summary="added toe and foot meshes">
       <created>1678595792570</created>
       <option name="number" value="00170" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679239733227</updated>
     </task>
-    <option name="localTasksCounter" value="218" />
+    <task id="LOCAL-00218" summary="look at the muscle initialization method">
+      <created>1679241406564</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1679241406564</updated>
+    </task>
+    <option name="localTasksCounter" value="219" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="indexing or addressing isn't working correctly" />
     <MESSAGE value="fixed the sizing" />
     <MESSAGE value="no visible bugs, but it's still not doing the behavior i want for some reason" />
     <MESSAGE value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
@@ -516,6 +515,7 @@
     <MESSAGE value="need to add muscle methods; they will be shared between simulated and actual robot for now" />
     <MESSAGE value="getting an attribute error" />
     <MESSAGE value="the contract method doesn't work yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="the contract method doesn't work yet" />
+    <MESSAGE value="look at the muscle initialization method" />
+    <option name="LAST_COMMIT_MESSAGE" value="look at the muscle initialization method" />
   </component>
 </project>

@@ -152,8 +152,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
 
-        #muscle = klampt.GeometricPrimitive()
-        muscle = Muscle(self.world, self.sim, self, a, b)
+        muscle = klampt.GeometricPrimitive()
+        """
+        The below line throws an error: expecting a sequence. Wrong number of arguments I think.
+        """
+        #muscle = Muscle(self.world, self.sim, self, a, b)
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
         muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
