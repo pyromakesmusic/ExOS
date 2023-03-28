@@ -91,12 +91,12 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         self.world = wm
         self.sim = sim
-        self.link1 = a
-        self.link2 = b
-        print("Type of a: ", type(self.link1))
-        print("Type of b: ", type(self.link2))
+        self.link1T = a
+        self.link2T = b
+        print("Type of a: ", type(self.link1T))
+        print("Type of b: ", type(self.link2T))
         self.ctrl = ctrl
-        self.setSegment(self.link1, self.link2)
+        self.setSegment(self.link1T, self.link2T)
 
         klampt.vis.add("muscle_3", self)
 
@@ -111,13 +111,13 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.pressure = 1
 
     def contract(self, dummy_var):
-        body1 = self.sim.body(self.world.robot(0).link(self.link1))
-        body2 = self.sim.body(self.world.robot(0).link(self.link2))
+        body1 = self.sim.body(self.world.robot(0).link(self.link1T))
+        body2 = self.sim.body(self.world.robot(0).link(self.link2T))
 
         force1 = [1,1,1]
         force2 = [-1,-1,-1]
-        body1.applyForceatPoint(force1, self.link1.transform[1])
-        body2.applyForceatPoint(force2, self.link2.transform[1])
+        body1.applyForceatPoint(force1, self.link1T.transform[1])
+        body2.applyForceatPoint(force2, self.link2T.transform[1])
         return
 
 
@@ -159,9 +159,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         The below line throws an error: expecting a sequence. Wrong number of arguments I think.
         """
-        muscle = Muscle(self.world, self.sim, self, a, b)
+
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
+
+        muscle = Muscle(self.world, self.sim, self, self.point_a, self.point_b)
         muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
         klampt.vis.add(id, muscle) # Adds the muscle to the visualization
         klampt.vis.setColor(id, 0, 1, 0, 1) # Makes the muscle green so it is easy to see
