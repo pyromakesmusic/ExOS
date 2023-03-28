@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00170" summary="added toe and foot meshes">
-      <created>1678595792570</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1678595792570</updated>
-    </task>
     <task id="LOCAL-00171" summary="updated robot, need to mount">
       <created>1678637761460</created>
       <option name="number" value="00171" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679241406564</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="commented sequencing error">
+      <created>1679505009524</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1679505009524</updated>
+    </task>
+    <option name="localTasksCounter" value="220" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed the sizing" />
     <MESSAGE value="no visible bugs, but it's still not doing the behavior i want for some reason" />
     <MESSAGE value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
     <MESSAGE value="got the robot showing again" />
@@ -516,6 +515,7 @@
     <MESSAGE value="getting an attribute error" />
     <MESSAGE value="the contract method doesn't work yet" />
     <MESSAGE value="look at the muscle initialization method" />
-    <option name="LAST_COMMIT_MESSAGE" value="look at the muscle initialization method" />
+    <MESSAGE value="commented sequencing error" />
+    <option name="LAST_COMMIT_MESSAGE" value="commented sequencing error" />
   </component>
 </project>

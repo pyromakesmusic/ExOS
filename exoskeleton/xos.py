@@ -91,10 +91,13 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         self.world = wm
         self.sim = sim
-        self.ctrl = ctrl
-        self.setSegment(a,b)
         self.link1 = a
         self.link2 = b
+        print("Type of a: ", type(self.link1))
+        print("Type of b: ", type(self.link2))
+        self.ctrl = ctrl
+        self.setSegment(self.link1, self.link2)
+
         klampt.vis.add("muscle_3", self)
 
         # Now we add some attributes that the simulated and real robot will share
@@ -152,11 +155,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
 
-        muscle = klampt.GeometricPrimitive()
+        #muscle = klampt.GeometricPrimitive()
         """
         The below line throws an error: expecting a sequence. Wrong number of arguments I think.
         """
-        #muscle = Muscle(self.world, self.sim, self, a, b)
+        muscle = Muscle(self.world, self.sim, self, a, b)
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
         muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
