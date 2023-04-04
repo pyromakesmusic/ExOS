@@ -152,7 +152,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def muscleLoader(self, filepath):
         """
         Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
-        assigns them to the robot model. May need to rewrite this whole thing.
+        assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
         """
         return
 
@@ -355,7 +355,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.muscle = self.controller.createMuscle("muscle1", 4,6)
         klampt.vis.add("muscle1", self.muscle)
-        self.world.appearance(3)
+
+        # for num in range(self.world.numIDs()):
+        #     x = klampt.GeometricPrimitive()
+        #     x.setSegment(self.world, num+1)
+        #     self.world.appearance(x).setDraw(2, True)
+        #     self.world.appearance(x).setDraw(4, True)
+        #     klampt.vis.add("muscle", x)
         # Gonna try to make this happen in the controller, with only visualization handled here
         #self.latissimus = self.controller.createMuscle("muscle", 4,6)
         #self.trapezius = self.controller.createMuscle("trapezius", 3, 5)

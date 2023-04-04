@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00175" summary="it draws the edges now">
-      <created>1678734727158</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
-      <option name="project" value="LOCAL" />
-      <updated>1678734727158</updated>
-    </task>
     <task id="LOCAL-00176" summary="changed color of edges to red">
       <created>1678754614746</created>
       <option name="number" value="00176" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680580399197</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <task id="LOCAL-00224" summary="added exactly 1 muscle">
+      <created>1680580922597</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1680580922597</updated>
+    </task>
+    <option name="localTasksCounter" value="225" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
