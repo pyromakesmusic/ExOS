@@ -90,6 +90,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
         self.world = wm
+
         self.sim = sim
         self.link1T = a
         self.link2T = b
@@ -352,8 +353,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.drawEdges()
 
-        self.muscle = None
         self.muscle = self.controller.createMuscle("muscle1", 4,6)
+        klampt.vis.add("muscle1", self.muscle)
+        self.world.appearance(3)
         # Gonna try to make this happen in the controller, with only visualization handled here
         #self.latissimus = self.controller.createMuscle("muscle", 4,6)
         #self.trapezius = self.controller.createMuscle("trapezius", 3, 5)

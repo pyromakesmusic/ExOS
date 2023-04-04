@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00174" summary="starting to print info about the subrobots">
-      <created>1678719074602</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
-      <option name="project" value="LOCAL" />
-      <updated>1678719074602</updated>
-    </task>
     <task id="LOCAL-00175" summary="it draws the edges now">
       <created>1678734727158</created>
       <option name="number" value="00175" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680579572892</updated>
     </task>
-    <option name="localTasksCounter" value="223" />
+    <task id="LOCAL-00223" summary="added exactly 1 muscle">
+      <created>1680580399197</created>
+      <option name="number" value="00223" />
+      <option name="presentableId" value="LOCAL-00223" />
+      <option name="project" value="LOCAL" />
+      <updated>1680580399197</updated>
+    </task>
+    <option name="localTasksCounter" value="224" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes" />
     <MESSAGE value="messing with actuators some more" />
     <MESSAGE value="i now have it loading only the robot that i want, which is a huge plus" />
     <MESSAGE value="fixed the positioning, great" />
@@ -516,6 +515,7 @@
     <MESSAGE value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
     <MESSAGE value="got the sequence bug removed" />
     <MESSAGE value="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?" />
-    <option name="LAST_COMMIT_MESSAGE" value="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?" />
+    <MESSAGE value="added exactly 1 muscle" />
+    <option name="LAST_COMMIT_MESSAGE" value="added exactly 1 muscle" />
   </component>
 </project>
