@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00173" summary="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point">
-      <created>1678654113788</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1678654113788</updated>
-    </task>
     <task id="LOCAL-00174" summary="starting to print info about the subrobots">
       <created>1678719074602</created>
       <option name="number" value="00174" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679997204986</updated>
     </task>
-    <option name="localTasksCounter" value="222" />
+    <task id="LOCAL-00222" summary="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?">
+      <created>1680579572892</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1680579572892</updated>
+    </task>
+    <option name="localTasksCounter" value="223" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got the robot showing again" />
     <MESSAGE value="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes" />
     <MESSAGE value="messing with actuators some more" />
     <MESSAGE value="i now have it loading only the robot that i want, which is a huge plus" />
@@ -516,6 +515,7 @@
     <MESSAGE value="commented sequencing error" />
     <MESSAGE value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
     <MESSAGE value="got the sequence bug removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="got the sequence bug removed" />
+    <MESSAGE value="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?" />
+    <option name="LAST_COMMIT_MESSAGE" value="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?" />
   </component>
 </project>

@@ -327,7 +327,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim.setGravity([0, 0, -9.8])
 
         #Random calls, I am going freeform here
-        klampt.vis.edit(self.robot)
 
 # Initialization
     def worldSetup(self, filepath_dict):
@@ -352,17 +351,20 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # This is necessary
 
         self.drawEdges()
+
         self.muscle = None
+        self.muscle = self.controller.createMuscle("muscle1", 4,6)
         # Gonna try to make this happen in the controller, with only visualization handled here
-        self.latissimus = self.controller.createMuscle("muscle", 4,6)
-        self.trapezius = self.controller.createMuscle("trapezius", 3, 5)
-        self.bicep = self.controller.createMuscle("bicep", 9, 11)
-        self.bicep.contract() #Returns an attribute error
+        #self.latissimus = self.controller.createMuscle("muscle", 4,6)
+        #self.trapezius = self.controller.createMuscle("trapezius", 3, 5)
+        #self.bicep = self.controller.createMuscle("bicep", 9, 11)
+        #self.bicep.contract() #Returns an attribute error
 
 
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
+        #klampt.vis.edit("X001")
         self.sim.simLoop(self.robot)
 
     def idlefunc(self):
