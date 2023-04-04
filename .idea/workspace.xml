@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00172" summary="updated robot, need to mount">
-      <created>1678653430108</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1678653430108</updated>
-    </task>
     <task id="LOCAL-00173" summary="the controller class is gonna become huge, maybe want to turn it into smaller modules at some point">
       <created>1678654113788</created>
       <option name="number" value="00173" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679972210882</updated>
     </task>
-    <option name="localTasksCounter" value="221" />
+    <task id="LOCAL-00221" summary="got the sequence bug removed">
+      <created>1679997204986</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1679997204986</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="everything disappeared when i applied forces, maybe this is progress? try adding terrain" />
     <MESSAGE value="got the robot showing again" />
     <MESSAGE value="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes" />
     <MESSAGE value="messing with actuators some more" />
@@ -516,6 +515,7 @@
     <MESSAGE value="look at the muscle initialization method" />
     <MESSAGE value="commented sequencing error" />
     <MESSAGE value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
+    <MESSAGE value="got the sequence bug removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="got the sequence bug removed" />
   </component>
 </project>

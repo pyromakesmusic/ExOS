@@ -98,9 +98,9 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.ctrl = ctrl
         self.setSegment(self.link1T, self.link2T)
 
-        klampt.vis.add("muscle_3", self)
-
         # Now we add some attributes that the simulated and real robot will share
+
+        self.muscle = None
 
         self.turns = 20
         self.weave_length = 1
@@ -110,14 +110,20 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.displacement = 0
         self.pressure = 1
 
-    def contract(self, dummy_var):
-        body1 = self.sim.body(self.world.robot(0).link(self.link1T))
-        body2 = self.sim.body(self.world.robot(0).link(self.link2T))
-
-        force1 = [1,1,1]
-        force2 = [-1,-1,-1]
-        body1.applyForceatPoint(force1, self.link1T.transform[1])
-        body2.applyForceatPoint(force2, self.link2T.transform[1])
+    def contract(self):
+        """
+        This should take some kind of force/pressure argument from the controller and apply it to both the simulated
+        and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
+        Asynchronous is probably more flexible, but is going to require slightly more (but not much more) in terms of
+        computing power.
+        """
+        # body1 = self.sim.body(self.world.robot(0).link(self.link1T))
+        # body2 = self.sim.body(self.world.robot(0).link(self.link2T))
+        #
+        # force1 = [1,1,1]
+        # force2 = [-1,-1,-1]
+        # body1.applyForceatPoint(force1, self.link1T.transform[1])
+        # body2.applyForceatPoint(force2, self.link2T.transform[1])
         return
 
 
@@ -155,7 +161,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
 
-        #muscle = klampt.GeometricPrimitive()
         """
         The below line throws an error: expecting a sequence. Wrong number of arguments I think.
         """
@@ -163,11 +168,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
 
-        muscle = Muscle(self.world, self.sim, self, self.point_a, self.point_b)
-        muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
-        klampt.vis.add(id, muscle) # Adds the muscle to the visualization
+        self.muscle = Muscle(self.world, self.sim, self, self.point_a, self.point_b)
+        self.muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
+        klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
         klampt.vis.setColor(id, 0, 1, 0, 1) # Makes the muscle green so it is easy to see
-        return muscle
+        return self.muscle
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -321,6 +326,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
+        #Random calls, I am going freeform here
+        klampt.vis.edit(self.robot)
+
 # Initialization
     def worldSetup(self, filepath_dict):
         """
@@ -346,10 +354,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawEdges()
         self.muscle = None
         # Gonna try to make this happen in the controller, with only visualization handled here
-        latissimus = self.controller.createMuscle("latissimus", 4,6)
-        trapezius = self.controller.createMuscle("trapezius", 3, 5)
+        self.latissimus = self.controller.createMuscle("muscle", 4,6)
+        self.trapezius = self.controller.createMuscle("trapezius", 3, 5)
         self.bicep = self.controller.createMuscle("bicep", 9, 11)
-        #self.bicep.contract() #Returns an attribute error
+        self.bicep.contract() #Returns an attribute error
 
 
         klampt.vis.setWindowTitle("X001  Test")
