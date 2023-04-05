@@ -148,12 +148,16 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.robot = robotmodel
         self.sim = sim
 
+        #Loading all the muscles
+        self.muscleLoader(config_data)
+
     def muscleLoader(self, filepath):
         """
         Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
         assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
         """
-        return
+        with open(filepath["attachments"]) as attachments:
+            print("Attachments object", attachments)
 
     def createMuscle(self, id, a, b):
         """
@@ -325,22 +329,16 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-
-        self.muscle = None
-
-        # Robot is added to visualization
-
-
-
-        # This is necessary
-
         self.drawEdges()
-
-        #Random calls, I am going freeform here
-
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
+
+        #Random stuff related to muscles
+        lat = klampt.GeometricPrimitive()
+        lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
+
+        klampt.vis.add("lat", lat)
 
 
         klampt.vis.run()
@@ -442,6 +440,6 @@ MAIN LOOP
 """
 
 if __name__ == "__main__":
-    xo_parts = configLoader()
-    print("xo_parts", xo_parts)
-    exo_sim_test = ExoGUI(xo_parts)
+    config = configLoader()
+    print("Loading configuration. . .", config)
+    exo_sim_test = ExoGUI(config)
