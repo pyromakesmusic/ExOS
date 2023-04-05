@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00177" summary="very red now">
-      <created>1678755677615</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
-      <option name="project" value="LOCAL" />
-      <updated>1678755677615</updated>
-    </task>
     <task id="LOCAL-00178" summary="need to try to apply forces and also mount">
       <created>1678757540444</created>
       <option name="number" value="00178" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680634145010</updated>
     </task>
-    <option name="localTasksCounter" value="226" />
+    <task id="LOCAL-00226" summary="trying to turn off everything before i turn the muscle visualization back on">
+      <created>1680667904068</created>
+      <option name="number" value="00226" />
+      <option name="presentableId" value="LOCAL-00226" />
+      <option name="project" value="LOCAL" />
+      <updated>1680667904068</updated>
+    </task>
+    <option name="localTasksCounter" value="227" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="i now have it loading only the robot that i want, which is a huge plus" />
     <MESSAGE value="fixed the positioning, great" />
     <MESSAGE value="removing some unneeded code" />
     <MESSAGE value="cleaning up a little bit" />
@@ -516,6 +515,7 @@
     <MESSAGE value="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?" />
     <MESSAGE value="added exactly 1 muscle" />
     <MESSAGE value="need not just the muscle creator but the muscle loader function to take some logic, the loader should organize/systematize it in some way" />
-    <option name="LAST_COMMIT_MESSAGE" value="need not just the muscle creator but the muscle loader function to take some logic, the loader should organize/systematize it in some way" />
+    <MESSAGE value="trying to turn off everything before i turn the muscle visualization back on" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to turn off everything before i turn the muscle visualization back on" />
   </component>
 </project>

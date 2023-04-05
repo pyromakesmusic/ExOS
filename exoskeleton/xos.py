@@ -284,7 +284,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
-    This is a class for Simulations.
+    This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
@@ -307,50 +307,61 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     GUI class, contains visualization options and is usually where the simulator will be called.
     """
     def __init__(self, filepath):
+        """
+        This is very generic on purpose.
+        """
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         #All the world elements MUST be loaded before the Simulator is created
         self.world = klampt.WorldModel()
-        self.robot = None
+        klampt.vis.add("world", self.world)
+        self.world.loadRobot(filepath["core"])
+        self.robot = self.world.robot(0)
+        klampt.vis.add("X001", self.robot)
+        self.sim = ExoSim(self.world, self.robot)
+
+        # creation of the controller
+        self.controller = ExoController(self.robot, self.world, self.sim, filepath)
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
+
         self.plan = None
         self.trajectory = None
         self.actuators = None
         self.latissimus = None
         self.trapezius = None
         self.bicep = None
-        self.sim = None
         self.point_a = None
         self.point_b = None
-        self.controller = None
-        self.XOS = None
-        self.worldSetup(filepath)
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
-        #Random calls, I am going freeform here
-
-# Initialization
-    def worldSetup(self, filepath_dict):
-        """
-        Sets up the world for the simulation, and initializes the simulation.
-        """
-        # Simulator is initialized
-        # World is added to visualization
-        klampt.vis.add("world", self.world)
-        self.world.loadRobot(filepath_dict["core"])
-        self.robot = self.world.robot(0)
         self.muscle = None
 
         # Robot is added to visualization
-        klampt.vis.add("X001", self.robot)
 
-        self.sim = ExoSim(self.world, self.robot)
-        # creation of the controller
-        self.controller = ExoController(self.robot, self.world, self.sim, filepath_dict)
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
+
 
         # This is necessary
 
         self.drawEdges()
+
+        #Random calls, I am going freeform here
+
+        klampt.vis.setWindowTitle("X001  Test")
+        self.viewport = klampt.vis.getViewport()
+        self.viewport.fit([0,0,-5], 25)
+
+
+        klampt.vis.run()
+
+# Initialization
+    def worldSetup(self):
+        """
+        At this point this is just extra code.
+        """
+        # Simulator is initialized
+        # World is added to visualization
+
+
 
         # self.muscle = self.controller.createMuscle("muscle1", 4,6)
         # klampt.vis.add("muscle1", self.muscle)
@@ -368,11 +379,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #self.bicep.contract() #Returns an attribute error
 
 
-        klampt.vis.setWindowTitle("X001  Test")
-        self.viewport = klampt.vis.getViewport()
-        self.viewport.fit([0,0,-5], 25)
-        #klampt.vis.edit("X001")
-        self.sim.simLoop(self.robot)
+        #klampt.vis.edit("X001") # This is opening an editor for the robot theoretically, but I'm not sure this command actually works
+        #self.sim.simLoop(self.robot) # This is calling the simulation substepping
 
     def idlefunc(self):
         pass
@@ -399,14 +407,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def drawEdges(self):
         """
         Changes some drawing options for link geometry
+        In the setDraw function, the first argument is an integer denoting vertices, edges. etc. The second is a Boolean
+        determining whether or not the option is drawn.
+
+        setColor function takes an int and RGBA float values.
         """
         wm = self.world
         for x in range(wm.numIDs()):
             wm.appearance(x).setDraw(2, True) # Makes edges visible
             wm.appearance(x).setDraw(4, True) # I believe this should make edges glow
             wm.appearance(x).setColor(2, 0, 0, 0, .5) # Makes edges black
-            wm.appearance(x).setColor(3, .3, .3, .3, .3) # This makes the faces a translucent grey\
-            wm.appearance(x).setColor(4, .2, 0, 1, .1) # I think this changes the glow color
+            wm.appearance(x).setColor(4, 0, 0, .9, .4) # This makes the faces a translucent grey\
+            wm.appearance(x).setColor(4, 0, 0, 1, .5) # I think this changes the glow color
 
 
     """
