@@ -92,12 +92,9 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.world = wm
 
         self.sim = sim
-        self.link1T = a
-        self.link2T = b
-        print("Type of a: ", type(self.link1T))
-        print("Type of b: ", type(self.link2T))
+
         self.ctrl = ctrl
-        self.setSegment(self.link1T, self.link2T)
+        self.setSegment(a,b)
 
         # Now we add some attributes that the simulated and real robot will share
 
@@ -127,6 +124,8 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         # body2.applyForceatPoint(force2, self.link2T.transform[1])
         return
 
+    def appearance(self):
+        return klampt.Appearance()
 
 
 class MuscleGroup:
@@ -353,8 +352,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.drawEdges()
 
-        self.muscle = self.controller.createMuscle("muscle1", 4,6)
-        klampt.vis.add("muscle1", self.muscle)
+        # self.muscle = self.controller.createMuscle("muscle1", 4,6)
+        # klampt.vis.add("muscle1", self.muscle)
 
         # for num in range(self.world.numIDs()):
         #     x = klampt.GeometricPrimitive()
@@ -363,9 +362,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #     self.world.appearance(x).setDraw(4, True)
         #     klampt.vis.add("muscle", x)
         # Gonna try to make this happen in the controller, with only visualization handled here
-        #self.latissimus = self.controller.createMuscle("muscle", 4,6)
-        #self.trapezius = self.controller.createMuscle("trapezius", 3, 5)
-        #self.bicep = self.controller.createMuscle("bicep", 9, 11)
+        # self.latissimus = self.controller.createMuscle("muscle", 4,6)
+        # self.trapezius = self.controller.createMuscle("trapezius", 3, 5)
+        # self.bicep = self.controller.createMuscle("bicep", 9, 11)
         #self.bicep.contract() #Returns an attribute error
 
 
