@@ -323,14 +323,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.controller = ExoController(self.robot, self.world, self.sim, filepath)
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
 
-        self.plan = None
-        self.trajectory = None
-        self.actuators = None
-        self.latissimus = None
-        self.trapezius = None
-        self.bicep = None
-        self.point_a = None
-        self.point_b = None
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 

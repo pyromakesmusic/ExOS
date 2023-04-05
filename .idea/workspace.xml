@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,13 +130,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00178" summary="need to try to apply forces and also mount">
-      <created>1678757540444</created>
-      <option name="number" value="00178" />
-      <option name="presentableId" value="LOCAL-00178" />
-      <option name="project" value="LOCAL" />
-      <updated>1678757540444</updated>
     </task>
     <task id="LOCAL-00179" summary="maybe it won't always simulate?">
       <created>1678758164782</created>
@@ -475,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680667904068</updated>
     </task>
-    <option name="localTasksCounter" value="227" />
+    <task id="LOCAL-00227" summary="successfully incorporated worldSetup into __init__ in GUI, so no longer need to use worldSetup">
+      <created>1680670163773</created>
+      <option name="number" value="00227" />
+      <option name="presentableId" value="LOCAL-00227" />
+      <option name="project" value="LOCAL" />
+      <updated>1680670163773</updated>
+    </task>
+    <option name="localTasksCounter" value="228" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed the positioning, great" />
     <MESSAGE value="removing some unneeded code" />
     <MESSAGE value="cleaning up a little bit" />
     <MESSAGE value="think i've created a muscle, but i can't see it" />
@@ -516,6 +514,7 @@
     <MESSAGE value="added exactly 1 muscle" />
     <MESSAGE value="need not just the muscle creator but the muscle loader function to take some logic, the loader should organize/systematize it in some way" />
     <MESSAGE value="trying to turn off everything before i turn the muscle visualization back on" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to turn off everything before i turn the muscle visualization back on" />
+    <MESSAGE value="successfully incorporated worldSetup into __init__ in GUI, so no longer need to use worldSetup" />
+    <option name="LAST_COMMIT_MESSAGE" value="successfully incorporated worldSetup into __init__ in GUI, so no longer need to use worldSetup" />
   </component>
 </project>
