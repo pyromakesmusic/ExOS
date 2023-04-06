@@ -162,7 +162,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
         """
         with open(filepath["attachments"]) as attachments:
-            print("Attachments object", attachments)
+            line = attachments.readline().strip()
+            if line != None: # Turn this into an assertion at some point
+                linedf = pd.read_csv(attachments)
+                print(linedf)
 
     def createMuscle(self, id, a, b):
         """
@@ -344,12 +347,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
 
 
-        self.muscle_style = klampt.Appearance()
-        self.muscle_style.setColor(2, 1, 0, 0, 1)
 
-        klampt.vis.add("lat", lat)
-        klampt.vis.setColor("lat", 1, 0, 0, 1)
-        self.muscle_style.drawGL()
+
+        klampt.vis.add("latissimus", lat)
+        klampt.vis.setColor("latissimus", 1, 0, 0, 1)
         """
         drawWorldGL redraws the geometry in its current world transform. I think this method will be critical to the 
         visualization at some point.
