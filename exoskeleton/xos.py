@@ -337,8 +337,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Random stuff related to muscles
         lat = klampt.GeometricPrimitive()
         lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
-
+        # What if I address them as subrobots?
         klampt.vis.add("lat", lat)
+
 
 
         klampt.vis.run()
