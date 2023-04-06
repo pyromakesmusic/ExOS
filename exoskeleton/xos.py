@@ -97,6 +97,14 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.setSegment(a,b)
 
         # Now we add some attributes that the simulated and real robot will share
+        self.geometry = klampt.GeometricPrimitive()
+        self.geometry.setSegment()
+
+        self.appearance = klampt.Appearance()
+        self.appearance.setColor(2, 1, 0, 0, 1)
+        self.appearance.setDraw(2, True)
+
+
 
         self.muscle = None
 
@@ -123,9 +131,6 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         # body1.applyForceatPoint(force1, self.link1T.transform[1])
         # body2.applyForceatPoint(force2, self.link2T.transform[1])
         return
-
-    def appearance(self):
-        return klampt.Appearance()
 
 
 class MuscleGroup:
@@ -337,8 +342,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Random stuff related to muscles
         lat = klampt.GeometricPrimitive()
         lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
-        # What if I address them as subrobots?
+
+
+        self.muscle_style = klampt.Appearance()
+        self.muscle_style.setColor(2, 1, 0, 0, 1)
+
         klampt.vis.add("lat", lat)
+        self.muscle_style.drawGL()
+        """
+        drawWorldGL redraws the geometry in its current world transform. I think this method will be critical to the 
+        visualization at some point.
+        """
+        # What if I address them as subrobots?
 
 
 
