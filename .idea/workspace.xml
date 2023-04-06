@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00182" summary="the muscle has an associated appearance and geometry now">
-      <created>1678773537623</created>
-      <option name="number" value="00182" />
-      <option name="presentableId" value="LOCAL-00182" />
-      <option name="project" value="LOCAL" />
-      <updated>1678773537625</updated>
     </task>
     <task id="LOCAL-00183" summary="have mounted the subrobots a little bit">
       <created>1678830022333</created>
@@ -476,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680798880086</updated>
     </task>
-    <option name="localTasksCounter" value="231" />
+    <task id="LOCAL-00231" summary="filling out more of the muscle initialization methods">
+      <created>1680799884756</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
+      <option name="project" value="LOCAL" />
+      <updated>1680799884756</updated>
+    </task>
+    <option name="localTasksCounter" value="232" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got it drawing a muscle in bright yellow" />
     <MESSAGE value="muscles colorized green" />
     <MESSAGE value="improved Muscle class" />
     <MESSAGE value="updated muscle class more" />
@@ -517,6 +515,7 @@
     <MESSAGE value="turned it blue and it still works" />
     <MESSAGE value="linking together more of the pieces that make the muscle, trying to simplify and systematize" />
     <MESSAGE value="gonna add more entries in the muscle dataframe" />
-    <option name="LAST_COMMIT_MESSAGE" value="gonna add more entries in the muscle dataframe" />
+    <MESSAGE value="filling out more of the muscle initialization methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="filling out more of the muscle initialization methods" />
   </component>
 </project>

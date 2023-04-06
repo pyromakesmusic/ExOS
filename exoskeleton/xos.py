@@ -348,6 +348,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.muscle_style.setColor(2, 1, 0, 0, 1)
 
         klampt.vis.add("lat", lat)
+        klampt.vis.setColor("lat", 1, 0, 0, 1)
         self.muscle_style.drawGL()
         """
         drawWorldGL redraws the geometry in its current world transform. I think this method will be critical to the 
