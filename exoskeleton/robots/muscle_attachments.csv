@@ -1,5 +1,5 @@
 name, link_a, link_b, transform_a, transform_b, label_a, label_b, turns, r_0, l_0
 bicep, rightarm[Link_4], rightarm[Link_6], 0 0 0, 0 0 0, proximal, distal, 20, 1, 2
-tricep, rightarm[Link_1], rightarm[Link_6, 0 0 0, 0 0 0, proximal, distal, 20, 1, 2
+tricep, rightarm[Link_1], rightarm[Link_6], 0 0 0, 0 0 0, proximal, distal, 20, 1, 2
 brachialis, rightarm[Link_6], rightarm[Link_7], 0 0 0, 0 0 0, proximal, distal, 20, 1, 2
 brachioradialis, rightarm[Link_6], rightarm[Link_7], 0 1 0, 0 1 0, proximal, distal, 20, 1, 2
