@@ -172,7 +172,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
-                muscle = Muscle(muscle["name"],muscle["link_a"], muscle["link_b"])
+                print(row.index)
+                muscle = Muscle(row["name"],row["link_a"], row["link_b"])
                 muscle_objects.append(muscle)
 
             print(muscle_objects)
