@@ -152,7 +152,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.world = world
         self.robot = robotmodel
         self.sim = sim
-
+        self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
         #Loading all the muscles
         self.muscleLoader(config_data)
 
@@ -162,15 +162,23 @@ class ExoController(klampt.control.OmniRobotInterface):
         assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
         """
         with open(filepath["attachments"]) as attachments:
-            muscledf = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
+            muscleinfo_df = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
             print("BLAH BLAH BLAH")
-            print(muscledf)
-            rows = muscledf.shape[0] # This is the number of rows, so the while loop should loop "row" many times
-            print("Number of rows", muscledf.shape[0])
+            print(muscleinfo_df)
+            rows = muscleinfo_df.shape[0] # This is the number of rows, so the while loop should loop "row" many times
+            print("Number of rows", muscleinfo_df.shape[0])
+
+            muscle_objects = pd.Series()
 
             for x in range(rows):
-                row = muscledf.iloc[x]
-                print(row)
+                row = muscleinfo_df.iloc[x]
+                muscle = Muscle(muscle["name"],muscle["link_a"], muscle["link_b"])
+                muscle_objects.append(muscle)
+
+            print(muscle_objects)
+            pd.concat(muscleinfo_df, muscle) # I just wrote like 8 lines of code without testing, let's see if they work
+
+
 
     def createMuscle(self, id, a, b):
         """

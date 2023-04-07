@@ -132,13 +132,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00186" summary="just gonna add physics even though there's too many things on the screen">
-      <created>1678834178268</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1678834178268</updated>
-    </task>
     <task id="LOCAL-00187" summary="building a csv to read muscle attachments">
       <created>1678836852120</created>
       <option name="number" value="00187" />
@@ -475,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680821190245</updated>
     </task>
-    <option name="localTasksCounter" value="235" />
+    <task id="LOCAL-00235" summary="got the dataframe created, need to use it to now systematically create muscles">
+      <created>1680833782708</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1680833782708</updated>
+    </task>
+    <option name="localTasksCounter" value="236" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="muscle method is becoming more refined, i think i can base it off a dictionary soon" />
     <MESSAGE value="named a bicep" />
     <MESSAGE value="encapsulation is progressing nicely" />
     <MESSAGE value="i think i have kinda created a bicep?" />
@@ -516,6 +515,7 @@
     <MESSAGE value="made the muscles red" />
     <MESSAGE value="building out some of the dataframe for the muscle loader" />
     <MESSAGE value="removing unnecessary rstrip" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing unnecessary rstrip" />
+    <MESSAGE value="got the dataframe created, need to use it to now systematically create muscles" />
+    <option name="LAST_COMMIT_MESSAGE" value="got the dataframe created, need to use it to now systematically create muscles" />
   </component>
 </project>
