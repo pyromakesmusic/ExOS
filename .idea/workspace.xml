@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00185" summary="mounting the other robot elements">
-      <created>1678833469874</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1678833469882</updated>
     </task>
     <task id="LOCAL-00186" summary="just gonna add physics even though there's too many things on the screen">
       <created>1678834178268</created>
@@ -476,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680820787884</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="removing unnecessary rstrip">
+      <created>1680821190245</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1680821190245</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated muscle class more" />
     <MESSAGE value="muscle method is becoming more refined, i think i can base it off a dictionary soon" />
     <MESSAGE value="named a bicep" />
     <MESSAGE value="encapsulation is progressing nicely" />
@@ -517,6 +515,7 @@
     <MESSAGE value="filling out more of the muscle initialization methods" />
     <MESSAGE value="made the muscles red" />
     <MESSAGE value="building out some of the dataframe for the muscle loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="building out some of the dataframe for the muscle loader" />
+    <MESSAGE value="removing unnecessary rstrip" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing unnecessary rstrip" />
   </component>
 </project>

@@ -162,9 +162,15 @@ class ExoController(klampt.control.OmniRobotInterface):
         assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
         """
         with open(filepath["attachments"]) as attachments:
-            linedf = pd.read_csv(attachments)
+            muscledf = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
             print("BLAH BLAH BLAH")
-            print(linedf)
+            print(muscledf)
+            rows = muscledf.shape[0] # This is the number of rows, so the while loop should loop "row" many times
+            print("Number of rows", muscledf.shape[0])
+
+            for x in range(rows):
+                row = muscledf.iloc[x]
+                print(row)
 
     def createMuscle(self, id, a, b):
         """
