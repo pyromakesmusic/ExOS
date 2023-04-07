@@ -82,7 +82,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, wm, sim, ctrl, a, b):
+    def __init__(self, id, wm, sim, ctrl, a, b):
         """
         Takes the world model and two link IDs, a robot controller, and a first and second relative link transform.
         """
@@ -173,7 +173,9 @@ class ExoController(klampt.control.OmniRobotInterface):
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
                 print(row.index)
-                muscle = Muscle(row["name"],row["link_a"], row["link_b"])
+                muscle = Muscle(row["name"], self.world, self.sim, self, row["link_a"], row["link_b"])
+                # Should have arguments self, id, world, sim, controller, a, b
+                # I now need to use the information from the row to access a particular pair of links
                 muscle_objects.append(muscle)
 
             print(muscle_objects)
