@@ -123,13 +123,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         Asynchronous is probably more flexible, but is going to require slightly more (but not much more) in terms of
         computing power.
         """
-        # body1 = self.sim.body(self.world.robot(0).link(self.link1T))
-        # body2 = self.sim.body(self.world.robot(0).link(self.link2T))
-        #
-        # force1 = [1,1,1]
-        # force2 = [-1,-1,-1]
-        # body1.applyForceatPoint(force1, self.link1T.transform[1])
-        # body2.applyForceatPoint(force2, self.link2T.transform[1])
+
         return
 
 
@@ -163,24 +157,18 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         with open(filepath["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
-            print("BLAH BLAH BLAH")
-            print(muscleinfo_df)
             rows = muscleinfo_df.shape[0] # This is the number of rows, so the while loop should loop "row" many times
-            print("Number of rows", muscleinfo_df.shape[0])
 
-            muscle_objects = pd.Series()
+            muscle_objects = [] #
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
-                print(row.index)
                 link_a = int(row["link_a"])
                 link_b = int(row["link_b"]) # We want these to be typed as integers when we use them to identify links.
                 """
                 At this point, link_a and link_b contain text labels. Let's see if we can access
                 all the links from inside this method.
                 """
-                print("Number of elements in the world: ", self.world.numIDs())
-                print("Number of robots in the world: ", self.world.numRobots())
                 num_elements = self.world.numIDs()
                 num_robots = self.world.numRobots()
                 """
@@ -190,15 +178,14 @@ class ExoController(klampt.control.OmniRobotInterface):
                 """
 
 
-                print("Link A: ", link_a)
-                print("Link B: ", link_b)
                 muscle = Muscle(row["name"], self.world, self.sim, self, self.robot.link(link_a).transform[1], self.robot.link(link_b).transform[1])
                 # Should have arguments self, id, world, sim, controller, a, b
                 # I now need to use the information from the row to access a particular pair of links
-                # klampt.vis.add(row["name"],muscle)
-                # klampt.vis.setColor(1,0,0,1)
+                muscle_objects.append(muscle)
 
-            print(muscle_objects)
+            muscle_series = pd.Series(data=muscle_objects)
+            pd.concat([muscleinfo_df, muscle_series], axis=1)
+            print(muscleinfo_df.iloc[1])
 
 
 
@@ -218,7 +205,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscle = Muscle(self.world, self.sim, self, self.point_a, self.point_b)
         self.muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
         klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
-        klampt.vis.setColor(id, 0, 1, 0, 1) # Makes the muscle green so it is easy to see
+        klampt.vis.setColor(id, 1, 0, 0, 1) # Makes the muscle green so it is easy to see
         return self.muscle
 
     # Control and Kinematics

@@ -53,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/robots",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.CSV/TSV/PSV"
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -132,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00195" summary="everything disappeared when i applied forces, maybe this is progress? try adding terrain">
-      <created>1678909656882</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1678909656882</updated>
     </task>
     <task id="LOCAL-00196" summary="got the robot showing again">
       <created>1678924006788</created>
@@ -476,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680913901668</updated>
     </task>
-    <option name="localTasksCounter" value="244" />
+    <task id="LOCAL-00244" summary="trying to separate the visualization logic more into its own container">
+      <created>1680914733956</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1680914733956</updated>
+    </task>
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="the contract method doesn't work yet" />
     <MESSAGE value="look at the muscle initialization method" />
     <MESSAGE value="commented sequencing error" />
     <MESSAGE value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
@@ -517,6 +516,7 @@
     <MESSAGE value="cleaning up extra code" />
     <MESSAGE value="commenting more things" />
     <MESSAGE value="fixed the head so that it is pointing forward" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the head so that it is pointing forward" />
+    <MESSAGE value="trying to separate the visualization logic more into its own container" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to separate the visualization logic more into its own container" />
   </component>
 </project>
