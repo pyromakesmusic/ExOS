@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00194" summary="no visible bugs, but it's still not doing the behavior i want for some reason">
-      <created>1678909027579</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1678909027579</updated>
     </task>
     <task id="LOCAL-00195" summary="everything disappeared when i applied forces, maybe this is progress? try adding terrain">
       <created>1678909656882</created>
@@ -475,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680913823550</updated>
     </task>
-    <option name="localTasksCounter" value="243" />
+    <task id="LOCAL-00243" summary="fixed the head so that it is pointing forward">
+      <created>1680913901668</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1680913901668</updated>
+    </task>
+    <option name="localTasksCounter" value="244" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="getting an attribute error" />
     <MESSAGE value="the contract method doesn't work yet" />
     <MESSAGE value="look at the muscle initialization method" />
     <MESSAGE value="commented sequencing error" />
@@ -516,6 +516,7 @@
     <MESSAGE value="i think it is running? we will see..." />
     <MESSAGE value="cleaning up extra code" />
     <MESSAGE value="commenting more things" />
-    <option name="LAST_COMMIT_MESSAGE" value="commenting more things" />
+    <MESSAGE value="fixed the head so that it is pointing forward" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the head so that it is pointing forward" />
   </component>
 </project>
