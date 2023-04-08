@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00192" summary="indexing or addressing isn't working correctly">
-      <created>1678857911294</created>
-      <option name="number" value="00192" />
-      <option name="presentableId" value="LOCAL-00192" />
-      <option name="project" value="LOCAL" />
-      <updated>1678857911294</updated>
     </task>
     <task id="LOCAL-00193" summary="fixed the sizing">
       <created>1678906380271</created>
@@ -476,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680913068339</updated>
     </task>
-    <option name="localTasksCounter" value="241" />
+    <task id="LOCAL-00241" summary="cleaning up extra code">
+      <created>1680913760737</created>
+      <option name="number" value="00241" />
+      <option name="presentableId" value="LOCAL-00241" />
+      <option name="project" value="LOCAL" />
+      <updated>1680913760737</updated>
+    </task>
+    <option name="localTasksCounter" value="242" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removed unnecessary code" />
     <MESSAGE value="need to add muscle methods; they will be shared between simulated and actual robot for now" />
     <MESSAGE value="getting an attribute error" />
     <MESSAGE value="the contract method doesn't work yet" />
@@ -517,6 +515,7 @@
     <MESSAGE value="need to change muscle creation call" />
     <MESSAGE value="breaking more things out into methods" />
     <MESSAGE value="i think it is running? we will see..." />
-    <option name="LAST_COMMIT_MESSAGE" value="i think it is running? we will see..." />
+    <MESSAGE value="cleaning up extra code" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaning up extra code" />
   </component>
 </project>

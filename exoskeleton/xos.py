@@ -368,15 +368,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,-5], 25)
 
         #Random stuff related to muscles
-        lat = klampt.GeometricPrimitive()
-        lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
-
-
-
-
-        klampt.vis.add("latissimus", lat)
-        klampt.vis.setColor("latissimus", 1, 0, 0, 1)
+        # lat = klampt.GeometricPrimitive()
+        # lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
+        #
+        #
+        #
+        #
+        # klampt.vis.add("latissimus", lat)
+        # klampt.vis.setColor("latissimus", 1, 0, 0, 1)
         """
+        The four lines above were the only thing putting the muscle in the visualization? And then the pressure stuff and
+        physics stuff I figure out separately?
+        
         drawWorldGL redraws the geometry in its current world transform. I think this method will be critical to the 
         visualization at some point.
         """
