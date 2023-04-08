@@ -145,6 +145,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.robot = robotmodel
         self.sim = sim
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
+
         #Loading all the muscles
         self.muscleLoader(config_data)
 
@@ -182,9 +183,11 @@ class ExoController(klampt.control.OmniRobotInterface):
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects)
+            print("DataFrame Penultimate Shape: ", muscleinfo_df.shape)
             print(muscle_series)
-            pd.concat([muscleinfo_df, muscle_series], axis=1)
+            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
             print(muscleinfo_df.iloc[1])
+            print("DataFrame Final Shape: ", muscleinfo_df.shape)
 
             for fiber in muscle_objects:
                 klampt.vis.add("fiber", fiber)

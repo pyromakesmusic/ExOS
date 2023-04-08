@@ -133,13 +133,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00197" summary="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes">
-      <created>1678925293963</created>
-      <option name="number" value="00197" />
-      <option name="presentableId" value="LOCAL-00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1678925293963</updated>
-    </task>
     <task id="LOCAL-00198" summary="messing with actuators some more">
       <created>1678928173361</created>
       <option name="number" value="00198" />
@@ -476,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680918862302</updated>
     </task>
-    <option name="localTasksCounter" value="246" />
+    <task id="LOCAL-00246" summary="it might be accepting my appearance argument?">
+      <created>1680922587138</created>
+      <option name="number" value="00246" />
+      <option name="presentableId" value="LOCAL-00246" />
+      <option name="project" value="LOCAL" />
+      <updated>1680922587138</updated>
+    </task>
+    <option name="localTasksCounter" value="247" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="commented sequencing error" />
     <MESSAGE value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
     <MESSAGE value="got the sequence bug removed" />
     <MESSAGE value="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?" />
@@ -517,6 +516,7 @@
     <MESSAGE value="fixed the head so that it is pointing forward" />
     <MESSAGE value="trying to separate the visualization logic more into its own container" />
     <MESSAGE value="filling out the data structures a little at a time, i think we are close" />
-    <option name="LAST_COMMIT_MESSAGE" value="filling out the data structures a little at a time, i think we are close" />
+    <MESSAGE value="it might be accepting my appearance argument?" />
+    <option name="LAST_COMMIT_MESSAGE" value="it might be accepting my appearance argument?" />
   </component>
 </project>
