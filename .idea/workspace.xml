@@ -47,20 +47,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/robots",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157/exoskeleton/robots&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
@@ -132,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00196" summary="got the robot showing again">
-      <created>1678924006788</created>
-      <option name="number" value="00196" />
-      <option name="presentableId" value="LOCAL-00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1678924006788</updated>
     </task>
     <task id="LOCAL-00197" summary="still doesn't seem to be applying physics for whatever reason. going to work more on the muscle and see where that goes">
       <created>1678925293963</created>
@@ -476,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680914733956</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="filling out the data structures a little at a time, i think we are close">
+      <created>1680918862302</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1680918862302</updated>
+    </task>
+    <option name="localTasksCounter" value="246" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="look at the muscle initialization method" />
     <MESSAGE value="commented sequencing error" />
     <MESSAGE value="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__" />
     <MESSAGE value="got the sequence bug removed" />
@@ -517,6 +516,7 @@
     <MESSAGE value="commenting more things" />
     <MESSAGE value="fixed the head so that it is pointing forward" />
     <MESSAGE value="trying to separate the visualization logic more into its own container" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to separate the visualization logic more into its own container" />
+    <MESSAGE value="filling out the data structures a little at a time, i think we are close" />
+    <option name="LAST_COMMIT_MESSAGE" value="filling out the data structures a little at a time, i think we are close" />
   </component>
 </project>

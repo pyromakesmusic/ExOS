@@ -99,9 +99,6 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(a,b)
-        self.appearance = klampt.Appearance()
-        self.appearance.setDraw(2, True)
-        self.appearance.setColor(2, 1, 0, 0, 1)
         """
          I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
         """
@@ -126,13 +123,14 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         return
 
-
+    def appearance(self):
+        app = klampt.Appearance()
+        app.setDraw(2, True)
+        app.setColor(2, 1, 0, 0, 1)
+        return app
 class MuscleGroup:
     def __init__(self):
         pass
-
-
-
 class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module, and before that probably needs to be broken up
@@ -184,8 +182,13 @@ class ExoController(klampt.control.OmniRobotInterface):
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects)
+            print(muscle_series)
             pd.concat([muscleinfo_df, muscle_series], axis=1)
             print(muscleinfo_df.iloc[1])
+
+            for fiber in muscle_objects:
+                klampt.vis.add("fiber", fiber)
+                klampt.vis.setColor("fiber", 1, 0, 0, 1)
 
 
 
@@ -305,7 +308,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def idle(self):
         self.setPosition(self.target)
-
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
@@ -325,7 +327,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
             body.applyForceAtPoint((.1,.1,.1),(.1,.1,.1))
             self.simulate(.1)
             self.updateWorld()
-
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
@@ -422,8 +423,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def shutdown(self):
         klampt.vis.kill()
-
-
 """
 FUNCTION DEFINITIONS
 """
@@ -438,12 +437,9 @@ def configLoader():
                       "attachments": attachments}
 
         return config
-
-
 """
 MAIN LOOP
 """
-
 if __name__ == "__main__":
     config = configLoader()
     print("Loading configuration. . .", config)
