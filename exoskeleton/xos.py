@@ -386,34 +386,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.run()
 
-# Initialization
-    def worldSetup(self):
-        """
-        At this point this is just extra code.
-        """
-        # Simulator is initialized
-        # World is added to visualization
-
-
-
-        # self.muscle = self.controller.createMuscle("muscle1", 4,6)
-        # klampt.vis.add("muscle1", self.muscle)
-
-        # for num in range(self.world.numIDs()):
-        #     x = klampt.GeometricPrimitive()
-        #     x.setSegment(self.world, num+1)
-        #     self.world.appearance(x).setDraw(2, True)
-        #     self.world.appearance(x).setDraw(4, True)
-        #     klampt.vis.add("muscle", x)
-        # Gonna try to make this happen in the controller, with only visualization handled here
-        # self.latissimus = self.controller.createMuscle("muscle", 4,6)
-        # self.trapezius = self.controller.createMuscle("trapezius", 3, 5)
-        # self.bicep = self.controller.createMuscle("bicep", 9, 11)
-        #self.bicep.contract() #Returns an attribute error
-
-
-        #klampt.vis.edit("X001") # This is opening an editor for the robot theoretically, but I'm not sure this command actually works
-        #self.sim.simLoop(self.robot) # This is calling the simulation substepping
 
     def idlefunc(self):
         pass
