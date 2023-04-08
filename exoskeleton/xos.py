@@ -98,7 +98,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
-        self.geometry.setSegment()
+        self.geometry.setSegment(a,b)
 
         self.appearance = klampt.Appearance()
         self.appearance.setColor(2, 1, 0, 0, 1)
@@ -173,8 +173,8 @@ class ExoController(klampt.control.OmniRobotInterface):
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
                 print(row.index)
-                link_a = row["link_a"]
-                link_b = row["link_b"]
+                link_a = int(row["link_a"])
+                link_b = int(row["link_b"]) # We want these to be typed as integers when we use them to identify links.
                 """
                 At this point, link_a and link_b contain text labels. Let's see if we can access
                 all the links from inside this method.
@@ -192,13 +192,13 @@ class ExoController(klampt.control.OmniRobotInterface):
 
                 print("Link A: ", link_a)
                 print("Link B: ", link_b)
-                muscle = Muscle(row["name"], self.world, self.sim, self, self.robot.link(link_a).transform[1], self.robot.link(link_b).transform[1]
+                muscle = Muscle(row["name"], self.world, self.sim, self, self.robot.link(link_a).transform[1], self.robot.link(link_b).transform[1])
                 # Should have arguments self, id, world, sim, controller, a, b
                 # I now need to use the information from the row to access a particular pair of links
-                muscle_objects.append(muscle)
+                # klampt.vis.add(row["name"],muscle)
+                # klampt.vis.setColor(1,0,0,1)
 
             print(muscle_objects)
-            pd.concat(muscleinfo_df, muscle) # I just wrote like 8 lines of code without testing, let's see if they work
 
 
 
@@ -292,28 +292,13 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     """
     SYSTEM DIAGNOSTICS
+    This section is for confirming baseline function of the exoskeleton and troubleshooting fatal errors.
     """
-    def linkCount(self):
-        for y in range(self.world.numRobots())):
-            print("Number of subrobot links: ", self.world.robot(y).numLinks())
 
-    def diagnostics(self):
-        """
-        This is a diagnostic function with verbose output. May eventually be a call for more nested diagnostic subroutines.
-        """
-        for x in range(self.world.numRobots()):
-            print(x, "Is a Robot")
-            print("name: ", self.world.getName(x))
-
-        for x in range(self.world.numIDs()):
-            print(x, "is an ID")
-            print(self.world.getName(x))
-        print("Robot number of links: ", self.robot.numLinks())
-        print("Number of IDs//: ", self.world.numIDs())
-
-        def printLinks(self):
-            for link in range(self.robot.numLinks()):
-                print("Link name: ", link)
+    """
+    SYSTEM BENCHMARKING
+    This section is for measurement of system functions and data collection for further optimization.
+    """
 
     def randomTrajectoryTest(self):
         """

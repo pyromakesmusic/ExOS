@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00190" summary="introduced a bug, fix it when we wake up">
-      <created>1678843143427</created>
-      <option name="number" value="00190" />
-      <option name="presentableId" value="LOCAL-00190" />
-      <option name="project" value="LOCAL" />
-      <updated>1678843143427</updated>
     </task>
     <task id="LOCAL-00191" summary="made the bug into a better bug">
       <created>1678849604302</created>
@@ -478,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680905897650</updated>
     </task>
-    <option name="localTasksCounter" value="239" />
+    <task id="LOCAL-00239" summary="breaking more things out into methods">
+      <created>1680912446261</created>
+      <option name="number" value="00239" />
+      <option name="presentableId" value="LOCAL-00239" />
+      <option name="project" value="LOCAL" />
+      <updated>1680912446261</updated>
+    </task>
+    <option name="localTasksCounter" value="240" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="i think i have kinda created a bicep?" />
     <MESSAGE value="updated color and translucency properties; improved encapsulation" />
     <MESSAGE value="removed unnecessary code" />
     <MESSAGE value="need to add muscle methods; they will be shared between simulated and actual robot for now" />
@@ -519,6 +516,7 @@
     <MESSAGE value="got the dataframe created, need to use it to now systematically create muscles" />
     <MESSAGE value="filling out the muscle loader" />
     <MESSAGE value="need to change muscle creation call" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to change muscle creation call" />
+    <MESSAGE value="breaking more things out into methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="breaking more things out into methods" />
   </component>
 </project>
