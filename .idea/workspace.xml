@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +54,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/main.py",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/robots",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.CSV/TSV/PSV"
   },
   "keyToStringList": {
@@ -63,6 +65,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
       <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\robots" />
       <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\terrains" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
@@ -131,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00189" summary="now create a dictionary of muscles? or similar, some stored instance attribute with the same data structure as we used in the attachments file">
-      <created>1678838998327</created>
-      <option name="number" value="00189" />
-      <option name="presentableId" value="LOCAL-00189" />
-      <option name="project" value="LOCAL" />
-      <updated>1678838998327</updated>
     </task>
     <task id="LOCAL-00190" summary="introduced a bug, fix it when we wake up">
       <created>1678843143427</created>
@@ -475,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680885437800</updated>
     </task>
-    <option name="localTasksCounter" value="238" />
+    <task id="LOCAL-00238" summary="need to change muscle creation call">
+      <created>1680905897650</created>
+      <option name="number" value="00238" />
+      <option name="presentableId" value="LOCAL-00238" />
+      <option name="project" value="LOCAL" />
+      <updated>1680905897650</updated>
+    </task>
+    <option name="localTasksCounter" value="239" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

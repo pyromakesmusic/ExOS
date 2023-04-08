@@ -1,4 +1,4 @@
 Core:
 robots/core_bot.rob
 Muscle Attachments:
-robots/muscle_attachments.csv
+robots/muscle_attachments_b1.csv

@@ -173,7 +173,26 @@ class ExoController(klampt.control.OmniRobotInterface):
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
                 print(row.index)
-                muscle = Muscle(row["name"], self.world, self.sim, self, row["link_a"], row["link_b"])
+                link_a = row["link_a"]
+                link_b = row["link_b"]
+                """
+                At this point, link_a and link_b contain text labels. Let's see if we can access
+                all the links from inside this method.
+                """
+                print("Number of elements in the world: ", self.world.numIDs())
+                print("Number of robots in the world: ", self.world.numRobots())
+                num_elements = self.world.numIDs()
+                num_robots = self.world.numRobots()
+                """
+                Looks like we only have one logical robot with 31 rigid links at this point. We're going to run with that
+                assumption and format the muscle_attachments accordingly, maybe I'll make a prototype one that uses 31 links
+                and design the method that breaks down to subrobots next.
+                """
+
+
+                print("Link A: ", link_a)
+                print("Link B: ", link_b)
+                muscle = Muscle(row["name"], self.world, self.sim, self, self.robot.link(link_a).transform[1], self.robot.link(link_b).transform[1]
                 # Should have arguments self, id, world, sim, controller, a, b
                 # I now need to use the information from the row to access a particular pair of links
                 muscle_objects.append(muscle)
@@ -271,7 +290,12 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
 
-    # Function verification tests
+    """
+    SYSTEM DIAGNOSTICS
+    """
+    def linkCount(self):
+        for y in range(self.world.numRobots())):
+            print("Number of subrobot links: ", self.world.robot(y).numLinks())
 
     def diagnostics(self):
         """
