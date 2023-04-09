@@ -79,12 +79,14 @@ CLASS DEFINITIONS
 """
 class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     """
-    Refers to exactly one McKibben muscle, with all associated attributes.
+    Refers to exactly one McKibben muscle, with all associated attributes. Think of it like one fiber or motor unit.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
     def __init__(self, id, wm, sim, ctrl, a, b):
         """
         Takes the world model and two link IDs, a robot controller, and a first and second relative link transform.
+        The muscle needs to know its name, the world it exists in, the simulation it is linked to (every controller instance
+        for *this* robot will be linked to a simulation)
         """
         klampt.GeometricPrimitive.__init__(self)
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
@@ -92,20 +94,27 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.world = wm
         print("Number of robots in the world: ", self.world.numRobots())
         print("Number of links on the first robot: ", self.world.robot(0).numLinks())
-        link_a = self.world.robot(0).link(a).transform[1]
-        link_b = self.world.robot(0).link(b).transform[1]
-        print("Type of link A: ", type(link_a))
-        print("Type of link B: ", type(link_b))
+        print("Type of A: ", type(a))
+        print("Type of B: ", type(b))
+        print("A: ", a)
+        print("B: ", b)
+        #self.setSegment(self.world.robot(0).link(a).transform()[1],self.world.robot(0).link(b).transform()[1])
+        link_a = self.world.robot(0).link(a).transform # This doesn't work yet, bug here - datatype is being changed somewhere
+        link_b = self.world.robot(0).link(b).transform
+        print("Link A Transform: ", link_a)
+        print("Link B Transform: ", link_b)
+        print("Link A Transform Type: ", type(link_a))
+        print("Link B Transform Type: ", type(link_b)) # Something about the way I'm accessing these links is a race condition or something
 
         self.sim = sim
 
         self.ctrl = ctrl
 
-        self.setSegment(link_a,link_b) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
+        #self.setSegment(link_a,link_b) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
 
         # Now we add some attributes that the simulated and real robot will share
-        self.geometry = klampt.GeometricPrimitive()
-        self.geometry.setSegment(a,b)
+        #self.geometry = klampt.GeometricPrimitive()
+        #self.geometry.setSegment(a,b)
         """
          I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
         """
@@ -140,6 +149,7 @@ class MuscleGroup:
         pass
 class ExoController(klampt.control.OmniRobotInterface):
     """
+    Think of this as the "brain" of the exoskeleton. It is really more the software part of the brain, so the mind.
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module, and before that probably needs to be broken up
     """
 
@@ -215,7 +225,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
 
-        self.muscle = Muscle(self.world, self.sim, self, self.point_a, self.point_b)
+        self.muscle = Muscle(id, self.world, self.sim, self, a,b)
         self.muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
         klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
         klampt.vis.setColor(id, 1, 0, 0, 1) # Makes the muscle green so it is easy to see
