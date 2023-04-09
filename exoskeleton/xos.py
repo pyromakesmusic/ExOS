@@ -90,12 +90,18 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
         self.world = wm
+        print("Number of robots in the world: ", self.world.numRobots())
+        print("Number of links on the first robot: ", self.world.robot(0).numLinks())
+        link_a = self.world.robot(0).link(a).transform[1]
+        link_b = self.world.robot(0).link(b).transform[1]
+        print("Type of link A: ", type(link_a))
+        print("Type of link B: ", type(link_b))
 
         self.sim = sim
 
         self.ctrl = ctrl
 
-        self.setSegment(a,b)
+        self.setSegment(link_a,link_b) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
 
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
