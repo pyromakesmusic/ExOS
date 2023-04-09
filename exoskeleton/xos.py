@@ -94,6 +94,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.sim = sim
 
         self.ctrl = ctrl
+
         self.setSegment(a,b)
 
         # Now we add some attributes that the simulated and real robot will share
@@ -375,7 +376,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         visualization at some point.
         """
         # What if I address them as subrobots?
-
+        test1 = Muscle("test1", self.world, self.sim, self.XOS, 4, 6)
+        klampt.vis.add("test1", test1)
 
 
         klampt.vis.run()
