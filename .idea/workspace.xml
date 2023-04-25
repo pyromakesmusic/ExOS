@@ -133,6 +133,13 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
+    <task id="LOCAL-00202" summary="cleaning up a little bit">
+      <created>1678993896290</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1678993896290</updated>
+    </task>
     <task id="LOCAL-00203" summary="cleaning up a little bit">
       <created>1678995021703</created>
       <option name="number" value="00203" />
@@ -469,14 +476,7 @@
       <option name="project" value="LOCAL" />
       <updated>1681076727486</updated>
     </task>
-    <task id="LOCAL-00251" summary="finding more bugs">
-      <created>1681077810133</created>
-      <option name="number" value="00251" />
-      <option name="presentableId" value="LOCAL-00251" />
-      <option name="project" value="LOCAL" />
-      <updated>1681077810133</updated>
-    </task>
-    <option name="localTasksCounter" value="252" />
+    <option name="localTasksCounter" value="251" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,6 +492,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="added exactly 1 muscle" />
     <MESSAGE value="need not just the muscle creator but the muscle loader function to take some logic, the loader should organize/systematize it in some way" />
     <MESSAGE value="trying to turn off everything before i turn the muscle visualization back on" />
     <MESSAGE value="successfully incorporated worldSetup into __init__ in GUI, so no longer need to use worldSetup" />
@@ -516,7 +517,6 @@
     <MESSAGE value="successfully added the muscle objects to the dataframe, I believe this is near to the final structure we will need - eventually maybe group to subrobots, but functionally there's not really a need to add a dimension to the link index" />
     <MESSAGE value="now i need to access the robot from inside the muscle initialization function" />
     <MESSAGE value="starting to access the robot links from inside the muscle" />
-    <MESSAGE value="finding more bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="finding more bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting to access the robot links from inside the muscle" />
   </component>
 </project>
