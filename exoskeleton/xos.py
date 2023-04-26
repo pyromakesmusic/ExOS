@@ -90,24 +90,29 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
         self.world = wm
+        self.robot = self.world.robot(0)
         print("Number of robots in the world: ", self.world.numRobots())
         print("Number of links on the first robot: ", self.world.robot(0).numLinks())
         print("Type of A: ", type(a))
         print("Type of B: ", type(b))
-        link_a = self.world.robot(0).link(a) # This "link" call is being done incorrectly. Look at documentation.
-        link_b = self.world.robot(0).link(b)
+        print("A", a)
+        print("B", b)
+        link_a = self.robot.link()  # This "link" call is being done incorrectly. Look at documentation.
+        link_b = self.robot.link()
         print("Type of link A: ", type(link_a))
         print("Type of link B: ", type(link_b))
+        print("Link A: ", link_a)
+        print("Link B: ", link_b)
 
         #self.sim = sim
 
         #self.ctrl = ctrl
 
-        #self.setSegment(link_a,link_b) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
+        self.setSegment(link_a,link_b) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
 
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
-        self.geometry.setSegment(a,b)
+        #self.geometry.setSegment(a,b)
         """
          I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
         """
@@ -217,8 +222,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.point_a = self.world.robot(0).link(a).getTransform()[1]
         self.point_b = self.world.robot(0).link(b).getTransform()[1]
 
-        self.muscle = Muscle(self.world, self.sim, self, self.point_a, self.point_b)
-        self.muscle.setSegment(self.point_a, self.point_b) # Turns the muscle into a line segment
+        self.muscle = Muscle(self.world, self.sim, self, a, b)
+        self.muscle.setSegment(a,b) # Turns the muscle into a line segment
         klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
         klampt.vis.setColor(id, 1, 0, 0, 1) # Makes the muscle green so it is easy to see
         return self.muscle

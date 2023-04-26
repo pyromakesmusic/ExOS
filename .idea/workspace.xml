@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/portfolio/robot images/mckibben_real.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -132,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00203" summary="cleaning up a little bit">
-      <created>1678995021703</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1678995021703</updated>
     </task>
     <task id="LOCAL-00204" summary="think i've created a muscle, but i can't see it">
       <created>1679012480915</created>
@@ -476,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681077810133</updated>
     </task>
-    <option name="localTasksCounter" value="252" />
+    <task id="LOCAL-00252" summary="&quot;link&quot; call being done incorrectly">
+      <created>1682464391204</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1682464391204</updated>
+    </task>
+    <option name="localTasksCounter" value="253" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="need not just the muscle creator but the muscle loader function to take some logic, the loader should organize/systematize it in some way" />
     <MESSAGE value="trying to turn off everything before i turn the muscle visualization back on" />
     <MESSAGE value="successfully incorporated worldSetup into __init__ in GUI, so no longer need to use worldSetup" />
     <MESSAGE value="turned it blue and it still works" />
@@ -517,6 +515,7 @@
     <MESSAGE value="now i need to access the robot from inside the muscle initialization function" />
     <MESSAGE value="starting to access the robot links from inside the muscle" />
     <MESSAGE value="finding more bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="finding more bugs" />
+    <MESSAGE value="&quot;link&quot; call being done incorrectly" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;link&quot; call being done incorrectly" />
   </component>
 </project>
