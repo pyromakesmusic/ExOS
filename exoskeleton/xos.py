@@ -97,8 +97,8 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         print("Type of B: ", type(b))
         print("A", a)
         print("B", b)
-        link_a = self.robot.link()  # This "link" call is being done incorrectly. Look at documentation.
-        link_b = self.robot.link()
+        link_a = self.robot.link(a)  # This "link" call is being done incorrectly. Look at documentation.
+        link_b = self.robot.link(b)
         print("Type of link A: ", type(link_a))
         print("Type of link B: ", type(link_b))
         print("Link A: ", link_a)
@@ -193,7 +193,7 @@ class ExoController(klampt.control.OmniRobotInterface):
                 """
 
 
-                muscle = Muscle(row["name"], self.world, self.sim, self, self.robot.link(link_a).transform[1], self.robot.link(link_b).transform[1])
+                muscle = Muscle(row["name"], self.world, self.sim, self, link_a, link_b)
                 # Should have arguments self, id, world, sim, controller, a, b
                 # I now need to use the information from the row to access a particular pair of links
                 muscle_objects.append(muscle)
