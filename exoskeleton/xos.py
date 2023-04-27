@@ -103,6 +103,8 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         print("Type of link B: ", type(link_b))
         print("Link A: ", link_a)
         print("Link B: ", link_b)
+        print("Link A transform: ", link_a.transform[1])
+        print("Link B transform: ", link_b.transform[1])
 
         #self.sim = sim
 
