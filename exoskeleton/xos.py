@@ -115,6 +115,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(link_a.transform[1], link_b.transform[1])
+        klampt.vis.add(id, self.geometry)
         """
          I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
         """
