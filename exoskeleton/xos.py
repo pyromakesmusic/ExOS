@@ -161,12 +161,14 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
 
         #Loading all the muscles
-        self.muscleLoader(config_data)
+        self.muscleLoader(config_data) # It's being called right here. This is important.
 
     def muscleLoader(self, filepath):
         """
         Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
         assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
+
+        Where is this function even being called?
         """
         with open(filepath["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
@@ -219,8 +221,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         The below line throws an error: expecting a sequence. Wrong number of arguments I think.
         """
 
-        self.point_a = self.world.robot(0).link(a).getTransform()[1]
-        self.point_b = self.world.robot(0).link(b).getTransform()[1]
+
 
         self.muscle = Muscle(self.world, self.sim, self, a, b)
         self.muscle.setSegment(a,b) # Turns the muscle into a line segment
