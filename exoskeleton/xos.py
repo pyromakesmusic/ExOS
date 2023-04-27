@@ -108,11 +108,11 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         #self.ctrl = ctrl
 
-        self.setSegment(link_a,link_b) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
+        self.setSegment(link_a.transform[1],link_b.transform[1]) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
 
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
-        #self.geometry.setSegment(a,b)
+        self.geometry.setSegment(link_a.transform[1], link_b.transform[1])
         """
          I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
         """
