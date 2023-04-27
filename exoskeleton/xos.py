@@ -115,6 +115,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(link_a.transform[1], link_b.transform[1])
+        self.appearance().setColor(1, 1, 0, 0, 0)
         klampt.vis.add(id, self.geometry)
         """
          I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
@@ -143,7 +144,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     def appearance(self):
         app = klampt.Appearance()
         app.setDraw(2, True)
-        app.setColor(2, 1, 0, 0, 1)
+        app.setColor(2, 1, 1, 0, 1)
         return app
 class MuscleGroup:
     def __init__(self):
@@ -169,9 +170,9 @@ class ExoController(klampt.control.OmniRobotInterface):
     def muscleLoader(self, filepath):
         """
         Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
-        assigns them to the robot model. May need to rewrite this whole thing. This should generate all muscles.
+        assigns them to the robot model. This should generate all muscles.
 
-        Where is this function even being called?
+        This gets called from the __init__ method.
         """
         with open(filepath["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
@@ -219,12 +220,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         Draws the muscle lines on the robot
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
-
-        """
-        The below line throws an error: expecting a sequence. Wrong number of arguments I think.
-        """
-
-
 
         self.muscle = Muscle(self.world, self.sim, self, a, b)
         self.muscle.setSegment(a,b) # Turns the muscle into a line segment

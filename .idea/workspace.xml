@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00209" summary="muscle method is becoming more refined, i think i can base it off a dictionary soon">
-      <created>1679033962241</created>
-      <option name="number" value="00209" />
-      <option name="presentableId" value="LOCAL-00209" />
-      <option name="project" value="LOCAL" />
-      <updated>1679033962241</updated>
     </task>
     <task id="LOCAL-00210" summary="named a bicep">
       <created>1679101191565</created>
@@ -474,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682566412833</updated>
     </task>
-    <option name="localTasksCounter" value="258" />
+    <task id="LOCAL-00258" summary="got muscles displaying from inside the loader, nice;">
+      <created>1682566484641</created>
+      <option name="number" value="00258" />
+      <option name="presentableId" value="LOCAL-00258" />
+      <option name="project" value="LOCAL" />
+      <updated>1682566484641</updated>
+    </task>
+    <option name="localTasksCounter" value="259" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="filling out more of the muscle initialization methods" />
     <MESSAGE value="made the muscles red" />
     <MESSAGE value="building out some of the dataframe for the muscle loader" />
     <MESSAGE value="removing unnecessary rstrip" />
@@ -515,6 +515,7 @@
     <MESSAGE value="successfully referenced the Link" />
     <MESSAGE value="robot is now loading" />
     <MESSAGE value="successfully accessing the link transform from inside the muscle loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="successfully accessing the link transform from inside the muscle loader" />
+    <MESSAGE value="got muscles displaying from inside the loader, nice;" />
+    <option name="LAST_COMMIT_MESSAGE" value="got muscles displaying from inside the loader, nice;" />
   </component>
 </project>
