@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2023_3_55_PM_[Changes]/mckibben_real.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2023_3_55_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2023_3_55_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -131,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00210" summary="named a bicep">
-      <created>1679101191565</created>
-      <option name="number" value="00210" />
-      <option name="presentableId" value="LOCAL-00210" />
-      <option name="project" value="LOCAL" />
-      <updated>1679101191565</updated>
     </task>
     <task id="LOCAL-00211" summary="encapsulation is progressing nicely">
       <created>1679102460537</created>
@@ -475,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682566484641</updated>
     </task>
-    <option name="localTasksCounter" value="259" />
+    <task id="LOCAL-00259" summary="I think the muscle loader is working? So now I add muscles?">
+      <created>1682605762161</created>
+      <option name="number" value="00259" />
+      <option name="presentableId" value="LOCAL-00259" />
+      <option name="project" value="LOCAL" />
+      <updated>1682605762161</updated>
+    </task>
+    <option name="localTasksCounter" value="260" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -491,7 +494,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="made the muscles red" />
     <MESSAGE value="building out some of the dataframe for the muscle loader" />
     <MESSAGE value="removing unnecessary rstrip" />
     <MESSAGE value="got the dataframe created, need to use it to now systematically create muscles" />
@@ -516,6 +518,7 @@
     <MESSAGE value="robot is now loading" />
     <MESSAGE value="successfully accessing the link transform from inside the muscle loader" />
     <MESSAGE value="got muscles displaying from inside the loader, nice;" />
-    <option name="LAST_COMMIT_MESSAGE" value="got muscles displaying from inside the loader, nice;" />
+    <MESSAGE value="I think the muscle loader is working? So now I add muscles?" />
+    <option name="LAST_COMMIT_MESSAGE" value="I think the muscle loader is working? So now I add muscles?" />
   </component>
 </project>

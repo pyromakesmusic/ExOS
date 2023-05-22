@@ -110,16 +110,11 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         #self.ctrl = ctrl
 
-        self.setSegment(link_a.transform[1],link_b.transform[1]) # This is a bug. Need to access the robot, then access the links, then access the transform[1]
-
+        self.setSegment(link_a.transform[1],link_b.transform[1])
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(link_a.transform[1], link_b.transform[1])
-        self.appearance().setColor(1, 1, 0, 0, 0)
-        klampt.vis.add(id, self.geometry)
-        """
-         I pulled the part where this gets added to the visualization. Gonna put that in the GUI maybe? possibly at the end?
-        """
+        #klampt.vis.add(id, self.geometry)
 
         self.muscle = None
 
@@ -144,7 +139,6 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     def appearance(self):
         app = klampt.Appearance()
         app.setDraw(2, True)
-        app.setColor(2, 1, 1, 0, 1)
         return app
 class MuscleGroup:
     def __init__(self):
@@ -209,10 +203,6 @@ class ExoController(klampt.control.OmniRobotInterface):
             print(muscleinfo_df.iloc[1])
             print("DataFrame Final Shape: ", muscleinfo_df.shape)
 
-            for fiber in muscle_objects:
-                klampt.vis.add("fiber", fiber)
-                klampt.vis.setColor("fiber", 1, 0, 0, 1)
-
 
 
     def createMuscle(self, id, a, b):
@@ -224,7 +214,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscle = Muscle(self.world, self.sim, self, a, b)
         self.muscle.setSegment(a,b) # Turns the muscle into a line segment
         klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
-        klampt.vis.setColor(id, 1, 0, 0, 1) # Makes the muscle green so it is easy to see
         return self.muscle
 
     # Control and Kinematics
@@ -372,8 +361,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,-5], 25)
 
         #Random stuff related to muscles
-        # lat = klampt.GeometricPrimitive()
-        # lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
+        #lat = klampt.GeometricPrimitive()
+        #lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
         #
         #
         #
@@ -388,8 +377,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         visualization at some point.
         """
         # What if I address them as subrobots?
-        test1 = Muscle("test1", self.world, self.sim, self.XOS, 4, 6)
-        klampt.vis.add("test1", test1)
+        # test1 = Muscle("test1", self.world, self.sim, self.XOS, 4, 6)
+        # klampt.vis.add("test1", test1)
 
 
         klampt.vis.run()
