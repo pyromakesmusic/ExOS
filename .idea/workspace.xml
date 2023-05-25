@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2023_3_55_PM_[Changes]/mckibben_real.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2023_3_55_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2023_3_55_PM__Changes_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/Physics-Research.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -49,20 +51,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157/exoskeleton/robots&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157",
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
@@ -134,13 +137,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00211" summary="encapsulation is progressing nicely">
-      <created>1679102460537</created>
-      <option name="number" value="00211" />
-      <option name="presentableId" value="LOCAL-00211" />
-      <option name="project" value="LOCAL" />
-      <updated>1679102460537</updated>
     </task>
     <task id="LOCAL-00212" summary="i think i have kinda created a bicep?">
       <created>1679103088053</created>
@@ -478,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682605762161</updated>
     </task>
-    <option name="localTasksCounter" value="260" />
+    <task id="LOCAL-00260" summary="need to change the exocontroller muscleloader">
+      <created>1684730981369</created>
+      <option name="number" value="00260" />
+      <option name="presentableId" value="LOCAL-00260" />
+      <option name="project" value="LOCAL" />
+      <updated>1684730981370</updated>
+    </task>
+    <option name="localTasksCounter" value="261" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="building out some of the dataframe for the muscle loader" />
     <MESSAGE value="removing unnecessary rstrip" />
     <MESSAGE value="got the dataframe created, need to use it to now systematically create muscles" />
     <MESSAGE value="filling out the muscle loader" />
@@ -519,6 +521,7 @@
     <MESSAGE value="successfully accessing the link transform from inside the muscle loader" />
     <MESSAGE value="got muscles displaying from inside the loader, nice;" />
     <MESSAGE value="I think the muscle loader is working? So now I add muscles?" />
-    <option name="LAST_COMMIT_MESSAGE" value="I think the muscle loader is working? So now I add muscles?" />
+    <MESSAGE value="need to change the exocontroller muscleloader" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to change the exocontroller muscleloader" />
   </component>
 </project>
