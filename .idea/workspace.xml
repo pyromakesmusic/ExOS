@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/Physics-Research.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Physics-Research/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -137,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00212" summary="i think i have kinda created a bicep?">
-      <created>1679103088053</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1679103088053</updated>
     </task>
     <task id="LOCAL-00213" summary="updated color and translucency properties; improved encapsulation">
       <created>1679104157833</created>
@@ -481,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684730981370</updated>
     </task>
-    <option name="localTasksCounter" value="261" />
+    <task id="LOCAL-00261" summary="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links">
+      <created>1685003439322</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1685003439322</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removing unnecessary rstrip" />
     <MESSAGE value="got the dataframe created, need to use it to now systematically create muscles" />
     <MESSAGE value="filling out the muscle loader" />
     <MESSAGE value="need to change muscle creation call" />
@@ -522,6 +516,7 @@
     <MESSAGE value="got muscles displaying from inside the loader, nice;" />
     <MESSAGE value="I think the muscle loader is working? So now I add muscles?" />
     <MESSAGE value="need to change the exocontroller muscleloader" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to change the exocontroller muscleloader" />
+    <MESSAGE value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
+    <option name="LAST_COMMIT_MESSAGE" value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
   </component>
 </project>

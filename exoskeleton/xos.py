@@ -320,7 +320,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.dt = 1
-        self.simLoop(robot)
+        #self.simLoop(robot)
 
 
     def simLoop(self, robot):
