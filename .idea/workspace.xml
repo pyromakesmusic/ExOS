@@ -133,13 +133,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00213" summary="updated color and translucency properties; improved encapsulation">
-      <created>1679104157833</created>
-      <option name="number" value="00213" />
-      <option name="presentableId" value="LOCAL-00213" />
-      <option name="project" value="LOCAL" />
-      <updated>1679104157833</updated>
-    </task>
     <task id="LOCAL-00214" summary="removed unnecessary code">
       <created>1679104820756</created>
       <option name="number" value="00214" />
@@ -476,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685003439322</updated>
     </task>
-    <option name="localTasksCounter" value="262" />
+    <task id="LOCAL-00262" summary="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links">
+      <created>1685077520912</created>
+      <option name="number" value="00262" />
+      <option name="presentableId" value="LOCAL-00262" />
+      <option name="project" value="LOCAL" />
+      <updated>1685077520912</updated>
+    </task>
+    <option name="localTasksCounter" value="263" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got the dataframe created, need to use it to now systematically create muscles" />
     <MESSAGE value="filling out the muscle loader" />
     <MESSAGE value="need to change muscle creation call" />
     <MESSAGE value="breaking more things out into methods" />
@@ -517,6 +516,7 @@
     <MESSAGE value="I think the muscle loader is working? So now I add muscles?" />
     <MESSAGE value="need to change the exocontroller muscleloader" />
     <MESSAGE value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
-    <option name="LAST_COMMIT_MESSAGE" value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
+    <MESSAGE value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
+    <option name="LAST_COMMIT_MESSAGE" value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
   </component>
 </project>
