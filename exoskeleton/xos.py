@@ -320,7 +320,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.dt = 1
-        #self.simLoop(robot)
+        self.simLoop(robot)
 
 
     def simLoop(self, robot):
@@ -348,7 +348,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("world", self.world)
         self.world.loadRobot(filepath["core"])
         self.robot = self.world.robot(0)
-        self.robot.saveFile("X001_onefile", geometryPrefix=None) # Resaving as a URDF
         klampt.vis.add("X001", self.robot)
         self.sim = ExoSim(self.world, self.robot)
 

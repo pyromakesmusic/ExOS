@@ -13,7 +13,7 @@ qMax 0 0 0 0 0
 q 0 0 0 0 0
 geometry   "meshes/C0.stl"   "meshes/C1.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/C4.stl"
 geomscale .4 1.7 .1 .1 .6
-mass       1 1 1 1 1
+mass       100 100 100 100 100
 automass
 torqueMax  50 50 50 50 50
 accMax     1 1 1 1 1

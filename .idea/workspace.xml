@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/X001_onefile" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/X001_onefile.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,13 +138,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00214" summary="removed unnecessary code">
-      <created>1679104820756</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1679104820756</updated>
     </task>
     <task id="LOCAL-00215" summary="need to add muscle methods; they will be shared between simulated and actual robot for now">
       <created>1679209453141</created>
@@ -476,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685077520912</updated>
     </task>
-    <option name="localTasksCounter" value="263" />
+    <task id="LOCAL-00263" summary="working on making the URDF file">
+      <created>1685078162175</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1685078162175</updated>
+    </task>
+    <option name="localTasksCounter" value="264" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +498,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="filling out the muscle loader" />
     <MESSAGE value="need to change muscle creation call" />
     <MESSAGE value="breaking more things out into methods" />
     <MESSAGE value="i think it is running? we will see..." />
@@ -517,6 +522,7 @@
     <MESSAGE value="need to change the exocontroller muscleloader" />
     <MESSAGE value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
     <MESSAGE value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
-    <option name="LAST_COMMIT_MESSAGE" value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
+    <MESSAGE value="working on making the URDF file" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on making the URDF file" />
   </component>
 </project>

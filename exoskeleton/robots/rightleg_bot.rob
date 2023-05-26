@@ -14,7 +14,7 @@ qMax 0 0 0 0 0 0
 q 0 0 0 0 0 0
 geometry   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/A3.stl"
 geomscale .3 0 0 2.7 .3 3
-mass       1 1 1 1 1 1
+mass       100 100 100 100 100 100
 automass
 torqueMax  50 50 50 500 50 50
 accMax     1 1 1 1 1 1
