@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/physics_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/physics_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/physics_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +75,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
+  <component name="RunManager">
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,13 +131,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00216" summary="getting an attribute error">
-      <created>1679213417666</created>
-      <option name="number" value="00216" />
-      <option name="presentableId" value="LOCAL-00216" />
-      <option name="project" value="LOCAL" />
-      <updated>1679213417666</updated>
     </task>
     <task id="LOCAL-00217" summary="the contract method doesn't work yet">
       <created>1679239733227</created>
@@ -477,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685082708282</updated>
     </task>
-    <option name="localTasksCounter" value="265" />
+    <task id="LOCAL-00265" summary="made a new script to test just the physics and get used to how it operates">
+      <created>1685422534439</created>
+      <option name="number" value="00265" />
+      <option name="presentableId" value="LOCAL-00265" />
+      <option name="project" value="LOCAL" />
+      <updated>1685422534439</updated>
+    </task>
+    <option name="localTasksCounter" value="266" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +491,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="breaking more things out into methods" />
     <MESSAGE value="i think it is running? we will see..." />
     <MESSAGE value="cleaning up extra code" />
     <MESSAGE value="commenting more things" />
@@ -518,6 +515,7 @@
     <MESSAGE value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
     <MESSAGE value="working on making the URDF file" />
     <MESSAGE value="made the consolidated robot into a single file, which will hopefully be easier to read" />
-    <option name="LAST_COMMIT_MESSAGE" value="made the consolidated robot into a single file, which will hopefully be easier to read" />
+    <MESSAGE value="made a new script to test just the physics and get used to how it operates" />
+    <option name="LAST_COMMIT_MESSAGE" value="made a new script to test just the physics and get used to how it operates" />
   </component>
 </project>
