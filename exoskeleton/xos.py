@@ -434,7 +434,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 """
 FUNCTION DEFINITIONS
 """
-def configLoader():
+def configLoader(): # This is tightly coupled with the GUNDAM style configuration process
     print("Loading config.txt...")
     with open("config.txt") as fn:
         print("Loading core components...", fn.readline().rstrip())

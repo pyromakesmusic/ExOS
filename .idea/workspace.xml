@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/physics_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/X001_onefile" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/X001_onefile.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +53,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+    "last_opened_file_path": "C:/Users/Pyro/Documents/PhysicsResearch",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -138,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00215" summary="need to add muscle methods; they will be shared between simulated and actual robot for now">
-      <created>1679209453141</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1679209453141</updated>
     </task>
     <task id="LOCAL-00216" summary="getting an attribute error">
       <created>1679213417666</created>
@@ -482,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685078162175</updated>
     </task>
-    <option name="localTasksCounter" value="264" />
+    <task id="LOCAL-00264" summary="made the consolidated robot into a single file, which will hopefully be easier to read">
+      <created>1685082708281</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1685082708282</updated>
+    </task>
+    <option name="localTasksCounter" value="265" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="need to change muscle creation call" />
     <MESSAGE value="breaking more things out into methods" />
     <MESSAGE value="i think it is running? we will see..." />
     <MESSAGE value="cleaning up extra code" />
@@ -523,6 +517,7 @@
     <MESSAGE value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
     <MESSAGE value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
     <MESSAGE value="working on making the URDF file" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on making the URDF file" />
+    <MESSAGE value="made the consolidated robot into a single file, which will hopefully be easier to read" />
+    <option name="LAST_COMMIT_MESSAGE" value="made the consolidated robot into a single file, which will hopefully be easier to read" />
   </component>
 </project>
