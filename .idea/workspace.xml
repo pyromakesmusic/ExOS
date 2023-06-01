@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/test_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/physics_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/physics_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/physics_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/test_bot.rob" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00218" summary="look at the muscle initialization method">
-      <created>1679241406564</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1679241406564</updated>
     </task>
     <task id="LOCAL-00219" summary="commented sequencing error">
       <created>1679505009524</created>
@@ -477,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685422590422</updated>
     </task>
-    <option name="localTasksCounter" value="267" />
+    <task id="LOCAL-00267" summary="created a new test robot file. going to make it as simple as possible">
+      <created>1685501312138</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1685501312138</updated>
+    </task>
+    <option name="localTasksCounter" value="268" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cleaning up extra code" />
     <MESSAGE value="commenting more things" />
     <MESSAGE value="fixed the head so that it is pointing forward" />
     <MESSAGE value="trying to separate the visualization logic more into its own container" />
@@ -518,6 +517,7 @@
     <MESSAGE value="made the consolidated robot into a single file, which will hopefully be easier to read" />
     <MESSAGE value="made a new script to test just the physics and get used to how it operates" />
     <MESSAGE value="making a minimal window and empty world" />
-    <option name="LAST_COMMIT_MESSAGE" value="making a minimal window and empty world" />
+    <MESSAGE value="created a new test robot file. going to make it as simple as possible" />
+    <option name="LAST_COMMIT_MESSAGE" value="created a new test robot file. going to make it as simple as possible" />
   </component>
 </project>
