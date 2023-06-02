@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00220" summary="trying to add some diagnostic information to muscle creation, need to spend time working on the __init__">
-      <created>1679972210882</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1679972210882</updated>
     </task>
     <task id="LOCAL-00221" summary="got the sequence bug removed">
       <created>1679997204986</created>
@@ -476,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685599192747</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="made a new test robot file">
+      <created>1685741182992</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1685741182992</updated>
+    </task>
+    <option name="localTasksCounter" value="270" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed the head so that it is pointing forward" />
     <MESSAGE value="trying to separate the visualization logic more into its own container" />
     <MESSAGE value="filling out the data structures a little at a time, i think we are close" />
     <MESSAGE value="it might be accepting my appearance argument?" />
@@ -517,6 +516,7 @@
     <MESSAGE value="making a minimal window and empty world" />
     <MESSAGE value="created a new test robot file. going to make it as simple as possible" />
     <MESSAGE value="changing test configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing test configurations" />
+    <MESSAGE value="made a new test robot file" />
+    <option name="LAST_COMMIT_MESSAGE" value="made a new test robot file" />
   </component>
 </project>
