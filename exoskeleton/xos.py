@@ -331,7 +331,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         #klampt.vis.run()
         for x in range(1,robot.numLinks()):
             body = self.body(robot.link(x))
-            body.applyForceAtPoint((.1,.1,.1),(.1,.1,.1))
+            body.applyForceAtPoint((.1,10,.1),(0,0,-.5))
             self.simulate(.1)
             self.updateWorld()
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):

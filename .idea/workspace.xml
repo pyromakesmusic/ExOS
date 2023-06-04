@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00221" summary="got the sequence bug removed">
-      <created>1679997204986</created>
-      <option name="number" value="00221" />
-      <option name="presentableId" value="LOCAL-00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1679997204986</updated>
     </task>
     <task id="LOCAL-00222" summary="messing around, ultimately need to make the muscles show up again then get them to contract. they disappeared for some reason. maybe color should be proportional to the level of contraction?">
       <created>1680579572892</created>
@@ -476,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685741182992</updated>
     </task>
-    <option name="localTasksCounter" value="270" />
+    <task id="LOCAL-00270" summary="reduced robot to two elements for testing">
+      <created>1685741224285</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1685741224285</updated>
+    </task>
+    <option name="localTasksCounter" value="271" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="trying to separate the visualization logic more into its own container" />
     <MESSAGE value="filling out the data structures a little at a time, i think we are close" />
     <MESSAGE value="it might be accepting my appearance argument?" />
     <MESSAGE value="successfully added the muscle objects to the dataframe, I believe this is near to the final structure we will need - eventually maybe group to subrobots, but functionally there's not really a need to add a dimension to the link index" />
@@ -517,6 +516,7 @@
     <MESSAGE value="created a new test robot file. going to make it as simple as possible" />
     <MESSAGE value="changing test configurations" />
     <MESSAGE value="made a new test robot file" />
-    <option name="LAST_COMMIT_MESSAGE" value="made a new test robot file" />
+    <MESSAGE value="reduced robot to two elements for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="reduced robot to two elements for testing" />
   </component>
 </project>
