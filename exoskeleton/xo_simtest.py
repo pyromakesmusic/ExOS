@@ -4,7 +4,7 @@ import klampt.sim.simulation
 import klampt.io
 
 #Initializing the world
-w = klampt.io.load('WorldModel', r'D:\#PERSONAL\#STEDWARDS\Klampt-examples\data\simulation_test_worlds\stiffness_test.xml')
+w = klampt.io.load('WorldModel', r'C:\Users\Pyro\Documents\Math4157\Klampt-examples\data\simulation_test_worlds\stiffness_test.xml')
 print("Number of IDs in the world: ", w.numIDs())
 
 #Creating the simulation
