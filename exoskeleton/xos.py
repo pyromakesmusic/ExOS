@@ -324,17 +324,18 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
             self.simLoop(robot) # Maybe it's the fact that this is only happening one time? Consider calling it multiple times
 
 
+
     def simLoop(self, robot):
         """
         Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
         """
         wm = self.world
         #klampt.vis.run()
-        for x in range(1,robot.numLinks()):
-            body = self.body(robot.link(x))
-            body.applyForceAtPoint((10,10,10),(0,0,0))
-            self.simulate(.1)
-            self.updateWorld()
+        # for x in range(1,robot.numLinks()):
+        body = self.body(robot.link(2)) # Magic number 1
+        body.applyForceAtPoint((-1,-1,-1),(0,0,-1))
+        self.simulate(.1)
+        self.updateWorld()
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
