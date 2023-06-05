@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/changed_folder_structure.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/changed_folder_structure.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/.idea/Physics-Research.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Physics-Research/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/simulation_contact.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/simulation_state.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,13 +132,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00223" summary="added exactly 1 muscle">
-      <created>1680580399197</created>
-      <option name="number" value="00223" />
-      <option name="presentableId" value="LOCAL-00223" />
-      <option name="project" value="LOCAL" />
-      <updated>1680580399197</updated>
     </task>
     <task id="LOCAL-00224" summary="added exactly 1 muscle">
       <created>1680580922597</created>
@@ -489,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685840765369</updated>
     </task>
-    <option name="localTasksCounter" value="272" />
+    <task id="LOCAL-00272" summary="using a simulation test world now">
+      <created>1685989856294</created>
+      <option name="number" value="00272" />
+      <option name="presentableId" value="LOCAL-00272" />
+      <option name="project" value="LOCAL" />
+      <updated>1685989856295</updated>
+    </task>
+    <option name="localTasksCounter" value="273" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -505,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="it might be accepting my appearance argument?" />
     <MESSAGE value="successfully added the muscle objects to the dataframe, I believe this is near to the final structure we will need - eventually maybe group to subrobots, but functionally there's not really a need to add a dimension to the link index" />
     <MESSAGE value="now i need to access the robot from inside the muscle initialization function" />
     <MESSAGE value="starting to access the robot links from inside the muscle" />
@@ -530,6 +516,7 @@
     <MESSAGE value="made a new test robot file" />
     <MESSAGE value="reduced robot to two elements for testing" />
     <MESSAGE value="now bug testing physics" />
-    <option name="LAST_COMMIT_MESSAGE" value="now bug testing physics" />
+    <MESSAGE value="using a simulation test world now" />
+    <option name="LAST_COMMIT_MESSAGE" value="using a simulation test world now" />
   </component>
 </project>
