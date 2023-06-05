@@ -320,7 +320,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.dt = 1
-        self.simLoop(robot) # Maybe it's the fact that this is only happening one time? Consider calling it multiple times
+        for i in range(1000):
+            self.simLoop(robot) # Maybe it's the fact that this is only happening one time? Consider calling it multiple times
+
 
 
     def simLoop(self, robot):
@@ -329,11 +331,11 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         wm = self.world
         #klampt.vis.run()
-        for x in range(1,robot.numLinks()):
-            body = self.body(robot.link(x))
-            body.applyForceAtPoint((10,10,10),(0,0,-.5))
-            self.simulate(.1)
-            self.updateWorld()
+        # for x in range(1,robot.numLinks()):
+        body = self.body(robot.link(2)) # Magic number 1
+        body.applyForceAtPoint((-1,-1,-1),(0,0,-1))
+        self.simulate(.1)
+        self.updateWorld()
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
