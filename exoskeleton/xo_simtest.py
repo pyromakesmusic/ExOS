@@ -19,10 +19,11 @@ ttime = 0
 #Adding it to the world. No further elements can be added
 klampt.vis.add("world", w)
 
-klampt.vis.run()
+klampt.vis.show()
 
-while ttime < 5:
-    body = sim.body(num - 1) # Probably need to find a way to reference a specific body in the world
+while klampt.vis.shown(): # I'm not sure this loop is running at all
+    body = sim.body(w.rigidObject(2)) # Probably need to find a way to reference a specific body in the world
+    print(body)
     body.applyForceAtPoint((1,1,1),(0,0,0))
     sim.simulate(dt)
     sim.updateWorld()
