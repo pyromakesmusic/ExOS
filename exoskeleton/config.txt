@@ -1,5 +1,5 @@
 CORE:
-robots/core_bot.rob
+robots/core_bot_test2.rob
 MUSCLE ATTACHMENTS:
 robots/muscle_attachments_b1.csv
 WORLD:
