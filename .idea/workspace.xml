@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00232" summary="made the muscles red">
-      <created>1680802396433</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1680802396433</updated>
     </task>
     <task id="LOCAL-00233" summary="building out some of the dataframe for the muscle loader">
       <created>1680820787884</created>
@@ -503,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686171049333</updated>
     </task>
-    <option name="localTasksCounter" value="281" />
+    <task id="LOCAL-00281" summary="using prepared XML world file instead of programmatic world creation">
+      <created>1686171621127</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1686171621127</updated>
+    </task>
+    <option name="localTasksCounter" value="282" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -519,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="robot is now loading" />
     <MESSAGE value="successfully accessing the link transform from inside the muscle loader" />
     <MESSAGE value="got muscles displaying from inside the loader, nice;" />
     <MESSAGE value="I think the muscle loader is working? So now I add muscles?" />
@@ -544,6 +539,7 @@
     <MESSAGE value="robot's configuration doesn't match size with the robot" />
     <MESSAGE value="added the bones as rigid objects to the world" />
     <MESSAGE value="should be simulating now?" />
-    <option name="LAST_COMMIT_MESSAGE" value="should be simulating now?" />
+    <MESSAGE value="using prepared XML world file instead of programmatic world creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="using prepared XML world file instead of programmatic world creation" />
   </component>
 </project>

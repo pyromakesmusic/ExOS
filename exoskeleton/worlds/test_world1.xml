@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world>
-  <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="9 9 9"/>
+  <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="9 9 9" translation = "0 0 -20"/>
 
 
   <rigidObject name="head" file="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots\meshes\C0.stl"  scale="0.01 0.01 0.01" position="1 0 10">
