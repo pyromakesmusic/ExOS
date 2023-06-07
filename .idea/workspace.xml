@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.simulation test  2">
+  <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -156,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00230" summary="gonna add more entries in the muscle dataframe">
-      <created>1680798880086</created>
-      <option name="number" value="00230" />
-      <option name="presentableId" value="LOCAL-00230" />
-      <option name="project" value="LOCAL" />
-      <updated>1680798880086</updated>
     </task>
     <task id="LOCAL-00231" summary="filling out more of the muscle initialization methods">
       <created>1680799884756</created>
@@ -500,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686122202433</updated>
     </task>
-    <option name="localTasksCounter" value="279" />
+    <task id="LOCAL-00279" summary="added the bones as rigid objects to the world">
+      <created>1686163753406</created>
+      <option name="number" value="00279" />
+      <option name="presentableId" value="LOCAL-00279" />
+      <option name="project" value="LOCAL" />
+      <updated>1686163753406</updated>
+    </task>
+    <option name="localTasksCounter" value="280" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="finding where things are being called" />
     <MESSAGE value="successfully referenced the Link" />
     <MESSAGE value="robot is now loading" />
     <MESSAGE value="successfully accessing the link transform from inside the muscle loader" />
@@ -541,6 +539,7 @@
     <MESSAGE value="created a world file and got some kind of simulation going" />
     <MESSAGE value="ball rolls around on plane" />
     <MESSAGE value="robot's configuration doesn't match size with the robot" />
-    <option name="LAST_COMMIT_MESSAGE" value="robot's configuration doesn't match size with the robot" />
+    <MESSAGE value="added the bones as rigid objects to the world" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the bones as rigid objects to the world" />
   </component>
 </project>

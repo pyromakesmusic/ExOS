@@ -320,22 +320,16 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.dt = 1
-        for i in range(1000):
-            self.simLoop(robot) # Maybe it's the fact that this is only happening one time? Consider calling it multiple times
-
 
 
     def simLoop(self, robot):
         """
-        Should simulate continuously for the specified number of cycles, maybe with looping or other end behavior
+        Should simulate some time step and update the world accordingly
         """
         wm = self.world
-        #klampt.vis.run()
-        # for x in range(1,robot.numLinks()):
-        body = self.body(robot.link(2)) # Magic number 1
-        body.applyForceAtPoint((-1,-1,-1),(0,0,-1))
         self.simulate(.1)
         self.updateWorld()
+
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
@@ -346,19 +340,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         #All the world elements MUST be loaded before the Simulator is created
+
         self.world = klampt.WorldModel()
         klampt.vis.add("world", self.world)
         self.world.loadRobot(filepath["core"])
         self.robot = self.world.robot(0)
         klampt.vis.add("X001", self.robot)
-        self.sim = ExoSim(self.world, self.robot)
-
-        # creation of the controller
-        self.controller = ExoController(self.robot, self.world, self.sim, filepath)
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
-
-        #Simulator creation and activation comes at the very end
-        self.sim.setGravity([0, 0, -9.8])
         self.drawEdges()
         klampt.vis.setWindowTitle("X001  Test")
         self.viewport = klampt.vis.getViewport()
@@ -367,25 +354,23 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #Random stuff related to muscles
         lat = klampt.GeometricPrimitive()
         lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
-        #
-        #
-        #
-        #
+
         klampt.vis.add("latissimus", lat)
         klampt.vis.setColor("latissimus", 1, 0, 0, 1)
-        """
-        The four lines above were the only thing putting the muscle in the visualization? And then the pressure stuff and
-        physics stuff I figure out separately?
-        
-        drawWorldGL redraws the geometry in its current world transform. I think this method will be critical to the 
-        visualization at some point.
-        """
-        # What if I address them as subrobots?
-        # test1 = Muscle("test1", self.world, self.sim, self.XOS, 4, 6)
-        # klampt.vis.add("test1", test1)
 
 
-        klampt.vis.run()
+        self.sim = ExoSim(self.world, self.robot)
+        # creation of the controller
+        self.controller = ExoController(self.robot, self.world, self.sim, filepath)
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
+
+
+        #Simulator creation and activation comes at the very end
+        self.sim.setGravity([0, 0, -9.8])
+
+        klampt.vis.show()
+        while klampt.vis.shown():
+            self.sim.simLoop(self.robot)
 
 
     def idlefunc(self):
