@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/core_bot_test1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" afterDir="false" />
     </list>
@@ -156,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00228" summary="turned it blue and it still works">
-      <created>1680670458323</created>
-      <option name="number" value="00228" />
-      <option name="presentableId" value="LOCAL-00228" />
-      <option name="project" value="LOCAL" />
-      <updated>1680670458323</updated>
     </task>
     <task id="LOCAL-00229" summary="linking together more of the pieces that make the muscle, trying to simplify and systematize">
       <created>1680734478461</created>
@@ -500,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686110062925</updated>
     </task>
-    <option name="localTasksCounter" value="277" />
+    <task id="LOCAL-00277" summary="ball rolls around on plane">
+      <created>1686112733198</created>
+      <option name="number" value="00277" />
+      <option name="presentableId" value="LOCAL-00277" />
+      <option name="project" value="LOCAL" />
+      <updated>1686112733198</updated>
+    </task>
+    <option name="localTasksCounter" value="278" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="&quot;link&quot; call being done incorrectly" />
     <MESSAGE value="editing link calls" />
     <MESSAGE value="finding where things are being called" />
     <MESSAGE value="successfully referenced the Link" />
@@ -541,6 +542,7 @@
     <MESSAGE value="tried adding a force" />
     <MESSAGE value="I think physics works now" />
     <MESSAGE value="created a world file and got some kind of simulation going" />
-    <option name="LAST_COMMIT_MESSAGE" value="created a world file and got some kind of simulation going" />
+    <MESSAGE value="ball rolls around on plane" />
+    <option name="LAST_COMMIT_MESSAGE" value="ball rolls around on plane" />
   </component>
 </project>

@@ -7,7 +7,7 @@ parents -1 0 1
 axis 0 0 1   1 0 0   0 1 0
 jointtype r r r
 qMin 0 0 0
-qMax 0 0 0
+qMax 6.2 6.2 6.2
 q 0 0 0
 geometry   "meshes/C0.stl"   "meshes/C1.stl"   "meshes/sphere.off"
 geomscale .4 1.7 .5

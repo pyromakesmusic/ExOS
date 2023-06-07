@@ -2,14 +2,15 @@
 <world>
   <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" />
 
-  <rigidObject name="ball_soft_1" file="C:\Users\Pyro\Documents\Math4157\exoskeleton\objects\sphere.off"  position="-0.5 0 1">
-  </rigidObject>
+
+  <robot name="X001" file = "C:\Users\Pyro\Documents\Math4157\exoskeleton\robots\core_bot_test1.rob" config="0 0 0 0"  position="-0.5 0 1">
+  </robot>
 
   <simulation>
     <globals />
     <!-- object parameters -->
     <terrain index="0">
-      <geometry kFriction="0.5" kRestitution="0.7"/>
+      <geometry kFriction="0.9" kRestitution="0.7"/>
     </terrain>
 
   </simulation>
