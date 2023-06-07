@@ -91,30 +91,14 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         self.world = wm
         self.robot = self.world.robot(0)
-        print("Number of robots in the world: ", self.world.numRobots())
-        print("Number of links on the first robot: ", self.world.robot(0).numLinks())
-        print("Type of A: ", type(a))
-        print("Type of B: ", type(b))
-        print("A", a)
-        print("B", b)
+
         link_a = self.robot.link(a)  # This "link" call is being done incorrectly. Look at documentation.
         link_b = self.robot.link(b)
-        print("Type of link A: ", type(link_a))
-        print("Type of link B: ", type(link_b))
-        print("Link A: ", link_a)
-        print("Link B: ", link_b)
-        print("Link A transform: ", link_a.transform[1])
-        print("Link B transform: ", link_b.transform[1])
-
-        #self.sim = sim
-
-        #self.ctrl = ctrl
 
         self.setSegment(link_a.transform[1],link_b.transform[1])
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(link_a.transform[1], link_b.transform[1])
-        #klampt.vis.add(id, self.geometry)
 
         self.muscle = None
 
@@ -341,7 +325,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         #All the world elements MUST be loaded before the Simulator is created
 
-        self.world = klampt.WorldModel()
+        self.world = w = klampt.io.load('WorldModel', 'worlds/test_world1.xml')# Updating this to use a particular prepared XML world file
         klampt.vis.add("world", self.world)
         self.world.loadRobot(filepath["core"])
         self.robot = self.world.robot(0)
@@ -437,5 +421,4 @@ MAIN LOOP
 """
 if __name__ == "__main__":
     config = configLoader()
-    print("Loading configuration. . .", config)
     exo_sim_test = ExoGUI(config)

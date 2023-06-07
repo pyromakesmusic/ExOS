@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +74,11 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\control" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
@@ -155,13 +159,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00231" summary="filling out more of the muscle initialization methods">
-      <created>1680799884756</created>
-      <option name="number" value="00231" />
-      <option name="presentableId" value="LOCAL-00231" />
-      <option name="project" value="LOCAL" />
-      <updated>1680799884756</updated>
     </task>
     <task id="LOCAL-00232" summary="made the muscles red">
       <created>1680802396433</created>
@@ -499,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686163753406</updated>
     </task>
-    <option name="localTasksCounter" value="280" />
+    <task id="LOCAL-00280" summary="should be simulating now?">
+      <created>1686171049333</created>
+      <option name="number" value="00280" />
+      <option name="presentableId" value="LOCAL-00280" />
+      <option name="project" value="LOCAL" />
+      <updated>1686171049333</updated>
+    </task>
+    <option name="localTasksCounter" value="281" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +519,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="successfully referenced the Link" />
     <MESSAGE value="robot is now loading" />
     <MESSAGE value="successfully accessing the link transform from inside the muscle loader" />
     <MESSAGE value="got muscles displaying from inside the loader, nice;" />
@@ -540,6 +543,7 @@
     <MESSAGE value="ball rolls around on plane" />
     <MESSAGE value="robot's configuration doesn't match size with the robot" />
     <MESSAGE value="added the bones as rigid objects to the world" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the bones as rigid objects to the world" />
+    <MESSAGE value="should be simulating now?" />
+    <option name="LAST_COMMIT_MESSAGE" value="should be simulating now?" />
   </component>
 </project>

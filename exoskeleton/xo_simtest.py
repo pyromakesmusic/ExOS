@@ -5,7 +5,7 @@ import klampt.io
 import math
 
 #Initializing the world
-w = klampt.io.load('WorldModel', 'xosim_world_v1.xml')
+w = klampt.io.load('WorldModel', 'test_world1.xml')
 num = w.numIDs()
 
 print("Number of IDs in the world: ", num)
