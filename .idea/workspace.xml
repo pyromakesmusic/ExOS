@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/block.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/cube.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/4157world_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/X001_onefile.rob" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xosim_world_v1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00227" summary="successfully incorporated worldSetup into __init__ in GUI, so no longer need to use worldSetup">
-      <created>1680670163773</created>
-      <option name="number" value="00227" />
-      <option name="presentableId" value="LOCAL-00227" />
-      <option name="project" value="LOCAL" />
-      <updated>1680670163773</updated>
     </task>
     <task id="LOCAL-00228" summary="turned it blue and it still works">
       <created>1680670458323</created>
@@ -504,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686092823591</updated>
     </task>
-    <option name="localTasksCounter" value="276" />
+    <task id="LOCAL-00276" summary="created a world file and got some kind of simulation going">
+      <created>1686110062925</created>
+      <option name="number" value="00276" />
+      <option name="presentableId" value="LOCAL-00276" />
+      <option name="project" value="LOCAL" />
+      <updated>1686110062925</updated>
+    </task>
+    <option name="localTasksCounter" value="277" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="finding more bugs" />
     <MESSAGE value="&quot;link&quot; call being done incorrectly" />
     <MESSAGE value="editing link calls" />
     <MESSAGE value="finding where things are being called" />
@@ -545,6 +540,7 @@
     <MESSAGE value="changed filepath for laptop use" />
     <MESSAGE value="tried adding a force" />
     <MESSAGE value="I think physics works now" />
-    <option name="LAST_COMMIT_MESSAGE" value="I think physics works now" />
+    <MESSAGE value="created a world file and got some kind of simulation going" />
+    <option name="LAST_COMMIT_MESSAGE" value="created a world file and got some kind of simulation going" />
   </component>
 </project>
