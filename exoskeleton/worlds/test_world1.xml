@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world>
-  <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="9 9 9" translation = "0 0 -20"/>
-
-
-  <rigidObject name="head" file="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots\meshes\C0.stl"  scale="0.01 0.01 0.01" position="1 0 10">
-  </rigidObject>
-
-
-  <rigidObject name="torso" file="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots\meshes\C1.stl"  scale="0.01 0.01 0.01" position="8 0 10">
-  </rigidObject>
+  <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="4 4 4" translation = "0 0 -10"/>
 
   <simulation>
     <globals />

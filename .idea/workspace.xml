@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test2.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,20 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00235" summary="got the dataframe created, need to use it to now systematically create muscles">
-      <created>1680833782708</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1680833782708</updated>
-    </task>
-    <task id="LOCAL-00236" summary="filling out the muscle loader">
-      <created>1680885170644</created>
-      <option name="number" value="00236" />
-      <option name="presentableId" value="LOCAL-00236" />
-      <option name="project" value="LOCAL" />
-      <updated>1680885170644</updated>
     </task>
     <task id="LOCAL-00237" summary="need to change muscle creation call">
       <created>1680885437800</created>
@@ -499,7 +487,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686176715572</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="trying to edit second test bot">
+      <created>1686176992364</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1686176992364</updated>
+    </task>
+    <task id="LOCAL-00285" summary="seem to be simulating the spine now">
+      <created>1686177061507</created>
+      <option name="number" value="00285" />
+      <option name="presentableId" value="LOCAL-00285" />
+      <option name="project" value="LOCAL" />
+      <updated>1686177061507</updated>
+    </task>
+    <option name="localTasksCounter" value="286" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,8 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="I think the muscle loader is working? So now I add muscles?" />
-    <MESSAGE value="need to change the exocontroller muscleloader" />
     <MESSAGE value="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links" />
     <MESSAGE value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
     <MESSAGE value="working on making the URDF file" />
@@ -540,6 +540,8 @@
     <MESSAGE value="using prepared XML world file instead of programmatic world creation" />
     <MESSAGE value="lowered the terrain so it is under the robot" />
     <MESSAGE value="second test robot with more parts" />
-    <option name="LAST_COMMIT_MESSAGE" value="second test robot with more parts" />
+    <MESSAGE value="trying to edit second test bot" />
+    <MESSAGE value="seem to be simulating the spine now" />
+    <option name="LAST_COMMIT_MESSAGE" value="seem to be simulating the spine now" />
   </component>
 </project>

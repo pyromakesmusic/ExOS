@@ -13,6 +13,7 @@ import random
 
 import klampt
 import klampt.vis # For visualization
+import klampt.vis.colorize # For colorizing to easily assess robot performance
 import klampt.sim.batch # For batch simulation
 import klampt.sim.settle # Applies forces and lets them reach equilibrium in simulation
 import klampt.sim.simulation # For simulation
