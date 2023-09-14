@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test2.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test2.rob" afterDir="false" />
     </list>
@@ -77,7 +79,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exoskeleton test 1 (shoulder)">
+  <component name="RunManager">
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00238" summary="need to change muscle creation call">
-      <created>1680905897650</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1680905897650</updated>
     </task>
     <task id="LOCAL-00239" summary="breaking more things out into methods">
       <created>1680912446261</created>
@@ -499,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686184793673</updated>
     </task>
-    <option name="localTasksCounter" value="287" />
+    <task id="LOCAL-00287" summary="updated simulation to use refined CAD files">
+      <created>1689703080585</created>
+      <option name="number" value="00287" />
+      <option name="presentableId" value="LOCAL-00287" />
+      <option name="project" value="LOCAL" />
+      <updated>1689703080585</updated>
+    </task>
+    <option name="localTasksCounter" value="288" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="we need to save the robot as a .urdf file? maybe? with physical=0 for the massless links" />
     <MESSAGE value="working on making the URDF file" />
     <MESSAGE value="made the consolidated robot into a single file, which will hopefully be easier to read" />
     <MESSAGE value="made a new script to test just the physics and get used to how it operates" />
@@ -540,6 +541,7 @@
     <MESSAGE value="trying to edit second test bot" />
     <MESSAGE value="seem to be simulating the spine now" />
     <MESSAGE value="adding some more libraries" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding some more libraries" />
+    <MESSAGE value="updated simulation to use refined CAD files" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated simulation to use refined CAD files" />
   </component>
 </project>
