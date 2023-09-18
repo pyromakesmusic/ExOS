@@ -182,11 +182,11 @@ class ExoController(klampt.control.OmniRobotInterface):
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects)
-            print("DataFrame Penultimate Shape: ", muscleinfo_df.shape)
-            print(muscle_series)
+            #print("DataFrame Penultimate Shape: ", muscleinfo_df.shape)
+            #print(muscle_series)
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
-            print(muscleinfo_df.iloc[1])
-            print("DataFrame Final Shape: ", muscleinfo_df.shape)
+            #print(muscleinfo_df.iloc[1])
+            #print("DataFrame Final Shape: ", muscleinfo_df.shape)
 
 
 
@@ -312,6 +312,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         Should simulate some time step and update the world accordingly
         """
         wm = self.world
+        test_body = self.body(robot.link(1))
+        test_body.applyForceAtPoint([0.5,0.5,0.5], [.1,.1,.1]) # force, pworld
         self.simulate(.1)
         self.updateWorld()
 

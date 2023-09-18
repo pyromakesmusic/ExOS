@@ -2,6 +2,11 @@
 <world>
   <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="4 4 4" translation = "0 0 -10"/>
 
+  <rigidObject name="block_1kg"  position="2 2 10.00000">
+     <geometry mesh="C:\Users\Pyro\Documents\Math4157\exoskeleton\objects\cube.off" scale="1.00000 1.00000 1.00000" translation="-0.050000 -0.050000 -0.050000" />
+     <physics mass="1.000000" automass="1" kRestitution="0.7000000" kFriction="0.500000" kStiffness="inf" kDamping="inf" />
+  </rigidObject>
+
   <simulation>
     <globals />
     <!-- object parameters -->
