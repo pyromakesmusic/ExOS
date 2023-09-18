@@ -15,7 +15,7 @@ class Sim():
 
         derivative = np.gradient(y)
         der_series = pd.Series(derivative)
-        dfint = differint.RL(4, x)
+        #dfint = differint.RL(4, x)
         print(derivative)
         print(der_series)
         print(len(der_series))

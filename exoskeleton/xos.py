@@ -1,9 +1,5 @@
 import time
 import math
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-
 
 
 import numpy as np
@@ -309,11 +305,11 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
     def simLoop(self, robot):
         """
-        Should simulate some time step and update the world accordingly
+        Should simulate some time step and update the world accordingly. Needs more work.
         """
         wm = self.world
-        test_body = self.body(robot.link(1))
-        test_body.applyForceAtPoint([0.5,0.5,0.5], [.1,.1,.1]) # force, pworld
+        test_body = self.body(wm.rigidObject(0)) # Change this
+        test_body.applyForceAtPoint([0.5,0.5,0.5], [5,20,.1]) # force, pworld
         self.simulate(.1)
         self.updateWorld()
 
@@ -408,9 +404,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 """
 FUNCTION DEFINITIONS
 """
-def configLoader(): # This is tightly coupled with the GUNDAM style configuration process
-    print("Loading config.txt...")
-    with open("config.txt") as fn:
+def configLoader(config_name):
+    """
+    This is tightly coupled with the GUNDAM style configuration process. Argument should include which configuration file
+    to load.
+    """
+    print("Loading configuration" + config_name + "...")
+    with open(config_name) as fn:
         print("Loading core components...", fn.readline().rstrip())
         core = fn.readline().rstrip()
         print("Loading muscle attachments...", fn.readline().rstrip())
@@ -423,5 +423,5 @@ def configLoader(): # This is tightly coupled with the GUNDAM style configuratio
 MAIN LOOP
 """
 if __name__ == "__main__":
-    config = configLoader()
+    config = configLoader("demo_config.txt")
     exo_sim_test = ExoGUI(config)
