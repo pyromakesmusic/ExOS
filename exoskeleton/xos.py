@@ -309,7 +309,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         wm = self.world
         test_body = self.body(wm.rigidObject(0)) # Change this
-        test_body.applyForceAtPoint([0.5,0.5,0.5], [5,20,.1]) # force, pworld
+        test_body.applyForceAtPoint([0,0,.5], [0,0,0]) # force, pworld
         self.simulate(.1)
         self.updateWorld()
 

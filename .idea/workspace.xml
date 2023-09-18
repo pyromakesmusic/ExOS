@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/klampt_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/test_config1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/tests/differint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/differint_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00241" summary="cleaning up extra code">
-      <created>1680913760737</created>
-      <option name="number" value="00241" />
-      <option name="presentableId" value="LOCAL-00241" />
-      <option name="project" value="LOCAL" />
-      <updated>1680913760737</updated>
     </task>
     <task id="LOCAL-00242" summary="commenting more things">
       <created>1680913823550</created>
@@ -504,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695052309453</updated>
     </task>
-    <option name="localTasksCounter" value="290" />
+    <task id="LOCAL-00290" summary="seem to have made the block fly off the screen somehow, which is probably technically progress">
+      <created>1695079459821</created>
+      <option name="number" value="00290" />
+      <option name="presentableId" value="LOCAL-00290" />
+      <option name="project" value="LOCAL" />
+      <updated>1695079459821</updated>
+    </task>
+    <option name="localTasksCounter" value="291" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="made a new script to test just the physics and get used to how it operates" />
     <MESSAGE value="making a minimal window and empty world" />
     <MESSAGE value="created a new test robot file. going to make it as simple as possible" />
     <MESSAGE value="changing test configurations" />
@@ -545,6 +539,7 @@
     <MESSAGE value="updated simulation to use refined CAD files" />
     <MESSAGE value="added OSC capability" />
     <MESSAGE value="updated a few sim parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated a few sim parameters" />
+    <MESSAGE value="seem to have made the block fly off the screen somehow, which is probably technically progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="seem to have made the block fly off the screen somehow, which is probably technically progress" />
   </component>
 </project>
