@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/pyonics/submodules/network/osc_toolkit.py",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
   },
   "keyToStringList": {
@@ -77,7 +80,28 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.OSC test 1">
+    <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pyro\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,6 +168,7 @@
     <list>
       <item itemvalue="Python.PID_talk" />
       <item itemvalue="Python.exoskeleton test 1 (shoulder)" />
+      <item itemvalue="Python.OSC test 1" />
       <item itemvalue="Python.simulation test  2" />
     </list>
   </component>
@@ -155,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00242" summary="commenting more things">
-      <created>1680913823550</created>
-      <option name="number" value="00242" />
-      <option name="presentableId" value="LOCAL-00242" />
-      <option name="project" value="LOCAL" />
-      <updated>1680913823550</updated>
     </task>
     <task id="LOCAL-00243" summary="fixed the head so that it is pointing forward">
       <created>1680913901668</created>
@@ -499,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695079459821</updated>
     </task>
-    <option name="localTasksCounter" value="291" />
+    <task id="LOCAL-00291" summary="updating applied forces">
+      <created>1695079539643</created>
+      <option name="number" value="00291" />
+      <option name="presentableId" value="LOCAL-00291" />
+      <option name="project" value="LOCAL" />
+      <updated>1695079539643</updated>
+    </task>
+    <option name="localTasksCounter" value="292" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="making a minimal window and empty world" />
     <MESSAGE value="created a new test robot file. going to make it as simple as possible" />
     <MESSAGE value="changing test configurations" />
     <MESSAGE value="made a new test robot file" />
@@ -540,6 +564,7 @@
     <MESSAGE value="added OSC capability" />
     <MESSAGE value="updated a few sim parameters" />
     <MESSAGE value="seem to have made the block fly off the screen somehow, which is probably technically progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="seem to have made the block fly off the screen somehow, which is probably technically progress" />
+    <MESSAGE value="updating applied forces" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating applied forces" />
   </component>
 </project>

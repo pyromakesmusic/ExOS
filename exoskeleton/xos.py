@@ -1,7 +1,5 @@
 import time
 import math
-
-
 import numpy as np
 import tkinter as tk
 import pandas as pd
@@ -15,7 +13,6 @@ import klampt.sim.settle # Applies forces and lets them reach equilibrium in sim
 import klampt.sim.simulation # For simulation
 import klampt.io.resource # For easy resource access
 import klampt.model.subrobot # Defines the subrobot
-from klampt.vis import colorize
 from klampt.model import collide
 import klampt.math.vectorops as kmv # This is for cross products
 from klampt.model.trajectory import RobotTrajectory # Trajectory
@@ -305,11 +302,11 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
     def simLoop(self, robot):
         """
-        Should simulate some time step and update the world accordingly. Needs more work.
+        Should simulate some time step and update the world accordingly. Needs substantially more work.
         """
         wm = self.world
-        test_body = self.body(wm.rigidObject(0)) # Change this
-        test_body.applyForceAtPoint([0,0,.5], [0,0,0]) # force, pworld
+        #test_body = self.body(robot.link(3)) # Change this
+        #test_body.applyForceAtPoint([0,.05,0], [0,0,.5]) # this is working, but not in a visibly useful way.
         self.simulate(.1)
         self.updateWorld()
 
