@@ -19,6 +19,7 @@ port = 5005
 dispatcher = Dispatcher()
 dispatcher.map("/filter", print)
 
+client = SimpleUDPClient(ip, port)  # Create client
 """
 FUNCTION DEFINITIONS
 """
@@ -39,6 +40,8 @@ async def test_loop():
   """Example main loop that only runs for 10 iterations before finishing"""
   for i in range(10):
     print(f"Loop {i}")
+    client.send_message("/some/address", 123)  # Send float message
+    client.send_message("/some/address", [1, 2., "hello"])  # Send message with int, float and string
     await asyncio.sleep(1)
 
 async def init_main():
@@ -62,7 +65,4 @@ if __name__ == "__main__":
 
 
 
-  client = SimpleUDPClient(ip, port)  # Create client
 
-  client.send_message("/some/address", 123)  # Send float message
-  client.send_message("/some/address", [1, 2., "hello"])  # Send message with int, float and string
