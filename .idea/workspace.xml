@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,20 +176,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00245" summary="filling out the data structures a little at a time, i think we are close">
-      <created>1680918862302</created>
-      <option name="number" value="00245" />
-      <option name="presentableId" value="LOCAL-00245" />
-      <option name="project" value="LOCAL" />
-      <updated>1680918862302</updated>
-    </task>
-    <task id="LOCAL-00246" summary="it might be accepting my appearance argument?">
-      <created>1680922587138</created>
-      <option name="number" value="00246" />
-      <option name="presentableId" value="LOCAL-00246" />
-      <option name="project" value="LOCAL" />
-      <updated>1680922587138</updated>
     </task>
     <task id="LOCAL-00247" summary="successfully added the muscle objects to the dataframe, I believe this is near to the final structure we will need - eventually maybe group to subrobots, but functionally there's not really a need to add a dimension to the link index">
       <created>1680930361105</created>
@@ -522,7 +506,21 @@
       <option name="project" value="LOCAL" />
       <updated>1695186262181</updated>
     </task>
-    <option name="localTasksCounter" value="294" />
+    <task id="LOCAL-00294" summary="converted back to blocking threaded receiver until I get it serving, then I can switch to multithreaded">
+      <created>1695523893780</created>
+      <option name="number" value="00294" />
+      <option name="presentableId" value="LOCAL-00294" />
+      <option name="project" value="LOCAL" />
+      <updated>1695523893780</updated>
+    </task>
+    <task id="LOCAL-00295" summary="is now successfully transferring OSC signal from Reaktor">
+      <created>1695524083141</created>
+      <option name="number" value="00295" />
+      <option name="presentableId" value="LOCAL-00295" />
+      <option name="project" value="LOCAL" />
+      <updated>1695524083141</updated>
+    </task>
+    <option name="localTasksCounter" value="296" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,8 +536,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="made a new test robot file" />
-    <MESSAGE value="reduced robot to two elements for testing" />
     <MESSAGE value="now bug testing physics" />
     <MESSAGE value="using a simulation test world now" />
     <MESSAGE value="changed filepath for laptop use" />
@@ -563,6 +559,8 @@
     <MESSAGE value="updating applied forces" />
     <MESSAGE value="built up basic server client testing" />
     <MESSAGE value="reformatted loop structure a bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformatted loop structure a bit" />
+    <MESSAGE value="converted back to blocking threaded receiver until I get it serving, then I can switch to multithreaded" />
+    <MESSAGE value="is now successfully transferring OSC signal from Reaktor" />
+    <option name="LAST_COMMIT_MESSAGE" value="is now successfully transferring OSC signal from Reaktor" />
   </component>
 </project>
