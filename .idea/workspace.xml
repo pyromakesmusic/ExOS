@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,13 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00253" summary="editing link calls">
-      <created>1682551112217</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1682551112217</updated>
     </task>
     <task id="LOCAL-00254" summary="finding where things are being called">
       <created>1682559267062</created>
@@ -520,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695586532140</updated>
     </task>
-    <option name="localTasksCounter" value="302" />
+    <task id="LOCAL-00302" summary="muahahahaha">
+      <created>1695586641423</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1695586641423</updated>
+    </task>
+    <option name="localTasksCounter" value="303" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -536,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ball rolls around on plane" />
     <MESSAGE value="robot's configuration doesn't match size with the robot" />
     <MESSAGE value="added the bones as rigid objects to the world" />
     <MESSAGE value="should be simulating now?" />
@@ -561,6 +561,7 @@
     <MESSAGE value="got the block to stop intersecting with the robot; should be able to start manipulating it now" />
     <MESSAGE value="importing my library now, need to make it more customizable" />
     <MESSAGE value="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this" />
-    <option name="LAST_COMMIT_MESSAGE" value="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this" />
+    <MESSAGE value="muahahahaha" />
+    <option name="LAST_COMMIT_MESSAGE" value="muahahahaha" />
   </component>
 </project>
