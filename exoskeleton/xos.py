@@ -1,9 +1,17 @@
+"""
+STANDARD LIBRARIES
+"""
+
 import time
 import math
 import numpy as np
 import tkinter as tk
 import pandas as pd
 import random
+
+"""
+KLAMPT IMPORTS
+"""
 
 import klampt
 import klampt.vis # For visualization
@@ -20,6 +28,11 @@ from klampt.control.utils import TimedLooper
 from klampt.plan import robotplanning, robotcspace # Configuration space
 import klampt.model.create.moving_base_robot as kmcmbr
 import klampt.model.create.primitives as kmcp # This is where the box is
+
+"""
+CUSTOM LIBRARIES
+"""
+import pyonics.submodules.network.osc_toolkit as osctools
 
 """
 PANDAS CONFIG
