@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +176,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00252" summary="&quot;link&quot; call being done incorrectly">
-      <created>1682464391204</created>
-      <option name="number" value="00252" />
-      <option name="presentableId" value="LOCAL-00252" />
-      <option name="project" value="LOCAL" />
-      <updated>1682464391204</updated>
     </task>
     <task id="LOCAL-00253" summary="editing link calls">
       <created>1682551112217</created>
@@ -523,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695528895115</updated>
     </task>
-    <option name="localTasksCounter" value="301" />
+    <task id="LOCAL-00301" summary="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this">
+      <created>1695586532140</created>
+      <option name="number" value="00301" />
+      <option name="presentableId" value="LOCAL-00301" />
+      <option name="project" value="LOCAL" />
+      <updated>1695586532140</updated>
+    </task>
+    <option name="localTasksCounter" value="302" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +536,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created a world file and got some kind of simulation going" />
     <MESSAGE value="ball rolls around on plane" />
     <MESSAGE value="robot's configuration doesn't match size with the robot" />
     <MESSAGE value="added the bones as rigid objects to the world" />
@@ -564,6 +560,7 @@
     <MESSAGE value="adding the block back and at some point i will start to apply forces to it from reaktor" />
     <MESSAGE value="got the block to stop intersecting with the robot; should be able to start manipulating it now" />
     <MESSAGE value="importing my library now, need to make it more customizable" />
-    <option name="LAST_COMMIT_MESSAGE" value="importing my library now, need to make it more customizable" />
+    <MESSAGE value="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this" />
+    <option name="LAST_COMMIT_MESSAGE" value="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this" />
   </component>
 </project>

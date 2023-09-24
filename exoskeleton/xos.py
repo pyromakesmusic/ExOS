@@ -320,8 +320,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         wm = self.world
         #test_body = self.body(robot.link(3)) # Change this
         test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
-        test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working, but not in a visibly useful way.
-        self.simulate(.1)
+        test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
+        self.simulate(.05)
         self.updateWorld()
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
