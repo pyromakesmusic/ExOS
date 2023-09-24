@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.OSC test 1">
+  <component name="RunManager">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,20 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00247" summary="successfully added the muscle objects to the dataframe, I believe this is near to the final structure we will need - eventually maybe group to subrobots, but functionally there's not really a need to add a dimension to the link index">
-      <created>1680930361105</created>
-      <option name="number" value="00247" />
-      <option name="presentableId" value="LOCAL-00247" />
-      <option name="project" value="LOCAL" />
-      <updated>1680930361105</updated>
-    </task>
-    <task id="LOCAL-00248" summary="now i need to access the robot from inside the muscle initialization function">
-      <created>1681076221554</created>
-      <option name="number" value="00248" />
-      <option name="presentableId" value="LOCAL-00248" />
-      <option name="project" value="LOCAL" />
-      <updated>1681076221554</updated>
     </task>
     <task id="LOCAL-00249" summary="now i need to access the robot from inside the muscle initialization function">
       <created>1681076232289</created>
@@ -520,7 +507,21 @@
       <option name="project" value="LOCAL" />
       <updated>1695524083141</updated>
     </task>
-    <option name="localTasksCounter" value="296" />
+    <task id="LOCAL-00296" summary="Reaktor is sending a sine wave now instead of just a square wave">
+      <created>1695526943983</created>
+      <option name="number" value="00296" />
+      <option name="presentableId" value="LOCAL-00296" />
+      <option name="project" value="LOCAL" />
+      <updated>1695526943993</updated>
+    </task>
+    <task id="LOCAL-00297" summary="switched to LFO">
+      <created>1695527165681</created>
+      <option name="number" value="00297" />
+      <option name="presentableId" value="LOCAL-00297" />
+      <option name="project" value="LOCAL" />
+      <updated>1695527165681</updated>
+    </task>
+    <option name="localTasksCounter" value="298" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -536,8 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="now bug testing physics" />
-    <MESSAGE value="using a simulation test world now" />
     <MESSAGE value="changed filepath for laptop use" />
     <MESSAGE value="tried adding a force" />
     <MESSAGE value="I think physics works now" />
@@ -561,6 +560,8 @@
     <MESSAGE value="reformatted loop structure a bit" />
     <MESSAGE value="converted back to blocking threaded receiver until I get it serving, then I can switch to multithreaded" />
     <MESSAGE value="is now successfully transferring OSC signal from Reaktor" />
-    <option name="LAST_COMMIT_MESSAGE" value="is now successfully transferring OSC signal from Reaktor" />
+    <MESSAGE value="Reaktor is sending a sine wave now instead of just a square wave" />
+    <MESSAGE value="switched to LFO" />
+    <option name="LAST_COMMIT_MESSAGE" value="switched to LFO" />
   </component>
 </project>
