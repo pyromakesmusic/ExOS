@@ -4,7 +4,7 @@ This should build up the OSC networking capability to start implementing physics
 
 from pythonosc.dispatcher import Dispatcher
 from pythonosc.udp_client import SimpleUDPClient
-from pythonosc.osc_server import AsyncIOOSCUDPServer
+from pythonosc import osc_server
 import asyncio
 import argparse
 import time
@@ -38,30 +38,39 @@ dispatcher.map("/volume", print_volume_handler, "Volume")
 dispatcher.map("/logvolume", print_compute_handler, "Log volume", math.log)
 async def test_loop():
   """Example main loop that only runs for 10 iterations before finishing"""
-  for i in range(10):
-    print(f"Loop {i}")
+  for i in range(100):
     client.send_message("/some/address", 123)  # Send float message
     client.send_message("/some/address", [1, 2., "hello"])  # Send message with int, float and string
     await asyncio.sleep(1)
 
 async def init_main():
-  server = AsyncIOOSCUDPServer((ip, port), dispatcher, asyncio.get_event_loop())
+  """
+  Multithreading receiver loop.
+  """
+  server = osc_server.AsyncIOOSCUDPServer((ip, port), dispatcher, asyncio.get_event_loop())
   transport, protocol = await server.create_serve_endpoint()
-
   await test_loop()
-
   transport.close()
 
 if __name__ == "__main__":
+  """
+  Starting with a blocking threaded server then trying to convert to multithreaded.
+  """
 
-  asyncio.run(init_main())
+  # asyncio.run(init_main())
 
   parser = argparse.ArgumentParser()
   parser.add_argument("--ip",
-      default="127.0.0.1", help="The ip to listen on")
+      default="127.0.0.1", help="The IP address to listen on")
   parser.add_argument("--port",
       type=int, default=5005, help="The port to listen on")
   args = parser.parse_args()
+
+  server = osc_server.ThreadingOSCUDPServer((args.ip, args.port), dispatcher)
+
+  print("Serving on {}".format(server.server_address))
+  server.serve_forever()
+
 
 
 
