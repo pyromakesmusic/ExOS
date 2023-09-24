@@ -24,9 +24,7 @@ import klampt.model.subrobot # Defines the subrobot
 from klampt.model import collide
 import klampt.math.vectorops as kmv # This is for cross products
 from klampt.model.trajectory import RobotTrajectory # Trajectory
-from klampt.control.utils import TimedLooper
 from klampt.plan import robotplanning, robotcspace # Configuration space
-import klampt.model.create.moving_base_robot as kmcmbr
 import klampt.model.create.primitives as kmcp # This is where the box is
 
 """
@@ -150,20 +148,21 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
 
         #Loading all the muscles
-        self.muscleLoader(config_data) # It's being called right here. This is important.
+        self.muscleLoader(config_data)  # It's being called right here. This is important. Does this work?
 
-    def muscleLoader(self, filepath):
+    def muscleLoader(self, config_df):
         """
-        Given a filepath to a .csv file containing structured muscle parameters, generates a list of Muscle objects and
+        Given a dataframe with an ["attachments"] column containing a path
+        to a .csv file detailing structured muscle parameters, generates a list of Muscle objects and
         assigns them to the robot model. This should generate all muscles.
 
         This gets called from the __init__ method.
         """
-        with open(filepath["attachments"]) as attachments:
+        with open(config_df["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
             rows = muscleinfo_df.shape[0] # This is the number of rows, so the while loop should loop "row" many times
 
-            muscle_objects = [] #
+            muscle_objects = [] # Placeholder list, made to be empty and populated with all muscle objects.
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
@@ -188,13 +187,11 @@ class ExoController(klampt.control.OmniRobotInterface):
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects)
-            #print("DataFrame Penultimate Shape: ", muscleinfo_df.shape)
-            #print(muscle_series)
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
-            #print(muscleinfo_df.iloc[1])
-            #print("DataFrame Final Shape: ", muscleinfo_df.shape)
-
-
+            """
+            This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
+            in each row.
+            """
 
     def createMuscle(self, id, a, b):
         """
@@ -202,10 +199,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         assert type(id) == str, "Error: Muscle ID must be string value."
 
-        self.muscle = Muscle(self.world, self.sim, self, a, b)
-        self.muscle.setSegment(a,b) # Turns the muscle into a line segment
-        klampt.vis.add(id, self.muscle) # Adds the muscle to the visualization
-        return self.muscle
+        muscle = Muscle(self.world, self.sim, self, a, b)
+        muscle.setSegment(a,b) # Turns the muscle into a line segment
+        klampt.vis.add(id, muscle) # Adds the muscle to the visualization
+        return muscle
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -222,8 +219,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def setTorque(self):
         """
-        Takes a list of torque inputs and sends them to controllers. Maybe one controller should control multiple actuators.
-        Kind of an architectural decision.
+        Takes a list of torque inputs and sends them to controller.
         ==================================
         UPDATE: Okay so I think I'm ready to implement this method. Torque is equal to the cross product of the 3-D force
         vector (provided us by the McKibben muscle parameters and perhaps a custom method) and the distance from the fulcrum at which the distance is applied
@@ -319,8 +315,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         wm = self.world
         #test_body = self.body(robot.link(3)) # Change this
-        test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
-        test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
+        #test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
+        #test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
         self.simulate(.05)
         self.updateWorld()
 
@@ -346,8 +342,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,-5], 25)
 
         #Random stuff related to muscles
+        """
+        Adding more documentation since this will probably get moved and refactored.
+        """
         lat = klampt.GeometricPrimitive()
-        lat.setSegment(self.robot.link(4).transform[1], self.robot.link(6).transform[1])
+        origin_delta = [0,-.5,-1]
+        destination_delta = [0,-.9,1.7]
+
+        lat_origin = kmv.add(self.robot.link(0).transform[1], origin_delta)
+        lat_destination = kmv.add(self.robot.link(1).transform[1], destination_delta)
+        # I'm using the klampt vector operations library here to quickly add these 3-lists as vectors.
+
+        lat.setSegment(lat_origin, lat_destination)
 
         klampt.vis.add("latissimus", lat)
         klampt.vis.setColor("latissimus", 1, 0, 0, 1)
@@ -417,8 +423,11 @@ FUNCTION DEFINITIONS
 """
 def configLoader(config_name):
     """
-    This is tightly coupled with the GUNDAM style configuration process. Argument should include which configuration file
-    to load.
+    This is tightly coupled with the GUNDAM (limb/element-wise) style configuration process.
+    Takes configuration filepath as an argument.
+
+    Returns a dataframe with entries in columns referencing the filepath of the robot core, and of the location of
+    the muscle attachments CSV.
     """
     print("Loading configuration" + config_name + "...")
     with open(config_name) as fn:
