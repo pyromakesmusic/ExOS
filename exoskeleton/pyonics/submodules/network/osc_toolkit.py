@@ -36,7 +36,7 @@ def print_compute_handler(unused_addr, args, volume):
 
 dispatcher.map("/volume", print_volume_handler, "Volume")
 dispatcher.map("/logvolume", print_compute_handler, "Log volume", math.log)
-async def test_loop():
+async def async_loop():
   """Example main loop that only runs for 10 iterations before finishing"""
   for i in range(100):
     client.send_message("/some/address", 123)  # Send float message
@@ -49,7 +49,7 @@ async def init_main():
   """
   server = osc_server.AsyncIOOSCUDPServer((ip, port), dispatcher, asyncio.get_event_loop())
   transport, protocol = await server.create_serve_endpoint()
-  await test_loop()
+  await async_loop()
   transport.close()
 
 if __name__ == "__main__":

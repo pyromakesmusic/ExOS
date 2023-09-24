@@ -319,7 +319,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         wm = self.world
         #test_body = self.body(robot.link(3)) # Change this
-        #test_body.applyForceAtPoint([0,.05,0], [0,0,.5]) # this is working, but not in a visibly useful way.
+        test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
+        test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working, but not in a visibly useful way.
         self.simulate(.1)
         self.updateWorld()
 
@@ -392,7 +393,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Changes some drawing options for link geometry
         In the setDraw function, the first argument is an integer denoting vertices, edges. etc. The second is a Boolean
-        determining whether or not the option is drawn.
+        determining regardless of whether the option is drawn.
 
         setColor function takes an int and RGBA float values.
         """
