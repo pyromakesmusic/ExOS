@@ -103,18 +103,16 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         link_a = self.robot.link(a)
         link_b = self.robot.link(b)
 
-        transform_a = [float(s) for s in row["transform_a"].split(",")]
-        transform_b = [float(s) for s in row["transform_b"].split(",")]
+        delta_a = [float(s) for s in row["transform_a"].split(",")]
+        delta_b = [float(s) for s in row["transform_b"].split(",")]
 
-        transform_a = kmv.add(link_a.transform[1], transform_a)
-        transform_b = kmv.add(link_b.transform[1], transform_b)
+        transform_a = kmv.add(link_a.transform[1], delta_a)
+        transform_b = kmv.add(link_b.transform[1], delta_b)
 
         self.setSegment(transform_a, transform_b)
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(transform_a, transform_b)
-
-        self.muscle = None
 
         self.turns = 20
         self.weave_length = 1
@@ -311,11 +309,11 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         Should simulate some time step and update the world accordingly. Needs substantially more work.
         """
         wm = self.world
-        #test_body = self.body(robot.link(3)) # Change this
+        #test_body = self.body(robot.link(1)) # Change this
 
-        #test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
-        #test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
-        self.simulate(.05)
+        test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
+        test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
+        self.simulate(.01)
         self.updateWorld()
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
