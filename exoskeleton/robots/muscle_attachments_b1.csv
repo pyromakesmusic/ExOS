@@ -1,2 +1,2 @@
-name,link_a,link_b,transform_a,transform_b,label_a,label_b,turns,r_0,l_0
-sternocleidomastoid,0,3,0 -0.5 -1,0 -0.9 1.7,superior,inferior,20,1,2
+name;link_a;link_b;transform_a;transform_b;label_a;label_b;turns;r_0;l_0
+sternocleidomastoid;0;3;0,0.5,-1;0,-0.9,1.7;superior;inferior;20;1;2

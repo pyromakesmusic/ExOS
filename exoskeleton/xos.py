@@ -103,11 +103,11 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         link_a = self.robot.link(a)
         link_b = self.robot.link(b)
 
-        print(row["transform_a"])
-        print(type(row["transform_a"]))
+        transform_a = [float(s) for s in row["transform_a"].split(",")]
+        transform_b = [float(s) for s in row["transform_b"].split(",")]
 
-        transform_a = kmv.add(link_a.transform[1], row["transform_a"])
-        transform_b = kmv.add(link_b.transform[1], row["transform_b"])
+        transform_a = kmv.add(link_a.transform[1], transform_a)
+        transform_b = kmv.add(link_b.transform[1], transform_b)
 
         self.setSegment(transform_a, transform_b)
         # Now we add some attributes that the simulated and real robot will share
@@ -171,7 +171,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         This gets called from the __init__ method.
         """
         with open(config_df["attachments"]) as attachments:
-            muscleinfo_df = pd.read_csv(attachments) # This dataframe contains information on every muscle attachment
+            muscleinfo_df = pd.read_csv(attachments, sep=";") # This dataframe contains information on every muscle attachment
             rows = muscleinfo_df.shape[0] # This is the number of rows, so the while loop should loop "row" many times
 
             muscle_objects = [] # Placeholder list, made to be empty and populated with all muscle objects.
