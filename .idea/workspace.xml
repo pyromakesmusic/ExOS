@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00255" summary="successfully referenced the Link">
-      <created>1682566154271</created>
-      <option name="number" value="00255" />
-      <option name="presentableId" value="LOCAL-00255" />
-      <option name="project" value="LOCAL" />
-      <updated>1682566154271</updated>
     </task>
     <task id="LOCAL-00256" summary="robot is now loading">
       <created>1682566333905</created>
@@ -524,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695588993014</updated>
     </task>
-    <option name="localTasksCounter" value="304" />
+    <task id="LOCAL-00304" summary="housekeeping">
+      <created>1695595225434</created>
+      <option name="number" value="00304" />
+      <option name="presentableId" value="LOCAL-00304" />
+      <option name="project" value="LOCAL" />
+      <updated>1695595225434</updated>
+    </task>
+    <option name="localTasksCounter" value="305" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -540,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added the bones as rigid objects to the world" />
     <MESSAGE value="should be simulating now?" />
     <MESSAGE value="using prepared XML world file instead of programmatic world creation" />
     <MESSAGE value="lowered the terrain so it is under the robot" />
@@ -565,6 +562,7 @@
     <MESSAGE value="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this" />
     <MESSAGE value="muahahahaha" />
     <MESSAGE value="updated main file documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated main file documentation" />
+    <MESSAGE value="housekeeping" />
+    <option name="LAST_COMMIT_MESSAGE" value="housekeeping" />
   </component>
 </project>

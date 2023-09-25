@@ -87,7 +87,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, id, wm, sim, ctrl, a, b):
+    def __init__(self, row, wm, sim, ctrl):
         """
         Takes the world model and two link IDs, a robot controller, and a first and second relative link transform.
         """
@@ -97,20 +97,29 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.world = wm
         self.robot = self.world.robot(0)
 
-        link_a = self.robot.link(a)  # This "link" call is being done incorrectly. Look at documentation.
+        a = int(row["link_a"])
+        b = int(row["link_b"])
+
+        link_a = self.robot.link(a)
         link_b = self.robot.link(b)
 
-        self.setSegment(link_a.transform[1],link_b.transform[1])
+        print(row["transform_a"])
+        print(type(row["transform_a"]))
+
+        transform_a = kmv.add(link_a.transform[1], row["transform_a"])
+        transform_b = kmv.add(link_b.transform[1], row["transform_b"])
+
+        self.setSegment(transform_a, transform_b)
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
-        self.geometry.setSegment(link_a.transform[1], link_b.transform[1])
+        self.geometry.setSegment(transform_a, transform_b)
 
         self.muscle = None
 
         self.turns = 20
         self.weave_length = 1
-        self.r_0 = 1
-        self.l_0 = 1
+        self.r_0 = row["r_0"]
+        self.l_0 = row["l_0"]
         self.stiffness = 1
         self.displacement = 0
         self.pressure = 1
@@ -148,7 +157,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
 
         #Loading all the muscles
-        self.muscleLoader(config_data)  # It's being called right here. This is important. Does this work?
+        self.muscleLoader(config_data)
+        """
+        This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
+        """
 
     def muscleLoader(self, config_df):
         """
@@ -166,24 +178,9 @@ class ExoController(klampt.control.OmniRobotInterface):
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
-                link_a = int(row["link_a"])
-                link_b = int(row["link_b"]) # We want these to be typed as integers when we use them to identify links.
-                """
-                At this point, link_a and link_b contain text labels. Let's see if we can access
-                all the links from inside this method.
-                """
-                num_elements = self.world.numIDs()
-                num_robots = self.world.numRobots()
-                """
-                Looks like we only have one logical robot with 31 rigid links at this point. We're going to run with that
-                assumption and format the muscle_attachments accordingly, maybe I'll make a prototype one that uses 31 links
-                and design the method that breaks down to subrobots next.
-                """
 
-
-                muscle = Muscle(row["name"], self.world, self.sim, self, link_a, link_b)
+                muscle = Muscle(row, self.world, self.sim, self)
                 # Should have arguments self, id, world, sim, controller, a, b
-                # I now need to use the information from the row to access a particular pair of links
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects)
@@ -213,7 +210,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def controlRate(self):
         """
-        Should be the same as the physical device.
+        Should be the same as the physical device, Reaktor control rate, simulation timestep
         """
         return 100
 
@@ -315,6 +312,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         wm = self.world
         #test_body = self.body(robot.link(3)) # Change this
+
         #test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
         #test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
         self.simulate(.05)
@@ -341,6 +339,17 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
 
+
+
+        self.sim = ExoSim(self.world, self.robot)
+        # creation of the controller
+        self.controller = ExoController(self.robot, self.world, self.sim, filepath)
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
+
+
+        #Simulator creation and activation comes at the very end
+        self.sim.setGravity([0, 0, -9.8])
+
         #Random stuff related to muscles
         """
         Adding more documentation since this will probably get moved and refactored.
@@ -358,15 +367,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("latissimus", lat)
         klampt.vis.setColor("latissimus", 1, 0, 0, 1)
 
-
-        self.sim = ExoSim(self.world, self.robot)
-        # creation of the controller
-        self.controller = ExoController(self.robot, self.world, self.sim, filepath)
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
-
-
-        #Simulator creation and activation comes at the very end
-        self.sim.setGravity([0, 0, -9.8])
 
         klampt.vis.show()
         while klampt.vis.shown():
