@@ -10,19 +10,13 @@ import argparse
 import time
 import math
 
-"""
-GLOBAL CONFIGURATION
-"""
-ip = "127.0.0.1"
-port = 5005
 
-client = SimpleUDPClient(ip, port)  # Create client
 """
 FUNCTION DEFINITIONS
 """
 
 
-async def async_sender_loop():
+async def async_sender_loop(client):
     """Example main loop that only runs for 10 iterations before finishing"""
     for i in range(100):
         client.send_message("/some/address", 123)  # Send float message
@@ -40,19 +34,27 @@ async def init_main(dispatcher):
     transport.close()
 
 
-class BlockingServer:
+class SimpleClient:
+  def __init__(self, ip, port):
+    SimpleUDPClient.__init__(ip, port)
 
-    def __init__(self):
+
+class BlockingServer:
+    """
+    Initializes with an IP formatted as string and port formatted as integer.
+    """
+
+    def __init__(self, ip, port):
         self.dispatcher = Dispatcher()
         self.dispatcher.map("/filter", print)
 
         self.dispatcher.map("/volume", self.print_volume_handler, "Volume")
         self.dispatcher.map("/logvolume", self.print_compute_handler, "Log volume", math.log)
 
-        parser = argparse.ArgumentParser()
-        parser.add_argument("--ip", default="127.0.0.1", help="The IP address to listen on")
-        parser.add_argument("--port", type=int, default=5005, help="The port to listen on")
-        args = parser.parse_args()
+        self.parser = argparse.ArgumentParser()
+        self.parser.add_argument("--ip", default=ip, help="The IP address to listen on")
+        self.parser.add_argument("--port", type=int, default=port, help="The port to listen on")
+        self.args = self.parser.parse_args()
 
         server = osc_server.ThreadingOSCUDPServer((args.ip, args.port), self.dispatcher)
 

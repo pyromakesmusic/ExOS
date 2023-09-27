@@ -7,7 +7,6 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +78,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.PID_talk">
+  <component name="RunManager">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00259" summary="I think the muscle loader is working? So now I add muscles?">
-      <created>1682605762161</created>
-      <option name="number" value="00259" />
-      <option name="presentableId" value="LOCAL-00259" />
-      <option name="project" value="LOCAL" />
-      <updated>1682605762161</updated>
     </task>
     <task id="LOCAL-00260" summary="need to change the exocontroller muscleloader">
       <created>1684730981369</created>
@@ -523,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695659015253</updated>
     </task>
-    <option name="localTasksCounter" value="308" />
+    <task id="LOCAL-00308" summary="made osc toolkit more object oriented, should probably rename it">
+      <created>1695836261760</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1695836261761</updated>
+    </task>
+    <option name="localTasksCounter" value="309" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="second test robot with more parts" />
     <MESSAGE value="trying to edit second test bot" />
     <MESSAGE value="seem to be simulating the spine now" />
     <MESSAGE value="adding some more libraries" />
@@ -564,6 +562,7 @@
     <MESSAGE value="working on the muscle class for realsies now" />
     <MESSAGE value="got the transforms grabbed in a better way" />
     <MESSAGE value="random updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="random updates" />
+    <MESSAGE value="made osc toolkit more object oriented, should probably rename it" />
+    <option name="LAST_COMMIT_MESSAGE" value="made osc toolkit more object oriented, should probably rename it" />
   </component>
 </project>
