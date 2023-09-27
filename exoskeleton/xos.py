@@ -82,6 +82,8 @@ FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
 """
 CLASS DEFINITIONS
 """
+
+
 class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
@@ -136,25 +138,29 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         app = klampt.Appearance()
         app.setDraw(2, True)
         return app
+
+
 class MuscleGroup:
     def __init__(self):
         pass
+
+
 class ExoController(klampt.control.OmniRobotInterface):
     """
-    This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module, and before that probably needs to be broken up
+    This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module,
+     and before that probably needs to be broken up
     """
 
     # Initialization
     def __init__(self, robotmodel,  world, sim, config_data):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
-
         self.world = world
         self.robot = robotmodel
         self.sim = sim
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
 
-        #Loading all the muscles
+        # Loading all the muscles
         self.muscleLoader(config_data)
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
@@ -169,10 +175,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         This gets called from the __init__ method.
         """
         with open(config_df["attachments"]) as attachments:
-            muscleinfo_df = pd.read_csv(attachments, sep=";") # This dataframe contains information on every muscle attachment
-            rows = muscleinfo_df.shape[0] # This is the number of rows, so the while loop should loop "row" many times
+            muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
+            rows = muscleinfo_df.shape[0]  # This is the number of rows, so the while loop should loop "row" many times
 
-            muscle_objects = [] # Placeholder list, made to be empty and populated with all muscle objects.
+            muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]

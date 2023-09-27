@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +79,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.PID_talk">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -179,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00258" summary="got muscles displaying from inside the loader, nice;">
-      <created>1682566484641</created>
-      <option name="number" value="00258" />
-      <option name="presentableId" value="LOCAL-00258" />
-      <option name="project" value="LOCAL" />
-      <updated>1682566484641</updated>
     </task>
     <task id="LOCAL-00259" summary="I think the muscle loader is working? So now I add muscles?">
       <created>1682605762161</created>
@@ -523,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695608389120</updated>
     </task>
-    <option name="localTasksCounter" value="307" />
+    <task id="LOCAL-00307" summary="random updates">
+      <created>1695659015253</created>
+      <option name="number" value="00307" />
+      <option name="presentableId" value="LOCAL-00307" />
+      <option name="project" value="LOCAL" />
+      <updated>1695659015253</updated>
+    </task>
+    <option name="localTasksCounter" value="308" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="lowered the terrain so it is under the robot" />
     <MESSAGE value="second test robot with more parts" />
     <MESSAGE value="trying to edit second test bot" />
     <MESSAGE value="seem to be simulating the spine now" />
@@ -564,6 +563,7 @@
     <MESSAGE value="housekeeping" />
     <MESSAGE value="working on the muscle class for realsies now" />
     <MESSAGE value="got the transforms grabbed in a better way" />
-    <option name="LAST_COMMIT_MESSAGE" value="got the transforms grabbed in a better way" />
+    <MESSAGE value="random updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="random updates" />
   </component>
 </project>
