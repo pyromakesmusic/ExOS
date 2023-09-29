@@ -78,7 +78,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.PID_talk">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00260" summary="need to change the exocontroller muscleloader">
-      <created>1684730981369</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1684730981370</updated>
     </task>
     <task id="LOCAL-00261" summary="throwing error: &quot;ODESimulator: ODERobot::AddLinkTorque: Error, commanding link 0 to a non-finite torque!&quot; when adding simloop to the sim init function. May need to add small amount of mass to massless links">
       <created>1685003439322</created>
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695836261761</updated>
     </task>
-    <option name="localTasksCounter" value="309" />
+    <task id="LOCAL-00309" summary="more object oriented stuff, removed global configuration">
+      <created>1695837809926</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1695837809926</updated>
+    </task>
+    <option name="localTasksCounter" value="310" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="trying to edit second test bot" />
     <MESSAGE value="seem to be simulating the spine now" />
     <MESSAGE value="adding some more libraries" />
     <MESSAGE value="updated simulation to use refined CAD files" />
@@ -563,6 +562,7 @@
     <MESSAGE value="got the transforms grabbed in a better way" />
     <MESSAGE value="random updates" />
     <MESSAGE value="made osc toolkit more object oriented, should probably rename it" />
-    <option name="LAST_COMMIT_MESSAGE" value="made osc toolkit more object oriented, should probably rename it" />
+    <MESSAGE value="more object oriented stuff, removed global configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="more object oriented stuff, removed global configuration" />
   </component>
 </project>

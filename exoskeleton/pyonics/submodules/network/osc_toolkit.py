@@ -24,7 +24,7 @@ async def async_sender_loop(client):
         await asyncio.sleep(1)
 
 
-async def init_main(dispatcher):
+async def init_main(dispatcher, ip, port):
     """
     Multithreading receiver loop.
     """
@@ -70,6 +70,13 @@ class BlockingServer:
         except ValueError:
             pass
 
+    def map(self, pattern, func, args):
+        """
+        pattern: string var defining the OSC pattern to be recognized
+        func: the function to map to
+        args: any args for the function, this may need to be args** and kwargs** - needs more research
+        """
+        self.dispatcher.map(pattern, func, args)
 
 if __name__ == "__main__":
     """
