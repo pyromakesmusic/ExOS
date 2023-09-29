@@ -70,7 +70,7 @@ class BlockingServer:
         except ValueError:
             pass
 
-    def map(self, pattern, func, args):
+    def map(self, pattern, func, *args, **kwargs):
         """
         pattern: string var defining the OSC pattern to be recognized
         func: the function to map to
