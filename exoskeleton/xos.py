@@ -30,7 +30,7 @@ import klampt.model.create.primitives as kmcp # This is where the box is
 """
 CUSTOM LIBRARIES
 """
-import pyonics.submodules.network.osc_toolkit as osctools
+import pyonics.submodules.network.osc_toolkit as osck
 
 """
 PANDAS CONFIG
@@ -153,15 +153,20 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     # Initialization
     def __init__(self, robotmodel,  world, sim, config_data):
+        """
+        This is intrinsically linked with a simulation. Does that make sense? Let's say it does, for now.
+        """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
         self.world = world
         self.robot = robotmodel
         self.sim = sim
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
+        self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
 
         # Loading all the muscles
-        self.muscleLoader(config_data)
+        self.muscles = self.muscleLoader(config_data)
+        print(self.muscles)
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
@@ -189,10 +194,13 @@ class ExoController(klampt.control.OmniRobotInterface):
 
             muscle_series = pd.Series(data=muscle_objects)
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
+
             """
             This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
             in each row.
             """
+            return muscleinfo_df
+
 
     def createMuscle(self, id, a, b):
         """
@@ -317,9 +325,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         wm = self.world
         #test_body = self.body(robot.link(1)) # Change this
 
-        test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
-        test_body.applyForceAtPoint([0,0,25], [0.5,0,0]) # this is working!!!
-        self.simulate(.01)
+        # test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
+        # test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
+        self.simulate(.05)
         self.updateWorld()
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
