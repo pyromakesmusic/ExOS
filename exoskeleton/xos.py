@@ -119,7 +119,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
         self.turns = 20 # Number of turns in the muscle fiber
-        self.weave_length = 1
+        self.weave_length = 1 # at some point this should probably become a column in the attachments file
         self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"] # resting length - at nominal relative pressure
         self.stiffness = 1 # Spring constant/variable - may change at some point
@@ -151,6 +151,17 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         """
         self.pressure = value
         self.displacement = kmv.distance(self.transform_a, self.transform_b) - self.l_0
+        """
+        Here goes...the formuoli
+        """
+        force = ((self.pressure * (self.weave_length)**2)/(4 * math.pi * (self.turns)**2)) * \
+                (((self.weave_length)/math.sqrt(3) + self.displacement)**2 - 1)
+
+        """
+        I would not be surprised if grouping mistakes show up here, but we should display this
+        for testing. We then want to apply half this force (magnitude) to each transform point in opposite directions
+        derived from more vector operations on their respective transforms.
+        """
 
         return
 
