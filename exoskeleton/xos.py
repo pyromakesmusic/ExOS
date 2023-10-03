@@ -118,13 +118,13 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
-        self.turns = 20
+        self.turns = 20 # Number of turns in the muscle fiber
         self.weave_length = 1
         self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"] # resting length - at nominal relative pressure
-        self.stiffness = 1
-        self.displacement = 0
-        self.pressure = 1
+        self.stiffness = 1 # Spring constant/variable - may change at some point
+        self.displacement = 0 # This is a calculated value
+        self.pressure = 1 # Should be pressure relative to external, so start at 0
 
     def contract(self, value):
         """
@@ -150,7 +150,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         self.pressure = value
-
+        self.displacement = kmv.distance(self.transform_a, self.transform_b) - self.l_0
 
         return
 
