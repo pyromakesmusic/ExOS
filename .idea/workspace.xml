@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00264" summary="made the consolidated robot into a single file, which will hopefully be easier to read">
-      <created>1685082708281</created>
-      <option name="number" value="00264" />
-      <option name="presentableId" value="LOCAL-00264" />
-      <option name="project" value="LOCAL" />
-      <updated>1685082708282</updated>
-    </task>
     <task id="LOCAL-00265" summary="made a new script to test just the physics and get used to how it operates">
       <created>1685422534439</created>
       <option name="number" value="00265" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696259573941</updated>
     </task>
-    <option name="localTasksCounter" value="313" />
+    <task id="LOCAL-00313" summary="integrating muscle stuff into the controller and simulation class">
+      <created>1696266326543</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1696266326543</updated>
+    </task>
+    <option name="localTasksCounter" value="314" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added OSC capability" />
     <MESSAGE value="updated a few sim parameters" />
     <MESSAGE value="seem to have made the block fly off the screen somehow, which is probably technically progress" />
     <MESSAGE value="updating applied forces" />
@@ -563,6 +562,7 @@
     <MESSAGE value="more object orientation stuff" />
     <MESSAGE value="added kwarg" />
     <MESSAGE value="should be fully object-oriented and ready for use" />
-    <option name="LAST_COMMIT_MESSAGE" value="should be fully object-oriented and ready for use" />
+    <MESSAGE value="integrating muscle stuff into the controller and simulation class" />
+    <option name="LAST_COMMIT_MESSAGE" value="integrating muscle stuff into the controller and simulation class" />
   </component>
 </project>

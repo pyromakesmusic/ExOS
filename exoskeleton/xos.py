@@ -91,7 +91,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     """
     def __init__(self, row, wm, sim, ctrl):
         """
-        Takes the world model and two link IDs, a robot controller, and a first and second relative link transform.
+        Takes a dataframe row containing muscle information, a world model, a simulator, and a controller.
         """
         klampt.GeometricPrimitive.__init__(self)
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
@@ -104,33 +104,53 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         link_a = self.robot.link(a)
         link_b = self.robot.link(b)
-
+        """
+        The below values describe the displacement of the 
+        """
         delta_a = [float(s) for s in row["transform_a"].split(",")]
         delta_b = [float(s) for s in row["transform_b"].split(",")]
 
-        transform_a = kmv.add(link_a.transform[1], delta_a)
-        transform_b = kmv.add(link_b.transform[1], delta_b)
+        self.transform_a = kmv.add(link_a.transform[1], delta_a)
+        self.transform_b = kmv.add(link_b.transform[1], delta_b)
 
-        self.setSegment(transform_a, transform_b)
+        self.setSegment(self.transform_a, self.transform_b)
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
-        self.geometry.setSegment(transform_a, transform_b)
+        self.geometry.setSegment(self.transform_a, self.transform_b)
 
         self.turns = 20
         self.weave_length = 1
-        self.r_0 = row["r_0"]
-        self.l_0 = row["l_0"]
+        self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
+        self.l_0 = row["l_0"] # resting length - at nominal relative pressure
         self.stiffness = 1
         self.displacement = 0
         self.pressure = 1
 
-    def contract(self):
+    def contract(self, value):
         """
         This should take some kind of force/pressure argument from the controller and apply it to both the simulated
         and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
         Asynchronous is probably more flexible, but is going to require slightly more (but not much more) in terms of
         computing power.
+        ================
+        UPDATE 10.2.2023:
+
+        More commentary. A muscle is a spring with variable stiffness. So, the simplest implementation should just be
+        a single value that informs the pressure/stiffness.
+
+        Should apply two forces at points determined by self.transform_a and self.transform_b, moderated by the
+        McKibben muscle formula.
+
+        We want to calculate
+        F: the force applied by the muscle.
+        To do this we will need:
+        p: relative pressure of the air chamber
+        b: the muscle fiber weave length
+        n: number of turns in the muscle fiber
+        x: the displacement. This will probably take the most work to calculate.
         """
+        self.pressure = value
+
 
         return
 
