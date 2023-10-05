@@ -163,6 +163,12 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         derived from more vector operations on their respective transforms.
         """
 
+        direction = kmv.sub(self.transform_a, self.transform_b)
+        """
+        The above should return a 3-tuple. A line between the origin and the position described by this 3-tuple should
+        have the angle from a to b.
+        """
+
         return
 
     def appearance(self):
