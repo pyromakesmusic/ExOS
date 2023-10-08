@@ -122,6 +122,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.weave_length = 1 # at some point this should probably become a column in the attachments file
         self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"] # resting length - at nominal relative pressure
+        self.length = self.l_0 # For calculation convenience
         self.stiffness = 1 # Spring constant/variable - may change at some point
         self.displacement = 0 # This is a calculated value
         self.pressure = 1 # Should be pressure relative to external, so start at 0
@@ -150,9 +151,10 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         self.pressure = value
-        self.displacement = kmv.distance(self.transform_a, self.transform_b) - self.l_0
+        self.length = kmv.distance(self.transform_a, self.transform_b)
+        self.displacement = self.length - self.l_0
         """
-        Here goes...the formuoli
+        Here it goes...the formuoli
         """
         force = ((self.pressure * (self.weave_length)**2)/(4 * math.pi * (self.turns)**2)) * \
                 (((self.weave_length)/math.sqrt(3) + self.displacement)**2 - 1)
@@ -165,6 +167,9 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
 
         direction_a = kmv.sub(self.transform_a, self.transform_b)
         direction_b = kmv.mul(direction_a, -1)
+
+        unit_a = kmv.div(direction_a, self.length)
+        unit_b = kmv.mul(unit_a, -1) # Redundant but I'm including this to make it easier to read for now
         """
         The above should return a 3-tuple. A line between the origin and the position described by this 3-tuple should
         have the angle from a to b.
