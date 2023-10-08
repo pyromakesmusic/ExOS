@@ -158,18 +158,19 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
                 (((self.weave_length)/math.sqrt(3) + self.displacement)**2 - 1)
 
         """
-        I would not be surprised if grouping mistakes show up here, but we should display this
+        I would not be surprised if grouping/parenthesis mistakes show up here, but we should display this
         for testing. We then want to apply half this force (magnitude) to each transform point in opposite directions
         derived from more vector operations on their respective transforms.
         """
 
-        direction = kmv.sub(self.transform_a, self.transform_b)
+        direction_a = kmv.sub(self.transform_a, self.transform_b)
+        direction_b = kmv.mul(direction_a, -1)
         """
         The above should return a 3-tuple. A line between the origin and the position described by this 3-tuple should
         have the angle from a to b.
         """
-        print("Force" + force)
-        print("Direction" + direction)
+        print("Force: " + str(force))
+        print("Directions: " + str(direction_a) + str(direction_b))
 
         return
 
