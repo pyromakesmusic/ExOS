@@ -346,7 +346,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def idle(self):
-        print(self.muscles.columns)
+        for muscle in self.muscles.muscles:
+            muscle.contract(1)
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
