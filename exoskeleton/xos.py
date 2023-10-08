@@ -346,9 +346,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def idle(self):
-        for row in self.muscles:
-            print(row)
-            pass
+        print(self.muscles.columns)
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -402,7 +400,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, self.sim, filepath)
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller)
+
+        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller) # No point using this rn
 
 
         #Simulator creation and activation comes at the very end
