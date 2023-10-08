@@ -168,6 +168,8 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         The above should return a 3-tuple. A line between the origin and the position described by this 3-tuple should
         have the angle from a to b.
         """
+        print("Force" + force)
+        print("Direction" + direction)
 
         return
 
@@ -207,6 +209,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
+
+
 
     def muscleLoader(self, config_df):
         """
@@ -261,7 +265,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Should be the same as the physical device, Reaktor control rate, simulation timestep
         """
-        return 100
+        return 20
 
     def setTorque(self):
         """
@@ -288,7 +292,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def queuedTrajectory(self):
         return self.trajectory
-
 
     def beginIdle(self):
         """
@@ -342,10 +345,12 @@ class ExoController(klampt.control.OmniRobotInterface):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-
-
     def idle(self):
-        self.setPosition(self.target)
+        for row in self.muscles:
+            print(row)
+            pass
+
+
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
@@ -364,6 +369,10 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         # test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
         # test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
+        """
+        Now here adding a section to make sure the muscles contract in the simulation.
+        """
+
         self.simulate(.05)
         self.updateWorld()
 
@@ -420,6 +429,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.show()
         while klampt.vis.shown():
             self.sim.simLoop(self.robot)
+            self.controller.idle()
 
 
     def idlefunc(self):

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00266" summary="making a minimal window and empty world">
-      <created>1685422590422</created>
-      <option name="number" value="00266" />
-      <option name="presentableId" value="LOCAL-00266" />
-      <option name="project" value="LOCAL" />
-      <updated>1685422590422</updated>
     </task>
     <task id="LOCAL-00267" summary="created a new test robot file. going to make it as simple as possible">
       <created>1685501312138</created>
@@ -521,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696297216667</updated>
     </task>
-    <option name="localTasksCounter" value="315" />
+    <task id="LOCAL-00315" summary="I've confused myself, although I'm making progress">
+      <created>1696547379931</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1696547379931</updated>
+    </task>
+    <option name="localTasksCounter" value="316" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="seem to have made the block fly off the screen somehow, which is probably technically progress" />
     <MESSAGE value="updating applied forces" />
     <MESSAGE value="built up basic server client testing" />
     <MESSAGE value="reformatted loop structure a bit" />
@@ -562,6 +562,7 @@
     <MESSAGE value="should be fully object-oriented and ready for use" />
     <MESSAGE value="integrating muscle stuff into the controller and simulation class" />
     <MESSAGE value="adding commentary for McKibben muscle." />
-    <option name="LAST_COMMIT_MESSAGE" value="adding commentary for McKibben muscle." />
+    <MESSAGE value="I've confused myself, although I'm making progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="I've confused myself, although I'm making progress" />
   </component>
 </project>
