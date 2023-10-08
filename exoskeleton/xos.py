@@ -233,7 +233,7 @@ class ExoController(klampt.control.OmniRobotInterface):
                 # Should have arguments self, id, world, sim, controller, a, b
                 muscle_objects.append(muscle)
 
-            muscle_series = pd.Series(data=muscle_objects)
+            muscle_series = pd.Series(data=muscle_objects, name="muscles")
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
 
             """

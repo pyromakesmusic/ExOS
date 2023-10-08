@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00268" summary="changing test configurations">
-      <created>1685599192747</created>
-      <option name="number" value="00268" />
-      <option name="presentableId" value="LOCAL-00268" />
-      <option name="project" value="LOCAL" />
-      <updated>1685599192747</updated>
-    </task>
     <task id="LOCAL-00269" summary="made a new test robot file">
       <created>1685741182992</created>
       <option name="number" value="00269" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696801619840</updated>
     </task>
-    <option name="localTasksCounter" value="317" />
+    <task id="LOCAL-00317" summary="improved, keep accessing the controller directly">
+      <created>1696801821761</created>
+      <option name="number" value="00317" />
+      <option name="presentableId" value="LOCAL-00317" />
+      <option name="project" value="LOCAL" />
+      <updated>1696801821761</updated>
+    </task>
+    <option name="localTasksCounter" value="318" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="built up basic server client testing" />
     <MESSAGE value="reformatted loop structure a bit" />
     <MESSAGE value="converted back to blocking threaded receiver until I get it serving, then I can switch to multithreaded" />
     <MESSAGE value="is now successfully transferring OSC signal from Reaktor" />
@@ -563,6 +562,7 @@
     <MESSAGE value="adding commentary for McKibben muscle." />
     <MESSAGE value="I've confused myself, although I'm making progress" />
     <MESSAGE value="accessing the controller using the GUI hook; can't use the completer for some reason I haven't fully researched" />
-    <option name="LAST_COMMIT_MESSAGE" value="accessing the controller using the GUI hook; can't use the completer for some reason I haven't fully researched" />
+    <MESSAGE value="improved, keep accessing the controller directly" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved, keep accessing the controller directly" />
   </component>
 </project>
