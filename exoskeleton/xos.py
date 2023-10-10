@@ -171,8 +171,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         unit_a = kmv.div(direction_a, self.length)
         unit_b = kmv.mul(unit_a, -1) # Redundant but I'm including this to make it easier to read for now
         """
-        The above should return a 3-tuple. A line between the origin and the position described by this 3-tuple should
-        have the angle from a to b.
+        The above should return a 3-tuple describing a unit force vector in the direction of interest.
         """
         print("Force: " + str(force))
         print("Directions: " + str(direction_a) + str(direction_b))
