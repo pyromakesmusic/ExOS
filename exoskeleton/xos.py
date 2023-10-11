@@ -175,8 +175,18 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         The above should return a 3-tuple describing a unit force vector in the direction of interest.
         """
 
-        force_a = kmv.mul(kmv.mul(unit_a, force), .5) # Half because of Newton's Third Law
-        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
+        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
+        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
+
+        print(self.sim.body(self.link_b))
+        print(self.sim.body(self.link_a))
+
+        self.sim.body(self.link_b).applyForceAtPoint(force_a, self.transform_a)
+        self.sim.body(self.link_a).applyForceAtPoint(force_b, self.transform_b)
+
+        """
+        The above code should now be applying forces.
+        """
 
         print("Force A: " + str(force_a) + "\n Force B: " + str(force_b))
 
@@ -261,7 +271,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         muscle = Muscle(self.world, self.sim, self, a, b)
         muscle.setSegment(a,b) # Turns the muscle into a line segment
-        klampt.vis.add(id, muscle) # Adds the muscle to the visualization
+        klampt.vis.add(id, muscle) # Adds the muscle to the visualization, not working right now?
         return muscle
 
     # Control and Kinematics
@@ -357,7 +367,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def idle(self):
         for muscle in self.muscles.muscles:
-            muscle.contract(1)
+            muscle.contract(100)
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -412,6 +422,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, self.sim, filepath)
 
+        i = 1
+        while i < len(self.controller.muscles):
+            klampt.vis.add(self.controller.muscles[i,"name"], self.controller.muscles[i,"muscles"])
+
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller) # No point using this rn
 
 
@@ -422,18 +436,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Adding more documentation since this will probably get moved and refactored.
         """
-        lat = klampt.GeometricPrimitive()
-        origin_delta = [0,-.5,-1]
-        destination_delta = [0,-.9,1.7]
-
-        lat_origin = kmv.add(self.robot.link(0).transform[1], origin_delta)
-        lat_destination = kmv.add(self.robot.link(1).transform[1], destination_delta)
-        # I'm using the klampt vector operations library here to quickly add these 3-lists as vectors.
-
-        lat.setSegment(lat_origin, lat_destination)
-
-        klampt.vis.add("latissimus", lat)
-        klampt.vis.setColor("latissimus", 1, 0, 0, 1)
+        # lat = klampt.GeometricPrimitive()
+        # origin_delta = [0,-.5,-1]
+        # destination_delta = [0,-.9,1.7]
+        #
+        # lat_origin = kmv.add(self.robot.link(0).transform[1], origin_delta)
+        # lat_destination = kmv.add(self.robot.link(1).transform[1], destination_delta)
+        # # I'm using the klampt vector operations library here to quickly add these 3-lists as vectors.
+        #
+        # lat.setSegment(lat_origin, lat_destination)
+        #
+        # klampt.vis.add("latissimus", lat)
+        # klampt.vis.setColor("latissimus", 1, 0, 0, 1)
 
 
         klampt.vis.show()

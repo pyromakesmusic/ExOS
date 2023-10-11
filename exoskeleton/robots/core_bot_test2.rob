@@ -5,10 +5,10 @@ TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
 1 0 0   0 1 0   0 0 1   0 0 -0.5  \
 1 0 0   0 1 0   0 0 1   0 0 -0.5
 parents -1 0 1 2
-axis 0 0 1   1 0 0   1 0 0   1 0 0
+axis 0 0 1   0 1 0   1 0 0   1 0 0
 jointtype r r r r
-qMin 0 0 0 0
-qMax 0 0 0 0
+qMin -2 -2 -2 -2
+qMax 2 2 2 2
 q 0 0 0 0
 geometry   "meshes/C0_v2.stl"   "meshes/C1_v2.stl"   "meshes/sphere.off"   "meshes/sphere.off"
 geomscale 5 7 .1 .1
