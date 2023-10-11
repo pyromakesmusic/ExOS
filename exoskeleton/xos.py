@@ -425,6 +425,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         i = 1
         while i < len(self.controller.muscles):
             klampt.vis.add(self.controller.muscles[i,"name"], self.controller.muscles[i,"muscles"])
+            klampt.vis.setColor(self.controller.muscles[i, "name"], 1, 0, 0, 1) # Should make it red
 
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller) # No point using this rn
 
