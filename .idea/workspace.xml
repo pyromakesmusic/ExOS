@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00273" summary="changed filepath for laptop use">
-      <created>1685996135276</created>
-      <option name="number" value="00273" />
-      <option name="presentableId" value="LOCAL-00273" />
-      <option name="project" value="LOCAL" />
-      <updated>1685996135276</updated>
-    </task>
     <task id="LOCAL-00274" summary="tried adding a force">
       <created>1685996485293</created>
       <option name="number" value="00274" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696804323194</updated>
     </task>
-    <option name="localTasksCounter" value="322" />
+    <task id="LOCAL-00322" summary="think I made some unit vectors?">
+      <created>1696902071697</created>
+      <option name="number" value="00322" />
+      <option name="presentableId" value="LOCAL-00322" />
+      <option name="project" value="LOCAL" />
+      <updated>1696902071697</updated>
+    </task>
+    <option name="localTasksCounter" value="323" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

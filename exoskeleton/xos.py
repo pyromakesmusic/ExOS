@@ -97,21 +97,22 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
         self.world = wm
+        self.sim = sim
         self.robot = self.world.robot(0)
 
         a = int(row["link_a"])
         b = int(row["link_b"])
 
-        link_a = self.robot.link(a)
-        link_b = self.robot.link(b)
+        self.link_a = self.robot.link(a)
+        self.link_b = self.robot.link(b)
         """
-        The below values describe the displacement of the 
+        The below values describe the displacement of the muscle attachment from the origin of the robot link.
         """
         delta_a = [float(s) for s in row["transform_a"].split(",")]
         delta_b = [float(s) for s in row["transform_b"].split(",")]
 
-        self.transform_a = kmv.add(link_a.transform[1], delta_a)
-        self.transform_b = kmv.add(link_b.transform[1], delta_b)
+        self.transform_a = kmv.add(self.link_a.transform[1], delta_a)
+        self.transform_b = kmv.add(self.link_b.transform[1], delta_b)
 
         self.setSegment(self.transform_a, self.transform_b)
         # Now we add some attributes that the simulated and real robot will share
@@ -127,7 +128,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.displacement = 0 # This is a calculated value
         self.pressure = 1 # Should be pressure relative to external, so start at 0
 
-    def contract(self, value):
+    def contract(self, pressure):
         """
         This should take some kind of force/pressure argument from the controller and apply it to both the simulated
         and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
@@ -150,7 +151,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         n: number of turns in the muscle fiber
         x: the displacement. This will probably take the most work to calculate.
         """
-        self.pressure = value
+        self.pressure = pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0
         """
@@ -173,8 +174,12 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         """
         The above should return a 3-tuple describing a unit force vector in the direction of interest.
         """
-        print("Force: " + str(force))
-        print("Directions: " + str(direction_a) + str(direction_b))
+
+        force_a = kmv.mul(kmv.mul(unit_a, force), .5) # Half because of Newton's Third Law
+        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
+
+        print("Force A: " + str(force_a) + "\n Force B: " + str(force_b))
+
 
         return
 
