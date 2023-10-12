@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00279" summary="added the bones as rigid objects to the world">
-      <created>1686163753406</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1686163753406</updated>
-    </task>
     <task id="LOCAL-00280" summary="should be simulating now?">
       <created>1686171049333</created>
       <option name="number" value="00280" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697071690330</updated>
     </task>
-    <option name="localTasksCounter" value="328" />
+    <task id="LOCAL-00328" summary="got a cool error">
+      <created>1697072529256</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1697072529256</updated>
+    </task>
+    <option name="localTasksCounter" value="329" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this" />
     <MESSAGE value="muahahahaha" />
     <MESSAGE value="updated main file documentation" />
     <MESSAGE value="housekeeping" />
@@ -563,6 +562,7 @@
     <MESSAGE value="doesn't work adding the muscles to visualization yet" />
     <MESSAGE value="I think I was never calling the createMuscle function so it never got added" />
     <MESSAGE value="cleaning up a little bit of stuff that didn't make sense" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning up a little bit of stuff that didn't make sense" />
+    <MESSAGE value="got a cool error" />
+    <option name="LAST_COMMIT_MESSAGE" value="got a cool error" />
   </component>
 </project>

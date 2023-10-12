@@ -84,7 +84,7 @@ CLASS DEFINITIONS
 """
 
 
-class Muscle(klampt.sim.DefaultActuatorEmulator):
+class Muscle(klampt.sim.ActuatorEmulator):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
@@ -93,10 +93,10 @@ class Muscle(klampt.sim.DefaultActuatorEmulator):
         """
         Takes a dataframe row containing muscle information, a world model, a simulator, and a controller.
         """
-        klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
+        klampt.sim.ActuatorEmulator.__init__(self)
 
         self.world = wm
-        self.sim = sim
+
         self.robot = self.world.robot(0)
 
         a = int(row["link_a"])
@@ -126,7 +126,7 @@ class Muscle(klampt.sim.DefaultActuatorEmulator):
         self.displacement = 0 # This is a calculated value
         self.pressure = 1 # Should be pressure relative to external, so start at 0
 
-    def contract(self, pressure):
+    def contract(self, pressure): # Should call every loop?
         """
         This should take some kind of force/pressure argument from the controller and apply it to both the simulated
         and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
@@ -169,14 +169,10 @@ class Muscle(klampt.sim.DefaultActuatorEmulator):
         force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
         force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
-        self.sim.body(self.link_b).applyForceAtPoint(force_a, self.transform_a)
-        self.sim.body(self.link_a).applyForceAtPoint(force_b, self.transform_b) # Think we want to do this in simLoop
-
         """
         The above code should now be applying forces.
         """
 
-        print("Force A: " + str(force_a) + "\n Force B: " + str(force_b))
         return force_a, force_b
 
     def appearance(self):
@@ -198,7 +194,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, robotmodel,  world, sim, config_data):
+    def __init__(self, robotmodel,  world, config_data):
         """
         This is intrinsically linked with a simulation. Does that make sense? Let's say it does, for now.
         """
@@ -206,7 +202,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-        self.sim = sim
+
         self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
         self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
 
@@ -247,11 +243,11 @@ class ExoController(klampt.control.OmniRobotInterface):
             return muscleinfo_df
 
 
-    def createMuscle(self, row):
+    def createMuscle(self, row): # Might not need this, this is practically just a wrapper for the class constructor
         """
         makes a muscle
         """
-        muscle = Muscle(row, self.world, self.sim, self)
+        muscle = Muscle(row, self.world, self)
         return muscle
 
     # Control and Kinematics
@@ -347,7 +343,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def idle(self):
         for muscle in self.muscles.muscles:
-            muscle.contract(100)
+            muscle.contract(100) # This is probably important
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -362,6 +358,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     def simLoop(self, robot):
         """
         Should simulate some time step and update the world accordingly. Needs substantially more work.
+
+        UPDATE 10.12.2023
+        =================
         """
         wm = self.world
         #test_body = self.body(robot.link(1)) # Change this
@@ -380,9 +379,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     GUI class, contains visualization options and is usually where the simulator will be called.
     """
     def __init__(self, filepath):
-        """
-        This is very generic on purpose.
-        """
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         #All the world elements MUST be loaded before the Simulator is created
 
@@ -393,6 +389,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("X001", self.robot)
         self.drawEdges()
         klampt.vis.setWindowTitle("X001  Test")
+        klampt.vis.setBackgroundColor(0,.75,1,1) # Makes background teal
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
 
@@ -400,11 +397,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
-        self.controller = ExoController(self.robot, self.world, self.sim, filepath)
-
-
-        self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller) # No point using this rn
-
+        self.controller = ExoController(self.robot, self.world, filepath)
 
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
@@ -429,6 +422,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.show()
         while klampt.vis.shown():
+            # Important !!!! Maybe the simulator should get called with the controller data; right now they are not connected
             self.sim.simLoop(self.robot)
             self.controller.idle()
 
@@ -474,11 +468,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def drawMuscles(self):
         muscle_df = self.controller.muscles
 
-        for index, row in muscle_df.iterrows():
-            name = muscle_df[row, "name"]
-            muscle = muscle_df[row, "muscles"]
-            klampt.vis.add(name, muscle.geometry)
-            klampt.vis.setColor(name, 1, 0, 0, 1)
+
+        print(muscle_df.name)
+        # for index, row in muscle_df.iterrows():
+        #     name = muscle_df[row, "name"]
+        #     muscle = muscle_df[row, "muscles"]
+        #     klampt.vis.add(name, muscle.geometry)
+        #     klampt.vis.setColor(name, 1, 0, 0, 1)
 
     """
     Shutdown
