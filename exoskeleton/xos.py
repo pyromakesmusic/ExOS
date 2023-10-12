@@ -84,7 +84,7 @@ CLASS DEFINITIONS
 """
 
 
-class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
+class Muscle(klampt.sim.DefaultActuatorEmulator):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
@@ -93,7 +93,6 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         """
         Takes a dataframe row containing muscle information, a world model, a simulator, and a controller.
         """
-        klampt.GeometricPrimitive.__init__(self)
         klampt.sim.DefaultActuatorEmulator.__init__(self, sim, ctrl)
 
         self.world = wm
@@ -114,7 +113,6 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.transform_a = kmv.add(self.link_a.transform[1], delta_a)
         self.transform_b = kmv.add(self.link_b.transform[1], delta_b)
 
-        self.setSegment(self.transform_a, self.transform_b)
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(self.transform_a, self.transform_b)
@@ -159,7 +157,6 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         force = ((self.pressure * (self.weave_length)**2)/(4 * math.pi * (self.turns)**2)) * \
                 (((self.weave_length)/math.sqrt(3) + self.displacement)**2 - 1)
 
-
         # Calculating a 3-tuple that gives a direction
         direction_a = kmv.sub(self.transform_a, self.transform_b)
         direction_b = kmv.mul(direction_a, -1)
@@ -173,16 +170,14 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
         self.sim.body(self.link_b).applyForceAtPoint(force_a, self.transform_a)
-        self.sim.body(self.link_a).applyForceAtPoint(force_b, self.transform_b)
+        self.sim.body(self.link_a).applyForceAtPoint(force_b, self.transform_b) # Think we want to do this in simLoop
 
         """
         The above code should now be applying forces.
         """
 
         print("Force A: " + str(force_a) + "\n Force B: " + str(force_b))
-
-
-        return
+        return force_a, force_b
 
     def appearance(self):
         app = klampt.Appearance()
@@ -240,7 +235,6 @@ class ExoController(klampt.control.OmniRobotInterface):
                 row = muscleinfo_df.iloc[x]
 
                 muscle = self.createMuscle(row)
-                # Should have arguments self, id, world, sim, controller, a, b
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects, name="muscles")
@@ -255,9 +249,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def createMuscle(self, row):
         """
-        Draws the muscle lines on the robot
+        makes a muscle
         """
-
         muscle = Muscle(row, self.world, self.sim, self)
         return muscle
 
@@ -409,10 +402,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, self.sim, filepath)
 
-        # i = 1
-        # while i < len(self.controller.muscles):
-        #     klampt.vis.add(self.controller.muscles[i,"name"], self.controller.muscles[i,"muscles"])
-        #     klampt.vis.setColor(self.controller.muscles[i, "name"], 1, 0, 0, 1) # Should make it red
 
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller) # No point using this rn
 
@@ -484,11 +473,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def drawMuscles(self):
         muscle_df = self.controller.muscles
-        i = 1
-        while i < len(muscle_df):
-            print(muscle_df[i, "name"])
-            klampt.vis.add(muscle_df[i, "name"], muscle_df[i, "muscles"])
-            i += 1
+
+        for index, row in muscle_df.iterrows():
+            name = muscle_df[row, "name"]
+            muscle = muscle_df[row, "muscles"]
+            klampt.vis.add(name, muscle.geometry)
+            klampt.vis.setColor(name, 1, 0, 0, 1)
 
     """
     Shutdown
