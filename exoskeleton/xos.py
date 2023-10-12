@@ -154,32 +154,23 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
         self.pressure = pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0
-        """
-        Here it goes...the formuoli
-        """
+
+        # Muscle formula
         force = ((self.pressure * (self.weave_length)**2)/(4 * math.pi * (self.turns)**2)) * \
                 (((self.weave_length)/math.sqrt(3) + self.displacement)**2 - 1)
 
-        """
-        I would not be surprised if grouping/parenthesis mistakes show up here, but we should display this
-        for testing. We then want to apply half this force (magnitude) to each transform point in opposite directions
-        derived from more vector operations on their respective transforms.
-        """
 
+        # Calculating a 3-tuple that gives a direction
         direction_a = kmv.sub(self.transform_a, self.transform_b)
         direction_b = kmv.mul(direction_a, -1)
 
+        # Calculating unit vectors by dividing 3-tuple by its length
         unit_a = kmv.div(direction_a, self.length)
         unit_b = kmv.mul(unit_a, -1) # Redundant but I'm including this to make it easier to read for now
-        """
-        The above should return a 3-tuple describing a unit force vector in the direction of interest.
-        """
 
+        # Combining unit vectors and force magnitude to give a force vector
         force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
         force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
-
-        print(self.sim.body(self.link_b))
-        print(self.sim.body(self.link_a))
 
         self.sim.body(self.link_b).applyForceAtPoint(force_a, self.transform_a)
         self.sim.body(self.link_a).applyForceAtPoint(force_b, self.transform_b)
@@ -196,6 +187,7 @@ class Muscle(klampt.GeometricPrimitive, klampt.sim.DefaultActuatorEmulator):
     def appearance(self):
         app = klampt.Appearance()
         app.setDraw(2, True)
+        app.setColor(1, 0, 0, 1)
         return app
 
 
@@ -229,8 +221,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
-
-
 
     def muscleLoader(self, config_df):
         """
@@ -271,7 +261,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         muscle = Muscle(self.world, self.sim, self, a, b)
         muscle.setSegment(a,b) # Turns the muscle into a line segment
-        klampt.vis.add(id, muscle) # Adds the muscle to the visualization, not working right now?
+        # klampt.vis.add(id, muscle) # Adds the muscle to the visualization, not working right now?
         return muscle
 
     # Control and Kinematics
@@ -417,15 +407,15 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport.fit([0,0,-5], 25)
 
 
-
+        # creation of the simulation
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, self.sim, filepath)
 
-        i = 1
-        while i < len(self.controller.muscles):
-            klampt.vis.add(self.controller.muscles[i,"name"], self.controller.muscles[i,"muscles"])
-            klampt.vis.setColor(self.controller.muscles[i, "name"], 1, 0, 0, 1) # Should make it red
+        # i = 1
+        # while i < len(self.controller.muscles):
+        #     klampt.vis.add(self.controller.muscles[i,"name"], self.controller.muscles[i,"muscles"])
+        #     klampt.vis.setColor(self.controller.muscles[i, "name"], 1, 0, 0, 1) # Should make it red
 
         self.XOS = klampt.control.robotinterfaceutils.RobotInterfaceCompleter(self.controller) # No point using this rn
 
@@ -449,7 +439,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         #
         # klampt.vis.add("latissimus", lat)
         # klampt.vis.setColor("latissimus", 1, 0, 0, 1)
-
+        self.drawMuscles()
 
         klampt.vis.show()
         while klampt.vis.shown():
@@ -495,6 +485,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
             wm.appearance(x).setColor(4, 0, 0, .9, .4) # This makes the faces a translucent grey\
             wm.appearance(x).setColor(4, 0, 0, 1, .5) # I think this changes the glow color
 
+    def drawMuscles(self):
+        muscle_df = self.controller.muscles
+        i = 1
+        while i < len(muscle_df):
+            print(muscle_df[i, "name"])
+            klampt.vis.add(muscle_df[i, "name"], muscle_df[i, "muscles"])
+            i += 1
 
     """
     Shutdown
