@@ -239,7 +239,7 @@ class ExoController(klampt.control.OmniRobotInterface):
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
 
-                muscle = Muscle(row, self.world, self.sim, self)
+                muscle = self.createMuscle(row)
                 # Should have arguments self, id, world, sim, controller, a, b
                 muscle_objects.append(muscle)
 
@@ -253,15 +253,12 @@ class ExoController(klampt.control.OmniRobotInterface):
             return muscleinfo_df
 
 
-    def createMuscle(self, id, a, b):
+    def createMuscle(self, row):
         """
         Draws the muscle lines on the robot
         """
-        assert type(id) == str, "Error: Muscle ID must be string value."
 
-        muscle = Muscle(self.world, self.sim, self, a, b)
-        muscle.setSegment(a,b) # Turns the muscle into a line segment
-        # klampt.vis.add(id, muscle) # Adds the muscle to the visualization, not working right now?
+        muscle = Muscle(row, self.world, self.sim, self)
         return muscle
 
     # Control and Kinematics
