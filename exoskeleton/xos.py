@@ -79,6 +79,40 @@ GEOMETRIES
 BONE_GEOMETRY = kmcp.box(.05, .4, .05, mass=10)
 FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
 
+
+"""
+FUNCTION DEFINITIONS
+"""
+
+# General Configuration
+def configLoader(config_name):
+    """
+    This is tightly coupled with the GUNDAM (limb/element-wise) style configuration process.
+    Takes configuration filepath as an argument.
+
+    Returns a dataframe with entries in columns referencing the filepath of the robot core, and of the location of
+    the muscle attachments CSV.
+    """
+    print("Loading configuration" + config_name + "...")
+    with open(config_name) as fn:
+        print("Loading core components...", fn.readline().rstrip())
+        core = fn.readline().rstrip()
+        print("Loading muscle attachments...", fn.readline().rstrip())
+        attachments = fn.readline().rstrip()
+        config = {"core": core,
+                      "attachments": attachments}
+
+        return config
+
+# Visualization
+def visMuscles(dataframe_row):
+    # Takes a dataframe row and adds muscle to visualization
+    print(dataframe_row)
+    name = dataframe_row["name"]
+    muscle = dataframe_row["muscles"]
+    klampt.vis.add(name, muscle.geometry)
+    klampt.vis.setColor(name, 1, 0, 0, 1)
+
 """
 CLASS DEFINITIONS
 """
@@ -209,7 +243,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
-        print(self.muscles)
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
@@ -337,7 +370,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def idle(self, command_list):
         force_list = []
         for muscle in self.muscles.muscles:
-            forces = muscle.contract(100) # This is probably important
+            forces = muscle.contract(100) # This is probably important, should eventually contract w OSC argument
             force_list.append(forces)
 
         return force_list
@@ -465,14 +498,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def drawMuscles(self):
         muscle_df = self.controller.muscles
+        for index, row in muscle_df.iterrows():
+            row.apply(visMuscles)
 
-
-        print(muscle_df.name)
-        # for index, row in muscle_df.iterrows():
-        #     name = muscle_df[row, "name"]
-        #     muscle = muscle_df[row, "muscles"]
-        #     klampt.vis.add(name, muscle.geometry)
-        #     klampt.vis.setColor(name, 1, 0, 0, 1)
 
     """
     Shutdown
@@ -480,27 +508,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def shutdown(self):
         klampt.vis.kill()
-"""
-FUNCTION DEFINITIONS
-"""
-def configLoader(config_name):
-    """
-    This is tightly coupled with the GUNDAM (limb/element-wise) style configuration process.
-    Takes configuration filepath as an argument.
 
-    Returns a dataframe with entries in columns referencing the filepath of the robot core, and of the location of
-    the muscle attachments CSV.
-    """
-    print("Loading configuration" + config_name + "...")
-    with open(config_name) as fn:
-        print("Loading core components...", fn.readline().rstrip())
-        core = fn.readline().rstrip()
-        print("Loading muscle attachments...", fn.readline().rstrip())
-        attachments = fn.readline().rstrip()
-        config = {"core": core,
-                      "attachments": attachments}
-
-        return config
 """
 MAIN LOOP
 """
