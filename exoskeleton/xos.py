@@ -89,7 +89,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, row, wm, sim, ctrl):
+    def __init__(self, row, wm):
         """
         Takes a dataframe row containing muscle information, a world model, a simulator, and a controller.
         """
@@ -169,11 +169,12 @@ class Muscle(klampt.sim.ActuatorEmulator):
         force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
         force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
+        forces = (force_a, force_b)
         """
         The above code should now be applying forces.
         """
 
-        return force_a, force_b
+        return forces
 
     def appearance(self):
         app = klampt.Appearance()
@@ -230,7 +231,7 @@ class ExoController(klampt.control.OmniRobotInterface):
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
 
-                muscle = self.createMuscle(row)
+                muscle = Muscle(row, self.world)
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects, name="muscles")
@@ -241,14 +242,6 @@ class ExoController(klampt.control.OmniRobotInterface):
             in each row.
             """
             return muscleinfo_df
-
-
-    def createMuscle(self, row): # Might not need this, this is practically just a wrapper for the class constructor
-        """
-        makes a muscle
-        """
-        muscle = Muscle(row, self.world, self)
-        return muscle
 
     # Control and Kinematics
     def sensedPosition(self):
@@ -341,9 +334,13 @@ class ExoController(klampt.control.OmniRobotInterface):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-    def idle(self):
+    def idle(self, command_list):
+        force_list = []
         for muscle in self.muscles.muscles:
-            muscle.contract(100) # This is probably important
+            forces = muscle.contract(100) # This is probably important
+            force_list.append(forces)
+
+        return force_list
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -355,7 +352,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.dt = 1
 
 
-    def simLoop(self, robot):
+    def simLoop(self, robot, force_list):
         """
         Should simulate some time step and update the world accordingly. Needs substantially more work.
 
@@ -398,6 +395,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
+        self.commands = [] # List of commands to the muscles, this might need to contain stuff here - we will see
 
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
@@ -422,13 +420,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.show()
         while klampt.vis.shown():
-            # Important !!!! Maybe the simulator should get called with the controller data; right now they are not connected
-            self.sim.simLoop(self.robot)
-            self.controller.idle()
+            self.idlefunc(self.commands)
 
 
-    def idlefunc(self):
-        pass
+    def idlefunc(self, commands):
+        forces = self.controller.idle(self.commands) # Maybe commands is a list of tuples containing force_a, force_b
+        self.sim.simLoop(self.robot, forces) # I don't think this is right atm, I need to make a flowchart
+        return
 
     """
     Test Methods
