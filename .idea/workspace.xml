@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00285" summary="seem to be simulating the spine now">
-      <created>1686177061507</created>
-      <option name="number" value="00285" />
-      <option name="presentableId" value="LOCAL-00285" />
-      <option name="project" value="LOCAL" />
-      <updated>1686177061507</updated>
     </task>
     <task id="LOCAL-00286" summary="adding some more libraries">
       <created>1686184793673</created>
@@ -521,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697260362826</updated>
     </task>
-    <option name="localTasksCounter" value="334" />
+    <task id="LOCAL-00334" summary="added some commentary">
+      <created>1697260443888</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1697260443888</updated>
+    </task>
+    <option name="localTasksCounter" value="335" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="random updates" />
     <MESSAGE value="made osc toolkit more object oriented, should probably rename it" />
     <MESSAGE value="more object oriented stuff, removed global configuration" />
     <MESSAGE value="more object orientation stuff" />
@@ -562,6 +562,7 @@
     <MESSAGE value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
     <MESSAGE value="changed to namedtuples" />
     <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
-    <option name="LAST_COMMIT_MESSAGE" value="got the CSV file taking muscles now, just need to apply forces" />
+    <MESSAGE value="added some commentary" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some commentary" />
   </component>
 </project>

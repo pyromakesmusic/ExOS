@@ -386,10 +386,11 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
     def simLoop(self, robot, force_list):
         """
-        Should simulate some time step and update the world accordingly. Needs substantially more work.
+        robot: A RobotModel.
+        force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
 
-        UPDATE 10.12.2023
-        =================
+        Should possibly return a list of new transforms to be used for calculating stuff in the next time step.
+
         """
         wm = self.world
         #test_body = self.body(robot.link(1)) # Change this
@@ -429,33 +430,24 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.controller = ExoController(self.robot, self.world, filepath)
         self.commands = [] # List of commands to the muscles, this might need to contain stuff here - we will see
 
+        # Adds the muscles to the visualization
+        self.drawMuscles()
+
         #Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
-        #Random stuff related to muscles
-        """
-        Adding more documentation since this will probably get moved and refactored.
-        """
-        # lat = klampt.GeometricPrimitive()
-        # origin_delta = [0,-.5,-1]
-        # destination_delta = [0,-.9,1.7]
-        #
-        # lat_origin = kmv.add(self.robot.link(0).transform[1], origin_delta)
-        # lat_destination = kmv.add(self.robot.link(1).transform[1], destination_delta)
-        # # I'm using the klampt vector operations library here to quickly add these 3-lists as vectors.
-        #
-        # lat.setSegment(lat_origin, lat_destination)
-        #
-        # klampt.vis.add("latissimus", lat)
-        # klampt.vis.setColor("latissimus", 1, 0, 0, 1)
-        self.drawMuscles()
+
 
         klampt.vis.show()
         while klampt.vis.shown():
+            # Initiates the visualization idle loop
             self.idlefunc(self.commands)
 
 
     def idlefunc(self, commands):
+        """
+        Idle function for the GUI. Sends commands to the controller, gets forces, and sends to the simulation.
+        """
         forces = self.controller.idle(self.commands) # Maybe commands is a list of tuples containing force_a, force_b
         self.sim.simLoop(self.robot, forces) # I don't think this is right atm, I need to make a flowchart
         return
