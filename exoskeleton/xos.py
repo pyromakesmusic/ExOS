@@ -397,18 +397,22 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         # test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
         # test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
+        link_transforms_start = [robot.link(x).getTransform() for x in range(robot.numLinks())]
         """
         Now here adding a section to make sure the muscles contract in the simulation.
         """
-
         self.simulate(.05)
         self.updateWorld()
 
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
         """
-        link_transforms = [robot.link(x).getTransform() for x in range(robot.numLinks())]
-        print(link_transforms)
+        link_transforms_end = [robot.link(x).getTransform() for x in range(robot.numLinks())]
+
+        link_transforms_diff = [klampt.math.se3.error(link_transforms_start[x], link_transforms_end[x])
+                                for x in range(len(link_transforms_start))]
+
+        return link_transforms_diff
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """

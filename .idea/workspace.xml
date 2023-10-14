@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00288" summary="added OSC capability">
-      <created>1694672661487</created>
-      <option name="number" value="00288" />
-      <option name="presentableId" value="LOCAL-00288" />
-      <option name="project" value="LOCAL" />
-      <updated>1694672661487</updated>
     </task>
     <task id="LOCAL-00289" summary="updated a few sim parameters">
       <created>1695052309453</created>
@@ -525,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697262739348</updated>
     </task>
-    <option name="localTasksCounter" value="337" />
+    <task id="LOCAL-00337" summary="is not printing the link transforms">
+      <created>1697265256273</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1697265256273</updated>
+    </task>
+    <option name="localTasksCounter" value="338" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -541,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="more object orientation stuff" />
     <MESSAGE value="added kwarg" />
     <MESSAGE value="should be fully object-oriented and ready for use" />
     <MESSAGE value="integrating muscle stuff into the controller and simulation class" />
@@ -566,6 +562,7 @@
     <MESSAGE value="added some commentary" />
     <MESSAGE value="adding more commentary" />
     <MESSAGE value="made new robot with a leg" />
-    <option name="LAST_COMMIT_MESSAGE" value="made new robot with a leg" />
+    <MESSAGE value="is not printing the link transforms" />
+    <option name="LAST_COMMIT_MESSAGE" value="is not printing the link transforms" />
   </component>
 </project>
