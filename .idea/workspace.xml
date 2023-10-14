@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00283" summary="second test robot with more parts">
-      <created>1686176715572</created>
-      <option name="number" value="00283" />
-      <option name="presentableId" value="LOCAL-00283" />
-      <option name="project" value="LOCAL" />
-      <updated>1686176715572</updated>
     </task>
     <task id="LOCAL-00284" summary="trying to edit second test bot">
       <created>1686176992364</created>
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697244922451</updated>
     </task>
-    <option name="localTasksCounter" value="332" />
+    <task id="LOCAL-00332" summary="changed to namedtuples">
+      <created>1697251922393</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1697251922393</updated>
+    </task>
+    <option name="localTasksCounter" value="333" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="working on the muscle class for realsies now" />
     <MESSAGE value="got the transforms grabbed in a better way" />
     <MESSAGE value="random updates" />
     <MESSAGE value="made osc toolkit more object oriented, should probably rename it" />
@@ -563,6 +562,7 @@
     <MESSAGE value="Some restructuring done successfully" />
     <MESSAGE value="separated drawing muscles into its own function" />
     <MESSAGE value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
-    <option name="LAST_COMMIT_MESSAGE" value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
+    <MESSAGE value="changed to namedtuples" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed to namedtuples" />
   </component>
 </project>
