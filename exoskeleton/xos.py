@@ -107,7 +107,6 @@ def configLoader(config_name):
 # Visualization
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    print(dataframe_row)
     name = dataframe_row[1] # Should be the name index
     muscle = dataframe_row[11] # Should be index of the muscle object
     klampt.vis.add(name, muscle.geometry)
@@ -497,9 +496,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
             wm.appearance(x).setColor(4, 0, 0, 1, .5) # I think this changes the glow color
 
     def drawMuscles(self):
+        """
+        This function takes all the muscles from the controller dataframe and draws them in the visualization
+        """
         muscle_df = self.controller.muscles
         for row in muscle_df.itertuples():
-            print(row)
             visMuscles(row)
 
 

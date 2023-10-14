@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,13 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00284" summary="trying to edit second test bot">
-      <created>1686176992364</created>
-      <option name="number" value="00284" />
-      <option name="presentableId" value="LOCAL-00284" />
-      <option name="project" value="LOCAL" />
-      <updated>1686176992364</updated>
     </task>
     <task id="LOCAL-00285" summary="seem to be simulating the spine now">
       <created>1686177061507</created>
@@ -522,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697251922393</updated>
     </task>
-    <option name="localTasksCounter" value="333" />
+    <task id="LOCAL-00333" summary="got the CSV file taking muscles now, just need to apply forces">
+      <created>1697260362826</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1697260362826</updated>
+    </task>
+    <option name="localTasksCounter" value="334" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got the transforms grabbed in a better way" />
     <MESSAGE value="random updates" />
     <MESSAGE value="made osc toolkit more object oriented, should probably rename it" />
     <MESSAGE value="more object oriented stuff, removed global configuration" />
@@ -563,6 +561,7 @@
     <MESSAGE value="separated drawing muscles into its own function" />
     <MESSAGE value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
     <MESSAGE value="changed to namedtuples" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed to namedtuples" />
+    <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
+    <option name="LAST_COMMIT_MESSAGE" value="got the CSV file taking muscles now, just need to apply forces" />
   </component>
 </project>
