@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00281" summary="using prepared XML world file instead of programmatic world creation">
-      <created>1686171621127</created>
-      <option name="number" value="00281" />
-      <option name="presentableId" value="LOCAL-00281" />
-      <option name="project" value="LOCAL" />
-      <updated>1686171621127</updated>
-    </task>
     <task id="LOCAL-00282" summary="lowered the terrain so it is under the robot">
       <created>1686176128009</created>
       <option name="number" value="00282" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697156777486</updated>
     </task>
-    <option name="localTasksCounter" value="330" />
+    <task id="LOCAL-00330" summary="separated drawing muscles into its own function">
+      <created>1697160769013</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1697160769013</updated>
+    </task>
+    <option name="localTasksCounter" value="331" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated main file documentation" />
     <MESSAGE value="housekeeping" />
     <MESSAGE value="working on the muscle class for realsies now" />
     <MESSAGE value="got the transforms grabbed in a better way" />
@@ -563,6 +562,7 @@
     <MESSAGE value="cleaning up a little bit of stuff that didn't make sense" />
     <MESSAGE value="got a cool error" />
     <MESSAGE value="Some restructuring done successfully" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some restructuring done successfully" />
+    <MESSAGE value="separated drawing muscles into its own function" />
+    <option name="LAST_COMMIT_MESSAGE" value="separated drawing muscles into its own function" />
   </component>
 </project>

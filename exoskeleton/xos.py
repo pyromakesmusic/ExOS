@@ -498,8 +498,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def drawMuscles(self):
         muscle_df = self.controller.muscles
-        for index, row in muscle_df.iterrows():
-            row.apply(visMuscles)
+        for row in muscle_df.itertuples():
+            print(row)
+            # row.apply(visMuscles)
 
 
     """
