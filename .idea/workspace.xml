@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -46,26 +47,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157/exoskeleton/pyonics/submodules/network/osc_toolkit.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;RainbowCSV.Settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "full.screen.before.presentation.mode": "false",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/robots",
+    "settings.editor.selected.configurable": "RainbowCSV.Settings"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\objects" />
       <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\robots" />
       <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\terrains" />
@@ -178,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00286" summary="adding some more libraries">
-      <created>1686184793673</created>
-      <option name="number" value="00286" />
-      <option name="presentableId" value="LOCAL-00286" />
-      <option name="project" value="LOCAL" />
-      <updated>1686184793673</updated>
     </task>
     <task id="LOCAL-00287" summary="updated simulation to use refined CAD files">
       <created>1689703080585</created>
@@ -522,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697260443888</updated>
     </task>
-    <option name="localTasksCounter" value="335" />
+    <task id="LOCAL-00335" summary="adding more commentary">
+      <created>1697261789683</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1697261789683</updated>
+    </task>
+    <option name="localTasksCounter" value="336" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="made osc toolkit more object oriented, should probably rename it" />
     <MESSAGE value="more object oriented stuff, removed global configuration" />
     <MESSAGE value="more object orientation stuff" />
     <MESSAGE value="added kwarg" />
@@ -563,6 +563,7 @@
     <MESSAGE value="changed to namedtuples" />
     <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
     <MESSAGE value="added some commentary" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some commentary" />
+    <MESSAGE value="adding more commentary" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding more commentary" />
   </component>
 </project>

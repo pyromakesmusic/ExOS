@@ -446,10 +446,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def idlefunc(self, commands):
         """
-        Idle function for the GUI. Sends commands to the controller, gets forces, and sends to the simulation.
+        Idle function for the GUI that sends commands to the controller, gets forces, and sends to the simulation.
         """
-        forces = self.controller.idle(self.commands) # Maybe commands is a list of tuples containing force_a, force_b
-        self.sim.simLoop(self.robot, forces) # I don't think this is right atm, I need to make a flowchart
+        forces = self.controller.idle(self.commands) # Commands should be a list of pressure values or their analogues
+        self.sim.simLoop(self.robot, forces) # Probably needs to return new transforms or "sensed positions" to ctrl
         return
 
     """
