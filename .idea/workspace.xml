@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +181,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00287" summary="updated simulation to use refined CAD files">
-      <created>1689703080585</created>
-      <option name="number" value="00287" />
-      <option name="presentableId" value="LOCAL-00287" />
-      <option name="project" value="LOCAL" />
-      <updated>1689703080585</updated>
     </task>
     <task id="LOCAL-00288" summary="added OSC capability">
       <created>1694672661487</created>
@@ -523,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697261789683</updated>
     </task>
-    <option name="localTasksCounter" value="336" />
+    <task id="LOCAL-00336" summary="made new robot with a leg">
+      <created>1697262739348</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1697262739348</updated>
+    </task>
+    <option name="localTasksCounter" value="337" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="more object oriented stuff, removed global configuration" />
     <MESSAGE value="more object orientation stuff" />
     <MESSAGE value="added kwarg" />
     <MESSAGE value="should be fully object-oriented and ready for use" />
@@ -564,6 +565,7 @@
     <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
     <MESSAGE value="added some commentary" />
     <MESSAGE value="adding more commentary" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding more commentary" />
+    <MESSAGE value="made new robot with a leg" />
+    <option name="LAST_COMMIT_MESSAGE" value="made new robot with a leg" />
   </component>
 </project>

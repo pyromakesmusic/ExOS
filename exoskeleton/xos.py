@@ -393,7 +393,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         """
         wm = self.world
-        #test_body = self.body(robot.link(1)) # Change this
+        # test_body = self.body(robot.link(1)) # Change this
 
         # test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
         # test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
@@ -403,6 +403,12 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         self.simulate(.05)
         self.updateWorld()
+
+        """
+        Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
+        """
+        link_transforms = [robot.link(x).getTransform() for x in range(robot.numLinks())]
+        print(link_transforms)
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
