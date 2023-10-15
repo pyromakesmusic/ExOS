@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00294" summary="converted back to blocking threaded receiver until I get it serving, then I can switch to multithreaded">
-      <created>1695523893780</created>
-      <option name="number" value="00294" />
-      <option name="presentableId" value="LOCAL-00294" />
-      <option name="project" value="LOCAL" />
-      <updated>1695523893780</updated>
     </task>
     <task id="LOCAL-00295" summary="is now successfully transferring OSC signal from Reaktor">
       <created>1695524083141</created>
@@ -521,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697345176473</updated>
     </task>
-    <option name="localTasksCounter" value="343" />
+    <task id="LOCAL-00343" summary="need to apply to the right index for each bone link">
+      <created>1697345340081</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1697345340081</updated>
+    </task>
+    <option name="localTasksCounter" value="344" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="I've confused myself, although I'm making progress" />
     <MESSAGE value="accessing the controller using the GUI hook; can't use the completer for some reason I haven't fully researched" />
     <MESSAGE value="improved, keep accessing the controller directly" />
     <MESSAGE value="named the muscles column to avoid confusion" />
@@ -562,6 +562,7 @@
     <MESSAGE value="removing unnecessary declarations" />
     <MESSAGE value="added list of bones" />
     <MESSAGE value="more untangling" />
-    <option name="LAST_COMMIT_MESSAGE" value="more untangling" />
+    <MESSAGE value="need to apply to the right index for each bone link" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to apply to the right index for each bone link" />
   </component>
 </project>

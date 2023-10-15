@@ -183,8 +183,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         # Muscle transforms must update based on new link positions
-        self.transform_a = self.transform_a
-        self.transform_b = self.transform_b
+        # self.transform_a = self.transform_a
+        # self.transform_b = self.transform_b
 
 
         self.pressure = pressure
@@ -271,10 +271,9 @@ class ExoController(klampt.control.OmniRobotInterface):
             muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
 
             for x in range(rows):
-                row = muscleinfo_df.iloc[x]
-
-                muscle = Muscle(row, self)
-                muscle_objects.append(muscle)
+                row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
+                muscle = Muscle(row, self) # Calls the muscle class constructor
+                muscle_objects.append(muscle) # Adds the muscle to the list
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
@@ -390,9 +389,15 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     def __init__(self, wm, robot):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.dt = 1
+        self.world = wm
+        self.robotmodel = robot
+
+        self.link_transforms_start = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]
+        self.link_transforms_end = None
+        self.link_transforms_diff = None
 
 
-    def simLoop(self, robot, force_list):
+    def simLoop(self, force_list):
         """
         robot: A RobotModel.
         force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
@@ -405,7 +410,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         # test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
         # test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
-        link_transforms_start = [robot.link(x).getTransform() for x in range(robot.numLinks())]
+
+
+        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         """
         Now here adding a section to make sure the muscles contract in the simulation.
         """
@@ -415,12 +422,12 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
         """
-        link_transforms_end = [robot.link(x).getTransform() for x in range(robot.numLinks())]
+        self.link_transforms_end = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
 
-        link_transforms_diff = [klampt.math.se3.error(link_transforms_start[x], link_transforms_end[x])
-                                for x in range(len(link_transforms_start))] # Takes the Lie derivative from start -> end
+        self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
+                                for x in range(len(self.link_transforms_start))] # Takes the Lie derivative from start -> end
 
-        return link_transforms_diff # I don't even know if we need to use this, depends on if we pass by ref or var
+        return self.link_transforms_diff # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -457,6 +464,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
 
         klampt.vis.show()
+        self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
+
         while klampt.vis.shown():
             # Initiates the visualization idle loop
             self.idlefunc(self.commands)
@@ -466,8 +475,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        forces = self.controller.idle(self.commands) # Commands should be a list of pressure values or their analogues
-        self.sim.simLoop(self.robot, forces) # Probably needs to return new transforms or "sensed positions" to ctrl
+        forces = self.controller.idle(self.link_transforms, self.commands) # Transforms and pressure commands
+        self.link_transforms = self.sim.simLoop(forces) # Takes forces and returns new positions
         return
 
     """
