@@ -140,8 +140,6 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.delta_b = [float(s) for s in row["transform_b"].split(",")]
 
         # This starts out fine, but may eventually need to be updated each time step according to link position
-        print(self.link_a)
-        print(self.link_b)
         self.transform_a = kmv.add(self.link_a[1], self.delta_a)
         self.transform_b = kmv.add(self.link_b[1], self.delta_b)
 
@@ -158,7 +156,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.displacement = 0 # This is a calculated value
         self.pressure = 1 # Should be pressure relative to external, so start at 0
 
-    def contract(self, pressure): # Should call every loop?
+    def update(self, pressure): # Should call every loop?
         """
         This should take some kind of force/pressure argument from the controller and apply it to both the simulated
         and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
@@ -237,7 +235,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     # Initialization
     def __init__(self, robotmodel,  world, config_data):
         """
-        This is intrinsically linked with a simulation. Does that make sense? Let's say it does, for now.
+        Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
@@ -247,7 +245,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
-        print(self.bones)
 
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
@@ -260,8 +257,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         Given a dataframe with an ["attachments"] column containing a path
         to a .csv file detailing structured muscle parameters, generates a list of Muscle objects and
         assigns them to the robot model. This should generate all muscles.
-
-        This gets called from the __init__ method.
         """
         with open(config_df["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
@@ -286,40 +281,15 @@ class ExoController(klampt.control.OmniRobotInterface):
     # Control and Kinematics
     def sensedPosition(self):
         """
-        Low level sensor method.
+        Returns the list of link transforms.
         """
-        return self.klamptModel().getDOFPosition()
+        return self.bones
 
     def controlRate(self):
         """
         Should be the same as the physical device, Reaktor control rate, simulation timestep
         """
         return 20
-
-    def setTorque(self):
-        """
-        Takes a list of torque inputs and sends them to controller.
-        ==================================
-        UPDATE: Okay so I think I'm ready to implement this method. Torque is equal to the cross product of the 3-D force
-        vector (provided us by the McKibben muscle parameters and perhaps a custom method) and the distance from the fulcrum at which the distance is applied
-        (constant, determined with what should be a single distance query relative to the transform - this can be optimized)
-        """
-        force = [2, 2, 2]
-        distance = [0, 1, 0]
-        torque = klampt.math.vectorops.cross(force, distance)
-        return torque
-
-    def setVelocity(self):
-        return
-
-    def moveToPosition(self):
-        return
-
-    def setPosition(self):
-        return
-
-    def queuedTrajectory(self):
-        return
 
     def beginIdle(self):
         """
@@ -330,42 +300,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         while self.shutdown_flag == False:
             self.idle()
 
-    # Editing functions
-    def geomEdit(self,n, fn):
-        """
-        Opens a geometry editor for the input arguments.
-        """
-        klampt.io.resource.edit(n, fn, editor="visual", world=self.world)
-
-    def configEdit(self):
-        """
-        Opens an editor for the configuration of the stated variables.
-        """
-        klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
-
-    """
-    SYSTEM DIAGNOSTICS
-    This section is for confirming baseline function of the exoskeleton and troubleshooting fatal errors.
-    """
-
-    """
-    SYSTEM BENCHMARKING
-    This section is for measurement of system functions and data collection for further optimization.
-    """
-
-    def randomTrajectoryTest(self):
-        """
-        Creates a random trajectory for the robot to execute.
-        """
-        self.trajectory = klampt.model.trajectory.RobotTrajectory(self.robot)
-        print("trajectory", self.trajectory)
-        x = self.robot.getConfig()
-        for i in range(10):
-            y = [0, 0, 0, 0, 0, .5, 0]
-            newconfig = np.add(x,y)
-            self.trajectory.milestones.append(newconfig)
-            x = newconfig
-        self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def idle(self, bones_transforms, command_list):
         """
@@ -373,10 +307,12 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         self.bones = bones_transforms # Change this, want to apply transforms to each
 
-        force_list = [] # Makes a new empty list
+        force_list = [] # Makes a new empty list... of tuples? Needs link number, force, and transform
+        i = 0
         for muscle in self.muscles.muscle_objects:
-            forces = muscle.contract(100) # This is probably important, should eventually contract w OSC argument
+            forces = muscle.update(command_list[i])  # This is probably important, should eventually contract w OSC argument
             force_list.append(forces)
+            i += 1
 
         return force_list
 
@@ -415,9 +351,11 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         """
         Now here adding a section to make sure the muscles contract in the simulation.
         """
+        for force in force_list:
+
+
         self.simulate(.05)
         self.updateWorld()
-
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
         """
@@ -436,7 +374,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         #All the world elements MUST be loaded before the Simulator is created
 
-        self.world = w = klampt.io.load('WorldModel', 'worlds/test_world1.xml')# Updating this to use a particular prepared XML world file
+        self.world = klampt.io.load('WorldModel', 'worlds/test_world1.xml')# Updating this to use a particular prepared XML world file
         klampt.vis.add("world", self.world)
         self.world.loadRobot(filepath["core"])
         self.robot = self.world.robot(0)
@@ -452,7 +390,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [] # List of commands to the muscles, this might need to contain stuff here - we will see
+        self.commands = [100, 100] # List of commands to the muscles, this might need to contain stuff here - we will see
+        """
+        Right now 100 is a magic number for testing
+        """
 
         # Adds the muscles to the visualization
         self.drawMuscles()
