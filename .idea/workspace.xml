@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,13 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00291" summary="updating applied forces">
-      <created>1695079539643</created>
-      <option name="number" value="00291" />
-      <option name="presentableId" value="LOCAL-00291" />
-      <option name="project" value="LOCAL" />
-      <updated>1695079539643</updated>
     </task>
     <task id="LOCAL-00292" summary="built up basic server client testing">
       <created>1695184267464</created>
@@ -522,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697341955545</updated>
     </task>
-    <option name="localTasksCounter" value="340" />
+    <task id="LOCAL-00340" summary="added list of bones">
+      <created>1697342151672</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1697342151672</updated>
+    </task>
+    <option name="localTasksCounter" value="341" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="integrating muscle stuff into the controller and simulation class" />
     <MESSAGE value="adding commentary for McKibben muscle." />
     <MESSAGE value="I've confused myself, although I'm making progress" />
     <MESSAGE value="accessing the controller using the GUI hook; can't use the completer for some reason I haven't fully researched" />
@@ -563,6 +561,7 @@
     <MESSAGE value="is not printing the link transforms" />
     <MESSAGE value="have listed the link transformations, now must apply them to muscle coordinates" />
     <MESSAGE value="removing unnecessary declarations" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing unnecessary declarations" />
+    <MESSAGE value="added list of bones" />
+    <option name="LAST_COMMIT_MESSAGE" value="added list of bones" />
   </component>
 </project>
