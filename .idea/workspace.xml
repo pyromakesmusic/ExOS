@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00298" summary="adding the block back and at some point i will start to apply forces to it from reaktor">
-      <created>1695528470484</created>
-      <option name="number" value="00298" />
-      <option name="presentableId" value="LOCAL-00298" />
-      <option name="project" value="LOCAL" />
-      <updated>1695528470490</updated>
-    </task>
     <task id="LOCAL-00299" summary="got the block to stop intersecting with the robot; should be able to start manipulating it now">
       <created>1695528767599</created>
       <option name="number" value="00299" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697404306504</updated>
     </task>
-    <option name="localTasksCounter" value="347" />
+    <task id="LOCAL-00347" summary="muscle now returns triplets?">
+      <created>1697405993567</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
+      <option name="project" value="LOCAL" />
+      <updated>1697405993577</updated>
+    </task>
+    <option name="localTasksCounter" value="348" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="muscles now &quot;contracting&quot; each time step" />
     <MESSAGE value="we are generating 3-tuples that look like they could almost be position vectors, which I think is very close to turning them into actual vectors" />
     <MESSAGE value="think I made some unit vectors?" />
     <MESSAGE value="creating force 3-tuples" />
@@ -563,6 +562,7 @@
     <MESSAGE value="improving the loop structure" />
     <MESSAGE value="okay now the controller has a knowledge state of its link transforms called &quot;bones&quot;" />
     <MESSAGE value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
+    <MESSAGE value="muscle now returns triplets?" />
+    <option name="LAST_COMMIT_MESSAGE" value="muscle now returns triplets?" />
   </component>
 </project>

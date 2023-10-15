@@ -319,10 +319,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         i = 0
         for muscle in self.muscles.muscle_objects:
             triplet_a, triplet_b = muscle.update(command_list[i])  # This is probably important, should eventually contract w OSC argument
-            force_list.append(triplet_a, triplet_b)
+            force_list.append(triplet_a)
+            force_list.append(triplet_b)
             i += 1
-
-        return force_list
+        return pd.Series(force_list)
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -360,7 +360,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         Now here adding a section to make sure the muscles contract in the simulation.
         """
         for force in force_list:
-
+            pass # This is where the grabbing of bodies and application of forces goes
 
         self.simulate(.05)
         self.updateWorld()
