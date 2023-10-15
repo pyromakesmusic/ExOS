@@ -122,16 +122,15 @@ class Muscle(klampt.sim.ActuatorEmulator):
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
-    def __init__(self, row, wm):
+    def __init__(self, row, controller):
         """
         Takes a dataframe row containing muscle information, a world model, a simulator, and a controller.
         """
         klampt.sim.ActuatorEmulator.__init__(self)
 
-        self.world = wm
 
-        self.robot = self.world.robot(0)
-
+        self.controller = controller # Big question mark goes here
+        self.robot = self.controller.robot
         a = int(row["link_a"])
         b = int(row["link_b"])
 
@@ -140,11 +139,12 @@ class Muscle(klampt.sim.ActuatorEmulator):
         """
         The below values describe the displacement of the muscle attachment from the origin of the robot link.
         """
-        delta_a = [float(s) for s in row["transform_a"].split(",")]
-        delta_b = [float(s) for s in row["transform_b"].split(",")]
+        self.delta_a = [float(s) for s in row["transform_a"].split(",")]
+        self.delta_b = [float(s) for s in row["transform_b"].split(",")]
 
-        self.transform_a = kmv.add(self.link_a.transform[1], delta_a)
-        self.transform_b = kmv.add(self.link_b.transform[1], delta_b)
+        # This starts out fine, but may eventually need to be updated each time step according to link position
+        self.transform_a = kmv.add(self.link_a.transform[1], self.delta_a)
+        self.transform_b = kmv.add(self.link_b.transform[1], self.delta_b)
 
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
@@ -182,6 +182,11 @@ class Muscle(klampt.sim.ActuatorEmulator):
         n: number of turns in the muscle fiber
         x: the displacement. This will probably take the most work to calculate.
         """
+        # Muscle transforms must update based on new link positions
+        self.transform_a = self.transform_a
+        self.transform_b = self.transform_b
+
+
         self.pressure = pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0
@@ -204,7 +209,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
         forces = (force_a, force_b)
         """
-        The above code should now be applying forces.
+        The above code should now be applying forces. Think I also need to get the transforms to apply them to.
         """
 
         return forces
@@ -241,8 +246,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.robot = robotmodel
         self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
 
-        # Creating a series of link transforms
-        self.bones = pd.Series([self.robot.link(x).getTransform for x in range(self.robot.numLinks())])
+        # Creating a series of link transforms, I need to check if this gets updated automatically
+        self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
+        print(self.bones)
 
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
@@ -267,7 +273,7 @@ class ExoController(klampt.control.OmniRobotInterface):
             for x in range(rows):
                 row = muscleinfo_df.iloc[x]
 
-                muscle = Muscle(row, self.world)
+                muscle = Muscle(row, self)
                 muscle_objects.append(muscle)
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
@@ -282,7 +288,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     # Control and Kinematics
     def sensedPosition(self):
         """
-        Low level actuator method.
+        Low level sensor method.
         """
         return self.klamptModel().getDOFPosition()
 
@@ -308,15 +314,14 @@ class ExoController(klampt.control.OmniRobotInterface):
     def setVelocity(self):
         return
 
-    def moveToPosition(self, list_of_q):
-        self.klamptModel().setConfig(list_of_q)
+    def moveToPosition(self):
         return
 
-    def setPosition(self, list_of_q):
-        self.klamptModel().setConfig(list_of_q)
+    def setPosition(self):
+        return
 
     def queuedTrajectory(self):
-        return self.trajectory
+        return
 
     def beginIdle(self):
         """
@@ -339,12 +344,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         Opens an editor for the configuration of the stated variables.
         """
         klampt.io.resource.edit("trajectory", self.trajectory, editor="visual", world=self.world, referenceObject=self.robot)
-
-    def motionPlanner(self, world):
-        """
-        I think this takes a world and makes a plan (trajectory without time coordinates) to reach a particular config?
-        """
-        self.plan = robotplanning.plan_to_config(self.world, self.robot, target=[3.14,1.4, 0])
 
     """
     SYSTEM DIAGNOSTICS
@@ -374,6 +373,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
+        self.bones = self.bones.apply(klampt.math.se3.apply) # Change this, want to apply transforms to each
+
         force_list = [] # Makes a new empty list
         for muscle in self.muscles.muscle_objects:
             forces = muscle.contract(100) # This is probably important, should eventually contract w OSC argument
@@ -419,7 +420,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         link_transforms_diff = [klampt.math.se3.error(link_transforms_start[x], link_transforms_end[x])
                                 for x in range(len(link_transforms_start))] # Takes the Lie derivative from start -> end
 
-        return link_transforms_diff
+        return link_transforms_diff # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -463,7 +464,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     def idlefunc(self, commands):
         """
-        Idle function for the GUI that sends commands to the controller, gets forces, and sends to the simulation.
+        Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         forces = self.controller.idle(self.commands) # Commands should be a list of pressure values or their analogues
         self.sim.simLoop(self.robot, forces) # Probably needs to return new transforms or "sensed positions" to ctrl
