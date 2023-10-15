@@ -204,18 +204,26 @@ class Muscle(klampt.sim.ActuatorEmulator):
         force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
         force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
-        forces = (force_a, force_b)
+        triplet_a = [self.link_a, self.transform_a, force_a]
+        triplet_b = [self.link_b, self.transform_b, force_b]
         """
-        The above code should now be applying forces. Think I also need to get the transforms to apply them to.
+        These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
+        to change the muscle color based on the pressure input.
         """
 
-        return forces
+        return triplet_a, triplet_b
 
     def appearance(self):
         app = klampt.Appearance()
         app.setDraw(2, True)
         app.setColor(1, 0, 0, 1)
         return app
+
+    # def updateColor(self):
+    #     app = klampt.Appearance()
+    #     app.setDraw(2, True)
+    #     app.setColor()
+    #     return
 
 
 class MuscleGroup:
@@ -310,8 +318,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         force_list = [] # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            forces = muscle.update(command_list[i])  # This is probably important, should eventually contract w OSC argument
-            force_list.append(forces)
+            triplet_a, triplet_b = muscle.update(command_list[i])  # This is probably important, should eventually contract w OSC argument
+            force_list.append(triplet_a, triplet_b)
             i += 1
 
         return force_list
