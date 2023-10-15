@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -180,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00302" summary="muahahahaha">
-      <created>1695586641423</created>
-      <option name="number" value="00302" />
-      <option name="presentableId" value="LOCAL-00302" />
-      <option name="project" value="LOCAL" />
-      <updated>1695586641423</updated>
     </task>
     <task id="LOCAL-00303" summary="updated main file documentation">
       <created>1695588993014</created>
@@ -524,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697407883219</updated>
     </task>
-    <option name="localTasksCounter" value="351" />
+    <task id="LOCAL-00351" summary="jackpot">
+      <created>1697408275253</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
+      <option name="project" value="LOCAL" />
+      <updated>1697408275253</updated>
+    </task>
+    <option name="localTasksCounter" value="352" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -540,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="doesn't work adding the muscles to visualization yet" />
     <MESSAGE value="I think I was never calling the createMuscle function so it never got added" />
     <MESSAGE value="cleaning up a little bit of stuff that didn't make sense" />
     <MESSAGE value="got a cool error" />
@@ -565,6 +563,7 @@
     <MESSAGE value="removed unnecessary print statements" />
     <MESSAGE value="not applying forces for some reason again" />
     <MESSAGE value="appears to be now applying forces" />
-    <option name="LAST_COMMIT_MESSAGE" value="appears to be now applying forces" />
+    <MESSAGE value="jackpot" />
+    <option name="LAST_COMMIT_MESSAGE" value="jackpot" />
   </component>
 </project>
