@@ -369,11 +369,11 @@ class ExoController(klampt.control.OmniRobotInterface):
             x = newconfig
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
-    def idle(self, command_list):
+    def idle(self, bones_transforms, command_list):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
-        self.bones = self.bones.apply(klampt.math.se3.apply) # Change this, want to apply transforms to each
+        self.bones.apply(klampt.math.se3.apply) # Change this, want to apply transforms to each
 
         force_list = [] # Makes a new empty list
         for muscle in self.muscles.muscle_objects:
