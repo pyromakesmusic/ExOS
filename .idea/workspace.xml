@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00299" summary="got the block to stop intersecting with the robot; should be able to start manipulating it now">
-      <created>1695528767599</created>
-      <option name="number" value="00299" />
-      <option name="presentableId" value="LOCAL-00299" />
-      <option name="project" value="LOCAL" />
-      <updated>1695528767599</updated>
-    </task>
     <task id="LOCAL-00300" summary="importing my library now, need to make it more customizable">
       <created>1695528895115</created>
       <option name="number" value="00300" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697405993577</updated>
     </task>
-    <option name="localTasksCounter" value="348" />
+    <task id="LOCAL-00348" summary="removed unnecessary print statements">
+      <created>1697406154570</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
+      <option name="project" value="LOCAL" />
+      <updated>1697406154570</updated>
+    </task>
+    <option name="localTasksCounter" value="349" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="we are generating 3-tuples that look like they could almost be position vectors, which I think is very close to turning them into actual vectors" />
     <MESSAGE value="think I made some unit vectors?" />
     <MESSAGE value="creating force 3-tuples" />
     <MESSAGE value="doesn't work adding the muscles to visualization yet" />
@@ -563,6 +562,7 @@
     <MESSAGE value="okay now the controller has a knowledge state of its link transforms called &quot;bones&quot;" />
     <MESSAGE value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
     <MESSAGE value="muscle now returns triplets?" />
-    <option name="LAST_COMMIT_MESSAGE" value="muscle now returns triplets?" />
+    <MESSAGE value="removed unnecessary print statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary print statements" />
   </component>
 </project>

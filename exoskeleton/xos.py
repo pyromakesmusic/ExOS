@@ -128,11 +128,11 @@ class Muscle(klampt.sim.ActuatorEmulator):
         """
         klampt.sim.ActuatorEmulator.__init__(self)
         self.controller = controller
-        a = int(row["link_a"]) # Gets index of the row of link a
-        b = int(row["link_b"])
+        self.a = int(row["link_a"]) # Gets index of the row of link a
+        self.b = int(row["link_b"])
 
-        self.link_a = self.controller.bones[a] # Refers to the *controller's* knowledge of the link transform
-        self.link_b = self.controller.bones[b]
+        self.link_a = self.controller.bones[self.a] # Refers to the *controller's* knowledge of the link transform
+        self.link_b = self.controller.bones[self.b]
         """
         The below values describe the displacement of the muscle attachment from the origin of the robot link.
         """
@@ -179,7 +179,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         n: number of turns in the muscle fiber
         x: the displacement. This will probably take the most work to calculate.
         """
-        # Muscle transforms must update based on new link positions
+        # Muscle transforms must update based on new link positions //// maybe not with applyForceAtLocalPoint()
         # self.transform_a = self.transform_a
         # self.transform_b = self.transform_b
 
@@ -204,8 +204,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
         force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
-        triplet_a = [self.link_a, self.transform_a, force_a]
-        triplet_b = [self.link_b, self.transform_b, force_b]
+        triplet_a = [self.a, force_a, self.transform_a] # Should be integer, 3-tuple, transform
+        triplet_b = [self.b, force_b, self.transform_b]
         """
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
@@ -360,7 +360,12 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         Now here adding a section to make sure the muscles contract in the simulation.
         """
         for force in force_list:
-            pass # This is where the grabbing of bodies and application of forces goes
+            print(force)
+            link = self.body(self.robotmodel.link(force[0]))
+            force_vector = force[1]
+            transform = force[2]
+            link.applyForceAtLocalPoint(force_vector, transform)
+
 
         self.simulate(.05)
         self.updateWorld()
