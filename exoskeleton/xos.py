@@ -239,9 +239,10 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-
         self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
 
+        self.bones = pd.Series([self.robot.link(x).getTransform for x in range(self.robot.numLinks())]) # Link transform
+        print(self.bones)
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
         """
