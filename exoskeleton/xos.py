@@ -402,7 +402,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [100, 100] # List of commands to the muscles, this might need to contain stuff here - we will see
+        self.commands = [10000, 10000, 5000, 5000] # List of commands to the muscles, this might need to contain stuff here - we will see
         """
         Right now 100 is a magic number for testing
         """
