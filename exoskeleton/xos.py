@@ -217,6 +217,9 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
 
 class MuscleGroup:
+    """
+    This is for convenience, for later. Maybe making multiple muscle groups contract together makes sense?
+    """
     def __init__(self):
         pass
 
@@ -237,7 +240,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.world = world
         self.robot = robotmodel
 
-        self.muscles = pd.DataFrame() # I think I could add columns now, but it'll be easier to think about later
         self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
 
         # Loading all the muscles
@@ -266,7 +268,7 @@ class ExoController(klampt.control.OmniRobotInterface):
                 muscle = Muscle(row, self.world)
                 muscle_objects.append(muscle)
 
-            muscle_series = pd.Series(data=muscle_objects, name="muscles")
+            muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
 
             """
@@ -367,8 +369,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.trajectory.times = list(range(len(self.trajectory.milestones)))
 
     def idle(self, command_list):
-        force_list = []
-        for muscle in self.muscles.muscles:
+        """
+        command_list: Should come from OSC signal but may be something else for testing
+        """
+        force_list = [] # Makes a new empty list
+        for muscle in self.muscles.muscle_objects:
             forces = muscle.contract(100) # This is probably important, should eventually contract w OSC argument
             force_list.append(forces)
 
@@ -410,7 +415,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         link_transforms_end = [robot.link(x).getTransform() for x in range(robot.numLinks())]
 
         link_transforms_diff = [klampt.math.se3.error(link_transforms_start[x], link_transforms_end[x])
-                                for x in range(len(link_transforms_start))]
+                                for x in range(len(link_transforms_start))] # Takes the Lie derivative from start -> end
 
         return link_transforms_diff
 
