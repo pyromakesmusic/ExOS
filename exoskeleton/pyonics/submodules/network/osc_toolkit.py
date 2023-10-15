@@ -15,26 +15,26 @@ import math
 FUNCTION DEFINITIONS
 """
 
-
-async def async_sender_loop(client):
-    """Example main loop that only runs for 10 iterations before finishing"""
-    for i in range(100):
-        client.send_message("/some/address", 123)  # Send float message
-        client.send_message("/some/address", [1, 2., "hello"])  # Send message with int, float and string
-        await asyncio.sleep(1)
-
-
-async def init_main(dispatcher, ip, port):
-    """
-    Multithreading receiver loop.
-    """
-    server = osc_server.AsyncIOOSCUDPServer((ip, port), dispatcher, asyncio.get_event_loop())
-    transport, protocol = await server.create_serve_endpoint()
-    await async_sender_loop()
-    transport.close()
+#
+# async def async_sender_loop(client):
+#     """Example main loop that only runs for 10 iterations before finishing"""
+#     for i in range(100):
+#         client.send_message("/some/address", 123)  # Send float message
+#         client.send_message("/some/address", [1, 2., "hello"])  # Send message with int, float and string
+#         await asyncio.sleep(1)
 
 
-class SimpleClient:
+# async def init_main(dispatcher, ip, port):
+#     """
+#     Multithreading receiver loop.
+#     """
+#     server = osc_server.AsyncIOOSCUDPServer((ip, port), dispatcher, asyncio.get_event_loop())
+#     transport, protocol = await server.create_serve_endpoint()
+#     await async_sender_loop()
+#     transport.close()
+
+
+class SimpleSender:
   def __init__(self, ip, port):
     SimpleUDPClient.__init__(ip, port)
 
@@ -71,7 +71,7 @@ class BlockingServer:
         """
         pattern: string var defining the OSC pattern to be recognized
         func: the function to map to
-        args: any args for the function, this may need to be args** and kwargs** - needs more research
+        args: any args for the function, this may need to be *args and **kwargs - needs more research
         """
         self.dispatcher.map(pattern, func, args)
 
