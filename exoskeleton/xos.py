@@ -351,8 +351,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         wm = self.world
         # test_body = self.body(robot.link(1)) # Change this
 
-        # test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
-        # test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
+        test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
+        #test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
 
 
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
@@ -360,14 +360,13 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         Now here adding a section to make sure the muscles contract in the simulation.
         """
         for force in force_list:
-            print(force)
             link = self.body(self.robotmodel.link(force[0]))
             force_vector = force[1]
             transform = force[2]
-            link.applyForceAtLocalPoint(force_vector, transform)
+            link.applyForceAtPoint(force_vector, transform)
 
 
-        self.simulate(.05)
+        self.simulate(.1)
         self.updateWorld()
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.

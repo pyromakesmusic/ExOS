@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,13 +181,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00300" summary="importing my library now, need to make it more customizable">
-      <created>1695528895115</created>
-      <option name="number" value="00300" />
-      <option name="presentableId" value="LOCAL-00300" />
-      <option name="project" value="LOCAL" />
-      <updated>1695528895115</updated>
     </task>
     <task id="LOCAL-00301" summary="I have the block wiggling around a little bit, now to pump in data from reaktor - probably need to build a class for this">
       <created>1695586532140</created>
@@ -522,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697406154570</updated>
     </task>
-    <option name="localTasksCounter" value="349" />
+    <task id="LOCAL-00349" summary="not applying forces for some reason again">
+      <created>1697407209190</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
+      <option name="project" value="LOCAL" />
+      <updated>1697407209190</updated>
+    </task>
+    <option name="localTasksCounter" value="350" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="think I made some unit vectors?" />
     <MESSAGE value="creating force 3-tuples" />
     <MESSAGE value="doesn't work adding the muscles to visualization yet" />
     <MESSAGE value="I think I was never calling the createMuscle function so it never got added" />
@@ -563,6 +565,7 @@
     <MESSAGE value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
     <MESSAGE value="muscle now returns triplets?" />
     <MESSAGE value="removed unnecessary print statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary print statements" />
+    <MESSAGE value="not applying forces for some reason again" />
+    <option name="LAST_COMMIT_MESSAGE" value="not applying forces for some reason again" />
   </component>
 </project>
