@@ -179,13 +179,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00295" summary="is now successfully transferring OSC signal from Reaktor">
-      <created>1695524083141</created>
-      <option name="number" value="00295" />
-      <option name="presentableId" value="LOCAL-00295" />
-      <option name="project" value="LOCAL" />
-      <updated>1695524083141</updated>
-    </task>
     <task id="LOCAL-00296" summary="Reaktor is sending a sine wave now instead of just a square wave">
       <created>1695526943983</created>
       <option name="number" value="00296" />
@@ -522,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697345340081</updated>
     </task>
-    <option name="localTasksCounter" value="344" />
+    <task id="LOCAL-00344" summary="improving the loop structure">
+      <created>1697402256530</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1697402256530</updated>
+    </task>
+    <option name="localTasksCounter" value="345" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="accessing the controller using the GUI hook; can't use the completer for some reason I haven't fully researched" />
     <MESSAGE value="improved, keep accessing the controller directly" />
     <MESSAGE value="named the muscles column to avoid confusion" />
     <MESSAGE value="muscles now &quot;contracting&quot; each time step" />
@@ -563,6 +562,7 @@
     <MESSAGE value="added list of bones" />
     <MESSAGE value="more untangling" />
     <MESSAGE value="need to apply to the right index for each bone link" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to apply to the right index for each bone link" />
+    <MESSAGE value="improving the loop structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving the loop structure" />
   </component>
 </project>

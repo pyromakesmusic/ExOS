@@ -127,15 +127,12 @@ class Muscle(klampt.sim.ActuatorEmulator):
         Takes a dataframe row containing muscle information, a world model, a simulator, and a controller.
         """
         klampt.sim.ActuatorEmulator.__init__(self)
-
-
-        self.controller = controller # Big question mark goes here
-        self.robot = self.controller.robot
-        a = int(row["link_a"])
+        self.controller = controller
+        a = int(row["link_a"]) # Gets index of the row of link a
         b = int(row["link_b"])
 
-        self.link_a = self.robot.link(a)
-        self.link_b = self.robot.link(b)
+        self.link_a = self.controller.bones[a] # Refers to the *controller's* knowledge of the link transform
+        self.link_b = self.controller.bones[b]
         """
         The below values describe the displacement of the muscle attachment from the origin of the robot link.
         """
@@ -143,8 +140,10 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.delta_b = [float(s) for s in row["transform_b"].split(",")]
 
         # This starts out fine, but may eventually need to be updated each time step according to link position
-        self.transform_a = kmv.add(self.link_a.transform[1], self.delta_a)
-        self.transform_b = kmv.add(self.link_b.transform[1], self.delta_b)
+        print(self.link_a)
+        print(self.link_b)
+        self.transform_a = kmv.add(self.link_a[1], self.delta_a)
+        self.transform_b = kmv.add(self.link_b[1], self.delta_b)
 
         # Now we add some attributes that the simulated and real robot will share
         self.geometry = klampt.GeometricPrimitive()
@@ -372,7 +371,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
-        self.bones.apply(klampt.math.se3.apply) # Change this, want to apply transforms to each
+        self.bones = bones_transforms # Change this, want to apply transforms to each
 
         force_list = [] # Makes a new empty list
         for muscle in self.muscles.muscle_objects:
@@ -392,7 +391,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.world = wm
         self.robotmodel = robot
 
-        self.link_transforms_start = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]
+        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         self.link_transforms_end = None
         self.link_transforms_diff = None
 
@@ -427,7 +426,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))] # Takes the Lie derivative from start -> end
 
-        return self.link_transforms_diff # I don't even know if we need to use this, depends on if we pass by ref or var
+        return self.link_transforms_end # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
