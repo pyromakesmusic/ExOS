@@ -365,7 +365,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         wm = self.world
         # test_body = self.body(robot.link(1)) # Change this
 
-        test_body = self.body(wm.rigidObject(0)) # It works!!!!!!!
         #test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
 
 
@@ -424,17 +423,15 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawMuscles()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-
-        klampt.vis.show()
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-        self.controller.osc_handler.make_endpoint()  # This seems to be the way
+        self.threaded_idle_launcher()
 
         # while klampt.vis.shown():
         #     # Initiates the visualization idle loop
         #     self.idlefunc(self.commands)
 
 
-    def idlefunc(self, commands):
+    def idlefunc(self):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
@@ -442,13 +439,15 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.link_transforms = self.sim.simLoop(forces) # Takes forces and returns new positions
         return
 
-    def threaded_idle(self, commands):
+    def threaded_idle_launcher(self):
         """
         Async idle function
         """
+
+        self.controller.osc_handler.make_endpoint()  # This seems to be the way
+        klampt.vis.show()
         while klampt.vis.shown():
-            forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms and pressure commands
-            self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
+            self.idlefunc()
 
         return
 
@@ -506,6 +505,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 """
 MAIN LOOP
 """
-if __name__ == "__main__":
-    config = configLoader("demo_config.txt")
+async def init_main(config_filepath):
+    config = configLoader(config_filepath)
     exo_sim_test = ExoGUI(config)
+
+
+if __name__ == "__main__":
+    asyncio.run(init_main("demo_config.txt"))

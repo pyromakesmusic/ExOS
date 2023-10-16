@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +78,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exoskeleton test 1">
+  <component name="RunManager">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00311" summary="added kwarg">
-      <created>1696004217138</created>
-      <option name="number" value="00311" />
-      <option name="presentableId" value="LOCAL-00311" />
-      <option name="project" value="LOCAL" />
-      <updated>1696004217138</updated>
     </task>
     <task id="LOCAL-00312" summary="should be fully object-oriented and ready for use">
       <created>1696259573941</created>
@@ -525,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697480162486</updated>
     </task>
-    <option name="localTasksCounter" value="360" />
+    <task id="LOCAL-00360" summary="still trying to get the asynchronous code to run">
+      <created>1697496160541</created>
+      <option name="number" value="00360" />
+      <option name="presentableId" value="LOCAL-00360" />
+      <option name="project" value="LOCAL" />
+      <updated>1697496160541</updated>
+    </task>
+    <option name="localTasksCounter" value="361" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -541,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added some commentary" />
     <MESSAGE value="adding more commentary" />
     <MESSAGE value="made new robot with a leg" />
     <MESSAGE value="is not printing the link transforms" />
@@ -566,6 +562,7 @@
     <MESSAGE value="messing with environments" />
     <MESSAGE value="need to call awaitable with asyncio.run()" />
     <MESSAGE value="messing with multithreading" />
-    <option name="LAST_COMMIT_MESSAGE" value="messing with multithreading" />
+    <MESSAGE value="still trying to get the asynchronous code to run" />
+    <option name="LAST_COMMIT_MESSAGE" value="still trying to get the asynchronous code to run" />
   </component>
 </project>
