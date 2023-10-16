@@ -250,7 +250,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-        self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
+        self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005) # May eventually change to non-blocking server
         self.oscMapper()
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
@@ -258,7 +258,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
-        self.osc_handler.serve_forever() # Starts the control input from OSC
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
@@ -426,7 +425,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.show()
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-        self.controller.osc_handler.serve_forever()
         while klampt.vis.shown():
             # Initiates the visualization idle loop
             self.idlefunc(self.commands)

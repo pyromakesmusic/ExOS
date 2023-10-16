@@ -7,8 +7,6 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00305" summary="working on the muscle class for realsies now">
-      <created>1695606695019</created>
-      <option name="number" value="00305" />
-      <option name="presentableId" value="LOCAL-00305" />
-      <option name="project" value="LOCAL" />
-      <updated>1695606695019</updated>
     </task>
     <task id="LOCAL-00306" summary="got the transforms grabbed in a better way">
       <created>1695608389120</created>
@@ -525,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697408787514</updated>
     </task>
-    <option name="localTasksCounter" value="354" />
+    <task id="LOCAL-00354" summary="adding multithreading">
+      <created>1697443210017</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1697443210017</updated>
+    </task>
+    <option name="localTasksCounter" value="355" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -541,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got a cool error" />
     <MESSAGE value="Some restructuring done successfully" />
     <MESSAGE value="separated drawing muscles into its own function" />
     <MESSAGE value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
@@ -566,6 +563,7 @@
     <MESSAGE value="jackpot" />
     <MESSAGE value="from here the rest is tuning, and mapping OSC" />
     <MESSAGE value="now need to map the OSC values to change the forces" />
-    <option name="LAST_COMMIT_MESSAGE" value="now need to map the OSC values to change the forces" />
+    <MESSAGE value="adding multithreading" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding multithreading" />
   </component>
 </project>

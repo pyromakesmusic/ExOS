@@ -57,6 +57,7 @@ class ThreadedServer:
     async def launch(self, main_loop):
         self.server = osc_server.AsyncIOOSCUDPServer((self.ip, self.port), self.dispatcher, asyncio.get_event_loop())
         self.transport, self.protocol = await self.server.create_serve_endpoint()
+        print("Serving on {}".format(self.server.server_address))
         await main_loop()
         self.transport.close()
 
