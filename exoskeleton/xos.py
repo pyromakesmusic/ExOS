@@ -29,6 +29,8 @@ import klampt.model.create.primitives as kmcp # This is where the box is
 CUSTOM LIBRARIES
 """
 import pyonics.submodules.network.osc_toolkit as osck
+import pyonics.submodules.ui.interface as vxui
+import pyonics.submodules.ui.system_strings as sysvx
 
 """
 PANDAS CONFIG
@@ -247,6 +249,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
+
+        self.assistant = vxui.VoiceControlUI()
+        self.assistant.announce("Initializing systems.")
 
         self.world = world
         self.robot = robotmodel

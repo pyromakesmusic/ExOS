@@ -4,7 +4,7 @@ LIBRARY IMPORTS
 # Standard Libraries
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import ipywidgets as widgets
+#import ipywidgets as widgets
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -194,16 +194,23 @@ class VoiceControlUI:
         self.voice_engine.setProperty('rate', 175)
         self.voice_engine.setProperty('voice', self.voices[1].id)
 
+        self.recog_model = None
+        self.voice_recog = None
+        self.mic = None
+        self.stream = None
+
+
+
+        # This is a loop for printing voice recognized audio to the console, I think it needs to be a method or
+        # attribute of how the class takes input
+
+    def voice_recog(self):
         # Voice Recognition Initialization
         self.recog_model = vosk.Model("vosk-model-small-en-us-0.15")
         self.voice_recog = vosk.KaldiRecognizer(self.recog_model, 16000)
         self.mic = pyaudio.PyAudio()
         self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
         self.stream.start_stream()
-
-
-        # This is a loop for printing voice recognized audio to the console, I think it needs to be a method or
-        # attribute of how the class takes input
         """
         while True:
             data = self.stream.read(4096)
