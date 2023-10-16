@@ -427,7 +427,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.show()
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-        asyncio.run(self.threaded_idle(self.commands)) # This seems to be the right way to do it.
+        self.controller.osc_handler.launch(self.threaded_idle(self.commands)) # This seems to be the way
 
         # while klampt.vis.shown():
         #     # Initiates the visualization idle loop

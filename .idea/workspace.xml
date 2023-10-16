@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00309" summary="more object oriented stuff, removed global configuration">
-      <created>1695837809926</created>
-      <option name="number" value="00309" />
-      <option name="presentableId" value="LOCAL-00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1695837809926</updated>
     </task>
     <task id="LOCAL-00310" summary="more object orientation stuff">
       <created>1695999666895</created>
@@ -522,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697470591361</updated>
     </task>
-    <option name="localTasksCounter" value="358" />
+    <task id="LOCAL-00358" summary="need to call awaitable with asyncio.run()">
+      <created>1697477253188</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1697477253188</updated>
+    </task>
+    <option name="localTasksCounter" value="359" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="changed to namedtuples" />
     <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
     <MESSAGE value="added some commentary" />
     <MESSAGE value="adding more commentary" />
@@ -563,6 +564,7 @@
     <MESSAGE value="some things I don't understand about calling multithreaded things" />
     <MESSAGE value="changing conda environments" />
     <MESSAGE value="messing with environments" />
-    <option name="LAST_COMMIT_MESSAGE" value="messing with environments" />
+    <MESSAGE value="need to call awaitable with asyncio.run()" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to call awaitable with asyncio.run()" />
   </component>
 </project>
