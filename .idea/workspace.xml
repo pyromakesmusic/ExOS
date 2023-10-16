@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Math4157.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Math4157.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +55,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "full.screen.before.presentation.mode": "false",
     "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/robots",
-    "settings.editor.selected.configurable": "RainbowCSV.Settings"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -179,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00307" summary="random updates">
-      <created>1695659015253</created>
-      <option name="number" value="00307" />
-      <option name="presentableId" value="LOCAL-00307" />
-      <option name="project" value="LOCAL" />
-      <updated>1695659015253</updated>
     </task>
     <task id="LOCAL-00308" summary="made osc toolkit more object oriented, should probably rename it">
       <created>1695836261760</created>
@@ -523,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697443683730</updated>
     </task>
-    <option name="localTasksCounter" value="356" />
+    <task id="LOCAL-00356" summary="changing conda environments">
+      <created>1697445100964</created>
+      <option name="number" value="00356" />
+      <option name="presentableId" value="LOCAL-00356" />
+      <option name="project" value="LOCAL" />
+      <updated>1697445100964</updated>
+    </task>
+    <option name="localTasksCounter" value="357" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="separated drawing muscles into its own function" />
     <MESSAGE value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
     <MESSAGE value="changed to namedtuples" />
     <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
@@ -564,6 +563,7 @@
     <MESSAGE value="now need to map the OSC values to change the forces" />
     <MESSAGE value="adding multithreading" />
     <MESSAGE value="some things I don't understand about calling multithreaded things" />
-    <option name="LAST_COMMIT_MESSAGE" value="some things I don't understand about calling multithreaded things" />
+    <MESSAGE value="changing conda environments" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing conda environments" />
   </component>
 </project>

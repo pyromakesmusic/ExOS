@@ -29,8 +29,8 @@ import klampt.model.create.primitives as kmcp # This is where the box is
 CUSTOM LIBRARIES
 """
 import pyonics.submodules.network.osc_toolkit as osck
-import pyonics.submodules.ui.interface as vxui
-import pyonics.submodules.ui.system_strings as sysvx
+# import pyonics.submodules.ui.interface as vxui
+# import pyonics.submodules.ui.system_strings as sysvx
 
 """
 PANDAS CONFIG
@@ -250,13 +250,13 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
 
-        self.assistant = vxui.VoiceControlUI()
-        self.assistant.announce("Initializing systems.")
+        # self.assistant = vxui.VoiceControlUI()
+        # self.assistant.announce("Initializing systems.")
 
         self.world = world
         self.robot = robotmodel
-        self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005) # May eventually change to non-blocking server
-        self.oscMapper()
+        #self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005) # May eventually change to non-blocking server
+        #self.oscMapper()
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
