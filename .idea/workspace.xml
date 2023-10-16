@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Math4157.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Math4157.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -179,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00308" summary="made osc toolkit more object oriented, should probably rename it">
-      <created>1695836261760</created>
-      <option name="number" value="00308" />
-      <option name="presentableId" value="LOCAL-00308" />
-      <option name="project" value="LOCAL" />
-      <updated>1695836261761</updated>
     </task>
     <task id="LOCAL-00309" summary="more object oriented stuff, removed global configuration">
       <created>1695837809926</created>
@@ -523,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697445100964</updated>
     </task>
-    <option name="localTasksCounter" value="357" />
+    <task id="LOCAL-00357" summary="messing with environments">
+      <created>1697470591361</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1697470591361</updated>
+    </task>
+    <option name="localTasksCounter" value="358" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="messing with the dataframe iteration, who would have thunk that this would be a sticking point" />
     <MESSAGE value="changed to namedtuples" />
     <MESSAGE value="got the CSV file taking muscles now, just need to apply forces" />
     <MESSAGE value="added some commentary" />
@@ -564,6 +562,7 @@
     <MESSAGE value="adding multithreading" />
     <MESSAGE value="some things I don't understand about calling multithreaded things" />
     <MESSAGE value="changing conda environments" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing conda environments" />
+    <MESSAGE value="messing with environments" />
+    <option name="LAST_COMMIT_MESSAGE" value="messing with environments" />
   </component>
 </project>

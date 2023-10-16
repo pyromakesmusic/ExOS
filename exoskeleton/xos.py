@@ -255,7 +255,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-        #self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005) # May eventually change to non-blocking server
+        self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005) # May eventually change to non-blocking server
         #self.oscMapper()
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
@@ -410,29 +410,28 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0,0,-5], 25)
 
-
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [10, 10, 500000, 500000] # List of commands to the muscles, this might need to contain stuff here - we will see
+        self.commands = [10, 10, 50000000, 50000000] # List of commands to the muscles, this might need to contain stuff here - we will see
         """
-        Right now 100 is a magic number for testing
+        Right now the above values are magic numbers for testing
         """
+        # self.controller.osc_handler.launch(self.threaded_idle(self.commands))
 
         # Adds the muscles to the visualization
         self.drawMuscles()
-
-        #Simulator creation and activation comes at the very end
+        # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-
-
 
         klampt.vis.show()
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-        while klampt.vis.shown():
-            # Initiates the visualization idle loop
-            self.idlefunc(self.commands)
+        asyncio.run(self.threaded_idle(self.commands)) # This seems to be the right way to do it.
+
+        # while klampt.vis.shown():
+        #     # Initiates the visualization idle loop
+        #     self.idlefunc(self.commands)
 
 
     def idlefunc(self, commands):
@@ -441,6 +440,16 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         forces = self.controller.idle(self.link_transforms, self.commands) # Transforms and pressure commands
         self.link_transforms = self.sim.simLoop(forces) # Takes forces and returns new positions
+        return
+
+    async def threaded_idle(self, commands):
+        """
+        Async idle function
+        """
+        while klampt.vis.shown():
+            forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms and pressure commands
+            self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
+
         return
 
     """
