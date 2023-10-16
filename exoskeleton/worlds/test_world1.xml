@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world>
+
   <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="4 4 4" translation = "0 0 -10"/>
-  <rigidObject name="block"  position="3 0 0.30000">
-     <geometry mesh="objects/cube.off" scale="1.00000 1.00000 1.00000" translate="-3.0000 -1.0000 -1.0000" />
-     <physics mass="0.250000" automass="1" kRestitution="0.000000" kFriction="0.500000" kStiffness="10000.000000" kDamping="1000.000000" />
-  </rigidObject>
 
   <simulation>
     <globals />
@@ -14,4 +11,5 @@
     </terrain>
 
   </simulation>
+
 </world>

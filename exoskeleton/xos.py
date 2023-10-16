@@ -414,7 +414,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [10, 10, 50000000, 50000000] # List of commands to the muscles, this might need to contain stuff here - we will see
+        self.commands = [10, 10, 5000, 50000000] # List of commands to the muscles, this might need to contain stuff here - we will see
         """
         Right now the above values are magic numbers for testing
         """
@@ -427,7 +427,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.show()
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-        self.controller.osc_handler.launch(self.threaded_idle(self.commands)) # This seems to be the way
+        self.controller.osc_handler.make_endpoint()  # This seems to be the way
 
         # while klampt.vis.shown():
         #     # Initiates the visualization idle loop
@@ -442,7 +442,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.link_transforms = self.sim.simLoop(forces) # Takes forces and returns new positions
         return
 
-    async def threaded_idle(self, commands):
+    def threaded_idle(self, commands):
         """
         Async idle function
         """
