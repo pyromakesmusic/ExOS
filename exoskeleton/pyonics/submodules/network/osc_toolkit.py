@@ -50,14 +50,15 @@ class ThreadedServer:
         self.args = self.parser.parse_args()
         self.ip = ip
         self.port = port
-        self.server = osc_server.AsyncIOOSCUDPServer((self.ip, self.port), self.dispatcher, asyncio.get_event_loop())
+        self.server = None
         self.transport = None
         self.protocol = None
 
     async def make_endpoint(self):
-
-        self.transport, self.protocol = self.server.create_serve_endpoint()
+        self.server = osc_server.AsyncIOOSCUDPServer((self.ip, self.port), self.dispatcher, asyncio.get_running_loop())
+        self.transport, self.protocol = await self.server.create_serve_endpoint()
         print("Serving on {}".format(self.ip))
+        return
 
     async def launch(self, main_loop):
         await main_loop()

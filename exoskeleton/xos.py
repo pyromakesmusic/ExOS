@@ -417,14 +417,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Right now the above values are magic numbers for testing
         """
-        # self.controller.osc_handler.launch(self.threaded_idle(self.commands))
-
         # Adds the muscles to the visualization
         self.drawMuscles()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-        self.threaded_idle_launcher()
+        asyncio.run(self.threaded_idle_launcher())
 
         # while klampt.vis.shown():
         #     # Initiates the visualization idle loop
@@ -434,17 +432,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def idlefunc(self):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
+        Asynchronous operation not yet implemented anywhere.
         """
-        forces = self.controller.idle(self.link_transforms, self.commands) # Transforms and pressure commands
-        self.link_transforms = self.sim.simLoop(forces) # Takes forces and returns new positions
+        forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms and pressure commands
+        self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         return
 
-    def threaded_idle_launcher(self):
+    async def threaded_idle_launcher(self):
         """
         Async idle function
         """
 
-        self.controller.osc_handler.make_endpoint()  # This seems to be the way
+        await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
         while klampt.vis.shown():
             self.idlefunc()
@@ -505,10 +504,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 """
 MAIN LOOP
 """
-async def init_main(config_filepath):
+def init_main(config_filepath):
     config = configLoader(config_filepath)
     exo_sim_test = ExoGUI(config)
 
 
 if __name__ == "__main__":
-    asyncio.run(init_main("demo_config.txt"))
+    init_main("demo_config.txt")
