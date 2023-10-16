@@ -180,7 +180,7 @@ class GUI(Interface):
     def __init__(self):
         pass
 
-class VoiceControlGUI:
+class VoiceControlUI:
     def announce(self, stringvar):
         print(stringvar)
         self.voice_engine.say(stringvar)

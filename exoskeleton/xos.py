@@ -3,11 +3,12 @@ STANDARD LIBRARIES
 """
 
 import time
-import math
-import numpy as np
-import tkinter as tk
-import pandas as pd
-import random
+import math # Largely just used for pi right now
+import numpy as np # Just in case for now
+import tkinter as tk # For building GUI
+import pandas as pd # Critical, most of the data structures are pandas structures
+import random # Mostly for testing
+import asyncio # For multithreaded OSC handling
 
 """
 KLAMPT IMPORTS
@@ -21,10 +22,7 @@ import klampt.sim.settle # Applies forces and lets them reach equilibrium in sim
 import klampt.sim.simulation # For simulation
 import klampt.io.resource # For easy resource access
 import klampt.model.subrobot # Defines the subrobot
-from klampt.model import collide
 import klampt.math.vectorops as kmv # This is for cross products
-from klampt.model.trajectory import RobotTrajectory # Trajectory
-from klampt.plan import robotplanning, robotcspace # Configuration space
 import klampt.model.create.primitives as kmcp # This is where the box is
 
 """
@@ -59,19 +57,19 @@ X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
 """
 PARAMETER DICTIONARIES
 """
-TEST_MUSCLE = {"name": None,
-               "link_a": None,
-               "link_b": None,
-               "transform_a" : 0,
-               "transform_b": 0,
-               "label_a": "proximal",
-               "label_b": "distal",
-               "force": 0,
-               "pressure": 0,
-               "weave_length": 1,
-               "turns": 5,
-               "displacement": 0,
-               "geometry": None}
+# TEST_MUSCLE = {"name": None,
+#                "link_a": None,
+#                "link_b": None,
+#                "transform_a" : 0,
+#                "transform_b": 0,
+#                "label_a": "proximal",
+#                "label_b": "distal",
+#                "force": 0,
+#                "pressure": 0,
+#                "weave_length": 1,
+#                "turns": 5,
+#                "displacement": 0,
+#                "geometry": None}
 
 """
 GEOMETRIES
@@ -131,7 +129,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.a = int(row["link_a"]) # Gets index of the row of link a
         self.b = int(row["link_b"])
 
-        self.link_a = self.controller.bones[self.a] # Refers to the *controller's* knowledge of the link transform
+        self.link_a = self.controller.bones[self.a] # Refers to the *controller's* knowledge of the link *transform*
         self.link_b = self.controller.bones[self.b]
         """
         The below values describe the displacement of the muscle attachment from the origin of the robot link.
@@ -180,8 +178,11 @@ class Muscle(klampt.sim.ActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         # Muscle transforms must update based on new link positions //// maybe not with applyForceAtLocalPoint()
-        # self.transform_a = self.transform_a
-        # self.transform_b = self.transform_b
+        self.transform_a = kmv.add(self.link_a[1], self.delta_a)
+        self.transform_b = kmv.add(self.link_b[1], self.delta_b)
+
+
+        self.geometry.setSegment(self.transform_a, self.transform_b)
 
 
         self.pressure = pressure
@@ -194,18 +195,18 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
         # Calculating a 3-tuple that gives a direction
         direction_a = kmv.sub(self.transform_a, self.transform_b)
-        direction_b = kmv.mul(direction_a, -1)
+        direction_b = kmv.mul(direction_a, -1) # Should just be the reverse of direction_a
 
         # Calculating unit vectors by dividing 3-tuple by its length
         unit_a = kmv.div(direction_a, self.length)
-        unit_b = kmv.mul(unit_a, -1) # Redundant but I'm including this to make it easier to read for now
+        unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half because of Newton's Third Law, changing to 500 for testing
-        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
+        force_a = kmv.mul(kmv.mul(unit_a, force), .5) # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
 
-        triplet_a = [self.a, force_a, self.transform_a] # Should be integer, 3-tuple, transform
-        triplet_b = [self.b, force_b, self.transform_b]
+        triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
+        triplet_b = [self.a, force_b, self.transform_a]
         """
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
@@ -250,12 +251,14 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.world = world
         self.robot = robotmodel
         self.osc_handler = osck.BlockingServer("127.0.0.1", 5005) # May eventually change to non-blocking server
+        self.oscMapper()
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
 
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
+        self.osc_handler.serve_forever() # Starts the control input from OSC
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
@@ -287,6 +290,13 @@ class ExoController(klampt.control.OmniRobotInterface):
             return muscleinfo_df
 
     # Control and Kinematics
+
+    def oscMapper(self):
+        """
+        Sets up the OSC control inputs.
+        """
+
+        return
     def sensedPosition(self):
         """
         Returns the list of link transforms.
@@ -375,7 +385,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))] # Takes the Lie derivative from start -> end
-
         return self.link_transforms_end # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
@@ -402,7 +411,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot)
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [10000, 10000, 500, 500] # List of commands to the muscles, this might need to contain stuff here - we will see
+        self.commands = [10, 10, 500000, 500000] # List of commands to the muscles, this might need to contain stuff here - we will see
         """
         Right now 100 is a magic number for testing
         """
@@ -417,7 +426,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.show()
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
-
+        self.controller.osc_handler.serve_forever()
         while klampt.vis.shown():
             # Initiates the visualization idle loop
             self.idlefunc(self.commands)
