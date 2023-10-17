@@ -14,7 +14,7 @@ import asyncio # For multithreaded OSC handling
 KLAMPT IMPORTS
 """
 
-import klampt
+import klampt  # Main robotics library
 import klampt.vis  # For visualization
 import klampt.vis.colorize  # For colorizing to easily assess robot performance
 import klampt.sim.batch  # For batch simulation
@@ -114,7 +114,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.length = self.l_0 # For calculation convenience
         self.stiffness = 1 # Spring constant/variable - may change at some point
         self.displacement = 0 # This is a calculated value
-        self.pressure = 1 # Should be pressure relative to external, so start at 0
+        self.pressure = 0 # Should be pressure relative to external, so start at 0
 
     def update(self, pressure): # Should call every loop?
         """
@@ -225,7 +225,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = self.muscleLoader(config_data)
 
         # Setting initial muscle pressure to zero
-        self.pressures = pd.Series([0 for muscle in range(len(self.muscles))])
+        self.pressures = [0 for muscle in range(len(self.muscles))]
 
 
     def muscleLoader(self, config_df):
@@ -268,9 +268,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.bones
 
-    def setPressures(self, *pressure_values):  # Constructed to work with an arbitrary number of values
-        self.pressures = pd.Series([pressure for pressure in pressure_values])
-        print(self.pressures)
+    async def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
+        args = args[1:-1]  # Removing unnecessary elements
+        self.pressures = [pressure for pressure in args]
+        print(args)
         return
 
 
