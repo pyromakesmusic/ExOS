@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00316" summary="accessing the controller using the GUI hook; can't use the completer for some reason I haven't fully researched">
-      <created>1696801619840</created>
-      <option name="number" value="00316" />
-      <option name="presentableId" value="LOCAL-00316" />
-      <option name="project" value="LOCAL" />
-      <updated>1696801619840</updated>
     </task>
     <task id="LOCAL-00317" summary="improved, keep accessing the controller directly">
       <created>1696801821761</created>
@@ -521,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697502314650</updated>
     </task>
-    <option name="localTasksCounter" value="365" />
+    <task id="LOCAL-00365" summary="printing for debugging">
+      <created>1697502347714</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1697502347714</updated>
+    </task>
+    <option name="localTasksCounter" value="366" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removing unnecessary declarations" />
     <MESSAGE value="added list of bones" />
     <MESSAGE value="more untangling" />
     <MESSAGE value="need to apply to the right index for each bone link" />
@@ -562,6 +562,7 @@
     <MESSAGE value="no longer throwing asynch exceptions" />
     <MESSAGE value="we are cooking with petrol now" />
     <MESSAGE value="working on mapping input from OSC" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on mapping input from OSC" />
+    <MESSAGE value="printing for debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="printing for debugging" />
   </component>
 </project>

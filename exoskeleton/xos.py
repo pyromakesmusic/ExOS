@@ -15,22 +15,21 @@ KLAMPT IMPORTS
 """
 
 import klampt
-import klampt.vis # For visualization
-import klampt.vis.colorize # For colorizing to easily assess robot performance
-import klampt.sim.batch # For batch simulation
-import klampt.sim.settle # Applies forces and lets them reach equilibrium in simulation
-import klampt.sim.simulation # For simulation
-import klampt.io.resource # For easy resource access
-import klampt.model.subrobot # Defines the subrobot
-import klampt.math.vectorops as kmv # This is for cross products
-import klampt.model.create.primitives as kmcp # This is where the box is
+import klampt.vis  # For visualization
+import klampt.vis.colorize  # For colorizing to easily assess robot performance
+import klampt.sim.batch  # For batch simulation
+import klampt.sim.settle  # Applies forces and lets them reach equilibrium in simulation
+import klampt.sim.simulation  # For simulation
+import klampt.io.resource  # For easy resource access
+import klampt.model.subrobot  # Defines the subrobot
+import klampt.math.vectorops as kmv  # This is for cross products
 
 """
 CUSTOM LIBRARIES
 """
-import pyonics.submodules.network.osc_toolkit as osck
-# import pyonics.submodules.ui.interface as vxui
-# import pyonics.submodules.ui.system_strings as sysvx
+import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
+# import pyonics.submodules.ui.interface as vxui  # Voice control engine
+# import pyonics.submodules.ui.system_strings as sysvx  # Voice assistant speech strings
 
 """
 PANDAS CONFIG
@@ -40,45 +39,6 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', None)
-
-"""
-MATRIX DATA
-"""
-NULL_MATRIX = [1, 0, 0, 0, 1, 0, 0, 0, 1]
-NULL_ORIGIN = [0, 0, 0]
-NULL_TRANSFORM = (NULL_MATRIX, NULL_ORIGIN)
-
-
-"""
-LIMB ATTACHMENT POINTS
-"""
-
-IDENTITY_MATRIX = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-X_MATRIX = [[1, 0, 0], [0, 0, 0], [0, 0, 0]]
-
-"""
-PARAMETER DICTIONARIES
-"""
-# TEST_MUSCLE = {"name": None,
-#                "link_a": None,
-#                "link_b": None,
-#                "transform_a" : 0,
-#                "transform_b": 0,
-#                "label_a": "proximal",
-#                "label_b": "distal",
-#                "force": 0,
-#                "pressure": 0,
-#                "weave_length": 1,
-#                "turns": 5,
-#                "displacement": 0,
-#                "geometry": None}
-
-"""
-GEOMETRIES
-"""
-BONE_GEOMETRY = kmcp.box(.05, .4, .05, mass=10)
-FLOOR_GEOMETRY = kmcp.box(5, 5, .01, center=[0, 0, 0])
-
 
 """
 FUNCTION DEFINITIONS
@@ -264,10 +224,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
 
-        self.pressures = pd.Series([0 for muscle in range(len(self.muscles))])  # Sets initial muscle pressure to zero
-        """
-        This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
-        """
+        # Setting initial muscle pressure to zero
+        self.pressures = pd.Series([0 for muscle in range(len(self.muscles))])
+
 
     def muscleLoader(self, config_df):
         """
