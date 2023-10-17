@@ -263,6 +263,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
+
+        self.pressures = pd.Series([0 for muscle in range(len(self.muscles))])  # Sets initial muscle pressure to zero
         """
         This is called in the controller initialization, so should be happening in every Simulation and GUI loop.
         """
@@ -299,13 +301,18 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Sets up the OSC control inputs.
         """
-
+        self.osc_handler.map("/pressures", self.setPressures)
         return
     def sensedPosition(self):
         """
         Returns the list of link transforms.
         """
         return self.bones
+
+    def setPressures(self, *pressure_values):  # Constructed to work with an arbitrary number of values
+        self.pressures = pd.Series([pressure for pressure in pressure_values])
+        return
+
 
     def controlRate(self):
         """
