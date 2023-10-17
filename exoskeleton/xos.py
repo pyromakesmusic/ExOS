@@ -268,8 +268,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.bones
 
-    async def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
-        args = args[1:-1]  # Removing unnecessary elements
+    def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
+        args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         print(args)
         return
@@ -291,7 +291,7 @@ class ExoController(klampt.control.OmniRobotInterface):
             self.idle()
 
 
-    def idle(self, bones_transforms, command_list):
+    def idle(self, bones_transforms):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
@@ -300,7 +300,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         force_list = [] # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            triplet_a, triplet_b = muscle.update(command_list[i])  # This is probably important, should eventually contract w OSC argument
+            triplet_a, triplet_b = muscle.update(self.pressures[i])  # This is probably important, should eventually contract w OSC argument
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
@@ -392,19 +392,16 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim.setGravity([0, 0, -9.8])
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare" or zero
 
-
+        # Asynchronous event loop initialization
         asyncio.run(self.threaded_idle_launcher())
 
-        # while klampt.vis.shown():
-        #     # Initiates the visualization idle loop
-        #     self.idlefunc(self.commands)
 
 
     def idlefunc(self):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms and pressure commands
+        forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         return
 
