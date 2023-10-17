@@ -311,6 +311,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def setPressures(self, *pressure_values):  # Constructed to work with an arbitrary number of values
         self.pressures = pd.Series([pressure for pressure in pressure_values])
+        print(self.pressures)
         return
 
 
