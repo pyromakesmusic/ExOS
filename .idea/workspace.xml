@@ -7,6 +7,7 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00319" summary="muscles now &quot;contracting&quot; each time step">
-      <created>1696802774680</created>
-      <option name="number" value="00319" />
-      <option name="presentableId" value="LOCAL-00319" />
-      <option name="project" value="LOCAL" />
-      <updated>1696802774680</updated>
     </task>
     <task id="LOCAL-00320" summary="we are generating 3-tuples that look like they could almost be position vectors, which I think is very close to turning them into actual vectors">
       <created>1696803026313</created>
@@ -523,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697505673647</updated>
     </task>
-    <option name="localTasksCounter" value="368" />
+    <task id="LOCAL-00368" summary="values are getting pushed through to klampt, but not being used to update the simulation">
+      <created>1697506422419</created>
+      <option name="number" value="00368" />
+      <option name="presentableId" value="LOCAL-00368" />
+      <option name="project" value="LOCAL" />
+      <updated>1697506422419</updated>
+    </task>
+    <option name="localTasksCounter" value="369" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="need to apply to the right index for each bone link" />
     <MESSAGE value="improving the loop structure" />
     <MESSAGE value="okay now the controller has a knowledge state of its link transforms called &quot;bones&quot;" />
     <MESSAGE value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
@@ -564,6 +564,7 @@
     <MESSAGE value="printing for debugging" />
     <MESSAGE value="removing some unused code" />
     <MESSAGE value="taking a break, reaktor interface is starting to look cool and useful" />
-    <option name="LAST_COMMIT_MESSAGE" value="taking a break, reaktor interface is starting to look cool and useful" />
+    <MESSAGE value="values are getting pushed through to klampt, but not being used to update the simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="values are getting pushed through to klampt, but not being used to update the simulation" />
   </component>
 </project>

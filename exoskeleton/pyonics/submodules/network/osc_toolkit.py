@@ -38,9 +38,9 @@ class SimpleSender:
   def __init__(self, ip, port):
     SimpleUDPClient.__init__(ip, port)
 
-class ThreadedServer:
+class AsyncServer:
     """
-    Multithreading now.
+    Asynchronous server now.
     """
     def __init__(self, ip, port):
         self.dispatcher = Dispatcher()
@@ -62,7 +62,9 @@ class ThreadedServer:
 
     async def launch(self, main_loop):
         await main_loop()
+        print("Launching OSC receive. . .")
         self.transport.close()
+        return
 
     def map(self, pattern, func, *args, **kwargs):
         """
@@ -91,15 +93,6 @@ class BlockingServer:
 
         self.server = None
 
-    # def print_volume_handler(self, args, volume):
-    #     print("[{0}] ~ {1}".format(args[0], volume))
-    #
-    # def print_compute_handler(self, args, volume):
-    #     try:
-    #         print("[{0}] ~ {1}".format(args[0], args[1](volume)))
-    #     except ValueError:
-    #         pass
-
     def map(self, pattern, func, *args, **kwargs):
         """
         pattern: string var defining the OSC pattern to be recognized
@@ -114,13 +107,7 @@ class BlockingServer:
         self.server.serve_forever()
 
 if __name__ == "__main__":
-    """
-    Starting with a blocking threaded server then trying to convert to multithreaded.
-    UPDATE 10.16.2023
-    
-    Looks like multithreading is the only way this is getting done :))))
-    """
-
+    pass
 
 
 

@@ -215,7 +215,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-        self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005)  # Make these configurable
+        self.osc_handler = osck.AsyncServer("127.0.0.1", 5005)  # Make these configurable
         self.oscMapper()  # Might be time to implement these?
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
@@ -405,6 +405,12 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         return
 
+    def threaded_idle_loop(self):
+        while klampt.vis.shown():
+            klampt.vis.lock()
+            self.idlefunc()
+            klampt.vis.unlock()
+
     async def threaded_idle_launcher(self):
         """
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
@@ -412,9 +418,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
-        while klampt.vis.shown():
-            self.idlefunc()
-
+        self.threaded_idle_loop() # I think maybe this has something to do with it? Never called
         return
 
     """
