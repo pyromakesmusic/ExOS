@@ -255,8 +255,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
-        self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005) # May eventually change to non-blocking server
-        #self.oscMapper()
+        self.osc_handler = osck.ThreadedServer("127.0.0.1", 5005)  # Make these configurable
+        self.oscMapper()  # Might be time to implement these?
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
@@ -411,9 +411,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot)
+
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [10, 10, 5000, 50000000] # List of commands to the muscles, this might need to contain stuff here - we will see
+        self.commands = [10, 10, 5000, 5000] # List of commands to the muscles, this might need to contain stuff here - we will see
         """
         Right now the above values are magic numbers for testing
         """
@@ -421,7 +422,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawMuscles()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-        self.link_transforms = None # Nominal values for initialization, think of this as the "tare"
+        self.link_transforms = None # Nominal values for initialization, think of this as the "tare" or zero
+
+
         asyncio.run(self.threaded_idle_launcher())
 
         # while klampt.vis.shown():
@@ -432,7 +435,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def idlefunc(self):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
-        Asynchronous operation not yet implemented anywhere.
         """
         forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms and pressure commands
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
@@ -440,7 +442,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
     async def threaded_idle_launcher(self):
         """
-        Async idle function
+        Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way

@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00313" summary="integrating muscle stuff into the controller and simulation class">
-      <created>1696266326543</created>
-      <option name="number" value="00313" />
-      <option name="presentableId" value="LOCAL-00313" />
-      <option name="project" value="LOCAL" />
-      <updated>1696266326543</updated>
     </task>
     <task id="LOCAL-00314" summary="adding commentary for McKibben muscle.">
       <created>1696297216651</created>
@@ -523,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697497774247</updated>
     </task>
-    <option name="localTasksCounter" value="362" />
+    <task id="LOCAL-00362" summary="no longer throwing asynch exceptions">
+      <created>1697500234040</created>
+      <option name="number" value="00362" />
+      <option name="presentableId" value="LOCAL-00362" />
+      <option name="project" value="LOCAL" />
+      <updated>1697500234040</updated>
+    </task>
+    <option name="localTasksCounter" value="363" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="made new robot with a leg" />
     <MESSAGE value="is not printing the link transforms" />
     <MESSAGE value="have listed the link transformations, now must apply them to muscle coordinates" />
     <MESSAGE value="removing unnecessary declarations" />
@@ -564,6 +562,7 @@
     <MESSAGE value="messing with multithreading" />
     <MESSAGE value="still trying to get the asynchronous code to run" />
     <MESSAGE value="am I programming asynchronously now?" />
-    <option name="LAST_COMMIT_MESSAGE" value="am I programming asynchronously now?" />
+    <MESSAGE value="no longer throwing asynch exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="no longer throwing asynch exceptions" />
   </component>
 </project>
