@@ -5,148 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/changed_folder_structure.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/changed_folder_structure/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/block.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/block.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/cube.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/sphere.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/CHANGES.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/differint_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/klampt_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/simulation_test1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test2.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A0.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A2.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A3.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0_v2.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C1.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C1_v2.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C4.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C4.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/LA0.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/LL6.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/LL7.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/RA0.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/RL6.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/RL7.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/forearm_1.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/humerus.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/humerus_1.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/leg6.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/leg7.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/radius.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/radius.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/sphere.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_1.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_2.blend" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_2.blend1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/terrains/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/terrains/block.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/terrains/plane.off" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/test_config1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/robot images/early_strain_analysis.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/robot images/mckibben_real.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/robot images/red_bot1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/robot images/red_bot2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/robot images/simulation1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/constant_force_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/increased_freq_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/more_d_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/more_p_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/some_d_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/some_i_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/some_p_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/4157.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Math4157.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Math4157.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/PID_v2-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled1-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled2-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled3-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled4-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PID_v1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PID_v2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled2.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled3.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Untitled4.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_test1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_text_test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_text_test3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_tkinter_test1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_tkinter_test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/00441d63089b7fe3af5e1abe40317ff7d90added.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/05e74e64da22acf22aafe854533698f8d5f44238.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/2a835bd4b33c1eb44d93a6dbde6cbdea370bbd53.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/405fb29f31d3b749747314a86110705922bf23ad.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/99b6d1da365775eac8b19e404e555b7a41993f6a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/bc22091a010661415c52d3aadadf1b78afe3e750.json" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/d34e96261a5c47729960163c7171b4c52221c37a.json" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/ecf6f553338e2187259768fd29096788937fe22e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/f18c89cb7f1957fc2502513cc9de2f6a5dc75c5c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/f341333a64b119049a6072ce3ed1178ad8043cc3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputs/PID tests/slow_convergence.png" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/PID tests/slow_convergence.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00326" summary="I think I was never calling the createMuscle function so it never got added">
-      <created>1697071362604</created>
-      <option name="number" value="00326" />
-      <option name="presentableId" value="LOCAL-00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1697071362604</updated>
     </task>
     <task id="LOCAL-00327" summary="cleaning up a little bit of stuff that didn't make sense">
       <created>1697071690330</created>
@@ -662,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697667403170</updated>
     </task>
-    <option name="localTasksCounter" value="375" />
+    <task id="LOCAL-00375" summary="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb">
+      <created>1697668010762</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1697668010762</updated>
+    </task>
+    <option name="localTasksCounter" value="376" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -678,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="not applying forces for some reason again" />
     <MESSAGE value="appears to be now applying forces" />
     <MESSAGE value="jackpot" />
     <MESSAGE value="from here the rest is tuning, and mapping OSC" />
@@ -703,6 +562,7 @@
     <MESSAGE value="removing unnecessary (and broken) methods" />
     <MESSAGE value="changing the sleep time has weird effects, investigate further" />
     <MESSAGE value="still messing with sleep time" />
-    <option name="LAST_COMMIT_MESSAGE" value="still messing with sleep time" />
+    <MESSAGE value="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb" />
   </component>
 </project>

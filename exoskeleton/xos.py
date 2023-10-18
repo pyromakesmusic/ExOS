@@ -164,8 +164,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
+        force_a = kmv.mul(kmv.mul(unit_a, force), 500) # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), 500)
 
         triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]
@@ -209,6 +209,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
+        self.shutdown_flag = False
 
         # self.assistant = vxui.VoiceControlUI()
         # self.assistant.announce("Initializing systems.")
@@ -286,8 +287,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         Used for loops.
         """
         self.shutdown_flag = False
-
-        while self.shutdown_flag == False:
+        while not self.shutdown_flag:
             self.idle()
 
 
@@ -340,10 +340,10 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         Now here adding a section to make sure the muscles contract in the simulation.
         """
         for force in force_list:
-            link = self.body(self.robotmodel.link(force[0]))
-            force_vector = force[1]
-            transform = force[2]
-            link.applyForceAtPoint(force_vector, transform)
+            link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
+            force_vector = force[1]  # Gets the force vector
+            transform = force[2]  # Gets the transform at which to apply force
+            link.applyForceAtLocalPoint(force_vector, transform)
 
 
         self.simulate(.001)
