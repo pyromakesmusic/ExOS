@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_29_2022_12_52_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/changed_folder_structure.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/changed_folder_structure/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/block.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/block.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/cube.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/objects/sphere.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/CHANGES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/differint_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/klampt_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/simulation_test1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test1.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test2.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/leftarm_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/leftleg_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A0.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A2.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/A3.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C0_v2.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C1.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C1_v2.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C4.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/C4.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/LA0.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/LL6.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/LL7.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/RA0.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/RL6.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/RL7.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/forearm_1.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/humerus.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/humerus_1.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/leg6.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/leg7.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/radius.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/radius.blend1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/sphere.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso.blend1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_1.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_2.blend" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/meshes/torso_2.blend1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/rightleg_bot.rob" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/terrains/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/terrains/block.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/terrains/plane.off" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/test_config1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/robot images/early_strain_analysis.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/robot images/mckibben_real.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/robot images/red_bot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/robot images/red_bot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/robot images/simulation1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/constant_force_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/increased_freq_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/more_d_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/more_p_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/some_d_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/some_i_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portfolio/talk 2 images/some_p_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/4157.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Math4157.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Math4157.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/PID_v2-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled1-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled2-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled3-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled4-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PID_v1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PID_v2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled1.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled2.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled3.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled4.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_text_test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_text_test3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_tkinter_test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/batch test input files/PID_tkinter_test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/tests/PID_tkinter_test2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/00441d63089b7fe3af5e1abe40317ff7d90added.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/05e74e64da22acf22aafe854533698f8d5f44238.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/2a835bd4b33c1eb44d93a6dbde6cbdea370bbd53.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/405fb29f31d3b749747314a86110705922bf23ad.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/99b6d1da365775eac8b19e404e555b7a41993f6a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/bc22091a010661415c52d3aadadf1b78afe3e750.json" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/d34e96261a5c47729960163c7171b4c52221c37a.json" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/ecf6f553338e2187259768fd29096788937fe22e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/f18c89cb7f1957fc2502513cc9de2f6a5dc75c5c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/f341333a64b119049a6072ce3ed1178ad8043cc3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/PID tests/slow_convergence.png" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/PID tests/slow_convergence.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/LICENSE.txt" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2G4emLN21FaG5TZ0oU0rkRT1NOW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157/exoskeleton/robots&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\objects" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\robots" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\terrains" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.exoskeleton test 1">
+    <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pyro\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PID_talk" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pyro\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton/pyonics" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/pyonics/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\tests\simulation_test1.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exoskeleton test 1" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="simulation test  2" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pyro\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/xo_simtest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.OSC test 1" />
+      <item itemvalue="Python.PID_talk" />
+      <item itemvalue="Python.exoskeleton test 1" />
+      <item itemvalue="Python.simulation test  2" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="changed folder structure" />
+      <created>1665652441872</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665652441872</updated>
+    </task>
+    <task id="LOCAL-00326" summary="I think I was never calling the createMuscle function so it never got added">
+      <created>1697071362604</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1697071362604</updated>
+    </task>
+    <task id="LOCAL-00327" summary="cleaning up a little bit of stuff that didn't make sense">
+      <created>1697071690330</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1697071690330</updated>
+    </task>
+    <task id="LOCAL-00328" summary="got a cool error">
+      <created>1697072529256</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1697072529256</updated>
+    </task>
+    <task id="LOCAL-00329" summary="Some restructuring done successfully">
+      <created>1697156777486</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
+      <option name="project" value="LOCAL" />
+      <updated>1697156777486</updated>
+    </task>
+    <task id="LOCAL-00330" summary="separated drawing muscles into its own function">
+      <created>1697160769013</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1697160769013</updated>
+    </task>
+    <task id="LOCAL-00331" summary="messing with the dataframe iteration, who would have thunk that this would be a sticking point">
+      <created>1697244922451</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1697244922451</updated>
+    </task>
+    <task id="LOCAL-00332" summary="changed to namedtuples">
+      <created>1697251922393</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1697251922393</updated>
+    </task>
+    <task id="LOCAL-00333" summary="got the CSV file taking muscles now, just need to apply forces">
+      <created>1697260362826</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1697260362826</updated>
+    </task>
+    <task id="LOCAL-00334" summary="added some commentary">
+      <created>1697260443888</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1697260443888</updated>
+    </task>
+    <task id="LOCAL-00335" summary="adding more commentary">
+      <created>1697261789683</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1697261789683</updated>
+    </task>
+    <task id="LOCAL-00336" summary="made new robot with a leg">
+      <created>1697262739348</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1697262739348</updated>
+    </task>
+    <task id="LOCAL-00337" summary="is not printing the link transforms">
+      <created>1697265256273</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1697265256273</updated>
+    </task>
+    <task id="LOCAL-00338" summary="have listed the link transformations, now must apply them to muscle coordinates">
+      <created>1697269166451</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1697269166451</updated>
+    </task>
+    <task id="LOCAL-00339" summary="removing unnecessary declarations">
+      <created>1697341955545</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1697341955545</updated>
+    </task>
+    <task id="LOCAL-00340" summary="added list of bones">
+      <created>1697342151672</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1697342151672</updated>
+    </task>
+    <task id="LOCAL-00341" summary="added list of bones">
+      <created>1697342286995</created>
+      <option name="number" value="00341" />
+      <option name="presentableId" value="LOCAL-00341" />
+      <option name="project" value="LOCAL" />
+      <updated>1697342286995</updated>
+    </task>
+    <task id="LOCAL-00342" summary="more untangling">
+      <created>1697345176473</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1697345176473</updated>
+    </task>
+    <task id="LOCAL-00343" summary="need to apply to the right index for each bone link">
+      <created>1697345340081</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1697345340081</updated>
+    </task>
+    <task id="LOCAL-00344" summary="improving the loop structure">
+      <created>1697402256530</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1697402256530</updated>
+    </task>
+    <task id="LOCAL-00345" summary="okay now the controller has a knowledge state of its link transforms called &quot;bones&quot;">
+      <created>1697403642096</created>
+      <option name="number" value="00345" />
+      <option name="presentableId" value="LOCAL-00345" />
+      <option name="project" value="LOCAL" />
+      <updated>1697403642096</updated>
+    </task>
+    <task id="LOCAL-00346" summary="updating structure, next need to make sure muscle returns the correct data structure of forces">
+      <created>1697404306504</created>
+      <option name="number" value="00346" />
+      <option name="presentableId" value="LOCAL-00346" />
+      <option name="project" value="LOCAL" />
+      <updated>1697404306504</updated>
+    </task>
+    <task id="LOCAL-00347" summary="muscle now returns triplets?">
+      <created>1697405993567</created>
+      <option name="number" value="00347" />
+      <option name="presentableId" value="LOCAL-00347" />
+      <option name="project" value="LOCAL" />
+      <updated>1697405993577</updated>
+    </task>
+    <task id="LOCAL-00348" summary="removed unnecessary print statements">
+      <created>1697406154570</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
+      <option name="project" value="LOCAL" />
+      <updated>1697406154570</updated>
+    </task>
+    <task id="LOCAL-00349" summary="not applying forces for some reason again">
+      <created>1697407209190</created>
+      <option name="number" value="00349" />
+      <option name="presentableId" value="LOCAL-00349" />
+      <option name="project" value="LOCAL" />
+      <updated>1697407209190</updated>
+    </task>
+    <task id="LOCAL-00350" summary="appears to be now applying forces">
+      <created>1697407883219</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1697407883219</updated>
+    </task>
+    <task id="LOCAL-00351" summary="jackpot">
+      <created>1697408275253</created>
+      <option name="number" value="00351" />
+      <option name="presentableId" value="LOCAL-00351" />
+      <option name="project" value="LOCAL" />
+      <updated>1697408275253</updated>
+    </task>
+    <task id="LOCAL-00352" summary="from here the rest is tuning, and mapping OSC">
+      <created>1697408606448</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1697408606449</updated>
+    </task>
+    <task id="LOCAL-00353" summary="now need to map the OSC values to change the forces">
+      <created>1697408787514</created>
+      <option name="number" value="00353" />
+      <option name="presentableId" value="LOCAL-00353" />
+      <option name="project" value="LOCAL" />
+      <updated>1697408787514</updated>
+    </task>
+    <task id="LOCAL-00354" summary="adding multithreading">
+      <created>1697443210017</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1697443210017</updated>
+    </task>
+    <task id="LOCAL-00355" summary="some things I don't understand about calling multithreaded things">
+      <created>1697443683727</created>
+      <option name="number" value="00355" />
+      <option name="presentableId" value="LOCAL-00355" />
+      <option name="project" value="LOCAL" />
+      <updated>1697443683730</updated>
+    </task>
+    <task id="LOCAL-00356" summary="changing conda environments">
+      <created>1697445100964</created>
+      <option name="number" value="00356" />
+      <option name="presentableId" value="LOCAL-00356" />
+      <option name="project" value="LOCAL" />
+      <updated>1697445100964</updated>
+    </task>
+    <task id="LOCAL-00357" summary="messing with environments">
+      <created>1697470591361</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1697470591361</updated>
+    </task>
+    <task id="LOCAL-00358" summary="need to call awaitable with asyncio.run()">
+      <created>1697477253188</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1697477253188</updated>
+    </task>
+    <task id="LOCAL-00359" summary="messing with multithreading">
+      <created>1697480162486</created>
+      <option name="number" value="00359" />
+      <option name="presentableId" value="LOCAL-00359" />
+      <option name="project" value="LOCAL" />
+      <updated>1697480162486</updated>
+    </task>
+    <task id="LOCAL-00360" summary="still trying to get the asynchronous code to run">
+      <created>1697496160541</created>
+      <option name="number" value="00360" />
+      <option name="presentableId" value="LOCAL-00360" />
+      <option name="project" value="LOCAL" />
+      <updated>1697496160541</updated>
+    </task>
+    <task id="LOCAL-00361" summary="am I programming asynchronously now?">
+      <created>1697497774247</created>
+      <option name="number" value="00361" />
+      <option name="presentableId" value="LOCAL-00361" />
+      <option name="project" value="LOCAL" />
+      <updated>1697497774247</updated>
+    </task>
+    <task id="LOCAL-00362" summary="no longer throwing asynch exceptions">
+      <created>1697500234040</created>
+      <option name="number" value="00362" />
+      <option name="presentableId" value="LOCAL-00362" />
+      <option name="project" value="LOCAL" />
+      <updated>1697500234040</updated>
+    </task>
+    <task id="LOCAL-00363" summary="we are cooking with petrol now">
+      <created>1697501443113</created>
+      <option name="number" value="00363" />
+      <option name="presentableId" value="LOCAL-00363" />
+      <option name="project" value="LOCAL" />
+      <updated>1697501443113</updated>
+    </task>
+    <task id="LOCAL-00364" summary="working on mapping input from OSC">
+      <created>1697502314650</created>
+      <option name="number" value="00364" />
+      <option name="presentableId" value="LOCAL-00364" />
+      <option name="project" value="LOCAL" />
+      <updated>1697502314650</updated>
+    </task>
+    <task id="LOCAL-00365" summary="printing for debugging">
+      <created>1697502347714</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1697502347714</updated>
+    </task>
+    <task id="LOCAL-00366" summary="removing some unused code">
+      <created>1697504505514</created>
+      <option name="number" value="00366" />
+      <option name="presentableId" value="LOCAL-00366" />
+      <option name="project" value="LOCAL" />
+      <updated>1697504505514</updated>
+    </task>
+    <task id="LOCAL-00367" summary="taking a break, reaktor interface is starting to look cool and useful">
+      <created>1697505673647</created>
+      <option name="number" value="00367" />
+      <option name="presentableId" value="LOCAL-00367" />
+      <option name="project" value="LOCAL" />
+      <updated>1697505673647</updated>
+    </task>
+    <task id="LOCAL-00368" summary="values are getting pushed through to klampt, but not being used to update the simulation">
+      <created>1697506422419</created>
+      <option name="number" value="00368" />
+      <option name="presentableId" value="LOCAL-00368" />
+      <option name="project" value="LOCAL" />
+      <updated>1697506422419</updated>
+    </task>
+    <task id="LOCAL-00369" summary="sleep time, need to figure out how to make sure the OSC gets through">
+      <created>1697517057985</created>
+      <option name="number" value="00369" />
+      <option name="presentableId" value="LOCAL-00369" />
+      <option name="project" value="LOCAL" />
+      <updated>1697517057985</updated>
+    </task>
+    <task id="LOCAL-00370" summary="pressures seem to be feeding in from reaktor now!!!">
+      <created>1697646772436</created>
+      <option name="number" value="00370" />
+      <option name="presentableId" value="LOCAL-00370" />
+      <option name="project" value="LOCAL" />
+      <updated>1697646772436</updated>
+    </task>
+    <task id="LOCAL-00371" summary="removing unnecessary (and broken) methods">
+      <created>1697647381823</created>
+      <option name="number" value="00371" />
+      <option name="presentableId" value="LOCAL-00371" />
+      <option name="project" value="LOCAL" />
+      <updated>1697647381823</updated>
+    </task>
+    <task id="LOCAL-00372" summary="changing the sleep time has weird effects, investigate further">
+      <created>1697651612541</created>
+      <option name="number" value="00372" />
+      <option name="presentableId" value="LOCAL-00372" />
+      <option name="project" value="LOCAL" />
+      <updated>1697651612541</updated>
+    </task>
+    <task id="LOCAL-00373" summary="still messing with sleep time">
+      <created>1697651727192</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1697651727192</updated>
+    </task>
+    <task id="LOCAL-00374" summary="still messing with sleep time">
+      <created>1697667403170</created>
+      <option name="number" value="00374" />
+      <option name="presentableId" value="LOCAL-00374" />
+      <option name="project" value="LOCAL" />
+      <updated>1697667403170</updated>
+    </task>
+    <option name="localTasksCounter" value="375" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="not applying forces for some reason again" />
+    <MESSAGE value="appears to be now applying forces" />
+    <MESSAGE value="jackpot" />
+    <MESSAGE value="from here the rest is tuning, and mapping OSC" />
+    <MESSAGE value="now need to map the OSC values to change the forces" />
+    <MESSAGE value="adding multithreading" />
+    <MESSAGE value="some things I don't understand about calling multithreaded things" />
+    <MESSAGE value="changing conda environments" />
+    <MESSAGE value="messing with environments" />
+    <MESSAGE value="need to call awaitable with asyncio.run()" />
+    <MESSAGE value="messing with multithreading" />
+    <MESSAGE value="still trying to get the asynchronous code to run" />
+    <MESSAGE value="am I programming asynchronously now?" />
+    <MESSAGE value="no longer throwing asynch exceptions" />
+    <MESSAGE value="we are cooking with petrol now" />
+    <MESSAGE value="working on mapping input from OSC" />
+    <MESSAGE value="printing for debugging" />
+    <MESSAGE value="removing some unused code" />
+    <MESSAGE value="taking a break, reaktor interface is starting to look cool and useful" />
+    <MESSAGE value="values are getting pushed through to klampt, but not being used to update the simulation" />
+    <MESSAGE value="sleep time, need to figure out how to make sure the OSC gets through" />
+    <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
+    <MESSAGE value="removing unnecessary (and broken) methods" />
+    <MESSAGE value="changing the sleep time has weird effects, investigate further" />
+    <MESSAGE value="still messing with sleep time" />
+    <option name="LAST_COMMIT_MESSAGE" value="still messing with sleep time" />
+  </component>
+</project>

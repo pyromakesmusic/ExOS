@@ -1,0 +1,5 @@
+name;link_a;link_b;transform_a;transform_b;label_a;label_b;turns;r_0;l_0
+left_sternocleidomastoid;0;1;.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2
+right_sternocleidomastoid;0;1;-.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2
+left_rectus_abdominus;1;4;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6
+right_rectus_abdominus;1;4;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6

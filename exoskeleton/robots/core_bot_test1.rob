@@ -1,0 +1,26 @@
+### This is the center robot, upon which other robot links will be mounted ###
+### Only joint links should receive instructions, not bone links ###
+TParent 1 0 0   0 1 0   0 0 1   0 0 0  \
+0.0707372 0.9974950  0.0000000   -0.9974950  0.0707372  0.0000000   0.0000000  0.0000000  1.0000000    0 0 -3  \
+1 0 0   0 1 0   0 0 1   0 0 -2.5
+parents -1 0 1
+axis 0 0 1   1 0 0   0 1 0
+jointtype r r r
+qMin 0 0 0
+qMax 6.2 6.2 6.2
+q 0 0 0
+geometry   "meshes/C0.stl"   "meshes/C1.stl"   "meshes/sphere.off"
+geomscale .4 1.7 .5
+mass       100 100 100
+automass
+torqueMax  50 50 50
+accMax     1 1 1
+velMax     1 1 1
+
+joint normal 0
+joint normal 1
+joint normal 2
+
+servoP 100 100 100
+servoI 0 0 0
+servoD 30 30 30
