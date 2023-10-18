@@ -108,7 +108,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
         self.turns = 20 # Number of turns in the muscle fiber
-        self.weave_length = row["weave_length"] # at some point this should probably become a column in the attachments file
+        self.weave_length = 1 # at some point this should probably become a column in the attachments file
         self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"] # resting length - at nominal relative pressure
         self.length = self.l_0 # For calculation convenience
@@ -143,9 +143,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.transform_a = kmv.add(self.link_a[1], self.delta_a)
         self.transform_b = kmv.add(self.link_b[1], self.delta_b)
 
-
         self.geometry.setSegment(self.transform_a, self.transform_b)
-
 
         self.pressure = pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
@@ -164,8 +162,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), .5) # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
+        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
         triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]
@@ -237,17 +235,13 @@ class ExoController(klampt.control.OmniRobotInterface):
         with open(config_df["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
             rows = muscleinfo_df.shape[0]  # This is the number of rows, so the while loop should loop "row" many times
-
             muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
-
             for x in range(rows):
                 row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
                 muscle = Muscle(row, self) # Calls the muscle class constructor
                 muscle_objects.append(muscle) # Adds the muscle to the list
-
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
-            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
-
+            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)  # Adds muscle data to the dataframe
             """
             This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
             in each row.
@@ -271,7 +265,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
-        print(args)
+        print(self.pressures)
         return
 
 
@@ -283,27 +277,28 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def beginIdle(self):
         """
-        Used for loops.
+        Used to launch the idle loop
         """
         self.shutdown_flag = False
-
         while self.shutdown_flag == False:
             self.idle()
 
 
-    def idle(self, bones_transforms):
+    def idle(self, bones_transforms, commands):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
-        self.bones = bones_transforms # Change this, want to apply transforms to each
-        force_list = [] # Makes a new empty list... of tuples? Needs link number, force, and transform
+        self.bones = bones_transforms  # Change this, want to apply transforms to each
+        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            triplet_a, triplet_b = muscle.update(self.pressures[i])  # This is probably important, should eventually contract w OSC argument
+            triplet_a, triplet_b = muscle.update(commands[i])  # This is probably important, should eventually contract w OSC argument
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
-        return pd.Series(force_list)
+        force_series = pd.Series(force_list)
+        print(force_series)  # For testing
+        return force_series
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -333,7 +328,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         # test_body = self.body(robot.link(1)) # Change this
 
         #test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
-        print(force_list)
 
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         """
@@ -354,7 +348,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_end = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
 
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
-                                for x in range(len(self.link_transforms_start))] # Takes the Lie derivative from start -> end
+                                for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
         return self.link_transforms_end # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
@@ -401,7 +395,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         klampt.vis.lock()
-        forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
+        forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         klampt.vis.unlock()
         return
@@ -419,7 +413,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
         await self.gui_idle_loop()
-        self.controller.osc_handler.transport.close()
+        self.controller.osc_handler.transport.close()  # Closes the server and releases the socket
         return
 
     """
