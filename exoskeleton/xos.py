@@ -164,8 +164,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), .5) # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
+        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
 
         triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]
@@ -296,7 +296,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         command_list: Should come from OSC signal but may be something else for testing
         """
         self.bones = bones_transforms # Change this, want to apply transforms to each
-
         force_list = [] # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
@@ -334,7 +333,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         # test_body = self.body(robot.link(1)) # Change this
 
         #test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
-
+        print(force_list)
 
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         """
@@ -393,34 +392,33 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.link_transforms = None # Nominal values for initialization, think of this as the "tare" or zero
 
         # Asynchronous event loop initialization
-        asyncio.run(self.threaded_idle_launcher())
+        asyncio.run(self.gui_idle_launcher())
 
 
 
-    def idlefunc(self):
+    def gui_idle(self):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         klampt.vis.lock()
-        print(self.controller.pressures)
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         klampt.vis.unlock()
         return
 
-    async def threaded_idle_loop(self):
+    async def gui_idle_loop(self):
         while klampt.vis.shown():
-            self.idlefunc()
+            self.gui_idle()
             await asyncio.sleep(0)
 
-    async def threaded_idle_launcher(self):
+    async def gui_idle_launcher(self):
         """
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
-        await self.threaded_idle_loop()
+        await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()
         return
 
@@ -435,7 +433,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.run()
         STOP_FLAG = False
         while STOP_FLAG == False:
-            self.idlefunc()
+            self.gui_idle()
 
         self.XOS.close()
         klampt.vis.kill()

@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00322" summary="think I made some unit vectors?">
-      <created>1696902071697</created>
-      <option name="number" value="00322" />
-      <option name="presentableId" value="LOCAL-00322" />
-      <option name="project" value="LOCAL" />
-      <updated>1696902071697</updated>
     </task>
     <task id="LOCAL-00323" summary="creating force 3-tuples">
       <created>1697001100394</created>
@@ -523,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697646772436</updated>
     </task>
-    <option name="localTasksCounter" value="371" />
+    <task id="LOCAL-00371" summary="removing unnecessary (and broken) methods">
+      <created>1697647381823</created>
+      <option name="number" value="00371" />
+      <option name="presentableId" value="LOCAL-00371" />
+      <option name="project" value="LOCAL" />
+      <updated>1697647381823</updated>
+    </task>
+    <option name="localTasksCounter" value="372" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
     <MESSAGE value="muscle now returns triplets?" />
     <MESSAGE value="removed unnecessary print statements" />
     <MESSAGE value="not applying forces for some reason again" />
@@ -564,6 +563,7 @@
     <MESSAGE value="values are getting pushed through to klampt, but not being used to update the simulation" />
     <MESSAGE value="sleep time, need to figure out how to make sure the OSC gets through" />
     <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="pressures seem to be feeding in from reaktor now!!!" />
+    <MESSAGE value="removing unnecessary (and broken) methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing unnecessary (and broken) methods" />
   </component>
 </project>
