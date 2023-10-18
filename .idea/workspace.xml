@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,13 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00327" summary="cleaning up a little bit of stuff that didn't make sense">
-      <created>1697071690330</created>
-      <option name="number" value="00327" />
-      <option name="presentableId" value="LOCAL-00327" />
-      <option name="project" value="LOCAL" />
-      <updated>1697071690330</updated>
     </task>
     <task id="LOCAL-00328" summary="got a cool error">
       <created>1697072529256</created>
@@ -522,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697668010762</updated>
     </task>
-    <option name="localTasksCounter" value="376" />
+    <task id="LOCAL-00376" summary="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand">
+      <created>1697669077093</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1697669077093</updated>
+    </task>
+    <option name="localTasksCounter" value="377" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="appears to be now applying forces" />
     <MESSAGE value="jackpot" />
     <MESSAGE value="from here the rest is tuning, and mapping OSC" />
     <MESSAGE value="now need to map the OSC values to change the forces" />
@@ -563,6 +561,7 @@
     <MESSAGE value="changing the sleep time has weird effects, investigate further" />
     <MESSAGE value="still messing with sleep time" />
     <MESSAGE value="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb" />
+    <MESSAGE value="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand" />
   </component>
 </project>
