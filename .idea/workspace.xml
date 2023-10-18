@@ -7,7 +7,6 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,22 +47,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/robots",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157/exoskeleton/robots&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
@@ -180,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00320" summary="we are generating 3-tuples that look like they could almost be position vectors, which I think is very close to turning them into actual vectors">
-      <created>1696803026313</created>
-      <option name="number" value="00320" />
-      <option name="presentableId" value="LOCAL-00320" />
-      <option name="project" value="LOCAL" />
-      <updated>1696803026313</updated>
     </task>
     <task id="LOCAL-00321" summary="think I made some unit vectors?">
       <created>1696804323194</created>
@@ -524,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697506422419</updated>
     </task>
-    <option name="localTasksCounter" value="369" />
+    <task id="LOCAL-00369" summary="sleep time, need to figure out how to make sure the OSC gets through">
+      <created>1697517057985</created>
+      <option name="number" value="00369" />
+      <option name="presentableId" value="LOCAL-00369" />
+      <option name="project" value="LOCAL" />
+      <updated>1697517057985</updated>
+    </task>
+    <option name="localTasksCounter" value="370" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -540,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="improving the loop structure" />
     <MESSAGE value="okay now the controller has a knowledge state of its link transforms called &quot;bones&quot;" />
     <MESSAGE value="updating structure, next need to make sure muscle returns the correct data structure of forces" />
     <MESSAGE value="muscle now returns triplets?" />
@@ -565,6 +563,7 @@
     <MESSAGE value="removing some unused code" />
     <MESSAGE value="taking a break, reaktor interface is starting to look cool and useful" />
     <MESSAGE value="values are getting pushed through to klampt, but not being used to update the simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="values are getting pushed through to klampt, but not being used to update the simulation" />
+    <MESSAGE value="sleep time, need to figure out how to make sure the OSC gets through" />
+    <option name="LAST_COMMIT_MESSAGE" value="sleep time, need to figure out how to make sure the OSC gets through" />
   </component>
 </project>

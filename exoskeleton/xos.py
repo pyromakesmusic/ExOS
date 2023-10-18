@@ -405,11 +405,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         return
 
-    def threaded_idle_loop(self):
-        while klampt.vis.shown():
-            klampt.vis.lock()
-            self.idlefunc()
-            klampt.vis.unlock()
+    async def threaded_idle_loop(self):
+        klampt.vis.lock()
+        print(self.controller.pressures)
+        self.idlefunc()
+        klampt.vis.unlock()
 
     async def threaded_idle_launcher(self):
         """
@@ -418,7 +418,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
-        self.threaded_idle_loop() # I think maybe this has something to do with it? Never called
+        while klampt.vis.shown():
+            await self.threaded_idle_loop() # I think maybe this has something to do with it? Never called
+            await asyncio.sleep(0)
         return
 
     """
