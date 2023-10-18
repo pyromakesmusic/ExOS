@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00331" summary="messing with the dataframe iteration, who would have thunk that this would be a sticking point">
-      <created>1697244922451</created>
-      <option name="number" value="00331" />
-      <option name="presentableId" value="LOCAL-00331" />
-      <option name="project" value="LOCAL" />
-      <updated>1697244922451</updated>
     </task>
     <task id="LOCAL-00332" summary="changed to namedtuples">
       <created>1697251922393</created>
@@ -522,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697669524946</updated>
     </task>
-    <option name="localTasksCounter" value="380" />
+    <task id="LOCAL-00380" summary="using negative indexing allows me to add more columns to the muscle dataframe">
+      <created>1697672554260</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1697672554260</updated>
+    </task>
+    <option name="localTasksCounter" value="381" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="now need to map the OSC values to change the forces" />
     <MESSAGE value="adding multithreading" />
     <MESSAGE value="some things I don't understand about calling multithreaded things" />
     <MESSAGE value="changing conda environments" />
@@ -563,6 +563,7 @@
     <MESSAGE value="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand" />
     <MESSAGE value="made new ensemble copy" />
     <MESSAGE value="updating more stuff, trying to get the drawn muscles to update" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating more stuff, trying to get the drawn muscles to update" />
+    <MESSAGE value="using negative indexing allows me to add more columns to the muscle dataframe" />
+    <option name="LAST_COMMIT_MESSAGE" value="using negative indexing allows me to add more columns to the muscle dataframe" />
   </component>
 </project>

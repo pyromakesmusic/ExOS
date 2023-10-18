@@ -108,7 +108,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
         self.turns = 20  # Number of turns in the muscle fiber
-        self.weave_length = 1  # at some point this should probably become a column in the attachments file
+        self.weave_length = row["weave_length"]  # weave length - should be shorter than l_0
         self.r_0 = row["r_0"]  # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"]  # resting length - at nominal relative pressure
         self.length = self.l_0  # For calculation convenience, self.length should change
@@ -118,15 +118,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
     def update(self, pressure): # Should call every loop?
         """
-        This should take some kind of force/pressure argument from the controller and apply it to both the simulated
-        and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
-        Asynchronous is probably more flexible, but is going to require slightly more (but not much more) in terms of
-        computing power.
         ================
-        UPDATE 10.2.2023:
-
-        More commentary. A muscle is a spring with variable stiffness. So, the simplest implementation should just be
-        a single value that informs the pressure/stiffness.
+        UPDATE 10.2.2023: A muscle is a spring with variable stiffness.
 
         Should apply two forces at points determined by self.transform_a and self.transform_b, moderated by the
         McKibben muscle formula.
@@ -140,14 +133,12 @@ class Muscle(klampt.sim.ActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         # Muscle transforms must update based on new link positions //// maybe not with applyForceAtLocalPoint()
-        self.transform_a = kmv.add(self.link_a[1], self.delta_a)
+        self.transform_a = kmv.add(self.link_a[1], self.delta_a)  # Adds link transform to muscle delta
         self.transform_b = kmv.add(self.link_b[1], self.delta_b)
-
 
         self.geometry.setSegment(self.transform_a, self.transform_b)  # Should be updating the transform
 
-
-        self.pressure = pressure
+        self.pressure = pressure  # Updates muscle pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0  # Calculates displacement based on new length
 
