@@ -67,8 +67,8 @@ def configLoader(config_name):
 # Visualization
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    name = dataframe_row[1] # Should be the name index
-    muscle = dataframe_row[11] # Should be index of the muscle object
+    name = dataframe_row[1]  # Should be the name index
+    muscle = dataframe_row[11]  # Should be index of the muscle object
     klampt.vis.add(name, muscle.geometry)
     klampt.vis.setColor(name, 1, 0, 0, 1)
 
@@ -107,14 +107,14 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
-        self.turns = 20 # Number of turns in the muscle fiber
-        self.weave_length = 1 # at some point this should probably become a column in the attachments file
-        self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
-        self.l_0 = row["l_0"] # resting length - at nominal relative pressure
-        self.length = self.l_0 # For calculation convenience
-        self.stiffness = 1 # Spring constant/variable - may change at some point
-        self.displacement = 0 # This is a calculated value
-        self.pressure = 0 # Should be pressure relative to external, so start at 0
+        self.turns = 20  # Number of turns in the muscle fiber
+        self.weave_length = 1  # at some point this should probably become a column in the attachments file
+        self.r_0 = row["r_0"]  # resting radius - at nominal relative pressure
+        self.l_0 = row["l_0"]  # resting length - at nominal relative pressure
+        self.length = self.l_0  # For calculation convenience, self.length should change
+        self.stiffness = 1  # Spring constant/variable - may change at some point
+        self.displacement = 0  # This is a calculated value
+        self.pressure = 0  # Should be pressure relative to external, so start at 0
 
     def update(self, pressure): # Should call every loop?
         """
@@ -144,12 +144,12 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.transform_b = kmv.add(self.link_b[1], self.delta_b)
 
 
-        self.geometry.setSegment(self.transform_a, self.transform_b)
+        self.geometry.setSegment(self.transform_a, self.transform_b)  # Should be updating the transform
 
 
         self.pressure = pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
-        self.displacement = self.length - self.l_0
+        self.displacement = self.length - self.l_0  # Calculates displacement based on new length
 
         # Muscle formula
         force = ((self.pressure * (self.weave_length)**2)/(4 * math.pi * (self.turns)**2)) * \
@@ -403,6 +403,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.lock()
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
+        self.drawMuscles()  # Don't know if this is working right now, but this is probably the right place to do it
         klampt.vis.unlock()
         return
 
