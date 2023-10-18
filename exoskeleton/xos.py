@@ -68,7 +68,7 @@ def configLoader(config_name):
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1]  # Should be the name index
-    muscle = dataframe_row[11]  # Should be index of the muscle object
+    muscle = dataframe_row[-1]  # Should be index of the muscle object
     klampt.vis.add(name, muscle.geometry)
     klampt.vis.setColor(name, 1, 0, 0, 1)
 
