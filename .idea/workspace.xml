@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="" />
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="still messing with sleep time">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00324" summary="doesn't work adding the muscles to visualization yet">
-      <created>1697045354145</created>
-      <option name="number" value="00324" />
-      <option name="presentableId" value="LOCAL-00324" />
-      <option name="project" value="LOCAL" />
-      <updated>1697045354145</updated>
     </task>
     <task id="LOCAL-00325" summary="doesn't work adding the muscles to visualization yet">
       <created>1697045435034</created>
@@ -519,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697651612541</updated>
     </task>
-    <option name="localTasksCounter" value="373" />
+    <task id="LOCAL-00373" summary="still messing with sleep time">
+      <created>1697651727192</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1697651727192</updated>
+    </task>
+    <option name="localTasksCounter" value="374" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -535,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removed unnecessary print statements" />
     <MESSAGE value="not applying forces for some reason again" />
     <MESSAGE value="appears to be now applying forces" />
     <MESSAGE value="jackpot" />
@@ -560,6 +562,7 @@
     <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
     <MESSAGE value="removing unnecessary (and broken) methods" />
     <MESSAGE value="changing the sleep time has weird effects, investigate further" />
-    <option name="LAST_COMMIT_MESSAGE" value="changing the sleep time has weird effects, investigate further" />
+    <MESSAGE value="still messing with sleep time" />
+    <option name="LAST_COMMIT_MESSAGE" value="still messing with sleep time" />
   </component>
 </project>

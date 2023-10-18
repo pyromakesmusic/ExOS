@@ -346,7 +346,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
             link.applyForceAtPoint(force_vector, transform)
 
 
-        self.simulate(.1)
+        self.simulate(.001)
         self.updateWorld()
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
