@@ -60,12 +60,6 @@ class AsyncServer:
         print("Serving on {}".format(self.ip))
         return
 
-    async def launch(self, main_loop):
-        await main_loop()
-        print("Launching OSC receive. . .")
-        self.transport.close()
-        return
-
     def map(self, pattern, func, *args, **kwargs):
         """
         pattern: string var defining the OSC pattern to be recognized

@@ -401,15 +401,17 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
+        klampt.vis.lock()
+        print(self.controller.pressures)
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
+        klampt.vis.unlock()
         return
 
     async def threaded_idle_loop(self):
-        klampt.vis.lock()
-        print(self.controller.pressures)
-        self.idlefunc()
-        klampt.vis.unlock()
+        while klampt.vis.shown():
+            self.idlefunc()
+            await asyncio.sleep(0)
 
     async def threaded_idle_launcher(self):
         """
@@ -418,9 +420,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
-        while klampt.vis.shown():
-            await self.threaded_idle_loop() # I think maybe this has something to do with it? Never called
-            await asyncio.sleep(0)
+        await self.threaded_idle_loop()
+        self.controller.osc_handler.transport.close()
         return
 
     """
