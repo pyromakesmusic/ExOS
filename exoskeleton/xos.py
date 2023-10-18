@@ -68,7 +68,7 @@ def configLoader(config_name):
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1] # Should be the name index
-    muscle = dataframe_row[11] # Should be index of the muscle object
+    muscle = dataframe_row[12] # Should be index of the muscle object
     klampt.vis.add(name, muscle.geometry)
     klampt.vis.setColor(name, 1, 0, 0, 1)
 
@@ -108,7 +108,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
         self.turns = 20 # Number of turns in the muscle fiber
-        self.weave_length = 1 # at some point this should probably become a column in the attachments file
+        self.weave_length = row["weave_length"] # at some point this should probably become a column in the attachments file
         self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"] # resting length - at nominal relative pressure
         self.length = self.l_0 # For calculation convenience
@@ -164,8 +164,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
+        force_a = kmv.mul(kmv.mul(unit_a, force), .5) # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
 
         triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]
