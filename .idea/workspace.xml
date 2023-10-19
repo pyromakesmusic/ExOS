@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00338" summary="have listed the link transformations, now must apply them to muscle coordinates">
-      <created>1697269166451</created>
-      <option name="number" value="00338" />
-      <option name="presentableId" value="LOCAL-00338" />
-      <option name="project" value="LOCAL" />
-      <updated>1697269166451</updated>
     </task>
     <task id="LOCAL-00339" summary="removing unnecessary declarations">
       <created>1697341955545</created>
@@ -523,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697677457052</updated>
     </task>
-    <option name="localTasksCounter" value="387" />
+    <task id="LOCAL-00387" summary="assigned more things to be configured from the configuration file">
+      <created>1697677677980</created>
+      <option name="number" value="00387" />
+      <option name="presentableId" value="LOCAL-00387" />
+      <option name="project" value="LOCAL" />
+      <updated>1697677677980</updated>
+    </task>
+    <option name="localTasksCounter" value="388" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="still trying to get the asynchronous code to run" />
     <MESSAGE value="am I programming asynchronously now?" />
     <MESSAGE value="no longer throwing asynch exceptions" />
     <MESSAGE value="we are cooking with petrol now" />
@@ -564,6 +561,7 @@
     <MESSAGE value="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;exoskeleton/robots/muscle_attachments_b1.csv&#10;#&#9;exoskeleton/xos.py" />
     <MESSAGE value="made the world just an empty space for now, removed the plane" />
     <MESSAGE value="updated more things to be easily configurable" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated more things to be easily configurable" />
+    <MESSAGE value="assigned more things to be configured from the configuration file" />
+    <option name="LAST_COMMIT_MESSAGE" value="assigned more things to be configured from the configuration file" />
   </component>
 </project>

@@ -64,9 +64,9 @@ def configLoader(config_name):
         print("Configuring control rates...", fn.readline().rstrip())
         timestep = float(fn.readline().rstrip())  # Float value setting simulation and control time step; want >.01 sec
         print("Setting controller address...", fn.readline().rstrip())
-        address = fn.readline().rstrip()
+        address = fn.readline().rstrip()  # Controller IP address; string value
         print("Setting controller network socket...", fn.readline().rstrip())
-        port = int(fn.readline().rstrip())
+        port = int(fn.readline().rstrip())  # Controller network socket
         config = {"core": core,
                   "attachments": attachments,
                   "world_path": world_path,
