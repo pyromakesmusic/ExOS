@@ -180,13 +180,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00332" summary="changed to namedtuples">
-      <created>1697251922393</created>
-      <option name="number" value="00332" />
-      <option name="presentableId" value="LOCAL-00332" />
-      <option name="project" value="LOCAL" />
-      <updated>1697251922393</updated>
-    </task>
     <task id="LOCAL-00333" summary="got the CSV file taking muscles now, just need to apply forces">
       <created>1697260362826</created>
       <option name="number" value="00333" />
@@ -523,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697672554260</updated>
     </task>
-    <option name="localTasksCounter" value="381" />
+    <task id="LOCAL-00381" summary="adding more stuff to muscle attachments">
+      <created>1697672813997</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1697672813997</updated>
+    </task>
+    <option name="localTasksCounter" value="382" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding multithreading" />
     <MESSAGE value="some things I don't understand about calling multithreaded things" />
     <MESSAGE value="changing conda environments" />
     <MESSAGE value="messing with environments" />
@@ -564,6 +563,7 @@
     <MESSAGE value="made new ensemble copy" />
     <MESSAGE value="updating more stuff, trying to get the drawn muscles to update" />
     <MESSAGE value="using negative indexing allows me to add more columns to the muscle dataframe" />
-    <option name="LAST_COMMIT_MESSAGE" value="using negative indexing allows me to add more columns to the muscle dataframe" />
+    <MESSAGE value="adding more stuff to muscle attachments" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding more stuff to muscle attachments" />
   </component>
 </project>

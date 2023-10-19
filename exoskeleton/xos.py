@@ -107,14 +107,13 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
-        self.turns = 20  # Number of turns in the muscle fiber
+        self.turns = row["turns"]  # Number of turns in the muscle fiber
         self.weave_length = row["weave_length"]  # weave length - should be shorter than l_0
         self.r_0 = row["r_0"]  # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"]  # resting length - at nominal relative pressure
-        self.length = self.l_0  # For calculation convenience, self.length should change
-        self.stiffness = 1  # Spring constant/variable - may change at some point
-        self.displacement = 0  # This is a calculated value
-        self.pressure = 0  # Should be pressure relative to external, so start at 0
+        self.length = self.l_0  # For calculation convenience. self.length should change eache time step
+        self.displacement = 0  # This is a calculated value; should initialize at 0
+        self.pressure = 0  # Should be pressure relative to external, so initialize at 0 - need units eventually
 
     def update(self, pressure): # Should call every loop?
         """
@@ -152,19 +151,18 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
         # Calculating unit vectors by dividing 3-tuple by its length
         unit_a = kmv.div(direction_a, self.length)
-        unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
+        unit_b = kmv.mul(direction_b, self.length)  # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 5) # Half (.5) because of Newton's Third Law,
+        force_a = kmv.mul(kmv.mul(unit_a, force), 5)  # Half (.5) because of Newton's Third Law,
         force_b = kmv.mul(kmv.mul(unit_b, force), 5)
 
-        triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
+        triplet_a = [self.b, force_a, self.transform_b]  # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]
         """
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
         """
-
         return triplet_a, triplet_b
 
     def appearance(self):
