@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world>
 
-  <terrain file="C:\Users\Pyro\Documents\Math4157\exoskeleton\terrains\plane.off" scale="4 4 4" translation = "0 0 -10"/>
 
   <simulation>
     <globals />
-    <!-- object parameters -->
-    <terrain index="0">
-      <geometry kFriction="0.9" kRestitution="0.7"/>
-    </terrain>
 
   </simulation>
 

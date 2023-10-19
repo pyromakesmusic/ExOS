@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00335" summary="adding more commentary">
-      <created>1697261789683</created>
-      <option name="number" value="00335" />
-      <option name="presentableId" value="LOCAL-00335" />
-      <option name="project" value="LOCAL" />
-      <updated>1697261789683</updated>
     </task>
     <task id="LOCAL-00336" summary="made new robot with a leg">
       <created>1697262739348</created>
@@ -528,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697674415061</updated>
     </task>
-    <option name="localTasksCounter" value="384" />
+    <task id="LOCAL-00384" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;exoskeleton/robots/muscle_attachments_b1.csv&#10;#&#9;exoskeleton/xos.py">
+      <created>1697676001904</created>
+      <option name="number" value="00384" />
+      <option name="presentableId" value="LOCAL-00384" />
+      <option name="project" value="LOCAL" />
+      <updated>1697676001904</updated>
+    </task>
+    <option name="localTasksCounter" value="385" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -544,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="messing with environments" />
     <MESSAGE value="need to call awaitable with asyncio.run()" />
     <MESSAGE value="messing with multithreading" />
     <MESSAGE value="still trying to get the asynchronous code to run" />
@@ -569,6 +563,7 @@
     <MESSAGE value="adding more stuff to muscle attachments" />
     <MESSAGE value="updating dataframe to have columns specific to each muscle" />
     <MESSAGE value="muscles are moving in the vis now" />
-    <option name="LAST_COMMIT_MESSAGE" value="muscles are moving in the vis now" />
+    <MESSAGE value="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;exoskeleton/robots/muscle_attachments_b1.csv&#10;#&#9;exoskeleton/xos.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;exoskeleton/robots/muscle_attachments_b1.csv&#10;#&#9;exoskeleton/xos.py" />
   </component>
 </project>

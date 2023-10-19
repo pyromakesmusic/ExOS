@@ -361,11 +361,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.world.loadRobot(filepath["core"])
         self.robot = self.world.robot(0)
         klampt.vis.add("X001", self.robot)
-        self.drawEdges()
         klampt.vis.setWindowTitle("X001  Test")
-        klampt.vis.setBackgroundColor(0,.75,1,1) # Makes background teal
+        klampt.vis.setBackgroundColor(.8, .8, .9, 1)  # Makes background teal
         self.viewport = klampt.vis.getViewport()
-        self.viewport.fit([0,0,-5], 25)
+        self.viewport.fit([0, 0, -5], 25)
 
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot)
@@ -374,6 +373,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.controller = ExoController(self.robot, self.world, filepath)
         # Adds the muscles to the visualization
         self.drawMuscles()
+
+        self.drawOptions()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
@@ -415,7 +416,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Visual Options
     """
-    def drawEdges(self):
+    def drawOptions(self):
         """
         Changes some drawing options for link geometry
         In the setDraw function, the first argument is an integer denoting vertices, edges. etc. The second is a Boolean
@@ -425,11 +426,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         wm = self.world
         for x in range(wm.numIDs()):
-            wm.appearance(x).setDraw(2, True) # Makes edges visible
-            wm.appearance(x).setDraw(4, True) # I believe this should make edges glow
-            wm.appearance(x).setColor(2, 0, 0, 0, .5) # Makes edges black
-            wm.appearance(x).setColor(4, 0, 0, .9, .4) # This makes the faces a translucent grey\
-            wm.appearance(x).setColor(4, 0, 0, 1, .5) # I think this changes the glow color
+            wm.appearance(x).setDraw(2, True)  # Makes edges visible
+            wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
+            wm.appearance(x).setColor(2, 0, 0, 0, .5)  # Makes edges black
+            wm.appearance(x).setColor(4, 0, .5, .9, .9)  # This makes the faces a translucent blue grey
+            wm.appearance(x).setColor(4, 0, 0, 1, .5)  # I think this changes the glow color
 
     def drawMuscles(self):
         """
@@ -442,7 +443,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Shutdown
     """
-
     def shutdown(self):
         klampt.vis.kill()
 
