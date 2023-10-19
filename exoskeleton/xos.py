@@ -88,11 +88,11 @@ class Muscle(klampt.sim.ActuatorEmulator):
         """
         klampt.sim.ActuatorEmulator.__init__(self)
         self.controller = controller
-        self.a = int(row["link_a"]) # Gets index of the row of link a
+        self.a = int(row["link_a"])  # Gets index of the row of link a
         self.b = int(row["link_b"])
 
-        self.link_a = self.controller.bones[self.a] # Refers to the *controller's* knowledge of the link *transform*
-        self.link_b = self.controller.bones[self.b]
+        self.link_a = self.controller.bones[self.a]  # Refers to the **controller's** knowledge of the link *transform*
+        self.link_b = self.controller.bones[self.b]  # Might need to be updated
         """
         The below values describe the displacement of the muscle attachment from the origin of the robot link.
         """
@@ -132,6 +132,9 @@ class Muscle(klampt.sim.ActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         # Muscle transforms must update based on new link positions //// maybe not with applyForceAtLocalPoint()
+        self.link_a = self.controller.bones[self.a]
+        self.link_b = self.controller.bones[self.b]
+
         self.transform_a = kmv.add(self.link_a[1], self.delta_a)  # Adds link transform to muscle delta
         self.transform_b = kmv.add(self.link_b[1], self.delta_b)
 
@@ -343,8 +346,8 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_end = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
 
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
-                                for x in range(len(self.link_transforms_start))] # Takes the Lie derivative from start -> end
-        return self.link_transforms_end # I don't even know if we need to use this, depends on if we pass by ref or var
+                                for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
+        return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -378,7 +381,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.drawMuscles()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-        self.link_transforms = None # Nominal values for initialization, think of this as the "tare" or zero
+
+        # The below values aren't moving quite right, but they are moving!!!
+        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialize
 
         # Asynchronous event loop initialization
         asyncio.run(self.gui_idle_launcher())
