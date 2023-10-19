@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo1.ens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,83 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00324" summary="doesn't work adding the muscles to visualization yet">
-      <created>1697045354145</created>
-      <option name="number" value="00324" />
-      <option name="presentableId" value="LOCAL-00324" />
-      <option name="project" value="LOCAL" />
-      <updated>1697045354145</updated>
-    </task>
-    <task id="LOCAL-00325" summary="doesn't work adding the muscles to visualization yet">
-      <created>1697045435034</created>
-      <option name="number" value="00325" />
-      <option name="presentableId" value="LOCAL-00325" />
-      <option name="project" value="LOCAL" />
-      <updated>1697045435034</updated>
-    </task>
-    <task id="LOCAL-00326" summary="I think I was never calling the createMuscle function so it never got added">
-      <created>1697071362604</created>
-      <option name="number" value="00326" />
-      <option name="presentableId" value="LOCAL-00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1697071362604</updated>
-    </task>
-    <task id="LOCAL-00327" summary="cleaning up a little bit of stuff that didn't make sense">
-      <created>1697071690330</created>
-      <option name="number" value="00327" />
-      <option name="presentableId" value="LOCAL-00327" />
-      <option name="project" value="LOCAL" />
-      <updated>1697071690330</updated>
-    </task>
-    <task id="LOCAL-00328" summary="got a cool error">
-      <created>1697072529256</created>
-      <option name="number" value="00328" />
-      <option name="presentableId" value="LOCAL-00328" />
-      <option name="project" value="LOCAL" />
-      <updated>1697072529256</updated>
-    </task>
-    <task id="LOCAL-00329" summary="Some restructuring done successfully">
-      <created>1697156777486</created>
-      <option name="number" value="00329" />
-      <option name="presentableId" value="LOCAL-00329" />
-      <option name="project" value="LOCAL" />
-      <updated>1697156777486</updated>
-    </task>
-    <task id="LOCAL-00330" summary="separated drawing muscles into its own function">
-      <created>1697160769013</created>
-      <option name="number" value="00330" />
-      <option name="presentableId" value="LOCAL-00330" />
-      <option name="project" value="LOCAL" />
-      <updated>1697160769013</updated>
-    </task>
-    <task id="LOCAL-00331" summary="messing with the dataframe iteration, who would have thunk that this would be a sticking point">
-      <created>1697244922451</created>
-      <option name="number" value="00331" />
-      <option name="presentableId" value="LOCAL-00331" />
-      <option name="project" value="LOCAL" />
-      <updated>1697244922451</updated>
-    </task>
-    <task id="LOCAL-00332" summary="changed to namedtuples">
-      <created>1697251922393</created>
-      <option name="number" value="00332" />
-      <option name="presentableId" value="LOCAL-00332" />
-      <option name="project" value="LOCAL" />
-      <updated>1697251922393</updated>
-    </task>
-    <task id="LOCAL-00333" summary="got the CSV file taking muscles now, just need to apply forces">
-      <created>1697260362826</created>
-      <option name="number" value="00333" />
-      <option name="presentableId" value="LOCAL-00333" />
-      <option name="project" value="LOCAL" />
-      <updated>1697260362826</updated>
-    </task>
-    <task id="LOCAL-00334" summary="added some commentary">
-      <created>1697260443888</created>
-      <option name="number" value="00334" />
-      <option name="presentableId" value="LOCAL-00334" />
-      <option name="project" value="LOCAL" />
-      <updated>1697260443888</updated>
     </task>
     <task id="LOCAL-00335" summary="adding more commentary">
       <created>1697261789683</created>
@@ -516,14 +444,91 @@
       <option name="project" value="LOCAL" />
       <updated>1697647381823</updated>
     </task>
-    <task id="LOCAL-00372" summary="this looks so hilarious bro">
-      <created>1697647672857</created>
+    <task id="LOCAL-00372" summary="changing the sleep time has weird effects, investigate further">
+      <created>1697651612541</created>
       <option name="number" value="00372" />
       <option name="presentableId" value="LOCAL-00372" />
       <option name="project" value="LOCAL" />
-      <updated>1697647672857</updated>
+      <updated>1697651612541</updated>
     </task>
-    <option name="localTasksCounter" value="373" />
+    <task id="LOCAL-00373" summary="still messing with sleep time">
+      <created>1697651727192</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1697651727192</updated>
+    </task>
+    <task id="LOCAL-00374" summary="still messing with sleep time">
+      <created>1697667403170</created>
+      <option name="number" value="00374" />
+      <option name="presentableId" value="LOCAL-00374" />
+      <option name="project" value="LOCAL" />
+      <updated>1697667403170</updated>
+    </task>
+    <task id="LOCAL-00375" summary="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb">
+      <created>1697668010762</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1697668010762</updated>
+    </task>
+    <task id="LOCAL-00376" summary="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand">
+      <created>1697669077093</created>
+      <option name="number" value="00376" />
+      <option name="presentableId" value="LOCAL-00376" />
+      <option name="project" value="LOCAL" />
+      <updated>1697669077093</updated>
+    </task>
+    <task id="LOCAL-00377" summary="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand">
+      <created>1697669129621</created>
+      <option name="number" value="00377" />
+      <option name="presentableId" value="LOCAL-00377" />
+      <option name="project" value="LOCAL" />
+      <updated>1697669129621</updated>
+    </task>
+    <task id="LOCAL-00378" summary="made new ensemble copy">
+      <created>1697669176256</created>
+      <option name="number" value="00378" />
+      <option name="presentableId" value="LOCAL-00378" />
+      <option name="project" value="LOCAL" />
+      <updated>1697669176256</updated>
+    </task>
+    <task id="LOCAL-00379" summary="updating more stuff, trying to get the drawn muscles to update">
+      <created>1697669524946</created>
+      <option name="number" value="00379" />
+      <option name="presentableId" value="LOCAL-00379" />
+      <option name="project" value="LOCAL" />
+      <updated>1697669524946</updated>
+    </task>
+    <task id="LOCAL-00380" summary="using negative indexing allows me to add more columns to the muscle dataframe">
+      <created>1697672554260</created>
+      <option name="number" value="00380" />
+      <option name="presentableId" value="LOCAL-00380" />
+      <option name="project" value="LOCAL" />
+      <updated>1697672554260</updated>
+    </task>
+    <task id="LOCAL-00381" summary="adding more stuff to muscle attachments">
+      <created>1697672813997</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1697672813997</updated>
+    </task>
+    <task id="LOCAL-00382" summary="updating dataframe to have columns specific to each muscle">
+      <created>1697674036269</created>
+      <option name="number" value="00382" />
+      <option name="presentableId" value="LOCAL-00382" />
+      <option name="project" value="LOCAL" />
+      <updated>1697674036269</updated>
+    </task>
+    <task id="LOCAL-00383" summary="muscles are moving in the vis now">
+      <created>1697674415061</created>
+      <option name="number" value="00383" />
+      <option name="presentableId" value="LOCAL-00383" />
+      <option name="project" value="LOCAL" />
+      <updated>1697674415061</updated>
+    </task>
+    <option name="localTasksCounter" value="384" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,15 +544,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removed unnecessary print statements" />
-    <MESSAGE value="not applying forces for some reason again" />
-    <MESSAGE value="appears to be now applying forces" />
-    <MESSAGE value="jackpot" />
-    <MESSAGE value="from here the rest is tuning, and mapping OSC" />
-    <MESSAGE value="now need to map the OSC values to change the forces" />
-    <MESSAGE value="adding multithreading" />
-    <MESSAGE value="some things I don't understand about calling multithreaded things" />
-    <MESSAGE value="changing conda environments" />
     <MESSAGE value="messing with environments" />
     <MESSAGE value="need to call awaitable with asyncio.run()" />
     <MESSAGE value="messing with multithreading" />
@@ -563,7 +559,16 @@
     <MESSAGE value="sleep time, need to figure out how to make sure the OSC gets through" />
     <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
     <MESSAGE value="removing unnecessary (and broken) methods" />
-    <MESSAGE value="this looks so hilarious bro" />
-    <option name="LAST_COMMIT_MESSAGE" value="this looks so hilarious bro" />
+    <MESSAGE value="changing the sleep time has weird effects, investigate further" />
+    <MESSAGE value="still messing with sleep time" />
+    <MESSAGE value="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb" />
+    <MESSAGE value="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand" />
+    <MESSAGE value="made new ensemble copy" />
+    <MESSAGE value="updating more stuff, trying to get the drawn muscles to update" />
+    <MESSAGE value="using negative indexing allows me to add more columns to the muscle dataframe" />
+    <MESSAGE value="adding more stuff to muscle attachments" />
+    <MESSAGE value="updating dataframe to have columns specific to each muscle" />
+    <MESSAGE value="muscles are moving in the vis now" />
+    <option name="LAST_COMMIT_MESSAGE" value="muscles are moving in the vis now" />
   </component>
 </project>

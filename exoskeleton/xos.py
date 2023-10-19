@@ -67,8 +67,8 @@ def configLoader(config_name):
 # Visualization
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    name = dataframe_row[1] # Should be the name index
-    muscle = dataframe_row[12] # Should be index of the muscle object
+    name = dataframe_row[1]  # Should be the name index
+    muscle = dataframe_row[-1]  # Should be index of the muscle object
     klampt.vis.add(name, muscle.geometry)
     klampt.vis.setColor(name, 1, 0, 0, 1)
 
@@ -88,11 +88,11 @@ class Muscle(klampt.sim.ActuatorEmulator):
         """
         klampt.sim.ActuatorEmulator.__init__(self)
         self.controller = controller
-        self.a = int(row["link_a"]) # Gets index of the row of link a
+        self.a = int(row["link_a"])  # Gets index of the row of link a
         self.b = int(row["link_b"])
 
-        self.link_a = self.controller.bones[self.a] # Refers to the *controller's* knowledge of the link *transform*
-        self.link_b = self.controller.bones[self.b]
+        self.link_a = self.controller.bones[self.a]  # Refers to the **controller's** knowledge of the link *transform*
+        self.link_b = self.controller.bones[self.b]  # Might need to be updated
         """
         The below values describe the displacement of the muscle attachment from the origin of the robot link.
         """
@@ -107,26 +107,18 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
-        self.turns = 20 # Number of turns in the muscle fiber
-        self.weave_length = 1 # at some point this should probably become a column in the attachments file
-        self.r_0 = row["r_0"] # resting radius - at nominal relative pressure
-        self.l_0 = row["l_0"] # resting length - at nominal relative pressure
-        self.length = self.l_0 # For calculation convenience
-        self.stiffness = 1 # Spring constant/variable - may change at some point
-        self.displacement = 0 # This is a calculated value
-        self.pressure = 0 # Should be pressure relative to external, so start at 0
+        self.turns = row["turns"]  # Number of turns in the muscle fiber
+        self.weave_length = row["weave_length"]  # weave length - should be shorter than l_0
+        self.r_0 = row["r_0"]  # resting radius - at nominal relative pressure
+        self.l_0 = row["l_0"]  # resting length - at nominal relative pressure
+        self.length = self.l_0  # For calculation convenience. self.length should change eache time step
+        self.displacement = 0  # This is a calculated value; should initialize at 0
+        self.pressure = 0  # Should be pressure relative to external, so initialize at 0 - need units eventually
 
     def update(self, pressure): # Should call every loop?
         """
-        This should take some kind of force/pressure argument from the controller and apply it to both the simulated
-        and physical robots simultaneously. Maybe more like "update"? Do I want synchronous control or asynchronous?
-        Asynchronous is probably more flexible, but is going to require slightly more (but not much more) in terms of
-        computing power.
         ================
-        UPDATE 10.2.2023:
-
-        More commentary. A muscle is a spring with variable stiffness. So, the simplest implementation should just be
-        a single value that informs the pressure/stiffness.
+        UPDATE 10.2.2023: A muscle is a spring with variable stiffness.
 
         Should apply two forces at points determined by self.transform_a and self.transform_b, moderated by the
         McKibben muscle formula.
@@ -140,14 +132,17 @@ class Muscle(klampt.sim.ActuatorEmulator):
         x: the displacement. This will probably take the most work to calculate.
         """
         # Muscle transforms must update based on new link positions //// maybe not with applyForceAtLocalPoint()
-        self.transform_a = kmv.add(self.link_a[1], self.delta_a)
+        self.link_a = self.controller.bones[self.a]
+        self.link_b = self.controller.bones[self.b]
+
+        self.transform_a = kmv.add(self.link_a[1], self.delta_a)  # Adds link transform to muscle delta
         self.transform_b = kmv.add(self.link_b[1], self.delta_b)
 
-        self.geometry.setSegment(self.transform_a, self.transform_b)
+        self.geometry.setSegment(self.transform_a, self.transform_b)  # Should be updating the transform
 
-        self.pressure = pressure
+        self.pressure = pressure  # Updates muscle pressure
         self.length = kmv.distance(self.transform_a, self.transform_b)
-        self.displacement = self.length - self.l_0
+        self.displacement = self.length - self.l_0  # Calculates displacement based on new length
 
         # Muscle formula
         force = ((self.pressure * (self.weave_length)**2)/(4 * math.pi * (self.turns)**2)) * \
@@ -159,19 +154,18 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
         # Calculating unit vectors by dividing 3-tuple by its length
         unit_a = kmv.div(direction_a, self.length)
-        unit_b = kmv.mul(direction_b, self.length) # Redundant but I'm including this to make it easier to read for now
+        unit_b = kmv.mul(direction_b, self.length)  # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 5000) # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), 5000)
+        force_a = kmv.mul(kmv.mul(unit_a, force), 5)  # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), 5)
 
-        triplet_a = [self.b, force_a, self.transform_b] # Should be integer, 3-tuple, transform
+        triplet_a = [self.b, force_a, self.transform_b]  # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]
         """
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
         """
-
         return triplet_a, triplet_b
 
     def appearance(self):
@@ -207,6 +201,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
+        self.shutdown_flag = False
 
         # self.assistant = vxui.VoiceControlUI()
         # self.assistant.announce("Initializing systems.")
@@ -235,13 +230,17 @@ class ExoController(klampt.control.OmniRobotInterface):
         with open(config_df["attachments"]) as attachments:
             muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
             rows = muscleinfo_df.shape[0]  # This is the number of rows, so the while loop should loop "row" many times
+
             muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
+
             for x in range(rows):
                 row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
                 muscle = Muscle(row, self) # Calls the muscle class constructor
                 muscle_objects.append(muscle) # Adds the muscle to the list
+
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
-            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)  # Adds muscle data to the dataframe
+            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
+
             """
             This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
             in each row.
@@ -265,7 +264,7 @@ class ExoController(klampt.control.OmniRobotInterface):
     def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
-        print(self.pressures)
+        print(args)
         return
 
 
@@ -277,28 +276,25 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def beginIdle(self):
         """
-        Used to launch the idle loop
+        Used for loops.
         """
         self.shutdown_flag = False
-        while self.shutdown_flag == False:
+        while not self.shutdown_flag:
             self.idle()
 
-
-    def idle(self, bones_transforms, commands):
+    def idle(self, bones_transforms):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
-        self.bones = bones_transforms  # Change this, want to apply transforms to each
+        self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            triplet_a, triplet_b = muscle.update(commands[i])  # This is probably important, should eventually contract w OSC argument
+            triplet_a, triplet_b = muscle.update(self.pressures[i])  # This is probably important, should eventually contract w OSC argument
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
-        force_series = pd.Series(force_list)
-        print(force_series)  # For testing
-        return force_series
+        return pd.Series(force_list)
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -328,19 +324,20 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         # test_body = self.body(robot.link(1)) # Change this
 
         #test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
+        print(force_list)
 
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         """
         Now here adding a section to make sure the muscles contract in the simulation.
         """
         for force in force_list:
-            link = self.body(self.robotmodel.link(force[0]))
-            force_vector = force[1]
-            transform = force[2]
-            link.applyForceAtPoint(force_vector, transform)
+            link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
+            force_vector = force[1]  # Gets the force vector
+            transform = force[2]  # Gets the transform at which to apply force
+            link.applyForceAtLocalPoint(force_vector, transform)
 
 
-        self.simulate(.1)
+        self.simulate(.001)
         self.updateWorld()
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
@@ -349,7 +346,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
-        return self.link_transforms_end # I don't even know if we need to use this, depends on if we pass by ref or var
+        return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
 
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
@@ -375,17 +372,15 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [10, 10, 5000, 5000] # List of commands to the muscles, this might need to contain stuff here - we will see
-        """
-        Right now the above values are magic numbers for testing
-        """
         # Adds the muscles to the visualization
         self.drawMuscles()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-        self.link_transforms = None # Nominal values for initialization, think of this as the "tare" or zero
 
-        # Asynchronous event loop initialization
+        # The below values aren't moving quite right, but they are moving!!!
+        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
+
+        # Begin GUI event loop
         asyncio.run(self.gui_idle_launcher())
 
 
@@ -395,8 +390,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         klampt.vis.lock()
-        forces = self.controller.idle(self.link_transforms, self.commands)  # Transforms from simulator
+        forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
+        self.drawMuscles()  # Don't know if this is working right now, but this is probably the right place to do it
         klampt.vis.unlock()
         return
 
@@ -413,24 +409,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
         await self.gui_idle_loop()
-        self.controller.osc_handler.transport.close()  # Closes the server and releases the socket
+        self.controller.osc_handler.transport.close()
         return
-
-    """
-    Test Methods
-    """
-    def animationTest(self):
-        """
-        Animates the native trajectory.
-        """
-        klampt.vis.visualization.animate("X001", self.trajectory, speed=3, endBehavior="loop")
-        klampt.vis.run()
-        STOP_FLAG = False
-        while STOP_FLAG == False:
-            self.gui_idle()
-
-        self.XOS.close()
-        klampt.vis.kill()
 
     """
     Visual Options
@@ -458,7 +438,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         muscle_df = self.controller.muscles
         for row in muscle_df.itertuples():
             visMuscles(row)
-
 
     """
     Shutdown
