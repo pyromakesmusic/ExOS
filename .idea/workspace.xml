@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo_config.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00341" summary="added list of bones">
-      <created>1697342286995</created>
-      <option name="number" value="00341" />
-      <option name="presentableId" value="LOCAL-00341" />
-      <option name="project" value="LOCAL" />
-      <updated>1697342286995</updated>
     </task>
     <task id="LOCAL-00342" summary="more untangling">
       <created>1697345176473</created>
@@ -523,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697678470000</updated>
     </task>
-    <option name="localTasksCounter" value="390" />
+    <task id="LOCAL-00390" summary="color is now updating based on internal pressure">
+      <created>1697679874980</created>
+      <option name="number" value="00390" />
+      <option name="presentableId" value="LOCAL-00390" />
+      <option name="project" value="LOCAL" />
+      <updated>1697679874980</updated>
+    </task>
+    <option name="localTasksCounter" value="391" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="we are cooking with petrol now" />
     <MESSAGE value="working on mapping input from OSC" />
     <MESSAGE value="printing for debugging" />
     <MESSAGE value="removing some unused code" />
@@ -564,6 +563,7 @@
     <MESSAGE value="assigned more things to be configured from the configuration file" />
     <MESSAGE value="configuration going crazy" />
     <MESSAGE value="hid the muscle labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="hid the muscle labels" />
+    <MESSAGE value="color is now updating based on internal pressure" />
+    <option name="LAST_COMMIT_MESSAGE" value="color is now updating based on internal pressure" />
   </component>
 </project>
