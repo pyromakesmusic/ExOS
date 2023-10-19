@@ -4,3 +4,5 @@ MUSCLE ATTACHMENTS:
 robots/muscle_attachments_b1.csv
 WORLD:
 worlds/test_world1.xml
+CONTROL RATE:
+.001

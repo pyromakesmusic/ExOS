@@ -56,11 +56,17 @@ def configLoader(config_name):
     print("Loading configuration" + config_name + "...")
     with open(config_name) as fn:
         print("Loading core components...", fn.readline().rstrip())
-        core = fn.readline().rstrip()
+        core = fn.readline().rstrip()  # Filepath to robot core
         print("Loading muscle attachments...", fn.readline().rstrip())
-        attachments = fn.readline().rstrip()
+        attachments = fn.readline().rstrip()  # Filepath to muscle attachments file
+        print("Locating world filepath...", fn.readline().rstrip())
+        world_path = fn.readline().rstrip()  # Filepath to the world file
+        print("Configuring control rates...", fn.readline().rstrip())
+        timestep = float(fn.readline().rstrip())  # Float value setting simulation and control time step; want >.01 sec
         config = {"core": core,
-                      "attachments": attachments}
+                  "attachments": attachments,
+                  "world_path": world_path,
+                  "timestep": timestep}
 
         return config
 
@@ -68,7 +74,7 @@ def configLoader(config_name):
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1]  # Should be the name index
-    muscle = dataframe_row[-1]  # Should be index of the muscle object
+    muscle = dataframe_row[-1]  # Index of the muscle object
     klampt.vis.add(name, muscle.geometry)
     klampt.vis.setColor(name, 1, 0, 0, 1)
 
@@ -171,22 +177,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
     def appearance(self):
         app = klampt.Appearance()
         app.setDraw(2, True)
-        app.setColor(1, 0, 0, 1)
+        app.setColor(0, 1, 0, 1)
         return app
-
-    # def updateColor(self):
-    #     app = klampt.Appearance()
-    #     app.setDraw(2, True)
-    #     app.setColor()
-    #     return
-
-
-class MuscleGroup:
-    """
-    This is for convenience, for later. Maybe making multiple muscle groups contract together makes sense?
-    """
-    def __init__(self):
-        pass
 
 
 class ExoController(klampt.control.OmniRobotInterface):
@@ -208,6 +200,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
+        self.dt = config_data["timestep"]
         self.osc_handler = osck.AsyncServer("127.0.0.1", 5005)  # Make these configurable
         self.oscMapper()  # Might be time to implement these?
 
@@ -272,7 +265,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Should be the same as the physical device, Reaktor control rate, simulation timestep
         """
-        return 20
+        return self.dt
 
     def beginIdle(self):
         """
@@ -301,9 +294,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
-    def __init__(self, wm, robot):
+    def __init__(self, wm, robot, timestep):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
-        self.dt = 1
+        self.dt = timestep
         self.world = wm
         self.robotmodel = robot
 
@@ -336,7 +329,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
             transform = force[2]  # Gets the transform at which to apply force
             link.applyForceAtLocalPoint(force_vector, transform)
 
-
         self.simulate(.001)
         self.updateWorld()
         """
@@ -352,25 +344,25 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
     """
-    def __init__(self, filepath):
+    def __init__(self, config):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
-        #All the world elements MUST be loaded before the Simulator is created
+        # All the world elements MUST be loaded before the Simulator is created
 
-        self.world = klampt.io.load('WorldModel', 'worlds/test_world1.xml')# Updating this to use a particular prepared XML world file
+        self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
         klampt.vis.add("world", self.world)
-        self.world.loadRobot(filepath["core"])
+        self.world.loadRobot(config["core"])
         self.robot = self.world.robot(0)
         klampt.vis.add("X001", self.robot)
         klampt.vis.setWindowTitle("X001  Test")
-        klampt.vis.setBackgroundColor(.8, .8, .9, 1)  # Makes background teal
+        klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
 
         # creation of the simulation
-        self.sim = ExoSim(self.world, self.robot)
+        self.sim = ExoSim(self.world, self.robot, config["timestep"])
 
         # creation of the controller
-        self.controller = ExoController(self.robot, self.world, filepath)
+        self.controller = ExoController(self.robot, self.world, config)
         # Adds the muscles to the visualization
         self.drawMuscles()
 
