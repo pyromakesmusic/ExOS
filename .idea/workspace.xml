@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+    <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="configuration going crazy">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00339" summary="removing unnecessary declarations">
-      <created>1697341955545</created>
-      <option name="number" value="00339" />
-      <option name="presentableId" value="LOCAL-00339" />
-      <option name="project" value="LOCAL" />
-      <updated>1697341955545</updated>
     </task>
     <task id="LOCAL-00340" summary="added list of bones">
       <created>1697342151672</created>
@@ -521,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697677677980</updated>
     </task>
-    <option name="localTasksCounter" value="388" />
+    <task id="LOCAL-00388" summary="configuration going crazy">
+      <created>1697677712345</created>
+      <option name="number" value="00388" />
+      <option name="presentableId" value="LOCAL-00388" />
+      <option name="project" value="LOCAL" />
+      <updated>1697677712345</updated>
+    </task>
+    <option name="localTasksCounter" value="389" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="am I programming asynchronously now?" />
     <MESSAGE value="no longer throwing asynch exceptions" />
     <MESSAGE value="we are cooking with petrol now" />
     <MESSAGE value="working on mapping input from OSC" />
@@ -562,6 +562,7 @@
     <MESSAGE value="made the world just an empty space for now, removed the plane" />
     <MESSAGE value="updated more things to be easily configurable" />
     <MESSAGE value="assigned more things to be configured from the configuration file" />
-    <option name="LAST_COMMIT_MESSAGE" value="assigned more things to be configured from the configuration file" />
+    <MESSAGE value="configuration going crazy" />
+    <option name="LAST_COMMIT_MESSAGE" value="configuration going crazy" />
   </component>
 </project>

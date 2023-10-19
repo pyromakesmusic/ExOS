@@ -83,6 +83,7 @@ def visMuscles(dataframe_row):
     muscle = dataframe_row[-1]  # Index of the muscle object
     klampt.vis.add(name, muscle.geometry)
     klampt.vis.setColor(name, 1, 0, 0, 1)
+    klampt.vis.hideLabel(name)
 
 """
 CLASS DEFINITIONS
@@ -283,13 +284,13 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     def idle(self, bones_transforms):
         """
-        command_list: Should come from OSC signal but may be something else for testing
+        bones_transforms: A list of link locations
         """
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            triplet_a, triplet_b = muscle.update(self.pressures[i])  # This is probably important, should eventually contract w OSC argument
+            triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
@@ -305,7 +306,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.dt = timestep
         self.world = wm
         self.robotmodel = robot
-
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         self.link_transforms_end = None
         self.link_transforms_diff = None
@@ -320,9 +320,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         """
         wm = self.world
-        # test_body = self.body(robot.link(1)) # Change this
-
-        #test_body.applyForceAtPoint([0,0,10], [0.5,0,0]) # this is working!!!
         print(force_list)
 
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
@@ -335,7 +332,7 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
             transform = force[2]  # Gets the transform at which to apply force
             link.applyForceAtLocalPoint(force_vector, transform)
 
-        self.simulate(.001)
+        self.simulate(self.dt)
         self.updateWorld()
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
@@ -370,9 +367,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, config)
         # Adds the muscles to the visualization
-        self.drawMuscles()
+        #self.drawMuscles()
 
-        self.drawOptions()
+        #self.drawOptions()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
