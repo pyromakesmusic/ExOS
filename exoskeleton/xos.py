@@ -63,10 +63,16 @@ def configLoader(config_name):
         world_path = fn.readline().rstrip()  # Filepath to the world file
         print("Configuring control rates...", fn.readline().rstrip())
         timestep = float(fn.readline().rstrip())  # Float value setting simulation and control time step; want >.01 sec
+        print("Setting controller address...", fn.readline().rstrip())
+        address = fn.readline().rstrip()
+        print("Setting controller network socket...", fn.readline().rstrip())
+        port = int(fn.readline().rstrip())
         config = {"core": core,
                   "attachments": attachments,
                   "world_path": world_path,
-                  "timestep": timestep}
+                  "timestep": timestep,
+                  "address": address,
+                  "port": port}
 
         return config
 
@@ -201,7 +207,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.world = world
         self.robot = robotmodel
         self.dt = config_data["timestep"]
-        self.osc_handler = osck.AsyncServer("127.0.0.1", 5005)  # Make these configurable
+        self.osc_handler = osck.AsyncServer(config_data["address"], config_data["port"])  # Make these configurable
         self.oscMapper()  # Might be time to implement these?
 
         # Creating a series of link transforms, I need to check if this gets updated automatically

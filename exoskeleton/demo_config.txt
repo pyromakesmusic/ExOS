@@ -6,3 +6,7 @@ WORLD:
 worlds/test_world1.xml
 CONTROL RATE:
 .001
+CONTROL ADDRESS:
+127.0.0.1
+CONTROL PORT:
+5005
