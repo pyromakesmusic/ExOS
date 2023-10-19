@@ -282,13 +282,12 @@ class ExoController(klampt.control.OmniRobotInterface):
         while not self.shutdown_flag:
             self.idle()
 
-
     def idle(self, bones_transforms):
         """
         command_list: Should come from OSC signal but may be something else for testing
         """
-        self.bones = bones_transforms # Change this, want to apply transforms to each
-        force_list = [] # Makes a new empty list... of tuples? Needs link number, force, and transform
+        self.bones = bones_transforms  # Not working quite right, might need rotation
+        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
             triplet_a, triplet_b = muscle.update(self.pressures[i])  # This is probably important, should eventually contract w OSC argument
@@ -373,19 +372,15 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, filepath)
-        self.commands = [10, 10, 5000, 5000] # List of commands to the muscles, this might need to contain stuff here - we will see
-        """
-        Right now the above values are magic numbers for testing
-        """
         # Adds the muscles to the visualization
         self.drawMuscles()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
         # The below values aren't moving quite right, but they are moving!!!
-        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialize
+        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
 
-        # Asynchronous event loop initialization
+        # Begin GUI event loop
         asyncio.run(self.gui_idle_launcher())
 
 
@@ -418,22 +413,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         return
 
     """
-    Test Methods
-    """
-    def animationTest(self):
-        """
-        Animates the native trajectory.
-        """
-        klampt.vis.visualization.animate("X001", self.trajectory, speed=3, endBehavior="loop")
-        klampt.vis.run()
-        STOP_FLAG = False
-        while STOP_FLAG == False:
-            self.gui_idle()
-
-        self.XOS.close()
-        klampt.vis.kill()
-
-    """
     Visual Options
     """
     def drawEdges(self):
@@ -459,7 +438,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         muscle_df = self.controller.muscles
         for row in muscle_df.itertuples():
             visMuscles(row)
-
 
     """
     Shutdown

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,13 +180,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00334" summary="added some commentary">
-      <created>1697260443888</created>
-      <option name="number" value="00334" />
-      <option name="presentableId" value="LOCAL-00334" />
-      <option name="project" value="LOCAL" />
-      <updated>1697260443888</updated>
     </task>
     <task id="LOCAL-00335" summary="adding more commentary">
       <created>1697261789683</created>
@@ -522,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697674036269</updated>
     </task>
-    <option name="localTasksCounter" value="383" />
+    <task id="LOCAL-00383" summary="muscles are moving in the vis now">
+      <created>1697674415061</created>
+      <option name="number" value="00383" />
+      <option name="presentableId" value="LOCAL-00383" />
+      <option name="project" value="LOCAL" />
+      <updated>1697674415061</updated>
+    </task>
+    <option name="localTasksCounter" value="384" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -538,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="changing conda environments" />
     <MESSAGE value="messing with environments" />
     <MESSAGE value="need to call awaitable with asyncio.run()" />
     <MESSAGE value="messing with multithreading" />
@@ -563,6 +564,7 @@
     <MESSAGE value="using negative indexing allows me to add more columns to the muscle dataframe" />
     <MESSAGE value="adding more stuff to muscle attachments" />
     <MESSAGE value="updating dataframe to have columns specific to each muscle" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating dataframe to have columns specific to each muscle" />
+    <MESSAGE value="muscles are moving in the vis now" />
+    <option name="LAST_COMMIT_MESSAGE" value="muscles are moving in the vis now" />
   </component>
 </project>
