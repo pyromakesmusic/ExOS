@@ -77,13 +77,20 @@ def configLoader(config_name):
         return config
 
 # Visualization
+
+def colorCalc(current_pressure, max_pressure):
+    return current_pressure / max_pressure
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1]  # Should be the name index
     muscle = dataframe_row[-1]  # Index of the muscle object
-    klampt.vis.add(name, muscle.geometry)
-    klampt.vis.setColor(name, 1, 0, 0, 1)
-    klampt.vis.hideLabel(name)
+    redness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1
+    greenness = 1 - redness
+    klampt.vis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
+    klampt.vis.setColor(name, redness, greenness, 0, 1)  # Sets the color of the muscle
+    klampt.vis.hideLabel(name)  # Hides the name of the muscle
+
+
 
 """
 CLASS DEFINITIONS
@@ -122,6 +129,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
 
         self.turns = row["turns"]  # Number of turns in the muscle fiber
         self.weave_length = row["weave_length"]  # weave length - should be shorter than l_0
+        self.max_pressure = row["max_pressure"]  # want this to autoscale for now, eventually static
         self.r_0 = row["r_0"]  # resting radius - at nominal relative pressure
         self.l_0 = row["l_0"]  # resting length - at nominal relative pressure
         self.length = self.l_0  # For calculation convenience. self.length should change eache time step
@@ -154,6 +162,9 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)  # Should be updating the transform
 
         self.pressure = pressure  # Updates muscle pressure
+        if self.pressure > self.max_pressure:  # autoscaling algorithm
+            self.max_pressure = self.pressure
+
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0  # Calculates displacement based on new length
 
