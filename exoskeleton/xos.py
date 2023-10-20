@@ -79,15 +79,17 @@ def configLoader(config_name):
 # Visualization
 
 def colorCalc(current_pressure, max_pressure):
-    return current_pressure / max_pressure
+    if current_pressure / max_pressure < 1:
+        return current_pressure / max_pressure
+    else:
+        return 1
 def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1]  # Should be the name index
     muscle = dataframe_row[-1]  # Index of the muscle object
-    redness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1
-    greenness = 1 - redness
+    redness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
     klampt.vis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
-    klampt.vis.setColor(name, redness, greenness, 0, 1)  # Sets the color of the muscle
+    klampt.vis.setColor(name, redness, 0, 0, 1)  # Sets the color of the muscle
     klampt.vis.hideLabel(name)  # Hides the name of the muscle
 
 
