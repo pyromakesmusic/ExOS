@@ -162,8 +162,6 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)  # Should be updating the transform
 
         self.pressure = pressure  # Updates muscle pressure
-        if self.pressure > self.max_pressure:  # autoscaling algorithm
-            self.max_pressure = self.pressure
 
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0  # Calculates displacement based on new length
@@ -191,6 +189,10 @@ class Muscle(klampt.sim.ActuatorEmulator):
         to change the muscle color based on the pressure input.
         """
         return triplet_a, triplet_b
+
+    def pressure_autoscale(self):
+        if self.pressure > self.max_pressure:  # autoscaling algorithm
+            self.max_pressure = self.pressure
 
     def appearance(self):
         app = klampt.Appearance()
