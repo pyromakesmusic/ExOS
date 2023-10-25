@@ -279,7 +279,6 @@ class ExoController(klampt.control.OmniRobotInterface):
     def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
-        print(args)
         return
 
 
@@ -335,7 +334,6 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 
         """
         wm = self.world
-        print(force_list)
 
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         """
