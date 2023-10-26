@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00345" summary="okay now the controller has a knowledge state of its link transforms called &quot;bones&quot;">
-      <created>1697403642096</created>
-      <option name="number" value="00345" />
-      <option name="presentableId" value="LOCAL-00345" />
-      <option name="project" value="LOCAL" />
-      <updated>1697403642096</updated>
     </task>
     <task id="LOCAL-00346" summary="updating structure, next need to make sure muscle returns the correct data structure of forces">
       <created>1697404306504</created>
@@ -524,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697782610139</updated>
     </task>
-    <option name="localTasksCounter" value="394" />
+    <task id="LOCAL-00394" summary="updated reaktor trigger to have controllable rate">
+      <created>1698256051931</created>
+      <option name="number" value="00394" />
+      <option name="presentableId" value="LOCAL-00394" />
+      <option name="project" value="LOCAL" />
+      <updated>1698256051931</updated>
+    </task>
+    <option name="localTasksCounter" value="395" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -540,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="taking a break, reaktor interface is starting to look cool and useful" />
     <MESSAGE value="values are getting pushed through to klampt, but not being used to update the simulation" />
     <MESSAGE value="sleep time, need to figure out how to make sure the OSC gets through" />
     <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
@@ -565,6 +562,7 @@
     <MESSAGE value="updating based on pressure, looks good, just need to tune filters - could probably add phone control or audio control with relative ease - add voice assistant" />
     <MESSAGE value="want to turn off the autoscaling for smoother performance" />
     <MESSAGE value="improved performance and added some muscles" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved performance and added some muscles" />
+    <MESSAGE value="updated reaktor trigger to have controllable rate" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated reaktor trigger to have controllable rate" />
   </component>
 </project>
