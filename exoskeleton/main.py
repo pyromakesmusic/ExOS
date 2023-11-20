@@ -1,7 +1,7 @@
 import xos
 
 def init_main():
-    test_config = xos.configLoader("demo_config.txt")
+    test_config = xos.configLoader("test_config2.txt")
     """
     Currently, the configuration file contains:
         Filepaths to:

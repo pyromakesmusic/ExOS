@@ -28,3 +28,5 @@ joint normal 4
 servoP 100 100 100 100 100
 servoI 0 0 0 0 0
 servoD 30 30 30 30 30
+
+### mount 1 rightarm_bot.rob 1 0 0 0 1 0 0 0 1 1.7 2 .2 as rightarm ###

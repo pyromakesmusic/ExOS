@@ -28,8 +28,8 @@ import klampt.math.vectorops as kmv  # This is for cross products
 CUSTOM LIBRARIES
 """
 import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
-# import pyonics.submodules.ui.interface as vxui  # Voice control engine
-# import pyonics.submodules.ui.system_strings as sysvx  # Voice assistant speech strings
+import pyonics.submodules.ui.interface as vxui  # Voice control engine
+import pyonics.submodules.ui.system_strings as sysvx  # Voice assistant speech strings
 
 """
 PANDAS CONFIG
@@ -217,8 +217,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         self.shutdown_flag = False
 
-        # self.assistant = vxui.VoiceControlUI()
-        # self.assistant.announce("Initializing systems.")
+        self.assistant = vxui.VoiceControlUI()
+        self.assistant.announce("Initializing systems.")
+        # Testing the voice assistant
+        self.voice_test()
 
         self.world = world
         self.robot = robotmodel
@@ -310,6 +312,16 @@ class ExoController(klampt.control.OmniRobotInterface):
             i += 1
         return pd.Series(force_list)
 
+    # Test Methods
+
+    def voice_test(self):
+    # Plays all the strings in the catalog to test for audio quality.
+        self.assistant.announce(sysvx.test_string1)
+        self.assistant.announce(sysvx.access_denied)
+        self.assistant.announce(sysvx.ready_string1)
+        self.assistant.announce(sysvx.lowpower_string1)
+        self.assistant.announce(sysvx.malfunction_string1)
+
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
@@ -386,11 +398,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
-        # The below values aren't moving quite right, but they are moving!!!
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
 
         # Begin GUI event loop
-        asyncio.run(self.gui_idle_launcher())
+        #asyncio.run(self.gui_idle_launcher())
 
 
 
@@ -416,7 +427,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
-        klampt.vis.show()
+        #klampt.vis.show()
         await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()
         return
@@ -463,4 +474,4 @@ def init_main(config_filepath):
 
 
 if __name__ == "__main__":
-    init_main("demo_config.txt")
+    init_main("test_config2.txt")
