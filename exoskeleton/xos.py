@@ -321,6 +321,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.assistant.announce(sysvx.ready_string1)
         self.assistant.announce(sysvx.lowpower_string1)
         self.assistant.announce(sysvx.malfunction_string1)
+        self.assistant.announce(sysvx.no_auth_string1)
+
 
 
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
@@ -464,6 +466,39 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     def shutdown(self):
         klampt.vis.kill()
+
+class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
+    # This is for an interface designed to be projected onto a semi-transparent HUD
+    def __init__(self):
+        klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
+        # All the world elements MUST be loaded before the Simulator is created
+
+        self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
+        klampt.vis.add("world", self.world)
+        self.world.loadRobot(config["core"])
+        self.robot = self.world.robot(0)
+        klampt.vis.add("X001", self.robot)
+        klampt.vis.setWindowTitle("X001  Test")
+        klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
+        self.viewport = klampt.vis.getViewport()
+        self.viewport.fit([0, 0, -5], 25)
+
+        # creation of the simulation
+        self.sim = ExoSim(self.world, self.robot, config["timestep"])
+
+        # creation of the controller
+        self.controller = ExoController(self.robot, self.world, config)
+        # Adds the muscles to the visualization
+        # self.drawMuscles()
+
+        # self.drawOptions()
+        # Simulator creation and activation comes at the very end
+        self.sim.setGravity([0, 0, -9.8])
+
+        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
+
+        # Begin GUI event loop
+        # asyncio.run(self.gui_idle_launcher())
 
 """
 MAIN LOOP

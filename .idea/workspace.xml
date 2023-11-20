@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/test_config2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test3.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/rightarm_bot.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,13 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00347" summary="muscle now returns triplets?">
-      <created>1697405993567</created>
-      <option name="number" value="00347" />
-      <option name="presentableId" value="LOCAL-00347" />
-      <option name="project" value="LOCAL" />
-      <updated>1697405993577</updated>
     </task>
     <task id="LOCAL-00348" summary="removed unnecessary print statements">
       <created>1697406154570</created>
@@ -526,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698282649401</updated>
     </task>
-    <option name="localTasksCounter" value="396" />
+    <task id="LOCAL-00396" summary="adding and customizing voice control">
+      <created>1700517655810</created>
+      <option name="number" value="00396" />
+      <option name="presentableId" value="LOCAL-00396" />
+      <option name="project" value="LOCAL" />
+      <updated>1700517655810</updated>
+    </task>
+    <option name="localTasksCounter" value="397" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -542,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="sleep time, need to figure out how to make sure the OSC gets through" />
     <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
     <MESSAGE value="removing unnecessary (and broken) methods" />
     <MESSAGE value="changing the sleep time has weird effects, investigate further" />
@@ -567,6 +561,7 @@
     <MESSAGE value="improved performance and added some muscles" />
     <MESSAGE value="updated reaktor trigger to have controllable rate" />
     <MESSAGE value="improved demo control panel and updated documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved demo control panel and updated documentation" />
+    <MESSAGE value="adding and customizing voice control" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding and customizing voice control" />
   </component>
 </project>
