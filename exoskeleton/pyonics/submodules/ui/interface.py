@@ -195,8 +195,7 @@ class VoiceControlUI:
         self.voice_recog = None
         self.mic = None
         self.stream = None
-        self.voice_recog()
-
+        self.voice_launch()
 
 
     def announce(self, stringvar):
@@ -205,24 +204,26 @@ class VoiceControlUI:
         self.voice_engine.runAndWait()
         return
 
-    def voice_recog(self):
+    def voice_launch(self):
         # Voice Recognition Initialization
-        self.recog_model = vosk.Model("vosk-model-small-en-us-0.15")
+        self.recog_model = vosk.Model(model_name="vosk-model-small-en-us-0.15")
         self.voice_recog = vosk.KaldiRecognizer(self.recog_model, 16000)
         self.mic = pyaudio.PyAudio()
         self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
         self.stream.start_stream()
-        """
-        while True:
-            data = self.stream.read(4096)
-            if self.voice_recog.AcceptWaveform(data):
-                text = self.voice_recog.Result()
-                print(f"{text[14:-3]}")
-        """
 
+        while True:
+            self.voice_loop()
         # Tests/ Strings
 
         self.voice_engine.runAndWait()
+
+    def voice_loop(self):
+        data = self.stream.read(1024)
+        if self.voice_recog.AcceptWaveform(data):
+            text = self.voice_recog.Result()
+            print(f"{text[14:-3]}")
+            return(text)
 class tkinterGUI:
 
     def total_samples(self, sample_rate=20, total_time=20):
