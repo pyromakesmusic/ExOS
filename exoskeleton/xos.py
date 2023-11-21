@@ -511,7 +511,7 @@ class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
         # Creates the HUD visual area
         self.window = tk.Tk()
         self.window.overrideredirect(True)
-        self.window.geometry("500x250+500+500")
+        self.window.geometry("1920x1080")
         # Make the window transparent
         self.window.attributes("-alpha", 0.2)
 
