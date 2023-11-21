@@ -335,7 +335,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.assistant.announce(sysvx.malfunction_string1)
         self.assistant.announce(sysvx.no_auth_string1)
 
-
 """
 Simulation
 """
@@ -423,6 +422,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
+        self.hud.update_HUD()
         klampt.vis.lock()
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
@@ -433,7 +433,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     async def gui_idle_loop(self):
         print(self.controller.input)
         while klampt.vis.shown():
-            self.hud.update_HUD()
             self.update_GUI()
             await asyncio.sleep(0)
 
@@ -482,78 +481,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     def shutdown(self):
         klampt.vis.kill()
-
-class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
-    # This is for an interface designed to be projected onto a semi-transparent HUD, no Klamp't desktopGUI
-    def __init__(self, config):
-        self.state = "INITIALIZING"
-        klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
-        # All the world elements MUST be loaded before the Simulator is created
-
-        self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
-        self.world.loadRobot(config["core"])
-
-        self.robot = self.world.robot(0)
-        # creation of the simulation
-        self.sim = ExoSim(self.world, self.robot, config["timestep"])
-        # creation of the controller
-        self.controller = ExoController(self.robot, self.world, config)
-
-        # Simulator creation and activation comes at the very end
-        self.sim.setGravity([0, 0, -9.8])
-
-        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
-
-
-        # UI state variable
-        self.state = "OFF"
-        self.window = None
-
-        # Begin UI event loop
-        asyncio.run(self.hud_idle_launcher())
-
-    def on_close(self):
-        self.window.destroy()
-
-    def create_HUD(self):
-        # Creates the HUD visual area
-        self.window = tk.Tk()
-        self.window.overrideredirect(True)
-        self.window.geometry("1920x1080")
-        # Make the window transparent
-        self.window.attributes("-alpha", 0.2)
-
-        # Create a close button
-        close_button = tk.Button(self.window, text="Close", command=self.on_close)
-        close_button.pack(pady=10)
-        self.window.mainloop()
-
-
-    async def hud_idle_launcher(self):
-        """
-        Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
-        """
-        self.state = "ON"
-        self.create_viewport()
-        await self.controller.osc_handler.make_endpoint()  # This seems to be the way
-        await self.hud_idle_loop()
-        self.controller.osc_handler.transport.close()
-        return
-
-    async def hud_idle_loop(self):
-        while self.state == "ON":
-            print(self.controller.bones)
-            self.hud_idle()
-            await asyncio.sleep(0)
-
-    def hud_idle(self):
-        """
-        Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
-        """
-        forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
-        self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
-        return
-
 
 
 """

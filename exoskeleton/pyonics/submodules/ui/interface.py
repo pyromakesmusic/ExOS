@@ -3,9 +3,10 @@ LIBRARY IMPORTS
 """
 # Standard Libraries
 import tkinter as tk
+from datetime import datetime
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
 import ipywidgets as widgets
+from time import strftime
 import pyaudio
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -73,7 +74,7 @@ class AugmentOverlay:
             self.assistant = controller.assistant
         else:
             self.assistant = assistant
-        self.text_buffer = None
+        self.clock_text = None
         self.text_overlay = None
         self.create_HUD()
 
@@ -83,28 +84,62 @@ class AugmentOverlay:
         self.assistant.announce("Shutting down controller.")
 
     def create_HUD(self):
-        # Creates the HUD visual area as a tKinter window
-        self.HUD = tk.Tk()
-        self.HUD.overrideredirect(True)
-        self.HUD.geometry("1920x1080")
-        # Make the window transparent
-        self.HUD.attributes("-alpha", 0.2)
-        self.text_buffer = tk.StringVar()
-        self.text_overlay = tk.Label(self.HUD, textvariable="placeholder", font=("System", 100))
-        self.text_overlay.pack()
-        # Create a close button
-        close_button = tk.Button(self.HUD, text="PLACEHOLDER", command=self.HUD_close)
-        close_button.pack(pady=10)
+        # Initializes the HUD
+
+        self.HUD = tk.Tk()  # Creates the HUD visual area as a tKinter window
+        self.HUD.overrideredirect(True)  # Makes it borderless
+        self.HUD.geometry("1920x1080")  # Sets the size of the window
+        self.HUD.attributes("-alpha", 0.5)  # Make the window transparent
+        self.HUD.configure(background="black")  # Makes the background black
+        self.text_buffer = tk.StringVar()  # Creates a text buffer
+
+        # empty variable creation
+        self.objective_text = "Current Objectives:"
+        self.objectives = None
+        self.clock_text = None
+        self.clock = None
+
+        # Empty variable creation
+        self.date_text = None
+        self.date = None
+        self.close_button = None
+
+
+        self.configure_HUD()  # sets up the HUD layout by user preference
+
         self.HUD.mainloop()
+        self.HUD.focus_force()
 
     def update_HUD(self):
         # Update the label's text
-        current_text = self.controller.input
-        print(current_text)
-        self.text_buffer.set(current_text)
-        self.text_overlay = tk.Label(self.HUD, textvariable=self.text_buffer, font=("System", 100))
-        self.text_overlay.pack()
+        pass
 
+    def configure_HUD(self):
+
+        # Create a close button
+        self.objectives = tk.Label(self.HUD, text=self.objective_text, font=("System", 100), fg="white", bg="black")
+        self.objectives.pack(anchor="ne", padx=5)
+
+        # Adds a clock
+        self.clock = tk.Label(self.HUD, text=self.clock_text, font=("System", 80), fg="white", bg="black")
+
+        self.date = tk.Label(self.HUD, text=self.date_text, font=("System", 80), fg="white", bg="black")
+
+        self.date.pack(anchor="nw", padx=5)
+
+        self.clock.pack(anchor="sw", padx=5, pady=1000)
+
+
+        self.update_datetime()
+
+    def update_datetime(self):
+        now = datetime.now()
+        current_date = now.strftime("%d/%m/%Y")
+        current_time = now.strftime("%H:%M:%S")
+        self.date.config(text=current_date)
+        self.clock.config(text=current_time)
+        self.clock.after(1000, self.update_datetime)  # Update every 1000 milliseconds (1 second)
+        self.date.after(1000, self.update_datetime)
 
 """
 FUNCTION DEFINITIONS

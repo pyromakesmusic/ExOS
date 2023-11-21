@@ -202,13 +202,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00356" summary="changing conda environments">
-      <created>1697445100964</created>
-      <option name="number" value="00356" />
-      <option name="presentableId" value="LOCAL-00356" />
-      <option name="project" value="LOCAL" />
-      <updated>1697445100964</updated>
-    </task>
     <task id="LOCAL-00357" summary="messing with environments">
       <created>1697470591361</created>
       <option name="number" value="00357" />
@@ -545,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700599070539</updated>
     </task>
-    <option name="localTasksCounter" value="405" />
+    <task id="LOCAL-00405" summary="lots of reorganization">
+      <created>1700599508690</created>
+      <option name="number" value="00405" />
+      <option name="presentableId" value="LOCAL-00405" />
+      <option name="project" value="LOCAL" />
+      <updated>1700599508690</updated>
+    </task>
+    <option name="localTasksCounter" value="406" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating more stuff, trying to get the drawn muscles to update" />
     <MESSAGE value="using negative indexing allows me to add more columns to the muscle dataframe" />
     <MESSAGE value="adding more stuff to muscle attachments" />
     <MESSAGE value="updating dataframe to have columns specific to each muscle" />
@@ -586,6 +585,7 @@
     <MESSAGE value="voice recognition and text to speech both activated, aiming to turn on HUD now" />
     <MESSAGE value="rethinking class configurations, voice control UI and HUD might end up being very low level interface classes" />
     <MESSAGE value="integrated sound and cleaned up the class dependencies a little bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="integrated sound and cleaned up the class dependencies a little bit" />
+    <MESSAGE value="lots of reorganization" />
+    <option name="LAST_COMMIT_MESSAGE" value="lots of reorganization" />
   </component>
 </project>
