@@ -211,11 +211,7 @@ class VoiceControlUI:
         self.mic = pyaudio.PyAudio()
         self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
         self.stream.start_stream()
-
-        while True:
-            self.voice_loop()
         # Tests/ Strings
-
         self.voice_engine.runAndWait()
 
     def voice_loop(self):

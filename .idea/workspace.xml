@@ -5,39 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/conf/mfcc.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/conf/model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/am/final.mdl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/conf/mfcc.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/conf/model.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/graph/Gr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/graph/HCLr.fst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/graph/disambig_tid.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/ivector/final.dubm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/ivector/final.ie" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/ivector/final.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15/ivector/splice.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/README" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/am/final.mdl" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/am/final.mdl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/mfcc.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/mfcc.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/conf/model.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/model.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/Gr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/graph/Gr.fst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/HCLr.fst" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/graph/HCLr.fst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/disambig_tid.int" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/graph/disambig_tid.int" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/graph/phones/word_boundary.int" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.dubm" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/ivector/final.dubm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.ie" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/ivector/final.ie" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/final.mat" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/ivector/final.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/ivector/global_cmvn.stats" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/ivector/online_cmvn.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15/ivector/splice.conf" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/vosk-model-small-en-us-0.15-OLD/ivector/splice.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,13 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00352" summary="from here the rest is tuning, and mapping OSC">
-      <created>1697408606448</created>
-      <option name="number" value="00352" />
-      <option name="presentableId" value="LOCAL-00352" />
-      <option name="project" value="LOCAL" />
-      <updated>1697408606449</updated>
     </task>
     <task id="LOCAL-00353" summary="now need to map the OSC values to change the forces">
       <created>1697408787514</created>
@@ -575,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700537355564</updated>
     </task>
-    <option name="localTasksCounter" value="401" />
+    <task id="LOCAL-00401" summary="voice control almost fully integrated">
+      <created>1700539784009</created>
+      <option name="number" value="00401" />
+      <option name="presentableId" value="LOCAL-00401" />
+      <option name="project" value="LOCAL" />
+      <updated>1700539784009</updated>
+    </task>
+    <option name="localTasksCounter" value="402" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -591,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="still messing with sleep time" />
     <MESSAGE value="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb" />
     <MESSAGE value="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand" />
     <MESSAGE value="made new ensemble copy" />
@@ -616,6 +585,7 @@
     <MESSAGE value="creating a HUD class" />
     <MESSAGE value="improving transparent window function" />
     <MESSAGE value="messing with voice control" />
-    <option name="LAST_COMMIT_MESSAGE" value="messing with voice control" />
+    <MESSAGE value="voice control almost fully integrated" />
+    <option name="LAST_COMMIT_MESSAGE" value="voice control almost fully integrated" />
   </component>
 </project>

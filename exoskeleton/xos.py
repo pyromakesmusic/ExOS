@@ -222,6 +222,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
         self.shutdown_flag = False
 
+        self.input = None
         self.assistant = vxui.VoiceControlUI()
         self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
@@ -307,6 +308,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         bones_transforms: A list of link locations
         """
+        self.input = self.assistant.voice_loop()
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
