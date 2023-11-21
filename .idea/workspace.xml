@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/audio/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/audio/recording.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Math4157.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Math4157.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +83,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exoskeleton test 1">
+  <component name="RunManager">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -177,13 +183,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00348" summary="removed unnecessary print statements">
-      <created>1697406154570</created>
-      <option name="number" value="00348" />
-      <option name="presentableId" value="LOCAL-00348" />
-      <option name="project" value="LOCAL" />
-      <updated>1697406154570</updated>
     </task>
     <task id="LOCAL-00349" summary="not applying forces for some reason again">
       <created>1697407209190</created>
@@ -521,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700517655810</updated>
     </task>
-    <option name="localTasksCounter" value="397" />
+    <task id="LOCAL-00397" summary="creating a HUD class">
+      <created>1700517880634</created>
+      <option name="number" value="00397" />
+      <option name="presentableId" value="LOCAL-00397" />
+      <option name="project" value="LOCAL" />
+      <updated>1700517880634</updated>
+    </task>
+    <option name="localTasksCounter" value="398" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -537,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="pressures seem to be feeding in from reaktor now!!!" />
     <MESSAGE value="removing unnecessary (and broken) methods" />
     <MESSAGE value="changing the sleep time has weird effects, investigate further" />
     <MESSAGE value="still messing with sleep time" />
@@ -562,6 +567,7 @@
     <MESSAGE value="updated reaktor trigger to have controllable rate" />
     <MESSAGE value="improved demo control panel and updated documentation" />
     <MESSAGE value="adding and customizing voice control" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding and customizing voice control" />
+    <MESSAGE value="creating a HUD class" />
+    <option name="LAST_COMMIT_MESSAGE" value="creating a HUD class" />
   </component>
 </project>

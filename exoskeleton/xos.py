@@ -98,7 +98,9 @@ def visMuscles(dataframe_row):
 CLASS DEFINITIONS
 """
 
-
+"""
+Hardware
+"""
 class Muscle(klampt.sim.ActuatorEmulator):
     """
     Refers to exactly one McKibben muscle, with all associated attributes.
@@ -202,7 +204,9 @@ class Muscle(klampt.sim.ActuatorEmulator):
         app.setColor(0, 1, 0, 1)
         return app
 
-
+"""
+Controllers
+"""
 class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module,
@@ -218,9 +222,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.shutdown_flag = False
 
         self.assistant = vxui.VoiceControlUI()
-        self.assistant.announce("Initializing systems.")
+        #self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
-        self.voice_test()
+        #self.voice_test()
 
         self.world = world
         self.robot = robotmodel
@@ -324,7 +328,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.assistant.announce(sysvx.no_auth_string1)
 
 
-
+"""
+Simulation
+"""
 class ExoSim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
@@ -369,7 +375,9 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
-
+"""
+Interfaces
+"""
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     GUI class, contains visualization options and is usually where the simulator will be called.
@@ -469,43 +477,83 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
 class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
     # This is for an interface designed to be projected onto a semi-transparent HUD
-    def __init__(self):
+    def __init__(self, config):
+        self.state = "INITIALIZING"
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
 
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
-        klampt.vis.add("world", self.world)
         self.world.loadRobot(config["core"])
-        self.robot = self.world.robot(0)
-        klampt.vis.add("X001", self.robot)
-        klampt.vis.setWindowTitle("X001  Test")
-        klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
-        self.viewport = klampt.vis.getViewport()
-        self.viewport.fit([0, 0, -5], 25)
 
+        self.robot = self.world.robot(0)
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot, config["timestep"])
-
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, config)
-        # Adds the muscles to the visualization
-        # self.drawMuscles()
 
-        # self.drawOptions()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
 
-        # Begin GUI event loop
-        # asyncio.run(self.gui_idle_launcher())
+
+        # UI state variable
+        self.state = "OFF"
+        self.window = None
+
+        # Begin UI event loop
+        asyncio.run(self.hud_idle_launcher())
+
+    def on_close(self):
+        self.window.destroy()
+
+    def create_viewport(self):
+        # Creates the HUD visual area
+        self.window = tk.Tk()
+        self.window.overrideredirect(True)
+        self.window.geometry("500x250+500+500")
+        # Make the window transparent
+        self.window.attributes("-alpha", 0.2)
+
+        # Create a close button
+        close_button = tk.Button(self.window, text="Close", command=self.on_close)
+        close_button.pack(pady=10)
+        self.window.mainloop()
+
+
+    async def hud_idle_launcher(self):
+        """
+        Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
+        """
+        self.state = "ON"
+        self.create_viewport()
+        await self.controller.osc_handler.make_endpoint()  # This seems to be the way
+        await self.hud_idle_loop()
+        self.controller.osc_handler.transport.close()
+        return
+
+    async def hud_idle_loop(self):
+        while self.state == "ON":
+            print(self.controller.bones)
+            self.hud_idle()
+            await asyncio.sleep(0)
+
+    def hud_idle(self):
+        """
+        Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
+        """
+        forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
+        self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
+        return
+
+
 
 """
 MAIN LOOP
 """
 def init_main(config_filepath):
     config = configLoader(config_filepath)
-    exo_sim_test = ExoGUI(config)
+    exo_sim_test = ExoHUD(config)
 
 
 if __name__ == "__main__":

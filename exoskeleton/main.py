@@ -13,7 +13,7 @@ def init_main():
         - the IP address sending the control inputs (string datatype)
         - the network socket to receive inputs on (integer datatype)
     """
-    exo_test = xos.ExoGUI(test_config)
+    exo_test = xos.ExoHUD(test_config)
 
 if __name__ == "__main__":
     init_main()
