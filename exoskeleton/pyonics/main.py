@@ -14,7 +14,7 @@ Document Comments:
     11.3.22
     0944h
     Interface is mostly done. Needs the graph to actually be updating inside
-    the GUI but otherwise the front end is ready for a presentation. Adding
+    the desktopGUI but otherwise the front end is ready for a presentation. Adding
     the fractional calculus functionality will be next.
 
     12.2.22

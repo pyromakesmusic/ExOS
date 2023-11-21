@@ -6,7 +6,7 @@ import time
 import vosk
 import math # Largely just used for pi right now
 import numpy as np # Just in case for now
-import tkinter as tk # For building GUI
+import tkinter as tk # For building desktopGUI
 import pandas as pd # Critical, most of the data structures are pandas structures
 import random # Mostly for testing
 import asyncio # For multithreaded OSC handling
@@ -223,7 +223,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.shutdown_flag = False
 
         self.input = None
-        self.assistant = vxui.VoiceControlUI()
+        self.assistant = vxui.VoiceAssistant()
         self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
         #self.voice_test()
@@ -388,11 +388,14 @@ Interfaces
 """
 class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
-    GUI class, contains visualization options and is usually where the simulator will be called.
+    desktopGUI class, contains visualization options and is usually where the simulator will be called.
     """
-    def __init__(self, config):
+    def __init__(self, config, with_hud=True):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
+
+        self.with_hud = with_hud # Boolean flag declaring presence of a HUD
+        self.hud = None # Class attribute for holding the HUD object when present
 
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
         klampt.vis.add("world", self.world)
@@ -402,8 +405,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.setWindowTitle("X001  Test")
         klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
 
-        self.HUD = None
-        self.text_buffer = None
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
 
@@ -421,45 +422,14 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
 
-        # Begin GUI event loop
+        # Begin desktopGUI event loop
         asyncio.run(self.gui_idle_launcher())
 
-    def HUD_close(self):
-        print("Shutting down heads-up display.")
-        self.controller.assistant.announce("Shutting down heads-up display.")
-        self.HUD.destroy()
-        print("Shutting down controller.")
-        self.controller.assistance.announce("Shutting down controller.")
-        self.shutdown()
-
-    def update_HUD(self):
-        # Update the label's text
-        current_text = self.controller.input
-        print(current_text)
-        self.text_buffer.set(current_text)
-        self.text_overlay = tk.Label(self.HUD, textvariable=self.text_buffer, font=("System", 100))
-        self.text_overlay.pack()
-
-
-    def create_HUD(self):
-        # Creates the HUD visual area
-        self.HUD = tk.Tk()
-        self.HUD.overrideredirect(True)
-        self.HUD.geometry("1920x1080")
-        # Make the window transparent
-        self.HUD.attributes("-alpha", 0.2)
-        self.text_buffer = tk.StringVar()
-        self.text_overlay = tk.Label(self.HUD, textvariable=self.text_buffer, font=("System", 100))
-        self.text_overlay.pack()
-        # Create a close button
-        close_button = tk.Button(self.HUD, text="Close", command=self.HUD_close)
-        close_button.pack(pady=10)
-        self.HUD.mainloop()
 
 
     def update_GUI(self):
         """
-        Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
+        Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         klampt.vis.lock()
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
@@ -471,7 +441,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     async def gui_idle_loop(self):
         print(self.controller.input)
         while klampt.vis.shown():
-            self.update_HUD()
+            self.hud.update_HUD()
             self.update_GUI()
             await asyncio.sleep(0)
 
@@ -482,7 +452,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
-        self.create_HUD()
+        if self.with_hud == True:
+            self.hud = vxui.AugmentOverlay(self.controller, self.controller.assistant)
         await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()
         return
@@ -521,7 +492,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.kill()
 
 class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
-    # This is for an interface designed to be projected onto a semi-transparent HUD
+    # This is for an interface designed to be projected onto a semi-transparent HUD, no Klamp't desktopGUI
     def __init__(self, config):
         self.state = "INITIALIZING"
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
@@ -585,7 +556,7 @@ class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
 
     def hud_idle(self):
         """
-        Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
+        Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
