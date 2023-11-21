@@ -393,10 +393,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def __init__(self, config, with_hud=True):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
-
         self.with_hud = with_hud # Boolean flag declaring presence of a HUD
         self.hud = None # Class attribute for holding the HUD object when present
-
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
         klampt.vis.add("world", self.world)
         self.world.loadRobot(config["core"])
@@ -404,24 +402,18 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("X001", self.robot)
         klampt.vis.setWindowTitle("X001  Test")
         klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
-
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
-
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot, config["timestep"])
-
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, config)
         # Adds the muscles to the visualization
         self.drawMuscles()
-
         self.drawOptions()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
-
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
-
         # Begin desktopGUI event loop
         asyncio.run(self.gui_idle_launcher())
 

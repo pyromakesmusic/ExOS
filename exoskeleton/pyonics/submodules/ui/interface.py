@@ -26,13 +26,6 @@ FUNCTION DEFINITIONS #1
 CLASS DEFINITIONS
 """
 # Parent Class
-class Interface:
-    def __init__(self):
-        pass
-# Inherited classes
-class desktopGUI(Interface):
-    def __init__(self):
-        Interface.__init__(self)
 
 class VoiceAssistant: # For voice control
     def __init__(self):
@@ -111,6 +104,7 @@ class AugmentOverlay:
         self.text_buffer.set(current_text)
         self.text_overlay = tk.Label(self.HUD, textvariable=self.text_buffer, font=("System", 100))
         self.text_overlay.pack()
+
 
 """
 FUNCTION DEFINITIONS
