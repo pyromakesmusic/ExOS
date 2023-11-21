@@ -226,7 +226,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.assistant = vxui.VoiceControlUI()
         self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
-        self.voice_test()
+        #self.voice_test()
 
         self.world = world
         self.robot = robotmodel
@@ -289,6 +289,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.pressures = [pressure for pressure in args]
         return
 
+    def validateInput(self, stringvar):
+        if stringvar == None:
+            return ""
+        else:
+            return stringvar
 
     def controlRate(self):
         """
@@ -308,7 +313,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         bones_transforms: A list of link locations
         """
-        self.input = self.assistant.voice_loop()
+        self.input = self.validateInput(self.assistant.voice_loop())
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
@@ -396,6 +401,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         klampt.vis.add("X001", self.robot)
         klampt.vis.setWindowTitle("X001  Test")
         klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
+
+        self.HUD = None
+        self.text_buffer = None
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
 
@@ -416,9 +424,40 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # Begin GUI event loop
         asyncio.run(self.gui_idle_launcher())
 
+    def HUD_close(self):
+        print("Shutting down heads-up display.")
+        self.controller.assistant.announce("Shutting down heads-up display.")
+        self.HUD.destroy()
+        print("Shutting down controller.")
+        self.controller.assistance.announce("Shutting down controller.")
+        self.shutdown()
+
+    def update_HUD(self):
+        # Update the label's text
+        current_text = self.controller.input
+        print(current_text)
+        self.text_buffer.set(current_text)
+        self.text_overlay = tk.Label(self.HUD, textvariable=self.text_buffer, font=("System", 100))
+        self.text_overlay.pack()
 
 
-    def gui_idle(self):
+    def create_HUD(self):
+        # Creates the HUD visual area
+        self.HUD = tk.Tk()
+        self.HUD.overrideredirect(True)
+        self.HUD.geometry("1920x1080")
+        # Make the window transparent
+        self.HUD.attributes("-alpha", 0.2)
+        self.text_buffer = tk.StringVar()
+        self.text_overlay = tk.Label(self.HUD, textvariable=self.text_buffer, font=("System", 100))
+        self.text_overlay.pack()
+        # Create a close button
+        close_button = tk.Button(self.HUD, text="Close", command=self.HUD_close)
+        close_button.pack(pady=10)
+        self.HUD.mainloop()
+
+
+    def update_GUI(self):
         """
         Idle function for the GUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
@@ -430,8 +469,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         return
 
     async def gui_idle_loop(self):
+        print(self.controller.input)
         while klampt.vis.shown():
-            self.gui_idle()
+            self.update_HUD()
+            self.update_GUI()
             await asyncio.sleep(0)
 
     async def gui_idle_launcher(self):
@@ -441,6 +482,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
         klampt.vis.show()
+        self.create_HUD()
         await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()
         return
@@ -510,7 +552,7 @@ class ExoHUD(klampt.vis.glprogram.GLRealtimeProgram):
     def on_close(self):
         self.window.destroy()
 
-    def create_viewport(self):
+    def create_HUD(self):
         # Creates the HUD visual area
         self.window = tk.Tk()
         self.window.overrideredirect(True)
