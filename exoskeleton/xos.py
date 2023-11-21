@@ -3,6 +3,7 @@ STANDARD LIBRARIES
 """
 
 import time
+import vosk
 import math # Largely just used for pi right now
 import numpy as np # Just in case for now
 import tkinter as tk # For building GUI
@@ -222,9 +223,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.shutdown_flag = False
 
         self.assistant = vxui.VoiceControlUI()
-        #self.assistant.announce("Initializing systems.")
+        self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
-        #self.voice_test()
+        self.voice_test()
 
         self.world = world
         self.robot = robotmodel
@@ -402,16 +403,16 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, config)
         # Adds the muscles to the visualization
-        #self.drawMuscles()
+        self.drawMuscles()
 
-        #self.drawOptions()
+        self.drawOptions()
         # Simulator creation and activation comes at the very end
         self.sim.setGravity([0, 0, -9.8])
 
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
 
         # Begin GUI event loop
-        #asyncio.run(self.gui_idle_launcher())
+        asyncio.run(self.gui_idle_launcher())
 
 
 
@@ -437,7 +438,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
 
         await self.controller.osc_handler.make_endpoint()  # This seems to be the way
-        #klampt.vis.show()
+        klampt.vis.show()
         await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()
         return
@@ -553,7 +554,7 @@ MAIN LOOP
 """
 def init_main(config_filepath):
     config = configLoader(config_filepath)
-    exo_sim_test = ExoHUD(config)
+    exo_sim_test = ExoGUI(config)
 
 
 if __name__ == "__main__":

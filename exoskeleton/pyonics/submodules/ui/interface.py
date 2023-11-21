@@ -4,13 +4,16 @@ LIBRARY IMPORTS
 # Standard Libraries
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 #import ipywidgets as widgets
+import pyaudio
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
 # Third Party Libraries
 import pyttsx3
+import vosk
 
 
 # My Libraries
@@ -181,28 +184,26 @@ class GUI(Interface):
         pass
 
 class VoiceControlUI:
-    def announce(self, stringvar):
-        print(stringvar)
-        self.voice_engine.say(stringvar)
-        self.voice_engine.runAndWait()
-        return
-
     def __init__(self):
         # TTS Engine Initialization
         self.voice_engine = pyttsx3.init()
         self.voices = self.voice_engine.getProperty("voices")
-        self.voice_engine.setProperty('rate', 175)
+        self.voice_engine.setProperty('rate', 150)
         self.voice_engine.setProperty('voice', self.voices[1].id)
 
         self.recog_model = None
         self.voice_recog = None
         self.mic = None
         self.stream = None
+        self.voice_recog()
 
 
 
-        # This is a loop for printing voice recognized audio to the console, I think it needs to be a method or
-        # attribute of how the class takes input
+    def announce(self, stringvar):
+        print(stringvar)
+        self.voice_engine.say(stringvar)
+        self.voice_engine.runAndWait()
+        return
 
     def voice_recog(self):
         # Voice Recognition Initialization
@@ -787,7 +788,6 @@ Main Function
 """
 
 def main():
-    initialize("y", "tkinter")
     return
 
 if __name__ == "__main__":
