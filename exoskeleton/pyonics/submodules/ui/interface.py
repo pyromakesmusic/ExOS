@@ -60,7 +60,8 @@ class Personality:
         updated_personality_params = personality_params
         return updated_personality_params
 
-class VoiceAssistant: # For voice control
+class VoiceAssistantUI: # For voice control
+    # Should be most of the audio interaction with a UI
     def __init__(self):
         # TTS Engine Initialization
         self.voice_engine = pyttsx3.init()
@@ -75,7 +76,7 @@ class VoiceAssistant: # For voice control
         self.mic = None
         self.stream = None
         self.voice_launch()
-        #self.voice_test()
+        self.voice_test()
 
     def shutdown_assistant(self):
         # Shuts down and releases resources
@@ -105,19 +106,10 @@ class VoiceAssistant: # For voice control
             return(text)
 
     def voice_test(self):
-    # Plays all the strings in the catalog to test for audio quality.
-        self.announce(sysvx.test_string1)
-        self.announce(sysvx.access_denied)
-        self.announce(sysvx.ready_string1)
-        self.announce(sysvx.lowpower_string1)
-        self.announce(sysvx.malfunction_string1)
-        self.announce(sysvx.no_auth_string1)
-
+        # Plays all the strings and voices in the catalog to test for audio quality.
         test_strings = [sysvx.test_string1, sysvx.access_denied, sysvx.ready_string1, sysvx.lowpower_string1,
                         sysvx.malfunction_string1, sysvx.no_auth_string1]
-
         i = 0
-
         for voice in self.voices:
             print(voice, voice.id)
             self.voice_engine.setProperty('voice', voice.id)
@@ -186,6 +178,8 @@ class AugmentOverlay:
         self.longitude = None
         self.altitude = None
 
+        self.camera = None
+
 
 
         self.configure_HUD()  # sets up the HUD layout by user preference
@@ -206,6 +200,7 @@ class AugmentOverlay:
         self.date = ctk.CTkLabel(self.HUD, text=self.date_text, font=("System", 20))
         self.gps = ctk.CTkLabel(self.HUD, text=self.gps_text, font=("System", 20))
         self.map = tkintermapview.TkinterMapView(self.HUD, width=400, height=300)
+        self.camera = xapp.Camera(0)
 
         # self.map.set_tile_server("http://a.tile.stamen.com/toner/{z}/{x}/{y}.png")  # black and white
 

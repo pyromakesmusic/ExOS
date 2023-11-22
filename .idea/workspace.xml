@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,13 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00370" summary="pressures seem to be feeding in from reaktor now!!!">
-      <created>1697646772436</created>
-      <option name="number" value="00370" />
-      <option name="presentableId" value="LOCAL-00370" />
-      <option name="project" value="LOCAL" />
-      <updated>1697646772436</updated>
     </task>
     <task id="LOCAL-00371" summary="removing unnecessary (and broken) methods">
       <created>1697647381823</created>
@@ -545,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700686212184</updated>
     </task>
-    <option name="localTasksCounter" value="419" />
+    <task id="LOCAL-00419" summary="removing camera from interface and putting it in apps, this may end up holding the voice assistant too">
+      <created>1700688057659</created>
+      <option name="number" value="00419" />
+      <option name="presentableId" value="LOCAL-00419" />
+      <option name="project" value="LOCAL" />
+      <updated>1700688057659</updated>
+    </task>
+    <option name="localTasksCounter" value="420" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="want to turn off the autoscaling for smoother performance" />
     <MESSAGE value="improved performance and added some muscles" />
     <MESSAGE value="updated reaktor trigger to have controllable rate" />
     <MESSAGE value="improved demo control panel and updated documentation" />
@@ -586,6 +585,7 @@
     <MESSAGE value="computer voices" />
     <MESSAGE value="updated .gitignore" />
     <MESSAGE value="building out app structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="building out app structure" />
+    <MESSAGE value="removing camera from interface and putting it in apps, this may end up holding the voice assistant too" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing camera from interface and putting it in apps, this may end up holding the voice assistant too" />
   </component>
 </project>
