@@ -34,8 +34,6 @@ CUSTOM LIBRARIES
 """
 import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
 import pyonics.submodules.ui.interface as vxui  # Voice control engine
-import pyonics.submodules.ui.system_strings as sysvx  # Voice assistant speech strings
-import pyonics.submodules.apps.apps as xapp
 
 """
 PANDAS CONFIG
@@ -299,10 +297,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
-
-    def getGPS(self):
-        self.gps = xapp.get_gps_data()
-        print(self.gps)
 
     def validateInput(self, stringvar):
         if stringvar == None:

@@ -24,7 +24,6 @@ import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from .. import apps as xapp  # This is where system applications are hosted, they should be low level
 
 """
 FUNCTION DEFINITIONS #1 
@@ -146,6 +145,9 @@ class AugmentOverlay:
         self.date_text = None
         self.date = None
 
+
+        self.camera = None
+
         # Style changes
         self.hud_color = "red"
         self.create_HUD()
@@ -178,7 +180,6 @@ class AugmentOverlay:
         self.longitude = None
         self.altitude = None
 
-        self.camera = None
 
 
 
@@ -193,14 +194,17 @@ class AugmentOverlay:
         self.update_GPS()
         pass
 
-    def configure_HUD(self):
+    def configure_HUD(self, has_camera=True): # This should be false by default once done testing
+
 
         # Adds a clock
         self.clock = ctk.CTkLabel(self.HUD, text=self.clock_text, font=("System", 20))
         self.date = ctk.CTkLabel(self.HUD, text=self.date_text, font=("System", 20))
         self.gps = ctk.CTkLabel(self.HUD, text=self.gps_text, font=("System", 20))
         self.map = tkintermapview.TkinterMapView(self.HUD, width=400, height=300)
-        self.camera = xapp.Camera(0)
+        if has_camera:
+            # Do something
+            pass
 
         # self.map.set_tile_server("http://a.tile.stamen.com/toner/{z}/{x}/{y}.png")  # black and white
 
