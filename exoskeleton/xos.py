@@ -68,12 +68,17 @@ def configLoader(config_name):
         address = fn.readline().rstrip()  # Controller IP address; string value
         print("Setting controller network socket...", fn.readline().rstrip())
         port = int(fn.readline().rstrip())  # Controller network socket
+        print("Setting display resolution...", fn.readline().rstrip())
+        width = fn.readline().rstrip()
+        height = fn.readline().rstrip()
         config = {"core": core,
                   "attachments": attachments,
                   "world_path": world_path,
                   "timestep": timestep,
                   "address": address,
-                  "port": port}
+                  "port": port,
+                  "width": width,
+                  "height": height}
 
         return config
 
@@ -395,7 +400,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.with_hud = with_hud # Boolean flag declaring presence of a HUD
         self.hud = None # Class attribute for holding the HUD object when present
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
+
         klampt.vis.add("world", self.world)
+
+        klampt.vis.resizeWindow(1920,1080)
         self.world.loadRobot(config["core"])
         self.robot = self.world.robot(0)
         klampt.vis.add("X001", self.robot)
@@ -425,13 +433,14 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.hud.update_HUD()
         klampt.vis.lock()
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
+        print(forces)
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
         self.drawMuscles()  # Don't know if this is working right now, but this is probably the right place to do it
         klampt.vis.unlock()
         return
 
     async def gui_idle_loop(self):
-        print(self.controller.input)
+        #print(self.controller.input)
         while klampt.vis.shown():
             self.update_GUI()
             await asyncio.sleep(0)

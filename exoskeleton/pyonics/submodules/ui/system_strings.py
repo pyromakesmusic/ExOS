@@ -1,4 +1,4 @@
-
+# Voice strings
 test_string1 = "Hello, this is a test!"
 init_string1 = "Initialization complete."
 ready_string1 = "System ready for operation."
@@ -15,3 +15,5 @@ login_failed_string1 = "Login failed. User not found."
 login_failed_string2 = "Login failed."
 system_crit_string1 = "System condition critical. Initiating safe mode."
 system_crit_string2 = "System condition critical. Initializing emergency procedures."
+
+# Text strings
