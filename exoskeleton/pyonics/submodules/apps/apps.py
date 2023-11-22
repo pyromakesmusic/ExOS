@@ -1,5 +1,6 @@
 import gpsd
 
+# Might it not make more sense to make each App its own Class?
 def get_gps_data():
     # Connect to the local gpsd service (default host and port)
     gpsd.connect()

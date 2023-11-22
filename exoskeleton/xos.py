@@ -443,7 +443,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        self.hud.update_HUD()
+        self.hud.refresh_HUD()
         klampt.vis.lock()
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         print(forces)
