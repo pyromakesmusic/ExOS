@@ -3,13 +3,17 @@ STANDARD LIBRARIES
 """
 
 import time
-import vosk
-import math # Largely just used for pi right now
-import numpy as np # Just in case for now
-import tkinter as tk # For building desktopGUI
-import pandas as pd # Critical, most of the data structures are pandas structures
-import random # Mostly for testing
-import asyncio # For multithreaded OSC handling
+import vosk  # Voice recognition offline toolkit
+import math  # Largely just used for pi right now
+import numpy as np  # Just in case for now
+import tkinter as tk  # For building desktopGUI
+import pandas as pd  # Critical, most of the data structures are pandas structures
+import asyncio  # For asynchronous OSC handling
+
+"""
+OTHER LIBRARIES
+"""
+import gpsd
 
 """
 KLAMPT IMPORTS
@@ -31,6 +35,7 @@ CUSTOM LIBRARIES
 import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
 import pyonics.submodules.ui.interface as vxui  # Voice control engine
 import pyonics.submodules.ui.system_strings as sysvx  # Voice assistant speech strings
+import pyonics.submodules.apps.apps as xapp
 
 """
 PANDAS CONFIG
@@ -231,7 +236,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.assistant = vxui.VoiceAssistant()
         self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
-        #self.voice_test()
 
         self.world = world
         self.robot = robotmodel
@@ -247,6 +251,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         # Setting initial muscle pressure to zero
         self.pressures = [0 for muscle in range(len(self.muscles))]
+
+        self.gps = None
 
 
     def muscleLoader(self, config_df):
@@ -293,6 +299,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
+
+    def getGPS(self):
+        self.gps = xapp.get_gps_data()
+        print(self.gps)
 
     def validateInput(self, stringvar):
         if stringvar == None:
@@ -397,26 +407,32 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def __init__(self, config, with_hud=True):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
-        self.with_hud = with_hud # Boolean flag declaring presence of a HUD
-        self.hud = None # Class attribute for holding the HUD object when present
+        self.with_hud = with_hud  # Boolean flag declaring presence of a HUD
+        self.hud = None  # Class attribute for holding the HUD object
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
 
         klampt.vis.add("world", self.world)
 
-        klampt.vis.resizeWindow(config["width"],config["height"])  # Sets window to configured width and height
 
         self.world.loadRobot(config["core"])
         self.robot = self.world.robot(0)
+
         klampt.vis.add("X001", self.robot)
         klampt.vis.setWindowTitle("X001  Test")
         klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
+
+        klampt.vis.resizeWindow(config["width"],config["height"])  # Sets window to configured width and height
+
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot, config["timestep"])
+
         # creation of the controller
         self.controller = ExoController(self.robot, self.world, config)
+        self.assistant = self.controller.assistant
         # Adds the muscles to the visualization
+
         self.drawMuscles()
         self.drawOptions()
         # Simulator creation and activation comes at the very end
@@ -432,7 +448,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         self.with_hud = False
 
-    def update_GUI(self):
+    async def update_GUI(self):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
@@ -448,7 +464,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     async def gui_idle_loop(self):
         #print(self.controller.input)
         while klampt.vis.shown():
-            self.update_GUI()
+            await self.update_GUI()
             await asyncio.sleep(0)
 
     async def gui_idle_launcher(self):
