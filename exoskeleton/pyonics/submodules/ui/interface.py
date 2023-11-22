@@ -142,6 +142,9 @@ class AugmentOverlay:
 
         self.gps_text = None
         self.gps = None
+        self.latitude = None
+        self.longitude = None
+        self.altitude = None
 
 
 
@@ -192,11 +195,11 @@ class AugmentOverlay:
 
             # Check if the data is valid
             if packet.mode >= 2:
-                latitude = packet.lat
-                longitude = packet.lon
-                altitude = packet.alt
+                self.latitude = packet.lat
+                self.longitude = packet.lon
+                self.altitude = packet.alt
 
-                coordinates = (f"Latitude: {latitude},\nLongitude: {longitude},\nAltitude: {altitude}")
+                coordinates = (f"Latitude: {self.latitude},\nLongitude: {self.longitude},\nAltitude: {self.altitude}")
             else:
                 coordinates = ("No GPS fix")
 
