@@ -7,6 +7,9 @@ to be useful for bionics problems in general.
 
 ## Overview
 
+## Robot Files
+Files included may be in .ROB format (Klamp't native) or in URDF (Universal Robot Definition Format), but both contain nearly the same information.
+
 ## Interface
 
 The included interface module contains several built-in components.
