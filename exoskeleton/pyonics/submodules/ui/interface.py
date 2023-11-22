@@ -75,8 +75,6 @@ class VoiceAssistant: # For voice control
         self.mic = None
         self.stream = None
         self.voice_launch()
-        self.cam_launch()
-
         #self.voice_test()
 
     def shutdown_assistant(self):
@@ -106,30 +104,6 @@ class VoiceAssistant: # For voice control
             print(f"{text[14:-3]}")
             return(text)
 
-
-
-    def cam_loop(self):
-        ret, frame = self.user_cam.read()
-
-        # Check if the frame was read successfully
-        if not ret:
-            print("Error: Could not read frame.")
-
-        # Display the frame
-        cv2.imshow('Webcam', frame)
-
-        # Break the loop if the user presses the 'q' key
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            self.shutdown_assistant()
-
-    def cam_launch(self):
-        # Start the camera
-        try:
-            self.user_cam = cv2.VideoCapture(0)
-        except:
-            "Error: Exception launching camera input."
-
-
     def voice_test(self):
     # Plays all the strings in the catalog to test for audio quality.
         self.announce(sysvx.test_string1)
@@ -139,16 +113,22 @@ class VoiceAssistant: # For voice control
         self.announce(sysvx.malfunction_string1)
         self.announce(sysvx.no_auth_string1)
 
+        test_strings = [sysvx.test_string1, sysvx.access_denied, sysvx.ready_string1, sysvx.lowpower_string1,
+                        sysvx.malfunction_string1, sysvx.no_auth_string1]
+
+        i = 0
+
         for voice in self.voices:
             print(voice, voice.id)
             self.voice_engine.setProperty('voice', voice.id)
-            self.voice_engine.say("Hello World!")
+            self.voice_engine.say(test_strings[i]) # What they say goes here
             self.voice_engine.runAndWait()
             self.voice_engine.stop()
+            i = (i + 1) % len(self.voices)
 
 
 class AugmentOverlay:
-    # For a Heads Up Display or Helmet Mounted Display
+    # For a Heads-Up Display or Helmet Mounted Display
     def __init__(self, controller, assistant):
         self.HUD = None
         if not assistant:
@@ -158,15 +138,10 @@ class AugmentOverlay:
             self.assistant = assistant
 
         self.clock_text = None
-
         self.objective_text = None
-
         self.text_buffer = None
-
         self.gps_text = None
-
         self.clock = None
-
         self.objectives = None
 
         self.gps = None
@@ -179,12 +154,8 @@ class AugmentOverlay:
         self.date_text = None
         self.date = None
 
-
-
         # Style changes
         self.hud_color = "red"
-
-
         self.create_HUD()
 
     def close_HUD(self):

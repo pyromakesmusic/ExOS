@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,13 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00369" summary="sleep time, need to figure out how to make sure the OSC gets through">
-      <created>1697517057985</created>
-      <option name="number" value="00369" />
-      <option name="presentableId" value="LOCAL-00369" />
-      <option name="project" value="LOCAL" />
-      <updated>1697517057985</updated>
     </task>
     <task id="LOCAL-00370" summary="pressures seem to be feeding in from reaktor now!!!">
       <created>1697646772436</created>
@@ -546,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700638326514</updated>
     </task>
-    <option name="localTasksCounter" value="418" />
+    <task id="LOCAL-00418" summary="building out app structure">
+      <created>1700686212184</created>
+      <option name="number" value="00418" />
+      <option name="presentableId" value="LOCAL-00418" />
+      <option name="project" value="LOCAL" />
+      <updated>1700686212184</updated>
+    </task>
+    <option name="localTasksCounter" value="419" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating based on pressure, looks good, just need to tune filters - could probably add phone control or audio control with relative ease - add voice assistant" />
     <MESSAGE value="want to turn off the autoscaling for smoother performance" />
     <MESSAGE value="improved performance and added some muscles" />
     <MESSAGE value="updated reaktor trigger to have controllable rate" />
@@ -587,6 +585,7 @@
     <MESSAGE value="moving readme" />
     <MESSAGE value="computer voices" />
     <MESSAGE value="updated .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated .gitignore" />
+    <MESSAGE value="building out app structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="building out app structure" />
   </component>
 </project>
