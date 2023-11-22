@@ -76,9 +76,11 @@ class AugmentOverlay:
             self.assistant = assistant
         self.clock_text = None
         self.text_overlay = None
+        self.hud_color = "red"
         self.create_HUD()
 
     def HUD_close(self):
+        # Closes the HUD
         self.assistant.announce("Shutting down heads-up display.")
         self.HUD.destroy()
         self.assistant.announce("Shutting down controller.")
@@ -94,7 +96,7 @@ class AugmentOverlay:
         self.text_buffer = tk.StringVar()  # Creates a text buffer
 
         # empty variable creation
-        self.objective_text = "Current Objectives:"
+        self.objective_text = "Missions:"
         self.objectives = None
         self.clock_text = None
         self.clock = None
@@ -102,7 +104,6 @@ class AugmentOverlay:
         # Empty variable creation
         self.date_text = None
         self.date = None
-        self.close_button = None
 
 
         self.configure_HUD()  # sets up the HUD layout by user preference
@@ -117,17 +118,18 @@ class AugmentOverlay:
     def configure_HUD(self):
 
         # Create a close button
-        self.objectives = tk.Label(self.HUD, text=self.objective_text, font=("System", 100), fg="white", bg="black")
+        self.objectives = tk.Label(self.HUD, text=self.objective_text, font=("System", 20), fg=self.hud_color,
+                                   bg="black")
         self.objectives.pack(anchor="ne", padx=5)
 
         # Adds a clock
-        self.clock = tk.Label(self.HUD, text=self.clock_text, font=("System", 80), fg="white", bg="black")
+        self.clock = tk.Label(self.HUD, text=self.clock_text, font=("System", 20), fg=self.hud_color, bg="black")
 
-        self.date = tk.Label(self.HUD, text=self.date_text, font=("System", 80), fg="white", bg="black")
+        self.date = tk.Label(self.HUD, text=self.date_text, font=("System", 20), fg=self.hud_color, bg="black")
 
         self.date.pack(anchor="nw", padx=5)
 
-        self.clock.pack(anchor="sw", padx=5, pady=1000)
+        self.clock.pack(anchor="sw", pady=450)
 
 
         self.update_datetime()

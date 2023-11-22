@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,13 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00357" summary="messing with environments">
-      <created>1697470591361</created>
-      <option name="number" value="00357" />
-      <option name="presentableId" value="LOCAL-00357" />
-      <option name="project" value="LOCAL" />
-      <updated>1697470591361</updated>
     </task>
     <task id="LOCAL-00358" summary="need to call awaitable with asyncio.run()">
       <created>1697477253188</created>
@@ -545,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700599508690</updated>
     </task>
-    <option name="localTasksCounter" value="406" />
+    <task id="LOCAL-00406" summary="added date clock and objective list">
+      <created>1700604085155</created>
+      <option name="number" value="00406" />
+      <option name="presentableId" value="LOCAL-00406" />
+      <option name="project" value="LOCAL" />
+      <updated>1700604085155</updated>
+    </task>
+    <option name="localTasksCounter" value="407" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +561,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="using negative indexing allows me to add more columns to the muscle dataframe" />
     <MESSAGE value="adding more stuff to muscle attachments" />
     <MESSAGE value="updating dataframe to have columns specific to each muscle" />
     <MESSAGE value="muscles are moving in the vis now" />
@@ -586,6 +585,7 @@
     <MESSAGE value="rethinking class configurations, voice control UI and HUD might end up being very low level interface classes" />
     <MESSAGE value="integrated sound and cleaned up the class dependencies a little bit" />
     <MESSAGE value="lots of reorganization" />
-    <option name="LAST_COMMIT_MESSAGE" value="lots of reorganization" />
+    <MESSAGE value="added date clock and objective list" />
+    <option name="LAST_COMMIT_MESSAGE" value="added date clock and objective list" />
   </component>
 </project>
