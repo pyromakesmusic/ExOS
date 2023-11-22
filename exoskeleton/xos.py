@@ -69,8 +69,8 @@ def configLoader(config_name):
         print("Setting controller network socket...", fn.readline().rstrip())
         port = int(fn.readline().rstrip())  # Controller network socket
         print("Setting display resolution...", fn.readline().rstrip())
-        width = fn.readline().rstrip()
-        height = fn.readline().rstrip()
+        width = int(fn.readline().rstrip())
+        height = int(fn.readline().rstrip())
         config = {"core": core,
                   "attachments": attachments,
                   "world_path": world_path,
@@ -403,7 +403,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.add("world", self.world)
 
-        klampt.vis.resizeWindow(1920,1080)
+        klampt.vis.resizeWindow(config["width"],config["height"])  # Sets window to configured width and height
+
         self.world.loadRobot(config["core"])
         self.robot = self.world.robot(0)
         klampt.vis.add("X001", self.robot)
@@ -425,6 +426,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         asyncio.run(self.gui_idle_launcher())
 
 
+    def shutdown_HUD(self):
+        if self.hud:
+            self.hud.close_HUD()
+
+        self.with_hud = False
 
     def update_GUI(self):
         """
@@ -450,9 +456,9 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
 
-        await self.controller.osc_handler.make_endpoint()  # This seems to be the way
+        await self.controller.osc_handler.make_endpoint()  # This seems to be da way
         klampt.vis.show()
-        if self.with_hud == True:
+        if self.with_hud:
             self.hud = vxui.AugmentOverlay(self.controller, self.controller.assistant)
         await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()

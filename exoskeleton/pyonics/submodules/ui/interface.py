@@ -79,7 +79,7 @@ class AugmentOverlay:
         self.hud_color = "red"
         self.create_HUD()
 
-    def HUD_close(self):
+    def close_HUD(self):
         # Closes the HUD
         self.assistant.announce("Shutting down heads-up display.")
         self.HUD.destroy()
