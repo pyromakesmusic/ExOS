@@ -15,9 +15,10 @@ import pandas as pd
 import numpy as np
 
 # Third Party Libraries
-import tkintermapview
-import pyttsx3
-import vosk
+import tkintermapview  # Adds potential for maps to tkinter
+import pyttsx3  # Text to speech
+import vosk  # Voice recognition library
+import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
@@ -41,10 +42,14 @@ class VoiceAssistant: # For voice control
 
         self.recog_model = None
         self.voice_recog = None
+        self.user_cam = None
+
         self.mic = None
         self.stream = None
         self.voice_launch()
 
+    def shutdown_assistant(self):
+        pass
 
     def announce(self, stringvar):
         print(stringvar)
@@ -68,6 +73,28 @@ class VoiceAssistant: # For voice control
             text = self.voice_recog.Result()
             print(f"{text[14:-3]}")
             return(text)
+
+
+
+    def cam_loop(self):
+        ret, frame = self.user_cam.read()
+
+        # Check if the frame was read successfully
+        if not ret:
+            print("Error: Could not read frame.")
+
+        # Display the frame
+        cv2.imshow('Webcam', frame)
+
+        # Break the loop if the user presses the 'q' key
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            self.shutdown_assistant()
+
+    def camera_launch(self):
+        try:
+            self.user_cam = cv2.VideoCapture(0)
+        except:
+            "Error: Exception launching camera input."
 
 
     def voice_test(self):
