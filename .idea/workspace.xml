@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,13 +200,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00362" summary="no longer throwing asynch exceptions">
-      <created>1697500234040</created>
-      <option name="number" value="00362" />
-      <option name="presentableId" value="LOCAL-00362" />
-      <option name="project" value="LOCAL" />
-      <updated>1697500234040</updated>
     </task>
     <task id="LOCAL-00363" summary="we are cooking with petrol now">
       <created>1697501443113</created>
@@ -546,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700624008796</updated>
     </task>
-    <option name="localTasksCounter" value="411" />
+    <task id="LOCAL-00411" summary="incorporating GPS">
+      <created>1700626783271</created>
+      <option name="number" value="00411" />
+      <option name="presentableId" value="LOCAL-00411" />
+      <option name="project" value="LOCAL" />
+      <updated>1700626783271</updated>
+    </task>
+    <option name="localTasksCounter" value="412" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +560,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="made the world just an empty space for now, removed the plane" />
     <MESSAGE value="updated more things to be easily configurable" />
     <MESSAGE value="assigned more things to be configured from the configuration file" />
     <MESSAGE value="configuration going crazy" />
@@ -587,6 +584,7 @@
     <MESSAGE value="adding resolution configuration" />
     <MESSAGE value="cleaning up code a bit" />
     <MESSAGE value="adding a GPS app" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding a GPS app" />
+    <MESSAGE value="incorporating GPS" />
+    <option name="LAST_COMMIT_MESSAGE" value="incorporating GPS" />
   </component>
 </project>

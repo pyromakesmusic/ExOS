@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np
 
 # Third Party Libraries
+import tkintermapview
 import pyttsx3
 import vosk
 
@@ -168,6 +169,9 @@ class AugmentOverlay:
         self.date = tk.Label(self.HUD, text=self.date_text, font=("System", 20), fg=self.hud_color, bg="black")
 
         self.gps = tk.Label(self.HUD, text=self.gps_text, font=("System", 20), fg=self.hud_color, bg="black")
+
+        self.map = tkintermapview.TkinterMapView(self.HUD, width=800, height=600)
+        self.map.pack(anchor="se")
 
         self.date.pack(anchor="nw", padx=5)
 
