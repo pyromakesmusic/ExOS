@@ -341,15 +341,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     # Test Methods
 
-    def voice_test(self):
-    # Plays all the strings in the catalog to test for audio quality.
-        self.assistant.announce(sysvx.test_string1)
-        self.assistant.announce(sysvx.access_denied)
-        self.assistant.announce(sysvx.ready_string1)
-        self.assistant.announce(sysvx.lowpower_string1)
-        self.assistant.announce(sysvx.malfunction_string1)
-        self.assistant.announce(sysvx.no_auth_string1)
-
 """
 Simulation
 """

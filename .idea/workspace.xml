@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo2.ens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,11 +73,11 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\robots" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui" />
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui\system_strings" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
       <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\interface" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\pyonics\simulation" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exoskeleton test 2">
@@ -203,13 +202,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00361" summary="am I programming asynchronously now?">
-      <created>1697497774247</created>
-      <option name="number" value="00361" />
-      <option name="presentableId" value="LOCAL-00361" />
-      <option name="project" value="LOCAL" />
-      <updated>1697497774247</updated>
     </task>
     <task id="LOCAL-00362" summary="no longer throwing asynch exceptions">
       <created>1697500234040</created>
@@ -547,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700622181613</updated>
     </task>
-    <option name="localTasksCounter" value="410" />
+    <task id="LOCAL-00410" summary="adding a GPS app">
+      <created>1700624008796</created>
+      <option name="number" value="00410" />
+      <option name="presentableId" value="LOCAL-00410" />
+      <option name="project" value="LOCAL" />
+      <updated>1700624008796</updated>
+    </task>
+    <option name="localTasksCounter" value="411" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +562,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;exoskeleton/robots/muscle_attachments_b1.csv&#10;#&#9;exoskeleton/xos.py" />
     <MESSAGE value="made the world just an empty space for now, removed the plane" />
     <MESSAGE value="updated more things to be easily configurable" />
     <MESSAGE value="assigned more things to be configured from the configuration file" />
@@ -588,6 +586,7 @@
     <MESSAGE value="need to add exit key or button for hud, starting to prepare to implement GPS" />
     <MESSAGE value="adding resolution configuration" />
     <MESSAGE value="cleaning up code a bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning up code a bit" />
+    <MESSAGE value="adding a GPS app" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding a GPS app" />
   </component>
 </project>

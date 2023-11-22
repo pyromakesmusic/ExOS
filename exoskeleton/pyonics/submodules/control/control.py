@@ -1,13 +1,20 @@
 """
 DEVELOPER COMMENTS
 
-Keep at bottom level, so no references to other user-created libraries.
+Keep at bottom level, so no references to other user-created libraries. Low level control algorithms. Probably best
+to optimize with C/C++.
 """
 
 """
-LIBRARY IMPORTS
+STANDARD LIBRARY IMPORTS
 """
 import numpy as np
+
+"""
+OUTSIDE LIBRARY IMPORTS
+"""
+import klampt
+
 """
 CLASS DEFINITIONS
 """
@@ -15,6 +22,8 @@ CLASS DEFINITIONS
 """
 FUNCTION DEFINITIONS
 """
+
+
 
 def error(set_point, df, i):
     """
