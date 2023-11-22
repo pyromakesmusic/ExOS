@@ -15,6 +15,8 @@ import pandas as pd
 import numpy as np
 
 # Third Party Libraries
+
+import customtkinter as ctk
 import tkintermapview  # Adds potential for maps to tkinter
 import pyttsx3  # Text to speech
 import vosk  # Voice recognition library
@@ -48,10 +50,11 @@ class VoiceAssistant: # For voice control
         self.stream = None
         self.voice_launch()
 
-        self.voice_test()
+        #self.voice_test()
 
     def shutdown_assistant(self):
-        pass
+        # Shuts down and releases resources
+        self.voice_engine.stop()
 
     def announce(self, stringvar):
         print(stringvar)
@@ -93,6 +96,7 @@ class VoiceAssistant: # For voice control
             self.shutdown_assistant()
 
     def camera_launch(self):
+        # Start the camera
         try:
             self.user_cam = cv2.VideoCapture(0)
         except:
@@ -140,6 +144,9 @@ class AugmentOverlay:
 
         self.gps = None
         self.map = None
+        self.latitude = None
+        self.longitude = None
+        self.altitude = None
 
         # Empty variable creation
         self.date_text = None
@@ -162,9 +169,9 @@ class AugmentOverlay:
     def create_HUD(self):
         # Initializes the HUD
 
-        self.HUD = tk.Tk()  # Creates the HUD visual area as a tKinter window
+        self.HUD = ctk.CTk()  # Creates the HUD visual area as a tKinter window
         self.HUD.overrideredirect(True)  # Makes it borderless
-        self.HUD.geometry("1920x1080")  # Sets the size of the window
+        self.HUD.geometry("1920x1080+0+0")  # Sets the size of the window
         self.HUD.attributes("-alpha", 0.5)  # Make the window transparent
         self.HUD.configure(background="black")  # Makes the background black
         self.text_buffer = tk.StringVar()  # Creates a text buffer
@@ -197,25 +204,26 @@ class AugmentOverlay:
     def configure_HUD(self):
 
         # Create a close button
-        self.objectives = tk.Label(self.HUD, text=self.objective_text, font=("System", 20), fg=self.hud_color,
-                                   bg="black")
-        self.objectives.pack(anchor="ne", padx=5)
+        self.objectives = ctk.CTkLabel(self.HUD, text=self.objective_text, font=("System", 20))
+        self.objectives.pack(anchor="ne")
 
         # Adds a clock
-        self.clock = tk.Label(self.HUD, text=self.clock_text, font=("System", 20), fg=self.hud_color, bg="black")
+        self.clock = ctk.CTkLabel(self.HUD, text=self.clock_text, font=("System", 20))
 
-        self.date = tk.Label(self.HUD, text=self.date_text, font=("System", 20), fg=self.hud_color, bg="black")
+        self.date = ctk.CTkLabel(self.HUD, text=self.date_text, font=("System", 20))
 
-        self.gps = tk.Label(self.HUD, text=self.gps_text, font=("System", 20), fg=self.hud_color, bg="black")
+        self.gps = ctk.CTkLabel(self.HUD, text=self.gps_text, font=("System", 20))
 
-        self.map = tkintermapview.TkinterMapView(self.HUD, width=800, height=600)
+        self.map = tkintermapview.TkinterMapView(self.HUD, width=400, height=300)
+
+        self.map.set_tile_server("http://a.tile.stamen.com/toner/{z}/{x}/{y}.png")  # black and white
         self.map.pack(anchor="se")
 
-        self.date.pack(anchor="nw", padx=5)
+        self.date.pack(anchor="nw")
 
-        self.clock.pack(anchor="sw", pady=450)
+        self.clock.pack(anchor="sw")
 
-        self.gps.pack(anchor="se", padx=100, pady=300)
+        self.gps.pack(anchor="se")
 
 
         self.update_datetime()
@@ -243,15 +251,15 @@ class AugmentOverlay:
         except ConnectionRefusedError:
             self.gps_text = "GPS connection failed..."
 
-        self.gps.config(text=self.gps_text)
+        self.gps.configure(text=self.gps_text)
         self.gps.after(1000, self.update_GPS)
 
     def update_datetime(self):
         now = datetime.now()
         current_date = now.strftime("%d/%m/%Y")
         current_time = now.strftime("%H:%M:%S")
-        self.date.config(text=current_date)
-        self.clock.config(text=current_time)
+        self.date.configure(text=current_date)
+        self.clock.configure(text=current_time)
         self.clock.after(1000, self.update_datetime)  # Update every 1000 milliseconds (1 second)
         self.date.after(1000, self.update_datetime)
 

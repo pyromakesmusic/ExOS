@@ -234,7 +234,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.input = None
         self.assistant = vxui.VoiceAssistant()
-        self.assistant.announce("Initializing systems.")
+        # self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
 
         self.world = world
