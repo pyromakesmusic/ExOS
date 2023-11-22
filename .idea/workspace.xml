@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +71,11 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\robots" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui\system_strings" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\Pyonics\tests" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exoskeleton test 2">
@@ -200,20 +200,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00365" summary="printing for debugging">
-      <created>1697502347714</created>
-      <option name="number" value="00365" />
-      <option name="presentableId" value="LOCAL-00365" />
-      <option name="project" value="LOCAL" />
-      <updated>1697502347714</updated>
-    </task>
-    <task id="LOCAL-00366" summary="removing some unused code">
-      <created>1697504505514</created>
-      <option name="number" value="00366" />
-      <option name="presentableId" value="LOCAL-00366" />
-      <option name="project" value="LOCAL" />
-      <updated>1697504505514</updated>
     </task>
     <task id="LOCAL-00367" summary="taking a break, reaktor interface is starting to look cool and useful">
       <created>1697505673647</created>
@@ -544,7 +530,21 @@
       <option name="project" value="LOCAL" />
       <updated>1700632474534</updated>
     </task>
-    <option name="localTasksCounter" value="414" />
+    <task id="LOCAL-00414" summary="updating readme">
+      <created>1700633533607</created>
+      <option name="number" value="00414" />
+      <option name="presentableId" value="LOCAL-00414" />
+      <option name="project" value="LOCAL" />
+      <updated>1700633533607</updated>
+    </task>
+    <task id="LOCAL-00415" summary="moving readme">
+      <created>1700633786022</created>
+      <option name="number" value="00415" />
+      <option name="presentableId" value="LOCAL-00415" />
+      <option name="project" value="LOCAL" />
+      <updated>1700633786022</updated>
+    </task>
+    <option name="localTasksCounter" value="416" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -560,8 +560,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="assigned more things to be configured from the configuration file" />
-    <MESSAGE value="configuration going crazy" />
     <MESSAGE value="hid the muscle labels" />
     <MESSAGE value="color is now updating based on internal pressure" />
     <MESSAGE value="updating based on pressure, looks good, just need to tune filters - could probably add phone control or audio control with relative ease - add voice assistant" />
@@ -585,6 +583,8 @@
     <MESSAGE value="adding a GPS app" />
     <MESSAGE value="incorporating GPS" />
     <MESSAGE value="updating map stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating map stuff" />
+    <MESSAGE value="updating readme" />
+    <MESSAGE value="moving readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="moving readme" />
   </component>
 </project>

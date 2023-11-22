@@ -48,6 +48,8 @@ class VoiceAssistant: # For voice control
         self.stream = None
         self.voice_launch()
 
+        self.voice_test()
+
     def shutdown_assistant(self):
         pass
 
@@ -98,7 +100,6 @@ class VoiceAssistant: # For voice control
 
 
     def voice_test(self):
-
     # Plays all the strings in the catalog to test for audio quality.
         self.announce(sysvx.test_string1)
         self.announce(sysvx.access_denied)
@@ -106,6 +107,13 @@ class VoiceAssistant: # For voice control
         self.announce(sysvx.lowpower_string1)
         self.announce(sysvx.malfunction_string1)
         self.announce(sysvx.no_auth_string1)
+
+        for voice in self.voices:
+            print(voice, voice.id)
+            self.voice_engine.setProperty('voice', voice.id)
+            self.voice_engine.say("Hello World!")
+            self.voice_engine.runAndWait()
+            self.voice_engine.stop()
 
 
 class AugmentOverlay:
