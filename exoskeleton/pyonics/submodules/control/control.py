@@ -8,7 +8,10 @@ to optimize with C/C++.
 """
 STANDARD LIBRARY IMPORTS
 """
+import pandas as pd
 import numpy as np
+import argparse
+import asyncio
 import math
 
 """
@@ -16,11 +19,15 @@ OUTSIDE LIBRARY IMPORTS
 """
 import klampt
 import klampt.math.vectorops as kmv
+import pythonosc
 
+"""
+CUSTOM LIBRARY IMPORTS
+"""
+from .. import ui as ui
 """
 CLASS DEFINITIONS
 """
-
 """
 Hardware
 """
@@ -126,6 +133,158 @@ class Muscle(klampt.sim.ActuatorEmulator):
         app.setDraw(2, True)
         app.setColor(0, 1, 0, 1)
         return app
+
+
+"""
+Network Controller
+"""
+class AsyncServer:
+    """
+    Server must be asynchronous to allow control loop to function intermittently.
+    """
+    def __init__(self, ip, port):
+        self.dispatcher = pythonosc.dispatcher.Dispatcher()
+        self.parser = argparse.ArgumentParser()
+        self.parser.add_argument("--ip", default=ip, help="The IP address to listen on")
+        self.parser.add_argument("--port", type=int, default=port, help="The port to listen on")
+        self.args = self.parser.parse_args()
+        self.ip = ip
+        self.port = port
+        self.server = None
+        self.transport = None
+        self.protocol = None
+
+    async def make_endpoint(self):
+        self.server = pythonosc.osc_server.AsyncIOOSCUDPServer((self.ip, self.port),
+                                                               self.dispatcher, asyncio.get_running_loop())
+        self.transport, self.protocol = await self.server.create_serve_endpoint()
+        print("Serving on {}".format(self.ip))
+        return
+
+    def map(self, pattern, func, *args, **kwargs):
+        """
+        pattern: string var defining the OSC pattern to be recognized
+        func: the function to map to
+        args: any args for the function, this may need to be *args and **kwargs - needs more research
+        """
+        self.dispatcher.map(pattern, func, args)
+
+
+"""
+Robot Controller
+"""
+class ExoController(klampt.control.OmniRobotInterface):
+    """
+    Most low level hardware controller. No display, but contains enough of a world to start generating HUD elements.
+    """
+
+    # Initialization
+    def __init__(self, config_data):
+        """
+        Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
+        """
+        print(config_data)
+        self.shutdown_flag = False
+        self.input = None
+
+        self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
+        self.world.loadRobot(config_data["core"])  # Loads the robot geometry
+        self.robot = self.world.robot(0)
+        klampt.control.OmniRobotInterface.__init__(self, self.robot)
+        self.dt = config_data["timestep"]  # Sets the core robot clock
+        self.osc_handler = AsyncServer(config_data["address"], config_data["port"])
+        self.oscMapper()
+        # Creating a series of link transforms, I need to check if this gets updated automatically
+        self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
+        # Loading all the muscles
+        self.muscles = self.muscleLoader(config_data)
+        # Setting initial muscle pressure to zero
+        self.pressures = [0 for muscle in range(len(self.muscles))]
+
+    def muscleLoader(self, config_df):
+        """
+        Given a dataframe with an ["attachments"] column containing a path
+        to a .csv file detailing structured muscle parameters, generates a list of Muscle objects and
+        assigns them to the robot model. This should generate all muscles.
+        """
+        with open(config_df["attachments"]) as attachments:
+            muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
+            rows = muscleinfo_df.shape[0]  # This is the number of rows, so the while loop should loop "row" many times
+
+            muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
+
+            for x in range(rows):
+                row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
+                muscle = Muscle(row, self) # Calls the muscle class constructor
+                muscle_objects.append(muscle) # Adds the muscle to the list
+
+            muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
+            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
+
+            """
+            This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
+            in each row.
+            """
+            return muscleinfo_df
+
+    # Control and Kinematics
+
+    def oscMapper(self):
+        """
+        Sets up the OSC control inputs.
+        """
+        self.osc_handler.map("/pressures", self.setPressures)
+        return
+    def sensedPosition(self):
+        """
+        Returns the list of link transforms.
+        """
+        return self.bones
+
+    def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
+        args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
+        self.pressures = [pressure for pressure in args]
+        return
+
+    def validateInput(self, stringvar):
+        if stringvar == None:
+            return ""
+        else:
+            return stringvar
+
+    def controlRate(self):
+        """
+        Should be the same as the physical device, Reaktor control rate, simulation timestep
+        """
+        return self.dt
+
+    def beginIdle(self):
+        """
+        Used for loops.
+        """
+        self.shutdown_flag = False
+        while not self.shutdown_flag:
+            self.idle()
+
+    def idle(self, bones_transforms, input):
+        """
+        bones_transforms: A list of link locations
+        """
+        self.input = input  # Runs the voice assistant at idle to get input
+        self.bones = bones_transforms  # Not working quite right, might need rotation
+        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
+        i = 0
+        for muscle in self.muscles.muscle_objects:
+            triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument
+            force_list.append(triplet_a)
+            force_list.append(triplet_b)
+            i += 1
+        return pd.Series(force_list)
+
+    def shutdown(self):
+        self.shutdown_flag = True
+
+
 
 
 """

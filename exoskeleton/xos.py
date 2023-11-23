@@ -239,83 +239,20 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         print(config_data)
         self.shutdown_flag = False
-
         self.input = None
+        self.dt = None
         self.assistant = ui.VoiceAssistantUI(1, 150)
-        # self.assistant.announce("Initializing systems.")
-        # Testing the voice assistant
-
-        self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world
-        self.world.loadRobot(config_data["core"])
-        self.robot = self.world.robot(0)
+        self.robot = ctrl.ExoController(config_data).robot
+        self.assistant.announce("Initializing systems.")
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
-
-
-
-        self.dt = config_data["timestep"]
-        self.osc_handler = osck.AsyncServer(config_data["address"], config_data["port"])
-        self.oscMapper()
-
-        # Creating a series of link transforms, I need to check if this gets updated automatically
-        self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
-
-        # Loading all the muscles
-        self.muscles = self.muscleLoader(config_data)
-
-        # Setting initial muscle pressure to zero
-        self.pressures = [0 for muscle in range(len(self.muscles))]
-
-
-    def muscleLoader(self, config_df):
-        """
-        Given a dataframe with an ["attachments"] column containing a path
-        to a .csv file detailing structured muscle parameters, generates a list of Muscle objects and
-        assigns them to the robot model. This should generate all muscles.
-        """
-        with open(config_df["attachments"]) as attachments:
-            muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
-            rows = muscleinfo_df.shape[0]  # This is the number of rows, so the while loop should loop "row" many times
-
-            muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
-
-            for x in range(rows):
-                row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
-                muscle = ctrl.Muscle(row, self) # Calls the muscle class constructor
-                muscle_objects.append(muscle) # Adds the muscle to the list
-
-            muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
-            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
-
-            """
-            This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
-            in each row.
-            """
-            return muscleinfo_df
 
     # Control and Kinematics
 
-    def oscMapper(self):
-        """
-        Sets up the OSC control inputs.
-        """
-        self.osc_handler.map("/pressures", self.setPressures)
-        return
     def sensedPosition(self):
         """
         Returns the list of link transforms.
         """
-        return self.bones
-
-    def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
-        args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
-        self.pressures = [pressure for pressure in args]
-        return
-
-    def validateInput(self, stringvar):
-        if stringvar == None:
-            return ""
-        else:
-            return stringvar
+        return [0,0,0]
 
     def controlRate(self):
         """
@@ -323,28 +260,6 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         return self.dt
 
-    def beginIdle(self):
-        """
-        Used for loops.
-        """
-        self.shutdown_flag = False
-        while not self.shutdown_flag:
-            self.idle()
-
-    def idle(self, bones_transforms):
-        """
-        bones_transforms: A list of link locations
-        """
-        self.input = self.validateInput(self.assistant.voice_loop())  # Runs the voice assistant at idle to get input
-        self.bones = bones_transforms  # Not working quite right, might need rotation
-        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
-        i = 0
-        for muscle in self.muscles.muscle_objects:
-            triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument
-            force_list.append(triplet_a)
-            force_list.append(triplet_b)
-            i += 1
-        return pd.Series(force_list)
 
     # Test Methods
 

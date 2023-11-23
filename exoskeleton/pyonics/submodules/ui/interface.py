@@ -1,4 +1,6 @@
 """
+Should contain interface elements for inside the robot as well as when it is plugged into a computer.
+====
 LIBRARY IMPORTS
 """
 # Standard Libraries
@@ -139,18 +141,14 @@ class VoiceAssistantUI: # For voice control
 
 class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
-    def __init__(self, config):
-        self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
-        kvis.glrobotprogram.GLWorldPlugin.__init__(self, self.world)
-        kvis.add("world", self.world)
+    def __init__(self, world):
+        kvis.glrobotprogram.GLWorldPlugin.__init__(self, world)
+        kvis.add("world", world)
         kvis.setWindowTitle("Klampt HUD  Test")
         kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
-
         # Sets window to configured width and height
-        kvis.resizeWindow(config["width"], config["height"])
         self.viewport = kvis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
-
         self.drawOptions()
         # Begin desktopGUI event loop
         asyncio.run(self.idle_launcher())
