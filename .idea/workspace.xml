@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -226,13 +224,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00380" summary="using negative indexing allows me to add more columns to the muscle dataframe">
-      <created>1697672554260</created>
-      <option name="number" value="00380" />
-      <option name="presentableId" value="LOCAL-00380" />
-      <option name="project" value="LOCAL" />
-      <updated>1697672554260</updated>
     </task>
     <task id="LOCAL-00381" summary="adding more stuff to muscle attachments">
       <created>1697672813997</created>
@@ -570,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700718934966</updated>
     </task>
-    <option name="localTasksCounter" value="429" />
+    <task id="LOCAL-00429" summary="reorganized, I want to get UI stuff out of the main XOS package">
+      <created>1700726040183</created>
+      <option name="number" value="00429" />
+      <option name="presentableId" value="LOCAL-00429" />
+      <option name="project" value="LOCAL" />
+      <updated>1700726040183</updated>
+    </task>
+    <option name="localTasksCounter" value="430" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -586,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="rethinking class configurations, voice control UI and HUD might end up being very low level interface classes" />
     <MESSAGE value="integrated sound and cleaned up the class dependencies a little bit" />
     <MESSAGE value="lots of reorganization" />
     <MESSAGE value="added date clock and objective list" />
@@ -611,6 +608,7 @@
     <MESSAGE value="adding video section and moving mckibben muscle control to submodule" />
     <MESSAGE value="close button is becoming more effective" />
     <MESSAGE value="lots more commentary and cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="lots more commentary and cleanup" />
+    <MESSAGE value="reorganized, I want to get UI stuff out of the main XOS package" />
+    <option name="LAST_COMMIT_MESSAGE" value="reorganized, I want to get UI stuff out of the main XOS package" />
   </component>
 </project>

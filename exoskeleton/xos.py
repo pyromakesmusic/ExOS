@@ -233,21 +233,24 @@ class ExOS(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, robotmodel,  world, config_data):
+    def __init__(self, config_data):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
-        klampt.control.OmniRobotInterface.__init__(self, robotmodel)
-
+        print(config_data)
         self.shutdown_flag = False
 
         self.input = None
-        self.assistant = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
+        self.assistant = ui.VoiceAssistantUI(1, 150)
         # self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
 
-        self.world = world
-        self.robot = robotmodel
+        self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world
+        self.world.loadRobot(config_data["core"])
+        self.robot = self.world.robot(0)
+        klampt.control.OmniRobotInterface.__init__(self, self.robot)
+
+
 
         self.dt = config_data["timestep"]
         self.osc_handler = osck.AsyncServer(config_data["address"], config_data["port"])
@@ -399,38 +402,33 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     desktopGUI class, contains visualization options and is usually where the simulator will be called.
     """
-    def __init__(self, config, has_hud=True):
+    def __init__(self, config):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
 
-        self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
-
-        klampt.vis.add("world", self.world)
-
-
-        self.world.loadRobot(config["core"])
-        self.robot = self.world.robot(0)
-
-        klampt.vis.add("X001", self.robot)
         klampt.vis.setWindowTitle("X001  Test")
         klampt.vis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
 
 
         # Sets window to configured width and height
-        klampt.vis.resizeWindow(config["width"],config["height"])
+        # klampt.vis.resizeWindow(int(config["width"]),int(config["height"]))
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
 
-        # creation of the simulation
-        self.sim = ExoSim(self.world, self.robot, config["timestep"])
 
         # creation of the controller
-        self.controller = ExOS(self.robot, self.world, config)
+        self.controller = ExOS(config)
+        klampt.vis.add("world", self.controller.world)
+        klampt.vis.add("X001", self.controller.robot)
         self.assistant = self.controller.assistant
 
+        # creation of the simulation
+        self.sim = ExoSim(self.controller.world, self.controller.robot, config["timestep"])
+
+
         # Adds the HUD - must come after controller and assistant
-        if has_hud:
-            self.hud = ui.AugmentOverlayTkUI(self.controller, self.controller.assistant)
+        if True:
+            self.hud = ui.AugmentOverlayKlUI(config)
         else:
             self.hud = None
 
@@ -512,10 +510,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 """
 MAIN LOOP
 """
-def init_main(config_filepath):
+def initialize(config_filepath):
     config = configLoader(config_filepath)
-    exo_sim_test = ui.AugmentOverlayTkUI(config)
+    exo_test = ui.AugmentOverlayKlUI(config)
 
 
 if __name__ == "__main__":
-    init_main("test_config2.txt")
+    initialize("test_config2.txt")

@@ -139,15 +139,9 @@ class VoiceAssistantUI: # For voice control
 
 class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
-    def __init__(self, config, controller, has_hud=True):
-        kvis.glrobotprogram.GLWorldPlugin.__init__(self, "ExoTest")
-
-
-        # All the world elements MUST be loaded before the Simulator is created
-        self.controller = controller
-
+    def __init__(self, config):
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
-
+        kvis.glrobotprogram.GLWorldPlugin.__init__(self, self.world)
         kvis.add("world", self.world)
         kvis.setWindowTitle("Klampt HUD  Test")
         kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
@@ -157,24 +151,14 @@ class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
         self.viewport = kvis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
 
-        # Adds the HUD - must come after controller and assistant
-        if has_hud:
-            self.hud = AugmentOverlayTkUI(self.controller, self.controller.assistant)
-            # Changing this stuff soon to avoid using tkinter
-        else:
-            self.hud = None
-
-        # Adds the muscles to the visualization
-
         self.drawOptions()
         # Begin desktopGUI event loop
         asyncio.run(self.idle_launcher())
 
-    async def update_GUI(self):
+    async def refresh(self):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        self.hud.refresh()  # Refreshes the HUD
         kvis.lock()  # Locks the klampt visualization
         kvis.unlock()  # Unlocks the klampt visualization
         return True
@@ -182,17 +166,15 @@ class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
     async def async_handler(self):
         # print(self.controller.input)
         while kvis.shown():
-            await self.update_GUI()  # Updates what is displayed
+            await self.refresh()  # Updates what is displayed
             await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
 
     async def idle_launcher(self):
         """
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
-        await self.controller.osc_handler.make_endpoint()  # Sets up OSC handler endpoint
         kvis.show()  # Opens the visualization for the first time
         await self.async_handler()  # Performs asynchronous idle actions
-        self.controller.osc_handler.transport.close()  # Closes the network socket once GUI is finished
         return True
 
         """
