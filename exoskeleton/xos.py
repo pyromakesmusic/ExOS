@@ -397,8 +397,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     def __init__(self, config, with_hud=True):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
-        self.with_hud = with_hud  # Boolean flag declaring presence of a HUD
-        self.hud = None  # Class attribute for holding the HUD object
+        self.with_hud = with_hud  # Boolean flag declaring presence of a root_HUD
+        self.hud = None  # Class attribute for holding the root_HUD object
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
 
         klampt.vis.add("world", self.world)
@@ -444,7 +444,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        self.hud.refresh_HUD()
+        self.hud.refresh()
         klampt.vis.lock()
         forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
         print(forces)

@@ -23,7 +23,7 @@ import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from ..apps.apps import Map, Camera
+from ..apps.apps import Map, Camera, Clock, DateWidget, MissionWidget
 
 """
 FUNCTION DEFINITIONS #1 
@@ -120,9 +120,10 @@ class VoiceAssistantUI: # For voice control
 
 class AugmentOverlayUI:
     # For a Heads-Up Display or Helmet Mounted Display
-    def __init__(self, controller, assistant, has_map=False, has_camera=True):
-        # has_map is false for testing
-        self.HUD = None
+    def __init__(self, controller, assistant, has_missions=True, has_map=True,
+                 has_camera=True, has_clock=True, has_date=True):
+        # boolean values are for testing
+        self.root_HUD = ctk.CTk()  # root_HUD is the tkinter root window
         if not assistant:
             # If no voice assistant assigned uses the controller's built-in assistant
             self.assistant = controller.assistant
@@ -130,147 +131,55 @@ class AugmentOverlayUI:
             # Applies the assigned voice assistant
             self.assistant = assistant
 
-        self.clock_text = None
-        self.objective_text = None
-        self.text_buffer = None
-        self.gps_text = None
-        self.clock = None
-        self.objectives = None
+        # HUDisplay options using tkinter
 
-        self.gps = None
+        self.root_HUD.overrideredirect(True)  # Makes it borderless
+        self.root_HUD.geometry("1920x1080+0+0")  # Sets the size of the window
+        self.root_HUD.attributes("-alpha", 0.5)  # Make the window transparent
+        self.root_HUD.configure(background="black")  # Makes the background black
+
+        # Sets up the map
         if has_map:
-            self.map = Map()  # Makes the Map using the Map from apps
-        self.map = None
-        self.latitude = None
-        self.longitude = None
-        self.altitude = None
-
-        # Empty variable creation
-        self.date_text = None
-        self.date = None
-
-
-        self.camera = None
-        if not has_camera:
-            self.camera = None
+            self.map = Map(self.root_HUD, w=300, h=250)
         else:
+            self.map = None
+
+        # Sets up the clock
+        if has_clock:
+            self.clock = Clock(self.root_HUD)
+        else:
+            self.clock = None
+
+        # Sets up the date widget
+        if has_date:
+            self.date = DateWidget(self.root_HUD)
+        else:
+            self.date = None
+
+        # Sets up the camera feed and display if present
+        if has_camera:
             self.camera = Camera(0)
+        else:
+            self.camera = None
+
+        if has_missions:
+            self.missions = MissionWidget(self.root_HUD, "no missions")
+        else:
+            self.missions = None
 
         # Style changes
         self.hud_color = "red"
-        self.create_HUD()
+        self.root_HUD.focus_force()
+        self.root_HUD.mainloop()
 
     def close_HUD(self):
-        # Closes the HUD
-        self.assistant.announce("Shutting down heads-up display.")
-        self.HUD.destroy()
-        self.assistant.announce("Shutting down controller.")
+        # Closes the root_HUD
+        self.assistant.announce("Shutting down system.")
+        self.root_HUD.destroy()
 
-    def create_HUD(self):
-        # Initializes the HUD
-
-        self.HUD = ctk.CTk()  # Creates the HUD visual area as a tKinter window
-        self.HUD.overrideredirect(True)  # Makes it borderless
-        self.HUD.geometry("1920x1080+0+0")  # Sets the size of the window
-        self.HUD.attributes("-alpha", 0.5)  # Make the window transparent
-        self.HUD.configure(background="black")  # Makes the background black
-        self.text_buffer = tk.StringVar()  # Creates a text buffer
-
-        # empty variable creation
-        self.objective_text = "Testing mission area text: Lorem ipsum dolor et"
-        self.objectives = None
-
-        self.create_objectives(grid=True,x=5,y=0)
-        self.create_exitbutton(grid=True,x=3,y=0)
-
-        self.clock_text = None
-        self.clock = None
-
-        self.exitbutton = None
-
-        self.gps_text = None
-        self.gps = None
-        self.latitude = None
-        self.longitude = None
-        self.altitude = None
-
-        self.configure_HUD(has_camera=True)  # sets up the HUD layout by user preference
-
-        self.HUD.mainloop()
-        self.HUD.focus_force()
-
-    def refresh_HUD(self):
-        # Update the label's text
-        self.update_datetime()
-        self.update_GPS()
+    def refresh(self):
+        # Update everything on the screen
         pass
-
-    def configure_HUD(self, has_camera=True): # This should be false by default once done testing
-
-        # Adds a clock
-        self.clock = ctk.CTkLabel(self.HUD, text=self.clock_text, font=("System", 20))
-        self.date = ctk.CTkLabel(self.HUD, text=self.date_text, font=("System", 20))
-        self.gps = ctk.CTkLabel(self.HUD, text=self.gps_text, font=("System", 20))
-        if has_camera:
-            # Do something
-            pass
-
-
-        # This needs to update once early to make sure every box has information, then once every time step
-        self.update_datetime()
-        self.update_GPS()
-
-    """
-    Layout Management
-    """
-
-    def create_objectives(self, grid: True, x: int,y: int):
-        # Sets up objective list on the HUD
-        self.objectives = ctk.CTkLabel(self.HUD, text=self.objective_text, font=("System", 20))
-        if not grid:
-            self.objectives.pack(anchor="ne")
-        else:
-            self.objectives.grid(row=x,column=y)
-    def create_exitbutton(self, grid: True, x: int,y: int):
-        self.exitbutton = ctk.CTkButton(self.HUD, text="EXIT", command=self.close_HUD)
-        if not grid:
-            self.exitbutton.pack(anchor="s")
-        else:
-            self.exitbutton.grid(row=x,column=y)
-
-    def update_GPS(self):
-        try:
-            gpsd.connect()
-
-            # Get the GPS data
-            packet = gpsd.get_current()
-
-            # Check if the data is valid
-            if packet.mode >= 2:
-                self.latitude = packet.lat
-                self.longitude = packet.lon
-                self.altitude = packet.alt
-
-                coordinates = (f"Latitude: {self.latitude},\nLongitude: {self.longitude},\nAltitude: {self.altitude}")
-            else:
-                coordinates = ("No GPS fix")
-
-            self.gps_text = coordinates
-
-        except ConnectionRefusedError:
-            self.gps_text = "GPS connection failed..."
-
-        self.gps.configure(text=self.gps_text)
-        self.gps.after(1000, self.update_GPS)
-
-    def update_datetime(self):
-        now = datetime.now()
-        current_date = now.strftime("%d/%m/%Y")
-        current_time = now.strftime("%H:%M:%S")
-        self.date.configure(text=current_date)
-        self.clock.configure(text=current_time)
-        self.clock.after(1000, self.update_datetime)  # Update every 1000 milliseconds (1 second)
-        self.date.after(1000, self.update_datetime)
 
 """
 FUNCTION DEFINITIONS
