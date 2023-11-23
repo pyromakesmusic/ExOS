@@ -103,7 +103,7 @@ def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1]  # Should be the name index
     muscle = dataframe_row[-1]  # Index of the muscle object
-    greenness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
+    greenness = ui.colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
     klampt.vis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
     klampt.vis.setColor(name, 0, greenness, 0, 1)  # Sets the color of the muscle (currently green
     klampt.vis.hideLabel(name)  # Hides the name of the muscle
@@ -430,7 +430,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         # Adds the HUD - must come after controller and assistant
         if has_hud:
-            self.hud = ui.AugmentOverlayUI(self.controller, self.controller.assistant)
+            self.hud = ui.AugmentOverlayTkUI(self.controller, self.controller.assistant)
         else:
             self.hud = None
 
@@ -499,7 +499,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         """
         muscle_df = self.controller.muscles
         for row in muscle_df.itertuples():
-            visMuscles(row)
+            ui.visMuscles(row)
 
     """
     Shutdown
@@ -514,7 +514,7 @@ MAIN LOOP
 """
 def init_main(config_filepath):
     config = configLoader(config_filepath)
-    exo_sim_test = ExoGUI(config)
+    exo_sim_test = ui.AugmentOverlayTkUI(config)
 
 
 if __name__ == "__main__":

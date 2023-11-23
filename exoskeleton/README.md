@@ -16,7 +16,7 @@ The included interface module contains several built-in components.
 
 ### Heads-Up Displays
 
-The **AugmentOverlayUI** class provides options for creating a simple HUD in one user-selectable color.
+The **AugmentOverlayTkUI** class provides options for creating a simple HUD in one user-selectable color.
 Future plans involve dynamically updating color depending on the input of the camera and ambient light levels.
 
 ## Applications

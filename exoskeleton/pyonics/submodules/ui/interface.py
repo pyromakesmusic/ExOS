@@ -14,6 +14,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
+# Klampt Libraries
+import klampt
+import klampt.vis as kvis
+
 # Third Party Libraries
 import transformers
 import customtkinter as ctk
@@ -29,6 +33,22 @@ from ..apps.apps import Map, Camera, Compass, Clock, DateWidget, MissionWidget
 FUNCTION DEFINITIONS #1 
 """
 # Most of them should go here, any down after the class definitions are there only to avoid screwing things up right now
+def colorCalc(current_pressure, max_pressure):
+    # Calculates a color based on a current and max value
+    if current_pressure / max_pressure < 1:
+        return current_pressure / max_pressure
+    else:
+        return 1
+
+def visMuscles(dataframe_row):
+    # Takes a dataframe row as a namedtuple and adds muscle to visualization
+    name = dataframe_row[1]  # Should be the name index
+    muscle = dataframe_row[-1]  # Index of the muscle object
+    greenness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
+    klampt.vis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
+    klampt.vis.setColor(name, 0, greenness, 0, 1)  # Sets the color of the muscle (currently green
+    klampt.vis.hideLabel(name)  # Hides the name of the muscle
+
 
 """
 CLASS DEFINITIONS
@@ -117,9 +137,101 @@ class VoiceAssistantUI: # For voice control
             self.voice_engine.stop()
             i = (i + 1) % len(self.voices)
 
+class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
+    # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
+    def __init__(self, config, controller, has_hud=True):
+        kvis.glrobotprogram.GLWorldPlugin.__init__(self, "ExoTest")
 
-class AugmentOverlayUI:
-    # For a Heads-Up Display or Helmet Mounted Display
+
+        # All the world elements MUST be loaded before the Simulator is created
+        self.controller = controller
+
+        self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
+
+        kvis.add("world", self.world)
+        kvis.setWindowTitle("Klampt HUD  Test")
+        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
+
+        # Sets window to configured width and height
+        kvis.resizeWindow(config["width"], config["height"])
+        self.viewport = kvis.getViewport()
+        self.viewport.fit([0, 0, -5], 25)
+
+        # Adds the HUD - must come after controller and assistant
+        if has_hud:
+            self.hud = AugmentOverlayTkUI(self.controller, self.controller.assistant)
+            # Changing this stuff soon to avoid using tkinter
+        else:
+            self.hud = None
+
+        # Adds the muscles to the visualization
+
+        self.drawOptions()
+        # Begin desktopGUI event loop
+        asyncio.run(self.idle_launcher())
+
+    async def update_GUI(self):
+        """
+        Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
+        """
+        self.hud.refresh()  # Refreshes the HUD
+        kvis.lock()  # Locks the klampt visualization
+        kvis.unlock()  # Unlocks the klampt visualization
+        return True
+
+    async def async_handler(self):
+        # print(self.controller.input)
+        while kvis.shown():
+            await self.update_GUI()  # Updates what is displayed
+            await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
+
+    async def idle_launcher(self):
+        """
+        Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
+        """
+        await self.controller.osc_handler.make_endpoint()  # Sets up OSC handler endpoint
+        kvis.show()  # Opens the visualization for the first time
+        await self.async_handler()  # Performs asynchronous idle actions
+        self.controller.osc_handler.transport.close()  # Closes the network socket once GUI is finished
+        return True
+
+        """
+        Visual Options
+        """
+
+    def drawOptions(self):
+        """
+        Changes some drawing options for link geometry
+        In the setDraw function, the first argument is an integer denoting vertices, edges. etc. The second is a Boolean
+        determining regardless of whether the option is drawn.
+
+        setColor function takes an int and RGBA float values.
+        """
+        wm = self.world
+        for x in range(wm.numIDs()):
+            wm.appearance(x).setDraw(2, True)  # Makes edges visible
+            # wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
+            wm.appearance(x).setColor(2, 0, 1, 0, .5)  # Makes edges green?
+            # wm.appearance(x).setColor(4, .1, .1, .1, .1)  # This makes the faces a translucent blue grey
+            # wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
+
+    def drawMuscles(self):
+        """
+        This function takes all the muscles from the controller dataframe and draws them in the visualization
+        """
+        muscle_df = self.controller.muscles
+        for row in muscle_df.itertuples():
+            visMuscles(row)
+
+        """
+        Shutdown
+        """
+    async def shutdown(self):
+        self.hud.close_all()
+        kvis.kill()
+
+class AugmentOverlayTkUI:
+    # For a Heads-Up Display or Helmet Mounted Display. This version uses Tkinter.
     def __init__(self, controller, assistant, has_missions=True, has_map=True,
                  has_camera=True, has_clock=True, has_date=True, has_compass=False):
         # boolean values are rapidly becoming more of them
@@ -211,8 +323,6 @@ class AugmentOverlayUI:
 FUNCTION DEFINITIONS
 """
 
-def initialize():
-    pass
 """
 Main Function
 """

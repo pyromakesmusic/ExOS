@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +82,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exoskeleton test 2">
+  <component name="RunManager" selected="Python.exoskeleton test 3">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,6 +167,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="exoskeleton test 3" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pyro\Documents\Math4157\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="simulation test  2" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,6 +214,7 @@
       <item itemvalue="Python.PID_talk" />
       <item itemvalue="Python.exoskeleton test 1" />
       <item itemvalue="Python.exoskeleton test 2" />
+      <item itemvalue="Python.exoskeleton test 3" />
       <item itemvalue="Python.simulation test  2" />
     </list>
   </component>
@@ -200,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00379" summary="updating more stuff, trying to get the drawn muscles to update">
-      <created>1697669524946</created>
-      <option name="number" value="00379" />
-      <option name="presentableId" value="LOCAL-00379" />
-      <option name="project" value="LOCAL" />
-      <updated>1697669524946</updated>
     </task>
     <task id="LOCAL-00380" summary="using negative indexing allows me to add more columns to the muscle dataframe">
       <created>1697672554260</created>
@@ -544,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700718600415</updated>
     </task>
-    <option name="localTasksCounter" value="428" />
+    <task id="LOCAL-00428" summary="lots more commentary and cleanup">
+      <created>1700718934966</created>
+      <option name="number" value="00428" />
+      <option name="presentableId" value="LOCAL-00428" />
+      <option name="project" value="LOCAL" />
+      <updated>1700718934966</updated>
+    </task>
+    <option name="localTasksCounter" value="429" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -560,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="voice recognition and text to speech both activated, aiming to turn on HUD now" />
     <MESSAGE value="rethinking class configurations, voice control UI and HUD might end up being very low level interface classes" />
     <MESSAGE value="integrated sound and cleaned up the class dependencies a little bit" />
     <MESSAGE value="lots of reorganization" />
@@ -585,6 +610,7 @@
     <MESSAGE value="separating apps out" />
     <MESSAGE value="adding video section and moving mckibben muscle control to submodule" />
     <MESSAGE value="close button is becoming more effective" />
-    <option name="LAST_COMMIT_MESSAGE" value="close button is becoming more effective" />
+    <MESSAGE value="lots more commentary and cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="lots more commentary and cleanup" />
   </component>
 </project>
