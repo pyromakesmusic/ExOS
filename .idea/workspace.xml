@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/test_config2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,13 +204,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00373" summary="still messing with sleep time">
-      <created>1697651727192</created>
-      <option name="number" value="00373" />
-      <option name="presentableId" value="LOCAL-00373" />
-      <option name="project" value="LOCAL" />
-      <updated>1697651727192</updated>
     </task>
     <task id="LOCAL-00374" summary="still messing with sleep time">
       <created>1697667403170</created>
@@ -546,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700689912148</updated>
     </task>
-    <option name="localTasksCounter" value="422" />
+    <task id="LOCAL-00422" summary="updating HUD calls to submodules">
+      <created>1700698183389</created>
+      <option name="number" value="00422" />
+      <option name="presentableId" value="LOCAL-00422" />
+      <option name="project" value="LOCAL" />
+      <updated>1700698183389</updated>
+    </task>
+    <option name="localTasksCounter" value="423" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +564,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="improved demo control panel and updated documentation" />
     <MESSAGE value="adding and customizing voice control" />
     <MESSAGE value="creating a HUD class" />
     <MESSAGE value="improving transparent window function" />
@@ -587,6 +588,7 @@
     <MESSAGE value="removing camera from interface and putting it in apps, this may end up holding the voice assistant too" />
     <MESSAGE value="pushing through" />
     <MESSAGE value="iterating through the voices" />
-    <option name="LAST_COMMIT_MESSAGE" value="iterating through the voices" />
+    <MESSAGE value="updating HUD calls to submodules" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating HUD calls to submodules" />
   </component>
 </project>

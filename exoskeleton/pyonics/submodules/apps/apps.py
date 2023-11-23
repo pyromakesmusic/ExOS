@@ -36,6 +36,9 @@ class Camera:
         self.camera = None
         self.cam_launch(i)
 
+        self.ret = None
+        self.frame = None
+
 
     def cam_launch(self, index):
         # Start the camera
@@ -45,14 +48,14 @@ class Camera:
             "Error: Exception launching camera input."
 
     def cam_loop(self):
-        ret, frame = self.camera.read()
+        self.ret, self.frame = self.camera.read()
 
         # Check if the frame was read successfully
-        if not ret:
+        if not self.ret:
             print("Error: Could not read frame.")
 
         # Display the frame
-        cv2.imshow('Webcam', frame)
+        cv2.imshow('Webcam', self.frame)
 
     def cam_shutdown(self):
         # Break the loop if the user presses the 'q' key

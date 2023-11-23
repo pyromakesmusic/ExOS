@@ -96,9 +96,9 @@ def visMuscles(dataframe_row):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
     name = dataframe_row[1]  # Should be the name index
     muscle = dataframe_row[-1]  # Index of the muscle object
-    redness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
+    greenness = colorCalc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
     klampt.vis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
-    klampt.vis.setColor(name, redness, 0, 0, 1)  # Sets the color of the muscle
+    klampt.vis.setColor(name, 0, greenness, 0, 1)  # Sets the color of the muscle (currently green
     klampt.vis.hideLabel(name)  # Hides the name of the muscle
 
 
@@ -400,11 +400,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
 
         klampt.vis.add("X001", self.robot)
         klampt.vis.setWindowTitle("X001  Test")
-        klampt.vis.setBackgroundColor(.5, .8, .9, 1)  # Makes background teal
+        klampt.vis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
+
+
+        # Sets window to configured width and height
+        klampt.vis.resizeWindow(config["width"],config["height"])
         self.viewport = klampt.vis.getViewport()
         self.viewport.fit([0, 0, -5], 25)
-
-        klampt.vis.resizeWindow(config["width"],config["height"])  # Sets window to configured width and height
 
         # creation of the simulation
         self.sim = ExoSim(self.world, self.robot, config["timestep"])
@@ -456,7 +458,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         await self.controller.osc_handler.make_endpoint()  # This seems to be da way
         klampt.vis.show()
         if self.with_hud:
-            self.hud = vxui.AugmentOverlay(self.controller, self.controller.assistant)
+            self.hud = vxui.AugmentOverlayUI(self.controller, self.controller.assistant)
         await self.gui_idle_loop()
         self.controller.osc_handler.transport.close()
         return
@@ -475,10 +477,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         wm = self.world
         for x in range(wm.numIDs()):
             wm.appearance(x).setDraw(2, True)  # Makes edges visible
-            wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
-            wm.appearance(x).setColor(2, 0, 0, 0, .5)  # Makes edges black
-            wm.appearance(x).setColor(4, 0, .5, .9, .9)  # This makes the faces a translucent blue grey
-            wm.appearance(x).setColor(4, 0, 0, 1, .5)  # I think this changes the glow color
+            #wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
+            wm.appearance(x).setColor(2, 0, 1, 0, .5)  # Makes edges green?
+            #wm.appearance(x).setColor(4, .1, .1, .1, .1)  # This makes the faces a translucent blue grey
+            #wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
 
     def drawMuscles(self):
         """

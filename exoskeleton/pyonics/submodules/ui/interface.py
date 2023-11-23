@@ -23,7 +23,7 @@ import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from ..apps.apps import Map
+from ..apps.apps import Map, Camera
 
 """
 FUNCTION DEFINITIONS #1 
@@ -118,14 +118,16 @@ class VoiceAssistantUI: # For voice control
             i = (i + 1) % len(self.voices)
 
 
-class AugmentOverlay:
+class AugmentOverlayUI:
     # For a Heads-Up Display or Helmet Mounted Display
-    def __init__(self, controller, assistant, has_map=False):
+    def __init__(self, controller, assistant, has_map=False, has_camera=True):
+        # has_map is false for testing
         self.HUD = None
         if not assistant:
-            # If no assistant assigned uses the controller's built-in assistant
+            # If no voice assistant assigned uses the controller's built-in assistant
             self.assistant = controller.assistant
         else:
+            # Applies the assigned voice assistant
             self.assistant = assistant
 
         self.clock_text = None
@@ -149,6 +151,10 @@ class AugmentOverlay:
 
 
         self.camera = None
+        if not has_camera:
+            self.camera = None
+        else:
+            self.camera = Camera(0)
 
         # Style changes
         self.hud_color = "red"
@@ -176,16 +182,15 @@ class AugmentOverlay:
         self.clock_text = None
         self.clock = None
 
+        self.exitbutton = None
+
         self.gps_text = None
         self.gps = None
         self.latitude = None
         self.longitude = None
         self.altitude = None
 
-
-
-
-        self.configure_HUD()  # sets up the HUD layout by user preference
+        self.configure_HUD(has_camera=True)  # sets up the HUD layout by user preference
 
         self.HUD.mainloop()
         self.HUD.focus_force()
@@ -215,10 +220,16 @@ class AugmentOverlay:
     Layout Management
     """
 
-    def create_objectives(self):
+    def create_objectives(self, grid: True, x: int,y: int):
         # Sets up objective list on the HUD
         self.objectives = ctk.CTkLabel(self.HUD, text=self.objective_text, font=("System", 20))
-        self.objectives.pack(anchor="ne")
+        if not grid:
+            self.objectives.pack(anchor="ne")
+        else:
+            self.objectives.grid()
+    def create_exitbutton(self):
+        self.exitbutton = ctk.CTkButton(self.HUD, text="EXIT", font=("System", 50))
+        self.exitbutton.pack(anchor="s")
 
     def update_GPS(self):
         try:
