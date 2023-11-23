@@ -4,7 +4,7 @@ LIBRARY IMPORTS
 # Standard Libraries
 import tkinter as tk
 from datetime import datetime
-
+import asyncio
 import gpsd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
@@ -180,7 +180,7 @@ class AugmentOverlayUI:
         else:
             self.missions = None
 
-        self.stop = ctk.CTkButton(self.root_HUD, command=self.close_HUD, text="STOP", font=("System", 200),
+        self.stop = ctk.CTkButton(self.root_HUD, command=lambda:asyncio.run(self.close_all()), text="STOP", font=("System", 200),
                                   fg_color="transparent", text_color="red", width=800)
         self.stop.grid(column=1,row=0)
 
@@ -189,11 +189,18 @@ class AugmentOverlayUI:
         self.root_HUD.focus_force()
         self.root_HUD.mainloop()
 
-    def close_HUD(self):
+    async def close_HUD(self):
+        # Closes the root_HUD
+        self.assistant.announce("Closing heads-up display.")
+        self.root_HUD.destroy()
+        self.assistant.shutdown_assistant()
+
+    async def close_all(self):
         # Closes the root_HUD
         self.assistant.announce("Shutting down system.")
         self.root_HUD.destroy()
         self.assistant.shutdown_assistant()
+        self.controller.shutdown()
 
     def refresh(self):
         # Update everything on the screen

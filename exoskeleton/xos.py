@@ -33,7 +33,7 @@ import klampt.math.vectorops as kmv  # This is for cross products
 CUSTOM LIBRARIES
 """
 import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
-import pyonics.submodules.ui.interface as vxui  # Voice control engine
+import pyonics.submodules.ui.interface as ui  # Interface modules
 import pyonics.submodules.control.control as ctrl
 
 """
@@ -242,7 +242,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.shutdown_flag = False
 
         self.input = None
-        self.assistant = vxui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
+        self.assistant = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         # self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
 
@@ -399,11 +399,10 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     desktopGUI class, contains visualization options and is usually where the simulator will be called.
     """
-    def __init__(self, config, with_hud=True):
+    def __init__(self, config, has_hud=True):
         klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
         # All the world elements MUST be loaded before the Simulator is created
-        self.with_hud = with_hud  # Boolean flag declaring presence of a root_HUD
-        self.hud = None  # Class attribute for holding the root_HUD object
+
         self.world = klampt.io.load('WorldModel', config["world_path"])  # Loads the world
 
         klampt.vis.add("world", self.world)
@@ -428,6 +427,13 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         # creation of the controller
         self.controller = ExOS(self.robot, self.world, config)
         self.assistant = self.controller.assistant
+
+        # Adds the HUD - must come after controller and assistant
+        if has_hud:
+            self.hud = ui.AugmentOverlayUI(self.controller, self.controller.assistant)
+        else:
+            self.hud = None
+
         # Adds the muscles to the visualization
 
         self.drawMuscles()
@@ -437,13 +443,6 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
         # Begin desktopGUI event loop
         asyncio.run(self.gui_idle_launcher())
-
-
-    def shutdown_HUD(self):
-        if self.hud:
-            self.hud.close_HUD()
-
-        self.with_hud = False
 
     async def update_GUI(self):
         """
@@ -469,12 +468,11 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
 
-        await self.controller.osc_handler.make_endpoint()  # This seems to be da way
-        klampt.vis.show()
-        if self.with_hud:
-            self.hud = vxui.AugmentOverlayUI(self.controller, self.controller.assistant)
-        await self.gui_idle_loop()
-        self.controller.osc_handler.transport.close()
+        await self.controller.osc_handler.make_endpoint()  # Sets up OSC handler endpoint
+        klampt.vis.show()  # Opens the visualization
+
+        await self.gui_idle_loop()  # Performs the gui idle actions
+        self.controller.osc_handler.transport.close()  # Closes the network socket once GUI is finished
         return
 
     """
@@ -507,7 +505,8 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
     """
     Shutdown
     """
-    def shutdown(self):
+    async def shutdown(self):
+        self.hud.close_all()
         klampt.vis.kill()
 
 
