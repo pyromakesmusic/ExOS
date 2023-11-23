@@ -442,38 +442,37 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim.setGravity([0, 0, -9.8])
         self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
         # Begin desktopGUI event loop
-        asyncio.run(self.gui_idle_launcher())
+        asyncio.run(self.idle_launcher())
 
     async def update_GUI(self):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        self.hud.refresh()
-        klampt.vis.lock()
-        forces = self.controller.idle(self.link_transforms)  # Transforms from simulator
+        self.hud.refresh()  # Refreshes the HUD
+        klampt.vis.lock()  # Locks the klampt visualization
+        forces = self.controller.idle(self.link_transforms)  # Gets new forces by sending transforms to simulator
         print(forces)
         self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
-        self.drawMuscles()  # Don't know if this is working right now, but this is probably the right place to do it
-        klampt.vis.unlock()
-        return
+        self.drawMuscles()  # Should be changing draw options for the muscles
+        klampt.vis.unlock()  # Unlocks the klampt visualization
+        return True
 
-    async def gui_idle_loop(self):
+    async def async_handler(self):
         #print(self.controller.input)
         while klampt.vis.shown():
-            await self.update_GUI()
-            await asyncio.sleep(0)
+            await self.update_GUI()  # Updates what is displayed
+            await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
 
-    async def gui_idle_launcher(self):
+    async def idle_launcher(self):
         """
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
 
         await self.controller.osc_handler.make_endpoint()  # Sets up OSC handler endpoint
-        klampt.vis.show()  # Opens the visualization
-
-        await self.gui_idle_loop()  # Performs the gui idle actions
+        klampt.vis.show()  # Opens the visualization for the first time
+        await self.async_handler()  # Performs asynchronous idle actions
         self.controller.osc_handler.transport.close()  # Closes the network socket once GUI is finished
-        return
+        return True
 
     """
     Visual Options

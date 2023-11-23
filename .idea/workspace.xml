@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,13 +200,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00378" summary="made new ensemble copy">
-      <created>1697669176256</created>
-      <option name="number" value="00378" />
-      <option name="presentableId" value="LOCAL-00378" />
-      <option name="project" value="LOCAL" />
-      <updated>1697669176256</updated>
     </task>
     <task id="LOCAL-00379" summary="updating more stuff, trying to get the drawn muscles to update">
       <created>1697669524946</created>
@@ -545,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700717668253</updated>
     </task>
-    <option name="localTasksCounter" value="427" />
+    <task id="LOCAL-00427" summary="close button is becoming more effective">
+      <created>1700718600415</created>
+      <option name="number" value="00427" />
+      <option name="presentableId" value="LOCAL-00427" />
+      <option name="project" value="LOCAL" />
+      <updated>1700718600415</updated>
+    </task>
+    <option name="localTasksCounter" value="428" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,7 +560,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="voice control almost fully integrated" />
     <MESSAGE value="voice recognition and text to speech both activated, aiming to turn on HUD now" />
     <MESSAGE value="rethinking class configurations, voice control UI and HUD might end up being very low level interface classes" />
     <MESSAGE value="integrated sound and cleaned up the class dependencies a little bit" />
@@ -586,6 +584,7 @@
     <MESSAGE value="made voice ID and speaking rate configurable" />
     <MESSAGE value="separating apps out" />
     <MESSAGE value="adding video section and moving mckibben muscle control to submodule" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding video section and moving mckibben muscle control to submodule" />
+    <MESSAGE value="close button is becoming more effective" />
+    <option name="LAST_COMMIT_MESSAGE" value="close button is becoming more effective" />
   </component>
 </project>
