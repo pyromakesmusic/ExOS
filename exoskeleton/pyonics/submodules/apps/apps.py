@@ -1,5 +1,6 @@
 import gpsd  # GPS library
 import cv2  # Camera library
+import tkintermapview
 
 # Might it not make more sense to make each App its own Class?
 """
@@ -25,6 +26,9 @@ def get_gps_data():
 """
 Classes
 """
+class Map:
+    def __init__(self):
+        self.map = tkintermapview.TkinterMapView(self.HUD, width=1000, height=1000)
 
 class Camera:
     def __init__(self, i):

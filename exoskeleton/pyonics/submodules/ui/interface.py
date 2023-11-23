@@ -17,13 +17,13 @@ import numpy as np
 # Third Party Libraries
 import transformers
 import customtkinter as ctk
-import tkintermapview  # Adds potential for maps to tkinter
 import pyttsx3  # Text to speech
 import vosk  # Voice recognition library
 import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
+from ..apps.apps import Map
 
 """
 FUNCTION DEFINITIONS #1 
@@ -75,7 +75,7 @@ class VoiceAssistantUI: # For voice control
         self.mic = None
         self.stream = None
         self.voice_launch()
-        self.voice_test()
+        #self.voice_test()
 
     def shutdown_assistant(self):
         # Shuts down and releases resources
@@ -120,7 +120,7 @@ class VoiceAssistantUI: # For voice control
 
 class AugmentOverlay:
     # For a Heads-Up Display or Helmet Mounted Display
-    def __init__(self, controller, assistant):
+    def __init__(self, controller, assistant, has_map=False):
         self.HUD = None
         if not assistant:
             # If no assistant assigned uses the controller's built-in assistant
@@ -136,6 +136,8 @@ class AugmentOverlay:
         self.objectives = None
 
         self.gps = None
+        if has_map:
+            self.map = Map()  # Makes the Map using the Map from apps
         self.map = None
         self.latitude = None
         self.longitude = None
@@ -196,21 +198,14 @@ class AugmentOverlay:
 
     def configure_HUD(self, has_camera=True): # This should be false by default once done testing
 
-
         # Adds a clock
         self.clock = ctk.CTkLabel(self.HUD, text=self.clock_text, font=("System", 20))
         self.date = ctk.CTkLabel(self.HUD, text=self.date_text, font=("System", 20))
         self.gps = ctk.CTkLabel(self.HUD, text=self.gps_text, font=("System", 20))
-        self.map = tkintermapview.TkinterMapView(self.HUD, width=400, height=300)
         if has_camera:
             # Do something
             pass
 
-        # self.map.set_tile_server("http://a.tile.stamen.com/toner/{z}/{x}/{y}.png")  # black and white
-
-        self.map.pack(anchor="ne")
-        self.date.pack(anchor="nw")
-        self.clock.pack(anchor="sw")
 
         # This needs to update once early to make sure every box has information, then once every time step
         self.update_datetime()

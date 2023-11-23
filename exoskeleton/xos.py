@@ -240,16 +240,12 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.dt = config_data["timestep"]
         self.osc_handler = osck.AsyncServer(config_data["address"], config_data["port"])  # Make these configurable
         self.oscMapper()  # Might be time to implement these?
-
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
-
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
-
         # Setting initial muscle pressure to zero
         self.pressures = [0 for muscle in range(len(self.muscles))]
-
         self.gps = None
 
 
