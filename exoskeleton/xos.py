@@ -74,6 +74,10 @@ def configLoader(config_name):
         print("Setting display resolution...", fn.readline().rstrip())
         width = int(fn.readline().rstrip())
         height = int(fn.readline().rstrip())
+        print("Selecting voice ID...", fn.readline().rstrip())
+        voice_id = int(fn.readline().strip())
+        print("Setting voice speech rate", fn.readline().strip())
+        voice_rate = int(fn.readline().rstrip())
         config = {"core": core,
                   "attachments": attachments,
                   "world_path": world_path,
@@ -81,7 +85,9 @@ def configLoader(config_name):
                   "address": address,
                   "port": port,
                   "width": width,
-                  "height": height}
+                  "height": height,
+                  "voice_id": voice_id,
+                  "voice_rate": voice_rate}
 
         return config
 
@@ -220,6 +226,9 @@ class ExoController(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module,
      and before that probably needs to be broken up
+     UPDATE:
+     Seems like this is very much like a high level controller. Maybe change the class name to avoid confusing documentation
+     and scope.
     """
 
     # Initialization
@@ -231,7 +240,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.shutdown_flag = False
 
         self.input = None
-        self.assistant = vxui.VoiceAssistantUI()
+        self.assistant = vxui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         # self.assistant.announce("Initializing systems.")
         # Testing the voice assistant
 

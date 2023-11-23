@@ -61,12 +61,12 @@ class Personality:
 
 class VoiceAssistantUI: # For voice control
     # Should be most of the audio interaction with a UI
-    def __init__(self):
+    def __init__(self, voice_index: int, rate: int):
         # TTS Engine Initialization
         self.voice_engine = pyttsx3.init()
         self.voices = self.voice_engine.getProperty("voices")
-        self.voice_engine.setProperty('rate', 150)
-        self.voice_engine.setProperty('voice', self.voices[1].id)
+        self.voice_engine.setProperty('rate', rate)
+        self.voice_engine.setProperty('voice', self.voices[voice_index].id)
 
         self.recog_model = None
         self.voice_recog = None
@@ -177,8 +177,12 @@ class AugmentOverlayUI:
         self.text_buffer = tk.StringVar()  # Creates a text buffer
 
         # empty variable creation
-        self.objective_text = "Missions:"
+        self.objective_text = "Testing mission area text: Lorem ipsum dolor et"
         self.objectives = None
+
+        self.create_objectives(grid=True,x=5,y=0)
+        self.create_exitbutton(grid=True,x=3,y=0)
+
         self.clock_text = None
         self.clock = None
 
@@ -226,10 +230,13 @@ class AugmentOverlayUI:
         if not grid:
             self.objectives.pack(anchor="ne")
         else:
-            self.objectives.grid()
-    def create_exitbutton(self):
-        self.exitbutton = ctk.CTkButton(self.HUD, text="EXIT", font=("System", 50))
-        self.exitbutton.pack(anchor="s")
+            self.objectives.grid(row=x,column=y)
+    def create_exitbutton(self, grid: True, x: int,y: int):
+        self.exitbutton = ctk.CTkButton(self.HUD, text="EXIT", command=self.close_HUD)
+        if not grid:
+            self.exitbutton.pack(anchor="s")
+        else:
+            self.exitbutton.grid(row=x,column=y)
 
     def update_GPS(self):
         try:

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/test_config2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/test_config2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
@@ -204,13 +202,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00374" summary="still messing with sleep time">
-      <created>1697667403170</created>
-      <option name="number" value="00374" />
-      <option name="presentableId" value="LOCAL-00374" />
-      <option name="project" value="LOCAL" />
-      <updated>1697667403170</updated>
     </task>
     <task id="LOCAL-00375" summary="Merge branch 'tmp'&#10;&#10;# Conflicts:&#10;#&#9;Untitled.ipynb&#10;#&#9;Untitled2.ipynb&#10;#&#9;Untitled3.ipynb">
       <created>1697668010762</created>
@@ -548,7 +539,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700698183389</updated>
     </task>
-    <option name="localTasksCounter" value="423" />
+    <task id="LOCAL-00423" summary="using grid to layout HUD elements now">
+      <created>1700702383279</created>
+      <option name="number" value="00423" />
+      <option name="presentableId" value="LOCAL-00423" />
+      <option name="project" value="LOCAL" />
+      <updated>1700702383279</updated>
+    </task>
+    <option name="localTasksCounter" value="424" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,7 +562,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding and customizing voice control" />
     <MESSAGE value="creating a HUD class" />
     <MESSAGE value="improving transparent window function" />
     <MESSAGE value="messing with voice control" />
@@ -589,6 +586,7 @@
     <MESSAGE value="pushing through" />
     <MESSAGE value="iterating through the voices" />
     <MESSAGE value="updating HUD calls to submodules" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating HUD calls to submodules" />
+    <MESSAGE value="using grid to layout HUD elements now" />
+    <option name="LAST_COMMIT_MESSAGE" value="using grid to layout HUD elements now" />
   </component>
 </project>
