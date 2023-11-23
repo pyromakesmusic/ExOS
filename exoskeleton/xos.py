@@ -34,6 +34,7 @@ CUSTOM LIBRARIES
 """
 import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
 import pyonics.submodules.ui.interface as vxui  # Voice control engine
+import pyonics.submodules.control.control as ctrl
 
 """
 PANDAS CONFIG
@@ -222,7 +223,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
 """
 Controllers
 """
-class ExoController(klampt.control.OmniRobotInterface):
+class ExOS(klampt.control.OmniRobotInterface):
     """
     This is my specialized controller subclass for the exoskeleton. Eventually this probably wants to be its own module,
      and before that probably needs to be broken up
@@ -237,6 +238,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         klampt.control.OmniRobotInterface.__init__(self, robotmodel)
+
         self.shutdown_flag = False
 
         self.input = None
@@ -246,16 +248,19 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.world = world
         self.robot = robotmodel
+
         self.dt = config_data["timestep"]
-        self.osc_handler = osck.AsyncServer(config_data["address"], config_data["port"])  # Make these configurable
-        self.oscMapper()  # Might be time to implement these?
+        self.osc_handler = osck.AsyncServer(config_data["address"], config_data["port"])
+        self.oscMapper()
+
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
+
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
+
         # Setting initial muscle pressure to zero
         self.pressures = [0 for muscle in range(len(self.muscles))]
-        self.gps = None
 
 
     def muscleLoader(self, config_df):
@@ -272,7 +277,7 @@ class ExoController(klampt.control.OmniRobotInterface):
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
-                muscle = Muscle(row, self) # Calls the muscle class constructor
+                muscle = ctrl.Muscle(row, self) # Calls the muscle class constructor
                 muscle_objects.append(muscle) # Adds the muscle to the list
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
@@ -327,7 +332,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         bones_transforms: A list of link locations
         """
-        self.input = self.validateInput(self.assistant.voice_loop())
+        self.input = self.validateInput(self.assistant.voice_loop())  # Runs the voice assistant at idle to get input
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
@@ -421,7 +426,7 @@ class ExoGUI(klampt.vis.glprogram.GLRealtimeProgram):
         self.sim = ExoSim(self.world, self.robot, config["timestep"])
 
         # creation of the controller
-        self.controller = ExoController(self.robot, self.world, config)
+        self.controller = ExOS(self.robot, self.world, config)
         self.assistant = self.controller.assistant
         # Adds the muscles to the visualization
 

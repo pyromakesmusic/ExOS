@@ -43,6 +43,16 @@ class Clock(ctk.CTkLabel):
         self.clock.configure(text=self.time)
         self.clock.after(1000, self.update)  # Update every 1000 milliseconds (1 second)
 
+class Compass(ctk.CTkLabel):
+    def __init__(self, root_HUD):
+        # Adds a clock
+        self.bearing = "north"
+        self.widget = ctk.CTkLabel.__init__(self, master=root_HUD, text=self.bearing,
+                                           font=("System", 20))  # Actual Tkinter Object
+    def update(self):
+        self.bearing = "west"
+        self.widget.configure(text=self.bearing)
+        self.widget.after(1000, self.update)  # Update every 1000 milliseconds (1 second)
 class DateWidget(ctk.CTkLabel):
     def __init__(self, root_HUD):
         # Adds a clock
@@ -78,7 +88,7 @@ class Camera:
     def cam_launch(self, index):
         # Start the camera
         try:
-            self.camera = cv2.VideoCapture(0)
+            self.camera = cv2.VideoCapture(index)
         except:
             "Error: Exception launching camera input."
 

@@ -27,7 +27,7 @@ With feedback and as the infrastructure gets built out, we will look into more h
 
 ### Global Positioning (GPS)
 
-The **ExoController** class is built with GPS integration by default.
+The **ExOS** class is built with GPS integration by default.
 
 ## pyonics
 

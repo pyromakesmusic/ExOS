@@ -23,7 +23,7 @@ import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from ..apps.apps import Map, Camera, Clock, DateWidget, MissionWidget
+from ..apps.apps import Map, Camera, Compass, Clock, DateWidget, MissionWidget
 
 """
 FUNCTION DEFINITIONS #1 
@@ -121,9 +121,10 @@ class VoiceAssistantUI: # For voice control
 class AugmentOverlayUI:
     # For a Heads-Up Display or Helmet Mounted Display
     def __init__(self, controller, assistant, has_missions=True, has_map=True,
-                 has_camera=True, has_clock=True, has_date=True):
-        # boolean values are for testing
+                 has_camera=True, has_clock=True, has_date=True, has_compass=False):
+        # boolean values are rapidly becoming more of them
         self.root_HUD = ctk.CTk()  # root_HUD is the tkinter root window
+
         if not assistant:
             # If no voice assistant assigned uses the controller's built-in assistant
             self.assistant = controller.assistant
@@ -141,20 +142,30 @@ class AugmentOverlayUI:
         # Sets up the map
         if has_map:
             self.map = Map(self.root_HUD, w=300, h=250)
+            self.map.widget.grid(row=3,column=5)
         else:
             self.map = None
 
         # Sets up the clock
         if has_clock:
             self.clock = Clock(self.root_HUD)
+            self.clock.grid(row=3,column=0, sticky="sw")
         else:
             self.clock = None
 
         # Sets up the date widget
         if has_date:
             self.date = DateWidget(self.root_HUD)
+            self.date.grid(row=0,column=0, sticky="nw")
         else:
             self.date = None
+
+        # Sets up compass
+        if has_compass:
+            self.compass = Compass(self.root_HUD)
+            self.compass.grid(column=2,row=2, sticky="n")
+        else:
+            self.compass = None
 
         # Sets up the camera feed and display if present
         if has_camera:
@@ -162,10 +173,16 @@ class AugmentOverlayUI:
         else:
             self.camera = None
 
+        # Sets up mission info display
         if has_missions:
             self.missions = MissionWidget(self.root_HUD, "no missions")
+            self.missions.grid(column=5,row=0, sticky="ne")
         else:
             self.missions = None
+
+        self.stop = ctk.CTkButton(self.root_HUD, command=self.close_HUD, text="STOP", font=("System", 200),
+                                  fg_color="transparent", text_color="red", width=800)
+        self.stop.grid(column=1,row=0)
 
         # Style changes
         self.hud_color = "red"
@@ -176,9 +193,11 @@ class AugmentOverlayUI:
         # Closes the root_HUD
         self.assistant.announce("Shutting down system.")
         self.root_HUD.destroy()
+        self.assistant.shutdown_assistant()
 
     def refresh(self):
         # Update everything on the screen
+        self.hud_color = "blue"
         pass
 
 """

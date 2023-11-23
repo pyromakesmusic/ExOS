@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
@@ -202,13 +206,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00376" summary="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand">
-      <created>1697669077093</created>
-      <option name="number" value="00376" />
-      <option name="presentableId" value="LOCAL-00376" />
-      <option name="project" value="LOCAL" />
-      <updated>1697669077093</updated>
     </task>
     <task id="LOCAL-00377" summary="changing the reaktor ensemble seems to be changing the inputs in ways I don't really understand">
       <created>1697669129621</created>
@@ -546,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700703699701</updated>
     </task>
-    <option name="localTasksCounter" value="425" />
+    <task id="LOCAL-00425" summary="separating apps out">
+      <created>1700715299366</created>
+      <option name="number" value="00425" />
+      <option name="presentableId" value="LOCAL-00425" />
+      <option name="project" value="LOCAL" />
+      <updated>1700715299366</updated>
+    </task>
+    <option name="localTasksCounter" value="426" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -562,7 +566,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="improving transparent window function" />
     <MESSAGE value="messing with voice control" />
     <MESSAGE value="voice control almost fully integrated" />
     <MESSAGE value="voice recognition and text to speech both activated, aiming to turn on HUD now" />
@@ -587,6 +590,7 @@
     <MESSAGE value="updating HUD calls to submodules" />
     <MESSAGE value="using grid to layout HUD elements now" />
     <MESSAGE value="made voice ID and speaking rate configurable" />
-    <option name="LAST_COMMIT_MESSAGE" value="made voice ID and speaking rate configurable" />
+    <MESSAGE value="separating apps out" />
+    <option name="LAST_COMMIT_MESSAGE" value="separating apps out" />
   </component>
 </project>
