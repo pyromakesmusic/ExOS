@@ -58,26 +58,26 @@ def configLoader(config_name):
     Returns a dataframe with entries in columns referencing the filepath of the robot core, and of the location of
     the muscle attachments CSV.
     """
-    print("Loading configuration" + config_name + "...")
+    print("Loading configuration" + config_name + "...\n")
     with open(config_name) as fn:
-        print("Loading core components...", fn.readline().rstrip())
+        print("Loading core components...\n", fn.readline().rstrip())
         core = fn.readline().rstrip()  # Filepath to robot core
-        print("Loading muscle attachments...", fn.readline().rstrip())
+        print("Loading muscle attachments...\n", fn.readline().rstrip())
         attachments = fn.readline().rstrip()  # Filepath to muscle attachments file
-        print("Locating world filepath...", fn.readline().rstrip())
+        print("Locating world filepath...\n", fn.readline().rstrip())
         world_path = fn.readline().rstrip()  # Filepath to the world file
-        print("Configuring control rates...", fn.readline().rstrip())
+        print("Configuring control rates...\n", fn.readline().rstrip())
         timestep = float(fn.readline().rstrip())  # Float value setting simulation and control time step; want >.01 sec
-        print("Setting controller address...", fn.readline().rstrip())
+        print("Setting controller address...\n", fn.readline().rstrip())
         address = fn.readline().rstrip()  # Controller IP address; string value
-        print("Setting controller network socket...", fn.readline().rstrip())
+        print("Setting controller network socket...\n", fn.readline().rstrip())
         port = int(fn.readline().rstrip())  # Controller network socket
-        print("Setting display resolution...", fn.readline().rstrip())
+        print("Setting display resolution...\n", fn.readline().rstrip())
         width = int(fn.readline().rstrip())
         height = int(fn.readline().rstrip())
-        print("Selecting voice ID...", fn.readline().rstrip())
+        print("Selecting voice ID...\n", fn.readline().rstrip())
         voice_id = int(fn.readline().strip())
-        print("Setting voice speech rate", fn.readline().strip())
+        print("Setting voice speech rate\n", fn.readline().strip())
         voice_rate = int(fn.readline().rstrip())
         config = {"core": core,
                   "attachments": attachments,
@@ -110,16 +110,24 @@ class ExOS(klampt.control.OmniRobotInterface):
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         self.shutdown_flag = False
+        self.state = "On"
         self.input = None
         self.dt = None
-        self.voice = ui.VoiceAssistantUI(1, 150)
+        #self.personality = ui.Personality()
+        self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         self.robot = ctrl.ExoController(config_data).robot
         self.world = self.robot.world
         self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
+        asyncio.run(self.main())
 
-    async def main_OS(self):
-        return False
+    async def main(self):
+        self.input = self.voice.voice_loop()
+        #response = self.personality.process_input(self.input)
+        response = "blah blah blah"
+        self.voice.announce(response)
+        await self.hud.refresh()
+        return "Running..."
 
     # Control and Kinematics
 
@@ -188,116 +196,13 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
-"""
-Launch Modes
-"""
-class ExoSimGUI(klampt.vis.glprogram.GLRealtimeProgram):
-    """
-    This is a GUI that runs a simulation too. It should not have a HUD, it is for external simulation only.
-    """
-    def __init__(self, config):
-        klampt.vis.glprogram.GLRealtimeProgram.__init__(self, "ExoTest")
-        # All the world elements MUST be loaded before the Simulator is created
-
-        klampt.vis.setWindowTitle("X001  Test")
-        klampt.vis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
-
-
-        # Sets window to configured width and height
-        # klampt.vis.resizeWindow(int(config["width"]),int(config["height"]))
-        self.viewport = klampt.vis.getViewport()
-        self.viewport.fit([0, 0, -5], 25)
-
-
-        # creation of the controller, using the low level one
-        self.controller = ctrl.ExoController(config)
-        klampt.vis.add("world", self.controller.world)
-        klampt.vis.add("X001", self.controller.robot)
-        self.assistant = self.controller.assistant
-        # creation of the simulation
-        self.sim = ExoSim(self.controller.world, self.controller.robot, config["timestep"])
-
-        self.drawMuscles()
-        self.drawOptions()
-        # Simulator creation and activation comes at the very end
-        self.sim.setGravity([0, 0, -9.8])
-        self.link_transforms = [self.robot.link(x).getTransform() for x in range(self.robot.numLinks())]  # Initialized
-        # Begin desktopGUI event loop
-        asyncio.run(self.idle_launcher())
-
-    async def update_GUI(self):
-        """
-        Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
-        """
-        self.hud.refresh()  # Refreshes the HUD
-        klampt.vis.lock()  # Locks the klampt visualization
-        forces = self.controller.idle(self.link_transforms)  # Gets new forces by sending transforms to simulator
-        print(forces)
-        self.link_transforms = self.sim.simLoop(forces)  # Takes forces and returns new positions
-        self.drawMuscles()  # Should be changing draw options for the muscles
-        klampt.vis.unlock()  # Unlocks the klampt visualization
-        return True
-
-    async def async_handler(self):
-        #print(self.controller.input)
-        while klampt.vis.shown():
-            await self.update_GUI()  # Updates what is displayed
-            await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
-
-    async def idle_launcher(self):
-        """
-        Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
-        """
-
-        await self.controller.osc_handler.make_endpoint()  # Sets up OSC handler endpoint
-        klampt.vis.show()  # Opens the visualization for the first time
-        await self.async_handler()  # Performs asynchronous idle actions
-        self.controller.osc_handler.transport.close()  # Closes the network socket once GUI is finished
-        return True
-
-    """
-    Visual Options
-    """
-    def drawOptions(self):
-        """
-        Changes some drawing options for link geometry
-        In the setDraw function, the first argument is an integer denoting vertices, edges. etc. The second is a Boolean
-        determining regardless of whether the option is drawn.
-
-        setColor function takes an int and RGBA float values.
-        """
-        wm = self.world
-        for x in range(wm.numIDs()):
-            wm.appearance(x).setDraw(2, True)  # Makes edges visible
-            #wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
-            wm.appearance(x).setColor(2, 0, 1, 0, .5)  # Makes edges green?
-            #wm.appearance(x).setColor(4, .1, .1, .1, .1)  # This makes the faces a translucent blue grey
-            #wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
-
-    def drawMuscles(self):
-        """
-        This function takes all the muscles from the controller dataframe and draws them in the visualization
-        """
-        muscle_df = self.controller.muscles
-        for row in muscle_df.itertuples():
-            ui.visMuscles(row)
-
-    """
-    Shutdown
-    """
-    async def shutdown(self):
-        self.hud.close_all()
-        klampt.vis.kill()
-
 
 """
 MAIN LOOP
 """
 def initialize(config_filepath):
     config = configLoader(config_filepath)
-    exo_test1 = ExOS(config)
-    #exo_test2 = ExoSimGUI(config).customUI()
-
+    exo_test = ExOS(config)
 
 if __name__ == "__main__":
     initialize("test_config2.txt")

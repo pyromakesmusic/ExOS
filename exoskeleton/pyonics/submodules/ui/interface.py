@@ -4,18 +4,9 @@ Should contain interface elements for inside the robot as well as when it is plu
 LIBRARY IMPORTS
 """
 # Standard Libraries
-import tkinter as tk
-from datetime import datetime
 import asyncio
-import gpsd
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import ipywidgets as widgets
-from time import strftime
 import random
 import pyaudio
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 
@@ -64,27 +55,49 @@ CLASS DEFINITIONS
 
 class Personality:
     def __init__(self):
-        self.personality_params = {
-            'friendliness': 0.5,
-            'formality': 0.5,
-            'humor': 0.5,
-            # Add more personality parameters as needed
-            }
+        from transformers import TFGPT2LMHeadModel, TFGPT2Tokenizer
+        self.friendliness = 0.5
+        self.formality = 0.5
+        self.humor = 0.5
+        self.excitement = 1
+        model_name = "gpt2"  # You can use other variations like "gpt2-medium", "gpt2-large", or "gpt2-xl"
+        self.tokenizer = TFGPT2Tokenizer.from_pretrained(model_name)
+        self.model = TFGPT2LMHeadModel.from_pretrained(model_name)
 
-    def generate_response(self, user_input, personality_params):
-        prompt = f"Personality: {personality_params}\nUser: {user_input}\nAssistant:"
-        response = openai.Completion.create( # Change the openai line
-            engine="text-davinci-002",
-            prompt=prompt,
-            max_tokens=150
-        )
-        return response.choices[0].text.strip()
+    def process_input(self, input_text):
 
-    def update_personality(self, personality_params, feedback):
+        input_ids = self.tokenizer.encode(input_text, return_tensors="pt")
+        output = self.model.generate(input_ids, max_length=100, num_beams=5, no_repeat_ngram_size=2, top_k=50, top_p=0.95,
+                            temperature=0.7)
+        generated_text = self.tokenizer.decode(output[0], skip_special_tokens=True)
+        return generated_text
+
+    # Example text generation
+    def encode_input(self, input_text):
+        input_ids = self.tokenizer.encode(input_text, return_tensors="pt")
+        return input_ids
+
+    # Generate text
+    def generate_output(self, input_ids):
+        output = self.model.generate(input_ids, max_length=100, num_beams=5, no_repeat_ngram_size=2, top_k=50, top_p=0.95,
+                            temperature=0.7)
+        return output
+
+    # Decode and print the generated text
+    def decodeprint_output(self, output):
+        generated_text = self.tokenizer.decode(output[0], skip_special_tokens=True)
+        return generated_text
+    def ask(self):
+        return ""
+
+    def order(self):
+        return ""
+
+    def update_personality(self, feedback):
         # Adjust personality parameters based on user feedback
         # Update the values in personality_params
-        updated_personality_params = personality_params
-        return updated_personality_params
+        self.personality_params = feedback
+        return "Personality updated."
 
 class VoiceAssistantUI: # For voice control
     # Should be most of the audio interaction with a UI
@@ -102,7 +115,7 @@ class VoiceAssistantUI: # For voice control
         self.mic = None
         self.stream = None
         self.voice_launch()
-        self.voice_test()
+        #self.voice_test()
 
     def shutdown_assistant(self):
         # Shuts down and releases resources
@@ -160,6 +173,8 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.missions = MissionWidget()
         self.compass = Compass()
 
+        self.subtitles = MissionWidget()
+
         self.setup_HUD()
         self.configure_viewport()
 
@@ -171,13 +186,12 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         kvis.lock()  # Locks the klampt visualization
-        kvis.gldraw.glutBitmapString(string="Blah blah blah")
+        kvis.add("test", text=self.clock.time, position=(0,800), color="white")
         self.viewport.drawGL()
         kvis.unlock()  # Unlocks the klampt visualization
         return True
 
     async def async_handler(self):
-        # print(self.controller.input)
         while kvis.shown():
             await self.refresh()  # Updates what is displayed
             await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
@@ -186,6 +200,14 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         """
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
+        # Add text to the visualization
+        font = pygame.font.SysFont(None, 36)
+        text = font.render("Hello, Klampt!", True, (255, 255, 255))
+
+        # Create the visualization
+        kvis.createWindow()
+        kvis.add("world", self.holodeck)
+        kvis.add("text", text)
         await self.async_handler()  # Performs asynchronous idle actions
         return True
 

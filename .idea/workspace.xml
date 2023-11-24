@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gpt-2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gpt-2/.idea/gpt-2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gpt-2/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gpt-2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gpt-2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gpt-2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/system_strings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/test_config3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +89,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exoskeleton test 3">
+  <component name="RunManager" selected="Python.exos test 1">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,6 +130,27 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\tests\simulation_test1.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exos test 1" type="PythonConfigurationType" factoryName="Python">
+      <module name="Math4157" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Pyro\Documents\Math4157\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="exoskeleton test 1" type="PythonConfigurationType" factoryName="Python">
@@ -167,27 +195,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="exoskeleton test 3" type="PythonConfigurationType" factoryName="Python">
-      <module name="Math4157" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Pyro\Documents\Math4157\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/exoskeleton" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="simulation test  2" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -214,7 +221,7 @@
       <item itemvalue="Python.PID_talk" />
       <item itemvalue="Python.exoskeleton test 1" />
       <item itemvalue="Python.exoskeleton test 2" />
-      <item itemvalue="Python.exoskeleton test 3" />
+      <item itemvalue="Python.exos test 1" />
       <item itemvalue="Python.simulation test  2" />
     </list>
   </component>
@@ -226,13 +233,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00383" summary="muscles are moving in the vis now">
-      <created>1697674415061</created>
-      <option name="number" value="00383" />
-      <option name="presentableId" value="LOCAL-00383" />
-      <option name="project" value="LOCAL" />
-      <updated>1697674415061</updated>
     </task>
     <task id="LOCAL-00384" summary="Merge branch 'master' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;exoskeleton/robots/muscle_attachments_b1.csv&#10;#&#9;exoskeleton/xos.py">
       <created>1697676001904</created>
@@ -570,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700730383033</updated>
     </task>
-    <option name="localTasksCounter" value="432" />
+    <task id="LOCAL-00432" summary="adding more personality">
+      <created>1700809882817</created>
+      <option name="number" value="00432" />
+      <option name="presentableId" value="LOCAL-00432" />
+      <option name="project" value="LOCAL" />
+      <updated>1700809882817</updated>
+    </task>
+    <option name="localTasksCounter" value="433" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -586,7 +593,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added date clock and objective list" />
     <MESSAGE value="need to add exit key or button for hud, starting to prepare to implement GPS" />
     <MESSAGE value="adding resolution configuration" />
     <MESSAGE value="cleaning up code a bit" />
@@ -611,6 +617,7 @@
     <MESSAGE value="reorganized, I want to get UI stuff out of the main XOS package" />
     <MESSAGE value="creating a blank empty world for the HUD to exist" />
     <MESSAGE value="streamlining lots and lots" />
-    <option name="LAST_COMMIT_MESSAGE" value="streamlining lots and lots" />
+    <MESSAGE value="adding more personality" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding more personality" />
   </component>
 </project>
