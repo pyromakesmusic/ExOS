@@ -11,10 +11,13 @@ import gpsd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import ipywidgets as widgets
 from time import strftime
+import random
 import pyaudio
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from OpenGL.GL import *
+from OpenGL.GLUT import *
 
 # Klampt Libraries
 import klampt
@@ -22,7 +25,9 @@ import klampt.vis as kvis
 
 # Third Party Libraries
 import transformers
-import customtkinter as ctk
+import pygame as pygame  # Multimedia integration with OpenGL
+from pygame.locals import *
+import customtkinter as ctk  # Different UI options
 import pyttsx3  # Text to speech
 import vosk  # Voice recognition library
 import cv2  # Take camera input
@@ -97,7 +102,7 @@ class VoiceAssistantUI: # For voice control
         self.mic = None
         self.stream = None
         self.voice_launch()
-        #self.voice_test()
+        self.voice_test()
 
     def shutdown_assistant(self):
         # Shuts down and releases resources
@@ -107,7 +112,7 @@ class VoiceAssistantUI: # For voice control
         print(stringvar)
         self.voice_engine.say(stringvar)
         self.voice_engine.runAndWait()
-        return
+        return stringvar
 
     def voice_launch(self):
         # Voice Recognition Initialization
@@ -128,28 +133,36 @@ class VoiceAssistantUI: # For voice control
 
     def voice_test(self):
         # Plays all the strings and voices in the catalog to test for audio quality.
-        test_strings = [sysvx.test_string1, sysvx.access_denied, sysvx.ready_string1, sysvx.lowpower_string1,
-                        sysvx.malfunction_string1, sysvx.no_auth_string1]
+        test_strings = sysvx.confused + sysvx.affirmatives + sysvx.negatives
         i = 0
         for voice in self.voices:
             print(voice, voice.id)
             self.voice_engine.setProperty('voice', voice.id)
-            self.voice_engine.say(test_strings[i]) # What they say goes here
+            self.voice_engine.say(test_strings[random.randint(0, len(test_strings))]) # What they say goes here
             self.voice_engine.runAndWait()
             self.voice_engine.stop()
             i = (i + 1) % len(self.voices)
 
-class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
+class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
-    def __init__(self, world):
-        kvis.glrobotprogram.GLWorldPlugin.__init__(self, world)
-        kvis.add("world", world)
-        kvis.setWindowTitle("Klampt HUD  Test")
-        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
-        # Sets window to configured width and height
+    def __init__(self):
+        pygame.init()  # Starts pygame multimedia library
+
+        # Creates the HUD display world
+        self.holodeck = klampt.WorldModel()
+
+        kvis.glcommon.GLMultiViewportProgram.__init__(self)  # Maybe here is where we embed it?
+        # Sets up widgets on the display
+        kvis.show()  # Opens the visualization for the first time
         self.viewport = kvis.getViewport()
-        self.viewport.fit([0, 0, -5], 25)
-        self.drawOptions()
+        self.date = DateWidget()
+        self.clock = Clock()
+        self.missions = MissionWidget()
+        self.compass = Compass()
+
+        self.setup_HUD()
+        self.configure_viewport()
+
         # Begin desktopGUI event loop
         asyncio.run(self.idle_launcher())
 
@@ -158,6 +171,8 @@ class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         kvis.lock()  # Locks the klampt visualization
+        kvis.gldraw.glutBitmapString(string="Blah blah blah")
+        self.viewport.drawGL()
         kvis.unlock()  # Unlocks the klampt visualization
         return True
 
@@ -171,7 +186,6 @@ class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
         """
         Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
         """
-        kvis.show()  # Opens the visualization for the first time
         await self.async_handler()  # Performs asynchronous idle actions
         return True
 
@@ -187,7 +201,7 @@ class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
 
         setColor function takes an int and RGBA float values.
         """
-        wm = self.world
+        wm = self.holodeck
         for x in range(wm.numIDs()):
             wm.appearance(x).setDraw(2, True)  # Makes edges visible
             # wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
@@ -195,14 +209,28 @@ class AugmentOverlayKlUI(kvis.glrobotprogram.GLWorldPlugin):
             # wm.appearance(x).setColor(4, .1, .1, .1, .1)  # This makes the faces a translucent blue grey
             # wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
 
-    def drawMuscles(self):
-        """
-        This function takes all the muscles from the controller dataframe and draws them in the visualization
-        """
-        muscle_df = self.controller.muscles
-        for row in muscle_df.itertuples():
-            visMuscles(row)
+    def setup_HUD(self):
+        # Performs visual things that need to happen before end of __init__
+        kvis.setWindowTitle("Klampt HUD  Test")
+        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
+        # Sets window to configured width and height
 
+
+        # Move the window to the upper left
+        display_size = (1920,1080)
+
+        pygame.FULLSCREEN = True
+        pygame.display.set_mode(display_size, DOUBLEBUF | OPENGL | NOFRAME)
+
+        self.drawOptions()  # Draw options should come late
+
+    def configure_viewport(self):
+        self.viewport.x = 0
+        self.viewport.y = 0
+        self.viewport.w = 1200
+        self.viewport.h = 600
+        self.viewport.fov = 120
+        return
         """
         Shutdown
         """

@@ -237,7 +237,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         return
     def sensedPosition(self):
         """
-        Returns the list of link transforms.
+        Could still include link transforms, but should also include GPS location in lat/long, maybe USNG,
+        distance from origin, pitch roll yaw, GPS, etc
         """
         return self.bones
 
