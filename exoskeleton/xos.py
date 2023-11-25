@@ -2,18 +2,12 @@
 STANDARD LIBRARIES
 """
 
-import time
-import vosk  # Voice recognition offline toolkit
-import math  # Largely just used for pi right now
-import numpy as np  # Just in case for now
-import tkinter as tk  # For building desktopGUI
 import pandas as pd  # Critical, most of the data structures are pandas structures
 import asyncio  # For asynchronous OSC handling
 
 """
 OTHER LIBRARIES
 """
-import gpsd
 
 """
 KLAMPT IMPORTS
@@ -32,7 +26,6 @@ import klampt.math.vectorops as kmv  # This is for cross products
 """
 CUSTOM LIBRARIES
 """
-import pyonics.submodules.network.osc_toolkit as osck  # OSC protocols for control
 import pyonics.submodules.ui.interface as ui  # Interface modules
 import pyonics.submodules.control.control as ctrl
 
@@ -44,10 +37,6 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', None)
-
-"""
-FUNCTION DEFINITIONS
-"""
 
 # General Configuration
 def configLoader(config_name):
@@ -97,7 +86,7 @@ CLASS DEFINITIONS
 """
 
 """
-Controllers
+Operating System
 """
 class ExOS(klampt.control.OmniRobotInterface):
     """
@@ -105,7 +94,7 @@ class ExOS(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, config_data):
+    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=False):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
@@ -113,21 +102,59 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.state = "On"
         self.input = None
         self.dt = None
-        #self.personality = ui.Personality()
-        self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
-        self.robot = ctrl.ExoController(config_data).robot
-        self.world = self.robot.world
-        self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
+
+        if has_persona:
+            self.persona = ui.Personality()  # Creates a personality
+        else:
+            self.persona = None
+
+        if has_voice:
+            self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
+        else:
+            self.voice = None
+
+        if has_klampt:
+            self.robot = ctrl.ExoController(config_data).robot
+            self.world = self.robot.world
+        else:
+            self.robot = None
+            self.world = None
+
+        if has_hud:
+            self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
+        else:
+            self.hud = None
+
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
         asyncio.run(self.main())
 
     async def main(self):
-        self.input = self.voice.voice_loop()
-        #response = self.personality.process_input(self.input)
-        response = "blah blah blah"
-        self.voice.announce(response)
+        # Main operating system loop.
+        # Voice intake
+        if self.voice:
+            self.input = self.voice.voice_loop()
+        else:
+            self.input = "blahdy blah blah blah"
+
+        # Personality processing
+        if self.persona:
+            response = self.persona.process_input(self.input)
+        else:
+            response = ""
+
+        # Vocalization of processed response
+        if self.voice:
+            self.voice.announce(response)
+        else:
+            pass
+
         await self.hud.refresh()
         return "Running..."
+
+    async def safe_mode(self):
+        self.state = "In Safe Mode (Restricted)"
+
+
 
     # Control and Kinematics
 
@@ -149,6 +176,16 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.voice.announce("Shutting down systems.")
         self.hud.shutdown()
 
+"""
+Boot Modes
+"""
+class SafeMode(ExOS):
+    def __init__(self, config_data):
+        ExOS.__init__(self, config_data)
+
+    async def main(self):
+        # Main safe boot loop
+        return None
 """
 Simulation
 """
@@ -202,7 +239,15 @@ MAIN LOOP
 """
 def initialize(config_filepath):
     config = configLoader(config_filepath)
-    exo_test = ExOS(config)
+    #mode = input("What mode would you like to launch in?: ")
+    mode = ""
+    match mode:
+        case "safe":
+            exo_test = SafeMode(config)
+        case _:
+            exo_test = ExOS(config)
+
+
 
 if __name__ == "__main__":
-    initialize("test_config2.txt")
+    initialize("test_config3.txt")

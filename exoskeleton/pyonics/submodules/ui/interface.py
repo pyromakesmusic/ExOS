@@ -161,33 +161,59 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
     def __init__(self):
         pygame.init()  # Starts pygame multimedia library
 
+        # Add text to the visualization
+        font = pygame.font.SysFont(None, 36)
+
+
         # Creates the HUD display world
         self.holodeck = klampt.WorldModel()
 
         kvis.glcommon.GLMultiViewportProgram.__init__(self)  # Maybe here is where we embed it?
         # Sets up widgets on the display
+
         kvis.show()  # Opens the visualization for the first time
-        self.viewport = kvis.getViewport()
+
+        kvis.setWindowTitle("Klampt HUD  Test")
+        kvis.setBackgroundColor(0, 100, 0, 1)  # Makes background black
+        #self.viewport = kvis.getViewport() # testing pygame backend
+        self.viewport = pygame.display.get_surface()
+
         self.date = DateWidget()
         self.clock = Clock()
         self.missions = MissionWidget()
+        self.missions.update("No missions at this time")
         self.compass = Compass()
-
         self.subtitles = MissionWidget()
+        self.subtitles.update("this is where the subtitles of whoever you are listening to will go")
 
-        self.setup_HUD()
-        self.configure_viewport()
+        # Create the visualization
+        kvis.add("world", self.holodeck)
+        kvis.addText("time", self.clock.time, position=(0,-100), size=100)
+        kvis.addText("date", self.date.date, position=(0,0))
+        # Length 2 is relative to xy, length 3 is in world coordinates
+        kvis.addText("missions", self.missions.missions, position=(-100,0))
+        kvis.addText("subtitles", self.subtitles.missions, position=(600, -180))
+
+
+        # Move the window to the upper left
+        display_size = (1920,1080)
+
+        pygame.FULLSCREEN = True
+        pygame.display.set_mode(display_size, DOUBLEBUF | OPENGL | NOFRAME)
+        pygame.display.is_fullscreen()  # I wanted this to be a command
 
         # Begin desktopGUI event loop
-        asyncio.run(self.idle_launcher())
+        asyncio.run(self.async_handler())
 
     async def refresh(self):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         kvis.lock()  # Locks the klampt visualization
-        kvis.add("test", text=self.clock.time, position=(0,800), color="white")
-        self.viewport.drawGL()
+        self.clock.update()
+        self.date.update()
+        self.missions.update("Updated missions:")
+        self.subtitles.update("updated strings")
         kvis.unlock()  # Unlocks the klampt visualization
         return True
 
@@ -195,21 +221,6 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         while kvis.shown():
             await self.refresh()  # Updates what is displayed
             await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
-
-    async def idle_launcher(self):
-        """
-        Asynchronous idle function. Creates server endpoint, launches visualization and begins simulation idle loop.
-        """
-        # Add text to the visualization
-        font = pygame.font.SysFont(None, 36)
-        text = font.render("Hello, Klampt!", True, (255, 255, 255))
-
-        # Create the visualization
-        kvis.createWindow()
-        kvis.add("world", self.holodeck)
-        kvis.add("text", text)
-        await self.async_handler()  # Performs asynchronous idle actions
-        return True
 
         """
         Visual Options
@@ -233,26 +244,17 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
 
     def setup_HUD(self):
         # Performs visual things that need to happen before end of __init__
-        kvis.setWindowTitle("Klampt HUD  Test")
-        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
         # Sets window to configured width and height
 
 
-        # Move the window to the upper left
-        display_size = (1920,1080)
-
-        pygame.FULLSCREEN = True
-        pygame.display.set_mode(display_size, DOUBLEBUF | OPENGL | NOFRAME)
 
         self.drawOptions()  # Draw options should come late
-
-    def configure_viewport(self):
         self.viewport.x = 0
         self.viewport.y = 0
         self.viewport.w = 1200
         self.viewport.h = 600
         self.viewport.fov = 120
-        return
+
         """
         Shutdown
         """

@@ -74,10 +74,10 @@ class Compass:
 class DateWidget:
     def __init__(self):
         # Adds a clock
-        self.date = datetime.now().strftime("%H:%M:%S")
+        self.date = datetime.now().strftime("%Y.%m.%d")
         self.display = None
     def update(self):
-        self.date = datetime.now().strftime("%H:%M:%S")
+        self.date = datetime.now().strftime("%Y.%m.%d")
         return self.date
 
 class MissionWidget:

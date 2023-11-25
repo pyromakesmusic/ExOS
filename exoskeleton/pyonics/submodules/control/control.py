@@ -20,6 +20,7 @@ OUTSIDE LIBRARY IMPORTS
 import klampt
 import klampt.math.vectorops as kmv
 import pythonosc
+from pythonosc.dispatcher import Dispatcher
 
 """
 CUSTOM LIBRARY IMPORTS
