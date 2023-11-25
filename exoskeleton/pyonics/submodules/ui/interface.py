@@ -25,7 +25,7 @@ import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from ..apps.apps import Map, Camera, Compass, Clock, DateWidget, MissionWidget
+from ..apps.apps import Map, Camera, Clock, DateWidget, TextWidget
 
 """
 FUNCTION DEFINITIONS #1 
@@ -174,38 +174,49 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.show()  # Opens the visualization for the first time
 
         kvis.setWindowTitle("Klampt HUD  Test")
-        kvis.setBackgroundColor(0, 100, 0, 1)  # Makes background black
+        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
+        kvis.resizeWindow(1920,1080)
+
         #self.viewport = kvis.getViewport() # testing pygame backend
         self.viewport = pygame.display.get_surface()
 
         self.date = DateWidget()
         self.clock = Clock()
-        self.missions = MissionWidget()
-        self.missions.update("No missions at this time")
-        self.compass = Compass()
-        self.subtitles = MissionWidget()
+        self.missions = TextWidget()
+        self.missions.update("No Missions")
+
+        self.camera = Camera(0)
+        self.subtitles = TextWidget()
         self.subtitles.update("this is where the subtitles of whoever you are listening to will go")
 
         # Create the visualization
         kvis.add("world", self.holodeck)
-        kvis.addText("time", self.clock.time, position=(0,-100), size=100)
-        kvis.addText("date", self.date.date, position=(0,0))
+        kvis.addText("time", self.clock.time, position=(0,-100), size=50)
+        kvis.addText("date", self.date.date, position=(0,0), size=50)
+
         # Length 2 is relative to xy, length 3 is in world coordinates
-        kvis.addText("missions", self.missions.missions, position=(-100,0))
-        kvis.addText("subtitles", self.subtitles.missions, position=(600, -180))
+        kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
+        kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
+        kvis.setColor("time", 1,1,1,1)
+        kvis.setColor("date", 1,1,1,1)
+        kvis.setColor("missions", 1,1,1,1)
+        kvis.setColor("subtitles", 1,1,1,1)
 
 
         # Move the window to the upper left
         display_size = (1920,1080)
+        # Get the Pygame display surface
+        screen = pygame.display.get_surface()
+
 
         pygame.FULLSCREEN = True
         pygame.display.set_mode(display_size, DOUBLEBUF | OPENGL | NOFRAME)
         pygame.display.is_fullscreen()  # I wanted this to be a command
-
+        self.drawOptions()
         # Begin desktopGUI event loop
         asyncio.run(self.async_handler())
 
-    async def refresh(self):
+    async def idle(self):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
@@ -215,11 +226,13 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.missions.update("Updated missions:")
         self.subtitles.update("updated strings")
         kvis.unlock()  # Unlocks the klampt visualization
+        kvis.update()
+        self.display()
         return True
 
     async def async_handler(self):
         while kvis.shown():
-            await self.refresh()  # Updates what is displayed
+            await self.idle()  # Updates what is displayed
             await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
 
         """
@@ -237,24 +250,10 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         wm = self.holodeck
         for x in range(wm.numIDs()):
             wm.appearance(x).setDraw(2, True)  # Makes edges visible
-            # wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
             wm.appearance(x).setColor(2, 0, 1, 0, .5)  # Makes edges green?
             # wm.appearance(x).setColor(4, .1, .1, .1, .1)  # This makes the faces a translucent blue grey
             # wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
-
-    def setup_HUD(self):
-        # Performs visual things that need to happen before end of __init__
-        # Sets window to configured width and height
-
-
-
-        self.drawOptions()  # Draw options should come late
-        self.viewport.x = 0
-        self.viewport.y = 0
-        self.viewport.w = 1200
-        self.viewport.h = 600
-        self.viewport.fov = 120
-
+            # wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
         """
         Shutdown
         """
@@ -319,7 +318,7 @@ class AugmentOverlayTkUI:
 
         # Sets up mission info display
         if has_missions:
-            self.missions = MissionWidget(self.root_HUD, "no missions")
+            self.missions = TextWidget(self.root_HUD, "no missions")
             self.missions.grid(column=5,row=0, sticky="ne")
         else:
             self.missions = None

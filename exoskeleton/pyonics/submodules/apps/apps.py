@@ -59,18 +59,6 @@ class Clock():
         self.time = datetime.now().strftime("%H:%M:%S")
         return self.time
 
-class Compass:
-    def __init__(self):
-        self.bearing = "east"
-        self.display = None
-        self.widget = None
-        # Adds a clock
-    def update(self):
-        self.bearing = "west"
-
-    def set_widget(self, widget):
-        self.widget = widget
-
 class DateWidget:
     def __init__(self):
         # Adds a clock
@@ -80,13 +68,13 @@ class DateWidget:
         self.date = datetime.now().strftime("%Y.%m.%d")
         return self.date
 
-class MissionWidget:
+class TextWidget:
     def __init__(self):
         # Adds a clock
-        self.missions = "Mission text"
-    def update(self, missions):
-        self.missions = missions
-        return self.missions
+        self.text = "widget text"
+    def update(self, text):
+        self.text = text
+        return self.text
 
 class Camera:
     def __init__(self, i):
