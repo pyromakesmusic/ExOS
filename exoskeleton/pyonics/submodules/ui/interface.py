@@ -169,6 +169,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.r = 1
         self.g = 1
         self.b = 1
+        self.input = None
         # Sets up widgets on the display
 
         kvis.show()  # Opens the visualization for the first time
@@ -211,7 +212,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
 
         self.drawOptions()
         # Begin desktopGUI event loop
-        asyncio.run(self.async_handler())
+        asyncio.run(self.idle())
 
     async def idle(self):
         """
@@ -223,7 +224,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.date.update()
         await self.camera.cam_loop()
         self.missions.update("mission text")
-        self.subtitles.update("subtitles from someone talking")
+        self.subtitles.update(input)
 
 
         kvis.addText("time", self.clock.time, position=(0,-100), size=50)
@@ -248,10 +249,11 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.display()
         return True
 
-    async def async_handler(self):
-        while kvis.shown():
-            await self.idle()  # Updates what is displayed
-            await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
+    # async def async_handler(self):
+    #     while kvis.shown():
+    #         await self.idle()  # Updates what is displayed
+    #         self.input = "something"
+    #         await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
 
 
 

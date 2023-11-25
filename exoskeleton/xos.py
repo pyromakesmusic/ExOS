@@ -127,7 +127,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.hud = None
 
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
-        asyncio.run(self.main())
+        asyncio.run(self.hud.idle())
 
     async def main(self):
         # Main operating system loop.
