@@ -148,7 +148,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             pass
 
-        await self.hud.refresh()
+        await self.hud.idle()
         return "Running..."
 
     async def safe_mode(self):

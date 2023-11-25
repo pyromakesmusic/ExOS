@@ -10,14 +10,14 @@ import tkintermapview
 Classes
 """
 class Map:
-    def __init__(self, root, w, h):
+    def __init__(self, root, w, h, widget=None):
         self.display = tkintermapview.TkinterMapView(root, width=w, height=h)
         self.latitude = None
         self.longitude = None
         self.altitude = None
 
         self.bearing = "east"
-        self.widget = None
+        self.widget = widget
     def get_gps_data(self):
         # Connect to the local gpsd service (default host and port)
         gpsd.connect()
@@ -51,13 +51,18 @@ class Map:
 
 
 class Clock():
-    def __init__(self):
+    def __init__(self, widget=None, widget_type=None):
         # Adds a clock
         self.time = datetime.now().strftime("%H:%M:%S")
-        self.display = None
+        self.widget = widget
+        self.widget_type = widget_type
     def update(self):
         self.time = datetime.now().strftime("%H:%M:%S")
         return self.time
+
+    def set_widget(self, widget, widget_type):
+        self.widget = widget
+        self.widget_type = widget_type
 
 class DateWidget:
     def __init__(self):

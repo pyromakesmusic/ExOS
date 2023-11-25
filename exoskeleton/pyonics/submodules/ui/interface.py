@@ -21,7 +21,6 @@ from pygame.locals import *
 import customtkinter as ctk  # Different UI options
 import pyttsx3  # Text to speech
 import vosk  # Voice recognition library
-import cv2  # Take camera input
 
 # My Custom Libraries
 from . import system_strings as sysvx
@@ -202,6 +201,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.setColor("missions", 1,1,1,1)
         kvis.setColor("subtitles", 1,1,1,1)
 
+        self.artificial_horizon = kvis.GeometricPrimitive()
+        self.artificial_horizon.setSphere((0,0,0), 100)
+
 
         # Move the window to the upper left
         display_size = (1920,1080)
@@ -221,10 +223,18 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
         kvis.lock()  # Locks the klampt visualization
+        kvis.clearText()
         self.clock.update()
         self.date.update()
-        self.missions.update("Updated missions:")
-        self.subtitles.update("updated strings")
+        kvis.addText("time", self.clock.time, position=(0,-100), size=50)
+        kvis.addText("date", self.date.date, position=(0,0), size=50)
+        # Length 2 is relative to xy, length 3 is in world coordinates
+        kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
+        kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
+        kvis.setColor("time", 1,1,1,1)
+        kvis.setColor("date", 1,1,1,1)
+        kvis.setColor("missions", 1,1,1,1)
+        kvis.setColor("subtitles", 1,1,1,1)
         kvis.unlock()  # Unlocks the klampt visualization
         kvis.update()
         self.display()
