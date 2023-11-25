@@ -7,6 +7,7 @@ LIBRARY IMPORTS
 import asyncio
 import random
 import pyaudio
+from math import pi
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 
@@ -158,11 +159,8 @@ class VoiceAssistantUI: # For voice control
 class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
     def __init__(self):
-        pygame.init()  # Starts pygame multimedia library
 
         # Add text to the visualization
-        font = pygame.font.SysFont(None, 36)
-
 
         # Creates the HUD display world
         self.holodeck = klampt.WorldModel()
@@ -171,19 +169,16 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         # Sets up widgets on the display
 
         kvis.show()  # Opens the visualization for the first time
-
         kvis.setWindowTitle("Klampt HUD  Test")
         kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
         kvis.resizeWindow(1920,1080)
 
         #self.viewport = kvis.getViewport() # testing pygame backend
-        self.viewport = pygame.display.get_surface()
-
+        #self.viewport = pygame.display.get_surface()
         self.date = DateWidget()
         self.clock = Clock()
         self.missions = TextWidget()
         self.missions.update("No Missions")
-
         self.camera = Camera(0)
         self.subtitles = TextWidget()
         self.subtitles.update("this is where the subtitles of whoever you are listening to will go")
@@ -200,20 +195,16 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.setColor("date", 1,1,1,1)
         kvis.setColor("missions", 1,1,1,1)
         kvis.setColor("subtitles", 1,1,1,1)
-
         self.artificial_horizon = kvis.GeometricPrimitive()
-        self.artificial_horizon.setSphere((0,0,0), 100)
-
-
+        self.artificial_horizon.setSphere((0,0,0), 3)
+        kvis.add("horizon", self.artificial_horizon)
+        kvis.setColor("horizon", 0,.1,0,.1)
+        self.holodeck.appearance(1).setColor(4,.1,.1,.1,.1)
+        self.holodeck.appearance(1).setColor(2,.1,.1,.1,.1)
         # Move the window to the upper left
-        display_size = (1920,1080)
-        # Get the Pygame display surface
-        screen = pygame.display.get_surface()
 
+        asyncio.run(self.options_menu())
 
-        pygame.FULLSCREEN = True
-        pygame.display.set_mode(display_size, DOUBLEBUF | OPENGL | NOFRAME)
-        pygame.display.is_fullscreen()  # I wanted this to be a command
         self.drawOptions()
         # Begin desktopGUI event loop
         asyncio.run(self.async_handler())
@@ -226,11 +217,19 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.clearText()
         self.clock.update()
         self.date.update()
+        self.missions.update("mission text")
+        self.subtitles.update("subtitles from someone talking")
+
+
         kvis.addText("time", self.clock.time, position=(0,-100), size=50)
         kvis.addText("date", self.date.date, position=(0,0), size=50)
         # Length 2 is relative to xy, length 3 is in world coordinates
         kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
         kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
+
+        kvis.addAction("settings", "settings") # Trying to make an options menu
+
+
         kvis.setColor("time", 1,1,1,1)
         kvis.setColor("date", 1,1,1,1)
         kvis.setColor("missions", 1,1,1,1)
@@ -244,6 +243,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         while kvis.shown():
             await self.idle()  # Updates what is displayed
             await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
+
+    async def options_menu(self):
+        pass
 
         """
         Visual Options
@@ -261,9 +263,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         for x in range(wm.numIDs()):
             wm.appearance(x).setDraw(2, True)  # Makes edges visible
             wm.appearance(x).setColor(2, 0, 1, 0, .5)  # Makes edges green?
-            # wm.appearance(x).setColor(4, .1, .1, .1, .1)  # This makes the faces a translucent blue grey
-            # wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
-            # wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
+            wm.appearance(x).setColor(4, .1, .1, .1, .01)  # This makes the faces a translucent blue grey
+            wm.appearance(x).setColor(4, 0, 1, 0, .5)  # I think this changes the glow color
+            wm.appearance(x).setDraw(4, True)  # I believe this should make edges glow
         """
         Shutdown
         """
