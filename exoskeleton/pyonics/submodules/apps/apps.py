@@ -10,28 +10,33 @@ import tkintermapview
 Classes
 """
 class Map:
-    def __init__(self, root, w, h, widget=None):
-        self.display = tkintermapview.TkinterMapView(root, width=w, height=h)
+    def __init__(self, widget=None):
         self.latitude = None
         self.longitude = None
         self.altitude = None
 
         self.bearing = "east"
         self.widget = widget
+        self.get_gps_data()
+
     def get_gps_data(self):
         # Connect to the local gpsd service (default host and port)
-        gpsd.connect()
-        # Get the GPS data
-        packet = gpsd.get_current()
-        # Check if the data is valid
-        if packet.mode >= 2:
-            self.latitude = packet.lat
-            self.longitude = packet.lon
-            self.altitude = packet.alt
+        try:
+            gpsd.connect()
+            # Get the GPS data
+            packet = gpsd.get_current()
+            # Check if the data is valid
+            if packet.mode >= 2:
+                self.latitude = packet.lat
+                self.longitude = packet.lon
+                self.altitude = packet.alt
 
-            return (f"Latitude: {self.latitude},\n Longitude: {self.longitude},\n Altitude: {self.altitude}")
-        else:
-            return ("No GPS fix")
+                return (f"Latitude: {self.latitude},\n Longitude: {self.longitude},\n Altitude: {self.altitude}")
+            else:
+                return ("No GPS fix")
+        except ConnectionRefusedError:
+
+            return("GPS Fix failed")
 
     def update(self, bearing):
         gpsd.connect()
@@ -108,6 +113,15 @@ class Camera:
         # Display the frame
         cv2.imshow('Webcam', self.frame)
 
+    async def cam_loop(self):
+        self.ret, self.frame = self.camera.read()
+
+        # Check if the frame was read successfully
+        if not self.ret:
+            print("Error: Could not read frame.")
+
+        # Display the frame
+        cv2.imshow('Webcam', self.frame)
     def cam_shutdown(self):
         # Break the loop if the user presses the 'q' key
         if cv2.waitKey(1) & 0xFF == ord('q'):

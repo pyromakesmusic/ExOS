@@ -166,6 +166,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.holodeck = klampt.WorldModel()
 
         kvis.glcommon.GLMultiViewportProgram.__init__(self)  # Maybe here is where we embed it?
+        self.r = 1
+        self.g = 1
+        self.b = 1
         # Sets up widgets on the display
 
         kvis.show()  # Opens the visualization for the first time
@@ -173,10 +176,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
         kvis.resizeWindow(1920,1080)
 
-        #self.viewport = kvis.getViewport() # testing pygame backend
-        #self.viewport = pygame.display.get_surface()
         self.date = DateWidget()
         self.clock = Clock()
+        self.map = Map()
         self.missions = TextWidget()
         self.missions.update("No Missions")
         self.camera = Camera(0)
@@ -191,16 +193,18 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         # Length 2 is relative to xy, length 3 is in world coordinates
         kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
         kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
-        kvis.setColor("time", 1,1,1,1)
-        kvis.setColor("date", 1,1,1,1)
-        kvis.setColor("missions", 1,1,1,1)
-        kvis.setColor("subtitles", 1,1,1,1)
+        kvis.setColor("time", self.r, self.g, self.b)
+        kvis.setColor("date", self.r, self.g, self.b)
+        kvis.setColor("missions", self.r, self.g, self.b)
+        kvis.setColor("subtitles", self.r, self.g, self.b)
         self.artificial_horizon = kvis.GeometricPrimitive()
         self.artificial_horizon.setSphere((0,0,0), 3)
         kvis.add("horizon", self.artificial_horizon)
-        kvis.setColor("horizon", 0,.1,0,.1)
+        kvis.setColor("horizon", .3,0,.5,1)
+
         self.holodeck.appearance(1).setColor(4,.1,.1,.1,.1)
         self.holodeck.appearance(1).setColor(2,.1,.1,.1,.1)
+
         # Move the window to the upper left
 
         asyncio.run(self.options_menu())
@@ -217,6 +221,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.clearText()
         self.clock.update()
         self.date.update()
+        await self.camera.cam_loop()
         self.missions.update("mission text")
         self.subtitles.update("subtitles from someone talking")
 
@@ -228,6 +233,10 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
 
         kvis.addAction("settings", "settings") # Trying to make an options menu
+        kvis.addAction(lambda: asyncio.run(self.shutdown), "Shutdown", 'q')
+        #print("Size policy is: " + str(self.sizePolicy))
+
+
 
 
         kvis.setColor("time", 1,1,1,1)
@@ -243,6 +252,8 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         while kvis.shown():
             await self.idle()  # Updates what is displayed
             await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
+
+
 
     async def options_menu(self):
         pass
@@ -269,9 +280,15 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         """
         Shutdown
         """
-    async def shutdown(self):
+    async def async_shutdown(self):
         self.hud.close_all()
         kvis.kill()
+        return ("Shutting down.")
+
+    def shutdown(self):
+        self.hud.close_all()
+        kvis.kill()
+        return ("Shutting down heads-up display.")
 
 class AugmentOverlayTkUI:
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Tkinter.
@@ -315,13 +332,6 @@ class AugmentOverlayTkUI:
         else:
             self.date = None
 
-        # Sets up compass
-        if has_compass:
-            self.compass = Compass(self.root_HUD)
-            self.compass.grid(column=2,row=2, sticky="n")
-        else:
-            self.compass = None
-
         # Sets up the camera feed and display if present
         if has_camera:
             self.camera = Camera(0)
@@ -355,7 +365,7 @@ class AugmentOverlayTkUI:
         self.assistant.announce("Shutting down system.")
         self.root_HUD.destroy()
         self.assistant.shutdown_assistant()
-        self.controller.shutdown()
+        self.controller.async_shutdown()
 
     def refresh(self):
         # Update everything on the screen

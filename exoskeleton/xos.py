@@ -1,6 +1,7 @@
 """
 STANDARD LIBRARIES
 """
+import random
 
 import pandas as pd  # Critical, most of the data structures are pandas structures
 import asyncio  # For asynchronous OSC handling
@@ -94,7 +95,7 @@ class ExOS(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=False):
+    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=True):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
@@ -154,6 +155,11 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def safe_mode(self):
         self.state = "In Safe Mode (Restricted)"
 
+    async def async_error(self):
+        if self.voice:
+            self.voice.announce("Error:")
+            self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
+
 
 
     # Control and Kinematics
@@ -174,7 +180,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Should shut everything down nice and pretty.
         self.shutdown_flag = True
         self.voice.announce("Shutting down systems.")
-        self.hud.shutdown()
+        self.hud.async_shutdown()
 
 """
 Boot Modes
