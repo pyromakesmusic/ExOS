@@ -285,4 +285,4 @@ def initialize(config_filepath):
 
 
 if __name__ == "__main__":
-    initialize("embedded_testconfig1.txt")
+    initialize("config/embedded_testconfig1.txt")

@@ -5,5 +5,5 @@
 /Klampt-examples
 /exoskeleton/robots
 /exoskeleton/demo
-/exoskeleton/test_config1.txt
-/exoskeleton/test_config2.txt
+/exoskeleton/config/test_config1.txt
+/exoskeleton/config/test_config2.txt

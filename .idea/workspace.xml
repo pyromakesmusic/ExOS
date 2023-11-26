@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/embedded_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/demo_config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/embedded_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/desktopsim_testconfig1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/test_config1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/test_config2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,11 +78,11 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\objects" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\config" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui\system_strings" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exos test 1">
@@ -225,13 +229,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00393" summary="improved performance and added some muscles">
-      <created>1697782610139</created>
-      <option name="number" value="00393" />
-      <option name="presentableId" value="LOCAL-00393" />
-      <option name="project" value="LOCAL" />
-      <updated>1697782610139</updated>
     </task>
     <task id="LOCAL-00394" summary="updated reaktor trigger to have controllable rate">
       <created>1698256051931</created>
@@ -569,7 +566,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701033617668</updated>
     </task>
-    <option name="localTasksCounter" value="442" />
+    <task id="LOCAL-00442" summary="added more config files">
+      <created>1701035108343</created>
+      <option name="number" value="00442" />
+      <option name="presentableId" value="LOCAL-00442" />
+      <option name="project" value="LOCAL" />
+      <updated>1701035108343</updated>
+    </task>
+    <option name="localTasksCounter" value="443" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -585,7 +589,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated .gitignore" />
     <MESSAGE value="building out app structure" />
     <MESSAGE value="removing camera from interface and putting it in apps, this may end up holding the voice assistant too" />
     <MESSAGE value="pushing through" />
@@ -610,6 +613,7 @@
     <MESSAGE value="highly advanced technology" />
     <MESSAGE value="camera access" />
     <MESSAGE value="added new test world, think I need to add more to the config" />
-    <option name="LAST_COMMIT_MESSAGE" value="added new test world, think I need to add more to the config" />
+    <MESSAGE value="added more config files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more config files" />
   </component>
 </project>
