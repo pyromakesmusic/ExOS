@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/test_config3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/test_config3.txt" afterDir="false" />
@@ -58,7 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/worlds",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
@@ -69,11 +68,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\pyonics\submodules\ui" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\robots" />
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\objects" />
-      <recent name="C:\Users\Pyro\Documents\Math4157\shoulder_joint\robots" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton" />
@@ -227,13 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00391" summary="updating based on pressure, looks good, just need to tune filters - could probably add phone control or audio control with relative ease - add voice assistant">
-      <created>1697679987446</created>
-      <option name="number" value="00391" />
-      <option name="presentableId" value="LOCAL-00391" />
-      <option name="project" value="LOCAL" />
-      <updated>1697679987446</updated>
     </task>
     <task id="LOCAL-00392" summary="want to turn off the autoscaling for smoother performance">
       <created>1697781318427</created>
@@ -571,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700892756366</updated>
     </task>
-    <option name="localTasksCounter" value="440" />
+    <task id="LOCAL-00440" summary="camera access">
+      <created>1700979674383</created>
+      <option name="number" value="00440" />
+      <option name="presentableId" value="LOCAL-00440" />
+      <option name="project" value="LOCAL" />
+      <updated>1700979674383</updated>
+    </task>
+    <option name="localTasksCounter" value="441" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -587,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="moving readme" />
     <MESSAGE value="computer voices" />
     <MESSAGE value="updated .gitignore" />
     <MESSAGE value="building out app structure" />
@@ -612,6 +610,7 @@
     <MESSAGE value="updated interface a little bit" />
     <MESSAGE value="integrating voice error exceptions" />
     <MESSAGE value="highly advanced technology" />
-    <option name="LAST_COMMIT_MESSAGE" value="highly advanced technology" />
+    <MESSAGE value="camera access" />
+    <option name="LAST_COMMIT_MESSAGE" value="camera access" />
   </component>
 </project>

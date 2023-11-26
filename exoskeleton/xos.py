@@ -5,6 +5,8 @@ import random
 
 import pandas as pd  # Critical, most of the data structures are pandas structures
 import asyncio  # For asynchronous OSC handling
+import sys
+import logging
 
 """
 OTHER LIBRARIES
@@ -95,12 +97,14 @@ class ExOS(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=True, platform="XOS"):
+    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=True, platform="XOS",
+                 mode=None):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         self.shutdown_flag = False
         self.state = "On"
+        self.mode = mode
         self.platform = platform
         self.input = None
         self.dt = None

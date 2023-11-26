@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<world>
+  <terrain file="../terrains/block.off"  translation="0 0 -0.05" rotateY="0.2"/>
+
+</world>

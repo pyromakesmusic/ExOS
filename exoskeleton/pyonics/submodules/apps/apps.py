@@ -101,6 +101,7 @@ class Camera(klampt.vis.glcommon.GLProgram):
         # Launches with an index of a particular camera
         self.camera = None
         self.cam_launch(i)
+        self.state = "minimized"  # Can also be "fullscreen", "windowed", "closed"
 
         self.ret = None
         self.frame = None
@@ -113,7 +114,7 @@ class Camera(klampt.vis.glcommon.GLProgram):
         except:
             "Error: Exception launching camera input."
 
-    def cam_loop(self):
+    def cam_loop_synchronous(self):
         self.ret, self.frame = self.camera.read()
 
         # Check if the frame was read successfully

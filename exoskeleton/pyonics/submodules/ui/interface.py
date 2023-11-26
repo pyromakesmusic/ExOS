@@ -4,6 +4,8 @@ Should contain interface elements for inside the robot as well as when it is plu
 LIBRARY IMPORTS
 """
 # Standard Libraries
+import sys
+import logging
 import asyncio
 import random
 import pyaudio
@@ -104,6 +106,7 @@ class VoiceAssistantUI: # For voice control
     # Should be most of the audio interaction with a UI
     def __init__(self, voice_index: int, rate: int):
         # TTS Engine Initialization
+        logging.basicConfig(stream=sys.stderr, level=logging.CRITICAL)  # Makes it the least verbose, critical messages only
         self.voice_engine = pyttsx3.init()
         self.voices = self.voice_engine.getProperty("voices")
         self.voice_engine.setProperty('rate', rate)
@@ -161,7 +164,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
     # Also includes voice assistant by default.
     def __init__(self):
-
+        self.shutdown_flag = False
         # Add text to the visualization
 
         # Creates the HUD display world
@@ -169,7 +172,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
 
         kvis.glcommon.GLProgram.__init__(self)  # Maybe here is where we embed it?
         self.r = 1
-        self.g = 1
+        self.g = .5
         self.b = 1
         self.input = None
         # Sets up widgets on the display
@@ -180,7 +183,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         self.missions = TextWidget()
         self.missions.update("No Missions")
         self.camera = Camera(0)
-        self.camera.cam_loop()
+        asyncio.run(self.camera.cam_loop())
         # Convert the image data to a NumPy array
         self.image_array = None
 
@@ -217,7 +220,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
 
         self.drawOptions()
         # Begin desktopGUI event loop
-        asyncio.run(self.idle())
+        self.run()
+        while not self.shutdown_flag:
+            asyncio.run(self.idle())
 
     async def plugin_handler(self):
         # Pushes kvis plugins
@@ -234,9 +239,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        self.camera.cam_loop()
-        frame = self.camera.frame
-        np.frombuffer(frame, dtype=np.uint8())
+        await self.camera.cam_loop()
         kvis.lock()  # Locks the klampt visualization
         kvis.clearText()
         self.clock.update()
@@ -261,6 +264,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.setColor("missions", 1,1,1,1)
         kvis.setColor("subtitles", 1,1,1,1)
         kvis.unlock()  # Unlocks the klampt visualization
+
+        frame = self.camera.frame
+        kvis.add
         kvis.update()
         self.display()
         return True
