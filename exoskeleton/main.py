@@ -1,5 +1,4 @@
 import xos
-import asyncio
 
 def init_main():
     """

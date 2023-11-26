@@ -1,16 +1,20 @@
 import gpsd  # GPS library
 import cv2  # Camera library
 from datetime import datetime
-import customtkinter as ctk
-import tkintermapview
+import asyncio
+# Klamp't imports
+import klampt
+import klampt.model.coordinates
 
 # Might it not make more sense to make each App its own Class?
 
 """
 Classes
 """
-class Map:
+class Map(klampt.vis.glcommon.GLProgram):
     def __init__(self, widget=None):
+        self.world = klampt.WorldModel()
+        self.frenet = klampt.model.coordinates.Frame("frenet frame", self.world)
         self.latitude = None
         self.longitude = None
         self.altitude = None
@@ -18,6 +22,11 @@ class Map:
         self.bearing = "east"
         self.widget = widget
         self.get_gps_data()
+        klampt.vis.glprogram.GLProgram.__init__(self)
+
+    async def surrounding_geometry(self):
+        pass
+
 
     def get_gps_data(self):
         # Connect to the local gpsd service (default host and port)
@@ -86,8 +95,9 @@ class TextWidget:
         self.text = text
         return self.text
 
-class Camera:
+class Camera(klampt.vis.glcommon.GLProgram):
     def __init__(self, i):
+        klampt.vis.glcommon.GLProgram.__init__(self)
         # Launches with an index of a particular camera
         self.camera = None
         self.cam_launch(i)
@@ -112,6 +122,7 @@ class Camera:
 
         # Display the frame
         cv2.imshow('Webcam', self.frame)
+        return self.frame
 
     async def cam_loop(self):
         self.ret, self.frame = self.camera.read()
@@ -119,9 +130,10 @@ class Camera:
         # Check if the frame was read successfully
         if not self.ret:
             print("Error: Could not read frame.")
+        return self.frame
 
         # Display the frame
-        cv2.imshow('Webcam', self.frame)
+        #cv2.imshow('Webcam', self.frame)
     def cam_shutdown(self):
         # Break the loop if the user presses the 'q' key
         if cv2.waitKey(1) & 0xFF == ord('q'):

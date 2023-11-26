@@ -7,6 +7,7 @@ LIBRARY IMPORTS
 import asyncio
 import random
 import pyaudio
+import numpy as np
 from math import pi
 from OpenGL.GL import *
 from OpenGL.GLUT import *
@@ -156,8 +157,9 @@ class VoiceAssistantUI: # For voice control
             self.voice_engine.stop()
             i = (i + 1) % len(self.voices)
 
-class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
+class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
     # For a Heads-Up Display or Helmet Mounted Display. This version uses Klampt vis plugins from the ground up.
+    # Also includes voice assistant by default.
     def __init__(self):
 
         # Add text to the visualization
@@ -165,17 +167,12 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         # Creates the HUD display world
         self.holodeck = klampt.WorldModel()
 
-        kvis.glcommon.GLMultiViewportProgram.__init__(self)  # Maybe here is where we embed it?
+        kvis.glcommon.GLProgram.__init__(self)  # Maybe here is where we embed it?
         self.r = 1
         self.g = 1
         self.b = 1
         self.input = None
         # Sets up widgets on the display
-
-        kvis.show()  # Opens the visualization for the first time
-        kvis.setWindowTitle("Klampt HUD  Test")
-        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
-        kvis.resizeWindow(1920,1080)
 
         self.date = DateWidget()
         self.clock = Clock()
@@ -183,11 +180,17 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         self.missions = TextWidget()
         self.missions.update("No Missions")
         self.camera = Camera(0)
+        self.camera.cam_loop()
+        # Convert the image data to a NumPy array
+        self.image_array = None
+
         self.subtitles = TextWidget()
         self.subtitles.update("this is where the subtitles of whoever you are listening to will go")
 
         # Create the visualization
         kvis.add("world", self.holodeck)
+
+
         kvis.addText("time", self.clock.time, position=(0,-100), size=50)
         kvis.addText("date", self.date.date, position=(0,0), size=50)
 
@@ -200,12 +203,14 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.setColor("subtitles", self.r, self.g, self.b)
         self.artificial_horizon = kvis.GeometricPrimitive()
         self.artificial_horizon.setSphere((0,0,0), 3)
-        kvis.add("horizon", self.artificial_horizon)
-        kvis.setColor("horizon", .3,0,.5,1)
+        #kvis.add("horizon", self.artificial_horizon)
+        #kvis.setColor("horizon", .3,0,.5,1)
 
         self.holodeck.appearance(1).setColor(4,.1,.1,.1,.1)
         self.holodeck.appearance(1).setColor(2,.1,.1,.1,.1)
 
+        #Apply plugins
+        asyncio.run(self.plugin_handler())
         # Move the window to the upper left
 
         asyncio.run(self.options_menu())
@@ -214,17 +219,31 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         # Begin desktopGUI event loop
         asyncio.run(self.idle())
 
+    async def plugin_handler(self):
+        # Pushes kvis plugins
+
+        kvis.setWindowTitle("Klampt HUD  Test")
+        kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
+        kvis.resizeWindow(1920,1080)
+
+    async def update_subtitles(self):
+        pass
+        return
+
     async def idle(self):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
+        self.camera.cam_loop()
+        frame = self.camera.frame
+        np.frombuffer(frame, dtype=np.uint8())
         kvis.lock()  # Locks the klampt visualization
         kvis.clearText()
         self.clock.update()
         self.date.update()
         await self.camera.cam_loop()
         self.missions.update("mission text")
-        self.subtitles.update(input)
+        #self.subtitles.update(input("hello..."))
 
 
         kvis.addText("time", self.clock.time, position=(0,-100), size=50)
@@ -233,12 +252,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
         kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
 
-        kvis.addAction("settings", "settings") # Trying to make an options menu
-        kvis.addAction(lambda: asyncio.run(self.shutdown), "Shutdown", 'q')
+        # kvis.add_action("settings", "settings") # Trying to make an options menu
+        # kvis.add_action(lambda: asyncio.run(self.shutdown), "Shutdown", 'q')
         #print("Size policy is: " + str(self.sizePolicy))
-
-
-
 
         kvis.setColor("time", 1,1,1,1)
         kvis.setColor("date", 1,1,1,1)
@@ -248,13 +264,6 @@ class AugmentOverlayKlUI(kvis.glcommon.GLMultiViewportProgram):
         kvis.update()
         self.display()
         return True
-
-    # async def async_handler(self):
-    #     while kvis.shown():
-    #         await self.idle()  # Updates what is displayed
-    #         self.input = "something"
-    #         await asyncio.sleep(0)  # Waits a bit to relinquish control to the OSC handler
-
 
 
     async def options_menu(self):

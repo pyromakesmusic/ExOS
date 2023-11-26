@@ -95,12 +95,13 @@ class ExOS(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=True):
+    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=True, platform="XOS"):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         self.shutdown_flag = False
         self.state = "On"
+        self.platform = platform
         self.input = None
         self.dt = None
 
@@ -126,8 +127,22 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.hud = None
 
+        asyncio.run(self.platform_config())
+
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
-        asyncio.run(self.hud.idle())
+        while not self.shutdown_flag:
+            asyncio.run(self.hud.idle())
+
+    async def feedback(self, textvar):
+        if self.voice:
+            self.voice.announce(textvar)
+        else:
+            pass
+
+        if self.hud:
+            self.hud.subtitles.update(textvar)
+        else:
+            pass
 
     async def main(self):
         # Main operating system loop.
@@ -137,23 +152,26 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.input = "blahdy blah blah blah"
 
-        # Personality processing
-        if self.persona:
-            response = self.persona.process_input(self.input)
-        else:
-            response = ""
-
-        # Vocalization of processed response
-        if self.voice:
-            self.voice.announce(response)
-        else:
-            pass
 
         await self.hud.idle()
+        await self.feedback(self.input)
+
         return "Running..."
 
     async def safe_mode(self):
         self.state = "In Safe Mode (Restricted)"
+
+    async def platform_config(self):
+        match self.platform:
+            case "iPhone":
+                self.voice.announce("iOS mode activating.")
+            case "XOS":
+                self.voice.announce("Exoskeleton activating...Initializing in standard configuration.")
+            case _:
+                if self.voice:
+                    self.voice.announce("Assuming default platform configuration.")
+                else:
+                    print("Automatic platform detection failed. Assuming default configuration.")
 
     async def async_error(self):
         if self.voice:
