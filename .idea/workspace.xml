@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/config/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/demo_config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/embedded_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/test_config1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/test_config2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/test_config2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -229,13 +225,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00394" summary="updated reaktor trigger to have controllable rate">
-      <created>1698256051931</created>
-      <option name="number" value="00394" />
-      <option name="presentableId" value="LOCAL-00394" />
-      <option name="project" value="LOCAL" />
-      <updated>1698256051931</updated>
     </task>
     <task id="LOCAL-00395" summary="improved demo control panel and updated documentation">
       <created>1698282649401</created>
@@ -573,7 +562,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701035108343</updated>
     </task>
-    <option name="localTasksCounter" value="443" />
+    <task id="LOCAL-00443" summary="reorganizing config files">
+      <created>1701035168501</created>
+      <option name="number" value="00443" />
+      <option name="presentableId" value="LOCAL-00443" />
+      <option name="project" value="LOCAL" />
+      <updated>1701035168501</updated>
+    </task>
+    <option name="localTasksCounter" value="444" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -589,7 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="building out app structure" />
     <MESSAGE value="removing camera from interface and putting it in apps, this may end up holding the voice assistant too" />
     <MESSAGE value="pushing through" />
     <MESSAGE value="iterating through the voices" />
@@ -614,6 +609,7 @@
     <MESSAGE value="camera access" />
     <MESSAGE value="added new test world, think I need to add more to the config" />
     <MESSAGE value="added more config files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more config files" />
+    <MESSAGE value="reorganizing config files" />
+    <option name="LAST_COMMIT_MESSAGE" value="reorganizing config files" />
   </component>
 </project>

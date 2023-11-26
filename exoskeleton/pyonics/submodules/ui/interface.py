@@ -106,7 +106,9 @@ class VoiceAssistantUI: # For voice control
     # Should be most of the audio interaction with a UI
     def __init__(self, voice_index: int, rate: int):
         # TTS Engine Initialization
-        logging.basicConfig(stream=sys.stderr, level=logging.CRITICAL)  # Makes it the least verbose, critical messages only
+        logging.basicConfig(stream=sys.stderr, level=logging.CRITICAL)
+        # Makes it the least verbose, critical messages only ^^^
+
         self.voice_engine = pyttsx3.init()
         self.voices = self.voice_engine.getProperty("voices")
         self.voice_engine.setProperty('rate', rate)
@@ -118,8 +120,16 @@ class VoiceAssistantUI: # For voice control
 
         self.mic = None
         self.stream = None
-        self.voice_launch()
-        #self.voice_test()
+        # Voice Recognition Initialization
+        self.recog_model = vosk.Model(model_name="vosk-model-small-en-us-0.15")
+        self.voice_recog = vosk.KaldiRecognizer(self.recog_model, 16000)
+
+        self.mic = pyaudio.PyAudio()
+
+        self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
+        self.stream.start_stream()
+        # Tests/ Strings
+        self.voice_engine.runAndWait()
 
     def shutdown_assistant(self):
         # Shuts down and releases resources
@@ -130,16 +140,6 @@ class VoiceAssistantUI: # For voice control
         self.voice_engine.say(stringvar)
         self.voice_engine.runAndWait()
         return stringvar
-
-    def voice_launch(self):
-        # Voice Recognition Initialization
-        self.recog_model = vosk.Model(model_name="vosk-model-small-en-us-0.15")
-        self.voice_recog = vosk.KaldiRecognizer(self.recog_model, 16000)
-        self.mic = pyaudio.PyAudio()
-        self.stream = self.mic.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=81)
-        self.stream.start_stream()
-        # Tests/ Strings
-        self.voice_engine.runAndWait()
 
     def voice_loop(self):
         data = self.stream.read(1024)
@@ -220,7 +220,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
 
         self.drawOptions()
         # Begin desktopGUI event loop
-        self.run()
+        kvis.show()
         while not self.shutdown_flag:
             asyncio.run(self.idle())
 

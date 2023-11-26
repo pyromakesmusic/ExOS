@@ -52,6 +52,8 @@ def configLoader(config_name):
     """
     print("Loading configuration" + config_name + "...\n")
     with open(config_name) as fn:
+        print("Selecting hardware platform...\n", fn.readline().rstrip())
+        hardware_platform = fn.readline().rstrip()
         print("Loading core components...\n", fn.readline().rstrip())
         core = fn.readline().rstrip()  # Filepath to robot core
         print("Loading muscle attachments...\n", fn.readline().rstrip())
@@ -64,6 +66,8 @@ def configLoader(config_name):
         address = fn.readline().rstrip()  # Controller IP address; string value
         print("Setting controller network socket...\n", fn.readline().rstrip())
         port = int(fn.readline().rstrip())  # Controller network socket
+        print("Setting network mode...\n", fn.readline().rstrip())
+        network_mode = fn.readline().rstrip()
         print("Setting display resolution...\n", fn.readline().rstrip())
         width = int(fn.readline().rstrip())
         height = int(fn.readline().rstrip())
@@ -81,12 +85,14 @@ def configLoader(config_name):
         voice_id = int(fn.readline().strip())
         print("Setting voice speech rate\n", fn.readline().strip())
         voice_rate = int(fn.readline().rstrip())
-        config = {"core": core,
+        config = {"hardware_platform": hardware_platform,
+                  "core": core,
                   "attachments": attachments,
                   "world_path": world_path,
                   "timestep": timestep,
                   "address": address,
                   "port": port,
+                  "network_mode": network_mode,
                   "width": width,
                   "height": height,
                   "has_robworld": has_robworld,
@@ -118,9 +124,10 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
 
         self.shutdown_flag = False
-        self.state = "On"
-        self.mode = None
-        self.platform = None
+        self.state = "Initializing..."  # Should be updated whenever something is happening to the whole system
+        self.mode = None  # Safe mode, restricted mode, etc. - None is normal
+        self.network_mode = config_data["network_mode"]  # Can be master or slave
+        self.platform = config_data["hardware_platform"]  # iPhone, desktop, exoskeleton, etc.
         self.input = None
         self.dt = None
 
@@ -156,6 +163,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
 
+        self.state = "On"
         while not self.shutdown_flag:
             asyncio.run(self.main())
 
@@ -178,7 +186,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.input = "blahdy blah blah blah"
 
-
+        self.hud.subtitles.update(self.inputt)
         asyncio.run(self.hud.idle())
         await self.feedback(self.input)
 
@@ -207,9 +215,11 @@ class ExOS(klampt.control.OmniRobotInterface):
 
     def shutdown(self):
         # Should shut everything down nice and pretty.
+        self.state = "Shutdown in progress"
         self.shutdown_flag = True
         self.voice.announce("Shutting down systems.")
         self.hud.async_shutdown()
+        self.state = "Off"
 
 """
 Boot Modes
