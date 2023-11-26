@@ -1,0 +1,27 @@
+CORE:
+robots/core_bot_test3.rob
+MUSCLE ATTACHMENTS:
+robots/muscle_attachments_b1.csv
+WORLD:
+worlds/test_world2.xml
+CONTROL RATE:
+.001
+CONTROL ADDRESS:
+127.0.0.1
+CONTROL PORT:
+5005
+DISPLAY RESOLUTION:
+1920
+1080
+HAS_ROBWORLD:
+True
+HAS_HUD:
+True
+HAS_VOICE:
+True
+HAS_PERSONA:
+0
+VOICE ID:
+1
+VOICE SPEECH RATE:
+200

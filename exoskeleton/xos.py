@@ -67,6 +67,16 @@ def configLoader(config_name):
         print("Setting display resolution...\n", fn.readline().rstrip())
         width = int(fn.readline().rstrip())
         height = int(fn.readline().rstrip())
+        print("Getting world preferences...\n", fn.readline().rstrip())
+        has_robworld = bool(fn.readline().rstrip())
+        print("Getting HUD preferences...\n", fn.readline().rstrip())
+        has_hud = bool(fn.readline().rstrip())
+        print("Getting voice preferences...\n", fn.readline().rstrip())
+        has_voice = bool(fn.readline().rstrip())
+        print("Setting personality...\n", fn.readline().rstrip())
+        has_persona_condition = fn.readline().rstrip()
+        has_persona = has_persona_condition == "True"
+        print("has persona is...: ", str(has_persona))
         print("Selecting voice ID...\n", fn.readline().rstrip())
         voice_id = int(fn.readline().strip())
         print("Setting voice speech rate\n", fn.readline().strip())
@@ -79,8 +89,13 @@ def configLoader(config_name):
                   "port": port,
                   "width": width,
                   "height": height,
+                  "has_robworld": has_robworld,
+                  "has_hud": has_hud,
+                  "has_voice": has_voice,
+                  "has_persona": has_persona,
                   "voice_id": voice_id,
-                  "voice_rate": voice_rate}
+                  "voice_rate": voice_rate
+                  }
 
         return config
 
@@ -97,45 +112,52 @@ class ExOS(klampt.control.OmniRobotInterface):
     """
 
     # Initialization
-    def __init__(self, config_data, has_klampt=True, has_hud=True, has_persona=False, has_voice=True, platform="XOS",
-                 mode=None):
+    def __init__(self, config_data):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
+
         self.shutdown_flag = False
         self.state = "On"
-        self.mode = mode
-        self.platform = platform
+        self.mode = None
+        self.platform = None
         self.input = None
         self.dt = None
 
-        if has_persona:
+        if config_data["has_persona"]:
             self.persona = ui.Personality()  # Creates a personality
         else:
             self.persona = None
 
-        if has_voice:
+        if config_data["has_voice"]:
             self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         else:
             self.voice = None
 
-        if has_klampt:
+        if config_data["has_robworld"]:
+            # Variable for a robot representation
             self.robot = ctrl.ExoController(config_data).robot
             self.world = self.robot.world
         else:
             self.robot = None
             self.world = None
 
-        if has_hud:
+        if config_data["has_hud"]:
             self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
         else:
             self.hud = None
 
-        asyncio.run(self.platform_config())
+        match config_data["mode"]:
+            case _:
+                pass
+        match config_data["platform"]:
+            case _:
+                pass
 
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
+
         while not self.shutdown_flag:
-            asyncio.run(self.hud.idle())
+            asyncio.run(self.main())
 
     async def feedback(self, textvar):
         if self.voice:
@@ -157,25 +179,10 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.input = "blahdy blah blah blah"
 
 
-        await self.hud.idle()
+        asyncio.run(self.hud.idle())
         await self.feedback(self.input)
 
         return "Running..."
-
-    async def safe_mode(self):
-        self.state = "In Safe Mode (Restricted)"
-
-    async def platform_config(self):
-        match self.platform:
-            case "iPhone":
-                self.voice.announce("iOS mode activating.")
-            case "XOS":
-                self.voice.announce("Exoskeleton activating...Initializing in standard configuration.")
-            case _:
-                if self.voice:
-                    self.voice.announce("Assuming default platform configuration.")
-                else:
-                    print("Automatic platform detection failed. Assuming default configuration.")
 
     async def async_error(self):
         if self.voice:
@@ -278,4 +285,4 @@ def initialize(config_filepath):
 
 
 if __name__ == "__main__":
-    initialize("test_config3.txt")
+    initialize("embedded_testconfig1.txt")
