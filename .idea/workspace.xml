@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,13 +223,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00395" summary="improved demo control panel and updated documentation">
-      <created>1698282649401</created>
-      <option name="number" value="00395" />
-      <option name="presentableId" value="LOCAL-00395" />
-      <option name="project" value="LOCAL" />
-      <updated>1698282649401</updated>
     </task>
     <task id="LOCAL-00396" summary="adding and customizing voice control">
       <created>1700517655810</created>
@@ -569,7 +560,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701035168501</updated>
     </task>
-    <option name="localTasksCounter" value="444" />
+    <task id="LOCAL-00444" summary="now showing the GUI again">
+      <created>1701037345486</created>
+      <option name="number" value="00444" />
+      <option name="presentableId" value="LOCAL-00444" />
+      <option name="project" value="LOCAL" />
+      <updated>1701037345487</updated>
+    </task>
+    <option name="localTasksCounter" value="445" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -585,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="removing camera from interface and putting it in apps, this may end up holding the voice assistant too" />
     <MESSAGE value="pushing through" />
     <MESSAGE value="iterating through the voices" />
     <MESSAGE value="updating HUD calls to submodules" />
@@ -610,6 +607,7 @@
     <MESSAGE value="added new test world, think I need to add more to the config" />
     <MESSAGE value="added more config files" />
     <MESSAGE value="reorganizing config files" />
-    <option name="LAST_COMMIT_MESSAGE" value="reorganizing config files" />
+    <MESSAGE value="now showing the GUI again" />
+    <option name="LAST_COMMIT_MESSAGE" value="now showing the GUI again" />
   </component>
 </project>

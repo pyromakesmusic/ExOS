@@ -183,7 +183,6 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         self.missions = TextWidget()
         self.missions.update("No Missions")
         self.camera = Camera(0)
-        asyncio.run(self.camera.cam_loop())
         # Convert the image data to a NumPy array
         self.image_array = None
 
@@ -221,6 +220,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         self.drawOptions()
         # Begin desktopGUI event loop
         kvis.show()
+        asyncio.run(self.camera.cam_launch(0))
         while not self.shutdown_flag:
             asyncio.run(self.idle())
 
@@ -244,7 +244,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.clearText()
         self.clock.update()
         self.date.update()
-        await self.camera.cam_loop()
+        await self.camera.cam_loop()  # Calls the camera
         self.missions.update("mission text")
         #self.subtitles.update(input("hello..."))
 
@@ -266,7 +266,6 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.unlock()  # Unlocks the klampt visualization
 
         frame = self.camera.frame
-        kvis.add
         kvis.update()
         self.display()
         return True

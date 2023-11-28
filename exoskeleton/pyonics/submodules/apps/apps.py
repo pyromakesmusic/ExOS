@@ -100,11 +100,13 @@ class Camera(klampt.vis.glcommon.GLProgram):
         klampt.vis.glcommon.GLProgram.__init__(self)
         # Launches with an index of a particular camera
         self.camera = None
-        self.cam_launch(i)
         self.state = "minimized"  # Can also be "fullscreen", "windowed", "closed"
 
         self.ret = None
         self.frame = None
+        self.shutdown_flag = False
+
+
 
 
     def cam_launch(self, index):
@@ -113,6 +115,9 @@ class Camera(klampt.vis.glcommon.GLProgram):
             self.camera = cv2.VideoCapture(index)
         except:
             "Error: Exception launching camera input."
+
+        while not self.shutdown_flag:
+            asyncio.run(self.cam_loop())
 
     def cam_loop_synchronous(self):
         self.ret, self.frame = self.camera.read()
@@ -138,4 +143,4 @@ class Camera(klampt.vis.glcommon.GLProgram):
     def cam_shutdown(self):
         # Break the loop if the user presses the 'q' key
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            pass
+            self.shutdown_flag = True
