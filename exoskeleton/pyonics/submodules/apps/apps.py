@@ -139,7 +139,7 @@ class Camera(klampt.vis.glcommon.GLProgram):
         return self.frame
 
         # Display the frame
-        #cv2.imshow('Webcam', self.frame)
+        cv2.imshow('Webcam', self.frame)
     def cam_shutdown(self):
         # Break the loop if the user presses the 'q' key
         if cv2.waitKey(1) & 0xFF == ord('q'):

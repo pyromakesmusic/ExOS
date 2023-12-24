@@ -13,6 +13,7 @@ import numpy as np
 from math import pi
 from OpenGL.GL import *
 from OpenGL.GLUT import *
+from PyQt5 import QtGui, QtCore
 
 # Klampt Libraries
 import klampt
@@ -20,8 +21,6 @@ import klampt.vis as kvis
 
 # Third Party Libraries
 import transformers
-import pygame as pygame  # Multimedia integration with OpenGL
-from pygame.locals import *
 import customtkinter as ctk  # Different UI options
 import pyttsx3  # Text to speech
 import vosk  # Voice recognition library
@@ -172,7 +171,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
 
         kvis.glcommon.GLProgram.__init__(self)  # Maybe here is where we embed it?
         self.r = 1
-        self.g = .5
+        self.g = .2
         self.b = 1
         self.input = None
         # Sets up widgets on the display
@@ -219,8 +218,11 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
 
         self.drawOptions()
         # Begin desktopGUI event loop
-        kvis.show()
+
+
+
         asyncio.run(self.camera.cam_launch(0))
+        self.window = QtGui.QGuiApplication(sys.argv)
         while not self.shutdown_flag:
             asyncio.run(self.idle())
 
@@ -246,7 +248,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         self.date.update()
         await self.camera.cam_loop()  # Calls the camera
         self.missions.update("mission text")
-        #self.subtitles.update(input("hello..."))
+        self.subtitles.update(input("hello..."))
 
 
         kvis.addText("time", self.clock.time, position=(0,-100), size=50)
@@ -255,8 +257,8 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
         kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
 
-        # kvis.add_action("settings", "settings") # Trying to make an options menu
-        # kvis.add_action(lambda: asyncio.run(self.shutdown), "Shutdown", 'q')
+        kvis.add_action("settings", "settings") # Trying to make an options menu
+        kvis.add_action(lambda: asyncio.run(self.shutdown), "Shutdown", 'q')
         #print("Size policy is: " + str(self.sizePolicy))
 
         kvis.setColor("time", 1,1,1,1)
@@ -266,6 +268,8 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.unlock()  # Unlocks the klampt visualization
 
         frame = self.camera.frame
+
+        kvis.add("camera_screen")
         kvis.update()
         self.display()
         return True
