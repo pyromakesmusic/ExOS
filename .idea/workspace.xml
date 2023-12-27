@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/embedded_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00398" summary="improving transparent window function">
-      <created>1700532760893</created>
-      <option name="number" value="00398" />
-      <option name="presentableId" value="LOCAL-00398" />
-      <option name="project" value="LOCAL" />
-      <updated>1700532760893</updated>
     </task>
     <task id="LOCAL-00399" summary="improving transparent window function">
       <created>1700532787233</created>
@@ -485,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703390034242</updated>
     </task>
-    <option name="localTasksCounter" value="447" />
+    <task id="LOCAL-00447" summary="updating to remove unused stuff and bring old configurations up to spec">
+      <created>1703645428714</created>
+      <option name="number" value="00447" />
+      <option name="presentableId" value="LOCAL-00447" />
+      <option name="project" value="LOCAL" />
+      <updated>1703645428714</updated>
+    </task>
+    <option name="localTasksCounter" value="448" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -501,7 +496,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating HUD calls to submodules" />
     <MESSAGE value="using grid to layout HUD elements now" />
     <MESSAGE value="made voice ID and speaking rate configurable" />
     <MESSAGE value="separating apps out" />
@@ -526,6 +520,7 @@
     <MESSAGE value="now showing the GUI again" />
     <MESSAGE value="updating camera input" />
     <MESSAGE value="updating interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating interface" />
+    <MESSAGE value="updating to remove unused stuff and bring old configurations up to spec" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating to remove unused stuff and bring old configurations up to spec" />
   </component>
 </project>

@@ -188,10 +188,13 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.shutdown_flag = False
         self.input = None
 
-        self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
-        self.world.loadRobot(config_data["core"])  # Loads the robot geometry
-        self.robot = self.world.robot(0)
-        klampt.control.OmniRobotInterface.__init__(self, self.robot)
+        if config_data["has_robworld"]:
+            self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
+            self.world.loadRobot(config_data["core"])  # Loads the robot geometry
+            self.robot = self.world.robot(0)
+            klampt.control.OmniRobotInterface.__init__(self, self.robot)
+
+
         self.dt = config_data["timestep"]  # Sets the core robot clock
         self.osc_handler = AsyncServer(config_data["address"], config_data["port"])
         self.oscMapper()

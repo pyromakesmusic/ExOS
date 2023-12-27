@@ -126,7 +126,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.state = "Initializing..."  # Should be updated whenever something is happening to the whole system
         self.mode = None  # Safe mode, restricted mode, etc. - None is normal
         self.network_mode = config_data["network_mode"]  # Can be master or slave
-        self.input = None
+        self.input = "test string"
         self.dt = None
 
         if config_data["has_persona"]:
@@ -140,29 +140,35 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.voice = None
 
         if config_data["has_robworld"]:
+            print("Initializing RobWorld...")
             # Variable for a robot representation
             self.robot = ctrl.ExoController(config_data).robot
             self.world = self.robot.world
+            klampt.vis.add("w", self.world)
+            klampt.vis.add("robby", self.robot)
+            klampt.vis.show()
         else:
             self.robot = None
             self.world = None
 
-        if config_data["has_hud"]:
-            self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
-        else:
-            self.hud = None
-
-        match config_data["mode"]:
-            case _:
-                pass
-        match config_data["platform"]:
-            case _:
-                pass
+        # if config_data["has_hud"]:
+        #     print(config_data["has_hud"])
+        #     print("Initializing HUD...")
+        #     self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
+        # else:
+        #     self.hud = None
 
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
 
         self.state = "On"
-        while not self.shutdown_flag:
+
+        """
+        Desktop Vis/Simulation Stuff
+        """
+        klampt.vis.show()
+
+
+        while klampt.vis.shown():
             asyncio.run(self.main())
 
     async def feedback(self, textvar):
@@ -170,11 +176,11 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.voice.announce(textvar)
         else:
             pass
-
-        if self.hud:
-            self.hud.subtitles.update(textvar)
-        else:
-            pass
+        #
+        # if self.hud:
+        #     self.hud.subtitles.update(textvar)
+        # else:
+        #     pass
 
     async def main(self):
         # Main operating system loop.
@@ -184,11 +190,11 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.input = "blahdy blah blah blah"
 
-        self.hud.subtitles.update(self.inputt)
-        asyncio.run(self.hud.idle())
-        await self.feedback(self.input)
+        # self.hud.subtitles.update(self.input)
+        # asyncio.run(self.hud.idle())
+        #await self.feedback(self.input)
 
-        return "Running..."
+        #return "Running..."
 
     async def async_error(self):
         if self.voice:
