@@ -60,7 +60,7 @@ FUNCTION DEFINITIONS
 
 
 def main():
-    interface.initialize()
+    interface.launch_standard()
     return
 
 if __name__ == "__main__":

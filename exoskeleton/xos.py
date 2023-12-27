@@ -134,7 +134,8 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.persona = None
 
-        if config_data["has_voice"]:
+        if config_data["has_voice"] == True:
+            print(config_data["has_voice"])
             self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         else:
             self.voice = None
@@ -286,18 +287,23 @@ class ExoSim(klampt.sim.simulation.SimpleSimulator):
 """
 MAIN LOOP
 """
-def initialize(config_filepath):
+def launch_standard(config_filepath):
+
     config = configLoader(config_filepath)
-    #mode = input("What mode would you like to launch in?: ")
-    mode = ""
-    match mode:
-        case "safe":
-            exo_test = SafeMode(config)
-        case _:
-            exo_test = ExOS(config)
+    exo_program = ExOS(config)
 
 
 
 if __name__ == "__main__":
+    master = tk.Tk()
+    root = tk.Frame()
+    root.pack(master)
+
+    variable = tk.StringVar(root)
+    variable.set("one")  # default value
+
+    w = tk.OptionMenu(master, variable, "one", "two", "three")
+    w.pack()
+
     inputpath = filedialog.askopenfilename()
-    initialize(inputpath)
+    launch_standard(inputpath)

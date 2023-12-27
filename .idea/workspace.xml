@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/demos/simulated_mirobot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/simulated_mirobot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,13 +137,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00399" summary="improving transparent window function">
-      <created>1700532787233</created>
-      <option name="number" value="00399" />
-      <option name="presentableId" value="LOCAL-00399" />
-      <option name="project" value="LOCAL" />
-      <updated>1700532787233</updated>
     </task>
     <task id="LOCAL-00400" summary="messing with voice control">
       <created>1700537355564</created>
@@ -480,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703645428714</updated>
     </task>
-    <option name="localTasksCounter" value="448" />
+    <task id="LOCAL-00448" summary="got a working robot display on desktop hardware sim 1">
+      <created>1703658399789</created>
+      <option name="number" value="00448" />
+      <option name="presentableId" value="LOCAL-00448" />
+      <option name="project" value="LOCAL" />
+      <updated>1703658399789</updated>
+    </task>
+    <option name="localTasksCounter" value="449" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -496,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="using grid to layout HUD elements now" />
     <MESSAGE value="made voice ID and speaking rate configurable" />
     <MESSAGE value="separating apps out" />
     <MESSAGE value="adding video section and moving mckibben muscle control to submodule" />
@@ -521,6 +521,7 @@
     <MESSAGE value="updating camera input" />
     <MESSAGE value="updating interface" />
     <MESSAGE value="updating to remove unused stuff and bring old configurations up to spec" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating to remove unused stuff and bring old configurations up to spec" />
+    <MESSAGE value="got a working robot display on desktop hardware sim 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="got a working robot display on desktop hardware sim 1" />
   </component>
 </project>
