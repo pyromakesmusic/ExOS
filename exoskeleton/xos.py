@@ -7,6 +7,8 @@ import pandas as pd  # Critical, most of the data structures are pandas structur
 import asyncio  # For asynchronous OSC handling
 import sys
 import logging
+import tkinter as tk
+import tkinter.filedialog as filedialog
 
 """
 OTHER LIBRARIES
@@ -52,8 +54,6 @@ def configLoader(config_name):
     """
     print("Loading configuration" + config_name + "...\n")
     with open(config_name) as fn:
-        print("Selecting hardware platform...\n", fn.readline().rstrip())
-        hardware_platform = fn.readline().rstrip()
         print("Loading core components...\n", fn.readline().rstrip())
         core = fn.readline().rstrip()  # Filepath to robot core
         print("Loading muscle attachments...\n", fn.readline().rstrip())
@@ -85,8 +85,7 @@ def configLoader(config_name):
         voice_id = int(fn.readline().strip())
         print("Setting voice speech rate\n", fn.readline().strip())
         voice_rate = int(fn.readline().rstrip())
-        config = {"hardware_platform": hardware_platform,
-                  "core": core,
+        config = {"core": core,
                   "attachments": attachments,
                   "world_path": world_path,
                   "timestep": timestep,
@@ -127,7 +126,6 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.state = "Initializing..."  # Should be updated whenever something is happening to the whole system
         self.mode = None  # Safe mode, restricted mode, etc. - None is normal
         self.network_mode = config_data["network_mode"]  # Can be master or slave
-        self.platform = config_data["hardware_platform"]  # iPhone, desktop, exoskeleton, etc.
         self.input = None
         self.dt = None
 
@@ -295,4 +293,5 @@ def initialize(config_filepath):
 
 
 if __name__ == "__main__":
-    initialize("config/embedded_testconfig1.txt")
+    inputpath = filedialog.askopenfilename()
+    initialize(inputpath)

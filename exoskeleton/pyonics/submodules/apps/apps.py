@@ -136,10 +136,12 @@ class Camera(klampt.vis.glcommon.GLProgram):
         # Check if the frame was read successfully
         if not self.ret:
             print("Error: Could not read frame.")
-        return self.frame
+
 
         # Display the frame
         cv2.imshow('Webcam', self.frame)
+        return self.frame
+
     def cam_shutdown(self):
         # Break the loop if the user presses the 'q' key
         if cv2.waitKey(1) & 0xFF == ord('q'):

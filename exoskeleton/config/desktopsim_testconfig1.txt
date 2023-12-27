@@ -1,5 +1,3 @@
-HARDWARE PLATFORM:
-exoskeleton
 CORE:
 robots/core_bot_test3.rob
 MUSCLE ATTACHMENTS:
@@ -20,9 +18,9 @@ DISPLAY RESOLUTION:
 HAS_ROBWORLD:
 True
 HAS_HUD:
-True
+False
 HAS_VOICE:
-True
+False
 HAS_PERSONA:
 0
 VOICE ID:

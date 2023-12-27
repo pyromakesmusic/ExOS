@@ -181,7 +181,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         self.map = Map()
         self.missions = TextWidget()
         self.missions.update("No Missions")
-        self.camera = Camera(0)
+        #self.camera = Camera(0)
         # Convert the image data to a NumPy array
         self.image_array = None
 
@@ -204,8 +204,8 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.setColor("subtitles", self.r, self.g, self.b)
         self.artificial_horizon = kvis.GeometricPrimitive()
         self.artificial_horizon.setSphere((0,0,0), 3)
-        #kvis.add("horizon", self.artificial_horizon)
-        #kvis.setColor("horizon", .3,0,.5,1)
+        kvis.add("horizon", self.artificial_horizon)
+        kvis.setColor("horizon", .3,0,.5,1)
 
         self.holodeck.appearance(1).setColor(4,.1,.1,.1,.1)
         self.holodeck.appearance(1).setColor(2,.1,.1,.1,.1)
@@ -221,7 +221,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
 
 
 
-        asyncio.run(self.camera.cam_launch(0))
+        #asyncio.run(self.camera.cam_launch(0))
         self.window = QtGui.QGuiApplication(sys.argv)
         while not self.shutdown_flag:
             asyncio.run(self.idle())
@@ -241,14 +241,13 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         """
         Idle function for the desktopGUI that sends commands to the controller, gets forces from it, and sends to the sim.
         """
-        await self.camera.cam_loop()
+        #await self.camera.cam_loop()
         kvis.lock()  # Locks the klampt visualization
         kvis.clearText()
         self.clock.update()
         self.date.update()
-        await self.camera.cam_loop()  # Calls the camera
+        #await self.camera.cam_loop()  # Calls the camera
         self.missions.update("mission text")
-        self.subtitles.update(input("hello..."))
 
 
         kvis.addText("time", self.clock.time, position=(0,-100), size=50)
@@ -257,8 +256,6 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.addText("missions", self.missions.text, position=(-300,0), size=50)
         kvis.addText("subtitles", self.subtitles.text, position=(400, 500), size=40)
 
-        kvis.add_action("settings", "settings") # Trying to make an options menu
-        kvis.add_action(lambda: asyncio.run(self.shutdown), "Shutdown", 'q')
         #print("Size policy is: " + str(self.sizePolicy))
 
         kvis.setColor("time", 1,1,1,1)
@@ -267,9 +264,9 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         kvis.setColor("subtitles", 1,1,1,1)
         kvis.unlock()  # Unlocks the klampt visualization
 
-        frame = self.camera.frame
+        #frame = self.camera.frame
 
-        kvis.add("camera_screen")
+        #kvis.add("camera_screen", frame)
         kvis.update()
         self.display()
         return True

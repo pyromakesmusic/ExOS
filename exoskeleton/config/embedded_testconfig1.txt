@@ -1,5 +1,3 @@
-HARDWARE PLATFORM:
-exoskeleton
 CORE:
 robots/core_bot_test3.rob
 MUSCLE ATTACHMENTS:
