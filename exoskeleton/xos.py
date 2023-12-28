@@ -105,6 +105,8 @@ def configLoader(config_name):
 
         return config
 
+def close_window (root):
+    root.destroy()
 """
 CLASS DEFINITIONS
 """
@@ -297,15 +299,22 @@ def launch_standard(config_filepath):
 
 if __name__ == "__main__":
     master = tk.Tk()
-    master.overrideredirect(True)  # Makes it borderless
-    master.geometry("1920x1080+0+0")  # Sets the size of the window
+    master.geometry("1000x1000+0+0")  # Sets the size of the window
     master.attributes("-alpha", 0.5)  # Make the window transparent
 
-    variable = tk.StringVar(master)
-    variable.set("one")  # default value
+    available_configs = os.listdir("./config/")
 
-    w = tk.OptionMenu(master, variable, "one", "two", "three")
-    w.pack()
+    button_var = tk.StringVar(master)
+    button_var.set(available_configs[0])  # default value
 
-    inputpath = filedialog.askopenfilename()
-    launch_standard(inputpath)
+    config_select = tk.OptionMenu(master, button_var, *available_configs)
+    config_select.pack()
+
+    close_button = tk.Button(master, text="Launch", command=master.destroy)
+    close_button.pack()
+    tk.mainloop()
+
+    config_path = ("./config/" + button_var.get())
+    print("Config path: " + config_path)
+
+    launch_standard(config_path)
