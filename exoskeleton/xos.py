@@ -5,6 +5,7 @@ import random
 
 import pandas as pd  # Critical, most of the data structures are pandas structures
 import asyncio  # For asynchronous OSC handling
+import os # For listing files in directory
 import sys
 import logging
 import tkinter as tk
@@ -296,10 +297,11 @@ def launch_standard(config_filepath):
 
 if __name__ == "__main__":
     master = tk.Tk()
-    root = tk.Frame()
-    root.pack(master)
+    master.overrideredirect(True)  # Makes it borderless
+    master.geometry("1920x1080+0+0")  # Sets the size of the window
+    master.attributes("-alpha", 0.5)  # Make the window transparent
 
-    variable = tk.StringVar(root)
+    variable = tk.StringVar(master)
     variable.set("one")  # default value
 
     w = tk.OptionMenu(master, variable, "one", "two", "three")
