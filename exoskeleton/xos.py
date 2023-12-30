@@ -298,23 +298,6 @@ def launch_standard(config_filepath):
 
 
 if __name__ == "__main__":
-    master = tk.Tk()
-    master.geometry("1000x1000+0+0")  # Sets the size of the window
-    master.attributes("-alpha", 0.5)  # Make the window transparent
 
-    available_configs = os.listdir("./config/")
-
-    button_var = tk.StringVar(master)
-    button_var.set(available_configs[0])  # default value
-
-    config_select = tk.OptionMenu(master, button_var, *available_configs)
-    config_select.pack()
-
-    close_button = tk.Button(master, text="Launch", command=master.destroy)
-    close_button.pack()
-    tk.mainloop()
-
-    config_path = ("./config/" + button_var.get())
-    print("Config path: " + config_path)
-
-    launch_standard(config_path)
+    launch_path = tk.filedialog.askopenfilename()
+    launch_standard(launch_path)

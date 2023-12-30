@@ -9,6 +9,7 @@ import logging
 import asyncio
 import random
 import pyaudio
+import tkinter as tk
 import numpy as np
 from math import pi
 from OpenGL.GL import *
