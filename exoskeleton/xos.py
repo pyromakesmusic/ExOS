@@ -233,8 +233,15 @@ class ExOS(klampt.control.OmniRobotInterface):
 MAIN LOOP
 """
 def launch_standard():
-
-    config_path = tk.filedialog.askopenfilename()
+    # Want this to be platform-independent as some point
+    plat = platform.platform()
+    print(plat)
+    if plat.startswith("Windows"):
+        config_path = tk.filedialog.askopenfilename()
+    else:
+        config_path = None
+        print("System platform error. Please update source code for this platform.")
+        return FileNotFoundError
     config = configLoader(config_path)
     exo_program = ExOS(config)
 
