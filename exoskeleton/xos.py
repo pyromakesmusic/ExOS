@@ -298,6 +298,6 @@ def launch_standard(config_filepath):
 
 
 if __name__ == "__main__":
-
+    # Currently this launcher runs on desktop. May make a platform-independent version eventually that launches from UI.
     launch_path = tk.filedialog.askopenfilename()
     launch_standard(launch_path)
