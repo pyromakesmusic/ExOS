@@ -2,6 +2,7 @@
 STANDARD LIBRARIES
 """
 import random
+import platform  # For detecting the platform and automatically selecting the correct launcher
 
 import pandas as pd  # Critical, most of the data structures are pandas structures
 import asyncio  # For asynchronous OSC handling
