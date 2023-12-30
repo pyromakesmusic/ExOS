@@ -106,8 +106,6 @@ def configLoader(config_name):
 
         return config
 
-def close_window (root):
-    root.destroy()
 """
 CLASS DEFINITIONS
 """
@@ -230,75 +228,16 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.hud.async_shutdown()
         self.state = "Off"
 
-"""
-Boot Modes
-"""
-class SafeMode(ExOS):
-    def __init__(self, config_data):
-        ExOS.__init__(self, config_data)
-
-    async def main(self):
-        # Main safe boot loop
-        return None
-"""
-Simulation
-"""
-class ExoSim(klampt.sim.simulation.SimpleSimulator):
-    """
-    This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
-    """
-    def __init__(self, wm, robot, timestep):
-        klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
-        self.dt = timestep
-        self.world = wm
-        self.robotmodel = robot
-        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
-        self.link_transforms_end = None
-        self.link_transforms_diff = None
-
-
-    def simLoop(self, force_list):
-        """
-        robot: A RobotModel.
-        force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
-
-        Should possibly return a list of new transforms to be used for calculating stuff in the next time step.
-
-        """
-        wm = self.world
-
-        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
-        """
-        Now here adding a section to make sure the muscles contract in the simulation.
-        """
-        for force in force_list:
-            link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
-            force_vector = force[1]  # Gets the force vector
-            transform = force[2]  # Gets the transform at which to apply force
-            link.applyForceAtLocalPoint(force_vector, transform)
-
-        self.simulate(self.dt)
-        self.updateWorld()
-        """
-        Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
-        """
-        self.link_transforms_end = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
-
-        self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
-                                for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
-        return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
 
 """
 MAIN LOOP
 """
-def launch_standard(config_filepath):
+def launch_standard():
 
-    config = configLoader(config_filepath)
+    config_path = tk.filedialog.askopenfilename()
+    config = configLoader(config_path)
     exo_program = ExOS(config)
 
-
-
 if __name__ == "__main__":
-    # Currently this launcher runs on desktop. May make a platform-independent version eventually that launches from UI.
-    launch_path = tk.filedialog.askopenfilename()
-    launch_standard(launch_path)
+
+    launch_standard()
