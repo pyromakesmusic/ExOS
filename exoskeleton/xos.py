@@ -53,6 +53,8 @@ def configLoader(config_name):
 
     Returns a dataframe with entries in columns referencing the filepath of the robot core, and of the location of
     the muscle attachments CSV.
+
+    Want to add a "has simulation" parameter.
     """
     print("Loading configuration" + config_name + "...\n")
     with open(config_name) as fn:
@@ -74,15 +76,16 @@ def configLoader(config_name):
         width = int(fn.readline().rstrip())
         height = int(fn.readline().rstrip())
         print("Getting world preferences...\n", fn.readline().rstrip())
-        has_robworld = bool(fn.readline().rstrip())
+        has_robworld = bool(str(fn.readline().rstrip()))
+        print("Getting simulation preferences...\n", fn.readline().rstrip())
+        has_sim = bool(str(fn.readline().rstrip()))
         print("Getting HUD preferences...\n", fn.readline().rstrip())
-        has_hud = bool(fn.readline().rstrip())
+        has_hud = bool(str(fn.readline().rstrip()))
         print("Getting voice preferences...\n", fn.readline().rstrip())
-        has_voice = bool(fn.readline().rstrip())
+        has_voice = bool(str(fn.readline().rstrip()))
         print("Setting personality...\n", fn.readline().rstrip())
-        has_persona_condition = fn.readline().rstrip()
-        has_persona = has_persona_condition == "True"
-        print("has persona is...: ", str(has_persona))
+        has_persona = bool(str(fn.readline().rstrip()))
+        print("has persona is..." + str(has_persona))
         print("Selecting voice ID...\n", fn.readline().rstrip())
         voice_id = int(fn.readline().strip())
         print("Setting voice speech rate\n", fn.readline().strip())
@@ -97,6 +100,7 @@ def configLoader(config_name):
                   "width": width,
                   "height": height,
                   "has_robworld": has_robworld,
+                  "has_sim": has_sim,
                   "has_hud": has_hud,
                   "has_voice": has_voice,
                   "has_persona": has_persona,
@@ -132,6 +136,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.dt = None
 
         if config_data["has_persona"]:
+            print("Value of has persona: " + str(config_data["has_persona"]))
             self.persona = ui.Personality()  # Creates a personality
         else:
             self.persona = None
@@ -242,6 +247,7 @@ def launch_standard():
         config_path = None
         print("System platform error. Please update source code for this platform.")
         return FileNotFoundError
+
     config = configLoader(config_path)
     exo_program = ExOS(config)
 
