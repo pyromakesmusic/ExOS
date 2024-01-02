@@ -162,7 +162,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         if config_data["has_sim"]:
             klampt.vis.add("w", self.world)
             klampt.vis.add("robby", self.robot)
-            klampt.vis.visualization.resizeWindow(1000,1000)
+            klampt.vis.visualization.resizeWindow(1920,1080)
             klampt.vis.show()
         else:
             pass

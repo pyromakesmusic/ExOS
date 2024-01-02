@@ -22,7 +22,7 @@ True
 HAS_HUD:
 False
 HAS_VOICE:
-False
+True
 HAS_PERSONA:
 False
 VOICE ID:
