@@ -149,19 +149,20 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.voice = None
 
+        # Simulation requires robworld. Robworld is necessary but insufficient to create simulation.
         if config_data["has_robworld"]:
             print("Initializing RobWorld...")
             # Variable for a robot representation
             self.robot = ctrl.ExoController(config_data).robot
             self.world = self.robot.world
-            klampt.vis.add("w", self.world)
-            klampt.vis.add("robby", self.robot)
-            klampt.vis.show()
         else:
             self.robot = None
             self.world = None
 
         if config_data["has_sim"]:
+            klampt.vis.add("w", self.world)
+            klampt.vis.add("robby", self.robot)
+            klampt.vis.visualization.resizeWindow(1000,1000)
             klampt.vis.show()
         else:
             pass
@@ -176,7 +177,8 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
         self.state = "On"
 
-        asyncio.run(self.main())
+        while klampt.vis.shown():
+            asyncio.run(self.main())
 
     async def feedback(self, textvar):
         if self.voice:

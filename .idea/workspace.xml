@@ -157,13 +157,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00410" summary="adding a GPS app">
-      <created>1700624008796</created>
-      <option name="number" value="00410" />
-      <option name="presentableId" value="LOCAL-00410" />
-      <option name="project" value="LOCAL" />
-      <updated>1700624008796</updated>
-    </task>
     <task id="LOCAL-00411" summary="incorporating GPS">
       <created>1700626783271</created>
       <option name="number" value="00411" />
@@ -500,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704172209476</updated>
     </task>
-    <option name="localTasksCounter" value="459" />
+    <task id="LOCAL-00459" summary="updating vis parameters">
+      <created>1704172507696</created>
+      <option name="number" value="00459" />
+      <option name="presentableId" value="LOCAL-00459" />
+      <option name="project" value="LOCAL" />
+      <updated>1704172507696</updated>
+    </task>
+    <option name="localTasksCounter" value="460" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bringing UI elements onto the HUD" />
     <MESSAGE value="text shows up bigger" />
     <MESSAGE value="got clock working" />
     <MESSAGE value="updated interface a little bit" />
@@ -541,6 +540,7 @@
     <MESSAGE value="launch now has infrastructure for platform independence" />
     <MESSAGE value="need to fix typecasting of configuration variables" />
     <MESSAGE value="fixed bool evaluation, need to change vis methods and put them in the video" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bool evaluation, need to change vis methods and put them in the video" />
+    <MESSAGE value="updating vis parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating vis parameters" />
   </component>
 </project>
