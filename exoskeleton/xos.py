@@ -100,7 +100,7 @@ def configLoader(config_name):
                   "width": width,
                   "height": height,
                   "has_robworld": has_robworld,
-                  "has_sim": has_sim,
+                  "has_vis": has_sim,
                   "has_hud": has_hud,
                   "has_voice": has_voice,
                   "has_persona": has_persona,
@@ -159,7 +159,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.robot = None
             self.world = None
 
-        if config_data["has_sim"]:
+        if config_data["has_vis"]:
             klampt.vis.add("w", self.world)
             klampt.vis.add("robby", self.robot)
             klampt.vis.visualization.resizeWindow(1920,1080)

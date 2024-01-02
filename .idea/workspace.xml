@@ -7,7 +7,6 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00412" summary="updating map stuff">
-      <created>1700630823939</created>
-      <option name="number" value="00412" />
-      <option name="presentableId" value="LOCAL-00412" />
-      <option name="project" value="LOCAL" />
-      <updated>1700630823939</updated>
     </task>
     <task id="LOCAL-00413" summary="updating map stuff">
       <created>1700632474534</created>
@@ -502,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704173742532</updated>
     </task>
-    <option name="localTasksCounter" value="461" />
+    <task id="LOCAL-00461" summary="using voice recognition now">
+      <created>1704175778908</created>
+      <option name="number" value="00461" />
+      <option name="presentableId" value="LOCAL-00461" />
+      <option name="project" value="LOCAL" />
+      <updated>1704175778908</updated>
+    </task>
+    <option name="localTasksCounter" value="462" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got clock working" />
     <MESSAGE value="updated interface a little bit" />
     <MESSAGE value="integrating voice error exceptions" />
     <MESSAGE value="highly advanced technology" />
@@ -543,6 +541,7 @@
     <MESSAGE value="fixed bool evaluation, need to change vis methods and put them in the video" />
     <MESSAGE value="updating vis parameters" />
     <MESSAGE value="increased window size" />
-    <option name="LAST_COMMIT_MESSAGE" value="increased window size" />
+    <MESSAGE value="using voice recognition now" />
+    <option name="LAST_COMMIT_MESSAGE" value="using voice recognition now" />
   </component>
 </project>
