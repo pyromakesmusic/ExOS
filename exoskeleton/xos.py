@@ -129,7 +129,9 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
 
         self.shutdown_flag = False
-        self.state = "Initializing..."  # Should be updated whenever something is happening to the whole system
+        self.state = "Initializing..."
+        # Should be updated whenever something is happening to the whole system, made to be human-readable.
+
         self.mode = None  # Safe mode, restricted mode, etc. - None is normal
         self.network_mode = config_data["network_mode"]  # Can be master or slave
         self.input = "test string"
@@ -141,7 +143,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.persona = None
 
-        if config_data["has_voice"] == True:
+        if config_data["has_voice"]:
             print(config_data["has_voice"])
             self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         else:
@@ -159,25 +161,22 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.robot = None
             self.world = None
 
-        # if config_data["has_hud"]:
-        #     print(config_data["has_hud"])
-        #     print("Initializing HUD...")
-        #     self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
-        # else:
-        #     self.hud = None
+        if config_data["has_sim"]:
+            klampt.vis.show()
+        else:
+            pass
+
+        if config_data["has_hud"]:
+            print(config_data["has_hud"])
+            print("Initializing HUD...")
+            self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
+        else:
+            self.hud = None
 
         klampt.control.OmniRobotInterface.__init__(self, self.robot)
-
         self.state = "On"
 
-        """
-        Desktop Vis/Simulation Stuff
-        """
-        klampt.vis.show()
-
-
-        while klampt.vis.shown():
-            asyncio.run(self.main())
+        asyncio.run(self.main())
 
     async def feedback(self, textvar):
         if self.voice:
