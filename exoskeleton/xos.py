@@ -34,6 +34,7 @@ import klampt.math.vectorops as kmv  # This is for cross products
 CUSTOM LIBRARIES
 """
 import pyonics.submodules.ui.interface as ui  # Interface modules
+import pyonics.submodules.video.video as vid
 import pyonics.submodules.control.control as ctrl
 
 """
