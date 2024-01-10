@@ -165,7 +165,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.add("robby", self.robot)
             klampt.vis.visualization.resizeWindow(1920,1080)
             viewport = klampt.vis.getViewport()
-            viewport.fit([0,0,-2], 25)
+            viewport.fit([0,0,-5], 25)
 
             klampt.vis.show()
         else:
