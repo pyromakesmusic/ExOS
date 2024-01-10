@@ -36,6 +36,7 @@ CUSTOM LIBRARIES
 import pyonics.submodules.ui.interface as ui  # Interface modules
 import pyonics.submodules.video.video as vid
 import pyonics.submodules.control.control as ctrl
+import pyonics.submodules.apps.apps as xapp
 
 """
 PANDAS CONFIG
@@ -78,6 +79,8 @@ def configLoader(config_name):
         height = int(fn.readline().rstrip())
         print("Getting world preferences...\n", fn.readline().rstrip())
         has_robworld = eval(str(fn.readline().rstrip()))
+        print("Getting visualization preferences...\n", fn.readline().rstrip())
+        has_vis = eval(str(fn.readline().rstrip()))
         print("Getting simulation preferences...\n", fn.readline().rstrip())
         has_sim = eval(str(fn.readline().rstrip()))
         print("Getting HUD preferences...\n", fn.readline().rstrip())
@@ -101,7 +104,8 @@ def configLoader(config_name):
                   "width": width,
                   "height": height,
                   "has_robworld": has_robworld,
-                  "has_vis": has_sim,
+                  "has_vis": has_vis,
+                  "has_sim": has_sim,
                   "has_hud": has_hud,
                   "has_voice": has_voice,
                   "has_persona": has_persona,
@@ -136,7 +140,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.mode = None  # Safe mode, restricted mode, etc. - None is normal
         self.network_mode = config_data["network_mode"]  # Can be master or slave
         self.input = "test string"
-        self.dt = None
+        self.dt = config_data["timestep"]
 
         # if config_data["has_persona"]:
         #     print("Value of has persona: " + str(config_data["has_persona"]))
@@ -170,6 +174,9 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.show()
         else:
             pass
+
+        if config_data["has_sim"]:
+            self.sim = xapp.ExoSim(self.world, self.robot, self.dt)
 
         if config_data["has_hud"]:
             print(config_data["has_hud"])

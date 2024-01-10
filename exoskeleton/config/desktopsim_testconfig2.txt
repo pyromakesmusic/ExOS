@@ -19,6 +19,8 @@ HAS_ROBWORLD:
 True
 HAS_VIS:
 True
+HAS_SIM:
+True
 HAS_HUD:
 False
 HAS_VOICE:

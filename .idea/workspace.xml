@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00416" summary="computer voices">
-      <created>1700635395080</created>
-      <option name="number" value="00416" />
-      <option name="presentableId" value="LOCAL-00416" />
-      <option name="project" value="LOCAL" />
-      <updated>1700635395080</updated>
     </task>
     <task id="LOCAL-00417" summary="updated .gitignore">
       <created>1700638326514</created>
@@ -500,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704858011893</updated>
     </task>
-    <option name="localTasksCounter" value="465" />
+    <task id="LOCAL-00465" summary="almost ready to add the legs">
+      <created>1704858073270</created>
+      <option name="number" value="00465" />
+      <option name="presentableId" value="LOCAL-00465" />
+      <option name="project" value="LOCAL" />
+      <updated>1704858073270</updated>
+    </task>
+    <option name="localTasksCounter" value="466" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="camera access" />
     <MESSAGE value="added new test world, think I need to add more to the config" />
     <MESSAGE value="added more config files" />
     <MESSAGE value="reorganizing config files" />
@@ -541,6 +542,7 @@
     <MESSAGE value="changed has sim to has vis" />
     <MESSAGE value="made new config for testing" />
     <MESSAGE value="zooming out to show more of robot, time to add simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="zooming out to show more of robot, time to add simulation" />
+    <MESSAGE value="almost ready to add the legs" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost ready to add the legs" />
   </component>
 </project>
