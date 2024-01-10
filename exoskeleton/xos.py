@@ -138,11 +138,11 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.input = "test string"
         self.dt = None
 
-        if config_data["has_persona"]:
-            print("Value of has persona: " + str(config_data["has_persona"]))
-            self.persona = ui.Personality()  # Creates a personality
-        else:
-            self.persona = None
+        # if config_data["has_persona"]:
+        #     print("Value of has persona: " + str(config_data["has_persona"]))
+        #     self.persona = ui.Personality()  # Creates a personality
+        # else:
+        #     self.persona = None
 
         if config_data["has_voice"]:
             print(config_data["has_voice"])
@@ -164,6 +164,9 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.add("w", self.world)
             klampt.vis.add("robby", self.robot)
             klampt.vis.visualization.resizeWindow(1920,1080)
+            viewport = klampt.vis.getViewport()
+            viewport.fit([0,0,-2], 25)
+
             klampt.vis.show()
         else:
             pass

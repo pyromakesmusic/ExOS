@@ -24,7 +24,7 @@ False
 HAS_VOICE:
 False
 HAS_PERSONA:
-False
+True
 VOICE ID:
 1
 VOICE SPEECH RATE:
