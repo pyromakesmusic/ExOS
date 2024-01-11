@@ -168,15 +168,17 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.add("w", self.world)
             klampt.vis.add("robby", self.robot)
             klampt.vis.visualization.resizeWindow(1920,1080)
-            viewport = klampt.vis.getViewport()
-            viewport.fit([0,0,-5], 25)
+            self.viewport = klampt.vis.getViewport()
+            self.viewport.fit([0,0,-5], 25)
 
             klampt.vis.show()
         else:
-            pass
+            self.viewport = None
 
         if config_data["has_sim"]:
-            self.sim = xapp.ExoSim(self.world, self.robot, self.dt)
+            self.sim = xapp.Sim(self.world, self.robot, self.dt)
+        else:
+            self.sim = None
 
         if config_data["has_hud"]:
             print(config_data["has_hud"])
@@ -209,6 +211,16 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.input = self.voice.voice_loop()
         else:
             self.input = "blahdy blah blah blah"
+
+        if self.viewport:
+            pass
+        else:
+            pass
+
+        if self.sim:
+            pass
+        else:
+            pass
 
         # self.hud.subtitles.update(self.input)
         # asyncio.run(self.hud.idle())

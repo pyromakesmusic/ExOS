@@ -152,7 +152,7 @@ class Camera(klampt.vis.glcommon.GLProgram):
 """
 Simulation
 """
-class ExoSim(klampt.sim.simulation.SimpleSimulator):
+class Sim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
