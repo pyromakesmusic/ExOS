@@ -157,15 +157,23 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Simulation requires robworld. Robworld is necessary but insufficient to create simulation.
         if config_data["has_robworld"]:
             print("Initializing RobWorld...")
-            # Variable for a robot representation
+            # Variable for a robot representation # Not sure if this is happening correctly
             self.robot = ctrl.ExoController(config_data).robot
             self.world = self.robot.world
+            print(" . . . i n i t i a l i z i n g w o r l d . . . ")
         else:
             self.robot = None
             self.world = None
 
+        if config_data["has_sim"]:
+            self.sim = xapp.Sim(self.world, self.robot, self.dt)
+        else:
+            self.sim = None
+
+
         if config_data["has_vis"]:
             klampt.vis.add("w", self.world)
+            print("worldmodel type: ", type(self.world))
             klampt.vis.add("robby", self.robot)
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
@@ -175,10 +183,6 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.viewport = None
 
-        if config_data["has_sim"]:
-            self.sim = xapp.Sim(self.world, self.robot, self.dt)
-        else:
-            self.sim = None
 
         if config_data["has_hud"]:
             print(config_data["has_hud"])
@@ -218,7 +222,8 @@ class ExOS(klampt.control.OmniRobotInterface):
             pass
 
         if self.sim:
-            pass
+            self
+            self.sim.simLoop() # Needs a list of forces, derived from OSC input
         else:
             pass
 

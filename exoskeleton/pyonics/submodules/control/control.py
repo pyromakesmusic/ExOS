@@ -189,10 +189,12 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.input = None
 
         if config_data["has_robworld"]:
+            print(". . . c r e a t i n g w o r l d . . .")
             self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
             self.world.loadRobot(config_data["core"])  # Loads the robot geometry
             self.robot = self.world.robot(0)
-            klampt.control.OmniRobotInterface.__init__(self, self.robot)
+            print("this is the robot")
+            self.interface = klampt.control.OmniRobotInterface.__init__(self, self.robot)
 
 
         self.dt = config_data["timestep"]  # Sets the core robot clock
@@ -204,6 +206,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
         self.pressures = [0 for muscle in range(len(self.muscles))]
+        print(". . . r e t u r n i n g r o b o t. . . ")
 
     def muscleLoader(self, config_df):
         """
