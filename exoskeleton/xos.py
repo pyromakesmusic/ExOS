@@ -176,6 +176,9 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.add("w", self.world)
             print("worldmodel type: ", type(self.world))
             klampt.vis.add("robby", self.robot)
+
+            if config_data["has_sim"]:
+                vid.vis_muscles(self.pcm.muscles)  # Need to vectorize this operation
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0,0,-5], 25)

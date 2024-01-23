@@ -1,5 +1,6 @@
 # Here should go video processing custom made for the exoskeleton. Most vis methods should end up in here.
 import klampt
+import pandas as pd
 import klampt.vis as kvis
 
 def configure_window():
@@ -14,10 +15,12 @@ def color_calc(current_pressure, max_pressure):
     else:
         return 1
 
-def vis_muscles(dataframe_row):
+def vis_muscles(dataframe_row=pd.DataFrame):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    name = dataframe_row[1]  # Should be the name index
-    muscle = dataframe_row[-1]  # Index of the muscle object
+    name = dataframe_row.name  # Should be the name index
+    print(name)
+    muscle = dataframe_row.muscle_objects  # Index of the muscle object
+    print(muscle)
     greenness = color_calc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
     kvis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
     kvis.setColor(name, 0, greenness, 0, 1)  # Sets the color of the muscle (currently green
