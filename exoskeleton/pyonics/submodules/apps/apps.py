@@ -157,14 +157,9 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
     def __init__(self, wm, robot, timestep):
+        klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
 
-
-        self.world = wm
-        self.simple = klampt.sim.simulation.SimpleSimulator.__init__(self, self.world)
         self.dt = timestep
-
-
-
         self.robotmodel = robot
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         self.link_transforms_end = None

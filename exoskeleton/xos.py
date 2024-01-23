@@ -158,17 +158,18 @@ class ExOS(klampt.control.OmniRobotInterface):
         if config_data["has_robworld"]:
             print("Initializing RobWorld...")
             # Variable for a robot representation # Not sure if this is happening correctly
-            self.robot = ctrl.ExoController(config_data).robot
-            self.world = self.robot.world
+            self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module
+            self.robot = self.pcm.robot
+            self.world = self.pcm.world
             print(" . . . i n i t i a l i z i n g w o r l d . . . ")
         else:
-            self.robot = None
-            self.world = None
+            self.robot = self.pcm.robot
+            self.world = self.robot.world
 
         if config_data["has_sim"]:
             self.sim = xapp.Sim(self.world, self.robot, self.dt)
         else:
-            self.sim = None
+            self.sim = xapp.Sim(self.world, self.robot, self.dt)
 
 
         if config_data["has_vis"]:
@@ -222,8 +223,8 @@ class ExOS(klampt.control.OmniRobotInterface):
             pass
 
         if self.sim:
-            self
-            self.sim.simLoop() # Needs a list of forces, derived from OSC input
+            print(self.pcm.bones)
+            self.pcm.bones = self.sim.simLoop([[0,(1,0,0),(0,0,0)] for x in self.pcm.bones])  # Needs a list of forces, derived from OSC input
         else:
             pass
 
