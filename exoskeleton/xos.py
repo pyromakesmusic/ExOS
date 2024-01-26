@@ -149,19 +149,20 @@ class ExOS(klampt.control.OmniRobotInterface):
         #     self.persona = None
 
         if config_data["has_voice"]:
-            print(config_data["has_voice"])
+            # print(config_data["has_voice"])
             self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         else:
             self.voice = None
 
         # Simulation requires robworld. Robworld is necessary but insufficient to create simulation.
         if config_data["has_robworld"]:
-            print("Initializing RobWorld...")
+            # print("Initializing RobWorld...")
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module
+            self.muscles = self.pcm.muscles
             self.robot = self.pcm.robot
             self.world = self.pcm.world
-            print(" . . . i n i t i a l i z i n g w o r l d . . . ")
+            # print(" . . . i n i t i a l i z i n g w o r l d . . . ")
         else:
             self.robot = self.pcm.robot
             self.world = self.robot.world
@@ -174,11 +175,12 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if config_data["has_vis"]:
             klampt.vis.add("w", self.world)
-            print("worldmodel type: ", type(self.world))
             klampt.vis.add("robby", self.robot)
 
             if config_data["has_sim"]:
-                vid.vis_muscles(self.pcm.muscles)  # Need to vectorize this operation
+                # print(str(type(self.muscles.muscle_objects)) + " is the type of 'muscles' ")
+                # print(self.muscles.columns)
+                vid.vis_muscles_beta(self.muscles)  # Need to vectorize this operation
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0,0,-5], 25)
@@ -226,7 +228,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             pass
 
         if self.sim:
-            print(self.pcm.bones)
+            # print(self.pcm.bones) # Just displays the bone transforms
             self.pcm.bones = self.sim.simLoop([[0,(1,0,0),(0,0,0)] for x in self.pcm.bones])  # Needs a list of forces, derived from OSC input
         else:
             pass

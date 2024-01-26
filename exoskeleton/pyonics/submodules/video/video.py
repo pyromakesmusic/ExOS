@@ -15,13 +15,18 @@ def color_calc(current_pressure, max_pressure):
     else:
         return 1
 
-def vis_muscles(dataframe_row=pd.DataFrame):
+def display_muscle_row(row=pd.Series):
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    name = dataframe_row.name  # Should be the name index
-    print(name)
-    muscle = dataframe_row.muscle_objects  # Index of the muscle object
-    print(muscle)
-    greenness = color_calc(muscle.pressure, muscle.max_pressure)  # Should always be less than 1s
-    kvis.add(name, muscle.geometry)  # Adds the shape of the muscle - must happen
-    kvis.setColor(name, 0, greenness, 0, 1)  # Sets the color of the muscle (currently green
-    kvis.hideLabel(name)  # Hides the name of the muscle
+    print(row.index)
+    print(row.info)
+    name = row["name"]
+    muscle = row["muscle_objects"]
+    greenness = color_calc(row["pressure"], row["max_pressure"])
+    kvis.add(name, muscle.geometry)
+    kvis.setColor(name, 0, greenness, 0, 1)
+    kvis.hideLabel(name)
+
+def vis_muscles_beta(df=pd.DataFrame):
+    # Takes a dataframe row as a namedtuple and adds muscle to visualization
+
+    df.apply(display_muscle_row, axis=1)

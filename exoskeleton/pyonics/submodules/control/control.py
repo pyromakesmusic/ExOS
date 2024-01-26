@@ -184,16 +184,16 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
-        print(config_data)
+        # print(config_data)
         self.shutdown_flag = False
         self.input = None
 
         if config_data["has_robworld"]:
-            print(". . . c r e a t i n g w o r l d . . .")
+            # print(". . . c r e a t i n g w o r l d . . .")
             self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
             self.world.loadRobot(config_data["core"])  # Loads the robot geometry
             self.robot = self.world.robot(0)
-            print("this is the robot")
+            # print("this is the robot")
             self.interface = klampt.control.OmniRobotInterface.__init__(self, self.robot)
 
 
@@ -206,7 +206,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
         self.pressures = [0 for muscle in range(len(self.muscles))]
-        print(". . . r e t u r n i n g r o b o t. . . ")
+        # print(". . . r e t u r n i n g r o b o t. . . ")
 
     def muscleLoader(self, config_df):
         """
@@ -226,12 +226,14 @@ class ExoController(klampt.control.OmniRobotInterface):
                 muscle_objects.append(muscle) # Adds the muscle to the list
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
-            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series], axis=1)
+            pressure_series = pd.Series(data=0, name="pressure")
+            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
 
             """
             This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
             in each row.
-            """
+            # """
+            # print(str(muscleinfo_df) + " muscleinfo df") # Doing test prints
             return muscleinfo_df
 
     # Control and Kinematics
