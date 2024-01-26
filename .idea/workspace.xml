@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00430" summary="creating a blank empty world for the HUD to exist">
-      <created>1700728360614</created>
-      <option name="number" value="00430" />
-      <option name="presentableId" value="LOCAL-00430" />
-      <option name="project" value="LOCAL" />
-      <updated>1700728360614</updated>
     </task>
     <task id="LOCAL-00431" summary="streamlining lots and lots">
       <created>1700730383033</created>
@@ -499,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706245242794</updated>
     </task>
-    <option name="localTasksCounter" value="479" />
+    <task id="LOCAL-00479" summary="updating comments">
+      <created>1706245422224</created>
+      <option name="number" value="00479" />
+      <option name="presentableId" value="LOCAL-00479" />
+      <option name="project" value="LOCAL" />
+      <updated>1706245422224</updated>
+    </task>
+    <option name="localTasksCounter" value="480" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="config selector works on dialog now" />
     <MESSAGE value="launch is standard in desktop" />
     <MESSAGE value="commenting on launch" />
     <MESSAGE value="updated launch function" />
@@ -540,6 +542,7 @@
     <MESSAGE value="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in" />
     <MESSAGE value="added error messages, cleaning up OS" />
     <MESSAGE value="dont have func, not sufficiently funcy" />
-    <option name="LAST_COMMIT_MESSAGE" value="dont have func, not sufficiently funcy" />
+    <MESSAGE value="updating comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating comments" />
   </component>
 </project>

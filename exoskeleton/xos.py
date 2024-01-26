@@ -161,29 +161,22 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.pcm.osc_handler.make_endpoint()
             self.pcm.osc_handler.map("/pressures", self.pcm.setPressures)
             self.input = self.pcm.idle(self.pcm.bones)
-
-            self.muscles = self.pcm.muscles
-            self.robot = self.pcm.robot
-            self.world = self.pcm.world
             # print(" . . . i n i t i a l i z i n g w o r l d . . . ")
-        else:
-            self.robot = self.pcm.robot
-            self.world = self.robot.world
 
         if config_data["has_sim"]:
-            self.sim = xapp.Sim(self.world, self.robot, self.dt)
+            self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.dt)
         else:
-            self.sim = xapp.Sim(self.world, self.robot, self.dt)
+            self.sim = None
 
 
         if config_data["has_vis"]:
-            klampt.vis.add("w", self.world)
-            klampt.vis.add("robby", self.robot)
+            klampt.vis.add("w", self.pcm.world)
+            klampt.vis.add("robby", self.pcm.robot)
 
             if config_data["has_sim"]:
                 # print(str(type(self.muscles.muscle_objects)) + " is the type of 'muscles' ")
                 # print(self.muscles.columns)
-                vid.vis_muscles_beta(self.muscles)  # Need to vectorize this operation
+                vid.display_muscles(self.pcm.muscles)  # Need to vectorize this operation
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0,0,-5], 25)
@@ -200,7 +193,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.hud = None
 
-        klampt.control.OmniRobotInterface.__init__(self, self.robot)
+        klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
 
         while klampt.vis.shown():
@@ -227,7 +220,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.viewport:
             klampt.vis.update()
-            vid.vis_muscles_beta()
+            vid.display_muscles(self.pcm.muscles)
         else:
             pass
 

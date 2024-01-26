@@ -16,17 +16,24 @@ def color_calc(current_pressure, max_pressure):
         return 1
 
 def display_muscle_row(row=pd.Series):
+    """
+    row: Pandas DataFrame row (as a Pandas Series) containing muscle information.
+    """
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    print(row.index)
-    print(row.info)
+    # print(row.index)
+    # print(row.info)
     name = row["name"]
     muscle = row["muscle_objects"]
     greenness = color_calc(row["pressure"], row["max_pressure"])
+    print(str(greenness) + " is the greenness")
     kvis.add(name, muscle.geometry)
     kvis.setColor(name, 0, greenness, 0, 1)
     kvis.hideLabel(name)
 
-def vis_muscles_beta(df=pd.DataFrame):
+def display_muscles(df=pd.DataFrame):
+    """
+    df: Pandas Dataframe containing muscle information.
+    """
     # Should take the muscles dataframe and display them
 
     df.apply(display_muscle_row, axis=1)
