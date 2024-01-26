@@ -159,6 +159,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     def __init__(self, wm, robot, timestep):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
 
+        self.world = wm
         self.dt = timestep
         self.robotmodel = robot
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]

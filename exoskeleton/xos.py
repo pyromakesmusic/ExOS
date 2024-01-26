@@ -139,7 +139,6 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         self.mode = None  # Safe mode, restricted mode, etc. - None is normal
         self.network_mode = config_data["network_mode"]  # Can be master or slave
-        self.input = "test string"
         self.dt = config_data["timestep"]
 
         # if config_data["has_persona"]:
@@ -159,6 +158,9 @@ class ExOS(klampt.control.OmniRobotInterface):
             # print("Initializing RobWorld...")
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module
+            self.pcm.osc_handler.make_endpoint()
+            self.input = self.pcm.idle(self.pcm.bones)
+
             self.muscles = self.pcm.muscles
             self.robot = self.pcm.robot
             self.world = self.pcm.world
@@ -218,9 +220,9 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Main operating system loop.
         # Voice intake
         if self.voice:
-            self.input = self.voice.voice_loop()
+            self.input = self.pcm.idle(self.pcm.bones)
         else:
-            self.input = "blahdy blah blah blah"
+            self.input = self.pcm.idle(self.pcm.bones)
 
         if self.viewport:
             pass
@@ -229,13 +231,13 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.sim:
             # print(self.pcm.bones) # Just displays the bone transforms
-            self.pcm.bones = self.sim.simLoop([[0,(1,0,0),(0,0,0)] for x in self.pcm.bones])  # Needs a list of forces, derived from OSC input
+            self.pcm.bones = self.sim.simLoop(self.input)  # Needs a list of forces, derived from OSC input
         else:
             pass
-
+        #
         # self.hud.subtitles.update(self.input)
         # asyncio.run(self.hud.idle())
-        #await self.feedback(self.input)
+        await self.feedback(self.input)
 
         #return "Running..."
 
