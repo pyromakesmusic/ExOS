@@ -241,7 +241,10 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         #return "Running..."
 
-    async def async_error(self):
+    async def async_error(self, error_message: None):
+        print("ERROR")
+        print(error_message)
+
         if self.voice:
             self.voice.announce("Error:")
             self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
@@ -254,7 +257,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         Returns the list of link transforms, and???
         """
-        return [0,0,0]
+        return self.pcm.bones
 
     def controlRate(self):
         """
