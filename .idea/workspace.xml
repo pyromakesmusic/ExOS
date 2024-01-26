@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00423" summary="using grid to layout HUD elements now">
-      <created>1700702383279</created>
-      <option name="number" value="00423" />
-      <option name="presentableId" value="LOCAL-00423" />
-      <option name="project" value="LOCAL" />
-      <updated>1700702383279</updated>
     </task>
     <task id="LOCAL-00424" summary="made voice ID and speaking rate configurable">
       <created>1700703699701</created>
@@ -502,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706240977633</updated>
     </task>
-    <option name="localTasksCounter" value="472" />
+    <task id="LOCAL-00472" summary="display is working consistently">
+      <created>1706242612477</created>
+      <option name="number" value="00472" />
+      <option name="presentableId" value="LOCAL-00472" />
+      <option name="project" value="LOCAL" />
+      <updated>1706242612477</updated>
+    </task>
+    <option name="localTasksCounter" value="473" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating interface" />
     <MESSAGE value="updating to remove unused stuff and bring old configurations up to spec" />
     <MESSAGE value="got a working robot display on desktop hardware sim 1" />
     <MESSAGE value="standardizing launcher" />
@@ -543,6 +540,7 @@
     <MESSAGE value="got the simulator starting just a little" />
     <MESSAGE value="vectorizing;" />
     <MESSAGE value="got muscle display working" />
-    <option name="LAST_COMMIT_MESSAGE" value="got muscle display working" />
+    <MESSAGE value="display is working consistently" />
+    <option name="LAST_COMMIT_MESSAGE" value="display is working consistently" />
   </component>
 </project>
