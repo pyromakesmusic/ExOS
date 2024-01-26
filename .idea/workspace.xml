@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00424" summary="made voice ID and speaking rate configurable">
-      <created>1700703699701</created>
-      <option name="number" value="00424" />
-      <option name="presentableId" value="LOCAL-00424" />
-      <option name="project" value="LOCAL" />
-      <updated>1700703699701</updated>
     </task>
     <task id="LOCAL-00425" summary="separating apps out">
       <created>1700715299366</created>
@@ -500,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706242612477</updated>
     </task>
-    <option name="localTasksCounter" value="473" />
+    <task id="LOCAL-00473" summary="added a setup file for the pyonics library">
+      <created>1706243312828</created>
+      <option name="number" value="00473" />
+      <option name="presentableId" value="LOCAL-00473" />
+      <option name="project" value="LOCAL" />
+      <updated>1706243312828</updated>
+    </task>
+    <option name="localTasksCounter" value="474" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating to remove unused stuff and bring old configurations up to spec" />
     <MESSAGE value="got a working robot display on desktop hardware sim 1" />
     <MESSAGE value="standardizing launcher" />
     <MESSAGE value="updating launch box" />
@@ -541,6 +539,7 @@
     <MESSAGE value="vectorizing;" />
     <MESSAGE value="got muscle display working" />
     <MESSAGE value="display is working consistently" />
-    <option name="LAST_COMMIT_MESSAGE" value="display is working consistently" />
+    <MESSAGE value="added a setup file for the pyonics library" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a setup file for the pyonics library" />
   </component>
 </project>
