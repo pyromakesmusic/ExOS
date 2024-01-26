@@ -27,6 +27,6 @@ def display_muscle_row(row=pd.Series):
     kvis.hideLabel(name)
 
 def vis_muscles_beta(df=pd.DataFrame):
-    # Takes a dataframe row as a namedtuple and adds muscle to visualization
+    # Should take the muscles dataframe and display them
 
     df.apply(display_muscle_row, axis=1)

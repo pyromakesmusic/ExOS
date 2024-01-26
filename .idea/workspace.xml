@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00429" summary="reorganized, I want to get UI stuff out of the main XOS package">
-      <created>1700726040183</created>
-      <option name="number" value="00429" />
-      <option name="presentableId" value="LOCAL-00429" />
-      <option name="project" value="LOCAL" />
-      <updated>1700726040183</updated>
     </task>
     <task id="LOCAL-00430" summary="creating a blank empty world for the HUD to exist">
       <created>1700728360614</created>
@@ -501,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706244690619</updated>
     </task>
-    <option name="localTasksCounter" value="478" />
+    <task id="LOCAL-00478" summary="dont have func, not sufficiently funcy">
+      <created>1706245242794</created>
+      <option name="number" value="00478" />
+      <option name="presentableId" value="LOCAL-00478" />
+      <option name="project" value="LOCAL" />
+      <updated>1706245242794</updated>
+    </task>
+    <option name="localTasksCounter" value="479" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got standardized launcher set up" />
     <MESSAGE value="config selector works on dialog now" />
     <MESSAGE value="launch is standard in desktop" />
     <MESSAGE value="commenting on launch" />
@@ -542,6 +539,7 @@
     <MESSAGE value="added meta.yaml file" />
     <MESSAGE value="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in" />
     <MESSAGE value="added error messages, cleaning up OS" />
-    <option name="LAST_COMMIT_MESSAGE" value="added error messages, cleaning up OS" />
+    <MESSAGE value="dont have func, not sufficiently funcy" />
+    <option name="LAST_COMMIT_MESSAGE" value="dont have func, not sufficiently funcy" />
   </component>
 </project>
