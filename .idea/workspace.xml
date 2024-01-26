@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00428" summary="lots more commentary and cleanup">
-      <created>1700718934966</created>
-      <option name="number" value="00428" />
-      <option name="presentableId" value="LOCAL-00428" />
-      <option name="project" value="LOCAL" />
-      <updated>1700718934966</updated>
     </task>
     <task id="LOCAL-00429" summary="reorganized, I want to get UI stuff out of the main XOS package">
       <created>1700726040183</created>
@@ -499,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706244493949</updated>
     </task>
-    <option name="localTasksCounter" value="477" />
+    <task id="LOCAL-00477" summary="added error messages, cleaning up OS">
+      <created>1706244690619</created>
+      <option name="number" value="00477" />
+      <option name="presentableId" value="LOCAL-00477" />
+      <option name="project" value="LOCAL" />
+      <updated>1706244690619</updated>
+    </task>
+    <option name="localTasksCounter" value="478" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating launch box" />
     <MESSAGE value="got standardized launcher set up" />
     <MESSAGE value="config selector works on dialog now" />
     <MESSAGE value="launch is standard in desktop" />
@@ -540,6 +541,7 @@
     <MESSAGE value="added a setup file for the pyonics library" />
     <MESSAGE value="added meta.yaml file" />
     <MESSAGE value="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in" />
-    <option name="LAST_COMMIT_MESSAGE" value="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in" />
+    <MESSAGE value="added error messages, cleaning up OS" />
+    <option name="LAST_COMMIT_MESSAGE" value="added error messages, cleaning up OS" />
   </component>
 </project>

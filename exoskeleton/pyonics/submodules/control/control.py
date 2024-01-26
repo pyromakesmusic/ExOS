@@ -289,6 +289,7 @@ class ExoController(klampt.control.OmniRobotInterface):
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
+        print(pd.Series(force_list))
         return pd.Series(force_list)
 
     def shutdown(self):

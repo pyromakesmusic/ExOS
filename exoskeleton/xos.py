@@ -159,6 +159,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module
             self.pcm.osc_handler.make_endpoint()
+            self.pcm.osc_handler.map("/pressures", self.pcm.setPressures)
             self.input = self.pcm.idle(self.pcm.bones)
 
             self.muscles = self.pcm.muscles
@@ -225,7 +226,8 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.input = self.pcm.idle(self.pcm.bones)
 
         if self.viewport:
-            pass
+            klampt.vis.update()
+            vid.vis_muscles_beta()
         else:
             pass
 
@@ -237,7 +239,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         #
         # self.hud.subtitles.update(self.input)
         # asyncio.run(self.hud.idle())
-        await self.feedback(self.input)
+        # await self.feedback(self.input)
 
         #return "Running..."
 
