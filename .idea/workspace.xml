@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/meta.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00425" summary="separating apps out">
-      <created>1700715299366</created>
-      <option name="number" value="00425" />
-      <option name="presentableId" value="LOCAL-00425" />
-      <option name="project" value="LOCAL" />
-      <updated>1700715299366</updated>
     </task>
     <task id="LOCAL-00426" summary="adding video section and moving mckibben muscle control to submodule">
       <created>1700717668253</created>
@@ -499,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706243312828</updated>
     </task>
-    <option name="localTasksCounter" value="474" />
+    <task id="LOCAL-00474" summary="added a setup file for the pyonics library">
+      <created>1706243594932</created>
+      <option name="number" value="00474" />
+      <option name="presentableId" value="LOCAL-00474" />
+      <option name="project" value="LOCAL" />
+      <updated>1706243594932</updated>
+    </task>
+    <option name="localTasksCounter" value="475" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

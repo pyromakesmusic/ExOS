@@ -1,0 +1,33 @@
+package:
+  name: pyonics
+  version: "0.1.0"
+
+source:
+  path: .
+
+build:
+  number: 1
+  script: python -m pip install --no-deps --ignore-installed .
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - klampt
+    - numpy
+    - matplotlib
+    - matplotlib.pyplot
+    - pandas
+
+  run:
+    - python
+    - klampt
+    - numpy
+    - matplotlib
+    - matplotlib.pyplot
+    - pandas
+    # Add any runtime dependencies here
+
+about:
+  home: https://github.com/pyromakesmusic/MATH4157/pyonics
+  license: LicenseName  # Replace with your license
