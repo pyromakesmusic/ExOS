@@ -288,6 +288,11 @@ def launch_standard():
     config = configLoader(config_path)
     exo_program = ExOS(config)
 
+
+def launch_sim_desktop_win64():
+    config = configLoader("config/desktopsim_testconfig2.txt")
+    exo_program = ExOS(config)
+
 if __name__ == "__main__":
 
-    launch_standard()
+    launch_sim_desktop_win64()

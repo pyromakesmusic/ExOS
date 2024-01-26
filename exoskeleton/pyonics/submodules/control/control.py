@@ -283,7 +283,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         # self.input = input  # Runs the voice assistant at idle to get input
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
-        print(bones_transforms)
         i = 0
         for muscle in self.muscles.muscle_objects:
             triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument

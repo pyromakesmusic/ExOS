@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/pyonics/meta.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00426" summary="adding video section and moving mckibben muscle control to submodule">
-      <created>1700717668253</created>
-      <option name="number" value="00426" />
-      <option name="presentableId" value="LOCAL-00426" />
-      <option name="project" value="LOCAL" />
-      <updated>1700717668253</updated>
     </task>
     <task id="LOCAL-00427" summary="close button is becoming more effective">
       <created>1700718600415</created>
@@ -499,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706243594932</updated>
     </task>
-    <option name="localTasksCounter" value="475" />
+    <task id="LOCAL-00475" summary="added meta.yaml file">
+      <created>1706243950532</created>
+      <option name="number" value="00475" />
+      <option name="presentableId" value="LOCAL-00475" />
+      <option name="project" value="LOCAL" />
+      <updated>1706243950532</updated>
+    </task>
+    <option name="localTasksCounter" value="476" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got a working robot display on desktop hardware sim 1" />
     <MESSAGE value="standardizing launcher" />
     <MESSAGE value="updating launch box" />
     <MESSAGE value="got standardized launcher set up" />
@@ -540,6 +541,7 @@
     <MESSAGE value="got muscle display working" />
     <MESSAGE value="display is working consistently" />
     <MESSAGE value="added a setup file for the pyonics library" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a setup file for the pyonics library" />
+    <MESSAGE value="added meta.yaml file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added meta.yaml file" />
   </component>
 </project>
