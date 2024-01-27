@@ -291,6 +291,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
+            print(str(muscle) + "is the muscle")
             triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument
             force_list.append(triplet_a)
             force_list.append(triplet_b)
@@ -298,7 +299,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         # print(pd.Series(force_list))
         await asyncio.sleep(1)
         force_series = pd.Series(force_list)
-        print("These are the forces " + str(force_series))
+        # print("These are the forces " + str(force_series))
         return pd.Series(force_list)
 
     def shutdown(self):
