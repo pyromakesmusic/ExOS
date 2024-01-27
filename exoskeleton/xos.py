@@ -153,75 +153,56 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.voice = None
 
-        # Simulation requires robworld. Robworld is necessary but insufficient to create simulation.
         if config_data["has_robworld"]:
-            # print("Initializing RobWorld...")
             # Variable for a robot representation # Not sure if this is happening correctly
-            self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module
+            self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
             asyncio.run(self.pcm.osc_server.make_endpoint())
-            self.input = self.pcm.idle(self.pcm.bones)
-            # print(" . . . i n i t i a l i z i n g w o r l d . . . ")
+            self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
-        if config_data["has_sim"]:
+        if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.dt)
         else:
             self.sim = None
 
 
-        if config_data["has_vis"]:
+        if config_data["has_vis"]:  # If there's a visualization
             klampt.vis.add("w", self.pcm.world)
             klampt.vis.add("robby", self.pcm.robot)
 
-            if config_data["has_sim"]:
-                # print(str(type(self.muscles.muscle_objects)) + " is the type of 'muscles' ")
-                # print(self.muscles.columns)
+            if config_data["has_sim"]:  # If a simulation is defined
                 vid.display_muscles(self.pcm.muscles)  # Need to vectorize this operation
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0,0,-5], 25)
 
-            klampt.vis.show()
+            klampt.vis.show()  # Shows the visualization
         else:
             self.viewport = None
 
 
         if config_data["has_hud"]:
             print(config_data["has_hud"])
-            print("Initializing HUD...")
             self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
         else:
-            self.hud = None
+            self.hud = None  # No HUD
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
 
-        while klampt.vis.shown():
-            asyncio.run(self.main())
+        while klampt.vis.shown():  # I dunno if this should be packaged somehow
+            asyncio.run(self.main())  # Async function
 
     async def feedback(self, textvar):
         if self.voice:
             self.voice.announce(textvar)
         else:
             pass
-        #
-        # if self.hud:
-        #     self.hud.subtitles.update(textvar)
-        # else:
-        #     pass
+
         await asyncio.sleep(1)
 
     async def main(self):
         # Main operating system loop.
-        # Voice intake
-        await asyncio.sleep(1)
-
-        if self.voice:
-            """
-            For voice command stuff
-            """
-            pass
-        else:
-            pass
+        await self.pcm.idle(self.pcm.bones)
 
         if self.viewport:
             klampt.vis.update()
@@ -232,17 +213,11 @@ class ExOS(klampt.control.OmniRobotInterface):
         if self.sim:
             # print("input is the following: \n")
             await self.pcm.setPressures()
-            self.pcm.bones = self.sim.simLoop(self.input)  # Needs a list of forces, derived from OSC input
+            self.pcm.bones = await self.sim.simLoop(self.input)  # Needs list of input values
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)
         else:
             pass
-        #
-        # self.hud.subtitles.update(self.input)
-        # asyncio.run(self.hud.idle())
-        # await self.feedback(self.input)
-
-        #return "Running..."
 
     async def async_error(self, error_message: None):
         print("ERROR")
