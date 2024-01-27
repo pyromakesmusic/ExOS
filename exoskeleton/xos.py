@@ -227,7 +227,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             pass
 
         if self.sim:
-            print("input is the following: \n")
+            # print("input is the following: \n")
             self.pcm.bones = self.sim.simLoop(self.input)  # Needs a list of forces, derived from OSC input
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)

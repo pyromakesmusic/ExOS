@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/network/osc_toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +79,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.desktop_hardware_sim_1">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -157,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00434" summary="bringing UI elements onto the HUD">
-      <created>1700881300792</created>
-      <option name="number" value="00434" />
-      <option name="presentableId" value="LOCAL-00434" />
-      <option name="project" value="LOCAL" />
-      <updated>1700881300792</updated>
     </task>
     <task id="LOCAL-00435" summary="text shows up bigger">
       <created>1700883769779</created>
@@ -501,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706360135687</updated>
     </task>
-    <option name="localTasksCounter" value="483" />
+    <task id="LOCAL-00483" summary="remembering how to make async stuff work">
+      <created>1706360949105</created>
+      <option name="number" value="00483" />
+      <option name="presentableId" value="LOCAL-00483" />
+      <option name="project" value="LOCAL" />
+      <updated>1706360949105</updated>
+    </task>
+    <option name="localTasksCounter" value="484" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated launch function" />
     <MESSAGE value="launch now has infrastructure for platform independence" />
     <MESSAGE value="need to fix typecasting of configuration variables" />
     <MESSAGE value="fixed bool evaluation, need to change vis methods and put them in the video" />
@@ -542,6 +541,7 @@
     <MESSAGE value="updating comments" />
     <MESSAGE value="updating hyperthreading to hopefully bring graphics back soon" />
     <MESSAGE value="not showing forces as i want" />
-    <option name="LAST_COMMIT_MESSAGE" value="not showing forces as i want" />
+    <MESSAGE value="remembering how to make async stuff work" />
+    <option name="LAST_COMMIT_MESSAGE" value="remembering how to make async stuff work" />
   </component>
 </project>

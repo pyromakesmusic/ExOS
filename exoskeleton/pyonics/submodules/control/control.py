@@ -26,7 +26,7 @@ import pythonosc.osc_server
 """
 CUSTOM LIBRARY IMPORTS
 """
-from .. import ui as ui
+
 """
 CLASS DEFINITIONS
 """
@@ -164,7 +164,7 @@ class AsyncServer:
         print("Serving on {}".format(self.ip))
         return
 
-    def map(self, pattern, func, *args, **kwargs):
+    async def map(self, pattern, func, *args, **kwargs):
         """
         pattern: string var defining the OSC pattern to be recognized
         func: the function to map to
@@ -296,6 +296,9 @@ class ExoController(klampt.control.OmniRobotInterface):
             force_list.append(triplet_b)
             i += 1
         # print(pd.Series(force_list))
+        await asyncio.sleep(1)
+        force_series = pd.Series(force_list)
+        print("These are the forces " + str(force_series))
         return pd.Series(force_list)
 
     def shutdown(self):
