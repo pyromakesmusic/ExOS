@@ -208,10 +208,13 @@ class ExOS(klampt.control.OmniRobotInterface):
         #     self.hud.subtitles.update(textvar)
         # else:
         #     pass
+        await asyncio.sleep(1)
 
     async def main(self):
         # Main operating system loop.
         # Voice intake
+        await asyncio.sleep(1)
+
         if self.voice:
             self.input = await self.pcm.idle(self.pcm.bones)  # I don't know what this idle function is returning right now
         else:
@@ -224,7 +227,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             pass
 
         if self.sim:
-            print(self.input)
+            print("input is the following: \n")
             self.pcm.bones = self.sim.simLoop(self.input)  # Needs a list of forces, derived from OSC input
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)

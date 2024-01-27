@@ -57,7 +57,7 @@ class AsyncServer:
     async def make_endpoint(self):
         self.server = osc_server.AsyncIOOSCUDPServer((self.ip, self.port), self.dispatcher, asyncio.get_running_loop())
         self.transport, self.protocol = await self.server.create_serve_endpoint()
-        print("Serving on {}".format(self.ip))
+        print("Serving on {} . . .".format(self.ip))
         return
 
     def map(self, pattern, func, *args, **kwargs):
@@ -69,7 +69,9 @@ class AsyncServer:
         self.dispatcher.map(pattern, func, args)
 
 if __name__ == "__main__":
-    pass
+    print("Initiating OSC functionality test...")
+    serve = AsyncServer("127.0.0.1", 5005)
+    serve.map("/pressures", print("pressures are..."))
 
-
+    asyncio.run(serve.make_endpoint())
 
