@@ -98,7 +98,6 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry.setSegment(self.transform_a, self.transform_b)  # Should be updating the transform
 
         self.pressure = pressure  # Updates muscle pressure
-
         self.length = kmv.distance(self.transform_a, self.transform_b)
         self.displacement = self.length - self.l_0  # Calculates displacement based on new length
 
@@ -254,7 +253,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.bones
 
-    def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
+    async def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
         print("setting pressure...")
         print(args)
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
@@ -286,6 +285,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         bones_transforms: A list of link locations
         """
+        self.setPressures()
+        print("self.pressures: \n")
+        print(self.pressures)
         # self.input = input  # Runs the voice assistant at idle to get input
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform

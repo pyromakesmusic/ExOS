@@ -168,7 +168,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_diff = None
 
 
-    def simLoop(self, force_list):
+    async def simLoop(self, force_list):
         """
         robot: A RobotModel.
         force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
@@ -181,6 +181,8 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         """
         Now here adding a section to make sure the muscles contract in the simulation.
         """
+        print("forces...")
+        print(force_list)
         for force in force_list:
             link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
             force_vector = force[1]  # Gets the force vector
