@@ -11,21 +11,21 @@ build:
 
 requirements:
   build:
-    - python
-    - setuptools
-    - klampt
-    - numpy
-    - matplotlib
-    - matplotlib.pyplot
-    - pandas
+    - "python"
+    - "setuptools"
+    - "klampt"
+    - "numpy"
+    - "matplotlib"
+    - "matplotlib.pyplot"
+    - "pandas"
 
   run:
-    - python
-    - klampt
-    - numpy
-    - matplotlib
-    - matplotlib.pyplot
-    - pandas
+    - "python"
+    - "klampt"
+    - "numpy"
+    - "matplotlib"
+    - "matplotlib.pyplot"
+    - "pandas"
     # Add any runtime dependencies here
 
 about:

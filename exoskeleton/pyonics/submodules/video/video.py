@@ -24,10 +24,11 @@ def display_muscle_row(row=pd.Series):
     # print(row.info)
     name = row["name"]
     muscle = row["muscle_objects"]
-    greenness = color_calc(row["pressure"], row["max_pressure"])
-    print(str(greenness) + " is the greenness")
+    redness = color_calc(row["pressure"], row["max_pressure"])
+    greenness = 1 - redness
+    # print(str(redness) + " is the redness")
     kvis.add(name, muscle.geometry)
-    kvis.setColor(name, 0, greenness, 0, 1)
+    kvis.setColor(name, redness, greenness, 0, 1)
     kvis.hideLabel(name)
 
 def display_muscles(df=pd.DataFrame):

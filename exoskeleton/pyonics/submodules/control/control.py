@@ -21,6 +21,7 @@ import klampt
 import klampt.math.vectorops as kmv
 import pythonosc
 from pythonosc.dispatcher import Dispatcher
+import pythonosc.osc_server
 
 """
 CUSTOM LIBRARY IMPORTS
@@ -156,6 +157,7 @@ class AsyncServer:
         self.protocol = None
 
     async def make_endpoint(self):
+        "Need to make this endpoint"
         self.server = pythonosc.osc_server.AsyncIOOSCUDPServer((self.ip, self.port),
                                                                self.dispatcher, asyncio.get_running_loop())
         self.transport, self.protocol = await self.server.create_serve_endpoint()
@@ -198,14 +200,14 @@ class ExoController(klampt.control.OmniRobotInterface):
 
 
         self.dt = config_data["timestep"]  # Sets the core robot clock
-        self.osc_handler = AsyncServer(config_data["address"], config_data["port"])
+        self.osc_server = AsyncServer(config_data["address"], config_data["port"])
         self.oscMapper()
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
-        self.pressures = [0 for muscle in range(len(self.muscles))]
+        self.pressures = [0.5 for x in range(len(self.muscles))]
         # print(". . . r e t u r n i n g r o b o t. . . ")
 
     def muscleLoader(self, config_df):
@@ -242,7 +244,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Sets up the OSC control inputs.
         """
-        self.osc_handler.map("/pressures", self.setPressures)
+        print("mapping OSC signature to function...")
+        self.osc_server.map("/pressures", self.setPressures)
         return
     def sensedPosition(self):
         """
@@ -252,6 +255,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         return self.bones
 
     def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
+        print("setting pressure...")
+        print(args)
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
@@ -268,15 +273,16 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.dt
 
-    def beginIdle(self):
+    async def beginIdle(self):
         """
         Used for loops.
         """
         self.shutdown_flag = False
+        await (self.osc_server.make_endpoint())
         while not self.shutdown_flag:
-            self.idle()
+            await self.idle()
 
-    def idle(self, bones_transforms):
+    async def idle(self, bones_transforms):
         """
         bones_transforms: A list of link locations
         """

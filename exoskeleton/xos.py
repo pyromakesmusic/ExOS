@@ -158,8 +158,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             # print("Initializing RobWorld...")
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module
-            self.pcm.osc_handler.make_endpoint()
-            self.pcm.osc_handler.map("/pressures", self.pcm.setPressures)
+            asyncio.run(self.pcm.osc_server.make_endpoint())
             self.input = self.pcm.idle(self.pcm.bones)
             # print(" . . . i n i t i a l i z i n g w o r l d . . . ")
 
@@ -214,9 +213,9 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Main operating system loop.
         # Voice intake
         if self.voice:
-            self.input = self.pcm.idle(self.pcm.bones)
+            self.input = await self.pcm.idle(self.pcm.bones)
         else:
-            self.input = self.pcm.idle(self.pcm.bones)
+            self.input = await self.pcm.idle(self.pcm.bones)
 
         if self.viewport:
             klampt.vis.update()
