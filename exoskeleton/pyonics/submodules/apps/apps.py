@@ -1,3 +1,4 @@
+import asyncio  # Needs asynchronous functionality
 import gpsd  # GPS library
 import cv2  # Camera library
 from datetime import datetime

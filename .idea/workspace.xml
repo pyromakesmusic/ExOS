@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/meta.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/meta.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00432" summary="adding more personality">
-      <created>1700809882817</created>
-      <option name="number" value="00432" />
-      <option name="presentableId" value="LOCAL-00432" />
-      <option name="project" value="LOCAL" />
-      <updated>1700809882817</updated>
     </task>
     <task id="LOCAL-00433" summary="abstracted most of the details out of the main OS loop">
       <created>1700854372085</created>
@@ -504,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706276343656</updated>
     </task>
-    <option name="localTasksCounter" value="481" />
+    <task id="LOCAL-00481" summary="updating hyperthreading to hopefully bring graphics back soon">
+      <created>1706325132526</created>
+      <option name="number" value="00481" />
+      <option name="presentableId" value="LOCAL-00481" />
+      <option name="project" value="LOCAL" />
+      <updated>1706325132526</updated>
+    </task>
+    <option name="localTasksCounter" value="482" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="launch is standard in desktop" />
     <MESSAGE value="commenting on launch" />
     <MESSAGE value="updated launch function" />
     <MESSAGE value="launch now has infrastructure for platform independence" />
@@ -545,6 +541,7 @@
     <MESSAGE value="added error messages, cleaning up OS" />
     <MESSAGE value="dont have func, not sufficiently funcy" />
     <MESSAGE value="updating comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating comments" />
+    <MESSAGE value="updating hyperthreading to hopefully bring graphics back soon" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating hyperthreading to hopefully bring graphics back soon" />
   </component>
 </project>

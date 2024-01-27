@@ -213,7 +213,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Main operating system loop.
         # Voice intake
         if self.voice:
-            self.input = await self.pcm.idle(self.pcm.bones)
+            self.input = await self.pcm.idle(self.pcm.bones)  # I don't know what this idle function is returning right now
         else:
             self.input = await self.pcm.idle(self.pcm.bones)
 
@@ -224,8 +224,10 @@ class ExOS(klampt.control.OmniRobotInterface):
             pass
 
         if self.sim:
-            # print(self.pcm.bones) # Just displays the bone transforms
+            print(self.input)
             self.pcm.bones = self.sim.simLoop(self.input)  # Needs a list of forces, derived from OSC input
+            klampt.vis.update()
+            vid.display_muscles(self.pcm.muscles)
         else:
             pass
         #
@@ -275,9 +277,10 @@ def launch_standard():
     # Want this to be platform-independent as some point
     plat = platform.platform()
     print(plat)
-    if plat.startswith("Windows"):
+    if plat.startswith("Windows"):  # Windows default behaviour
         config_path = tk.filedialog.askopenfilename()
-    else:
+
+    else:  # Platform default error
         config_path = None
         print("System platform error. Please update source code for this platform.")
         return FileNotFoundError
@@ -287,6 +290,9 @@ def launch_standard():
 
 
 def launch_sim_desktop_win64():
+    """
+    Convenience launcher for current dev environment for Windows. Works as a simulation at the moment.
+    """
     config = configLoader("config/desktopsim_testconfig2.txt")
     exo_program = ExOS(config)
 
