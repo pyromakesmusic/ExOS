@@ -156,7 +156,9 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.sim = None
 
-
+        """
+        Visualization
+        """
         if config_data["has_vis"]:  # If there's a visualization
             klampt.vis.add("w", self.pcm.world)
             klampt.vis.add("robby", self.pcm.robot)
@@ -182,9 +184,8 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
-
+        asyncio.run(self.pcm.begin_idle())
         while klampt.vis.shown():  # I dunno if this should be packaged somehow
-            asyncio.run(self.pcm.begin_idle())  # Call to start async function running
             asyncio.run(self.main())  # Async function call
 
     async def main(self):
