@@ -165,9 +165,12 @@ class ExOS(klampt.control.OmniRobotInterface):
                 vid.display_muscles(self.pcm.muscles)  # Displays the muscles
 
             klampt.vis.visualization.setWindowTitle("ExOS")
-            klampt.vis.visualization.resizeWindow(1920,1080)
+            window = klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
+            print("window")
+            print(window)
+            klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
-            self.viewport.fit([0,0,-5], 25)
+            self.viewport.fit([0, 0, -5], 25)
             klampt.vis.show()  # Shows the visualization
         else:
             self.viewport = None

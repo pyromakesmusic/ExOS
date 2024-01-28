@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world>
 
-  <terrain file="../terrains/block.off"  translation="0 0 -10"/>
+  <terrain file="../terrains/block.off"  scale="100 100 0.4" translation="0 0 -10"/>
 
   <simulation>
     <globals />

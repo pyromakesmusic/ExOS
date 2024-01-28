@@ -196,8 +196,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         # print(config_data)
+        self.config = config_data
+
         self.shutdown_flag = False
         self.input = None
+        self.server = None
 
         if config_data["has_robworld"]:
             # print(". . . c r e a t i n g w o r l d . . .")
@@ -262,6 +265,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         Should be the same as the physical device, Reaktor control rate, simulation timestep
         """
         return self.dt
+
+    async def begin_idle(self):
+        # Initializes idle in some situations for some reason?
+        self.server = AsyncServer(self.config["ip"], self.config["port"], "/pressures", self.set_pressures)
+
 
     async def idle(self, bones_transforms):
         """
