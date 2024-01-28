@@ -169,12 +169,12 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.add("w", self.pcm.world)
             klampt.vis.add("robby", self.pcm.robot)
 
-            if config_data["has_sim"]:  # If a simulation is defined
-                vid.display_muscles(self.pcm.muscles)  # Need to vectorize this operation
+            if config_data["has_sim"]:  # If a simulation is defined AND there's a visualization
+                vid.display_muscles(self.pcm.muscles)  # Displays the muscles
+
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0,0,-5], 25)
-
             klampt.vis.show()  # Shows the visualization
         else:
             self.viewport = None
@@ -190,15 +190,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.state = "On"
 
         while klampt.vis.shown():  # I dunno if this should be packaged somehow
-            asyncio.run(self.main())  # Async function
-
-    async def feedback(self, textvar):
-        if self.voice:
-            self.voice.announce(textvar)
-        else:
-            pass
-
-        await asyncio.sleep(1)
+            asyncio.run(self.main())  # Async function call
 
     async def main(self):
         # Main operating system loop.

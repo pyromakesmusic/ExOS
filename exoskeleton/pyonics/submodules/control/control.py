@@ -75,8 +75,9 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.displacement = 0  # This is a calculated value; should initialize at 0
         self.pressure = 0  # Should be pressure relative to external, so initialize at 0 - need units eventually
 
-    def update(self, pressure): # Should call every loop?
+    def update_muscle(self, pressure):  # Should call every loop?
         """
+        pressure: single float value. Starting at 0-1 but may make sense to put in terms of psi, bar or pascal.
         ================
         UPDATE 10.2.2023: A muscle is a spring with variable stiffness.
 
@@ -126,7 +127,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
         """
-        print(triplet_a, triplet_b)
+        # print(triplet_a, triplet_b)
         return triplet_a, triplet_b
 
     def pressure_autoscale(self):
@@ -209,15 +210,15 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.dt = config_data["timestep"]  # Sets the core robot clock
         self.osc_server = AsyncServer(config_data["address"], config_data["port"])
         self.osc_server.map("/pressures", self.setPressures)
+        self.osc_server.make_endpoint()  # Starts the listening right away.
+
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
-        print(str(len(self.muscles)) + " is the length of muscles")
         # Setting initial muscle pressure to zero
         self.pressures = [0.25 for x in range(len(self.muscles))]
-        # print(". . . r e t u r n i n g r o b o t. . . ")
 
     def muscleLoader(self, config_df):
         """
@@ -273,16 +274,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.dt
 
-    async def beginIdle(self):
-        """
-        Used for loops.
-        """
-        self.shutdown_flag = False
-        # await (self.osc_server.make_endpoint())
-        while not self.shutdown_flag:
-            await self.idle()
-            asyncio.sleep(1)
-
     async def idle(self, bones_transforms):
         """
         bones_transforms: A list of link locations
@@ -296,7 +287,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         for muscle in self.muscles.muscle_objects:
             # print(str(self.pressures) + "is the stored pressures")
             # print(str(muscle) + "is the muscle")
-            triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument
+            triplet_a, triplet_b = muscle.update_muscle(self.pressures[i])  # Updates muscles w/ OSC argument
+            # print(triplet_a)
+            # print(" is triplet a")
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
