@@ -166,8 +166,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
             klampt.vis.visualization.setWindowTitle("ExOS")
             window = klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
-            print("window")
-            print(window)
+
             klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0, 0, -5], 25)
@@ -185,6 +184,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.state = "On"
 
         while klampt.vis.shown():  # I dunno if this should be packaged somehow
+            asyncio.run(self.pcm.begin_idle())  # Call to start async function running
             asyncio.run(self.main())  # Async function call
 
     async def main(self):
