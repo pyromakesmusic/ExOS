@@ -141,14 +141,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.network_mode = config_data["network_mode"]  # Can be master or slave
         self.dt = config_data["timestep"]
 
-        # if config_data["has_persona"]:
-        #     print("Value of has persona: " + str(config_data["has_persona"]))
-        #     self.persona = ui.Personality()  # Creates a personality
-        # else:
-        #     self.persona = None
-
         if config_data["has_voice"]:
-            # print(config_data["has_voice"])
             self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
         else:
             self.voice = None
@@ -156,7 +149,6 @@ class ExOS(klampt.control.OmniRobotInterface):
         if config_data["has_robworld"]:
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
-            # asyncio.run(self.pcm.osc_server.make_endpoint())
             self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
         if config_data["has_sim"]:  # If a simulation is defined
@@ -172,6 +164,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             if config_data["has_sim"]:  # If a simulation is defined AND there's a visualization
                 vid.display_muscles(self.pcm.muscles)  # Displays the muscles
 
+            klampt.vis.visualization.setWindowTitle("ExOS")
             klampt.vis.visualization.resizeWindow(1920,1080)
             self.viewport = klampt.vis.getViewport()
             self.viewport.fit([0,0,-5], 25)
@@ -181,7 +174,6 @@ class ExOS(klampt.control.OmniRobotInterface):
 
 
         if config_data["has_hud"]:
-            print(config_data["has_hud"])
             self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
         else:
             self.hud = None  # No HUD
@@ -197,14 +189,16 @@ class ExOS(klampt.control.OmniRobotInterface):
         await self.pcm.idle(self.pcm.bones)
 
         if self.viewport:
+            klampt.vis.lock()
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)
+            klampt.vis.unlock()
+
         else:
             pass
 
         if self.sim:
-            # print("input is the following: \n")
-            await self.pcm.setPressures()
+            # Attend to the simulation
             self.pcm.bones = await self.sim.simLoop(self.input)  # Needs list of input values
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)

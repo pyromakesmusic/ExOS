@@ -3,9 +3,15 @@ import klampt
 import pandas as pd
 import klampt.vis as kvis
 
-def configure_window():
+
+def configure_hud_vis():
     kvis.setWindowTitle("Klampt HUD  Test")
     kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
+    kvis.resizeWindow(1920, 1080)
+
+def configure_sim_vis():
+    kvis.setWindowTitle("Klampt HUD  Test")
+    kvis.setBackgroundColor(0.3, 0, 0.5, 1)  # Makes background black
     kvis.resizeWindow(1920, 1080)
 
 def color_calc(current_pressure, max_pressure):

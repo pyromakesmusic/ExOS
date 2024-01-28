@@ -127,7 +127,6 @@ class Muscle(klampt.sim.ActuatorEmulator):
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
         """
-        # print(triplet_a, triplet_b)
         return triplet_a, triplet_b
 
     def pressure_autoscale(self):
@@ -151,7 +150,7 @@ class AsyncServer:
 
     Server must be asynchronous to allow control loop to function intermittently.
     """
-    def __init__(self, ip, port):
+    def __init__(self, ip, port, signature_string, handler):
         self.dispatcher = pythonosc.dispatcher.Dispatcher()
         self.parser = argparse.ArgumentParser()
         self.parser.add_argument("--ip", default=ip, help="The IP address to listen on")
@@ -162,6 +161,8 @@ class AsyncServer:
         self.server = None
         self.transport = None
         self.protocol = None
+        asyncio.run(self.map(signature_string), handler)
+        asyncio.run(self.make_endpoint())
 
     async def make_endpoint(self):
         "Need to make this endpoint"
@@ -203,15 +204,9 @@ class ExoController(klampt.control.OmniRobotInterface):
             self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
             self.world.loadRobot(config_data["core"])  # Loads the robot geometry
             self.robot = self.world.robot(0)
-            # print("this is the robot")
             self.interface = klampt.control.OmniRobotInterface.__init__(self, self.robot)
 
-
         self.dt = config_data["timestep"]  # Sets the core robot clock
-        self.osc_server = AsyncServer(config_data["address"], config_data["port"])
-        self.osc_server.map("/pressures", self.setPressures)
-        self.osc_server.make_endpoint()  # Starts the listening right away.
-
 
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
@@ -257,16 +252,10 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.bones
 
-    async def setPressures(self, *args):  # Constructed to work with an arbitrary number of values
+    def set_pressures(self, *args):  # Constructed to work with an arbitrary number of values
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
-
-    def validateInput(self, stringvar):
-        if stringvar == None:
-            return ""
-        else:
-            return stringvar
 
     def controlRate(self):
         """
@@ -278,22 +267,14 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         bones_transforms: A list of link locations
         """
-        # await asyncio.sleep(1)
-
-        # self.setPressures()
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            # print(str(self.pressures) + "is the stored pressures")
-            # print(str(muscle) + "is the muscle")
             triplet_a, triplet_b = muscle.update_muscle(self.pressures[i])  # Updates muscles w/ OSC argument
-            # print(triplet_a)
-            # print(" is triplet a")
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
-        # print(pd.Series(force_list))
         force_series = pd.Series(force_list)
 
         return force_series

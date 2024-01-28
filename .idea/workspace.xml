@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/xos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/xos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +115,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/xos.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\exos.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -134,7 +136,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/xos.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\exos.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,13 +159,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00439" summary="highly advanced technology">
-      <created>1700892756366</created>
-      <option name="number" value="00439" />
-      <option name="presentableId" value="LOCAL-00439" />
-      <option name="project" value="LOCAL" />
-      <updated>1700892756366</updated>
     </task>
     <task id="LOCAL-00440" summary="camera access">
       <created>1700979674383</created>
@@ -501,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706420812195</updated>
     </task>
-    <option name="localTasksCounter" value="488" />
+    <task id="LOCAL-00488" summary="trying to eliminate extraneous separations">
+      <created>1706421806637</created>
+      <option name="number" value="00488" />
+      <option name="presentableId" value="LOCAL-00488" />
+      <option name="project" value="LOCAL" />
+      <updated>1706421806637</updated>
+    </task>
+    <option name="localTasksCounter" value="489" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +519,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="increased window size" />
     <MESSAGE value="using voice recognition now" />
     <MESSAGE value="changed has sim to has vis" />
     <MESSAGE value="made new config for testing" />
@@ -542,6 +543,7 @@
     <MESSAGE value="adding hyperthreading capability" />
     <MESSAGE value="i think im starting to trace the errors" />
     <MESSAGE value="might have found the part that needs updating" />
-    <option name="LAST_COMMIT_MESSAGE" value="might have found the part that needs updating" />
+    <MESSAGE value="trying to eliminate extraneous separations" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to eliminate extraneous separations" />
   </component>
 </project>
