@@ -35,6 +35,9 @@ Hardware
 """
 class Muscle(klampt.sim.ActuatorEmulator):
     """
+    row: A single dataframe row with muscle information.
+    controller: A robot controller.
+
     Refers to exactly one McKibben muscle, with all associated attributes.
     This may end up being an interface for both an Actuator and a simulated ActuatorEmulator, running simultaneously.
     """
@@ -118,11 +121,12 @@ class Muscle(klampt.sim.ActuatorEmulator):
         force_b = kmv.mul(kmv.mul(unit_b, force), 5)
 
         triplet_a = [self.b, force_a, self.transform_b]  # Should be integer, 3-tuple, transform
-        triplet_b = [self.a, force_b, self.transform_a]
+        triplet_b = [self.a, force_b, self.transform_a]  # Link to apply to, force vector to apply, transform at which to apply
         """
         These triplets are what is required to simulate the effect of the muscle contraction. Also, at some point I want
         to change the muscle color based on the pressure input.
         """
+        print(triplet_a, triplet_b)
         return triplet_a, triplet_b
 
     def pressure_autoscale(self):
@@ -141,6 +145,9 @@ Network Controller
 """
 class AsyncServer:
     """
+    ip: source server ip as string
+    port: client port as integer
+
     Server must be asynchronous to allow control loop to function intermittently.
     """
     def __init__(self, ip, port):
@@ -169,6 +176,7 @@ class AsyncServer:
         func: the function to map to
         args: any args for the function, this may need to be *args and **kwargs - needs more research
         """
+
         self.dispatcher.map(pattern, func, args)
 
 
@@ -200,13 +208,15 @@ class ExoController(klampt.control.OmniRobotInterface):
 
         self.dt = config_data["timestep"]  # Sets the core robot clock
         self.osc_server = AsyncServer(config_data["address"], config_data["port"])
-        self.oscMapper()
+        self.osc_server.map("/pressures", self.setPressures)
+
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
+        print(str(len(self.muscles)) + " is the length of muscles")
         # Setting initial muscle pressure to zero
-        self.pressures = [0.5 for x in range(len(self.muscles))]
+        self.pressures = [0.25 for x in range(len(self.muscles))]
         # print(". . . r e t u r n i n g r o b o t. . . ")
 
     def muscleLoader(self, config_df):
@@ -239,13 +249,6 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     # Control and Kinematics
 
-    def oscMapper(self):
-        """
-        Sets up the OSC control inputs.
-        """
-        print("mapping OSC signature to function...")
-        self.osc_server.map("/pressures", self.setPressures)
-        return
     def sensedPosition(self):
         """
         Could still include link transforms, but should also include GPS location in lat/long, maybe USNG,
@@ -275,84 +278,35 @@ class ExoController(klampt.control.OmniRobotInterface):
         Used for loops.
         """
         self.shutdown_flag = False
-        await (self.osc_server.make_endpoint())
+        # await (self.osc_server.make_endpoint())
         while not self.shutdown_flag:
             await self.idle()
+            asyncio.sleep(1)
 
     async def idle(self, bones_transforms):
         """
         bones_transforms: A list of link locations
         """
-        self.setPressures()
+        # await asyncio.sleep(1)
+
+        # self.setPressures()
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in self.muscles.muscle_objects:
-            print(str(muscle) + "is the muscle")
+            # print(str(self.pressures) + "is the stored pressures")
+            # print(str(muscle) + "is the muscle")
             triplet_a, triplet_b = muscle.update(self.pressures[i])  # Updates muscles w/ OSC argument
             force_list.append(triplet_a)
             force_list.append(triplet_b)
             i += 1
         # print(pd.Series(force_list))
-        await asyncio.sleep(1)
         force_series = pd.Series(force_list)
 
         return force_series
 
     def shutdown(self):
         self.shutdown_flag = True
-
-
-
-
-"""
-FUNCTION DEFINITIONS
-"""
-
-
-
-def error(set_point, df, i):
-    """
-    Determines the error between a set point and a current value ( stored in a dataframe with i+2 steps)
-    :param process_variable:
-    :param set_point:
-    :param df: main dataframe
-    :param i: time step
-    :return: modified dataframe
-    """
-    error = set_point - df.at[i, "velocity"]
-    df.at[i, "error"] = error
-    return df
-
-def pid(df, i, p_k, i_k, d_k, scaling_factor):
-    """
-    Performs the PID logic.
-    :param df: main dataframe
-    :param i: time step
-    :param p_k: proportional value
-    :param i_k: integral control value
-    :param d_k: derivative control value
-    :scaling_factor: factor to scale all three of P, I and D to before final output
-    :return: modified dataframe
-    """
-    df_abridged = df[0:i]
-    proportional = p_k * df.at[i, "error"] # Some constant times the error
-    integral = i_k * np.trapz(df_abridged["error"]) # Trapezoid rule for discrete integral
-    if i < 2:
-        derivative = 0
-    else:
-        gradient = np.gradient(df_abridged["error"])
-        derivative = d_k * float(gradient[-2:-1])
-    pid = scaling_factor * (proportional + integral + derivative)
-    df.at[i, "proportional"] = proportional
-    df.at[i, "integral"] = integral
-    df.at[i, "derivative"] = derivative
-    df.at[i, "control"] = pid
-    return df
-
-"""
-MAIN FUNCTION CALL
-"""
 
 def main():
     pass

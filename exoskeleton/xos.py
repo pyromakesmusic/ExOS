@@ -156,7 +156,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         if config_data["has_robworld"]:
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
-            asyncio.run(self.pcm.osc_server.make_endpoint())
+            # asyncio.run(self.pcm.osc_server.make_endpoint())
             self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
         if config_data["has_sim"]:  # If a simulation is defined

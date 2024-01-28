@@ -390,14 +390,6 @@ class AugmentOverlayTkUI:
         self.hud_color = "blue"
         pass
 
-"""
-FUNCTION DEFINITIONS
-"""
-
-"""
-Main Function
-"""
-
 def main():
     return
 
