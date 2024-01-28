@@ -7,6 +7,7 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00444" summary="now showing the GUI again">
-      <created>1701037345486</created>
-      <option name="number" value="00444" />
-      <option name="presentableId" value="LOCAL-00444" />
-      <option name="project" value="LOCAL" />
-      <updated>1701037345487</updated>
     </task>
     <task id="LOCAL-00445" summary="updating camera input">
       <created>1701153140504</created>
@@ -500,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706478548149</updated>
     </task>
-    <option name="localTasksCounter" value="493" />
+    <task id="LOCAL-00493" summary="still trying to get data piped in">
+      <created>1706478634593</created>
+      <option name="number" value="00493" />
+      <option name="presentableId" value="LOCAL-00493" />
+      <option name="project" value="LOCAL" />
+      <updated>1706478634593</updated>
+    </task>
+    <option name="localTasksCounter" value="494" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="almost ready to add the legs" />
     <MESSAGE value="integrating simulation capabilities" />
     <MESSAGE value="adding sections for runtime allocation" />
     <MESSAGE value="got the simulator starting just a little" />
@@ -541,6 +541,7 @@
     <MESSAGE value="need to modify to run sim" />
     <MESSAGE value="improved calling of async server mapping" />
     <MESSAGE value="testing set pressure function called" />
-    <option name="LAST_COMMIT_MESSAGE" value="testing set pressure function called" />
+    <MESSAGE value="still trying to get data piped in" />
+    <option name="LAST_COMMIT_MESSAGE" value="still trying to get data piped in" />
   </component>
 </project>

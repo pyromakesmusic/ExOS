@@ -163,8 +163,6 @@ class AsyncServer:
         self.protocol = None
         self.password = signature_string
         self.handler = handler
-        # asyncio.run(self.map(signature_string, handler))
-        # asyncio.run(self.make_endpoint())
 
     async def make_endpoint(self):
         """Need to make this endpoint"""
@@ -172,7 +170,7 @@ class AsyncServer:
         self.server = pythonosc.osc_server.AsyncIOOSCUDPServer((self.ip, self.port),
                                                                self.dispatcher, asyncio.get_running_loop())
         self.transport, self.protocol = await self.server.create_serve_endpoint()
-        # print("Serving on {}".format(self.ip))
+        print("Serving on {}".format(self.ip))
         return
 
     async def map(self, pattern, func, *args, **kwargs):
@@ -181,7 +179,7 @@ class AsyncServer:
         func: the function to map to
         args: any args for the function, this may need to be *args and **kwargs - needs more research
         """
-
+        print("... performing mapping operation... ")
         self.dispatcher.map(pattern, func, args)
 
 
@@ -276,6 +274,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         await self.server.map("/pressures", self.set_pressures)
         await self.server.make_endpoint()
         await self.idle(self.bones)
+        asyncio.sleep(1)
 
 
     async def idle(self, bones_transforms):

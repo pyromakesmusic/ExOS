@@ -185,7 +185,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
         asyncio.run(self.pcm.begin_idle())
-        while klampt.vis.shown():  # I dunno if this should be packaged somehow
+        while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
 
     async def main(self):
