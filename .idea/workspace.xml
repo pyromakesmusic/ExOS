@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world1.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00441" summary="added new test world, think I need to add more to the config">
-      <created>1701033617668</created>
-      <option name="number" value="00441" />
-      <option name="presentableId" value="LOCAL-00441" />
-      <option name="project" value="LOCAL" />
-      <updated>1701033617668</updated>
     </task>
     <task id="LOCAL-00442" summary="added more config files">
       <created>1701035108343</created>
@@ -502,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706423814053</updated>
     </task>
-    <option name="localTasksCounter" value="490" />
+    <task id="LOCAL-00490" summary="need to modify to run sim">
+      <created>1706424484533</created>
+      <option name="number" value="00490" />
+      <option name="presentableId" value="LOCAL-00490" />
+      <option name="project" value="LOCAL" />
+      <updated>1706424484533</updated>
+    </task>
+    <option name="localTasksCounter" value="491" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="changed has sim to has vis" />
     <MESSAGE value="made new config for testing" />
     <MESSAGE value="zooming out to show more of robot, time to add simulation" />
     <MESSAGE value="almost ready to add the legs" />
@@ -543,6 +540,7 @@
     <MESSAGE value="might have found the part that needs updating" />
     <MESSAGE value="trying to eliminate extraneous separations" />
     <MESSAGE value="slightly changed name" />
-    <option name="LAST_COMMIT_MESSAGE" value="slightly changed name" />
+    <MESSAGE value="need to modify to run sim" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to modify to run sim" />
   </component>
 </project>

@@ -161,11 +161,12 @@ class AsyncServer:
         self.server = None
         self.transport = None
         self.protocol = None
-        asyncio.run(self.map(signature_string), handler)
+        asyncio.run(self.map(signature_string, handler))
         asyncio.run(self.make_endpoint())
 
     async def make_endpoint(self):
-        "Need to make this endpoint"
+        """Need to make this endpoint"""
+        assert type(self.ip) == str
         self.server = pythonosc.osc_server.AsyncIOOSCUDPServer((self.ip, self.port),
                                                                self.dispatcher, asyncio.get_running_loop())
         self.transport, self.protocol = await self.server.create_serve_endpoint()
@@ -217,7 +218,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
         self.pressures = [0.25 for x in range(len(self.muscles))]
-
+        asyncio.run(self.begin_idle())
     def muscleLoader(self, config_df):
         """
         Given a dataframe with an ["attachments"] column containing a path
@@ -255,7 +256,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.bones
 
-    def set_pressures(self, *args):  # Constructed to work with an arbitrary number of values
+    async def set_pressures(self, *args):  # Constructed to work with an arbitrary number of values
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
@@ -268,7 +269,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     async def begin_idle(self):
         # Initializes idle in some situations for some reason?
-        self.server = AsyncServer(self.config["ip"], self.config["port"], "/pressures", self.set_pressures)
+        self.server = AsyncServer(self.config["address"], self.config["port"], "/pressures", self.set_pressures)
+        await self.idle(self.bones)
 
 
     async def idle(self, bones_transforms):
