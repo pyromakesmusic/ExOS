@@ -159,13 +159,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00446" summary="updating interface">
-      <created>1703390034241</created>
-      <option name="number" value="00446" />
-      <option name="presentableId" value="LOCAL-00446" />
-      <option name="project" value="LOCAL" />
-      <updated>1703390034242</updated>
-    </task>
     <task id="LOCAL-00447" summary="updating to remove unused stuff and bring old configurations up to spec">
       <created>1703645428714</created>
       <option name="number" value="00447" />
@@ -502,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706482842134</updated>
     </task>
-    <option name="localTasksCounter" value="495" />
+    <task id="LOCAL-00495" summary="reorganizing and making signposts">
+      <created>1706484153881</created>
+      <option name="number" value="00495" />
+      <option name="presentableId" value="LOCAL-00495" />
+      <option name="project" value="LOCAL" />
+      <updated>1706484153881</updated>
+    </task>
+    <option name="localTasksCounter" value="496" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding sections for runtime allocation" />
     <MESSAGE value="got the simulator starting just a little" />
     <MESSAGE value="vectorizing;" />
     <MESSAGE value="got muscle display working" />
@@ -543,6 +542,7 @@
     <MESSAGE value="testing set pressure function called" />
     <MESSAGE value="still trying to get data piped in" />
     <MESSAGE value="trying to announce map operation" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to announce map operation" />
+    <MESSAGE value="reorganizing and making signposts" />
+    <option name="LAST_COMMIT_MESSAGE" value="reorganizing and making signposts" />
   </component>
 </project>

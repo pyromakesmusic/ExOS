@@ -198,6 +198,6 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
 
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
-        print(self.link_transforms_end)
-        print("leaving the simulator loop")
+        # print(self.link_transforms_end)
+        # print("leaving the simulator loop")
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var

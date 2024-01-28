@@ -187,6 +187,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         asyncio.run(self.pcm.begin_idle())
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
+            asyncio.run(asyncio.sleep(1))
 
     async def main(self):
         # Main operating system loop.
@@ -203,9 +204,12 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.sim:
             # Attend to the simulation
-            await self.sim.simLoop(self.input)  # Needs list of input values
+            new_bones_transforms = await self.sim.simLoop(self.input)  # Needs list of input values
+
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)
+            await asyncio.sleep(1)
+            self.bones = new_bones_transforms
         else:
             pass
 
