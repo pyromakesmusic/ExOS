@@ -256,8 +256,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.bones
 
-    async def set_pressures(self, *args):  # Constructed to work with an arbitrary number of values
-        print("testing...")
+    def set_pressures(self, *args):  # Constructed to work with an arbitrary number of values
+        # setting pressures, is a handler function
+        print(args)
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
@@ -274,13 +275,15 @@ class ExoController(klampt.control.OmniRobotInterface):
         await self.server.map("/pressures", self.set_pressures)
         await self.server.make_endpoint()
         await self.idle(self.bones)
-        asyncio.sleep(1)
+        await asyncio.sleep(1)
 
 
     async def idle(self, bones_transforms):
         """
         bones_transforms: A list of link locations
         """
+        print(self.pressures)
+        print("is the pressures")
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0

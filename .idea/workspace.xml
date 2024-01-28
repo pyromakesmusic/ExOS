@@ -7,6 +7,7 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00445" summary="updating camera input">
-      <created>1701153140504</created>
-      <option name="number" value="00445" />
-      <option name="presentableId" value="LOCAL-00445" />
-      <option name="project" value="LOCAL" />
-      <updated>1701153140504</updated>
     </task>
     <task id="LOCAL-00446" summary="updating interface">
       <created>1703390034241</created>
@@ -501,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706478634593</updated>
     </task>
-    <option name="localTasksCounter" value="494" />
+    <task id="LOCAL-00494" summary="trying to announce map operation">
+      <created>1706482842134</created>
+      <option name="number" value="00494" />
+      <option name="presentableId" value="LOCAL-00494" />
+      <option name="project" value="LOCAL" />
+      <updated>1706482842134</updated>
+    </task>
+    <option name="localTasksCounter" value="495" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="integrating simulation capabilities" />
     <MESSAGE value="adding sections for runtime allocation" />
     <MESSAGE value="got the simulator starting just a little" />
     <MESSAGE value="vectorizing;" />
@@ -542,6 +542,7 @@
     <MESSAGE value="improved calling of async server mapping" />
     <MESSAGE value="testing set pressure function called" />
     <MESSAGE value="still trying to get data piped in" />
-    <option name="LAST_COMMIT_MESSAGE" value="still trying to get data piped in" />
+    <MESSAGE value="trying to announce map operation" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to announce map operation" />
   </component>
 </project>

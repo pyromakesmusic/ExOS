@@ -203,7 +203,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.sim:
             # Attend to the simulation
-            self.pcm.bones = await self.sim.simLoop(self.input)  # Needs list of input values
+            await self.sim.simLoop(self.input)  # Needs list of input values
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)
         else:
