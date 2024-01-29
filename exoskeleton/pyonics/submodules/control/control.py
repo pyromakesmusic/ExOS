@@ -198,26 +198,23 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         # print(config_data)
         self.config = config_data
-
+        self.state = "On"
         self.shutdown_flag = False
-        self.input = None
         self.server = None
 
         if config_data["has_robworld"]:
-            # print(". . . c r e a t i n g w o r l d . . .")
             self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
             self.world.loadRobot(config_data["core"])  # Loads the robot geometry
             self.robot = self.world.robot(0)
             self.interface = klampt.control.OmniRobotInterface.__init__(self, self.robot)
 
         self.dt = config_data["timestep"]  # Sets the core robot clock
-
         # Creating a series of link transforms, I need to check if this gets updated automatically
         self.bones = pd.Series([self.robot.link(x).getTransform() for x in range(self.robot.numLinks())])
         # Loading all the muscles
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
-        self.pressures = [0.25 for x in range(len(self.muscles))]
+        self.pressures = [0 for x in range(len(self.muscles))]
     def muscleLoader(self, config_df):
         """
         Given a dataframe with an ["attachments"] column containing a path
@@ -274,8 +271,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.server = AsyncServer(self.config["address"], self.config["port"], "/pressures", self.set_pressures)
         await self.server.map("/pressures", self.set_pressures)
         await self.server.make_endpoint()
-        # await asyncio.sleep(1)
-
 
     async def idle(self, bones_transforms):
         """

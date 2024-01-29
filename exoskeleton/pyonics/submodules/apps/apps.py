@@ -180,7 +180,6 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         Below is where we apply each force in the simulation.
         """
         for force in force_list:
-            # print(force)
             link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
             force_vector = force[1]  # Gets the force vector
             transform = force[2]  # Gets the transform at which to apply force
