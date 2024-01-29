@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00450" summary="updating launch box">
-      <created>1703724617177</created>
-      <option name="number" value="00450" />
-      <option name="presentableId" value="LOCAL-00450" />
-      <option name="project" value="LOCAL" />
-      <updated>1703724617177</updated>
     </task>
     <task id="LOCAL-00451" summary="got standardized launcher set up">
       <created>1703727866536</created>
@@ -502,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706492677415</updated>
     </task>
-    <option name="localTasksCounter" value="499" />
+    <task id="LOCAL-00499" summary="adding more arms and legs to the robot physics">
+      <created>1706501447008</created>
+      <option name="number" value="00499" />
+      <option name="presentableId" value="LOCAL-00499" />
+      <option name="project" value="LOCAL" />
+      <updated>1706501447008</updated>
+    </task>
+    <option name="localTasksCounter" value="500" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="display is working consistently" />
     <MESSAGE value="added a setup file for the pyonics library" />
     <MESSAGE value="added meta.yaml file" />
     <MESSAGE value="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in" />
@@ -543,6 +539,7 @@
     <MESSAGE value="list of arguments that are floats" />
     <MESSAGE value="physics works now" />
     <MESSAGE value="physics works better. this is the first stable release i would say" />
-    <option name="LAST_COMMIT_MESSAGE" value="physics works better. this is the first stable release i would say" />
+    <MESSAGE value="adding more arms and legs to the robot physics" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding more arms and legs to the robot physics" />
   </component>
 </project>
