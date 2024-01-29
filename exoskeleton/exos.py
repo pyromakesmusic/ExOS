@@ -200,7 +200,6 @@ class ExOS(klampt.control.OmniRobotInterface):
             klampt.vis.unlock()
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)
-            await asyncio.sleep(1)
         else:
             pass
 

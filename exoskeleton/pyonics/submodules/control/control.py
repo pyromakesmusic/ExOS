@@ -218,7 +218,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
         self.pressures = [0.25 for x in range(len(self.muscles))]
-        # asyncio.run(self.begin_idle())
     def muscleLoader(self, config_df):
         """
         Given a dataframe with an ["attachments"] column containing a path
@@ -275,7 +274,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.server = AsyncServer(self.config["address"], self.config["port"], "/pressures", self.set_pressures)
         await self.server.map("/pressures", self.set_pressures)
         await self.server.make_endpoint()
-        await asyncio.sleep(1)
+        # await asyncio.sleep(1)
 
 
     async def idle(self, bones_transforms):
