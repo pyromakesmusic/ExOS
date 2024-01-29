@@ -152,7 +152,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
         if config_data["has_sim"]:  # If a simulation is defined
-            self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.dt)
+            self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
         else:
             self.sim = None
 
@@ -184,32 +184,23 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
-        asyncio.run(self.pcm.begin_idle())
+        asyncio.run(self.pcm.idle_configuration())
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
-            asyncio.run(asyncio.sleep(1))
+            # asyncio.run(asyncio.sleep(1))
 
     async def main(self):
-        # Main operating system loop.
-        await self.pcm.idle(self.pcm.bones)
 
-        if self.viewport:
-            klampt.vis.lock()
-            klampt.vis.update()
-            vid.display_muscles(self.pcm.muscles)
-            klampt.vis.unlock()
-
-        else:
-            pass
-
-        if self.sim:
+        if self.sim:  # Needs an AND self.vis I think
+            # Main operating system loop.
+            forces = await self.pcm.idle(self.pcm.bones)
             # Attend to the simulation
-            new_bones_transforms = await self.sim.simLoop(self.input)  # Needs list of input values
-
+            klampt.vis.lock()
+            self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
+            klampt.vis.unlock()
             klampt.vis.update()
             vid.display_muscles(self.pcm.muscles)
             await asyncio.sleep(1)
-            self.bones = new_bones_transforms
         else:
             pass
 

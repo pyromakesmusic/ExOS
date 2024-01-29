@@ -118,8 +118,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         unit_b = kmv.mul(direction_b, self.length)  # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 5)  # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), 5)
+        force_a = kmv.mul(kmv.mul(unit_a, force), 500)  # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), 500)
 
         triplet_a = [self.b, force_a, self.transform_b]  # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]  # Link to apply to, force vector to apply, transform at which to apply
@@ -260,8 +260,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         *args: Length-n list of arguments each containing a float corresponding to some pressure.
         """
-        # setting pressures, is a handler function
-        print(args)
         args = list(args[2:-1])  # Removing unnecessary elements, we are getting four values now
         self.pressures = [pressure for pressure in args]
         return
@@ -272,12 +270,11 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         return self.dt
 
-    async def begin_idle(self):
+    async def idle_configuration(self):
         # Initializes idle in some situations for some reason?
         self.server = AsyncServer(self.config["address"], self.config["port"], "/pressures", self.set_pressures)
         await self.server.map("/pressures", self.set_pressures)
         await self.server.make_endpoint()
-        await self.idle(self.bones)
         await asyncio.sleep(1)
 
 
@@ -285,8 +282,6 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         bones_transforms: A list of link locations
         """
-        # print(self.pressures)
-        # print("is the pressures")
         self.bones = bones_transforms  # Not working quite right, might need rotation
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
@@ -296,7 +291,6 @@ class ExoController(klampt.control.OmniRobotInterface):
             force_list.append(triplet_b)
             i += 1
         force_series = pd.Series(force_list)
-
         return force_series
 
     def shutdown(self):

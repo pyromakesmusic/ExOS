@@ -167,7 +167,6 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_end = None
         self.link_transforms_diff = None
 
-
     async def simLoop(self, force_list):
         """
         robot: A RobotModel.
@@ -176,14 +175,12 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         Should possibly return a list of new transforms to be used for calculating stuff in the next time step.
 
         """
-
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         """
         Now here adding a section to make sure the muscles contract in the simulation.
         """
-        # print("not the force list, a transform list for some reason")
-        # print(force_list)
         for force in force_list:
+            print(force)
             link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
             force_vector = force[1]  # Gets the force vector
             transform = force[2]  # Gets the transform at which to apply force
@@ -198,6 +195,4 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
 
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
-        # print(self.link_transforms_end)
-        # print("leaving the simulator loop")
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
