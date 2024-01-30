@@ -195,6 +195,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         asyncio.run(self.pcm.idle_configuration())
         # i = 0
         # while i < 2:
+        print(self.pcm.robot.numLinks())
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
             # i += 1
