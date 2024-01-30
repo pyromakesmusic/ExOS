@@ -274,18 +274,10 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     async def idle(self, bones_transforms):
         """
-        bones_transforms: A list of link locations
+        bones_transforms: A list of link locations. Essentially this is just updating the sensedPosition
         """
         self.bones = bones_transforms  # Not working quite right, might need rotation
-        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
-        i = 0
-        for muscle in self.muscles.muscle_objects:
-            triplet_a, triplet_b = muscle.update_muscle(self.pressures[i])  # Updates muscles w/ OSC argument
-            force_list.append(triplet_a)
-            force_list.append(triplet_b)
-            i += 1
-        force_series = pd.Series(force_list)
-        return force_series
+        return
 
     def shutdown(self):
         self.shutdown_flag = True

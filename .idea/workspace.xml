@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00451" summary="got standardized launcher set up">
-      <created>1703727866536</created>
-      <option name="number" value="00451" />
-      <option name="presentableId" value="LOCAL-00451" />
-      <option name="project" value="LOCAL" />
-      <updated>1703727866536</updated>
     </task>
     <task id="LOCAL-00452" summary="config selector works on dialog now">
       <created>1703941745875</created>
@@ -500,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706501447008</updated>
     </task>
-    <option name="localTasksCounter" value="500" />
+    <task id="LOCAL-00500" summary="updating link names">
+      <created>1706588504605</created>
+      <option name="number" value="00500" />
+      <option name="presentableId" value="LOCAL-00500" />
+      <option name="project" value="LOCAL" />
+      <updated>1706588504605</updated>
+    </task>
+    <option name="localTasksCounter" value="501" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added a setup file for the pyonics library" />
     <MESSAGE value="added meta.yaml file" />
     <MESSAGE value="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in" />
     <MESSAGE value="added error messages, cleaning up OS" />
@@ -541,6 +542,7 @@
     <MESSAGE value="physics works now" />
     <MESSAGE value="physics works better. this is the first stable release i would say" />
     <MESSAGE value="adding more arms and legs to the robot physics" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding more arms and legs to the robot physics" />
+    <MESSAGE value="updating link names" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating link names" />
   </component>
 </project>

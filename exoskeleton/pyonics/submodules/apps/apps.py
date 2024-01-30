@@ -1,4 +1,5 @@
 import asyncio  # Needs asynchronous functionality
+import pandas as pd
 import gpsd  # GPS library
 import cv2  # Camera library
 from datetime import datetime
@@ -166,6 +167,17 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         self.link_transforms_end = None
         self.link_transforms_diff = None
+
+    async def pressures_to_forces(self, muscle_objects, pressures):
+        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
+        i = 0
+        for muscle in muscle_objects:
+            triplet_a, triplet_b = muscle.update_muscle(pressures[i])  # Updates muscles w/ OSC argument
+            force_list.append(triplet_a)
+            force_list.append(triplet_b)
+            i += 1
+        force_series = pd.Series(force_list)
+        return force_series
 
     async def simLoop(self, force_list):
         """

@@ -193,7 +193,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.sim:  # Needs an AND self.vis I think
             # Main operating system loop.
-            forces = await self.pcm.idle(self.pcm.bones)
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures)
             # Attend to the simulation
             klampt.vis.lock()
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
