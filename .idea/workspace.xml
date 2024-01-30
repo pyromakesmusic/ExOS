@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world2.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00456" summary="launch now has infrastructure for platform independence">
-      <created>1703946261675</created>
-      <option name="number" value="00456" />
-      <option name="presentableId" value="LOCAL-00456" />
-      <option name="project" value="LOCAL" />
-      <updated>1703946261675</updated>
     </task>
     <task id="LOCAL-00457" summary="need to fix typecasting of configuration variables">
       <created>1704026437287</created>
@@ -501,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706614580739</updated>
     </task>
-    <option name="localTasksCounter" value="505" />
+    <task id="LOCAL-00505" summary="got robot with all limbs loaded">
+      <created>1706617127957</created>
+      <option name="number" value="00505" />
+      <option name="presentableId" value="LOCAL-00505" />
+      <option name="project" value="LOCAL" />
+      <updated>1706617127957</updated>
+    </task>
+    <option name="localTasksCounter" value="506" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="dont have func, not sufficiently funcy" />
     <MESSAGE value="updating comments" />
     <MESSAGE value="updating hyperthreading to hopefully bring graphics back soon" />
     <MESSAGE value="not showing forces as i want" />
@@ -542,6 +539,7 @@
     <MESSAGE value="got free floating base robot working" />
     <MESSAGE value="got the shoulders on" />
     <MESSAGE value="added robot arms" />
-    <option name="LAST_COMMIT_MESSAGE" value="added robot arms" />
+    <MESSAGE value="got robot with all limbs loaded" />
+    <option name="LAST_COMMIT_MESSAGE" value="got robot with all limbs loaded" />
   </component>
 </project>
