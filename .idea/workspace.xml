@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/xo_simtest.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00457" summary="need to fix typecasting of configuration variables">
-      <created>1704026437287</created>
-      <option name="number" value="00457" />
-      <option name="presentableId" value="LOCAL-00457" />
-      <option name="project" value="LOCAL" />
-      <updated>1704026437287</updated>
     </task>
     <task id="LOCAL-00458" summary="fixed bool evaluation, need to change vis methods and put them in the video">
       <created>1704172209476</created>
@@ -499,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706617127957</updated>
     </task>
-    <option name="localTasksCounter" value="506" />
+    <task id="LOCAL-00506" summary="robot editing">
+      <created>1706640954198</created>
+      <option name="number" value="00506" />
+      <option name="presentableId" value="LOCAL-00506" />
+      <option name="project" value="LOCAL" />
+      <updated>1706640954198</updated>
+    </task>
+    <option name="localTasksCounter" value="507" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -515,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating comments" />
     <MESSAGE value="updating hyperthreading to hopefully bring graphics back soon" />
     <MESSAGE value="not showing forces as i want" />
     <MESSAGE value="remembering how to make async stuff work" />
@@ -540,6 +540,7 @@
     <MESSAGE value="got the shoulders on" />
     <MESSAGE value="added robot arms" />
     <MESSAGE value="got robot with all limbs loaded" />
-    <option name="LAST_COMMIT_MESSAGE" value="got robot with all limbs loaded" />
+    <MESSAGE value="robot editing" />
+    <option name="LAST_COMMIT_MESSAGE" value="robot editing" />
   </component>
 </project>
