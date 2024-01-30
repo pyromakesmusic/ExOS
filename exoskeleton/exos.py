@@ -153,6 +153,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
+            self.sim.endLogging()
         else:
             self.sim = None
 
@@ -165,6 +166,13 @@ class ExOS(klampt.control.OmniRobotInterface):
 
             if config_data["has_sim"]:  # If a simulation is defined AND there's a visualization
                 vid.display_muscles(self.pcm.muscles)  # Displays the muscles
+                print(self.sim.settings())
+                print(self.sim.getSetting("boundaryLayerCollisions"))
+                print(type(self.sim.getSetting("boundaryLayerCollisions")))
+                self.sim.setSetting("boundaryLayerCollisions", "0")
+                self.sim.setSetting("rigidObjectCollisions", "0")
+                self.sim.setSetting("robotSelfCollisions", "0")
+                self.sim.setSetting("robotRobotCollisions", "0")
 
             klampt.vis.visualization.setWindowTitle("ExOS")
             window = klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
@@ -185,8 +193,11 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
         asyncio.run(self.pcm.idle_configuration())
+        # i = 0
+        # while i < 2:
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
+            # i += 1
             # asyncio.run(asyncio.sleep(1))
 
     async def main(self):

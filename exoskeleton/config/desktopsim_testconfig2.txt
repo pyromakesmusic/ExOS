@@ -3,7 +3,7 @@ robots/core_bot_test4.rob
 MUSCLE ATTACHMENTS:
 robots/muscle_attachments_b1.csv
 WORLD:
-worlds/test_world1.xml
+worlds/test_world2.xml
 CONTROL RATE:
 .001
 CONTROL ADDRESS:

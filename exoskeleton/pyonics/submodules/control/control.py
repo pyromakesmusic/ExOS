@@ -118,8 +118,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         unit_b = kmv.mul(direction_b, self.length)  # Redundant but I'm including this to make it easier to read for now
 
         # Combining unit vectors and force magnitude to give a force vector
-        force_a = kmv.mul(kmv.mul(unit_a, force), 500)  # Half (.5) because of Newton's Third Law,
-        force_b = kmv.mul(kmv.mul(unit_b, force), 500)
+        force_a = kmv.mul(kmv.mul(unit_a, force), .5)  # Half (.5) because of Newton's Third Law,
+        force_b = kmv.mul(kmv.mul(unit_b, force), .5)
 
         triplet_a = [self.b, force_a, self.transform_b]  # Should be integer, 3-tuple, transform
         triplet_b = [self.a, force_b, self.transform_a]  # Link to apply to, force vector to apply, transform at which to apply
