@@ -203,7 +203,7 @@ class ExOS(klampt.control.OmniRobotInterface):
                 klampt.vis.lock()
 
             # Main operating system loop.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 1)
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 3000)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
 
             if self.viewport:

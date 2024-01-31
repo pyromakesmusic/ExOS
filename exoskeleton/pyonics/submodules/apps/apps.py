@@ -9,6 +9,7 @@ import asyncio
 import klampt
 import klampt.model.coordinates
 import klampt.model.collide
+import klampt.model.contact
 
 # Each app should be its own class
 
@@ -207,7 +208,9 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.simulate(self.dt)
         self.updateWorld()
         if self.collider:
-            print(self.collider.collisions())
+            pass
+            #klampt.model.contact.world_contact_map(self.world, padding=0.1, kFriction=1, collider=self.collider)
+            #print(self.collider.collisions())
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
         """
