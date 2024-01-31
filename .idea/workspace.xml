@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00459" summary="updating vis parameters">
-      <created>1704172507696</created>
-      <option name="number" value="00459" />
-      <option name="presentableId" value="LOCAL-00459" />
-      <option name="project" value="LOCAL" />
-      <updated>1704172507696</updated>
     </task>
     <task id="LOCAL-00460" summary="increased window size">
       <created>1704173742532</created>
@@ -504,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706641022424</updated>
     </task>
-    <option name="localTasksCounter" value="508" />
+    <task id="LOCAL-00508" summary="updating robot file">
+      <created>1706671385446</created>
+      <option name="number" value="00508" />
+      <option name="presentableId" value="LOCAL-00508" />
+      <option name="project" value="LOCAL" />
+      <updated>1706671385446</updated>
+    </task>
+    <option name="localTasksCounter" value="509" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,7 +515,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating hyperthreading to hopefully bring graphics back soon" />
     <MESSAGE value="not showing forces as i want" />
     <MESSAGE value="remembering how to make async stuff work" />
     <MESSAGE value="the muscle update method returns something, i need to use that something" />
@@ -545,6 +539,7 @@
     <MESSAGE value="added robot arms" />
     <MESSAGE value="got robot with all limbs loaded" />
     <MESSAGE value="robot editing" />
-    <option name="LAST_COMMIT_MESSAGE" value="robot editing" />
+    <MESSAGE value="updating robot file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating robot file" />
   </component>
 </project>
