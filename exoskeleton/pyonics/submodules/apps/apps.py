@@ -160,7 +160,6 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     """
     def __init__(self, wm, robot, timestep):
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
-
         self.world = wm
         self.dt = timestep
         self.robotmodel = robot
@@ -168,7 +167,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_end = None
         self.link_transforms_diff = None
 
-    async def pressures_to_forces(self, muscle_objects, pressures):
+    async def pressures_to_forces(self, muscle_objects, pressures, force_multiplier):
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         for muscle in muscle_objects:
@@ -177,7 +176,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
             force_list.append(triplet_b)
             i += 1
         force_series = pd.Series(force_list)
-        return force_series
+        return force_series * force_multiplier
 
     async def simLoop(self, force_list):
         """

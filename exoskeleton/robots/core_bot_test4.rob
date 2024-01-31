@@ -29,8 +29,8 @@ TParent 1 0 0   0 1 0   0 0 1   0 0 4  \
 1 0 0   0 1 0   0 0 1   0 2 0  \
 1 0 0   0 1 0   0 0 1   0 1.5 0  \
 1 0 0   0 1 0   0 0 1   0 1.5 0  \
-1 0 0   0 1 0   0 0 1   1 0 -2   \
-1 0 0   0 1 0   0 0 1   -1 0 -2  \
+1 0 0   0 1 0   0 0 1   1 0 -1   \
+1 0 0   0 1 0   0 0 1   -1 0 -1  \
 1 0 0   0 1 0   0 0 1    1.5 1.8 0 \
 1 0 0   0 1 0   0 0 1    -1.5 1.8 0 \
 1 0 0   0 1 0   0 0 1   0 0 0   \
@@ -50,7 +50,7 @@ qMax 1 1 1  100 100 .1 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 
 q 0 0 0.1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -3 -3 0 0 0 0 0 0 1 1 0 0
 geometry ""   ""   ""   ""    ""    "meshes/C0_v2.stl"  "meshes/C1_v2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/C4.stl"   "meshes/RA0.stl"   "meshes/RA0.stl"   "meshes/sphere.off"   "meshes/sphere.off"   ""   ""   ""   ""   "meshes/A2.stl"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A3.stl"   "meshes/A3.stl"   "meshes/sphere.off"   "meshes/sphere.off"   ""   ""   ""   ""   "meshes/A2.stl"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A3.stl"   "meshes/A3.stl"
 geomscale 1 1 1 1 1 5 7 .1 .1 .4 .5 .5 .3 .3 1 1 1 1 1 1 .3 .3 1 1 .3 .3 1 1 1 1 2.4 2.4 .3 .3 2.4 2.4
-mass 0 0 0 0 0 0.5 5 0.5 0.5 5 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 100 100 0 0 100 100
+mass 0 0 0 0 0 0.5 5 0.5 0.5 5 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 4 4 0 0 4 4
 automass
 torqueMax  0 0 0 0 0 0 0.2 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50
 accMax 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000

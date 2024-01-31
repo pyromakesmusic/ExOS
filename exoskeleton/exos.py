@@ -153,6 +153,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
+            self.sim_settings()
             self.sim.endLogging()
         else:
             self.sim = None
@@ -166,16 +167,8 @@ class ExOS(klampt.control.OmniRobotInterface):
 
             if config_data["has_sim"]:  # If a simulation is defined AND there's a visualization
                 vid.display_muscles(self.pcm.muscles)  # Displays the muscles
-                print(self.sim.settings())
-                print(self.sim.getSetting("boundaryLayerCollisions"))
-                print(type(self.sim.getSetting("boundaryLayerCollisions")))
-                self.sim.setSetting("boundaryLayerCollisions", "0")
-                self.sim.setSetting("rigidObjectCollisions", "0")
-                self.sim.setSetting("robotSelfCollisions", "0")
-                self.sim.setSetting("robotRobotCollisions", "0")
-
             klampt.vis.visualization.setWindowTitle("ExOS")
-            window = klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
+            klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
 
             klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
@@ -203,15 +196,19 @@ class ExOS(klampt.control.OmniRobotInterface):
 
     async def main(self):
 
-        if self.sim:  # Needs an AND self.vis I think
-            # Main operating system loop.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures)
+        if self.sim:
             # Attend to the simulation
-            klampt.vis.lock()
+            if self.viewport:
+                klampt.vis.lock()
+
+            # Main operating system loop.
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 20000)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
-            klampt.vis.unlock()
-            klampt.vis.update()
-            vid.display_muscles(self.pcm.muscles)
+
+            if self.viewport:
+                klampt.vis.unlock()
+                klampt.vis.update()
+                vid.display_muscles(self.pcm.muscles)
         else:
             pass
 
@@ -223,7 +220,14 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.voice.announce("Error:")
             self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
 
-
+    async def sim_settings(self):
+        print(self.sim.settings())
+        print(self.sim.getSetting("boundaryLayerCollisions"))
+        print(type(self.sim.getSetting("boundaryLayerCollisions")))
+        self.sim.setSetting("boundaryLayerCollisions", "1")
+        self.sim.setSetting("rigidObjectCollisions", "1")
+        self.sim.setSetting("robotSelfCollisions", "1")
+        self.sim.setSetting("robotRobotCollisions", "1")
 
     # Control and Kinematics
 

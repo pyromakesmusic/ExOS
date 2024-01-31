@@ -5,7 +5,7 @@ robots/muscle_attachments_b1.csv
 WORLD:
 worlds/test_world2.xml
 CONTROL RATE:
-.001
+.01
 CONTROL ADDRESS:
 127.0.0.1
 CONTROL PORT:
