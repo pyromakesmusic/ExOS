@@ -5,8 +5,10 @@ import cv2  # Camera library
 from datetime import datetime
 import asyncio
 # Klamp't imports
+
 import klampt
 import klampt.model.coordinates
+import klampt.model.collide
 
 # Each app should be its own class
 
@@ -158,14 +160,20 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
-    def __init__(self, wm, robot, timestep):
+    def __init__(self, wm, robot, timestep, collisions=True):  # Setting collisions to True for testing ONLY
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.world = wm
         self.dt = timestep
+
         self.robotmodel = robot
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         self.link_transforms_end = None
         self.link_transforms_diff = None
+
+        if collisions:
+            self.collider = klampt.model.collide.WorldCollider(self.world)
+        else:
+            self.collider = None
 
     async def pressures_to_forces(self, muscle_objects, pressures, force_multiplier):
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
@@ -198,6 +206,8 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
 
         self.simulate(self.dt)
         self.updateWorld()
+        if self.collider:
+            print(self.collider.collisions())
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
         """

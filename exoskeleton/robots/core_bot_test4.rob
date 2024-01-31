@@ -3,7 +3,33 @@
 ### This revision will include five additional DOFs to make the robot free-floating vs. fixed ###
 ### Floating base and Core Robot ###
 ### 34 Links total ###
-### 0.base, translation1; 1.base, translation2; 2.base, translation3;###
+### 0 base, translation1; ###
+### 1 base, translation2; ###
+### 2 base, translation3; ###
+### 3 base, rotation1; ###
+### 4 base, rotation2; ###
+### 5 base, rotation3; head; ###
+### 6 chest, rotation; ###
+### 7 vertebrae, rotation; ###
+### 8 vertebrae, rotation; ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
+### ###
 
 TParent 1 0 0   0 1 0   0 0 1   0 0 6  \
 1 0 0   0 1 0   0 0 1   0 0 0  \
@@ -55,11 +81,3 @@ automass
 torqueMax  0 0 0 0 0 0 0.2 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500 500
 accMax 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000
 
-joint floating 5 -1
-joint normal 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
-
-driver normal 6
-
-servoP 50
-servoI 100
-servoD 3
