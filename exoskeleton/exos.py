@@ -199,23 +199,24 @@ class ExOS(klampt.control.OmniRobotInterface):
         if self.sim:
             # Attend to the simulation
             if self.viewport:
+                vid.display_muscles(self.pcm.muscles)
                 klampt.vis.lock()
 
             # Main operating system loop.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 20000)
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 1)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
 
             if self.viewport:
                 klampt.vis.unlock()
                 klampt.vis.update()
-                vid.display_muscles(self.pcm.muscles)
+
+
         else:
             pass
 
     async def async_error(self, error_message: None):
         print("ERROR")
         print(error_message)
-
         if self.voice:
             self.voice.announce("Error:")
             self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
@@ -258,6 +259,7 @@ MAIN LOOP
 def launch_standard():
     # Want this to be platform-independent as some point
     plat = platform.platform()
+    print("Platform: ")
     print(plat)
     if plat.startswith("Windows"):  # Windows default behaviour
         config_path = tk.filedialog.askopenfilename()

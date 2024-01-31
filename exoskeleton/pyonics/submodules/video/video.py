@@ -11,7 +11,7 @@ def configure_hud_vis():
 
 def configure_sim_vis():
     kvis.setWindowTitle("Klampt HUD  Test")
-    kvis.setBackgroundColor(0.3, 0, 0.5, 1)  # Makes background black
+    kvis.setBackgroundColor(0.9, 0, 0.9, 1)  # Makes background black
     kvis.resizeWindow(1920, 1080)
 
 def color_calc(current_pressure, max_pressure):
@@ -31,10 +31,8 @@ def display_muscle_row(row=pd.Series):
     name = row["name"]
     muscle = row["muscle_objects"]
     redness = color_calc(row["pressure"], row["max_pressure"])
-    greenness = 1 - redness
-    # print(str(redness) + " is the redness")
     kvis.add(name, muscle.geometry)
-    kvis.setColor(name, redness, greenness, 0, 1)
+    kvis.setColor(name, redness, 0, 0, 1)
     kvis.hideLabel(name)
 
 def display_muscles(df=pd.DataFrame):
