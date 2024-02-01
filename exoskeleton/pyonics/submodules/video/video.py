@@ -9,10 +9,11 @@ def configure_hud_vis():
     kvis.setBackgroundColor(0, 0, 0, 1)  # Makes background black
     kvis.resizeWindow(1920, 1080)
 
-def configure_sim_vis():
+def configure_sim_vis(vport):
     kvis.setWindowTitle("Klampt HUD  Test")
-    kvis.setBackgroundColor(0.9, 0, 0.9, 1)  # Makes background black
+    kvis.setBackgroundColor(0.2, 0.7, 0.8, 1)  # Makes background black
     kvis.resizeWindow(1920, 1080)
+    vport.fit([0,0,-10], 65)
 
 def color_calc(current_pressure, max_pressure):
     # Calculates a color based on a current and max value

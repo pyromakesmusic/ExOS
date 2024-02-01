@@ -1,36 +1,34 @@
 name;link_a;link_b;transform_a;transform_b;label_a;label_b;turns;r_0;l_0;weave_length;turns;max_pressure
-left_sternocleidomastoid;5;6;.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2;2;5;80000
-right_sternocleidomastoid;5;6;-.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2;2;5;80000
+left_sternocleidomastoid;6;7;.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2;2;5;80000
+right_sternocleidomastoid;6;7;-.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2;2;5;80000
 
-left_superior_trapezius;5;6;.5,.2,-.8;1,0.3,2;superior;inferior;20;1;2;2;5;80000
-right_superior_trapezius;5;6;-.5,.2,-.8;-1,0.3,2;superior;inferior;20;1;2;2;5;80000
+left_superior_trapezius;6;7;.5,.2,-.8;1,0.3,2;superior;inferior;20;1;2;2;5;80000
+right_superior_trapezius;6;7;-.5,.2,-.8;-1,0.3,2;superior;inferior;20;1;2;2;5;80000
 
-left_rectus_abdominus;7;8;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
-right_rectus_abdominus;7;8;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+left_rectus_abdominus;8;10;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+right_rectus_abdominus;8;10;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 
-left_inferior_latissimus;7;8;1.4,.8,1;.8,.8,-.5;superior;inferior;20;1;2;2;5;80000
-right_inferior_latissimus;7;8;-1.4,.8,1;-.8,.8,-.5;superior;inferior;20;1;2;2;5;80000
+left_inferior_latissimus;8;9;1.4,.8,1;.8,.8,-.5;superior;inferior;20;1;2;2;5;80000
+right_inferior_latissimus;8;9;-1.4,.8,1;-.8,.8,-.5;superior;inferior;20;1;2;2;5;80000
 
-left_posterior_deltoid;10;12;-.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
-right_posterior_deltoid;11;13;.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
+left_posterior_deltoid;11;13;-.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
+right_posterior_deltoid;12;14;.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_anterior_deltoid;8;12;0,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
+left_forearm_muscle;19;23;.4,.1,.1;0,0,0;superior;inferior;20;1;2;2;5;80000
+left_bicep_thing;8;19;0.2,-1,2.1;0,0,0;superior;inferior;20;1;2;2;5;800
 
-left_forearm_muscle;18;22;.4,.1,.1;0,0,0;superior;inferior;20;1;2;2;5;80000
-left_bicep_thing;6;18;0.2,-1,2.1;0,0,0;superior;inferior;20;1;2;2;5;800
-
-left_rectus_femoris;9;32;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
-right_rectus_femoris;9;33;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
+left_rectus_femoris;10;33;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
+right_rectus_femoris;10;34;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
 
 
-left_glute_thing;24;32;.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
-right_glute_thing;25;33;-.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+left_glute_thing;25;33;.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+right_glute_thing;26;34;-.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 
-left_hip_thing;25;33;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
-right_hip_thing;24;32;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+left_hip_thing;26;34;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+right_hip_thing;25;33;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 
-left_calf_thing;32;34;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
-right_calf_thing;33;35;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+left_calf_thing;33;35;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+right_calf_thing;34;36;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 
 
 
