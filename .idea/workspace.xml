@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/neural_net.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/quick_bionic_sim.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00466" summary="integrating simulation capabilities">
-      <created>1704862221722</created>
-      <option name="number" value="00466" />
-      <option name="presentableId" value="LOCAL-00466" />
-      <option name="project" value="LOCAL" />
-      <updated>1704862221722</updated>
     </task>
     <task id="LOCAL-00467" summary="adding sections for runtime allocation">
       <created>1704945580364</created>
@@ -500,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706747086332</updated>
     </task>
-    <option name="localTasksCounter" value="515" />
+    <task id="LOCAL-00515" summary="added names of joints to robot file">
+      <created>1706751701021</created>
+      <option name="number" value="00515" />
+      <option name="presentableId" value="LOCAL-00515" />
+      <option name="project" value="LOCAL" />
+      <updated>1706751701023</updated>
+    </task>
+    <option name="localTasksCounter" value="516" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +522,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="trying to eliminate extraneous separations" />
     <MESSAGE value="slightly changed name" />
     <MESSAGE value="need to modify to run sim" />
     <MESSAGE value="improved calling of async server mapping" />
@@ -541,6 +546,7 @@
     <MESSAGE value="updating body to ragdoll more realistically, setting reasonable joint limits" />
     <MESSAGE value="adding some pipe utility files" />
     <MESSAGE value="updating stuff, mostly how big the visualization shows to see all of robot movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating stuff, mostly how big the visualization shows to see all of robot movement" />
+    <MESSAGE value="added names of joints to robot file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added names of joints to robot file" />
   </component>
 </project>

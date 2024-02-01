@@ -13,4 +13,4 @@ w.readFile(r"C:\Users\Pyro\Documents\Math4157\exoskeleton\robots\core_bot_test4.
 
 r = w.robot(0)
 
-klampt.io.resource.edit(name=r, value=r, type="auto")
+# klampt.io.resource.edit(name=r, value=r, type="auto")
