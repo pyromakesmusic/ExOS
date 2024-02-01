@@ -267,7 +267,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         return self.dt
 
     async def idle_configuration(self):
-        # Initializes idle in some situations for some reason?
+        # Does the mapping and last minute settings stuff necessary to begin controller idle
         self.server = AsyncServer(self.config["address"], self.config["port"], "/pressures", self.set_pressures)
         await self.server.map("/pressures", self.set_pressures)
         await self.server.make_endpoint()
@@ -277,10 +277,23 @@ class ExoController(klampt.control.OmniRobotInterface):
         bones_transforms: A list of link locations. Essentially this is just updating the sensedPosition
         """
         self.bones = bones_transforms  # Not working quite right, might need rotation
+        if self.state == "debug":
+            print(self.count_muscles())
+            print(self.count_bones())
         return
 
-    def shutdown(self):
+    async def shutdown(self):
         self.shutdown_flag = True
+
+    """
+    DIAGNOSTIC
+    """
+
+    async def count_muscles(self):
+        return self.muscles.shape[0]
+
+    async def count_bones(self):
+        return len(self.bones)
 
 def main():
     pass

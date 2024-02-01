@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/config/batch_input/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exoskeleton/config/batch_input/sim_batch_input_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00463" summary="made new config for testing">
-      <created>1704332641916</created>
-      <option name="number" value="00463" />
-      <option name="presentableId" value="LOCAL-00463" />
-      <option name="project" value="LOCAL" />
-      <updated>1704332641916</updated>
     </task>
     <task id="LOCAL-00464" summary="zooming out to show more of robot, time to add simulation">
       <created>1704858011893</created>
@@ -503,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706736495532</updated>
     </task>
-    <option name="localTasksCounter" value="512" />
+    <task id="LOCAL-00512" summary="updating body to ragdoll more realistically, setting reasonable joint limits">
+      <created>1706738170880</created>
+      <option name="number" value="00512" />
+      <option name="presentableId" value="LOCAL-00512" />
+      <option name="project" value="LOCAL" />
+      <updated>1706738170880</updated>
+    </task>
+    <option name="localTasksCounter" value="513" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -519,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="adding hyperthreading capability" />
     <MESSAGE value="i think im starting to trace the errors" />
     <MESSAGE value="might have found the part that needs updating" />
     <MESSAGE value="trying to eliminate extraneous separations" />
@@ -544,6 +542,7 @@
     <MESSAGE value="messing with an easy script to help edit the robot" />
     <MESSAGE value="updated with many more muscles" />
     <MESSAGE value="removing world for testing robot servo parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing world for testing robot servo parameters" />
+    <MESSAGE value="updating body to ragdoll more realistically, setting reasonable joint limits" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating body to ragdoll more realistically, setting reasonable joint limits" />
   </component>
 </project>
