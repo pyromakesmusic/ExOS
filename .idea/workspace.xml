@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/config/batch_input/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exoskeleton/config/batch_input/sim_batch_input_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/worlds/test_world3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/worlds/test_world3.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/worlds",
+    "last_opened_file_path": "C:/Users/Pyro/Documents/Math4157/exoskeleton/config/batch_input/sim_batch_input_1.txt",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
@@ -135,13 +136,13 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\exos.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exoskeleton/exos.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="C:\Users\Pyro\Documents\Math4157\exoskeleton\config\batch_input\sim_batch_input_1.txt" />
       <method v="2" />
     </configuration>
     <list>
@@ -158,13 +159,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00464" summary="zooming out to show more of robot, time to add simulation">
-      <created>1704858011893</created>
-      <option name="number" value="00464" />
-      <option name="presentableId" value="LOCAL-00464" />
-      <option name="project" value="LOCAL" />
-      <updated>1704858011893</updated>
     </task>
     <task id="LOCAL-00465" summary="almost ready to add the legs">
       <created>1704858073270</created>
@@ -502,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706738170880</updated>
     </task>
-    <option name="localTasksCounter" value="513" />
+    <task id="LOCAL-00513" summary="adding some pipe utility files">
+      <created>1706746265753</created>
+      <option name="number" value="00513" />
+      <option name="presentableId" value="LOCAL-00513" />
+      <option name="project" value="LOCAL" />
+      <updated>1706746265753</updated>
+    </task>
+    <option name="localTasksCounter" value="514" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +519,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="i think im starting to trace the errors" />
     <MESSAGE value="might have found the part that needs updating" />
     <MESSAGE value="trying to eliminate extraneous separations" />
     <MESSAGE value="slightly changed name" />
@@ -543,6 +543,7 @@
     <MESSAGE value="updated with many more muscles" />
     <MESSAGE value="removing world for testing robot servo parameters" />
     <MESSAGE value="updating body to ragdoll more realistically, setting reasonable joint limits" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating body to ragdoll more realistically, setting reasonable joint limits" />
+    <MESSAGE value="adding some pipe utility files" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding some pipe utility files" />
   </component>
 </project>

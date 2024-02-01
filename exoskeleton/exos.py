@@ -153,6 +153,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
+            self.sim.enableContactFeedbackAll()
             self.sim_settings()
             self.sim.endLogging()
         else:
@@ -161,18 +162,20 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         Visualization
         """
+
         if config_data["has_vis"]:  # If there's a visualization
             klampt.vis.add("w", self.pcm.world)
             klampt.vis.add("robby", self.pcm.robot)
 
             if config_data["has_sim"]:  # If a simulation is defined AND there's a visualization
                 vid.display_muscles(self.pcm.muscles)  # Displays the muscles
+
             klampt.vis.visualization.setWindowTitle("ExOS")
             klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
 
             klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
-            self.viewport.fit([0, 0, -5], 25)
+            self.viewport.fit([0, 0, 0], 50)
             klampt.vis.show()  # Shows the visualization
         else:
             self.viewport = None
@@ -198,7 +201,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.sim:
             # Attend to the simulation
-            if self.viewport:
+            if klampt.vis.shown():
                 vid.display_muscles(self.pcm.muscles)
                 klampt.vis.lock()
 
@@ -206,7 +209,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 3000)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
 
-            if self.viewport:
+            if klampt.vis.shown():
                 klampt.vis.unlock()
                 klampt.vis.update()
 
