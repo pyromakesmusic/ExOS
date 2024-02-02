@@ -8,14 +8,14 @@ right_superior_trapezius;6;7;-.5,.2,-.8;-1,0.3,2;superior;inferior;20;1;2;2;5;80
 left_rectus_abdominus;8;10;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 right_rectus_abdominus;8;10;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 
-left_inferior_latissimus;8;9;1.4,.8,1;.8,.8,-.5;superior;inferior;20;1;2;2;5;80000
-right_inferior_latissimus;8;9;-1.4,.8,1;-.8,.8,-.5;superior;inferior;20;1;2;2;5;80000
+left_inferior_latissimus;8;10;1.4,.8,1;.8,.8,-.1;superior;inferior;20;1;2;2;5;80000
+right_inferior_latissimus;8;10;-1.4,.8,1;-.8,.8,-.1;superior;inferior;20;1;2;2;5;80000
 
 left_posterior_deltoid;11;13;-.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
 right_posterior_deltoid;12;14;.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_rectus_femoris;10;33;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
-right_rectus_femoris;10;34;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
+left_rectus_femoris;10;33;0,-1,0;0,-.11,0;superior;inferior;20;1;2;2;5;80000
+right_rectus_femoris;10;34;0,-1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 
 left_glute_thing;25;33;.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 right_glute_thing;26;34;-.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
