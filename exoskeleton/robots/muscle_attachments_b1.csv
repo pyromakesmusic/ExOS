@@ -14,12 +14,8 @@ right_inferior_latissimus;8;9;-1.4,.8,1;-.8,.8,-.5;superior;inferior;20;1;2;2;5;
 left_posterior_deltoid;11;13;-.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
 right_posterior_deltoid;12;14;.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_forearm_muscle;19;23;.4,.1,.1;0,0,0;superior;inferior;20;1;2;2;5;80000
-left_bicep_thing;8;19;0.2,-1,2.1;0,0,0;superior;inferior;20;1;2;2;5;800
-
 left_rectus_femoris;10;33;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
 right_rectus_femoris;10;34;0,-1,0;0,-2,0;superior;inferior;20;1;2;2;5;80000
-
 
 left_glute_thing;25;33;.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 right_glute_thing;26;34;-.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000

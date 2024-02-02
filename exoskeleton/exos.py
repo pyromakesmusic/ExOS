@@ -28,6 +28,7 @@ import klampt.sim.settle  # Applies forces and lets them reach equilibrium in si
 import klampt.sim.simulation  # For simulation
 import klampt.io.resource  # For easy resource access
 import klampt.model.subrobot  # Defines the subrobot
+import klampt.model.contact  # For dealing with collisions
 import klampt.math.vectorops as kmv  # This is for cross products
 
 """
@@ -189,9 +190,6 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
         asyncio.run(self.pcm.idle_configuration())
-        # i = 0
-        # while i < 2:
-        print(self.pcm.robot.numLinks())
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
             # i += 1
@@ -201,6 +199,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.sim:
             # Attend to the simulation
+            # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
             if klampt.vis.shown():
                 vid.display_muscles(self.pcm.muscles)
                 klampt.vis.lock()
@@ -225,13 +224,14 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
 
     async def sim_settings(self):
-        print(self.sim.settings())
-        print(self.sim.getSetting("boundaryLayerCollisions"))
-        print(type(self.sim.getSetting("boundaryLayerCollisions")))
         self.sim.setSetting("boundaryLayerCollisions", "1")
         self.sim.setSetting("rigidObjectCollisions", "1")
         self.sim.setSetting("robotSelfCollisions", "1")
         self.sim.setSetting("robotRobotCollisions", "1")
+
+    async def collision_settings(self):
+        contacts = klampt.model.contact.sim_contact_map(self.sim)
+        return contacts
 
     # Control and Kinematics
 
