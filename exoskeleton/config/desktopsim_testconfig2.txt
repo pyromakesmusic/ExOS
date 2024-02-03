@@ -1,7 +1,7 @@
 CORE:
 robots/core_bot_test4.rob
 MUSCLE ATTACHMENTS:
-robots/muscle_attachments_b1.csv
+robots/muscle_attachments_b2.csv
 WORLD:
 worlds/test_world3.xml
 CONTROL RATE:
