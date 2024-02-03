@@ -44,8 +44,8 @@ right_superior_trapezius;5;19;0.4,0.3,-0.4;0,0,0;superior;inferior;20;1;2;2;5;80
 left_trapezius;8;18;-0.1,1.9,2;0,0,0;superior;inferior;20;1;2;2;5;80000
 right_trapezius;8;19;0.1,1.9,2;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_inferior_latissimus;14;11;0.3,.8,0;.8,.8,0;superior;inferior;20;1;2;2;5;80000
-right_inferior_latissimus;15;11;-0.3,.8,0;-.8,.8,0;superior;inferior;20;1;2;2;5;80000
+left_inferior_latissimus;14;11;0,.8,0;.8,.8,0;superior;inferior;20;1;2;2;5;80000
+right_inferior_latissimus;15;11;0,.8,0;-.8,.8,0;superior;inferior;20;1;2;2;5;80000
 
 left_hip_flexor;11;34;0.1,-1,0.3;0,-1,0;superior;inferior;20;1;2;2;5;80000
 right_hip_flexor;11;35;-0.1,-1,0.3;0,-1,0;superior;inferior;20;1;2;2;5;80000
