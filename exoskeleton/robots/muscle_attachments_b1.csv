@@ -1,31 +1,43 @@
 name;link_a;link_b;transform_a;transform_b;label_a;label_b;turns;r_0;l_0;weave_length;turns;max_pressure
-left_sternocleidomastoid;6;7;.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2;2;5;80000
-right_sternocleidomastoid;6;7;-.5,-.2,-1;0,-.8,2.2;superior;inferior;20;1;2;2;5;80000
+left_sternocleidomastoid;6;8;.5,-.2,-1;0,-.8,-2;superior;inferior;20;1;2;2;5;80000
+right_sternocleidomastoid;6;8;-.5,-.2,-1;0,-.8,-2;superior;inferior;20;1;2;2;5;80000
 
 left_superior_trapezius;6;7;.5,.2,-.8;1,0.3,2;superior;inferior;20;1;2;2;5;80000
 right_superior_trapezius;6;7;-.5,.2,-.8;-1,0.3,2;superior;inferior;20;1;2;2;5;80000
 
-left_rectus_abdominus;8;10;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
-right_rectus_abdominus;8;10;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+left_rectus_abdominus;8;11;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+right_rectus_abdominus;8;11;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 
-left_inferior_latissimus;8;10;1.4,.8,1;.8,.8,-.1;superior;inferior;20;1;2;2;5;80000
-right_inferior_latissimus;8;10;-1.4,.8,1;-.8,.8,-.1;superior;inferior;20;1;2;2;5;80000
+left_inferior_latissimus;14;11;0.3,.8,0;.8,.8,0;superior;inferior;20;1;2;2;5;80000
+right_inferior_latissimus;15;11;-0.3,.8,0;-.8,.8,0;superior;inferior;20;1;2;2;5;80000
 
-left_posterior_deltoid;11;13;-.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
-right_posterior_deltoid;12;14;.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
+left_anterior_deltoid;8;18;.1,-2,2.2;0,0,0;superior;inferior;20;1;2;2;5;80000
+right_anterior_deltoid;8;19;.1,-2,2.2;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_rectus_femoris;10;33;0,-1,0;0,-.11,0;superior;inferior;20;1;2;2;5;80000
-right_rectus_femoris;10;34;0,-1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+left_pectoralis_minor;8;18;-.1,-2,1.4;0,0,0;superior;inferior;20;1;2;2;5;80000
+right_pectoralis_minor;8;19;.1,-2,1.4;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_glute_thing;25;33;.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
-right_glute_thing;26;34;-.5,-.1,-.5;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+left_pectoralis_major;8;18;-.1,-2,0.4;0,0,0;superior;inferior;20;1;2;2;5;80000
+right_pectoralis_major;8;19;.1,-2,0.4;0,0,0;superior;inferior;20;1;2;2;5;80000
 
-left_hip_thing;26;34;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
-right_hip_thing;25;33;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
+left_biceps_brachii;18;24;-0.5,1,0;0,0.2,0.4;superior;inferior;20;1;2;2;5;80000
+right_biceps_brachii;19;25;0.5,1,0;0,0.2,0.4;superior;inferior;20;1;2;2;5;80000
 
-left_calf_thing;33;35;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
-right_calf_thing;34;36;0,-.1,0;0,-.1,0;superior;inferior;20;1;2;2;5;80000
 
+left_brachialis;20;24;0.8,0.1,0;0,0,0;proximal;distal;20;1;2;2;5;80000
+right_brachialis;21;25;-0.8,0.1,0;0,0,0;proximal;distal;20;1;2;2;5;80000
+
+left_posterior_deltoid;12;14;-.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
+right_posterior_deltoid;13;15;.1,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
+
+left_rectus_femoris;11;34;0.5,-1,0;0,-.8,0;superior;inferior;20;1;2;2;5;80000
+right_rectus_femoris;11;35;-0.5,-1,0;0,-.8,0;superior;inferior;20;1;2;2;5;80000
+
+left_gluteus;11;34;-0.5,1,-.5;-1,-.1,0;superior;inferior;20;1;2;2;5;80000
+right_gluteus;11;35;0.5,1,-.5;1,-.1,0;superior;inferior;20;1;2;2;5;80000
+
+left_gastrocnemius;20;24;-1,2,-1;0,-.1,-1;superior;inferior;20;1;2;2;5;80000
+right_gastrocnemius;21;25;1,2,-1;0,-.1,-1;superior;inferior;20;1;2;2;5;80000
 
 
 

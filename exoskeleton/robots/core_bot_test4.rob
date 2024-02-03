@@ -8,36 +8,37 @@
 ### 2 base, translation3; ###
 ### 3 base, rotation1; ###
 ### 4 base, rotation2; ###
-### 5 base, rotation3; head; ###
-### 6 cervical vertebrae, rotationZ; ###
-### 7 chest, rotation; ###
-### 8 vertebrae, rotation; ###
+### 5 base, rotation3, head, 1.402kg; ###
+### 6 cervical vertebrae, rotationX; ###
+### 7 cervical vertebrae, rotationZ; ###
+### 8 chest, rotation, 0.93kg; ###
 ### 9 vertebrae, rotation; ###
-### 10 pelvis, rotation; ###
-### 11 left shoulder joint, rotation; ###
-### 12 right shoulder joint, rotation; ###
-### 13 left shoulder joint, rotation2; ###
-### 14 right shoulder joint, rotation2; ###
-### 15 left shoulder joint, rotation3; ###
-### 16 right shoulder joint, rotation3; ###
-### 17 left humerus, fixed; ###
-### 18 right humerus, fixed; ###
-### 19 left elbow joint, rotation; ###
-### 20 right elbow joint, rotation; ###
-### 21 left forearm, fixed; ###
-### 22 right forearm, fixed; ###
-### 23 left hip joint, hip flexion, negative direction is normal flexion; ###
-### 24 right hip joint, hip flexion, negative direction is normal flexion; ###
-### 25 left hip joint, rotation2; ###
-### 26 right hip joint, rotation2; ###
-### 27 left hip joint, rotation3; ###
-### 28 right hip joint, rotation3; ###
-### 29 left femur, fixed; ###
-### 30 right femur, fixed; ###
-### 31 left knee joint, rotation, positive direction is normal flexion; ###
-### 32 right knee joint, rotation positive direction is normal flexion; ###
-### 33 left tibia, fixed; ###
-### 34 right tibia, fixed; ###
+### 10 vertebrae, rotation; ###
+### 11 pelvis, rotation, 1.277kg; ###
+### 12 left shoulder joint, rotation; ###
+### 13 right shoulder joint, rotation; ###
+### 14 left shoulder joint, rotation2; ###
+### 15 right shoulder joint, rotation2; ###
+### 16 left shoulder joint, rotation3; ###
+### 17 right shoulder joint, rotation3; ###
+### 18 left humerus, fixed; ###
+### 19 right humerus, fixed; ###
+### 20 left elbow joint, rotation; ###
+### 21 right elbow joint, rotation; ###
+### 22 left forearm, fixed; ###
+### 23 right forearm, fixed; ###
+### 24 left hip joint, hip flexion, negative direction is normal flexion; ###
+### 25 right hip joint, hip flexion, negative direction is normal flexion; ###
+### 26 left hip joint, rotation2; ###
+### 27 right hip joint, rotation2; ###
+### 28 left hip joint, rotation3; ###
+### 29 right hip joint, rotation3; ###
+### 30 left femur, fixed; ###
+### 31 right femur, fixed; ###
+### 32 left knee joint, rotation, positive direction is normal flexion; ###
+### 33 right knee joint, rotation positive direction is normal flexion; ###
+### 34 left tibia, fixed; ###
+### 35 right tibia, fixed; ###
 
 TParent 1 0 0   0 1 0   0 0 1   0 0 6  \
 1 0 0   0 1 0   0 0 1   0 0 0  \
@@ -48,10 +49,11 @@ TParent 1 0 0   0 1 0   0 0 1   0 0 6  \
 1 0 0   0 1 0   0 0 1   0 0 -0.8 \
 1 0 0   0 1 0   0 0 1   0 0 -4 \
 1 0 0   0 1 0   0 0 1   0 0 -0.4 \
+1 0 0   0 1 0   0 0 1   0 0.8 0 \
 1 0 0   0 1 0   0 0 1   0 0 -1 \
-1 0 0   0 1 0   0 0 1   0 0 -1.4 \
-0.0707372 0.9974950  0.0000000   -0.9974950  0.0707372  0.0000000   0.0000000  0.0000000  1.0000000   2 1 4  \
-0.0707372 -0.9974950  0.0000000   0.9974950  0.0707372  0.0000000   0.0000000  0.0000000  1.0000000   -2 1 4   \
+1 0 0   0 1 0   0 0 1   0 -0.6 -1.4 \
+0.0707372 0.9974950  0.0000000   -0.9974950  0.0707372  0.0000000   0.0000000  0.0000000  1.0000000   2.5 1 3  \
+0.0707372 -0.9974950  0.0000000   0.9974950  0.0707372  0.0000000   0.0000000  0.0000000  1.0000000   -2.5 1 3   \
 1 0 0   0 1 0   0 0 1   0 1 -0.4   \
 1 0 0   0 1 0   0 0 1   0 1 -0.4   \
 1 0 0   0 1 0   0 0 1   0 0 0  \
@@ -77,15 +79,15 @@ TParent 1 0 0   0 1 0   0 0 1   0 0 6  \
 1 0 0   0 1 0   0 0 1   0 2 0   \
 1 0 0   0 1 0   0 0 1   0 2 0
 
-parents -1 0 1 2 3 4 5 6 7 8 9 9 9 11 12 13 14 15 16 17 18 19 20 21 22 10 10 25 26 27 28 29 30 31 32 33 34
-axis 1 0 0   0 1 0    0 0 1   0 0 1   0 1 0   1 0 0   0 0 1   1 0 0   0 1 0   0 0 1   1 0 0   0 0 1   0 0 1   1 0 0   1 0 0   0 1 0   0 1 0   0 0 1   0 0 1   1 0 0   1 0 0   1 0 0   0 1 0   0 1 0   1 0 0   1 0 0   1 0 0   0 1 0   0 1 0   0 0 1   0 0 1   1 0 0   1 0 0   1 0 0   1 0 0   1 0 0   1 0 0
-jointtype p p p r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r
-qMin -10 -10 -10 -0.1 -0.1 -0.1 -0.4 -0.3 -0.3 0 -0.1 -1.5 -1.5 -0.5 -0.5 0 0 0 0 0 0 -1 -1 0 0 -4 -4 0 0 0 0 0 0 0 0 0 0
-qMax 10 10 10 0.1 0.1 0.1 0.4 0.14 0.14 0 0 1.5 1.5 0.5 0.5 0 0 0 0 0.01 0.01 0.1 0.1 0 0 1 1 0 0 0 0 0 0 2 2 0 0
-q 0 0 0 0 0 0 0 0 0 0 0 -0.3 -0.3 -0.1 0 0 0 0 0 3 3 5 5  1 1 -4 -4 1 1 0 0 0 0 3 3 0 0
-geometry ""   ""   ""   ""    ""    "meshes/C0_v2.stl"  "meshes/sphere.off" "meshes/C1_v2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/C4.stl"   "meshes/RA0.stl"   "meshes/RA0.stl"   "meshes/sphere.off"   "meshes/sphere.off"   ""   ""   ""   ""   "meshes/A2.stl"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A3.stl"   "meshes/A3.stl"   "meshes/sphere.off"   "meshes/sphere.off"   ""   ""   ""   ""   "meshes/A2.stl"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A3.stl"   "meshes/A3.stl"
-geomscale 1 1 1 1 1 8 0.3 9 0.2 0.3 0.4 0.5 0.5 0.4 0.4 3 3 2 2 2 2 .3 .3 2 2 .3 .3 1 1 1 1 2.4 2.4 .3 .3 2.4 2.4
-mass 0.01 0.01 0.01 0.01 0.01 2 0.5 0.4 0.5 0.5 0.9 .1 .1 .1 .1 0.01 0.01 0.01 0.01 .1 .1 .1 .1 .1 .1 .1 .1 0.01 0.01 0.01 0.01 4 4 0.01 0.01 4 4
+parents -1 0 1 2 3 4 5 6 7 8 9 10 10 10 12 13 14 15 16 17 18 19 20 21 22 23 11 11 26 27 28 29 30 31 32 33 34 35
+axis 1 0 0   0 1 0    0 0 1   0 0 1   0 1 0   1 0 0   0 0 1   1 0 0   0 1 0   0 1 0   0 0 1   1 0 0   0 0 1   0 0 1   1 0 0   1 0 0   0 1 0   0 1 0   0 0 1   0 0 1   1 0 0   1 0 0   1 0 0   0 1 0   0 1 0   1 0 0   1 0 0   1 0 0   0 1 0   0 1 0   0 0 1   0 0 1   1 0 0   1 0 0   1 0 0   1 0 0   1 0 0   1 0 0
+jointtype p p p r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r r
+qMin -10 -10 -10 -0.1 -0.1 -0.1 -0.3 -0.2 -0.3 -0.3 -0.1 -0.5 -1.1 -1.1 -0.5 -0.5 0 0 0 0 0 0 -0.1 -0.1 0 0 0.12 0.12 0 0 0.3 0.3 0 0 0 0 0 0
+qMax 10 10 10 0.1 0.1 0.1 0.3 0.2 0.2 0.2 0.3 0.3 1.1 1.1 0.5 0.5 0 0 0 0 0.01 0.01 0.1 0.1 0 0 1.4 1.4 1.1 1.1 2 2 0 0 2 2 0 0
+q 0 0 0 0 0 0 0 0 0 0 0 0 -0.3 -0.3 -0.1 0 0 0 1 1 3 3 1 1 2 2 0.2 0.2 0.4 -0.4 1.1 1.1 0 0 4 4 0 0
+geometry ""   ""   ""   ""    ""    "meshes/C0_v2.stl"   "meshes/sphere.off"   ""   "meshes/C1_v2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/C4.stl"   "meshes/RA0.stl"   "meshes/RA0.stl"   "meshes/sphere.off"   "meshes/sphere.off"   ""   ""   ""   ""   "meshes/A2.stl"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A3.stl"   "meshes/A3.stl"   "meshes/sphere.off"   "meshes/sphere.off"   ""   ""   ""   ""   "meshes/A2.stl"   "meshes/A2.stl"   "meshes/sphere.off"   "meshes/sphere.off"   "meshes/A3.stl"   "meshes/A3.stl"
+geomscale 1 1 1 1 1 8 0.3 1 9 0.2 0.3 0.4 0.5 0.5 0.4 0.4 3 3 2 2 2 2 .3 .3 2 2 .3 .3 1 1 1 1 2.4 2.4 .3 .3 2.4 2.4
+mass 0.01 0.01 0.01 0.01 0.01 1.402 0.5 0.01 0.93 0.5 0.5 1.277 .1 .1 .1 .1 0.01 0.01 0.01 0.01 .1 .1 .1 .1 .1 .1 .1 .1 0.01 0.01 0.01 0.01 4 4 0.01 0.01 4 4
 automass
-torqueMax  0 0 0 0 0 0 1 0.2 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50
-accMax 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000
+torqueMax  0 0 0 0 0 0 1 0.2 0.5 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50
+accMax 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000 1000
