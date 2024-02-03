@@ -7,6 +7,7 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00474" summary="added a setup file for the pyonics library">
-      <created>1706243594932</created>
-      <option name="number" value="00474" />
-      <option name="presentableId" value="LOCAL-00474" />
-      <option name="project" value="LOCAL" />
-      <updated>1706243594932</updated>
     </task>
     <task id="LOCAL-00475" summary="added meta.yaml file">
       <created>1706243950532</created>
@@ -501,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706929267159</updated>
     </task>
-    <option name="localTasksCounter" value="523" />
+    <task id="LOCAL-00523" summary="added a diagnostic function to print total number of muscles, currently at 26">
+      <created>1706929569206</created>
+      <option name="number" value="00523" />
+      <option name="presentableId" value="LOCAL-00523" />
+      <option name="project" value="LOCAL" />
+      <updated>1706929569206</updated>
+    </task>
+    <option name="localTasksCounter" value="524" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -517,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="list of arguments that are floats" />
     <MESSAGE value="physics works now" />
     <MESSAGE value="physics works better. this is the first stable release i would say" />
     <MESSAGE value="adding more arms and legs to the robot physics" />
@@ -542,6 +542,7 @@
     <MESSAGE value="more updating joint limits" />
     <MESSAGE value="test joint limits set" />
     <MESSAGE value="updating muscle attachment points, adding many many muscles" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating muscle attachment points, adding many many muscles" />
+    <MESSAGE value="added a diagnostic function to print total number of muscles, currently at 26" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a diagnostic function to print total number of muscles, currently at 26" />
   </component>
 </project>

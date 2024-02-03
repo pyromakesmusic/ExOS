@@ -196,7 +196,6 @@ class ExOS(klampt.control.OmniRobotInterface):
             # asyncio.run(asyncio.sleep(1))
 
     async def main(self):
-
         # Diagnostics go here at the top
         await self.datalog()
 
@@ -239,7 +238,8 @@ class ExOS(klampt.control.OmniRobotInterface):
     # Control and Kinematics
     async def datalog(self, verbose=True):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
-        print(self.pcm.muscles.shape[0])
+        # print(self.pcm.muscles.shape[0])
+        pass
     def sensedPosition(self):
         """
         Returns the list of link transforms, and???
@@ -269,6 +269,7 @@ def launch_standard():
     plat = platform.platform()
     print("Platform: ")
     print(plat)
+    print("Initializing...")
     if plat.startswith("Windows"):  # Windows default behaviour
         config_path = tk.filedialog.askopenfilename()
 
