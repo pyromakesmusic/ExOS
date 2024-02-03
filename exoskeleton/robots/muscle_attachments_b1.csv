@@ -1,4 +1,5 @@
 name;link_a;link_b;transform_a;transform_b;label_a;label_b;turns;r_0;l_0;weave_length;turns;max_pressure
+
 left_sternocleidomastoid;6;8;.5,-.2,-1;0,-.8,-2;superior;inferior;20;1;2;2;5;80000
 right_sternocleidomastoid;6;8;-.5,-.2,-1;0,-.8,-2;superior;inferior;20;1;2;2;5;80000
 
@@ -7,6 +8,8 @@ right_superior_trapezius;6;7;-.5,.2,-.8;-1,0.3,2;superior;inferior;20;1;2;2;5;80
 
 left_rectus_abdominus;8;11;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 right_rectus_abdominus;8;11;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+
+linea_alba;8;11;0,0,0;0,0,0;superior;inferior;20;1;2;2;5;80000
 
 left_inferior_latissimus;14;11;0.3,.8,0;.8,.8,0;superior;inferior;20;1;2;2;5;80000
 right_inferior_latissimus;15;11;-0.3,.8,0;-.8,.8,0;superior;inferior;20;1;2;2;5;80000
@@ -35,8 +38,12 @@ right_rectus_femoris;11;35;-0.5,-1,0;0,-.8,0;superior;inferior;20;1;2;2;5;80000
 left_gluteus;11;34;-0.5,1,-.5;-1,-.1,0;superior;inferior;20;1;2;2;5;80000
 right_gluteus;11;35;0.5,1,-.5;1,-.1,0;superior;inferior;20;1;2;2;5;80000
 
-left_gastrocnemius;20;24;-1,2,-1;0,-.1,-1;superior;inferior;20;1;2;2;5;80000
-right_gastrocnemius;21;25;1,2,-1;0,-.1,-1;superior;inferior;20;1;2;2;5;80000
+
+left_soleus;26;34;0,2,0;0,-.1,-1;superior;inferior;20;1;2;2;5;80000
+right_soleus;27;35;0,2,0;0,-.1,-1;superior;inferior;20;1;2;2;5;80000
+
+left_gastrocnemius;26;34;-1,2,0;0,-.5,-1;superior;inferior;20;1;2;2;5;80000
+right_gastrocnemius;27;35;1,2,0;0,-.5,-1;superior;inferior;20;1;2;2;5;80000
 
 
 
