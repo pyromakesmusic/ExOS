@@ -44,6 +44,8 @@ def display_bones(robby):
     """
     Takes robot as an argument and displays all of its bones.
     """
+    for x in range(robby.numLinks()):
+        kvis.colorize.colorize(robby.link(x), value="n")
     return 1
 def display_muscles(df=pd.DataFrame):
     """

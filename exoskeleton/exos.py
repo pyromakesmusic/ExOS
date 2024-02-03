@@ -213,7 +213,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
             if klampt.vis.shown():
                 vid.display_muscles(self.pcm.muscles)
-                vid.display_bones()
+                vid.display_bones(self.pcm.robot)
                 klampt.vis.lock()
 
             # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.

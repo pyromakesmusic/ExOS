@@ -159,13 +159,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00482" summary="not showing forces as i want">
-      <created>1706360135687</created>
-      <option name="number" value="00482" />
-      <option name="presentableId" value="LOCAL-00482" />
-      <option name="project" value="LOCAL" />
-      <updated>1706360135687</updated>
-    </task>
     <task id="LOCAL-00483" summary="remembering how to make async stuff work">
       <created>1706360949105</created>
       <option name="number" value="00483" />
@@ -502,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706967541535</updated>
     </task>
-    <option name="localTasksCounter" value="531" />
+    <task id="LOCAL-00531" summary="added a bone display function call">
+      <created>1706967908595</created>
+      <option name="number" value="00531" />
+      <option name="presentableId" value="LOCAL-00531" />
+      <option name="project" value="LOCAL" />
+      <updated>1706967908595</updated>
+    </task>
+    <option name="localTasksCounter" value="532" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got robot with all limbs loaded" />
     <MESSAGE value="robot editing" />
     <MESSAGE value="updating robot file" />
     <MESSAGE value="messing with an easy script to help edit the robot" />
@@ -543,6 +542,7 @@
     <MESSAGE value="updating muscle attachment points" />
     <MESSAGE value="made a new test file for testing single muscles" />
     <MESSAGE value="implementing exception handling and collision/configuration space search" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing exception handling and collision/configuration space search" />
+    <MESSAGE value="added a bone display function call" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a bone display function call" />
   </component>
 </project>
