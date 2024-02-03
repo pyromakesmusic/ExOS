@@ -9,9 +9,6 @@
       <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b2.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00481" summary="updating hyperthreading to hopefully bring graphics back soon">
-      <created>1706325132526</created>
-      <option name="number" value="00481" />
-      <option name="presentableId" value="LOCAL-00481" />
-      <option name="project" value="LOCAL" />
-      <updated>1706325132526</updated>
     </task>
     <task id="LOCAL-00482" summary="not showing forces as i want">
       <created>1706360135687</created>
@@ -505,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706964173426</updated>
     </task>
-    <option name="localTasksCounter" value="530" />
+    <task id="LOCAL-00530" summary="implementing exception handling and collision/configuration space search">
+      <created>1706967541535</created>
+      <option name="number" value="00530" />
+      <option name="presentableId" value="LOCAL-00530" />
+      <option name="project" value="LOCAL" />
+      <updated>1706967541535</updated>
+    </task>
+    <option name="localTasksCounter" value="531" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added robot arms" />
     <MESSAGE value="got robot with all limbs loaded" />
     <MESSAGE value="robot editing" />
     <MESSAGE value="updating robot file" />
@@ -546,6 +542,7 @@
     <MESSAGE value="lowering forces to actual values" />
     <MESSAGE value="updating muscle attachment points" />
     <MESSAGE value="made a new test file for testing single muscles" />
-    <option name="LAST_COMMIT_MESSAGE" value="made a new test file for testing single muscles" />
+    <MESSAGE value="implementing exception handling and collision/configuration space search" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing exception handling and collision/configuration space search" />
   </component>
 </project>

@@ -2,6 +2,7 @@
 import klampt
 import pandas as pd
 import klampt.vis as kvis
+import klampt.vis.colorize
 
 
 def configure_hud_vis():
@@ -32,10 +33,18 @@ def display_muscle_row(row=pd.Series):
     name = row["name"]
     muscle = row["muscle_objects"]
     redness = color_calc(row["pressure"], row["max_pressure"])
+
     kvis.add(name, muscle.geometry)
-    kvis.setColor(name, 0, 0.2, 0, 1)
+
+    # kvis.setColor(name, 0, 0.2, 0, 1)
     kvis.hideLabel(name)
 
+
+def display_bones(robby):
+    """
+    Takes robot as an argument and displays all of its bones.
+    """
+    return 1
 def display_muscles(df=pd.DataFrame):
     """
     df: Pandas Dataframe containing muscle information.
