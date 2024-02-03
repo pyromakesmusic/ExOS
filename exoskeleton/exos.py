@@ -205,10 +205,11 @@ class ExOS(klampt.control.OmniRobotInterface):
 
     async def main(self):
         # Diagnostics go here at the top
-        await self.datalog()
+        #await self.datalog()
 
         if self.sim:
             # Attend to the simulation
+
             # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
             if klampt.vis.shown():
                 vid.display_muscles(self.pcm.muscles)
@@ -247,7 +248,14 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def datalog(self, verbose=True):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
         # print(self.pcm.muscles.shape[0])
-        pass
+        try:
+            if self.sim:
+                return klampt.model.contact.sim_contact_map(self.sim)
+            else:
+                return None
+        except SystemError:
+            return "Contact map calculations failed."
+
     def sensedPosition(self):
         """
         Returns the list of link transforms, and???

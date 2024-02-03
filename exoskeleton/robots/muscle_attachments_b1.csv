@@ -6,8 +6,8 @@ right_sternocleidomastoid;5;7;-.5,-.8,-1;0,-.8,1;superior;inferior;20;1;2;2;5;80
 left_rectus_abdominus;8;11;.5,-.3,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 right_rectus_abdominus;8;11;-.5,-.3,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 
-left_lower_abdominals;12;24;.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
-right_lower_abdominas;12;25;-.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+left_lower_abdominals;8;11;-0.5,-.8,0.8;.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
+right_lower_abdominas;8;11;0.5,-.8,0.8;-.5,-.5,0.2;superior;inferior;20;1;6;6;20;80000
 
 left_internal_transverse_abdominus;8;11;0.1,-.8,0.8;1,0,0.2;superior;inferior;20;1;6;6;20;80000
 right_internal_transverse_abdominus;8;11;-0.1,-.8,0.8;-1,0,0.2;superior;inferior;20;1;6;6;20;80000
@@ -44,14 +44,21 @@ right_inferior_latissimus;15;11;-0.3,.8,0;-.8,.8,0;superior;inferior;20;1;2;2;5;
 left_hip_flexor;11;34;0.1,-1,0.3;0,-1,0;superior;inferior;20;1;2;2;5;80000
 right_hip_flexor;11;35;-0.1,-1,0.3;0,-1,0;superior;inferior;20;1;2;2;5;80000
 
-left_rectus_femoris;11;34;0.5,-1,0;0,-.8,0;superior;inferior;20;1;2;2;5;80000
-right_rectus_femoris;11;35;-0.5,-1,0;0,-.8,0;superior;inferior;20;1;2;2;5;80000
+left_vastus_lateralis;11;34;2.5,1,0;0.4,0.2,0;superior;inferior;20;1;2;2;5;80000
+right_vastus_lateralis;11;35;-2.5,1,0;0.4,0.2,0;superior;inferior;20;1;2;2;5;80000
+
+left_rectus_femoris;11;34;0.5,1,0;0,0.4,0;superior;inferior;20;1;2;2;5;80000
+right_rectus_femoris;11;35;-0.5,1,0;0,0.4,0;superior;inferior;20;1;2;2;5;80000
+
+
+left_biceps_femoris;11;34;0.5,-1,0;0,-0.2,0;superior;inferior;20;1;2;2;5;80000
+right_biceps_femoris;11;35;-0.5,-1,0;0,-0.2,0;superior;inferior;20;1;2;2;5;80000
 
 left_gluteus;11;34;-0.5,1,0;-1,0.3,1;superior;inferior;20;1;2;2;5;80000
 right_gluteus;11;35;0.5,1,0;1,0.3,1;superior;inferior;20;1;2;2;5;80000
 
-left_soleus;26;34;0,2,-1;0,2,-1;superior;inferior;20;1;2;2;5;80000
-right_soleus;27;35;0,2,-1;0,2,-1;superior;inferior;20;1;2;2;5;80000
+left_soleus;26;34;0,2,0;0,2,-1;superior;inferior;20;1;2;2;5;80000
+right_soleus;27;35;0,2,0;0,2,-1;superior;inferior;20;1;2;2;5;80000
 
 left_gastrocnemius;26;34;-1,2,0;0,-.5,-1;superior;inferior;20;1;2;2;5;80000
 right_gastrocnemius;27;35;1,2,0;0,-.5,-1;superior;inferior;20;1;2;2;5;80000

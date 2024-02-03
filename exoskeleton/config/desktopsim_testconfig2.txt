@@ -1,11 +1,11 @@
 CORE:
 robots/core_bot_test4.rob
 MUSCLE ATTACHMENTS:
-robots/muscle_attachments_b2.csv
+robots/muscle_attachments_b1.csv
 WORLD:
-worlds/test_world3.xml
+worlds/test_world2.xml
 CONTROL RATE:
-.01
+.001
 CONTROL ADDRESS:
 127.0.0.1
 CONTROL PORT:
