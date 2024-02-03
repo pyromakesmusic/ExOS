@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,13 +160,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00476" summary="got it launching to a desktop sim easily and consistently now, still need to change the colors as the signals come in">
-      <created>1706244493949</created>
-      <option name="number" value="00476" />
-      <option name="presentableId" value="LOCAL-00476" />
-      <option name="project" value="LOCAL" />
-      <updated>1706244493949</updated>
     </task>
     <task id="LOCAL-00477" summary="added error messages, cleaning up OS">
       <created>1706244690619</created>
@@ -500,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706931377712</updated>
     </task>
-    <option name="localTasksCounter" value="525" />
+    <task id="LOCAL-00525" summary="needs a wrist/palm and ankle/foot to fully describe musculature necessary, at minimum - want to also implement contact map colorization and start extracting contact forces, plus define the multipath classes that will describe the primary lifts">
+      <created>1706932421769</created>
+      <option name="number" value="00525" />
+      <option name="presentableId" value="LOCAL-00525" />
+      <option name="project" value="LOCAL" />
+      <updated>1706932421769</updated>
+    </task>
+    <option name="localTasksCounter" value="526" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -516,7 +520,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="physics works better. this is the first stable release i would say" />
     <MESSAGE value="adding more arms and legs to the robot physics" />
     <MESSAGE value="updating link names" />
     <MESSAGE value="got free floating base robot working" />
@@ -541,6 +544,7 @@
     <MESSAGE value="updating muscle attachment points, adding many many muscles" />
     <MESSAGE value="added a diagnostic function to print total number of muscles, currently at 26" />
     <MESSAGE value="updating joint limits" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating joint limits" />
+    <MESSAGE value="needs a wrist/palm and ankle/foot to fully describe musculature necessary, at minimum - want to also implement contact map colorization and start extracting contact forces, plus define the multipath classes that will describe the primary lifts" />
+    <option name="LAST_COMMIT_MESSAGE" value="needs a wrist/palm and ankle/foot to fully describe musculature necessary, at minimum - want to also implement contact map colorization and start extracting contact forces, plus define the multipath classes that will describe the primary lifts" />
   </component>
 </project>

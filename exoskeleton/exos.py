@@ -21,15 +21,18 @@ KLAMPT IMPORTS
 """
 
 import klampt  # Main robotics library
+
 import klampt.vis  # For visualization
 import klampt.vis.colorize  # For colorizing to easily assess robot performance
+
 import klampt.sim.batch  # For batch simulation
 import klampt.sim.settle  # Applies forces and lets them reach equilibrium in simulation
 import klampt.sim.simulation  # For simulation
+
 import klampt.io.resource  # For easy resource access
+
 import klampt.model.subrobot  # Defines the subrobot
 import klampt.model.contact  # For dealing with collisions
-import klampt.math.vectorops as kmv  # This is for cross products
 
 """
 CUSTOM LIBRARIES
@@ -152,6 +155,9 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
             self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
+        if True:  # Will later be for "has motion planning" I think
+            self.planner = klampt.plan.
+
         if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
             self.sim.enableContactFeedbackAll()
@@ -244,7 +250,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         Returns the list of link transforms, and???
         """
-        return self.pcm.bones
+        return self.pcm.bones, self.pcm.muscles
 
     def controlRate(self):
         """
