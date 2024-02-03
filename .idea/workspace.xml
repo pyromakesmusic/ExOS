@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/demo/signal_demo3.ens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,13 +157,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00473" summary="added a setup file for the pyonics library">
-      <created>1706243312828</created>
-      <option name="number" value="00473" />
-      <option name="presentableId" value="LOCAL-00473" />
-      <option name="project" value="LOCAL" />
-      <updated>1706243312828</updated>
     </task>
     <task id="LOCAL-00474" summary="added a setup file for the pyonics library">
       <created>1706243594932</created>
@@ -502,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706880395453</updated>
     </task>
-    <option name="localTasksCounter" value="522" />
+    <task id="LOCAL-00522" summary="updating muscle attachment points, adding many many muscles">
+      <created>1706929267159</created>
+      <option name="number" value="00522" />
+      <option name="presentableId" value="LOCAL-00522" />
+      <option name="project" value="LOCAL" />
+      <updated>1706929267159</updated>
+    </task>
+    <option name="localTasksCounter" value="523" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="reorganizing and making signposts" />
     <MESSAGE value="list of arguments that are floats" />
     <MESSAGE value="physics works now" />
     <MESSAGE value="physics works better. this is the first stable release i would say" />
@@ -543,6 +541,7 @@
     <MESSAGE value="changing joint limits still" />
     <MESSAGE value="more updating joint limits" />
     <MESSAGE value="test joint limits set" />
-    <option name="LAST_COMMIT_MESSAGE" value="test joint limits set" />
+    <MESSAGE value="updating muscle attachment points, adding many many muscles" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating muscle attachment points, adding many many muscles" />
   </component>
 </project>

@@ -155,7 +155,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
             self.sim.enableContactFeedbackAll()
-            self.sim_settings()
+            # asyncio.run(self.sim_settings())
             self.sim.endLogging()
         else:
             self.sim = None
@@ -197,6 +197,9 @@ class ExOS(klampt.control.OmniRobotInterface):
 
     async def main(self):
 
+        # Diagnostics go here at the top
+        await self.datalog()
+
         if self.sim:
             # Attend to the simulation
             # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
@@ -234,7 +237,9 @@ class ExOS(klampt.control.OmniRobotInterface):
         return contacts
 
     # Control and Kinematics
-
+    async def datalog(self, verbose=True):
+        # A diagnostic function for printing to console or logging other relevant things at the top level.
+        print(self.pcm.muscles.shape[0])
     def sensedPosition(self):
         """
         Returns the list of link transforms, and???

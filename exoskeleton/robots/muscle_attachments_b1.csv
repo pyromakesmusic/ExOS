@@ -23,7 +23,6 @@ right_pectoralis_major;8;19;.1,-2,0.4;0,0,0;superior;inferior;20;1;2;2;5;80000
 left_biceps_brachii;18;24;-0.5,1,0;0,0.2,0.4;superior;inferior;20;1;2;2;5;80000
 right_biceps_brachii;19;25;0.5,1,0;0,0.2,0.4;superior;inferior;20;1;2;2;5;80000
 
-
 left_brachialis;20;24;0.8,0.1,0;0,0,0;proximal;distal;20;1;2;2;5;80000
 right_brachialis;21;25;-0.8,0.1,0;0,0,0;proximal;distal;20;1;2;2;5;80000
 
