@@ -160,9 +160,6 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
             self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
-        if True:  # Will later be for "has motion planning" I think
-            self.planner = klampt.plan.
-
         if config_data["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
             self.sim.enableContactFeedbackAll()

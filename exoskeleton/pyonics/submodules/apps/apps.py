@@ -1,7 +1,7 @@
 import asyncio  # Needs asynchronous functionality
 import pandas as pd
 import gpsd  # GPS library
-import cv2  # Camera library
+import cv2  # CameraWidget library
 from datetime import datetime
 import asyncio
 # Klamp't imports
@@ -10,6 +10,10 @@ import klampt
 import klampt.model.coordinates
 import klampt.model.collide
 import klampt.model.contact
+import klampt.plan.robotplanning
+import klampt.plan.robotcspace
+import klampt.plan.cspace
+import klampt.plan.rigidobjectcspace
 
 # Each app should be its own class
 
@@ -100,7 +104,7 @@ class TextWidget:
         self.text = text
         return self.text
 
-class Camera(klampt.vis.glcommon.GLProgram):
+class CameraWidget(klampt.vis.glcommon.GLProgram):
     def __init__(self, i):
         klampt.vis.glcommon.GLProgram.__init__(self)
         # Launches with an index of a particular camera
@@ -173,6 +177,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
 
         if collisions:
             self.collider = klampt.model.collide.WorldCollider(self.world)
+            self.planner = klampt.plan
         else:
             self.collider = None
 

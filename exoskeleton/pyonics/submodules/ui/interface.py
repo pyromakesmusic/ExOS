@@ -28,7 +28,7 @@ import vosk  # Voice recognition library
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from ..apps.apps import Map, Camera, Clock, DateWidget, TextWidget
+from ..apps.apps import Map, CameraWidget, Clock, DateWidget, TextWidget
 
 """
 FUNCTION DEFINITIONS #1 
@@ -182,7 +182,7 @@ class AugmentOverlayKlUI(kvis.glcommon.GLProgram):
         self.map = Map()
         self.missions = TextWidget()
         self.missions.update("No Missions")
-        #self.camera = Camera(0)
+        #self.camera = CameraWidget(0)
         # Convert the image data to a NumPy array
         self.image_array = None
 
@@ -352,7 +352,7 @@ class AugmentOverlayTkUI:
 
         # Sets up the camera feed and display if present
         if has_camera:
-            self.camera = Camera(0)
+            self.camera = CameraWidget(0)
         else:
             self.camera = None
 
