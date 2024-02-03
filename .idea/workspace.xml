@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,13 +159,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00483" summary="remembering how to make async stuff work">
-      <created>1706360949105</created>
-      <option name="number" value="00483" />
-      <option name="presentableId" value="LOCAL-00483" />
-      <option name="project" value="LOCAL" />
-      <updated>1706360949105</updated>
     </task>
     <task id="LOCAL-00484" summary="the muscle update method returns something, i need to use that something">
       <created>1706362054075</created>
@@ -502,7 +496,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706967908595</updated>
     </task>
-    <option name="localTasksCounter" value="532" />
+    <task id="LOCAL-00532" summary="turned colorizing on">
+      <created>1706968145342</created>
+      <option name="number" value="00532" />
+      <option name="presentableId" value="LOCAL-00532" />
+      <option name="project" value="LOCAL" />
+      <updated>1706968145342</updated>
+    </task>
+    <option name="localTasksCounter" value="533" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -518,7 +519,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="robot editing" />
     <MESSAGE value="updating robot file" />
     <MESSAGE value="messing with an easy script to help edit the robot" />
     <MESSAGE value="updated with many more muscles" />
@@ -543,6 +543,7 @@
     <MESSAGE value="made a new test file for testing single muscles" />
     <MESSAGE value="implementing exception handling and collision/configuration space search" />
     <MESSAGE value="added a bone display function call" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a bone display function call" />
+    <MESSAGE value="turned colorizing on" />
+    <option name="LAST_COMMIT_MESSAGE" value="turned colorizing on" />
   </component>
 </project>
