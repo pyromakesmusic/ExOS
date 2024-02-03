@@ -34,6 +34,11 @@ import klampt.io.resource  # For easy resource access
 import klampt.model.subrobot  # Defines the subrobot
 import klampt.model.contact  # For dealing with collisions
 
+import klampt.plan.cspace
+import klampt.plan.robotcspace
+import klampt.plan.rigidobjectcspace
+import klampt.plan.robotplanning
+
 """
 CUSTOM LIBRARIES
 """
@@ -212,8 +217,8 @@ class ExOS(klampt.control.OmniRobotInterface):
                 vid.display_muscles(self.pcm.muscles)
                 klampt.vis.lock()
 
-            # Main operating system loop.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 3000)
+            # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 1)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
 
             if klampt.vis.shown():
