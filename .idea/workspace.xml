@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/testing/cameratest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/testing/cameratest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/testing/kinetrajopt/assets/pr2/pr2.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/testing/kinetrajopt/assets/pr2/pr2.urdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/testing/kinetrajopt/assets/ur5data/ur5Blocks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/testing/kinetrajopt/assets/ur5data/ur5Blocks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/testing/kinetrajopt/assets/ur5data/ur5BlocksModified.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/testing/kinetrajopt/assets/ur5data/ur5BlocksModified.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/testing/sensor_matplotlib.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/testing/sensor_matplotlib.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_1.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_1.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_3.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_3.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_4.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_4.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_5.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_5.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_base.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_base.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger_1.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger_1.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger_2.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger_2.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger_3.dae" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/data/robots/jaco/jaco_link_finger_3.dae" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/ui/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,13 +160,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00479" summary="updating comments">
-      <created>1706245422224</created>
-      <option name="number" value="00479" />
-      <option name="presentableId" value="LOCAL-00479" />
-      <option name="project" value="LOCAL" />
-      <updated>1706245422224</updated>
     </task>
     <task id="LOCAL-00480" summary="updating comments">
       <created>1706276343648</created>
@@ -517,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706937936967</updated>
     </task>
-    <option name="localTasksCounter" value="528" />
+    <task id="LOCAL-00528" summary="updating muscle attachment points">
+      <created>1706963050816</created>
+      <option name="number" value="00528" />
+      <option name="presentableId" value="LOCAL-00528" />
+      <option name="project" value="LOCAL" />
+      <updated>1706963050816</updated>
+    </task>
+    <option name="localTasksCounter" value="529" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -533,7 +520,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="got free floating base robot working" />
     <MESSAGE value="got the shoulders on" />
     <MESSAGE value="added robot arms" />
     <MESSAGE value="got robot with all limbs loaded" />
@@ -558,6 +544,7 @@
     <MESSAGE value="needs a wrist/palm and ankle/foot to fully describe musculature necessary, at minimum - want to also implement contact map colorization and start extracting contact forces, plus define the multipath classes that will describe the primary lifts" />
     <MESSAGE value="just reorganizing" />
     <MESSAGE value="lowering forces to actual values" />
-    <option name="LAST_COMMIT_MESSAGE" value="lowering forces to actual values" />
+    <MESSAGE value="updating muscle attachment points" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating muscle attachment points" />
   </component>
 </project>
