@@ -19,6 +19,7 @@ OUTSIDE LIBRARY IMPORTS
 """
 import klampt
 import klampt.math.vectorops as kmv
+import klampt.model.contact as kmc
 import pythonosc
 from pythonosc.dispatcher import Dispatcher
 import pythonosc.osc_server
@@ -139,6 +140,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         app.setColor(0, 1, 0, 1)
         return app
 
+class MuscleGroup():
+    pass
 
 """
 Network Controller
@@ -201,6 +204,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.state = "On"
         self.shutdown_flag = False
         self.server = None
+        self.collider = None
 
         if config_data["has_robworld"]:
             self.world = klampt.io.load('WorldModel', config_data["world_path"])  # Loads the world, this is where it's made
@@ -284,6 +288,18 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     async def shutdown(self):
         self.shutdown_flag = True
+
+    """
+    OPTIMIZATION
+    """
+
+    async def collision_check(self):
+        """
+        Low level collision checker for the robot given its loaded world.
+        """
+        result = kmc.world_contact_map(self.world, padding=0.1, kFriction=1)
+        print(result)
+        return result
 
     """
     DIAGNOSTIC

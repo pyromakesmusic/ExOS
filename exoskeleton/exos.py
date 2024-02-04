@@ -207,6 +207,8 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def main(self):
         # Diagnostics go here at the top
         await self.datalog()
+        await self.pcm.collision_check()
+
 
         if self.sim:
             # Attend to the simulation
