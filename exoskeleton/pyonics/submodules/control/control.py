@@ -297,7 +297,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         """
         Low level collision checker for the robot given its loaded world.
         """
-        result = kmc.world_contact_map(self.world, padding=0.3, kFriction=0.9)
+        result = kmc.world_contact_map(self.world, padding=0.1, kFriction=0.97)
         # print(x.n for x in result)
         return result
 

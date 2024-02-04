@@ -224,3 +224,9 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
+
+    async def configure_sim(self):
+        self.setSetting("boundaryLayerCollisions", "1")
+        self.setSetting("rigidObjectCollisions", "1")
+        self.setSetting("robotSelfCollisions", "1")
+        self.setSetting("robotRobotCollisions", "1")

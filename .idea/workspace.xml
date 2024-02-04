@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/apps/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00493" summary="still trying to get data piped in">
-      <created>1706478634593</created>
-      <option name="number" value="00493" />
-      <option name="presentableId" value="LOCAL-00493" />
-      <option name="project" value="LOCAL" />
-      <updated>1706478634593</updated>
     </task>
     <task id="LOCAL-00494" summary="trying to announce map operation">
       <created>1706482842134</created>
@@ -499,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707024027508</updated>
     </task>
-    <option name="localTasksCounter" value="542" />
+    <task id="LOCAL-00542" summary="changed lighting to depend on collision forces">
+      <created>1707024091584</created>
+      <option name="number" value="00542" />
+      <option name="presentableId" value="LOCAL-00542" />
+      <option name="project" value="LOCAL" />
+      <updated>1707024091584</updated>
+    </task>
+    <option name="localTasksCounter" value="543" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

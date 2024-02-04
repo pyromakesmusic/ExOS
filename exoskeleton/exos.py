@@ -238,10 +238,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
 
     async def sim_settings(self):
-        self.sim.setSetting("boundaryLayerCollisions", "1")
-        self.sim.setSetting("rigidObjectCollisions", "1")
-        self.sim.setSetting("robotSelfCollisions", "1")
-        self.sim.setSetting("robotRobotCollisions", "1")
+
 
     async def collision_settings(self):
         contacts = klampt.model.contact.sim_contact_map(self.sim)
