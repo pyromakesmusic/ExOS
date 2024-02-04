@@ -184,11 +184,15 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     async def pressures_to_forces(self, muscle_objects, pressures, force_multiplier):
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
-        for muscle in muscle_objects:
-            triplet_a, triplet_b = muscle.update_muscle(pressures[i])  # Updates muscles w/ OSC argument
-            force_list.append(triplet_a)
-            force_list.append(triplet_b)
-            i += 1
+        try:
+            for muscle in muscle_objects:
+                triplet_a, triplet_b = muscle.update_muscle(pressures[i])  # Updates muscles w/ OSC argument
+                force_list.append(triplet_a)
+                force_list.append(triplet_b)
+                i += 1
+        except IndexError:
+            force_list.append([0,0,0])
+            force_list.append([0,0,0])
         force_series = pd.Series(force_list)
         return force_series * force_multiplier
 
@@ -226,7 +230,11 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
 
     async def configure_sim(self):
+        """
+        Sets up the simulation to do whatever I want it to do.
+        """
         self.setSetting("boundaryLayerCollisions", "1")
         self.setSetting("rigidObjectCollisions", "1")
         self.setSetting("robotSelfCollisions", "1")
         self.setSetting("robotRobotCollisions", "1")
+        self.setSetting("instabilityPostCorrectionEnergy", "0.01")

@@ -197,6 +197,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
+        asyncio.run(self.sim.configure_sim())
         asyncio.run(self.pcm.idle_configuration())
         # asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
@@ -236,9 +237,6 @@ class ExOS(klampt.control.OmniRobotInterface):
         if self.voice:
             self.voice.announce("Error:")
             self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
-
-    async def sim_settings(self):
-
 
     async def collision_settings(self):
         contacts = klampt.model.contact.sim_contact_map(self.sim)

@@ -67,6 +67,7 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.geometry = klampt.GeometricPrimitive()
         self.geometry.setSegment(self.transform_a, self.transform_b)
 
+
         self.turns = row["turns"]  # Number of turns in the muscle fiber
         self.weave_length = row["weave_length"]  # weave length - should be shorter than l_0
         self.max_pressure = row["max_pressure"]  # want this to autoscale for now, eventually static
@@ -76,6 +77,23 @@ class Muscle(klampt.sim.ActuatorEmulator):
         self.displacement = 0  # This is a calculated value; should initialize at 0
         self.pressure = 0  # Should be pressure relative to external, so initialize at 0 - need units eventually
 
+    def collides(self):
+        """
+        Klampt syntactical sugar so this returns as having collision properties.
+        """
+        return True
+
+    def withinDistance(self):
+        """
+        Same as above for shell.
+        """
+        return True
+
+    def distance(self):
+        """
+        Same as above, returns a numeric value that is the collision distance.
+        """
+        return 0.8
     def update_muscle(self, pressure):  # Should call every loop?
         """
         pressure: single float value. Starting at 0-1 but may make sense to put in terms of psi, bar or pascal.
@@ -129,6 +147,8 @@ class Muscle(klampt.sim.ActuatorEmulator):
         to change the muscle color based on the pressure input.
         """
         return triplet_a, triplet_b
+
+
 
     def pressure_autoscale(self):
         if self.pressure > self.max_pressure:  # autoscaling algorithm
@@ -249,6 +269,8 @@ class ExoController(klampt.control.OmniRobotInterface):
 
     # Control and Kinematics
 
+    def process(self, commands=None, dt=1):
+        return self.set_pressures(commands)
     def sensedPosition(self):
         """
         Could still include link transforms, but should also include GPS location in lat/long, maybe USNG,
