@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world>
-  <terrain file="../terrains/block.off"  translation="0 0 -8.5" scale="100 100 1" kRestitution="0.9"/>
+  <terrain file="../terrains/block.off"  translation="0 0 -8.5" scale="100 100 1" kRestitution="0.5" kStiffness="0.8"/>
 </world>

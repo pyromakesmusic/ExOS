@@ -198,7 +198,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
         asyncio.run(self.pcm.idle_configuration())
-        asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
+        # asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
             # i += 1
@@ -207,11 +207,11 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def main(self):
         # Diagnostics go here at the top
         await self.datalog()
-        await self.pcm.collision_check()
-
+        await vid.display_contact_forces(self.pcm.robot, self.sim)
 
         if self.sim:
             # Attend to the simulation
+
 
             # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
             if klampt.vis.shown():
