@@ -38,6 +38,9 @@ def display_muscle_row(row=pd.Series):
     kvis.hideLabel(name)
 
 async def display_contact_forces(robby, sim):
+    """
+    Given a robot and associated simulator, lights the links of the robot according to their contact forces
+    """
     links = robby.numLinks()
     for x in range(links):
         link = robby.link(x)
