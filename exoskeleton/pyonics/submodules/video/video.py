@@ -38,12 +38,12 @@ def display_muscle_row(row=pd.Series):
     kvis.hideLabel(name)
 
 
-def display_bones(robby, mask=None):
+async def display_bones(robby, mask=None):
     """
     Takes robot as an argument and displays all of its bones. Uses a klampt colorize map right now.
     """
     for x in range(robby.numLinks()):
-        kvis.colorize.colorize(robby.link(x), value="p", feature="vertices", colormap="reds")
+        kvis.colorize.colorize(robby.link(x), value="z", feature="vertices", colormap="Blues_r")
     return 1
 def display_muscles(df=pd.DataFrame):
     """

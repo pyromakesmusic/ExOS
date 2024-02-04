@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/video/video.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/muscle_attachments_b1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00486" summary="i think im starting to trace the errors">
-      <created>1706364390533</created>
-      <option name="number" value="00486" />
-      <option name="presentableId" value="LOCAL-00486" />
-      <option name="project" value="LOCAL" />
-      <updated>1706364390537</updated>
     </task>
     <task id="LOCAL-00487" summary="might have found the part that needs updating">
       <created>1706420812195</created>
@@ -503,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706981620643</updated>
     </task>
-    <option name="localTasksCounter" value="535" />
+    <task id="LOCAL-00535" summary="changing colorizing method">
+      <created>1706984504525</created>
+      <option name="number" value="00535" />
+      <option name="presentableId" value="LOCAL-00535" />
+      <option name="project" value="LOCAL" />
+      <updated>1706984504525</updated>
+    </task>
+    <option name="localTasksCounter" value="536" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -519,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updated with many more muscles" />
     <MESSAGE value="removing world for testing robot servo parameters" />
     <MESSAGE value="updating body to ragdoll more realistically, setting reasonable joint limits" />
     <MESSAGE value="adding some pipe utility files" />
@@ -544,6 +542,7 @@
     <MESSAGE value="turned colorizing on" />
     <MESSAGE value="optimized colorizing function" />
     <MESSAGE value="updating shoulder muscles" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating shoulder muscles" />
+    <MESSAGE value="changing colorizing method" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing colorizing method" />
   </component>
 </project>

@@ -198,7 +198,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
         asyncio.run(self.pcm.idle_configuration())
-        vid.display_bones(self.pcm.robot)  # Colorizes once instead of every loop
+        asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             asyncio.run(self.main())  # Async function call
             # i += 1

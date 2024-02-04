@@ -50,12 +50,14 @@ right_inferior_latissimus;15;11;0,.8,0;-.8,.8,0;superior;inferior;20;1;2;2;5;800
 left_hip_flexor;11;34;0.1,-1,0.3;0,-1,0;superior;inferior;20;1;2;2;5;80000
 right_hip_flexor;11;35;-0.1,-1,0.3;0,-1,0;superior;inferior;20;1;2;2;5;80000
 
-left_vastus_lateralis;11;34;2.5,1,0;0.4,0.2,0;superior;inferior;20;1;2;2;5;80000
-right_vastus_lateralis;11;35;-2.5,1,0;0.4,0.2,0;superior;inferior;20;1;2;2;5;80000
+left_vastus_lateralis;11;34;2.5,1,0;0.4,0.1,0;superior;inferior;20;1;2;2;5;80000
+right_vastus_lateralis;11;35;-2.5,1,0;0.4,0.1,0;superior;inferior;20;1;2;2;5;80000
 
-left_rectus_femoris;11;34;0.5,1,0;0,0.4,0;superior;inferior;20;1;2;2;5;80000
-right_rectus_femoris;11;35;-0.5,1,0;0,0.4,0;superior;inferior;20;1;2;2;5;80000
+left_vastus_medialis;11;34;3.5,1,0;0.8,0.1,0;superior;inferior;20;1;2;2;5;80000
+right_vastus_medialis;11;35;-3.5,1,0;-0.8,0.1,0;superior;inferior;20;1;2;2;5;80000
 
+left_rectus_femoris;11;34;0.5,1,0;0,0.1,0;superior;inferior;20;1;2;2;5;80000
+right_rectus_femoris;11;35;-0.5,1,0;0,0.1,0;superior;inferior;20;1;2;2;5;80000
 
 left_biceps_femoris;11;34;0.5,-1,0;0,-0.2,0;superior;inferior;20;1;2;2;5;80000
 right_biceps_femoris;11;35;-0.5,-1,0;0,-0.2,0;superior;inferior;20;1;2;2;5;80000
