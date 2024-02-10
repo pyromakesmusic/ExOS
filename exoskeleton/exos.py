@@ -203,7 +203,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         asyncio.run(self.pcm.idle_configuration())
         # asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
         asyncio.run(self.pcm.make_cspace())
-
+        asyncio.run(self.startup(self.main))
         #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self, self_method, *args):
@@ -211,7 +211,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         Should be called with the runtime loop to be started plus some conditionals to ensure are true
         """
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
-            asyncio.run(self_method)  # Async function call
+            await self_method()  # Async function call
             # i += 1
             # asyncio.run(asyncio.sleep(1))
 

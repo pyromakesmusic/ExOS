@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +78,7 @@
       <recent name="C:\Users\Pyro\Documents\Math4157\exoskeleton\worlds" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.standard launcher">
     <configuration name="OSC test 1" type="PythonConfigurationType" factoryName="Python">
       <module name="Math4157" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00496" summary="list of arguments that are floats">
-      <created>1706484648290</created>
-      <option name="number" value="00496" />
-      <option name="presentableId" value="LOCAL-00496" />
-      <option name="project" value="LOCAL" />
-      <updated>1706484648290</updated>
     </task>
     <task id="LOCAL-00497" summary="physics works now">
       <created>1706492461195</created>
@@ -503,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707031637340</updated>
     </task>
-    <option name="localTasksCounter" value="545" />
+    <task id="LOCAL-00545" summary="adding a main loop startup function">
+      <created>1707602988000</created>
+      <option name="number" value="00545" />
+      <option name="presentableId" value="LOCAL-00545" />
+      <option name="project" value="LOCAL" />
+      <updated>1707602988000</updated>
+    </task>
+    <option name="localTasksCounter" value="546" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -519,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="updating joint limits some more" />
     <MESSAGE value="changing joint limits still" />
     <MESSAGE value="more updating joint limits" />
     <MESSAGE value="test joint limits set" />
@@ -544,6 +540,7 @@
     <MESSAGE value="changed lighting to depend on collision forces" />
     <MESSAGE value="moved simulation stuff into its library" />
     <MESSAGE value="removed the floor" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed the floor" />
+    <MESSAGE value="adding a main loop startup function" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding a main loop startup function" />
   </component>
 </project>
