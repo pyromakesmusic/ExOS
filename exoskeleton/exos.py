@@ -197,18 +197,28 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         self.state = "On"
-        asyncio.run(self.sim.configure_sim())
+        if self.sim:
+            asyncio.run(self.sim.configure_sim())
+
         asyncio.run(self.pcm.idle_configuration())
         # asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
+        asyncio.run(self.pcm.make_cspace())
+
+        #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
+
+    async def startup(self, self_method, *args):
+        """
+        Should be called with the runtime loop to be started plus some conditionals to ensure are true
+        """
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
-            asyncio.run(self.main())  # Async function call
+            asyncio.run(self_method)  # Async function call
             # i += 1
             # asyncio.run(asyncio.sleep(1))
 
     async def main(self):
         # Diagnostics go here at the top
         await self.datalog()
-        await vid.display_contact_forces(self.pcm.robot, self.sim)
+        # await vid.display_contact_forces(self.pcm.robot, self.sim)
 
         if self.sim:
             # Attend to the simulation

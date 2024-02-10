@@ -20,7 +20,7 @@ True
 HAS_VIS:
 True
 HAS_SIM:
-True
+False
 HAS_HUD:
 False
 HAS_VOICE:

@@ -20,6 +20,7 @@ OUTSIDE LIBRARY IMPORTS
 import klampt
 import klampt.math.vectorops as kmv
 import klampt.model.contact as kmc
+import klampt.plan.robotplanning as kmrp
 import pythonosc
 from pythonosc.dispatcher import Dispatcher
 import pythonosc.osc_server
@@ -239,6 +240,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.muscles = self.muscleLoader(config_data)
         # Setting initial muscle pressure to zero
         self.pressures = [0 for x in range(len(self.muscles))]
+        self.cspace = None
+
     def muscleLoader(self, config_df):
         """
         Given a dataframe with an ["attachments"] column containing a path
@@ -322,6 +325,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         result = kmc.world_contact_map(self.world, padding=0.1, kFriction=0.97)
         # print(x.n for x in result)
         return result
+
+    async def make_cspace(self):
+        self.cspace = kmrp.make_space(self.world, self.robot, edgeCheckResolution=0.5)
 
     """
     DIAGNOSTIC
