@@ -2,7 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Gesture Variation Follower" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Klampt-examples" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/gpt-2" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ofxGVF" vcs="Git" />
