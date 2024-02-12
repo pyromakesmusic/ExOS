@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/resources/core_bot_test4/pathtest.configs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/pose_script.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/demos/pose.py" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/pose.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,13 +156,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00498" summary="physics works better. this is the first stable release i would say">
-      <created>1706492677415</created>
-      <option name="number" value="00498" />
-      <option name="presentableId" value="LOCAL-00498" />
-      <option name="project" value="LOCAL" />
-      <updated>1706492677415</updated>
     </task>
     <task id="LOCAL-00499" summary="adding more arms and legs to the robot physics">
       <created>1706501447008</created>
@@ -504,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707603597168</updated>
     </task>
-    <option name="localTasksCounter" value="547" />
+    <task id="LOCAL-00547" summary="improving limits of different joints">
+      <created>1707687707259</created>
+      <option name="number" value="00547" />
+      <option name="presentableId" value="LOCAL-00547" />
+      <option name="project" value="LOCAL" />
+      <updated>1707687707259</updated>
+    </task>
+    <option name="localTasksCounter" value="548" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -523,7 +519,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="more updating joint limits" />
     <MESSAGE value="test joint limits set" />
     <MESSAGE value="updating muscle attachment points, adding many many muscles" />
     <MESSAGE value="added a diagnostic function to print total number of muscles, currently at 26" />
@@ -548,6 +543,7 @@
     <MESSAGE value="removed the floor" />
     <MESSAGE value="adding a main loop startup function" />
     <MESSAGE value="added a startup routine" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a startup routine" />
+    <MESSAGE value="improving limits of different joints" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving limits of different joints" />
   </component>
 </project>
