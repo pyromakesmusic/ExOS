@@ -168,9 +168,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         else:
             self.sim = None
 
-        """
-        Visualization
-        """
+        # Visualization
 
         if config_data["has_vis"]:  # If there's a visualization
             klampt.vis.add("w", self.pcm.world)
@@ -201,7 +199,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             asyncio.run(self.sim.configure_sim())
 
         asyncio.run(self.pcm.idle_configuration())
-        # asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
+        asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
         asyncio.run(self.pcm.make_cspace())
         asyncio.run(self.startup(self.main))
         #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
@@ -252,18 +250,10 @@ class ExOS(klampt.control.OmniRobotInterface):
         contacts = klampt.model.contact.sim_contact_map(self.sim)
         return contacts
 
-    # Control and Kinematics
-    async def datalog(self, verbose=True):
-        # A diagnostic function for printing to console or logging other relevant things at the top level.
-        # print(self.pcm.muscles.shape[0])
-        try:
-            if self.sim:
-                return klampt.model.contact.sim_contact_map(self.sim)
-            else:
-                return None
-        except SystemError:
-            return "Contact map calculations failed."
 
+    """
+    Control
+    """
     def sensedPosition(self):
         """
         Returns the list of link transforms, and???
@@ -284,6 +274,28 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.hud.async_shutdown()
         self.state = "Off"
 
+    """
+    Testing
+    """
+    async def trajectory_test(self):
+        try:
+            pass
+        except KeyError:
+            return "oops"
+        return
+    """
+    Diagnostics
+    """
+    async def datalog(self, verbose=True):
+        # A diagnostic function for printing to console or logging other relevant things at the top level.
+        # print(self.pcm.muscles.shape[0])
+        try:
+            if self.sim:
+                return klampt.model.contact.sim_contact_map(self.sim)
+            else:
+                return None
+        except SystemError:
+            return "Contact map calculations failed."
 
 """
 MAIN LOOP

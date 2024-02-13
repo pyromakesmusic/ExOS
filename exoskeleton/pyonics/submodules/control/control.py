@@ -270,7 +270,9 @@ class ExoController(klampt.control.OmniRobotInterface):
             # print(str(muscleinfo_df) + " muscleinfo df") # Doing test prints
             return muscleinfo_df
 
-    # Control and Kinematics
+    """
+    Kinematics and Control
+    """
 
     def process(self, commands=None, dt=1):
         return self.set_pressures(commands)
