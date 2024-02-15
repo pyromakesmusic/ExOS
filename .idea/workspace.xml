@@ -7,7 +7,6 @@
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/core_bot_test4.rob" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00503" summary="got the shoulders on">
-      <created>1706592734063</created>
-      <option name="number" value="00503" />
-      <option name="presentableId" value="LOCAL-00503" />
-      <option name="project" value="LOCAL" />
-      <updated>1706592734063</updated>
     </task>
     <task id="LOCAL-00504" summary="added robot arms">
       <created>1706614580732</created>
@@ -479,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707974224414</updated>
     </task>
-    <option name="localTasksCounter" value="552" />
+    <task id="LOCAL-00552" summary="improving startup, using randomized configurations, now need to interpolate and somehow find ways to build the robot's understanding of its configuration space">
+      <created>1708013003047</created>
+      <option name="number" value="00552" />
+      <option name="presentableId" value="LOCAL-00552" />
+      <option name="project" value="LOCAL" />
+      <updated>1708013003047</updated>
+    </task>
+    <option name="localTasksCounter" value="553" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +497,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="needs a wrist/palm and ankle/foot to fully describe musculature necessary, at minimum - want to also implement contact map colorization and start extracting contact forces, plus define the multipath classes that will describe the primary lifts" />
     <MESSAGE value="just reorganizing" />
     <MESSAGE value="lowering forces to actual values" />
     <MESSAGE value="updating muscle attachment points" />
@@ -523,6 +521,7 @@
     <MESSAGE value="joint limits basically complete" />
     <MESSAGE value="lots of small changes, working on building a configuration space tester" />
     <MESSAGE value="figuring out how to find and store a workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="figuring out how to find and store a workspace" />
+    <MESSAGE value="improving startup, using randomized configurations, now need to interpolate and somehow find ways to build the robot's understanding of its configuration space" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving startup, using randomized configurations, now need to interpolate and somehow find ways to build the robot's understanding of its configuration space" />
   </component>
 </project>

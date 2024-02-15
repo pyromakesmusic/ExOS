@@ -194,7 +194,6 @@ class ExOS(klampt.control.OmniRobotInterface):
             self.hud = None  # No HUD
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
-        self.state = "On"
         if self.sim:
             asyncio.run(self.sim.configure_sim())
 
@@ -208,6 +207,14 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         Should be called with the runtime loop to be started plus some conditionals to ensure are true
         """
+        self.state = "Starting up..."
+        """
+        Between these two state update commands should go the startup logic
+        """
+        self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
+
+        self.state = "Running"
+
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             await self_method()  # Async function call
             await asyncio.sleep(2)
