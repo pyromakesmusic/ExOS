@@ -198,10 +198,10 @@ class ExOS(klampt.control.OmniRobotInterface):
         if self.sim:
             asyncio.run(self.sim.configure_sim())
 
-        asyncio.run(self.pcm.idle_configuration())
-        #asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
-        asyncio.run(self.pcm.make_cspace())
-        asyncio.run(self.startup(self.main))
+        asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
+        asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
+        asyncio.run(self.pcm.make_cspace())  # Create the configuration space for the powertrain control module
+        asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
         #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self, self_method, *args):
@@ -210,6 +210,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             await self_method()  # Async function call
+            await asyncio.sleep(2)
             # i += 1
             # asyncio.run(asyncio.sleep(1))
 
@@ -217,6 +218,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Diagnostics go here at the top
         await self.datalog()
         # await vid.display_contact_forces(self.pcm.robot, self.sim)
+        self.pcm.robot.randomizeConfig()
 
         if self.sim:
             # Attend to the simulation
