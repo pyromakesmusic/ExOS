@@ -199,7 +199,7 @@ class ExOS(klampt.control.OmniRobotInterface):
             asyncio.run(self.sim.configure_sim())
 
         asyncio.run(self.pcm.idle_configuration())
-        asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
+        #asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
         asyncio.run(self.pcm.make_cspace())
         asyncio.run(self.startup(self.main))
         #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
