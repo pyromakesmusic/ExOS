@@ -228,7 +228,7 @@ class ExOS(klampt.control.OmniRobotInterface):
                 klampt.vis.lock()
 
             # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 1)
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
 
             if klampt.vis.shown():

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/resources/core_bot_test4/planningtest.configs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/resources/workspace_zero.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klampt-examples/Python3/demos/resources/core_bot_test4/pathtest.configs" beforeDir="false" afterPath="$PROJECT_DIR$/Klampt-examples/Python3/demos/resources/core_bot_test4/pathtest.configs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
     </list>
@@ -136,13 +137,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00501" summary="got free floating base robot working">
-      <created>1706589432475</created>
-      <option name="number" value="00501" />
-      <option name="presentableId" value="LOCAL-00501" />
-      <option name="project" value="LOCAL" />
-      <updated>1706589432475</updated>
     </task>
     <task id="LOCAL-00502" summary="got the shoulders on">
       <created>1706591803362</created>
@@ -480,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707851031370</updated>
     </task>
-    <option name="localTasksCounter" value="550" />
+    <task id="LOCAL-00550" summary="lots of small changes, working on building a configuration space tester">
+      <created>1707972958745</created>
+      <option name="number" value="00550" />
+      <option name="presentableId" value="LOCAL-00550" />
+      <option name="project" value="LOCAL" />
+      <updated>1707972958745</updated>
+    </task>
+    <option name="localTasksCounter" value="551" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,7 +500,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="added a diagnostic function to print total number of muscles, currently at 26" />
     <MESSAGE value="updating joint limits" />
     <MESSAGE value="needs a wrist/palm and ankle/foot to fully describe musculature necessary, at minimum - want to also implement contact map colorization and start extracting contact forces, plus define the multipath classes that will describe the primary lifts" />
     <MESSAGE value="just reorganizing" />
@@ -524,6 +524,7 @@
     <MESSAGE value="improving limits of different joints" />
     <MESSAGE value="updated joint limits a final time" />
     <MESSAGE value="joint limits basically complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="joint limits basically complete" />
+    <MESSAGE value="lots of small changes, working on building a configuration space tester" />
+    <option name="LAST_COMMIT_MESSAGE" value="lots of small changes, working on building a configuration space tester" />
   </component>
 </project>
