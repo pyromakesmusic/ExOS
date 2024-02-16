@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/X001/exo_workspace.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00504" summary="added robot arms">
-      <created>1706614580732</created>
-      <option name="number" value="00504" />
-      <option name="presentableId" value="LOCAL-00504" />
-      <option name="project" value="LOCAL" />
-      <updated>1706614580739</updated>
     </task>
     <task id="LOCAL-00505" summary="got robot with all limbs loaded">
       <created>1706617127957</created>
@@ -478,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708013003047</updated>
     </task>
-    <option name="localTasksCounter" value="553" />
+    <task id="LOCAL-00553" summary="adding self collision filter">
+      <created>1708013944873</created>
+      <option name="number" value="00553" />
+      <option name="presentableId" value="LOCAL-00553" />
+      <option name="project" value="LOCAL" />
+      <updated>1708013944873</updated>
+    </task>
+    <option name="localTasksCounter" value="554" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,7 +499,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="just reorganizing" />
     <MESSAGE value="lowering forces to actual values" />
     <MESSAGE value="updating muscle attachment points" />
     <MESSAGE value="made a new test file for testing single muscles" />
@@ -522,6 +523,7 @@
     <MESSAGE value="lots of small changes, working on building a configuration space tester" />
     <MESSAGE value="figuring out how to find and store a workspace" />
     <MESSAGE value="improving startup, using randomized configurations, now need to interpolate and somehow find ways to build the robot's understanding of its configuration space" />
-    <option name="LAST_COMMIT_MESSAGE" value="improving startup, using randomized configurations, now need to interpolate and somehow find ways to build the robot's understanding of its configuration space" />
+    <MESSAGE value="adding self collision filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding self collision filter" />
   </component>
 </project>

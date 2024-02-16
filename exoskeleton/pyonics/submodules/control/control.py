@@ -21,6 +21,7 @@ import klampt
 import klampt.math.vectorops as kmv
 import klampt.model.contact as kmc
 import klampt.plan.robotplanning as kmrp
+import klampt.plan.cspace as kmcs
 import pythonosc
 from pythonosc.dispatcher import Dispatcher
 import pythonosc.osc_server
@@ -241,6 +242,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         # Setting initial muscle pressure to zero
         self.pressures = [0 for x in range(len(self.muscles))]
         self.cspace = None
+        self.planner = None
+        self.make_cspace_and_plan()
 
     def muscleLoader(self, config_df):
         """
@@ -328,8 +331,15 @@ class ExoController(klampt.control.OmniRobotInterface):
         # print(x.n for x in result)
         return result
 
-    async def make_cspace(self):
+    async def make_cspace_and_plan(self):
         self.cspace = kmrp.make_space(self.world, self.robot, edgeCheckResolution=0.5)
+        self.planner = kmcs.MotionPlan(self.cspace, type="crm")
+        self.planner.setOptions()
+        planning = True
+        while planning:
+            pass
+
+        self.planner.close()
 
     """
     DIAGNOSTIC

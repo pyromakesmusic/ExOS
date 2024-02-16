@@ -225,7 +225,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Diagnostics go here at the top
         await self.datalog()
         # await vid.display_contact_forces(self.pcm.robot, self.sim)
-        self.pcm.robot.randomizeConfig()
+
 
         if self.sim:
             # Attend to the simulation
