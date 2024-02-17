@@ -199,7 +199,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
         asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
-        asyncio.run(self.pcm.make_cspace())  # Create the configuration space for the powertrain control module
+        # asyncio.run(self.pcm.make_cspace_and_planner())  # Create the configuration space for the powertrain control module
         asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
         #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 

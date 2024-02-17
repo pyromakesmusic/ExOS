@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/X001/exo_workspace.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
@@ -136,13 +135,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00505" summary="got robot with all limbs loaded">
-      <created>1706617127957</created>
-      <option name="number" value="00505" />
-      <option name="presentableId" value="LOCAL-00505" />
-      <option name="project" value="LOCAL" />
-      <updated>1706617127957</updated>
     </task>
     <task id="LOCAL-00506" summary="robot editing">
       <created>1706640954198</created>
@@ -480,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708013944873</updated>
     </task>
-    <option name="localTasksCounter" value="554" />
+    <task id="LOCAL-00554" summary="creating config space and motion plan for robot">
+      <created>1708063395453</created>
+      <option name="number" value="00554" />
+      <option name="presentableId" value="LOCAL-00554" />
+      <option name="project" value="LOCAL" />
+      <updated>1708063395453</updated>
+    </task>
+    <option name="localTasksCounter" value="555" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,7 +498,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="lowering forces to actual values" />
     <MESSAGE value="updating muscle attachment points" />
     <MESSAGE value="made a new test file for testing single muscles" />
     <MESSAGE value="implementing exception handling and collision/configuration space search" />
@@ -524,6 +522,7 @@
     <MESSAGE value="figuring out how to find and store a workspace" />
     <MESSAGE value="improving startup, using randomized configurations, now need to interpolate and somehow find ways to build the robot's understanding of its configuration space" />
     <MESSAGE value="adding self collision filter" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding self collision filter" />
+    <MESSAGE value="creating config space and motion plan for robot" />
+    <option name="LAST_COMMIT_MESSAGE" value="creating config space and motion plan for robot" />
   </component>
 </project>

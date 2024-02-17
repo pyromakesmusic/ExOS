@@ -243,7 +243,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.pressures = [0 for x in range(len(self.muscles))]
         self.cspace = None
         self.planner = None
-        self.make_cspace_and_plan()
+        asyncio.run(self.make_cspace_and_planner())  # Makes the planner
 
     def muscleLoader(self, config_df):
         """
@@ -331,9 +331,9 @@ class ExoController(klampt.control.OmniRobotInterface):
         # print(x.n for x in result)
         return result
 
-    async def make_cspace_and_plan(self):
+    async def make_cspace_and_planner(self):
         self.cspace = kmrp.make_space(self.world, self.robot, edgeCheckResolution=0.5)
-        self.planner = kmcs.MotionPlan(self.cspace, type="crm")
+        self.planner = kmcs.MotionPlan(self.cspace, type="prm")
         self.planner.setOptions()
         planning = True
         while planning:
