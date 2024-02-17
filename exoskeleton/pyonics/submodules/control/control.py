@@ -336,6 +336,8 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.planner = kmcs.MotionPlan(self.cspace, type="prm")
         self.planner.setOptions()
 
+    async def explore(self):
+        pass
 
     async def close_planner(self):
         self.planner.close()

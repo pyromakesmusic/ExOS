@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/config/desktopsim_testconfig2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00507" summary="robot editing">
-      <created>1706641022424</created>
-      <option name="number" value="00507" />
-      <option name="presentableId" value="LOCAL-00507" />
-      <option name="project" value="LOCAL" />
-      <updated>1706641022424</updated>
     </task>
     <task id="LOCAL-00508" summary="updating robot file">
       <created>1706671385446</created>
@@ -480,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708136462115</updated>
     </task>
-    <option name="localTasksCounter" value="556" />
+    <task id="LOCAL-00556" summary="added a directory for calculated model weights, configuration spaces, etc">
+      <created>1708139263203</created>
+      <option name="number" value="00556" />
+      <option name="presentableId" value="LOCAL-00556" />
+      <option name="project" value="LOCAL" />
+      <updated>1708139263203</updated>
+    </task>
+    <option name="localTasksCounter" value="557" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,7 +497,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="made a new test file for testing single muscles" />
     <MESSAGE value="implementing exception handling and collision/configuration space search" />
     <MESSAGE value="added a bone display function call" />
     <MESSAGE value="turned colorizing on" />
@@ -524,6 +521,7 @@
     <MESSAGE value="adding self collision filter" />
     <MESSAGE value="creating config space and motion plan for robot" />
     <MESSAGE value="adding planner to robot pcm init method" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding planner to robot pcm init method" />
+    <MESSAGE value="added a directory for calculated model weights, configuration spaces, etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a directory for calculated model weights, configuration spaces, etc" />
   </component>
 </project>
