@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/submodules/control/control.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00509" summary="messing with an easy script to help edit the robot">
-      <created>1706671554536</created>
-      <option name="number" value="00509" />
-      <option name="presentableId" value="LOCAL-00509" />
-      <option name="project" value="LOCAL" />
-      <updated>1706671554536</updated>
     </task>
     <task id="LOCAL-00510" summary="updated with many more muscles">
       <created>1706678441039</created>
@@ -478,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708140007689</updated>
     </task>
-    <option name="localTasksCounter" value="558" />
+    <task id="LOCAL-00558" summary="found the right library to use">
+      <created>1708145867050</created>
+      <option name="number" value="00558" />
+      <option name="presentableId" value="LOCAL-00558" />
+      <option name="project" value="LOCAL" />
+      <updated>1708145867050</updated>
+    </task>
+    <option name="localTasksCounter" value="559" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,7 +497,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="added a bone display function call" />
     <MESSAGE value="turned colorizing on" />
     <MESSAGE value="optimized colorizing function" />
     <MESSAGE value="updating shoulder muscles" />
@@ -522,6 +521,7 @@
     <MESSAGE value="adding planner to robot pcm init method" />
     <MESSAGE value="added a directory for calculated model weights, configuration spaces, etc" />
     <MESSAGE value="adding a planning explore function" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding a planning explore function" />
+    <MESSAGE value="found the right library to use" />
+    <option name="LAST_COMMIT_MESSAGE" value="found the right library to use" />
   </component>
 </project>

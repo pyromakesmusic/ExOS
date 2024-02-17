@@ -248,7 +248,6 @@ class ExOS(klampt.control.OmniRobotInterface):
                 klampt.vis.unlock()
                 klampt.vis.update()
 
-
         else:
             pass
 
@@ -262,7 +261,6 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def collision_settings(self):
         contacts = klampt.model.contact.sim_contact_map(self.sim)
         return contacts
-
 
     """
     Control
@@ -304,11 +302,15 @@ class ExOS(klampt.control.OmniRobotInterface):
         # print(self.pcm.muscles.shape[0])
         try:
             if self.sim:
-                return klampt.model.contact.sim_contact_map(self.sim)
+                return klampt.model.contact.sim_contact_map(self.sim)  # Returns a contact map if there's a simulation
             else:
                 return None
         except SystemError:
             return "Contact map calculations failed."
+        try:
+            print("Number of robot drivers", str(self.pcm.robot.numDrivers))
+        except:
+            print("Everything is being highlighted so I'm restarting the computer.")
 
 """
 MAIN LOOP
