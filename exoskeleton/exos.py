@@ -71,6 +71,8 @@ def configLoader(config_name):
     with open(config_name) as fn:
         print("Loading core components...\n", fn.readline().rstrip())
         core = fn.readline().rstrip()  # Filepath to robot core
+        print("Locating model data...\n", fn.readline().rstrip())
+        model = fn.readline().rstrip()  # Filepath to calculated model parameters
         print("Loading muscle attachments...\n", fn.readline().rstrip())
         attachments = fn.readline().rstrip()  # Filepath to muscle attachments file
         print("Locating world filepath...\n", fn.readline().rstrip())
@@ -104,6 +106,7 @@ def configLoader(config_name):
         print("Setting voice speech rate\n", fn.readline().strip())
         voice_rate = int(fn.readline().rstrip())
         config = {"core": core,
+                  "model": model,
                   "attachments": attachments,
                   "world_path": world_path,
                   "timestep": timestep,
@@ -198,8 +201,9 @@ class ExOS(klampt.control.OmniRobotInterface):
             asyncio.run(self.sim.configure_sim())
 
         asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
-        asyncio.run(vid.display_bones(self.pcm.robot))  # Colorizes once instead of every loop
-        # asyncio.run(self.pcm.make_cspace_and_planner())  # Create the configuration space for the powertrain control module
+
+        asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
+
         asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
         #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
@@ -211,7 +215,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         Between these two state update commands should go the startup logic
         """
-        self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
+        # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
 
         self.state = "Running"
 
