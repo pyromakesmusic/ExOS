@@ -337,7 +337,7 @@ class ExoController(klampt.control.OmniRobotInterface):
         self.planner.setOptions()
 
     async def explore(self):
-        pass
+        self.robot.randomizeConfig()  # Random configuration, use the robotmodel methods to take advantage of them
 
     async def close_planner(self):
         self.planner.close()

@@ -135,13 +135,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00508" summary="updating robot file">
-      <created>1706671385446</created>
-      <option name="number" value="00508" />
-      <option name="presentableId" value="LOCAL-00508" />
-      <option name="project" value="LOCAL" />
-      <updated>1706671385446</updated>
-    </task>
     <task id="LOCAL-00509" summary="messing with an easy script to help edit the robot">
       <created>1706671554536</created>
       <option name="number" value="00509" />
@@ -478,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708139263203</updated>
     </task>
-    <option name="localTasksCounter" value="557" />
+    <task id="LOCAL-00557" summary="adding a planning explore function">
+      <created>1708140007689</created>
+      <option name="number" value="00557" />
+      <option name="presentableId" value="LOCAL-00557" />
+      <option name="project" value="LOCAL" />
+      <updated>1708140007689</updated>
+    </task>
+    <option name="localTasksCounter" value="558" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,7 +497,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="implementing exception handling and collision/configuration space search" />
     <MESSAGE value="added a bone display function call" />
     <MESSAGE value="turned colorizing on" />
     <MESSAGE value="optimized colorizing function" />
@@ -522,6 +521,7 @@
     <MESSAGE value="creating config space and motion plan for robot" />
     <MESSAGE value="adding planner to robot pcm init method" />
     <MESSAGE value="added a directory for calculated model weights, configuration spaces, etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a directory for calculated model weights, configuration spaces, etc" />
+    <MESSAGE value="adding a planning explore function" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding a planning explore function" />
   </component>
 </project>
