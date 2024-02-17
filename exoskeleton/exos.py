@@ -301,16 +301,13 @@ class ExOS(klampt.control.OmniRobotInterface):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
         # print(self.pcm.muscles.shape[0])
         try:
+            print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
             if self.sim:
                 return klampt.model.contact.sim_contact_map(self.sim)  # Returns a contact map if there's a simulation
             else:
                 return None
         except SystemError:
             return "Contact map calculations failed."
-        try:
-            print("Number of robot drivers", str(self.pcm.robot.numDrivers))
-        except:
-            print("Everything is being highlighted so I'm restarting the computer.")
 
 """
 MAIN LOOP
