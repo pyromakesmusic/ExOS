@@ -302,6 +302,9 @@ class ExOS(klampt.control.OmniRobotInterface):
         # print(self.pcm.muscles.shape[0])
         try:
             print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
+            if self.pcm.robot.numDrivers():
+                for x in range(self.pcm.robot.numDrivers()):
+                    print(self.pcm.robot.driver(x).name)
             if self.sim:
                 return klampt.model.contact.sim_contact_map(self.sim)  # Returns a contact map if there's a simulation
             else:

@@ -135,13 +135,6 @@
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
     </task>
-    <task id="LOCAL-00510" summary="updated with many more muscles">
-      <created>1706678441039</created>
-      <option name="number" value="00510" />
-      <option name="presentableId" value="LOCAL-00510" />
-      <option name="project" value="LOCAL" />
-      <updated>1706678441039</updated>
-    </task>
     <task id="LOCAL-00511" summary="removing world for testing robot servo parameters">
       <created>1706736495532</created>
       <option name="number" value="00511" />
@@ -478,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708145867050</updated>
     </task>
-    <option name="localTasksCounter" value="559" />
+    <task id="LOCAL-00559" summary="called the method instead of just referencing it">
+      <created>1708188153172</created>
+      <option name="number" value="00559" />
+      <option name="presentableId" value="LOCAL-00559" />
+      <option name="project" value="LOCAL" />
+      <updated>1708188153172</updated>
+    </task>
+    <option name="localTasksCounter" value="560" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,7 +497,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="turned colorizing on" />
     <MESSAGE value="optimized colorizing function" />
     <MESSAGE value="updating shoulder muscles" />
     <MESSAGE value="changing colorizing method" />
@@ -522,6 +521,7 @@
     <MESSAGE value="added a directory for calculated model weights, configuration spaces, etc" />
     <MESSAGE value="adding a planning explore function" />
     <MESSAGE value="found the right library to use" />
-    <option name="LAST_COMMIT_MESSAGE" value="found the right library to use" />
+    <MESSAGE value="called the method instead of just referencing it" />
+    <option name="LAST_COMMIT_MESSAGE" value="called the method instead of just referencing it" />
   </component>
 </project>
