@@ -1,4 +1,19 @@
 """
+ExOS: the exoskeleton operating system for the next generation
+===============================================================
+This file should probably be made private at some point. It contains the code for the multithreaded, network-capable
+exoskeleton framework I am designing. The goal is to be easy to iterate, easy to model and optimize, and to make use of
+machine learning tools to the greatest extent possible. To that end, the following two files contain the majority of
+implementation-specific details for any particular build:
+- config.txt file in the config folder
+- muscle_attachments.csv in the robots folder
+- the .ROB file in the robots folder
+- the folder we are about to create, containing data, models, libraries or whatever else that is meant to be packaged
+onboard the robot in order for its proper unassisted offline operation.
+"""
+
+
+"""
 STANDARD LIBRARIES
 """
 import random
@@ -6,7 +21,7 @@ import platform  # For detecting the platform and automatically selecting the co
 
 import pandas as pd  # Critical, most of the data structures are pandas structures
 import asyncio  # For asynchronous OSC handling
-import os # For listing files in directory
+import os  # For listing files in directory
 import sys
 import logging
 import tkinter as tk
@@ -301,7 +316,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
         # print(self.pcm.muscles.shape[0])
         try:
-            print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
+            # print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
             if self.pcm.robot.numDrivers():
                 for x in range(self.pcm.robot.numDrivers()):
                     print(self.pcm.robot.driver(x).name)

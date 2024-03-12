@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
     </list>
@@ -134,13 +135,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00511" summary="removing world for testing robot servo parameters">
-      <created>1706736495532</created>
-      <option name="number" value="00511" />
-      <option name="presentableId" value="LOCAL-00511" />
-      <option name="project" value="LOCAL" />
-      <updated>1706736495532</updated>
     </task>
     <task id="LOCAL-00512" summary="updating body to ragdoll more realistically, setting reasonable joint limits">
       <created>1706738170880</created>
@@ -478,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708188153172</updated>
     </task>
-    <option name="localTasksCounter" value="560" />
+    <task id="LOCAL-00560" summary="printing driver names, each link is a driver and they are just referred to by link_xxx at this point">
+      <created>1708190025982</created>
+      <option name="number" value="00560" />
+      <option name="presentableId" value="LOCAL-00560" />
+      <option name="project" value="LOCAL" />
+      <updated>1708190025982</updated>
+    </task>
+    <option name="localTasksCounter" value="561" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,7 +498,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
     </ignored-roots>
-    <MESSAGE value="optimized colorizing function" />
     <MESSAGE value="updating shoulder muscles" />
     <MESSAGE value="changing colorizing method" />
     <MESSAGE value="added vastus medialis" />
@@ -522,6 +522,7 @@
     <MESSAGE value="adding a planning explore function" />
     <MESSAGE value="found the right library to use" />
     <MESSAGE value="called the method instead of just referencing it" />
-    <option name="LAST_COMMIT_MESSAGE" value="called the method instead of just referencing it" />
+    <MESSAGE value="printing driver names, each link is a driver and they are just referred to by link_xxx at this point" />
+    <option name="LAST_COMMIT_MESSAGE" value="printing driver names, each link is a driver and they are just referred to by link_xxx at this point" />
   </component>
 </project>
