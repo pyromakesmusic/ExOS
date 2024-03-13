@@ -251,7 +251,8 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.logging = True  # This is the diagnostic output flag
 
         if self.logging:
-            self.log_filepath = self.model + (str(datetime.now().strftime()) + r"datalog.txt")
+            self.log_filepath = self.model_path + ("/data/" + str(datetime.now().strftime(format='%Y%m%d%H%M')) + \
+                                                   r"datalog.exo")
             with open(self.log_filepath, "wb") as self.log_file:
                 asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
                 asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
@@ -336,6 +337,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         self.voice.announce("Shutting down systems.")
         self.hud.async_shutdown()
         self.state = "Off"
+        self.log_file.close()
 
     """
     Testing
@@ -353,7 +355,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
         # print(self.pcm.muscles.shape[0])
         if self.logging:
-            pass
+            self.log_file.write(str(self.pcm.robot.numDrivers()).encode())
 
         try:
             # print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
