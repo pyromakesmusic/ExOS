@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/X001/exo_workspace.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/X001/data/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,13 +134,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00513" summary="adding some pipe utility files">
-      <created>1706746265753</created>
-      <option name="number" value="00513" />
-      <option name="presentableId" value="LOCAL-00513" />
-      <option name="project" value="LOCAL" />
-      <updated>1706746265753</updated>
     </task>
     <task id="LOCAL-00514" summary="updating stuff, mostly how big the visualization shows to see all of robot movement">
       <created>1706747086332</created>
@@ -481,7 +471,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710220375387</updated>
     </task>
-    <option name="localTasksCounter" value="562" />
+    <task id="LOCAL-00562" summary="setting up a log output">
+      <created>1710311553277</created>
+      <option name="number" value="00562" />
+      <option name="presentableId" value="LOCAL-00562" />
+      <option name="project" value="LOCAL" />
+      <updated>1710311553287</updated>
+    </task>
+    <option name="localTasksCounter" value="563" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -501,7 +498,6 @@
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
       <path value="$PROJECT_DIR$/Spring '24/sba-loans" />
     </ignored-roots>
-    <MESSAGE value="changing colorizing method" />
     <MESSAGE value="added vastus medialis" />
     <MESSAGE value="changing thigh muscles to correct side" />
     <MESSAGE value="adding calf muscles" />
@@ -526,6 +522,7 @@
     <MESSAGE value="called the method instead of just referencing it" />
     <MESSAGE value="printing driver names, each link is a driver and they are just referred to by link_xxx at this point" />
     <MESSAGE value="adding commentary" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding commentary" />
+    <MESSAGE value="setting up a log output" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting up a log output" />
   </component>
 </project>

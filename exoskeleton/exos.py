@@ -221,13 +221,11 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.logging:
             self.log_filepath = self.model + (str(datetime.now().strftime()) + r"datalog.txt")
-
-        asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
-
-        asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
-
-        asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
-        #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
+            with open(self.log_filepath) as self.log_file:
+                asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
+                asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
+                asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
+                #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self, self_method, *args):
         """
@@ -322,7 +320,8 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def datalog(self, verbose=True):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
         # print(self.pcm.muscles.shape[0])
-
+        if self.logging:
+            pass
 
         try:
             # print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
