@@ -252,7 +252,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.logging:
             self.log_filepath = self.model + (str(datetime.now().strftime()) + r"datalog.txt")
-            with open(self.log_filepath, "w") as self.log_file:
+            with open(self.log_filepath, "wb") as self.log_file:
                 asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
                 asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
                 asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
@@ -285,12 +285,8 @@ class ExOS(klampt.control.OmniRobotInterface):
         # Diagnostics go here at the top
         await self.datalog()
         # await vid.display_contact_forces(self.pcm.robot, self.sim)
-
-
         if self.sim:
             # Attend to the simulation
-
-
             # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
             if klampt.vis.shown():
                 vid.display_muscles(self.pcm.muscles)
