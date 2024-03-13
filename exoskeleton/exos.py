@@ -17,6 +17,7 @@ onboard the robot in order for its proper unassisted offline operation.
 STANDARD LIBRARIES
 """
 import random
+from datetime import datetime
 import platform  # For detecting the platform and automatically selecting the correct launcher
 
 import pandas as pd  # Critical, most of the data structures are pandas structures
@@ -159,6 +160,7 @@ class ExOS(klampt.control.OmniRobotInterface):
         """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
+        self.model_path = config_data["model"]
 
         self.shutdown_flag = False
         self.state = "Initializing..."
@@ -214,6 +216,11 @@ class ExOS(klampt.control.OmniRobotInterface):
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         if self.sim:
             asyncio.run(self.sim.configure_sim())
+
+        self.logging = True  # This is the diagnostic output flag
+
+        if self.logging:
+            self.log_filepath = self.model + (str(datetime.now().strftime()) + r"datalog.txt")
 
         asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
 
@@ -315,11 +322,14 @@ class ExOS(klampt.control.OmniRobotInterface):
     async def datalog(self, verbose=True):
         # A diagnostic function for printing to console or logging other relevant things at the top level.
         # print(self.pcm.muscles.shape[0])
+
+
         try:
             # print("Number of robot drivers", str(self.pcm.robot.numDrivers()))
             if self.pcm.robot.numDrivers():
                 for x in range(self.pcm.robot.numDrivers()):
-                    print(self.pcm.robot.driver(x).name)
+                    # print(self.pcm.robot.driver(x).name)
+                    pass
             if self.sim:
                 return klampt.model.contact.sim_contact_map(self.sim)  # Returns a contact map if there's a simulation
             else:

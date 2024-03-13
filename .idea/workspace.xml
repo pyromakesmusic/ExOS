@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/pyonics/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/pyonics/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exoskeleton/robots/X001/exo_workspace.txt" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/robots/X001/data/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,13 +137,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00512" summary="updating body to ragdoll more realistically, setting reasonable joint limits">
-      <created>1706738170880</created>
-      <option name="number" value="00512" />
-      <option name="presentableId" value="LOCAL-00512" />
-      <option name="project" value="LOCAL" />
-      <updated>1706738170880</updated>
     </task>
     <task id="LOCAL-00513" summary="adding some pipe utility files">
       <created>1706746265753</created>
@@ -479,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708190025982</updated>
     </task>
-    <option name="localTasksCounter" value="561" />
+    <task id="LOCAL-00561" summary="adding commentary">
+      <created>1710220375387</created>
+      <option name="number" value="00561" />
+      <option name="presentableId" value="LOCAL-00561" />
+      <option name="project" value="LOCAL" />
+      <updated>1710220375387</updated>
+    </task>
+    <option name="localTasksCounter" value="562" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,8 +499,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
+      <path value="$PROJECT_DIR$/Spring '24/sba-loans" />
     </ignored-roots>
-    <MESSAGE value="updating shoulder muscles" />
     <MESSAGE value="changing colorizing method" />
     <MESSAGE value="added vastus medialis" />
     <MESSAGE value="changing thigh muscles to correct side" />
@@ -523,6 +525,7 @@
     <MESSAGE value="found the right library to use" />
     <MESSAGE value="called the method instead of just referencing it" />
     <MESSAGE value="printing driver names, each link is a driver and they are just referred to by link_xxx at this point" />
-    <option name="LAST_COMMIT_MESSAGE" value="printing driver names, each link is a driver and they are just referred to by link_xxx at this point" />
+    <MESSAGE value="adding commentary" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding commentary" />
   </component>
 </project>
