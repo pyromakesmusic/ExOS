@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00514" summary="updating stuff, mostly how big the visualization shows to see all of robot movement">
-      <created>1706747086332</created>
-      <option name="number" value="00514" />
-      <option name="presentableId" value="LOCAL-00514" />
-      <option name="project" value="LOCAL" />
-      <updated>1706747086332</updated>
     </task>
     <task id="LOCAL-00515" summary="added names of joints to robot file">
       <created>1706751701021</created>
@@ -478,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710311553287</updated>
     </task>
-    <option name="localTasksCounter" value="563" />
+    <task id="LOCAL-00563" summary="adding with open as clause">
+      <created>1710312196786</created>
+      <option name="number" value="00563" />
+      <option name="presentableId" value="LOCAL-00563" />
+      <option name="project" value="LOCAL" />
+      <updated>1710312196786</updated>
+    </task>
+    <option name="localTasksCounter" value="564" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +497,6 @@
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
       <path value="$PROJECT_DIR$/Spring '24/sba-loans" />
     </ignored-roots>
-    <MESSAGE value="added vastus medialis" />
     <MESSAGE value="changing thigh muscles to correct side" />
     <MESSAGE value="adding calf muscles" />
     <MESSAGE value="found collision forces" />
@@ -523,6 +521,7 @@
     <MESSAGE value="printing driver names, each link is a driver and they are just referred to by link_xxx at this point" />
     <MESSAGE value="adding commentary" />
     <MESSAGE value="setting up a log output" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting up a log output" />
+    <MESSAGE value="adding with open as clause" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding with open as clause" />
   </component>
 </project>

@@ -221,11 +221,16 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if self.logging:
             self.log_filepath = self.model + (str(datetime.now().strftime()) + r"datalog.txt")
-            with open(self.log_filepath) as self.log_file:
+            with open(self.log_filepath, "w") as self.log_file:
                 asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
                 asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
                 asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
                 #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
+        else:
+            asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
+            asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
+            asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
+            # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self, self_method, *args):
         """
