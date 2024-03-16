@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4e45143-7c3d-4b55-9b5a-2859d6b10ce0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exoskeleton/robots/X001/data/202403130220datalog.exo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exoskeleton/exos.py" beforeDir="false" afterPath="$PROJECT_DIR$/exoskeleton/exos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/Math4157&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pyro/Documents/numb&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -135,13 +133,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1665652441872</updated>
-    </task>
-    <task id="LOCAL-00518" summary="updating joint limits some more">
-      <created>1706841332879</created>
-      <option name="number" value="00518" />
-      <option name="presentableId" value="LOCAL-00518" />
-      <option name="project" value="LOCAL" />
-      <updated>1706841332879</updated>
     </task>
     <task id="LOCAL-00519" summary="changing joint limits still">
       <created>1706876963825</created>
@@ -479,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710313386280</updated>
     </task>
-    <option name="localTasksCounter" value="567" />
+    <task id="LOCAL-00567" summary="last commits before reset">
+      <created>1710358119374</created>
+      <option name="number" value="00567" />
+      <option name="presentableId" value="LOCAL-00567" />
+      <option name="project" value="LOCAL" />
+      <updated>1710358119375</updated>
+    </task>
+    <option name="localTasksCounter" value="568" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,7 +497,6 @@
       <path value="$PROJECT_DIR$/Gesture Variation Follower" />
       <path value="$PROJECT_DIR$/Spring '24/sba-loans" />
     </ignored-roots>
-    <MESSAGE value="changed lighting to depend on collision forces" />
     <MESSAGE value="moved simulation stuff into its library" />
     <MESSAGE value="removed the floor" />
     <MESSAGE value="adding a main loop startup function" />
@@ -524,6 +521,7 @@
     <MESSAGE value="opening log file in write mode" />
     <MESSAGE value="added encryption function" />
     <MESSAGE value="removing whitespace" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing whitespace" />
+    <MESSAGE value="last commits before reset" />
+    <option name="LAST_COMMIT_MESSAGE" value="last commits before reset" />
   </component>
 </project>
