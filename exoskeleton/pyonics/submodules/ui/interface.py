@@ -28,7 +28,8 @@ import vosk  # Voice recognition library
 
 # My Custom Libraries
 from . import system_strings as sysvx
-from ..apps.apps import Map, CameraWidget, Clock, DateWidget, TextWidget
+from ..apps.apps import Map, Clock, DateWidget, TextWidget
+# from ..apps.apps import CameraWidget
 
 """
 FUNCTION DEFINITIONS #1 

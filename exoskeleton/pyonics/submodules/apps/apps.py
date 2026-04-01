@@ -1,7 +1,7 @@
 import asyncio  # Needs asynchronous functionality
 import pandas as pd
 import gpsd  # GPS library
-import cv2  # CameraWidget library
+# import cv2  # CameraWidget library
 from datetime import datetime
 import asyncio
 # Klamp't imports
@@ -104,57 +104,57 @@ class TextWidget:
         self.text = text
         return self.text
 
-class CameraWidget(klampt.vis.glcommon.GLProgram):
-    def __init__(self, i):
-        klampt.vis.glcommon.GLProgram.__init__(self)
-        # Launches with an index of a particular camera
-        self.camera = None
-        self.state = "minimized"  # Can also be "fullscreen", "windowed", "closed"
-
-        self.ret = None
-        self.frame = None
-        self.shutdown_flag = False
-
-
-
-
-    def cam_launch(self, index):
-        # Start the camera
-        try:
-            self.camera = cv2.VideoCapture(index)
-        except:
-            "Error: Exception launching camera input."
-
-        while not self.shutdown_flag:
-            asyncio.run(self.cam_loop())
-
-    def cam_loop_synchronous(self):
-        self.ret, self.frame = self.camera.read()
-
-        # Check if the frame was read successfully
-        if not self.ret:
-            print("Error: Could not read frame.")
-
-        # Display the frame
-        cv2.imshow('Webcam', self.frame)
-        return self.frame
-
-    async def cam_loop(self):
-        self.ret, self.frame = self.camera.read()
-
-        # Check if the frame was read successfully
-        if not self.ret:
-            print("Error: Could not read frame.")
-
-
-        # Display the frame
-        cv2.imshow('Webcam', self.frame)
-        return self.frame
-
-    def cam_shutdown(self):
-        # Break the loop if the user presses the 'q' key
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            self.shutdown_flag = True
+# class CameraWidget(klampt.vis.glcommon.GLProgram):
+#     def __init__(self, i):
+#         klampt.vis.glcommon.GLProgram.__init__(self)
+#         # Launches with an index of a particular camera
+#         self.camera = None
+#         self.state = "minimized"  # Can also be "fullscreen", "windowed", "closed"
+#
+#         self.ret = None
+#         self.frame = None
+#         self.shutdown_flag = False
+#
+#
+#
+#
+#     def cam_launch(self, index):
+#         # Start the camera
+#         try:
+#             self.camera = cv2.VideoCapture(index)
+#         except:
+#             "Error: Exception launching camera input."
+#
+#         while not self.shutdown_flag:
+#             asyncio.run(self.cam_loop())
+#
+#     def cam_loop_synchronous(self):
+#         self.ret, self.frame = self.camera.read()
+#
+#         # Check if the frame was read successfully
+#         if not self.ret:
+#             print("Error: Could not read frame.")
+#
+#         # Display the frame
+#         cv2.imshow('Webcam', self.frame)
+#         return self.frame
+#
+#     async def cam_loop(self):
+#         self.ret, self.frame = self.camera.read()
+#
+#         # Check if the frame was read successfully
+#         if not self.ret:
+#             print("Error: Could not read frame.")
+#
+#
+#         # Display the frame
+#         cv2.imshow('Webcam', self.frame)
+#         return self.frame
+#
+#     def cam_shutdown(self):
+#         # Break the loop if the user presses the 'q' key
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             self.shutdown_flag = True
 
 # Desktop Applications
 
