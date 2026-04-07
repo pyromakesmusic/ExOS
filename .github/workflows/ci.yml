@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [dev]
+    branches: [ci-setup, dev]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   build:
@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: echo "CI is working"
 
       - name: Set up Python
         uses: actions/setup-python@v5
