@@ -12,3 +12,4 @@ gpsd-py3
 python-osc
 torch
 matplotlib
+pytest
