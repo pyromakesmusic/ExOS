@@ -13,3 +13,4 @@ python-osc
 torch
 matplotlib
 pytest
+differint

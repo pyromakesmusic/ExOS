@@ -19,7 +19,7 @@ class Sim():
         print(derivative)
         print(der_series)
         print(len(der_series))
-        plt.xticks(0,100, num=5)
+        plt.xticks(np.linspace(0,100, num=5))
         plt.yticks(np.linspace(0,100, num=10))
         plt.plot(x,der_series)
         plt.show()
