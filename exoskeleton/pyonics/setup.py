@@ -9,7 +9,6 @@ import submodules.video
 import submodules.audio
 import submodules.control
 import submodules.ui
-import submodules.network
 
 
 setup(

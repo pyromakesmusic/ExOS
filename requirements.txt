@@ -1,1 +1,14 @@
+pandas
 klampt
+cryptography
+PyOpenGL
+pyaudio
+PyQt5
+transformers
+customtkinter
+pyttsx3
+vosk
+gpsd-py3
+python-osc
+torch
+matplotlib

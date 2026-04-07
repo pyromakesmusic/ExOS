@@ -26,7 +26,7 @@ import os  # For listing files in directory
 
 import sys
 import logging
-import tkinter as tk
+import tkinter as tk # For Windows UI Functions
 import tkinter.filedialog as filedialog
 
 """
