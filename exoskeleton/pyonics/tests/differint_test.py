@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 class Sim():
     def __init__(self):
-        x = np.linspace(0,100, num=10)
-        y = np.linspace(0,100, num=10)
+        x = np.linspace(0,10, num=10)
+        y = np.linspace(0,10, num=10)
         self.root = tk.Tk()
         self.fig, self.ax = plt.subplots(111)
         plt.plot(x,y)
@@ -19,8 +19,8 @@ class Sim():
         print(derivative)
         print(der_series)
         print(len(der_series))
-        plt.xticks(0,100, num=5)
-        plt.yticks(np.linspace(0,100, num=10))
+        plt.xticks(np.linspace(0,10, num=5))
+        plt.yticks(np.linspace(0,10, num=10))
         plt.plot(x,der_series)
         plt.show()
         return
@@ -29,4 +29,5 @@ def main():
     window = Sim()
     return
 
-main()
+if __name__ == "__main__":
+    main()
