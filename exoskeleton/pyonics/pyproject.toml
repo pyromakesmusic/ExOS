@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "pyonics"
 version = "0.0.1"
 authors = [
-  { name="Tayo Castro", email="operations@thehuntress.is" },
+  { name="Tayo Castro", email="pyromakesmusic@gmail.com" },
 ]
 description = "Tools for bionics research"
 readme = "README.md"
@@ -17,6 +17,29 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+dependencies = [
+    "pandas",
+    "klampt",
+    "cryptography",
+    "PyOpenGL",
+    "pyaudio",
+    "PyQt5",
+    "transformers",
+    "customtkinter",
+    "pyttsx3",
+    "vosk",
+    "gpsd-py3",
+    "python-osc",
+    "torch",
+    "matplotlib",
+    "pytest",
+    "differint"
+]
+
 [project.urls]
-"Homepage" = "https://github.com/pyromakesmusic/Math4157/tree/master/pyonics"
-"Bug Tracker" = "https://github.com/pyromakesmusic/Math4157/issues"
+"Homepage" = "https://github.com/pyromakesmusic/pyonics"
+"Bug Tracker" = "https://github.com/pyromakesmusic/pyonics/issues"
+
+# THIS IS THE IMPORTANT PART
+[tool.hatch.build.targets.wheel]
+packages = ["pyonics"]
