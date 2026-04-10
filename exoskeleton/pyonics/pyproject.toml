@@ -42,4 +42,4 @@ dependencies = [
 
 # THIS IS THE IMPORTANT PART
 [tool.hatch.build.targets.wheel]
-packages = ["pyonics"]
+packages = ["src/pyonics"]
