@@ -65,7 +65,7 @@ CUSTOM LIBRARIES
 """
 import utils.ui.interface as ui  # Interface modules
 import utils.video.video as vid
-import pyonics.submodules.control.control as ctrl
+import pyonics
 import utils.apps.apps as xapp
 
 """
@@ -208,7 +208,7 @@ class ExOS(klampt.control.OmniRobotInterface):
 
         if config_data["has_robworld"]:
             # Variable for a robot representation # Not sure if this is happening correctly
-            self.pcm = ctrl.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
+            self.pcm = pyonics.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
             self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
         if config_data["has_sim"]:  # If a simulation is defined
