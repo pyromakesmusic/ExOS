@@ -63,10 +63,10 @@ import klampt.plan.robotplanning
 """
 CUSTOM LIBRARIES
 """
-import pyonics.submodules.ui.interface as ui  # Interface modules
-import pyonics.submodules.video.video as vid
+import utils.ui.interface as ui  # Interface modules
+import utils.video.video as vid
 import pyonics.submodules.control.control as ctrl
-import pyonics.submodules.apps.apps as xapp
+import utils.apps.apps as xapp
 
 """
 PANDAS CONFIG
