@@ -1,6 +1,13 @@
 import klampt
+import klampt.vis
 import pyonics
+
 import asyncio
+import datetime
+
+import utils.apps as xapp
+import utils.ui as ui
+import utils.video as vid
 
 def basic_config(config_name):
     """
@@ -75,10 +82,6 @@ class BasicExo(klampt.control.OmniRobotInterface):
         self.network_mode = config_data["network_mode"]  # Can be master or slave
         self.dt = config_data["timestep"]
 
-        if config_data["has_voice"]:
-            self.voice = ui.VoiceAssistantUI(config_data["voice_id"], config_data["voice_rate"])
-        else:
-            self.voice = None
 
         if config_data["has_robworld"]:
             # Variable for a robot representation # Not sure if this is happening correctly
@@ -111,12 +114,6 @@ class BasicExo(klampt.control.OmniRobotInterface):
             klampt.vis.show()  # Shows the visualization
         else:
             self.viewport = None
-
-
-        if config_data["has_hud"]:
-            self.hud = ui.AugmentOverlayKlUI()  # Should be a place for a HUD object
-        else:
-            self.hud = None  # No HUD
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
         if self.sim:
@@ -181,9 +178,6 @@ class BasicExo(klampt.control.OmniRobotInterface):
     async def async_error(self, error_message: None):
         print("ERROR")
         print(error_message)
-        if self.voice:
-            self.voice.announce("Error:")
-            self.voice.announce(ui.sysvx.negatives[random.randint(0,len(ui.sysvx.negatives))])
 
     async def collision_settings(self):
         contacts = klampt.model.contact.sim_contact_map(self.sim)
@@ -208,8 +202,6 @@ class BasicExo(klampt.control.OmniRobotInterface):
         # Should shut everything down nice and pretty.
         self.state = "Shutdown in progress"
         self.shutdown_flag = True
-        self.voice.announce("Shutting down systems.")
-        self.hud.async_shutdown()
         self.state = "Off"
         self.log_file.close()
 
