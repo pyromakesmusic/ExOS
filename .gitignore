@@ -3,6 +3,10 @@
 /utils/ui/vosk-model-small-en-us-0.15-OLD/
 /exoskeleton/robots/
 /portfolio
-/exoskeleton/config/test_config1.txt
-/exoskeleton/config/test_config2.txt
+/exoskeleton/config/
+/exoskeleton/config/
 /.idea/
+/venv/
+__pycache__/
+*.py[cod]
+*$py.class
