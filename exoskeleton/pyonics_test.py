@@ -1,9 +1,10 @@
 import klampt
 import klampt.vis
+import klampt.io
 import pyonics
 
 import asyncio
-import datetime
+from datetime import datetime
 
 import utils.apps as xapp
 import utils.ui as ui
