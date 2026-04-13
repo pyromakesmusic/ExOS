@@ -221,7 +221,7 @@ def basic_launch():
     """
     Convenience launcher for current dev environment for Windows. Works as a simulation at the moment.
     """
-    config = basic_config("config/basic_testconfig.txt")
+    config = basic_config("config/basic_testconfig_sim.txt")
     exo_program = BasicExo(config)
 
 if __name__ == "__main__":
