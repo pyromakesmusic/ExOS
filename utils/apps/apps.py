@@ -229,6 +229,34 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
                                 for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
         return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
 
+    async def testSimLoop(self):
+        """
+        robot: A RobotModel.
+        force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
+
+        Should possibly return a list of new transforms to be used for calculating stuff in the next time step.
+
+        """
+        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
+        """
+        NO FORCES in this test loop
+        """
+        self.simulate(self.dt)
+        self.updateWorld()
+        if self.collider:
+            pass
+            # klampt.model.contact.world_contact_map(self.world, padding=0.1, kFriction=1, collider=self.collider)
+            # print(self.collider.collisions())
+        """
+        Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
+        """
+        self.link_transforms_end = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
+
+        self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
+                                     for x in range(len(self.link_transforms_start))]
+                                        # Takes the Lie derivative from start -> end
+        return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
+
     async def configure_sim(self):
         """
         Sets up the simulation to do whatever I want it to do.

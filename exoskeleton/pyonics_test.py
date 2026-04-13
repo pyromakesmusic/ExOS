@@ -176,6 +176,25 @@ class BasicExo(klampt.control.OmniRobotInterface):
         else:
             pass
 
+    async def sim_test(self):
+        if self.sim:
+            # Attend to the simulation
+            # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
+            if klampt.vis.shown():
+                vid.display_muscles(self.pcm.muscles)
+                klampt.vis.lock()
+
+            # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
+            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
+            self.pcm.bones = await self.sim.testSimLoop(forces)  # Needs list of input values
+
+            if klampt.vis.shown():
+                klampt.vis.unlock()
+                klampt.vis.update()
+
+        else:
+            pass
+
     async def async_error(self, error_message: None):
         print("ERROR")
         print(error_message)
