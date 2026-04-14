@@ -1,5 +1,5 @@
 CORE:
-../../x-series/robots/core_bot_pyonics_test4.rob
+../../x-series/robots/core_bot_pyonics_test3.rob
 MODEL:
 ../../x-series/robots/X001
 MUSCLE ATTACHMENTS:
