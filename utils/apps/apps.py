@@ -172,7 +172,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
 
         self.robotmodel = robot
 
-        self.reset() # Testing this to see if it helps reset the simulated robot config in ODESimulator
+        # self.reset() # Testing this to see if it helps reset the simulated robot config in ODESimulator
 
         q = self.robotmodel.getConfig()
         self.robotmodel.setConfig(q)
@@ -189,6 +189,11 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
             self.collider = None
 
     async def pressures_to_forces(self, muscle_objects, pressures, force_multiplier):
+        """
+        muscle_objects: An iterable of pyonics Muscle objects.
+        pressures: An iterable of pressures.
+        force_multiplier: A numeric constant by which to multiply forces. For testing and calibration.
+        """
         # Should move this to pyonics
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
@@ -220,7 +225,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
             link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
             force_vector = force[1]  # Gets the force vector
             transform = force[2]  # Gets the transform at which to apply force
-            link.applyForceAtLocalPoint(force_vector, transform)  # Applys the force
+            link.applyForceAtLocalPoint(force_vector, transform)  # Applies the force
 
         self.simulate(self.dt)
         self.updateWorld()

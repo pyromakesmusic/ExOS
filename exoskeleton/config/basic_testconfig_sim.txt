@@ -1,5 +1,5 @@
 CORE:
-../../x-series/robots/core_bot_pyonics_test3.rob
+../../x-series/robots/core_bot_pyonics_test.rob
 MODEL:
 ../../x-series/robots/X001
 MUSCLE ATTACHMENTS:
@@ -7,7 +7,7 @@ MUSCLE ATTACHMENTS:
 WORLD:
 worlds/test_world3.xml
 CONTROL RATE:
-.0005
+.005
 CONTROL ADDRESS:
 127.0.0.1
 CONTROL PORT:

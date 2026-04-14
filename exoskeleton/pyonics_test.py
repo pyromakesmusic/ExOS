@@ -118,8 +118,8 @@ class BasicExo():
 
         asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
         asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
-        # asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
-        asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
+        asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
+        # asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
         # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self, self_method, *args):
