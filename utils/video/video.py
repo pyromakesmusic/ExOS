@@ -33,9 +33,12 @@ def display_muscle_row(row=pd.Series):
     name = row["name"]
     muscle = row["muscle_objects"]
     redness = color_calc(row["pressure"], row["max_pressure"])
-    kvis.add(name, muscle.geometry)
-    kvis.setColor(name, 0, 0.2, 0, 1)
-    kvis.hideLabel(name)
+    try:
+        kvis.add(name, muscle.geometry)
+        kvis.setColor(name, 0, 0.2, 0, 1)
+        kvis.hideLabel(name)
+    except AttributeError: # name or muscle doesn't exist
+        pass
 
 async def display_contact_forces(robby, sim):
     """

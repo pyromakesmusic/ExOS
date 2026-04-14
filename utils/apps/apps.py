@@ -171,6 +171,13 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         self.dt = timestep
 
         self.robotmodel = robot
+
+        self.reset() # Testing this to see if it helps reset the simulated robot config in ODESimulator
+
+        q = self.robotmodel.getConfig()
+        self.robotmodel.setConfig(q)
+        self.robotmodel.setVelocity([0.0] * len(q))
+
         self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
         self.link_transforms_end = None
         self.link_transforms_diff = None
@@ -182,6 +189,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
             self.collider = None
 
     async def pressures_to_forces(self, muscle_objects, pressures, force_multiplier):
+        # Should move this to pyonics
         force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
         i = 0
         try:
@@ -243,10 +251,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         """
         self.simulate(self.dt)
         self.updateWorld()
-        if self.collider:
-            pass
-            # klampt.model.contact.world_contact_map(self.world, padding=0.1, kFriction=1, collider=self.collider)
-            # print(self.collider.collisions())
+
         """
         Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
         """

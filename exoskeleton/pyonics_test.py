@@ -63,26 +63,20 @@ def basic_config(config_name):
                   }
     return config
 
-class BasicExo(klampt.control.OmniRobotInterface):
+class BasicExo():
     """
     High level controller. Should abstract away most of the implementation details. Want plug and play.
     """
 
     # Initialization
     def __init__(self, config_data):
-        """
+        """S
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         self.model_path = config_data["model"]
 
-        self.shutdown_flag = False
-        self.state = "Initializing..."
-        # Should be updated whenever something is happening to the whole system, made to be human-readable.
-
-        self.mode = None  # Safe mode, restricted mode, etc. - None is normal
         self.network_mode = config_data["network_mode"]  # Can be master or slave
         self.dt = config_data["timestep"]
-
 
         if config_data["has_robworld"]:
             # Variable for a robot representation # Not sure if this is happening correctly
@@ -93,7 +87,7 @@ class BasicExo(klampt.control.OmniRobotInterface):
             self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
             self.sim.enableContactFeedbackAll()
             # asyncio.run(self.sim_settings())
-            self.sim.endLogging()
+            #self.sim.endLogging()
         else:
             self.sim = None
 
@@ -120,34 +114,22 @@ class BasicExo(klampt.control.OmniRobotInterface):
         if self.sim:
             asyncio.run(self.sim.configure_sim())
 
-        self.logging = True  # This is the diagnostic output flag
+        #self.logging = True  # This is the diagnostic output flag
 
-        if self.logging:
-            self.log_filepath = self.model_path + ("/data/" + str(datetime.now().strftime(format='%Y%m%d%H%M')) + \
-                                                   r"datalog.exo")
-            with open(self.log_filepath, "wb") as self.log_file:
-                asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
-                asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
-                asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
-                #klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
-        else:
-            asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
-            asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
-            # asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
-            asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
-            # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
+        asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
+        asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
+        # asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
+        asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
+        # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self, self_method, *args):
         """
         Should be called with the runtime loop to be started plus some conditionals to ensure are true
         """
-        self.state = "Starting up..."
         """
         Between these two state update commands should go the startup logic
         """
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
-
-        self.state = "Running"
 
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             await self_method()  # Async function call
@@ -157,7 +139,6 @@ class BasicExo(klampt.control.OmniRobotInterface):
 
     async def main(self):
         # Diagnostics go here at the top
-        await self.datalog()
         # await vid.display_contact_forces(self.pcm.robot, self.sim)
         if self.sim:
             # Attend to the simulation
@@ -169,25 +150,6 @@ class BasicExo(klampt.control.OmniRobotInterface):
             # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
             forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
             self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
-
-            if klampt.vis.shown():
-                klampt.vis.unlock()
-                klampt.vis.update()
-
-        else:
-            pass
-
-    async def sim_test(self):
-        if self.sim:
-            # Attend to the simulation
-            # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
-            if klampt.vis.shown():
-                vid.display_muscles(self.pcm.muscles)
-                klampt.vis.lock()
-
-            # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
-            self.pcm.bones = await self.sim.testSimLoop(forces)  # Needs list of input values
 
             if klampt.vis.shown():
                 klampt.vis.unlock()
@@ -221,21 +183,35 @@ class BasicExo(klampt.control.OmniRobotInterface):
 
     def shutdown(self):
         # Should shut everything down nice and pretty.
-        self.state = "Shutdown in progress"
-        self.shutdown_flag = True
-        self.state = "Off"
         self.log_file.close()
 
     """
     Testing
     """
+    async def sim_test(self):
+        if self.sim:
+            # Attend to the simulation
+            # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
+            if klampt.vis.shown():
+                vid.display_muscles(self.pcm.muscles)
+                klampt.vis.lock()
+
+            # Main operating system loop. Last argument of pressures_to_forces is a force multiplier. (why?)
+            # forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
+            # self.pcm.bones = await self.sim.testSimLoop(forces)
+            await self.sim.testSimLoop()
+
+            if klampt.vis.shown():
+                klampt.vis.unlock()
+                klampt.vis.update()
+        else:
+            pass
+
     async def trajectory_test(self):
         return
     """
     Diagnostics
     """
-    async def datalog(self, verbose=True):
-        return
 
 def basic_launch():
     """
