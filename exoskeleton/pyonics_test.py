@@ -107,7 +107,7 @@ class BasicExo():
         Between these two state update commands should go the startup logic
         """
         if self.config["has_sim"]:  # If a simulation is defined
-            self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
+            self.sim = xapp.Sim(self.pcm.world, self.pcm, self.pcm.controlRate())
             self.sim.enableContactFeedbackAll()
             # asyncio.run(self.sim_settings())
             #self.sim.endLogging()
