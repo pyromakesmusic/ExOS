@@ -74,43 +74,18 @@ class BasicExo():
         """S
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
-        self.model_path = config_data["model"]
+        self.config = config_data
+        self.model_path = self.config["model"]
 
-        self.network_mode = config_data["network_mode"]  # Can be master or slave
-        self.dt = config_data["timestep"]
+        self.network_mode = self.config["network_mode"]  # Can be master or slave
+        self.dt = self.config["timestep"]
 
-        if config_data["has_robworld"]:
+        if self.config["has_robworld"]:
             # Variable for a robot representation # Not sure if this is happening correctly
             self.pcm = pyonics.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
-            self.input = asyncio.run(self.pcm.idle(self.pcm.bones))  # async function
 
-        if config_data["has_sim"]:  # If a simulation is defined
-            self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
-            self.sim.enableContactFeedbackAll()
-            # asyncio.run(self.sim_settings())
-            #self.sim.endLogging()
-        else:
-            self.sim = None
-
-        # Visualization
-
-        if config_data["has_vis"]:  # If there's a visualization
-            klampt.vis.add("w", self.pcm.world)
-            klampt.vis.add("robby", self.pcm.robot)
-
-            if config_data["has_sim"]:  # If a simulation is defined AND there's a visualization
-                vid.display_muscles(self.pcm.muscles)  # Displays the muscles
-
-            klampt.vis.visualization.setWindowTitle("ExOS")
-            klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
-
-            klampt.vis.visualization.resizeWindow(1920, 1080)
-            self.viewport = klampt.vis.getViewport()
-            vid.configure_sim_vis(self.viewport)
-            klampt.vis.show()  # Shows the visualization
-            klampt.vis.spin(2) # argument is duration in seconds
-        else:
-            self.viewport = None
+        self.sim = None
+        self.viewport = None
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
 
@@ -119,6 +94,7 @@ class BasicExo():
         """
         This call to main needs to happen but it should happen after startup
         """
+        asyncio.run(self.startup())
         # asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
         # asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
         # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
@@ -130,9 +106,34 @@ class BasicExo():
         """
         Between these two state update commands should go the startup logic
         """
+        if self.config["has_sim"]:  # If a simulation is defined
+            self.sim = xapp.Sim(self.pcm.world, self.pcm.robot, self.pcm.controlRate())
+            self.sim.enableContactFeedbackAll()
+            # asyncio.run(self.sim_settings())
+            #self.sim.endLogging()
+
+        # Visualization
+
+        if self.config["has_vis"]:  # If there's a visualization
+            klampt.vis.add("w", self.pcm.world)
+            klampt.vis.add("robby", self.pcm.robot)
+
+            if self.config["has_sim"]:  # If a simulation is defined AND there's a visualization
+                vid.display_muscles(self.pcm.muscles)  # Displays the muscles
+
+            klampt.vis.visualization.setWindowTitle("ExOS")
+            klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
+
+            klampt.vis.visualization.resizeWindow(1920, 1080)
+            self.viewport = klampt.vis.getViewport()
+            vid.configure_sim_vis(self.viewport)
+            klampt.vis.show()  # Shows the visualization
+            klampt.vis.spin(self.dt) # argument is duration in seconds
+
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
         if self.sim:
             await self.sim.configure_sim()
+
         await self.pcm.setup_osc_server()
         await vid.display_bones(self.pcm.robot)
         await self.pcm.server.enable_osc_logging()
@@ -151,6 +152,7 @@ class BasicExo():
             if klampt.vis.shown():
                 vid.display_muscles(self.pcm.muscles)
                 klampt.vis.lock()
+                klampt.vis.spin(self.dt)
 
             # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
             # forces = await self.pcm.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
@@ -162,6 +164,8 @@ class BasicExo():
             if klampt.vis.shown():
                 klampt.vis.unlock()
                 klampt.vis.update()
+                klampt.vis.spin(self.dt)
+
 
         else:
             pass
