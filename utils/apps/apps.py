@@ -203,6 +203,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
                 muscle_objects.append(muscle) # Adds the muscle to the list
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
+            self.pcm.muscles = muscle_objects
             pressure_series = pd.Series(data=0, name="pressure")
             muscleinfo_df = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
 
