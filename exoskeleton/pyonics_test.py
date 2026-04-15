@@ -108,7 +108,7 @@ class BasicExo():
             self.viewport = klampt.vis.getViewport()
             vid.configure_sim_vis(self.viewport)
             klampt.vis.show()  # Shows the visualization
-            klampt.vis.spin(2)
+            klampt.vis.spin(2) # argument is duration in seconds
         else:
             self.viewport = None
 
