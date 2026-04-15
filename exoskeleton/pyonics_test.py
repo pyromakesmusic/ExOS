@@ -112,8 +112,6 @@ class BasicExo():
             self.viewport = None
 
         klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
-        if self.sim:
-            asyncio.run(self.sim.configure_sim())
 
         #self.logging = True  # This is the diagnostic output flag
 
@@ -132,6 +130,8 @@ class BasicExo():
         Between these two state update commands should go the startup logic
         """
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
+        if self.sim:
+            await self.sim.configure_sim()
         await self.pcm.setup_osc_server()
         await vid.display_bones(self.pcm.robot)
         await self.pcm.server.enable_osc_logging()
