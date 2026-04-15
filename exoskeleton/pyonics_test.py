@@ -128,14 +128,14 @@ class BasicExo():
             self.viewport = klampt.vis.getViewport()
             vid.configure_sim_vis(self.viewport)
             klampt.vis.show()  # Shows the visualization
-            klampt.vis.spin(self.dt) # argument is duration in seconds
+            klampt.vis.spin(1) # argument is duration in seconds
 
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
         if self.sim:
             await self.sim.configure_sim()
 
         await self.pcm.setup_osc_server()
-        await vid.display_bones(self.pcm.robot)
+        # await vid.display_bones(self.pcm.robot)
         await self.pcm.server.enable_osc_logging()
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             await self.main()  # Async function call
@@ -200,24 +200,24 @@ class BasicExo():
     """
     Testing
     """
-    async def sim_test(self):
-        if self.sim:
-            # Attend to the simulation
-            # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
-            if klampt.vis.shown():
-                vid.display_muscles(self.pcm.muscles)
-                klampt.vis.lock()
-
-            # Main operating system loop. Last argument of pressures_to_forces is a force multiplier. (why?)
-            # forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
-            # self.pcm.bones = await self.sim.testSimLoop(forces)
-            await self.sim.testSimLoop()
-
-            if klampt.vis.shown():
-                klampt.vis.unlock()
-                klampt.vis.update()
-        else:
-            pass
+    # async def sim_test(self):
+    #     if self.sim:
+    #         # Attend to the simulation
+    #         if self.config["has_vis"]:
+    #         # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
+    #         if klampt.vis.shown():
+    #             klampt.vis.lock()
+    #
+    #         # Main operating system loop. Last argument of pressures_to_forces is a force multiplier. (why?)
+    #         # forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
+    #         # self.pcm.bones = await self.sim.testSimLoop(forces)
+    #         await self.sim.testSimLoop()
+    #
+    #         if klampt.vis.shown():
+    #             klampt.vis.unlock()
+    #             klampt.vis.update()
+    #     else:
+    #         pass
 
     async def trajectory_test(self):
         return
