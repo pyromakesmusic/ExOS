@@ -28,8 +28,6 @@ def display_muscle_row(row=pd.Series):
     row: Pandas DataFrame row (as a Pandas Series) containing muscle information.
     """
     # Takes a dataframe row as a namedtuple and adds muscle to visualization
-    # print(row.index)
-    # print(row.info)
     name = row["name"]
     muscle = row["muscle_objects"]
     redness = color_calc(row["pressure"], row["max_pressure"])
