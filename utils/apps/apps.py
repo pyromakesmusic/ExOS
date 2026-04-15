@@ -16,7 +16,7 @@ import klampt.plan.cspace
 import klampt.plan.rigidobjectcspace
 
 # Each app should be its own class
-from pyonics import Muscle
+from pyonics import MuscleEmulator
 
 """
 CLASSES
@@ -166,12 +166,13 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
-    def __init__(self, wm, pcm, timestep, collisions=True):  # Setting collisions to True for testing ONLY
+    def __init__(self, wm, pcm, timestep, config_df, collisions=True):  # Setting collisions to True for testing ONLY
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.world = wm
         self.dt = timestep
         self.pcm = pcm
         self.robotmodel = self.pcm.robot
+        self.config = config_df
 
         # self.reset() # Testing this to see if it helps reset the simulated robot config in ODESimulator
 
@@ -185,7 +186,11 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         else:
             self.collider = None
 
-    async def muscleLoader(self, config_df):
+        self.muscles = None
+        self.muscles_df = None
+        self.muscleLoader(self.config)
+
+    def muscleLoader(self, config_df):
         """
         Given a dataframe with an ["attachments"] column containing a path
         to a .csv file detailing structured muscle parameters, generates a list of MuscleEmulator objects and
@@ -199,20 +204,18 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
 
             for x in range(rows):
                 row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
-                muscle = Muscle(row, self.pcm) # Calls the muscle class constructor, has robot controller as argument
+                muscle = MuscleEmulator(row, self.pcm, self) # Calls the muscle class constructor, has robot controller as argument
                 muscle_objects.append(muscle) # Adds the muscle to the list
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
             self.pcm.muscles = muscle_objects
+            self.muscles = self.pcm.muscles
             pressure_series = pd.Series(data=0, name="pressure")
-            muscleinfo_df = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
-
-            """
-            This dataframe should end with all the info in the muscle attachments CSV, plus corresponding muscle objects
-            in each row.
-            # """
-            # print(str(muscleinfo_df) + " muscleinfo df") # Doing test prints
-            return muscleinfo_df
+            self.muscles_df = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
+            print(self.muscles_df)
+            for muscle in muscle_objects:
+                self.addEmulator(self.robotmodel, muscle)
+            return
     async def simLoop(self, force_list):
         """
         robot: A RobotModel.

@@ -6,10 +6,20 @@ from pyonics.control.messages import AsyncServer, AsyncTestClient
 
 import asyncio
 from datetime import datetime
+import pandas as pd
 
 import utils.apps as xapp
 import utils.ui as ui
 import utils.video as vid
+
+"""
+PANDAS CONFIG
+"""
+pd.options.display.width = 0
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
 
 def basic_config(config_name):
     """
@@ -107,7 +117,7 @@ class BasicExo():
         Between these two state update commands should go the startup logic
         """
         if self.config["has_sim"]:  # If a simulation is defined
-            self.sim = xapp.Sim(self.pcm.world, self.pcm, self.pcm.controlRate())
+            self.sim = xapp.Sim(self.pcm.world, self.pcm, self.pcm.controlRate(), self.config)
             self.sim.enableContactFeedbackAll()
             # asyncio.run(self.sim_settings())
             #self.sim.endLogging()
@@ -117,14 +127,13 @@ class BasicExo():
         if self.config["has_vis"]:  # If there's a visualization
             klampt.vis.add("w", self.pcm.world)
             klampt.vis.add("robby", self.pcm.robot)
-            vid.display_muscles(self.pcm.muscles)  # Displays the muscles
             klampt.vis.visualization.setWindowTitle("ExOS")
             klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
             klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
             vid.configure_sim_vis(self.viewport)
             klampt.vis.show()  # Shows the visualization
-            klampt.vis.spin(1) # argument is duration in seconds
+            klampt.vis.spin(10) # argument is duration in seconds
 
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
         if self.sim:
