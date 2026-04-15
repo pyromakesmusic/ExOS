@@ -216,7 +216,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
             for muscle in muscle_objects:
                 self.addEmulator(self.robotmodel, muscle)
             return
-    async def simLoop(self, force_list):
+    async def simLoop(self):
         """
         robot: A RobotModel.
         force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
@@ -233,9 +233,8 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         Should possibly return a list of new transforms to be used for calculating stuff in the next time step.
 
         """
-        self.simulate(self.dt)
+        self.simulate(self.dt) # Same as the controller update
         self.updateWorld()
-
         return
 
     async def configure_sim(self):
