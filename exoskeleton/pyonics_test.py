@@ -117,13 +117,9 @@ class BasicExo():
         if self.config["has_vis"]:  # If there's a visualization
             klampt.vis.add("w", self.pcm.world)
             klampt.vis.add("robby", self.pcm.robot)
-
-            if self.config["has_sim"]:  # If a simulation is defined AND there's a visualization
-                vid.display_muscles(self.pcm.muscles)  # Displays the muscles
-
+            vid.display_muscles(self.pcm.muscles)  # Displays the muscles
             klampt.vis.visualization.setWindowTitle("ExOS")
             klampt.vis.visualization.setBackgroundColor(.8, .5, .8, .3)
-
             klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
             vid.configure_sim_vis(self.viewport)
@@ -145,19 +141,14 @@ class BasicExo():
 
     async def main(self):
         # Diagnostics go here at the top
-        # await vid.display_contact_forces(self.pcm.robot, self.sim)
         if self.sim:
             # Attend to the simulation
-            # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
             if klampt.vis.shown():
-                vid.display_muscles(self.pcm.muscles)
                 klampt.vis.lock()
                 klampt.vis.spin(self.dt)
 
-            # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
-            # forces = await self.pcm.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
             await test_constant()
-            self.pcm.bones = await self.sim.testSimLoop()  # Needs list of input values
+            await self.sim.testSimLoop()  # Needs list of input values
             for pressure in self.pcm.pressures:
                 print(pressure)
 
@@ -200,24 +191,6 @@ class BasicExo():
     """
     Testing
     """
-    # async def sim_test(self):
-    #     if self.sim:
-    #         # Attend to the simulation
-    #         if self.config["has_vis"]:
-    #         # await self.collision_settings()  # Should access the collision settings function and do something related to collisions every loop
-    #         if klampt.vis.shown():
-    #             klampt.vis.lock()
-    #
-    #         # Main operating system loop. Last argument of pressures_to_forces is a force multiplier. (why?)
-    #         # forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
-    #         # self.pcm.bones = await self.sim.testSimLoop(forces)
-    #         await self.sim.testSimLoop()
-    #
-    #         if klampt.vis.shown():
-    #             klampt.vis.unlock()
-    #             klampt.vis.update()
-    #     else:
-    #         pass
 
     async def trajectory_test(self):
         return
