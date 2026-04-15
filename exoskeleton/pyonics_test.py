@@ -2,6 +2,7 @@ import klampt
 import klampt.vis
 import klampt.io
 import pyonics
+from pyonics.control.messages import AsyncServer, AsyncTestClient
 
 import asyncio
 from datetime import datetime
@@ -116,7 +117,7 @@ class BasicExo():
 
         #self.logging = True  # This is the diagnostic output flag
 
-        asyncio.run(self.pcm.idle_configuration())  # Set up the idle for the powertrain control module
+        asyncio.run(self.pcm.setup_osc_server())  # Set up the idle for the powertrain control module
         asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
         asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
         # asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
@@ -130,10 +131,10 @@ class BasicExo():
         Between these two state update commands should go the startup logic
         """
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
-
+        await self.pcm.server.enable_osc_logging()
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
             await self_method()  # Async function call
-            await asyncio.sleep(2)
+            await asyncio.sleep(0)
             # i += 1
             # asyncio.run(asyncio.sleep(1))
 
@@ -148,8 +149,9 @@ class BasicExo():
                 klampt.vis.lock()
 
             # Main operating system loop. Last argument of pressures_to_forces is a force multiplier.
-            forces = await self.sim.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
-            self.pcm.bones = await self.sim.simLoop(forces)  # Needs list of input values
+            # forces = await self.pcm.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
+            await test_constant()
+            self.pcm.bones = await self.sim.testSimLoop()  # Needs list of input values
 
             if klampt.vis.shown():
                 klampt.vis.unlock()
@@ -209,9 +211,24 @@ class BasicExo():
 
     async def trajectory_test(self):
         return
+
+
     """
     Diagnostics
     """
+
+"""
+Testing Functions
+"""
+
+
+async def test_constant():
+    client = AsyncTestClient(port=5005)
+
+    def constant(t):
+        return [50, 50, 50]
+
+    await client.send_loop(constant, dt=0.1, duration=2.0)
 
 def basic_launch():
     """
