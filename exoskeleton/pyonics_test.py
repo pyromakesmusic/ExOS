@@ -117,13 +117,14 @@ class BasicExo():
 
         #self.logging = True  # This is the diagnostic output flag
 
-        asyncio.run(self.pcm.setup_osc_server())  # Set up the idle for the powertrain control module
-        asyncio.run(vid.display_bones(self.pcm.robot))  # Sets the color of the robot links
-        asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
+        """
+        This call to main needs to happen but it should happen after startup
+        """
+        # asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
         # asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
         # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
-    async def startup(self, self_method, *args):
+    async def startup(self):
         """
         Should be called with the runtime loop to be started plus some conditionals to ensure are true
         """
@@ -131,10 +132,12 @@ class BasicExo():
         Between these two state update commands should go the startup logic
         """
         # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
+        await self.pcm.setup_osc_server()
+        await vid.display_bones(self.pcm.robot)
         await self.pcm.server.enable_osc_logging()
         while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
-            await self_method()  # Async function call
-            await asyncio.sleep(0)
+            await self.main()  # Async function call
+            await asyncio.sleep(self.dt)
             # i += 1
             # asyncio.run(asyncio.sleep(1))
 
@@ -152,6 +155,8 @@ class BasicExo():
             # forces = await self.pcm.pressures_to_forces(self.pcm.muscles.muscle_objects, self.pcm.pressures, 2)
             await test_constant()
             self.pcm.bones = await self.sim.testSimLoop()  # Needs list of input values
+            for pressure in self.pcm.pressures:
+                print(pressure)
 
             if klampt.vis.shown():
                 klampt.vis.unlock()
