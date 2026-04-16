@@ -3,7 +3,7 @@ CORE:
 MODEL:
 ../../x-series/robots/X001
 MUSCLE ATTACHMENTS:
-../../x-series/robots/muscle_attachments_b2.csv
+../../x-series/robots/muscle_attachments_pyonics_test.csv
 WORLD:
 worlds/test_world3.xml
 CONTROL RATE:
