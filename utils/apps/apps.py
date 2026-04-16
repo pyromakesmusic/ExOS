@@ -218,6 +218,7 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         robot: A RobotModel.
         force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
         """
+        self.pcm.set_pressures
         self.simulate(self.dt)
         self.updateWorld()
         return

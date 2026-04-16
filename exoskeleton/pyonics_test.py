@@ -144,7 +144,7 @@ class BasicExo():
 
     async def main(self):
         # Diagnostics go here at the top
-        self.sim.simulate(self.dt)
+        await self.sim.simLoop()
 
 
     async def async_error(self, error_message: None):
