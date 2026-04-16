@@ -116,11 +116,13 @@ class BasicExo():
         """
         Between these two state update commands should go the startup logic
         """
+        await self.pcm.setup_osc_server()
+        await self.pcm.server.enable_osc_logging()
+
         if self.config["has_sim"]:  # If a simulation is defined
             self.sim = xapp.Sim(self.pcm.world, self.pcm, self.pcm.controlRate(), self.config)
             self.sim.enableContactFeedbackAll()
-            # asyncio.run(self.sim_settings())
-            #self.sim.endLogging()
+            await self.sim.configure_sim()
 
         # Visualization
 
@@ -132,43 +134,18 @@ class BasicExo():
             klampt.vis.visualization.resizeWindow(1920, 1080)
             self.viewport = klampt.vis.getViewport()
             vid.configure_sim_vis(self.viewport)
-            klampt.vis.show()  # Shows the visualization
-            klampt.vis.spin(10) # argument is duration in seconds
+            vid.display_muscles(self.sim.muscles)
+            klampt.vis.show()
 
-        # self.pcm.setCollisionFilter(world=None, op="warn")  # This makes the robot check for self-collisions and ignore commands that cause them
-        if self.sim:
-            await self.sim.configure_sim()
 
-        await self.pcm.setup_osc_server()
-        # await vid.display_bones(self.pcm.robot)
-        await self.pcm.server.enable_osc_logging()
-        while klampt.vis.shown():  # I ddn't know if this should be packaged somehow
-            await self.main()  # Async function call
-            await asyncio.sleep(self.dt)
-            # i += 1
-            # asyncio.run(asyncio.sleep(1))
+
+        while klampt.vis.shown():
+            await self.main()
 
     async def main(self):
         # Diagnostics go here at the top
-        if self.sim:
-            # Attend to the simulation
-            if klampt.vis.shown():
-                klampt.vis.lock()
-                klampt.vis.spin(self.dt)
+        self.sim.simulate(self.dt)
 
-            await test_constant()
-            await self.sim.testSimLoop()  # Needs list of input values
-            for pressure in self.pcm.pressures:
-                print(pressure)
-
-            if klampt.vis.shown():
-                klampt.vis.unlock()
-                klampt.vis.update()
-                klampt.vis.spin(self.dt)
-
-
-        else:
-            pass
 
     async def async_error(self, error_message: None):
         print("ERROR")

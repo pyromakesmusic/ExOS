@@ -187,7 +187,6 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
             self.collider = None
 
         self.muscles = None
-        self.muscles_df = None
         self.muscleLoader(self.config)
 
     def muscleLoader(self, config_df):
@@ -208,12 +207,10 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
                 muscle_objects.append(muscle) # Adds the muscle to the list
 
             muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
-            self.pcm.muscles = muscle_objects
-            self.muscles = self.pcm.muscles
-            pressure_series = pd.Series(data=[0] * len(self.muscles), name="pressure")
-            self.muscles_df = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
-            print(self.muscles_df)
-            for muscle in muscle_objects:
+            pressure_series = pd.Series(data=[0] * len(muscle_series), name="pressure")
+            self.muscles = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
+            print(self.muscles)
+            for muscle in self.muscles["muscle_objects"]:
                 self.addEmulator(self.robotmodel, muscle)
             return
     async def simLoop(self):
