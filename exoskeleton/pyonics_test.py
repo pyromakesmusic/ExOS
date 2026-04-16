@@ -141,10 +141,18 @@ class BasicExo():
 
         while klampt.vis.shown():
             await self.main()
+            await asyncio.sleep(0.01)
 
     async def main(self):
         # Diagnostics go here at the top
-        await self.sim.simLoop()
+        self.sim.simulate(self.dt)
+        self.sim.updateWorld()
+        klampt.vis.lock()
+        # update visuals (muscle geometry/colors)
+        vid.display_muscles(self.sim.muscles)
+        klampt.vis.unlock()
+        klampt.vis.update()
+
 
 
     async def async_error(self, error_message: None):
@@ -198,6 +206,10 @@ async def test_constant():
         return [50, 50, 50]
 
     await client.send_loop(constant, dt=0.1, duration=2.0)
+
+async def test_single():
+    client = AsyncTestClient(port=5005)
+    await client.send_once(10, 20, 30)
 
 def basic_launch():
     """

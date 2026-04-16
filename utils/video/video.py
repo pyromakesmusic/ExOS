@@ -33,7 +33,7 @@ def display_muscle_row(row=pd.Series):
     redness = color_calc(row["pressure"], row["max_pressure"])
     try:
         kvis.add(name, muscle.geometry)
-        kvis.setColor(name, 0, 0.2, 0, 1)
+        kvis.setColor(name, 1, 0, 0, 1)
         kvis.hideLabel(name)
     except AttributeError: # name or muscle doesn't exist
         pass
