@@ -16,6 +16,7 @@ import klampt.plan.cspace
 import klampt.plan.rigidobjectcspace
 
 # Each app should be its own class
+from pyonics import MuscleEmulator
 
 """
 CLASSES
@@ -165,15 +166,19 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
     """
     This is a class for Simulations. It will contain the substepping logic where forces are applied to simulated objects.
     """
-    def __init__(self, wm, robot, timestep, collisions=True):  # Setting collisions to True for testing ONLY
+    def __init__(self, wm, pcm, timestep, config_df, collisions=True):  # Setting collisions to True for testing ONLY
         klampt.sim.simulation.SimpleSimulator.__init__(self, wm)
         self.world = wm
         self.dt = timestep
+        self.pcm = pcm
+        self.robotmodel = self.pcm.robot
+        self.config = config_df
 
-        self.robotmodel = robot
-        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
-        self.link_transforms_end = None
-        self.link_transforms_diff = None
+        # self.reset() # Testing this to see if it helps reset the simulated robot config in ODESimulator
+
+        q = self.robotmodel.getConfig()
+        self.robotmodel.setConfig(q)
+        self.robotmodel.setVelocity([0.0] * len(q))
 
         if collisions:
             self.collider = klampt.model.collide.WorldCollider(self.world)
@@ -181,53 +186,33 @@ class Sim(klampt.sim.simulation.SimpleSimulator):
         else:
             self.collider = None
 
-    async def pressures_to_forces(self, muscle_objects, pressures, force_multiplier):
-        force_list = []  # Makes a new empty list... of tuples? Needs link number, force, and transform
-        i = 0
-        try:
-            for muscle in muscle_objects:
-                triplet_a, triplet_b = muscle.update_muscle(pressures[i])  # Updates muscles w/ OSC argument
-                force_list.append(triplet_a)
-                force_list.append(triplet_b)
-                i += 1
-        except IndexError:
-            force_list.append([0,0,0])
-            force_list.append([0,0,0])
-        force_series = pd.Series(force_list)
-        return force_series * force_multiplier
+        self.muscles = None
+        self.muscleLoader(self.config)
 
-    async def simLoop(self, force_list):
+    def muscleLoader(self, config_df):
         """
-        robot: A RobotModel.
-        force_list: Not sure what data structure, maybe a dataframe? name of muscle as index, with force and transform
+        Given a dataframe with an ["attachments"] column containing a path
+        to a .csv file detailing structured muscle parameters, generates a list of MuscleEmulator objects and
+        assigns them to the robot model. This should generate all muscles.
+        """
+        with open(config_df["attachments"]) as attachments:
+            muscleinfo_df = pd.read_csv(attachments, sep=";")  # This dataframe contains info on every muscle attachment
+            rows = muscleinfo_df.shape[0]  # This is the number of rows, so the while loop should loop "row" many times
 
-        Should possibly return a list of new transforms to be used for calculating stuff in the next time step.
+            muscle_objects = []  # Placeholder list, made to be empty and populated with all muscle objects.
 
-        """
-        self.link_transforms_start = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
-        """
-        Below is where we apply each force in the simulation.
-        """
-        for force in force_list:
-            link = self.body(self.robotmodel.link(force[0]))  # From the force info, gets the link to apply force
-            force_vector = force[1]  # Gets the force vector
-            transform = force[2]  # Gets the transform at which to apply force
-            link.applyForceAtLocalPoint(force_vector, transform)  # Applys the force
+            for x in range(rows):
+                row = muscleinfo_df.iloc[x] # Locates the muscle information in the dataframe
+                muscle = MuscleEmulator(row, self.pcm, self) # Calls the muscle class constructor, has robot controller as argument
+                muscle_objects.append(muscle) # Adds the muscle to the list
 
-        self.simulate(self.dt)
-        self.updateWorld()
-        if self.collider:
-            pass
-            #klampt.model.contact.world_contact_map(self.world, padding=0.1, kFriction=1, collider=self.collider)
-            #print(self.collider.collisions())
-        """
-        Maybe here is where we have to get the updated link transforms and return them as "sensor" feedback.
-        """
-        self.link_transforms_end = [self.robotmodel.link(x).getTransform() for x in range(self.robotmodel.numLinks())]
-
-        self.link_transforms_diff = [klampt.math.se3.error(self.link_transforms_start[x], self.link_transforms_end[x])
-                                for x in range(len(self.link_transforms_start))]  # Takes the Lie derivative from start -> end
-        return self.link_transforms_end  # I don't even know if we need to use this, depends on if we pass by ref or var
+            muscle_series = pd.Series(data=muscle_objects, name="muscle_objects")
+            pressure_series = pd.Series(data=[0] * len(muscle_series), name="pressure")
+            self.muscles = pd.concat([muscleinfo_df, muscle_series, pressure_series], axis=1)
+            print(self.muscles)
+            for muscle in self.muscles["muscle_objects"]:
+                self.addEmulator(self.robotmodel, muscle)
+            return
 
     async def configure_sim(self):
         """
