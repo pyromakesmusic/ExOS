@@ -141,7 +141,7 @@ class BasicExo():
 
         while klampt.vis.shown():
             await self.main()
-            await asyncio.sleep(0.01)
+            await asyncio.sleep(0.01) # Avoids CPU bound resource intensive clock cycles
 
     async def main(self):
         # Diagnostics go here at the top
