@@ -81,40 +81,20 @@ class BasicExo():
 
     # Initialization
     def __init__(self, config_data):
-        """S
+        """
         Initializes the controller. Should work on a physical or simulated robot equivalently or simultaneously.
         """
         self.config = config_data
-        self.model_path = self.config["model"]
-
-        self.network_mode = self.config["network_mode"]  # Can be master or slave
         self.dt = self.config["timestep"]
-
-        if self.config["has_robworld"]:
-            # Variable for a robot representation # Not sure if this is happening correctly
-            self.pcm = pyonics.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
+        self.pcm = pyonics.ExoController(config_data) # PCM as in powertrain control module, this is primary motor driver
 
         self.sim = None
         self.viewport = None
-
-        klampt.control.OmniRobotInterface.__init__(self, self.pcm.robot)
-
-        #self.logging = True  # This is the diagnostic output flag
-
-        """
-        This call to main needs to happen but it should happen after startup
-        """
         asyncio.run(self.startup())
-        # asyncio.run(self.startup(self.main))  # Initiates the primary idle loop for the total system
-        # asyncio.run(self.startup(self.sim_test)) # Using the test method for debugging
-        # klampt.vis.add("Config Space", self.pcm.cspace)  # Trying to show the configuration space.
 
     async def startup(self):
         """
         Should be called with the runtime loop to be started plus some conditionals to ensure are true
-        """
-        """
-        Between these two state update commands should go the startup logic
         """
         await self.pcm.setup_osc_server()
         await self.pcm.server.enable_osc_logging()
